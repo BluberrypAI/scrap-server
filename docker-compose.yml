@@ -1,0 +1,44 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: resource
+      POSTGRES_PASSWORD: resource
+      POSTGRES_DB: resource
+    # 호스트 포트는 5433: PC에 PostgreSQL이 설치돼 있으면 5432가 이미 사용 중이기 때문.
+    # 컨테이너끼리는 db:5432로 통신하므로 api 서비스와는 무관함.
+    ports:
+      - "${POSTGRES_HOST_PORT:-5433}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U resource"]
+      interval: 5s
+      retries: 10
+
+  # API 서버: 소스를 마운트해 코드 수정 시 자동 재시작. 시작할 때 마이그레이션을 적용함.
+  api:
+    build: ./backend
+    env_file:
+      - path: ./backend/.env
+        required: false
+    environment:
+      DATABASE_URL: postgresql+asyncpg://resource:resource@db:5432/resource
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      db:
+        condition: service_healthy
+    command: sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --reload-dir app"
+
+  # Blob Storage 에뮬레이터. 문서 업로드 기능부터 사용: docker compose --profile storage up -d
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    profiles: ["storage"]
+    ports:
+      - "10000:10000"
+
+volumes:
+  pgdata:

@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+
+# Env
+.env
+!.env.example
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Claude Code 개인 설정
+.claude/settings.local.json
+local.db
+
+# 기획서 원본·조사 자료는 레포에 올리지 않음 (로컬 보관만 허용)
+docs/planning/
+docs/research/
