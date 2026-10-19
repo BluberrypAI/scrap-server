@@ -84,19 +84,19 @@ Settings → Branches → **Add classic branch protection rule**
 
 ### 4.5 라벨
 
-Issues → Labels에 `feat`, `fix`, `chore`, `docs` 라벨 생성 (조직 `.github` 레포의 이슈 템플릿이 자동으로 붙임. 라벨이 없는 레포에서는 붙지 않음)
+Issues → Labels에 `feat`, `fix`, `chore`, `docs` 라벨 생성 (이슈 템플릿이 자동으로 붙임. 라벨이 없는 레포에서는 붙지 않음)
 
 ## 5. AI 에이전트 규칙
 
 1. develop, main에서 직접 커밋하지 않고 위 규칙의 작업 브랜치를 만듦
 2. push, PR 생성, 병합은 사용자가 요청할 때만 함
-3. PR 본문은 `.github/pull_request_template.md`를 채움 (작업 종료 루프 항목 포함)
+3. PR 본문은 `.github/pull_request_template.md`를 채움
 
 ## 6. 다른 레포 초기 설정 (서버 담당자, 1회)
 
 | 레포 | 할 일 |
 | --- | --- |
-| `.github` | 조직에 `.github` 이름의 **공개** 레포 생성 → 로컬 `../.github` 폴더(CONTRIBUTING.md, ISSUE_TEMPLATE/, 기본 PR 템플릿)를 push. 이슈 템플릿은 자기 `ISSUE_TEMPLATE/`이 없는 모든 레포에 적용되므로 각 레포에는 이슈 템플릿을 두지 않음 |
+| `.github` | 조직에 `.github` 이름의 **공개** 레포 생성 → 로컬 `../.github` 폴더(CONTRIBUTING.md, `.github/ISSUE_TEMPLATE/`, 기본 PR 템플릿)를 push. 조직 기본 이슈 템플릿이 Private 레포에 적용되지 않았으므로 **각 레포에도 `.github/ISSUE_TEMPLATE/`을 복사함** (`cp -r ../.github/.github/ISSUE_TEMPLATE .github/`) |
 | `ai` | 4.2~4.5와 같은 설정 + `.github/CODEOWNERS`에 `/schemas/ @<서버담당자 GitHub ID>` (스키마 폴더 이름은 ai 레포 구조에 맞춤), 브랜치 보호에서 **Require review from Code Owners** 체크 |
 | `infra` | develop·main 보호는 같은 방식. 통합 compose는 형제 폴더(`../server/backend`, `../ai`, `../frontend`)를 빌드 경로로 사용 |
 | `frontend` | 프론트 팀과 합의해 적용 (develop을 쓰지 않기로 하면 main 보호만) |
