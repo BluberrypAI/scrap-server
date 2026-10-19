@@ -29,7 +29,7 @@
 
 1. server와 ai는 각자 배포함. 둘 사이의 입출력 형식(MCP 도구 스키마)은 **필드 추가만 허용**하고 삭제·이름 변경은 server 담당자와 협의함
 2. 형식이 바뀐 릴리스는 **ai를 먼저, server를 나중에** 배포함
-3. ai 레포는 CODEOWNERS로 스키마 폴더 변경에 server 담당자 승인을 요구함
+3. ai 레포의 스키마 폴더 변경은 server 담당자 승인 후 병합함 (2026-10-19 변경: CODEOWNERS는 두지 않고 PR 작성자가 리뷰어로 지정함. 무료 플랜이라 CODEOWNERS 승인 강제가 되지 않음)
 4. 통합 확인은 infra 레포의 docker-compose로 함. 각 레포는 infra와 **나란히** clone함 (infra 하위에 넣지 않음)
 5. 각 레포의 로컬 compose는 그 레포 단독 개발용으로 유지함 (server: api + db)
 

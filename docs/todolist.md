@@ -23,11 +23,13 @@
 | T-014 | 이슈·PR 템플릿, CI, git-workflow.md | 완료 | backend-architect | - | |
 | T-016 | 개발용 로그인 API (로컬 전용, Swagger 테스트용) | 완료 | auth-specialist | auth-social-login | |
 | T-017 | 루트 README (소개, 실행 방법, 현재 구조, API 목록) | 완료 | backend-architect | - | |
-| T-015 | GitHub 저장소 연결, 기본 브랜치·병합 방식·브랜치 보호 규칙·라벨 설정 | 대기 | 사람 | - | docs/git-workflow.md 4장 |
+| T-015 | GitHub 저장소 연결, 기본 브랜치·병합 방식·브랜치 보호 룰셋 설정 | 완료 | 사람 | - | 무료 플랜이라 룰셋은 강제되지 않음. 라벨은 쓰지 않음 |
 | T-018 | 레포 4개 구성 반영 (ADR 0002), 팀 공통 규칙 문서, Docker 표준화 | 완료 | backend-architect | - | |
 | T-019 | 조직 `.github` 레포 생성, CONTRIBUTING.md(=team-conventions) 등록 | 완료 | 사람 | - | Public. 템플릿은 `.github/` 하위 폴더 |
 | T-021 | server 레포 `.github/ISSUE_TEMPLATE/` 삭제 (조직 템플릿으로 통일) | 취소 | 사람 | - | 조직 이슈 템플릿이 Private 레포에 적용되지 않아 레포별 템플릿으로 되돌림. PR 템플릿 간소화 |
-| T-020 | ai·infra·frontend 레포 브랜치 보호, ai 레포 CODEOWNERS | 대기 | 사람 | - | git-workflow.md 6장 |
+| T-020 | ai·infra·frontend 레포 초기화, 템플릿, CI, 설정 | 완료 | 사람 | - | git-workflow.md 6장. CODEOWNERS는 두지 않음 |
+| T-022 | Re_AI feat/#1 → develop PR에서 CI `test` 실행 확인 후 룰셋 status check에 추가 | 대기 | 사람 | - | AI 팀원 PR |
+| T-023 | 로컬 폴더를 `resource-ai/` 아래 형제 구조(server, ai, frontend, infra, .github)로 정리 | 대기 | 사람 | - | git-workflow.md 6장 |
 
 ## 2주차 이후: server 레포 작업
 
