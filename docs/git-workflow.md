@@ -47,8 +47,8 @@ Settings → General → Default branch → **develop**으로 변경
 
 Settings → General → Pull Requests
 
-- [x] Allow merge commits (릴리스용)
-- [x] Allow squash merging (작업 브랜치용)
+- [x] Allow merge commits (작업 PR, 릴리스 PR 모두)
+- [ ] Allow squash merging
 - [ ] Allow rebase merging
 - [x] Automatically delete head branches
 
