@@ -59,7 +59,7 @@ ReSource/
 ├─ AGENTS.md / CLAUDE.md     AI 코딩 에이전트 진입점 (규칙, 문서 지도, 작업 종료 루프)
 ├─ .agents/                  에이전트 역할·스킬 원본 (Claude Code·Codex 공용)
 ├─ .claude/                  Claude Code용 생성물 (scripts/sync_agents.py가 생성)
-├─ .github/                  CI, PR 템플릿 (이슈 템플릿은 조직 .github 레포)
+├─ .github/                  CI, 이슈·PR 템플릿
 ├─ docs/                     제품 정의, spec, ADR, todo, Git 규칙, 운영 절차
 ├─ scripts/                  sync_agents.py
 ├─ backend/                  FastAPI 서비스

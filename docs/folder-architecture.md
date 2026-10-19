@@ -8,7 +8,7 @@
 
 | 레포 | 이 레포와의 관계 |
 | --- | --- |
-| `.github` | 공통 규칙(CONTRIBUTING)과 이슈 템플릿의 원본. 이 레포는 이슈 템플릿을 두지 않고 조직 것을 씀. PR 템플릿만 server용으로 덮어씀 |
+| `.github` | 공통 규칙(CONTRIBUTING)과 이슈·PR 템플릿의 원본. 조직 기본 이슈 템플릿이 Private 레포에 적용되지 않아 이 레포에도 같은 이슈 템플릿을 복사해 둠. PR 템플릿은 server용으로 덮어씀 |
 | `infra` | 이 레포를 `../server`로 참조해 전체를 compose로 실행 |
 | `ai` | 에이전트, MCP 도구, 지식 기반 (설계 중). server는 HTTP로 호출함 (호출 시작 시 `AI_BASE_URL` 설정 추가) |
 | `frontend` | server API를 호출. CORS·쿠키 설정 대상 |
@@ -43,6 +43,7 @@ ReSource/
 │  └─ sync_agents.py           # .agents → .claude 동기화, --check로 검사
 ├─ .github/
 │  ├─ workflows/ci.yml         # 린트, 동기화 검사, 마이그레이션, PostgreSQL 테스트
+│  ├─ ISSUE_TEMPLATE/          # 기능, 버그, 작업 (조직 .github 레포와 같은 내용)
 │  └─ pull_request_template.md
 │
 ├─ backend/                    # FastAPI 서비스 (실행 방법: backend/README.md)
