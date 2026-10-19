@@ -26,7 +26,7 @@
 | T-015 | GitHub 저장소 연결, 기본 브랜치·병합 방식·브랜치 보호 규칙·라벨 설정 | 대기 | 사람 | - | docs/git-workflow.md 4장 |
 | T-018 | 레포 4개 구성 반영 (ADR 0002), 팀 공통 규칙 문서, Docker 표준화 | 완료 | backend-architect | - | |
 | T-019 | 조직 `.github` 레포 생성, CONTRIBUTING.md(=team-conventions) 등록 | 진행 | 사람 | - | 로컬 `../.github` 파일 준비 완료. GitHub에 레포 생성·push 남음 |
-| T-021 | server 레포 `.github/ISSUE_TEMPLATE/` 삭제 (조직 템플릿으로 통일) | 대기 | 사람 | - | 조직 `.github` push 후 |
+| T-021 | server 레포 `.github/ISSUE_TEMPLATE/` 삭제 (조직 템플릿으로 통일) | 완료 | 사람 | - | 조직 `.github` push 후 |
 | T-020 | ai·infra·frontend 레포 브랜치 보호, ai 레포 CODEOWNERS | 대기 | 사람 | - | git-workflow.md 6장 |
 
 ## 2주차 이후: server 레포 작업
