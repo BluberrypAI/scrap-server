@@ -64,7 +64,7 @@ Settings → Branches → **Add classic branch protection rule**
 | --- | --- |
 | Branch name pattern | `develop` |
 | Require a pull request before merging | ✅ |
-| └ Require approvals | ✅ 1명 (팀원끼리 리뷰. 혼자 작업 중이면 0) |
+| └ Require approvals | ❌ 0명 (PR은 필수, 병합은 작성자가 직접. team-conventions.md 4장) |
 | Require status checks to pass before merging | ✅ `backend` |
 | └ Require branches to be up to date before merging | ✅ |
 | Do not allow bypassing the above settings | ✅ (관리자도 PR 필수) |
