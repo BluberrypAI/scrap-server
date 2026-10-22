@@ -46,7 +46,14 @@ async def callback(provider: str, request: Request, db: DbSession) -> Response:
         )
         user = await service.login_or_register(db, provider, token.get("userinfo") or {})
     except (OAuthError, service.MissingSubjectError) as exc:
-        logger.warning("OAuth callback failed for %s: %s", provider, type(exc).__name__)
+        # error/description are the provider's codes (e.g. AADSTS...), never tokens or secrets.
+        logger.warning(
+            "OAuth callback failed for %s: %s error=%s description=%s",
+            provider,
+            type(exc).__name__,
+            getattr(exc, "error", None),
+            getattr(exc, "description", None),
+        )
         return RedirectResponse(f"{frontend}/login?error=oauth_failed", status.HTTP_302_FOUND)
 
     has_company = await company_service.get_company_by_owner(db, user.id) is not None

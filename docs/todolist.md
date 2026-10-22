@@ -9,11 +9,11 @@
 | --- | --- | --- | --- | --- | --- |
 | T-001 | 폴더 골격, uv 프로젝트, docker compose, Dockerfile | 완료 | backend-architect | - | |
 | T-002 | users, social_accounts, companies, waste_profiles 모델과 첫 마이그레이션 | 완료 | db-engineer | auth-social-login, company-onboarding | Docker PostgreSQL·SQLite 양쪽에 적용 확인, upgrade/downgrade/check 통과 |
-| T-003 | Google·Microsoft 소셜 로그인, JWT 쿠키, /users/me | 완료 | auth-specialist | auth-social-login | 실제 로그인은 T-007 이후 확인 |
+| T-003 | Google·Microsoft 소셜 로그인, JWT 쿠키, /users/me | 완료 | auth-specialist | auth-social-login | 로컬에서 Google·Microsoft 실제 로그인 확인 (2026-10-22) |
 | T-004 | 기업 온보딩 API (생성, 조회) | 완료 | api-developer | company-onboarding | |
 | T-005 | 테스트 기본 구성 (OAuth mock) | 완료 | test-engineer | - | |
 | T-006 | AGENTS.md, 에이전트 7종, 스킬 6종, 동기화 스크립트 | 완료 | backend-architect | - | |
-| T-007 | Google OAuth 클라이언트, Entra ID 앱 등록 후 .env 설정 | 대기 | 사람 | auth-social-login | 리디렉션 URI는 spec 참고 |
+| T-007 | Google OAuth 클라이언트, Entra ID 앱 등록 후 .env 설정 | 완료 | 사람 | auth-social-login | 로컬(localhost:8000)용 등록 완료. 배포 시 리디렉션 URI 추가 필요 |
 | T-008 | 제공 Azure 자원 확인 (크레딧, 리전·SKU 제한, Azure OpenAI 할당량, 권한) | 대기 | 사람 | - | 배포 대상 결정의 선행 조건 |
 | T-009 | 조사 문서 1~7 정리 | 보류 | 사람 | - | ai 레포·팀 문서 몫으로 이동 (이 레포에 올리지 않음) |
 | T-010 | 기업 정보 수정 API (PATCH /companies/me) | 대기 | api-developer | company-onboarding | |
