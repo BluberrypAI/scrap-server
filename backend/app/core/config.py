@@ -25,6 +25,8 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 30
     refresh_token_expire_days: int = 14
+    # Days between withdrawal and permanent deletion (docs/specs/account-withdrawal.md).
+    withdrawal_grace_days: int = 30
     # Signs the short-lived session cookie Authlib uses for OAuth state/nonce.
     session_secret: str = INSECURE_SECRET
 

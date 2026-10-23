@@ -28,7 +28,8 @@ async def get_current_user(
     except InvalidTokenError:
         raise unauthorized from None
     user = await user_repo.get_user(db, user_id)
-    if user is None:
+    # Withdrawn users are cut off at once, even with an unexpired access token.
+    if user is None or user.is_withdrawn:
         raise unauthorized
     return user
 

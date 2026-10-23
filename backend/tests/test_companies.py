@@ -46,12 +46,12 @@ async def test_my_company_after_onboarding(auth_client: AsyncClient):
     assert len(res.json()["waste_profiles"]) == 2
 
 
-async def test_has_company_true_after_onboarding(auth_client: AsyncClient):
-    await auth_client.post("/api/v1/companies", json=COMPANY)
+async def test_me_company_id_matches_after_onboarding(auth_client: AsyncClient):
+    created = await auth_client.post("/api/v1/companies", json=COMPANY)
 
     res = await auth_client.get("/api/v1/users/me")
 
-    assert res.json()["has_company"] is True
+    assert res.json()["company_id"] == created.json()["id"]
 
 
 async def test_invalid_generation_cycle_returns_422(auth_client: AsyncClient):

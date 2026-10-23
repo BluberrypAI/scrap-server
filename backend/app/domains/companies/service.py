@@ -1,6 +1,7 @@
 import uuid
+from collections.abc import Sequence
 
-from sqlalchemy import select
+from sqlalchemy import delete, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -35,3 +36,18 @@ async def create_company(
         raise CompanyAlreadyExistsError from exc
     await db.refresh(company, ["waste_profiles"])
     return company
+
+
+async def delete_companies_of_owners(db: AsyncSession, owner_user_ids: Sequence[uuid.UUID]) -> None:
+    """Delete companies and their waste profiles for purged users. The caller commits."""
+    company_ids = select(Company.id).where(Company.owner_user_id.in_(owner_user_ids))
+    await db.execute(
+        delete(WasteProfile)
+        .where(WasteProfile.company_id.in_(company_ids))
+        .execution_options(synchronize_session=False)
+    )
+    await db.execute(
+        delete(Company)
+        .where(Company.owner_user_id.in_(owner_user_ids))
+        .execution_options(synchronize_session=False)
+    )

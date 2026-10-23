@@ -81,10 +81,11 @@ ReSource/
 | --- | --- | --- |
 | GET | /api/v1/auth/{google\|microsoft}/login | 소셜 로그인 시작 |
 | GET | /api/v1/auth/{provider}/callback | 로그인 완료, 쿠키 발급 |
-| POST | /api/v1/auth/refresh | access 토큰 재발급 |
-| POST | /api/v1/auth/logout | 로그아웃 |
+| POST | /api/v1/auth/refresh | access·refresh 토큰 재발급 (refresh 회전) |
+| POST | /api/v1/auth/logout | 로그아웃 (refresh 토큰 폐기) |
 | POST | /api/v1/auth/dev-login | 개발용 로그인 (로컬 전용) |
-| GET | /api/v1/users/me | 현재 사용자 |
+| GET | /api/v1/users/me | 현재 사용자 (제공자, 기업 ID) |
+| POST | /api/v1/users/me/withdraw | 회원 탈퇴 (30일 뒤 삭제) |
 | POST | /api/v1/companies | 기업·폐기물 프로필 등록 (온보딩) |
 | GET | /api/v1/companies/me | 내 기업 조회 |
 
