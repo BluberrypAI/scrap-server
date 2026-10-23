@@ -86,8 +86,10 @@ ReSource/
 | POST | /api/v1/auth/dev-login | 개발용 로그인 (로컬 전용) |
 | GET | /api/v1/users/me | 현재 사용자 (제공자, 기업 ID) |
 | POST | /api/v1/users/me/withdraw | 회원 탈퇴 (30일 뒤 삭제) |
-| POST | /api/v1/companies | 기업·폐기물 프로필 등록 (온보딩) |
+| POST | /api/v1/companies | 기업·주요 폐기물 등록 (온보딩) |
 | GET | /api/v1/companies/me | 내 기업 조회 |
+| PATCH | /api/v1/companies/me | 내 기업 수정 (profile_version으로 충돌 감지) |
+| GET | /api/v1/companies/me/history | 기업 정보 변경 이력 (페이지네이션) |
 
 ## 문서
 

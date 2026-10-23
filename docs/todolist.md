@@ -16,7 +16,7 @@
 | T-007 | Google OAuth 클라이언트, Entra ID 앱 등록 후 .env 설정 | 완료 | 사람 | auth-social-login | 로컬(localhost:8000)용 등록 완료. 배포 시 리디렉션 URI 추가 필요 |
 | T-008 | 제공 Azure 자원 확인 (크레딧, 리전·SKU 제한, Azure OpenAI 할당량, 권한) | 대기 | 사람 | - | 배포 대상 결정의 선행 조건 |
 | T-009 | 조사 문서 1~7 정리 | 보류 | 사람 | - | ai 레포·팀 문서 몫으로 이동 (이 레포에 올리지 않음) |
-| T-010 | 기업 정보 수정 API (PATCH /companies/me) | 대기 | api-developer | company-onboarding | |
+| T-010 | 기업 정보 수정 API (PATCH /companies/me), 필드를 API 명세(CORP-002)에 맞춤 | 완료 | api-developer | company-onboarding | 경로는 /companies/me 유지 (사용자 결정) |
 | T-011 | pre-commit 설정 (ruff, sync_agents --check) | 대기 | backend-architect | - | git init 이후 |
 | T-012 | DB 설정 분리 (SQLite/PostgreSQL/Azure, SSL·풀), Docker 실행 구성, backend/README.md | 완료 | backend-architect | - | Docker DB 호스트 포트 5433 |
 | T-013 | Swagger 설명·태그, DOCS_ENABLED | 완료 | api-developer | - | |
@@ -41,6 +41,7 @@
 | T-108 | 회원 탈퇴 (POST /users/me/withdraw, 30일 유예 후 삭제, purge 명령) | 완료 | auth-specialist | account-withdrawal | product-plan 3장에 탈퇴 추가 필요 (사람) |
 | T-109 | 공통 오류 응답 형식 spec (오류 코드: AUTH_REQUIRED, VALIDATION_ERROR 등) | 대기 | spec-writer | - | API 명세표의 오류 코드와 맞춤 |
 | T-110 | 탈퇴 사용자 purge 스케줄 (하루 1회) | 대기 | 사람 | account-withdrawal | 배포 대상 결정(T-502) 이후 |
+| T-111 | 기업 정보 변경 이력 조회 (GET /companies/me/history, 페이지네이션) | 완료 | api-developer | company-onboarding | CORP-006 |
 | T-502 | 배포 대상 결정 (App Service 기본안) 및 배포 | 대기 | 사람 | - | T-008 이후 |
 
 ## 참고: 다른 레포 담당 작업 (기획서 9장)
