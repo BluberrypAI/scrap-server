@@ -11,18 +11,20 @@ from app.domains.auth.cookies import ACCESS_COOKIE, REFRESH_COOKIE
 from app.domains.auth.models import RefreshToken
 from app.domains.auth.service import login_or_register, start_session
 from app.domains.companies import service as company_service
-from app.domains.companies.models import Company, WasteProfile
-from app.domains.companies.schemas import CompanyCreate
+from app.domains.companies.models import Company, CompanyProfileHistory, WasteProfile
+from app.domains.companies.schemas import CompanyCreate, CompanyUpdate
 from app.domains.users.models import SocialAccount, User
 from app.domains.users.service import purge_withdrawn_users
 
 WITHDRAW = "/api/v1/users/me/withdraw"
 COMPANY = CompanyCreate(
-    name="한빛플라스틱",
-    address="경기도 안산시",
+    company_name="한빛플라스틱",
+    business_registration_no="1234567890",
+    representative_name="홍대표",
     industry="플라스틱 제품 제조",
-    manager_name="김담당",
-    waste_profiles=[{"category": "PP", "generation_cycle": "weekly"}],
+    head_office_address="경기도 안산시",
+    contact={"name": "김담당"},
+    main_waste_types=[{"category": "PP", "generation_cycle": "weekly"}],
 )
 
 
@@ -77,7 +79,10 @@ async def test_access_token_is_rejected_after_withdrawal(client: AsyncClient, us
 
 async def _make_user(db: AsyncSession, subject: str, deletion_in: timedelta | None) -> User:
     user = await login_or_register(db, "google", {"sub": subject, "email": f"{subject}@x.com"})
-    await company_service.create_company(db, user.id, COMPANY)
+    company = await company_service.create_company(db, user.id, COMPANY)
+    await company_service.update_company(
+        db, company, CompanyUpdate(profile_version=1, industry="변경된 업종")
+    )
     await start_session(db, user.id)
     if deletion_in is not None:
         now = datetime.now(UTC)
@@ -101,6 +106,7 @@ async def test_purge_deletes_only_users_past_deletion_time(db: AsyncSession):
     assert await count(db, RefreshToken) == 2
     assert await count(db, Company) == 2
     assert await count(db, WasteProfile) == 2
+    assert await count(db, CompanyProfileHistory) == 2
 
 
 async def test_login_after_purge_creates_new_user(db: AsyncSession):
