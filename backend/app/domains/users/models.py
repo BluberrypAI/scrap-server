@@ -1,6 +1,7 @@
 import uuid
+from datetime import datetime
 
-from sqlalchemy import ForeignKey, String, UniqueConstraint
+from sqlalchemy import DateTime, ForeignKey, String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base, TimestampMixin
@@ -13,6 +14,15 @@ class User(Base, TimestampMixin):
     # Display/contact only. Identity is (provider, provider_subject) on SocialAccount.
     email: Mapped[str | None] = mapped_column(String(320))
     name: Mapped[str | None] = mapped_column(String(200))
+    # Withdrawn users are blocked at once and purged after deletion_scheduled_at.
+    withdrawn_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    deletion_scheduled_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), index=True
+    )
+
+    @property
+    def is_withdrawn(self) -> bool:
+        return self.withdrawn_at is not None
 
     social_accounts: Mapped[list["SocialAccount"]] = relationship(
         back_populates="user", cascade="all, delete-orphan", lazy="raise"

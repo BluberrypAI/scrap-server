@@ -26,7 +26,7 @@ from app.core.security import create_token  # noqa: E402
 from app.db.all_models import Base  # noqa: E402
 from app.db.session import get_db  # noqa: E402
 from app.domains.auth.cookies import ACCESS_COOKIE  # noqa: E402
-from app.domains.users.models import User  # noqa: E402
+from app.domains.users.models import SocialAccount, User  # noqa: E402
 from app.main import app  # noqa: E402
 
 # CI sets TEST_DATABASE_URL to a PostgreSQL service; locally tests use in-memory SQLite.
@@ -75,6 +75,8 @@ async def client(session_factory: async_sessionmaker[AsyncSession]) -> AsyncIter
 async def user(db: AsyncSession) -> User:
     user = User(email="manager@example.com", name="담당자")
     db.add(user)
+    await db.flush()
+    db.add(SocialAccount(user_id=user.id, provider="google", provider_subject="manager-sub"))
     await db.commit()
     return user
 

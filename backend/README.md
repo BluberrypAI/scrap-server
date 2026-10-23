@@ -94,6 +94,7 @@ SQLite 주의: 운영 DB는 PostgreSQL임. PostgreSQL 전용 기능(JSONB, pgvec
 uv run pytest                                  # 테스트 (메모리 SQLite)
 uv run ruff check . && uv run ruff format .    # 린트·포맷
 uv run alembic revision --autogenerate -m "..."  # 마이그레이션 생성 (.agents/skills/db-migration 참고)
+uv run python -m app.domains.users.purge       # 삭제 예정일이 지난 탈퇴 사용자 삭제 (운영은 하루 1회 스케줄)
 ```
 
 PostgreSQL로 테스트하려면 (Docker DB 실행 중일 때, 테스트용 DB `resource_test`를 한 번 만들어 둠):
@@ -127,6 +128,7 @@ TEST_DATABASE_URL=postgresql+asyncpg://resource:resource@localhost:5433/resource
 | `DOCS_ENABLED` | Swagger 노출 여부 |
 | `JWT_SECRET`, `SESSION_SECRET` | 운영(`APP_ENV=prod`)에서는 기본값이면 실행되지 않음 |
 | `GOOGLE_*`, `MICROSOFT_*` | 소셜 로그인 키 |
+| `WITHDRAWAL_GRACE_DAYS` | 탈퇴 후 실제 삭제까지 유예 일수 (기본 30) |
 
 ## 문제 해결
 
