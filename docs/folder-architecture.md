@@ -67,7 +67,8 @@ backend/
 │  ├─ main.py                  # 앱 생성, 미들웨어, 라우터 등록
 │  ├─ core/
 │  │  ├─ config.py             # 환경변수 (pydantic-settings)
-│  │  └─ security.py           # JWT 발급·검증
+│  │  ├─ security.py           # JWT 발급·검증
+│  │  └─ errors.py             # 공통 오류 응답 형식, 오류 코드, 예외 핸들러
 │  ├─ db/
 │  │  ├─ base.py               # DeclarativeBase, 공통 컬럼
 │  │  ├─ session.py            # 엔진, 세션, get_db

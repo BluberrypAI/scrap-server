@@ -1,7 +1,8 @@
 import math
 
-from fastapi import APIRouter, HTTPException, Query, status
+from fastapi import APIRouter, Query, status
 
+from app.core.errors import ConflictError, ErrorCode, NotFoundError
 from app.db.session import DbSession
 from app.domains.auth.dependencies import CurrentUser
 from app.domains.companies import service
@@ -23,7 +24,7 @@ router = APIRouter(prefix="/companies", tags=["companies"])
 async def _my_company(user: User, db: DbSession) -> Company:
     company = await service.get_company_by_owner(db, user.id)
     if company is None:
-        raise HTTPException(status.HTTP_404_NOT_FOUND, "Company not registered")
+        raise NotFoundError("등록된 기업이 없음")
     return company
 
 
@@ -32,7 +33,7 @@ async def create_company(data: CompanyCreate, user: CurrentUser, db: DbSession) 
     try:
         company = await service.create_company(db, user.id, data)
     except service.CompanyAlreadyExistsError:
-        raise HTTPException(status.HTTP_409_CONFLICT, "Company already registered") from None
+        raise ConflictError(ErrorCode.COMPANY_ALREADY_EXISTS, "이미 등록된 기업이 있음") from None
     return CompanyRead.from_company(company)
 
 
@@ -57,7 +58,9 @@ async def update_my_company(
     try:
         changed = await service.update_company(db, company, data)
     except service.VersionConflictError:
-        raise HTTPException(status.HTTP_409_CONFLICT, "Profile version conflict") from None
+        raise ConflictError(
+            ErrorCode.VERSION_CONFLICT, "다른 곳에서 먼저 수정됨. 다시 조회한 뒤 수정해야 함"
+        ) from None
     return CompanyUpdateResult(profile_version=company.profile_version, changed_fields=changed)
 
 

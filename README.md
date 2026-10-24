@@ -91,6 +91,8 @@ ReSource/
 | PATCH | /api/v1/companies/me | 내 기업 수정 (profile_version으로 충돌 감지) |
 | GET | /api/v1/companies/me/history | 기업 정보 변경 이력 (페이지네이션) |
 
+오류는 모든 API에서 `{"code", "message", "details"}` 형식으로 반환함. 오류 코드 목록: [docs/specs/error-response.md](docs/specs/error-response.md)
+
 ## 문서
 
 | 문서 | 내용 |
