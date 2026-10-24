@@ -5,9 +5,10 @@ Registered by app.main only when APP_ENV is local or test; absent in prod.
 
 import uuid
 
-from fastapi import APIRouter, HTTPException, Response, status
+from fastapi import APIRouter, Response, status
 from pydantic import BaseModel, Field
 
+from app.core.errors import AppError, ErrorCode
 from app.core.security import create_token
 from app.db.session import DbSession
 from app.domains.auth import service
@@ -43,6 +44,8 @@ async def dev_login(response: Response, db: DbSession, data: DevLoginRequest | N
         db, DEV_PROVIDER, {"sub": data.email, "email": data.email, "name": data.name}
     )
     if user.is_withdrawn:
-        raise HTTPException(status.HTTP_403_FORBIDDEN, "Account withdrawn")
+        raise AppError(
+            status.HTTP_403_FORBIDDEN, ErrorCode.ACCOUNT_WITHDRAWN, "탈퇴 처리 중인 계정"
+        )
     set_auth_cookies(response, user.id, await service.start_session(db, user.id))
     return DevLoginResponse(access_token=create_token(user.id, "access"), user_id=user.id)

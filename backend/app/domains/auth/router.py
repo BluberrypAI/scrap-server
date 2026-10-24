@@ -1,10 +1,11 @@
 import logging
 
 from authlib.integrations.base_client.errors import OAuthError
-from fastapi import APIRouter, Cookie, HTTPException, Request, Response, status
+from fastapi import APIRouter, Cookie, Request, Response, status
 from fastapi.responses import RedirectResponse
 
 from app.core.config import get_settings
+from app.core.errors import AppError, AuthRequiredError, ErrorCode
 from app.db.session import DbSession
 from app.domains.auth import providers, service
 from app.domains.auth.cookies import REFRESH_COOKIE, clear_auth_cookies, set_auth_cookies
@@ -16,9 +17,15 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 
 def _require_provider(provider: str) -> None:
     if provider not in providers.SUPPORTED_PROVIDERS:
-        raise HTTPException(status.HTTP_404_NOT_FOUND, "Unsupported provider")
+        raise AppError(
+            status.HTTP_404_NOT_FOUND, ErrorCode.UNSUPPORTED_PROVIDER, "지원하지 않는 로그인 제공자"
+        )
     if not providers.is_configured(provider):
-        raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, "Provider not configured")
+        raise AppError(
+            status.HTTP_503_SERVICE_UNAVAILABLE,
+            ErrorCode.PROVIDER_NOT_CONFIGURED,
+            "로그인 제공자 키가 설정되지 않음",
+        )
 
 
 @router.get("/{provider}/login")
@@ -68,11 +75,11 @@ async def refresh(
     refresh_token: str | None = Cookie(default=None, alias=REFRESH_COOKIE),
 ) -> None:
     if not refresh_token:
-        raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Missing refresh token")
+        raise AuthRequiredError("refresh 토큰이 없음")
     try:
         user_id, new_refresh_token = await service.rotate_session(db, refresh_token)
     except service.InvalidRefreshTokenError:
-        raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Invalid refresh token") from None
+        raise AuthRequiredError("refresh 토큰이 유효하지 않음") from None
     set_auth_cookies(response, user_id, new_refresh_token)
 
 

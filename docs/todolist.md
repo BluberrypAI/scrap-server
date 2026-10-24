@@ -39,7 +39,7 @@
 | T-106 | 분석(analyses) 도메인: 입력·문서 업로드 저장, ai 호출, 결과 저장 | 대기 | api-developer | - | T-105 이후 |
 | T-107 | refresh 토큰 DB 기록·회전·폐기, 로그아웃 서버 무효화, /users/me 응답 정리(provider, company_id) | 완료 | auth-specialist | auth-social-login | has_company 제거 (사용자 결정) |
 | T-108 | 회원 탈퇴 (POST /users/me/withdraw, 30일 유예 후 삭제, purge 명령) | 완료 | auth-specialist | account-withdrawal | product-plan 3장에 탈퇴 추가 필요 (사람) |
-| T-109 | 공통 오류 응답 형식 spec (오류 코드: AUTH_REQUIRED, VALIDATION_ERROR 등) | 대기 | spec-writer | - | API 명세표의 오류 코드와 맞춤 |
+| T-109 | 공통 오류 응답 형식 (code, message, details), 기존 API 전체 적용 | 완료 | api-developer | error-response | API 명세표의 오류 코드와 맞춤 |
 | T-110 | 탈퇴 사용자 purge 스케줄 (하루 1회) | 대기 | 사람 | account-withdrawal | 배포 대상 결정(T-502) 이후 |
 | T-111 | 기업 정보 변경 이력 조회 (GET /companies/me/history, 페이지네이션) | 완료 | api-developer | company-onboarding | CORP-006 |
 | T-502 | 배포 대상 결정 (App Service 기본안) 및 배포 | 대기 | 사람 | - | T-008 이후 |
