@@ -1,6 +1,6 @@
-"""Common error response format (docs/specs/error-response.md).
-
-Routers raise AppError subclasses instead of HTTPException so every error carries a code.
+"""
+공통 에러 응답 형식 (docs/specs/error-response.md)
+HTTPException 대신 에러 code를 붙인 AppError 계열 사용
 """
 
 import logging
@@ -33,12 +33,14 @@ class ErrorDetail(BaseModel):
     message: str
 
 
+# 에러 응답 모델
 class ErrorResponse(BaseModel):
     code: ErrorCode
     message: str
     details: list[ErrorDetail] | None = None
 
 
+# 공통 AppError 기반 에러 클래스
 class AppError(Exception):
     def __init__(
         self,
