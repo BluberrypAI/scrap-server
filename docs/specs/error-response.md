@@ -43,6 +43,9 @@
 | 422 | `VALIDATION_ERROR` | 요청 본문·쿼리·경로 값 검증 실패 |
 | 422 | `EMPTY_INPUT` | 검토 생성 시 상황 설명이 비어 있음 |
 | 422 | `TEXT_TOO_LONG` | 검토 생성 시 상황 설명이 5000자 초과 |
+| 422 | `UNIT_REQUIRED` | 측정값에 값은 있는데 단위가 없음 |
+| 413 | `FILE_TOO_LARGE` | 업로드 파일이 MAX_UPLOAD_MB 초과 |
+| 415 | `FILE_TYPE_UNSUPPORTED` | 허용되지 않은 문서 형식 |
 | 500 | `INTERNAL_ERROR` | 처리되지 않은 서버 오류 |
 | 503 | `PROVIDER_NOT_CONFIGURED` | 클라이언트 ID가 설정되지 않은 소셜 로그인 제공자 |
 

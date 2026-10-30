@@ -95,6 +95,11 @@ ReSource/
 | GET | /api/v1/reviews/{reviewId} | 검토 상세 |
 | GET | /api/v1/reviews/{reviewId}/intake | 입력 항목 정리와 보완 질문 |
 | PATCH | /api/v1/reviews/{reviewId}/intake | 보완 질문 답변 |
+| POST | /api/v1/reviews/{reviewId}/documents | 문서 업로드 (pdf, png, jpg, xlsx, csv) |
+| GET | /api/v1/reviews/{reviewId}/documents | 문서 목록과 추출 상태 |
+| GET | /api/v1/documents/{documentId}/values | 측정값 후보 목록 |
+| PATCH | /api/v1/documents/{documentId}/values/{valueId} | 측정값 검수·수정 |
+| POST | /api/v1/documents/{documentId}/replace | 문서 교체 (검수 상태 해제) |
 
 오류는 모든 API에서 `{"code", "message", "details"}` 형식으로 반환함. 오류 코드 목록: [docs/specs/error-response.md](docs/specs/error-response.md)
 

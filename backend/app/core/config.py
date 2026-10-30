@@ -50,6 +50,10 @@ class Settings(BaseSettings):
     microsoft_client_secret: str = ""
     microsoft_tenant: str = "common"
 
+    # 업로드 문서 저장 위치(로컬 폴더)와 최대 크기. 운영은 Blob Storage로 바꿀 예정
+    upload_dir: str = "./uploads"
+    max_upload_mb: int = 20
+
     # 모델 검증 및 유틸리티
     @model_validator(mode="after")
     def _reject_insecure_secrets_in_prod(self) -> "Settings":

@@ -43,6 +43,8 @@
 | T-110 | 탈퇴 사용자 purge 스케줄 (하루 1회) | 대기 | 사람 | account-withdrawal | 배포 대상 결정(T-502) 이후 |
 | T-111 | 기업 정보 변경 이력 조회 (GET /companies/me/history, 페이지네이션) | 완료 | api-developer | company-onboarding | CORP-006 |
 | T-112 | 검토 생성·조회와 입력 정리 (reviews, intake) | 완료 | api-developer | review-intake | 이슈 #17. API 명세 v3 API-019~022, 046 |
+| T-113 | 문서 업로드와 측정값 검수 (documents, values) | 완료 | api-developer | review-documents | 이슈 #18. 값 추출(OCR)은 INT-008 결정 후 |
+| T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |
 | T-502 | 배포 대상 결정 (App Service 기본안) 및 배포 | 대기 | 사람 | - | T-008 이후 |
 
 ## 참고: 다른 레포 담당 작업 (기획서 9장)

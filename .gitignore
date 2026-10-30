@@ -20,6 +20,8 @@ Thumbs.db
 # Claude Code 개인 설정
 .claude/settings.local.json
 local.db
+# 로컬 업로드 문서 (UPLOAD_DIR 기본값)
+uploads/
 
 # 기획서 원본·조사 자료는 레포에 올리지 않음 (로컬 보관만 허용)
 docs/planning/

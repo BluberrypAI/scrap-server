@@ -107,6 +107,10 @@ async def update_intake(db: AsyncSession, review: Review, answers: dict[str, Any
     return True
 
 
+def review_ids_of_companies(company_ids: Select[tuple[uuid.UUID]]) -> Select[tuple[uuid.UUID]]:
+    return select(Review.id).where(Review.company_id.in_(company_ids))
+
+
 async def delete_reviews_of_companies(
     db: AsyncSession, company_ids: Select[tuple[uuid.UUID]]
 ) -> None:
