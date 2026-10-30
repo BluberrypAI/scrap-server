@@ -1,4 +1,5 @@
 import math
+import uuid
 from typing import Literal
 
 from fastapi import APIRouter, Query, status
@@ -24,18 +25,20 @@ from app.domains.reviews.schemas import (
     ReviewPage,
     ReviewRead,
 )
+from app.domains.runs import service as run_service
 
 router = APIRouter(prefix="/reviews", tags=["reviews"])
 
 _COMPANY_REQUIRED = {409: {"description": "기업 정보 미등록 (COMPANY_REQUIRED)"}}
 
 
-def _list_item(review: Review) -> ReviewListItem:
+def _list_item(review: Review, latest_run_id: uuid.UUID | None) -> ReviewListItem:
     return ReviewListItem(
         review_id=review.id,
         title=review.title,
         status=review.status,
         created_at=review.created_at,
+        latest_run_id=latest_run_id,
     )
 
 
@@ -83,9 +86,10 @@ async def list_reviews(
 ) -> ReviewPage:
     order = "asc" if sort.endswith("asc") else "desc"
     rows, total = await service.list_reviews(db, company.id, page_number, page_size, order)
+    latest = await run_service.latest_run_ids(db, [r.id for r in rows])
     total_pages = math.ceil(total / page_size)
     return ReviewPage(
-        items=[_list_item(r) for r in rows],
+        items=[_list_item(r, latest.get(r.id)) for r in rows],
         paging_info=PagingInfo(
             current_page_number=page_number,
             page_size=page_size,
@@ -98,9 +102,10 @@ async def list_reviews(
 
 
 @router.get("/{review_id}", response_model=ReviewRead, summary="검토 상세")
-async def read_review(review: MyReview) -> ReviewRead:
+async def read_review(review: MyReview, db: DbSession) -> ReviewRead:
+    latest = await run_service.latest_run_ids(db, [review.id])
     return ReviewRead(
-        **_list_item(review).model_dump(),
+        **_list_item(review, latest.get(review.id)).model_dump(),
         free_text=review.free_text,
         company_profile_version=review.company_profile_version,
         intake_version=review.intake_version,

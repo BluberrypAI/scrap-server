@@ -35,8 +35,8 @@
 
 | ID | 작업 | 상태 | 담당 | spec | 비고 |
 | --- | --- | --- | --- | --- | --- |
-| T-105 | server ↔ ai 연동 spec (분석 요청·결과 저장·보고서 조회 API, AI_BASE_URL) | 대기 | spec-writer | - | ai 팀과 형식 합의 필요 |
-| T-106 | 분석(analyses) 도메인: 입력·문서 업로드 저장, ai 호출, 결과 저장 | 대기 | api-developer | - | T-105 이후 |
+| T-105 | server ↔ ai 연동 spec (분석 요청·결과 저장·보고서 조회 API, AI_BASE_URL) | 완료 | spec-writer | review-runs | ai develop의 /analysis/research 계약 기준. 보고서는 post-MVP |
+| T-106 | 분석(analyses) 도메인: 입력·문서 업로드 저장, ai 호출, 결과 저장 | 완료 | api-developer | review-intake, review-documents, review-runs | reviews·documents·runs 도메인으로 나눠 구현 (T-112~T-114) |
 | T-107 | refresh 토큰 DB 기록·회전·폐기, 로그아웃 서버 무효화, /users/me 응답 정리(provider, company_id) | 완료 | auth-specialist | auth-social-login | has_company 제거 (사용자 결정) |
 | T-108 | 회원 탈퇴 (POST /users/me/withdraw, 30일 유예 후 삭제, purge 명령) | 완료 | auth-specialist | account-withdrawal | product-plan 3장에 탈퇴 추가 필요 (사람) |
 | T-109 | 공통 오류 응답 형식 (code, message, details), 기존 API 전체 적용 | 완료 | api-developer | error-response | API 명세표의 오류 코드와 맞춤 |
@@ -44,6 +44,9 @@
 | T-111 | 기업 정보 변경 이력 조회 (GET /companies/me/history, 페이지네이션) | 완료 | api-developer | company-onboarding | CORP-006 |
 | T-112 | 검토 생성·조회와 입력 정리 (reviews, intake) | 완료 | api-developer | review-intake | 이슈 #17. API 명세 v3 API-019~022, 046 |
 | T-113 | 문서 업로드와 측정값 검수 (documents, values) | 완료 | api-developer | review-documents | 이슈 #18. 값 추출(OCR)은 INT-008 결정 후 |
+| T-114 | 검토 실행과 AI 엔진 연동 (runs, 워커, 오류 분류) | 완료 | api-developer | review-runs | 이슈 #19. 워커는 프로세스 내 실행 |
+| T-118 | 검토 실행을 Service Bus + 별도 워커 파드로 이전 | 대기 | backend-architect | review-runs | 요구사항 NFR-6, infra 리소스 확정 후 |
+| T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |
 | T-502 | 배포 대상 결정 (App Service 기본안) 및 배포 | 대기 | 사람 | - | T-008 이후 |
 

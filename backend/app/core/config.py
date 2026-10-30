@@ -54,6 +54,11 @@ class Settings(BaseSettings):
     upload_dir: str = "./uploads"
     max_upload_mb: int = 20
 
+    # AI 엔진(ai 레포) 주소. 비어 있으면 검토 실행 요청을 503 ENGINE_UNAVAILABLE로 거절함
+    ai_base_url: str = ""
+    # 엔진 조사(KG 전체 페이지 + 법령 검색)는 오래 걸릴 수 있음
+    ai_timeout_seconds: float = 300
+
     # 모델 검증 및 유틸리티
     @model_validator(mode="after")
     def _reject_insecure_secrets_in_prod(self) -> "Settings":
