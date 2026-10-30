@@ -1,7 +1,8 @@
 import uuid
+from datetime import UTC, datetime
 from typing import Any
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from app.domains.companies.schemas import PagingInfo
 
@@ -66,6 +67,9 @@ class Risk(BaseModel):
     reason: str | None
     severity: str = Field(description="high: 공개 조건과 어긋남, medium: 확인되지 않음")
     engine_status: str | None
+    status: str = Field(
+        default="open", description="open, confirmed(확인 결정), resolved(증빙 연결로 해소)"
+    )
     next_action: str | None
     source_ids: list[str]
 
@@ -109,6 +113,25 @@ class Unconfirmed(BaseModel):
     label: str | None
 
 
+class StepDecision(BaseModel):
+    step_no: int
+    decision: str | None
+    proceed_option: str | None
+    decided_at: datetime | None
+
+    @field_validator("decided_at")
+    @classmethod
+    def _assume_utc(cls, value: datetime | None) -> datetime | None:
+        if value is None or value.tzinfo:
+            return value
+        return value.replace(tzinfo=UTC)
+
+
+class RiskSteps(BaseModel):
+    current_step: int | None = Field(description="지금 결정할 단계. 모두 결정했으면 null")
+    steps: list[StepDecision]
+
+
 class CandidateDetail(BaseModel):
     candidate_id: str
     judgment: Judgment
@@ -119,6 +142,7 @@ class CandidateDetail(BaseModel):
     exclusion_reason: str | None
     checks: list[StageCheck]
     risks: list[Risk]
+    risk_steps: RiskSteps
     risk_counts: RiskCounts
     legal_evidence: list[LegalEvidence]
     cost: NotComputed

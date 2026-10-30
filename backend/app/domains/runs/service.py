@@ -79,6 +79,7 @@ async def create_run(
     document_ids: Sequence[uuid.UUID],
     parent: Run | None = None,
     rerun_from_stage: str | None = None,
+    supplement_ids: Sequence[uuid.UUID] = (),
 ) -> Run:
     """실행 레코드를 queued로 만들고 입력·버전을 고정함. 엔진 호출은 워커가 함."""
     if intake_version != review.intake_version:
@@ -110,6 +111,8 @@ async def create_run(
             "evidence_grade": evidence_grade(review.intake, from_test_report),
             "document_ids": [str(d) for d in document_ids],
             "verified_value_ids": [str(value_id) for value_id, _ in verified],
+            # 재실행에 반영한 추가 자료 (엔진 lot에는 들어가지 않고 추적용으로만 고정)
+            "supplement_ids": [str(s) for s in supplement_ids],
             # 아래는 엔진 응답을 받은 뒤 채움
             "engine_contract_version": None,
             "engine_run_id": None,
@@ -174,6 +177,10 @@ async def recover_interrupted(db: AsyncSession) -> int:
     )
     await db.commit()
     return result.rowcount or 0
+
+
+def run_ids_of_reviews(review_ids: Select[tuple[uuid.UUID]]) -> Select[tuple[uuid.UUID]]:
+    return select(Run.id).where(Run.review_id.in_(review_ids))
 
 
 async def delete_runs_of_reviews(db: AsyncSession, review_ids: Select[tuple[uuid.UUID]]) -> None:

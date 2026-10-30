@@ -4,8 +4,7 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends, File, Form, Query, UploadFile, status
 
-from app.core.config import get_settings
-from app.core.errors import AppError, ErrorCode, NotFoundError, UnprocessableError
+from app.core.errors import ErrorCode, NotFoundError, UnprocessableError
 from app.core.storage import LocalFileStorage, get_storage
 from app.db.session import DbSession
 from app.domains.companies.schemas import PagingInfo
@@ -21,6 +20,7 @@ from app.domains.documents.schemas import (
     ValueUpdate,
     ValueUpdated,
 )
+from app.domains.documents.uploads import read_upload
 from app.domains.reviews.dependencies import MyCompany, MyReview
 
 router = APIRouter(tags=["documents"])
@@ -43,29 +43,6 @@ def _paging(page_number: int, page_size: int, total: int, empty: bool) -> Paging
         is_last_page=page_number >= total_pages,
         is_empty=empty,
     )
-
-
-async def _read_upload(file: UploadFile) -> tuple[str, bytes]:
-    """형식과 크기를 검사하고 (파일 이름, 내용)을 돌려줌."""
-    file_name = file.filename or ""
-    try:
-        service.file_format(file_name)
-    except service.FileTypeUnsupportedError:
-        raise AppError(
-            status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
-            ErrorCode.FILE_TYPE_UNSUPPORTED,
-            f"지원 형식: {', '.join(sorted(set(service.ALLOWED_FORMATS.values())))}",
-        ) from None
-    limit = get_settings().max_upload_mb * 1024 * 1024
-    # 한도보다 1바이트 더 읽어 초과 여부만 확인함 (큰 파일을 전부 메모리에 올리지 않음)
-    data = await file.read(limit + 1)
-    if len(data) > limit:
-        raise AppError(
-            status.HTTP_413_CONTENT_TOO_LARGE,
-            ErrorCode.FILE_TOO_LARGE,
-            f"파일은 {get_settings().max_upload_mb}MB 이하여야 함",
-        )
-    return file_name, data
 
 
 def _document_read(document: Document) -> DocumentRead:
@@ -118,7 +95,7 @@ async def upload_document(
     file: UploadFile = File(...),
     doc_type: DocumentType = Form(DocumentType.OTHER),
 ) -> DocumentUploaded:
-    file_name, data = await _read_upload(file)
+    file_name, data = await read_upload(file)
     document = await service.upload(db, storage, review, file_name, data, doc_type)
     return DocumentUploaded(
         document_id=document.id,
@@ -201,7 +178,7 @@ async def update_value(
 async def replace_document(
     document: MyDocument, db: DbSession, storage: Storage, file: UploadFile = File(...)
 ) -> DocumentReplaced:
-    file_name, data = await _read_upload(file)
+    file_name, data = await read_upload(file)
     await service.replace(db, storage, document, file_name, data)
     return DocumentReplaced(
         document_id=document.id,

@@ -108,6 +108,11 @@ ReSource/
 | GET | /api/v1/reviews/{reviewId}/runs/{runId}/review-queue | 전문가 검토 대기 |
 | GET | /api/v1/reviews/{reviewId}/runs/{runId}/tasks | 확인 과제 |
 | GET | /api/v1/reviews/{reviewId}/compare | 두 실행 비교 |
+| POST | /api/v1/reviews/{reviewId}/runs/{runId}/candidates/{candidateId}/risk-steps/{stepNo}/decision | 리스크 단계 결정 |
+| POST | /api/v1/reviews/{reviewId}/runs/{runId}/risks/{riskId}/evidence | 리스크에 증빙 연결 (해소) |
+| POST | /api/v1/reviews/{reviewId}/supplements | 추가 자료 등록 |
+| GET | /api/v1/reviews/{reviewId}/supplements | 추가 자료 목록 |
+| POST | /api/v1/reviews/{reviewId}/runs/{runId}/rerun | 추가 자료 반영 재실행 |
 
 오류는 모든 API에서 `{"code", "message", "details"}` 형식으로 반환함. 오류 코드 목록: [docs/specs/error-response.md](docs/specs/error-response.md)
 
