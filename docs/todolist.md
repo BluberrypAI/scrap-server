@@ -42,6 +42,7 @@
 | T-109 | 공통 오류 응답 형식 (code, message, details), 기존 API 전체 적용 | 완료 | api-developer | error-response | API 명세표의 오류 코드와 맞춤 |
 | T-110 | 탈퇴 사용자 purge 스케줄 (하루 1회) | 대기 | 사람 | account-withdrawal | 배포 대상 결정(T-502) 이후 |
 | T-111 | 기업 정보 변경 이력 조회 (GET /companies/me/history, 페이지네이션) | 완료 | api-developer | company-onboarding | CORP-006 |
+| T-112 | 검토 생성·조회와 입력 정리 (reviews, intake) | 완료 | api-developer | review-intake | 이슈 #17. API 명세 v3 API-019~022, 046 |
 | T-502 | 배포 대상 결정 (App Service 기본안) 및 배포 | 대기 | 사람 | - | T-008 이후 |
 
 ## 참고: 다른 레포 담당 작업 (기획서 9장)

@@ -1,7 +1,7 @@
 import uuid
 from collections.abc import Sequence
 
-from sqlalchemy import delete, func, select
+from sqlalchemy import Select, delete, func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -126,9 +126,14 @@ async def list_history(
     return list(rows), total or 0
 
 
+def company_ids_of_owners(owner_user_ids: Sequence[uuid.UUID]) -> Select[tuple[uuid.UUID]]:
+    """사용자들이 가진 기업 id 서브쿼리. 다른 도메인이 기업에 딸린 데이터를 지울 때 씀."""
+    return select(Company.id).where(Company.owner_user_id.in_(owner_user_ids))
+
+
 async def delete_companies_of_owners(db: AsyncSession, owner_user_ids: Sequence[uuid.UUID]) -> None:
     """Delete companies, their waste profiles and history for purged users. The caller commits."""
-    company_ids = select(Company.id).where(Company.owner_user_id.in_(owner_user_ids))
+    company_ids = company_ids_of_owners(owner_user_ids)
     for child in (WasteProfile, CompanyProfileHistory):
         await db.execute(
             delete(child)

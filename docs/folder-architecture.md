@@ -77,7 +77,8 @@ backend/
 │  └─ domains/
 │     ├─ auth/                 # 소셜 로그인, 토큰 쿠키, 현재 사용자 의존성
 │     ├─ users/                # 사용자, 소셜 계정
-│     └─ companies/            # 기업 프로필, 폐기물 프로필 (온보딩)
+│     ├─ companies/            # 기업 프로필, 폐기물 프로필 (온보딩)
+     └─ reviews/              # 검토, 입력 객체(intake)와 보완 질문 규칙 (intake.py)
 └─ tests/
 ```
 

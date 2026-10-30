@@ -90,6 +90,11 @@ ReSource/
 | GET | /api/v1/companies/me | 내 기업 조회 |
 | PATCH | /api/v1/companies/me | 내 기업 수정 (profile_version으로 충돌 감지) |
 | GET | /api/v1/companies/me/history | 기업 정보 변경 이력 (페이지네이션) |
+| POST | /api/v1/reviews | 검토 생성 (자연어 상황, 구조화 항목) |
+| GET | /api/v1/reviews | 검토 목록 |
+| GET | /api/v1/reviews/{reviewId} | 검토 상세 |
+| GET | /api/v1/reviews/{reviewId}/intake | 입력 항목 정리와 보완 질문 |
+| PATCH | /api/v1/reviews/{reviewId}/intake | 보완 질문 답변 |
 
 오류는 모든 API에서 `{"code", "message", "details"}` 형식으로 반환함. 오류 코드 목록: [docs/specs/error-response.md](docs/specs/error-response.md)
 
