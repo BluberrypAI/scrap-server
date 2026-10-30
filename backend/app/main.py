@@ -29,6 +29,10 @@ TAGS = [
     {"name": "reviews", "description": "검토 생성·조회, 입력 항목 정리와 보완 질문"},
     {"name": "documents", "description": "증빙 문서 업로드·교체, 측정값 검수"},
     {"name": "runs", "description": "검토 실행(AI 엔진 호출)과 실행 상태·이력"},
+    {
+        "name": "results",
+        "description": "실행 결과: 후보, 검토 대기, 확인 과제, 버전 비교",
+    },
     {"name": "health", "description": "서버 상태 확인"},
 ]
 
