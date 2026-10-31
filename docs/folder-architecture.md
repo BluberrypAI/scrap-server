@@ -10,7 +10,7 @@
 | --- | --- |
 | `.github` | 공통 규칙(CONTRIBUTING)과 이슈·PR 템플릿의 원본. 조직 기본 이슈 템플릿이 Private 레포에 적용되지 않아 이 레포에도 같은 이슈 템플릿을 복사해 둠. PR 템플릿은 server용으로 덮어씀 |
 | `infra` | 이 레포를 `../server`로 참조해 전체를 compose로 실행 |
-| `ai` | 에이전트, MCP 도구, 지식 기반 (설계 중). server는 HTTP로 호출함 (호출 시작 시 `AI_BASE_URL` 설정 추가) |
+| `ai` | 에이전트, MCP 도구, 지식 기반 (설계 중). server는 `AI_BASE_URL`로 HTTP 호출함 (`domains/runs/engine_client.py`) |
 | `frontend` | server API를 호출. CORS·쿠키 설정 대상 |
 
 ## 1. 전체 구조
@@ -80,7 +80,8 @@ backend/
 │     ├─ users/                # 사용자, 소셜 계정
 │     ├─ companies/            # 기업 프로필, 폐기물 프로필 (온보딩)
      ├─ reviews/              # 검토, 입력 객체(intake)와 보완 질문 규칙 (intake.py)
-     └─ documents/            # 증빙 문서 업로드·교체, 측정값 검수
+     ├─ documents/            # 증빙 문서 업로드·교체, 측정값 검수
+     └─ runs/                 # 검토 실행: 엔진 클라이언트(engine_client.py), 워커·큐(worker.py), 단계(stages.py)
 └─ tests/
 ```
 

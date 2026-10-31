@@ -129,6 +129,9 @@ TEST_DATABASE_URL=postgresql+asyncpg://resource:resource@localhost:5433/resource
 | `JWT_SECRET`, `SESSION_SECRET` | 운영(`APP_ENV=prod`)에서는 기본값이면 실행되지 않음 |
 | `GOOGLE_*`, `MICROSOFT_*` | 소셜 로그인 키 |
 | `WITHDRAWAL_GRACE_DAYS` | 탈퇴 후 실제 삭제까지 유예 일수 (기본 30) |
+| `UPLOAD_DIR`, `MAX_UPLOAD_MB` | 업로드 문서 저장 폴더(기본 `./uploads`)와 최대 크기(기본 20MB) |
+| `AI_BASE_URL` | AI 엔진(ai 레포) 주소. 비우면 검토 실행이 503. Docker에서 PC의 엔진을 부르면 `http://host.docker.internal:<포트>` |
+| `AI_TIMEOUT_SECONDS` | 엔진 응답 대기 시간 (기본 300초) |
 
 ## 문제 해결
 

@@ -100,6 +100,9 @@ ReSource/
 | GET | /api/v1/documents/{documentId}/values | 측정값 후보 목록 |
 | PATCH | /api/v1/documents/{documentId}/values/{valueId} | 측정값 검수·수정 |
 | POST | /api/v1/documents/{documentId}/replace | 문서 교체 (검수 상태 해제) |
+| POST | /api/v1/reviews/{reviewId}/runs | 검토 실행 (202, AI 엔진 호출은 워커) |
+| GET | /api/v1/reviews/{reviewId}/runs | 실행 이력 |
+| GET | /api/v1/reviews/{reviewId}/runs/{runId} | 실행 상태 (polling) |
 
 오류는 모든 API에서 `{"code", "message", "details"}` 형식으로 반환함. 오류 코드 목록: [docs/specs/error-response.md](docs/specs/error-response.md)
 

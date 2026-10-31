@@ -31,6 +31,7 @@ from app.db.session import get_db  # noqa: E402
 from app.domains.auth.cookies import ACCESS_COOKIE  # noqa: E402
 from app.domains.users.models import SocialAccount, User  # noqa: E402
 from app.main import app  # noqa: E402
+from tests.engine_fixtures import FakeEngine, InlineQueue  # noqa: E402
 
 # CI sets TEST_DATABASE_URL to a PostgreSQL service; locally tests use in-memory SQLite.
 TEST_DATABASE_URL = os.environ.get("TEST_DATABASE_URL")
@@ -122,3 +123,40 @@ async def other_client(client: AsyncClient, db: AsyncSession) -> AsyncIterator[A
         res = await c.post("/api/v1/companies", json=COMPANY_PAYLOAD)
         assert res.status_code == 201
         yield c
+
+
+@pytest.fixture
+def fake_engine(client: AsyncClient) -> FakeEngine:
+    """가짜 AI 엔진. client fixture가 끝날 때 override도 함께 지워짐."""
+    from app.domains.runs.engine_client import get_engine_client
+
+    fake = FakeEngine()
+    app.dependency_overrides[get_engine_client] = fake.client
+    return fake
+
+
+@pytest.fixture
+def run_queue(
+    client: AsyncClient, session_factory: async_sessionmaker[AsyncSession]
+) -> InlineQueue:
+    from app.db.session import get_session_factory
+    from app.domains.runs.worker import get_run_queue
+
+    queue = InlineQueue(session_factory)
+    app.dependency_overrides[get_run_queue] = lambda: queue
+    app.dependency_overrides[get_session_factory] = lambda: session_factory
+    return queue
+
+
+@pytest.fixture
+async def ready_review(company_client: AsyncClient) -> str:
+    """필수 입력이 확인되어 바로 실행할 수 있는 검토."""
+    res = await company_client.post(
+        "/api/v1/reviews",
+        json={
+            "free_text": "PP 파쇄품 월 3톤",
+            "overrides": {"material": "PP", "quantity_kg": 3000, "has_test_report": False},
+        },
+    )
+    assert res.json()["status"] == "intake_ready"
+    return res.json()["review_id"]

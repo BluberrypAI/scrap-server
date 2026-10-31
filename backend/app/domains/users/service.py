@@ -8,6 +8,7 @@ from app.domains.auth import service as auth_service
 from app.domains.companies import service as company_service
 from app.domains.documents import service as document_service
 from app.domains.reviews import service as review_service
+from app.domains.runs import service as run_service
 from app.domains.users import repository as user_repo
 from app.domains.users.models import User
 
@@ -32,6 +33,7 @@ async def purge_withdrawn_users(db: AsyncSession, now: datetime | None = None) -
     await auth_service.delete_sessions_of_users(db, user_ids)
     company_ids = company_service.company_ids_of_owners(user_ids)
     review_ids = review_service.review_ids_of_companies(company_ids)
+    await run_service.delete_runs_of_reviews(db, review_ids)
     await document_service.delete_documents_of_reviews(db, get_storage(), review_ids)
     await review_service.delete_reviews_of_companies(db, company_ids)
     await company_service.delete_companies_of_owners(db, user_ids)
