@@ -39,7 +39,10 @@
 | 405 | `METHOD_NOT_ALLOWED` | 경로는 있으나 메서드가 다름 |
 | 409 | `COMPANY_ALREADY_EXISTS` | 기업이 있는 사용자가 다시 등록 |
 | 409 | `VERSION_CONFLICT` | 기업 수정 시 profile_version 불일치 |
+| 409 | `COMPANY_REQUIRED` | 기업 정보 없이 검토 API 호출 |
 | 422 | `VALIDATION_ERROR` | 요청 본문·쿼리·경로 값 검증 실패 |
+| 422 | `EMPTY_INPUT` | 검토 생성 시 상황 설명이 비어 있음 |
+| 422 | `TEXT_TOO_LONG` | 검토 생성 시 상황 설명이 5000자 초과 |
 | 500 | `INTERNAL_ERROR` | 처리되지 않은 서버 오류 |
 | 503 | `PROVIDER_NOT_CONFIGURED` | 클라이언트 ID가 설정되지 않은 소셜 로그인 제공자 |
 

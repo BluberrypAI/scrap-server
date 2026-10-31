@@ -85,3 +85,37 @@ async def user(db: AsyncSession) -> User:
 def auth_client(client: AsyncClient, user: User) -> AsyncClient:
     client.cookies.set(ACCESS_COOKIE, create_token(user.id, "access"))
     return client
+
+
+# 검토 관련 테스트가 함께 쓰는 기업 (주요 폐기물이 하나라 소재 기본값이 생김)
+COMPANY_PAYLOAD = {
+    "company_name": "가상사출(주)",
+    "business_registration_no": "123-45-67890",
+    "representative_name": "홍대표",
+    "industry": "플라스틱 사출 성형",
+    "head_office_address": "경기도 시흥시 정왕동",
+    "contact": {"name": "김담당"},
+    "main_waste_types": [{"category": "PP", "generation_cycle": "monthly"}],
+}
+
+
+@pytest.fixture
+async def company_client(auth_client: AsyncClient) -> AsyncClient:
+    res = await auth_client.post("/api/v1/companies", json=COMPANY_PAYLOAD)
+    assert res.status_code == 201
+    return auth_client
+
+
+@pytest.fixture
+async def other_client(client: AsyncClient, db: AsyncSession) -> AsyncIterator[AsyncClient]:
+    """다른 기업 사용자. 접근 격리 확인용."""
+    other = User(email="other@example.com", name="다른담당자")
+    db.add(other)
+    await db.flush()
+    db.add(SocialAccount(user_id=other.id, provider="google", provider_subject="other-sub"))
+    await db.commit()
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as c:
+        c.cookies.set(ACCESS_COOKIE, create_token(other.id, "access"))
+        res = await c.post("/api/v1/companies", json=COMPANY_PAYLOAD)
+        assert res.status_code == 201
+        yield c

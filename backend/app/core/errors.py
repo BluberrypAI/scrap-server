@@ -26,6 +26,9 @@ class ErrorCode(StrEnum):
     VALIDATION_ERROR = "VALIDATION_ERROR"
     INTERNAL_ERROR = "INTERNAL_ERROR"
     PROVIDER_NOT_CONFIGURED = "PROVIDER_NOT_CONFIGURED"
+    COMPANY_REQUIRED = "COMPANY_REQUIRED"
+    EMPTY_INPUT = "EMPTY_INPUT"
+    TEXT_TOO_LONG = "TEXT_TOO_LONG"
 
 
 class ErrorDetail(BaseModel):
@@ -74,6 +77,12 @@ class NotFoundError(AppError):
 class ConflictError(AppError):
     def __init__(self, code: ErrorCode, message: str):
         super().__init__(status.HTTP_409_CONFLICT, code, message)
+
+
+# 형식은 맞지만 업무 규칙에 어긋나는 입력 (422, VALIDATION_ERROR보다 구체적인 코드)
+class UnprocessableError(AppError):
+    def __init__(self, code: ErrorCode, message: str):
+        super().__init__(status.HTTP_422_UNPROCESSABLE_CONTENT, code, message)
 
 
 def _response(
