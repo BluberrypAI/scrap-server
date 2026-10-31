@@ -10,6 +10,7 @@ from typing import Any
 import httpx
 
 from app.core.config import get_settings
+from app.domains.runs.mock_engine import mock_transport
 from app.domains.runs.models import RunErrorCode
 
 logger = logging.getLogger(__name__)
@@ -100,8 +101,10 @@ def _safe_json(res: httpx.Response) -> dict[str, Any]:
 
 
 def get_engine_client() -> EngineClient | None:
-    """AI_BASE_URL이 없으면 None. 테스트에서 교체함."""
+    """mock이면 전송만 가짜로 바꾼 클라이언트, AI_BASE_URL이 없으면 None."""
     settings = get_settings()
+    if settings.ai_engine_mode == "mock":
+        return EngineClient("http://mock-engine", settings.ai_timeout_seconds, mock_transport())
     if not settings.ai_base_url:
         return None
     return EngineClient(settings.ai_base_url, settings.ai_timeout_seconds)

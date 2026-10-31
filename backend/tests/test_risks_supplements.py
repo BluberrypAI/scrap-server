@@ -1,6 +1,6 @@
 """docs/specs/review-risks-supplements.md 완료 조건.
 
-엔진 응답 예시(tests/engine_fixtures.py): plan-a 1단계에 보통 리스크 2개,
+엔진 응답 예시(app/domains/runs/mock_engine.py): plan-a 1단계에 보통 리스크 2개,
 plan-b 1단계에 심각 리스크(plan-b-r1)와 보통 리스크(plan-b-r2). 두 후보 모두 2단계까지 있음.
 """
 
