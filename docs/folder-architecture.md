@@ -68,7 +68,8 @@ backend/
 │  ├─ core/
 │  │  ├─ config.py             # 환경변수 (pydantic-settings)
 │  │  ├─ security.py           # JWT 발급·검증
-│  │  └─ errors.py             # 공통 오류 응답 형식, 오류 코드, 예외 핸들러
+│  │  ├─ errors.py             # 공통 오류 응답 형식, 오류 코드, 예외 핸들러
+│  │  └─ storage.py            # 업로드 파일 저장소 (로컬 폴더, Blob Storage로 교체 예정)
 │  ├─ db/
 │  │  ├─ base.py               # DeclarativeBase, 공통 컬럼
 │  │  ├─ session.py            # 엔진, 세션, get_db
@@ -78,7 +79,8 @@ backend/
 │     ├─ auth/                 # 소셜 로그인, 토큰 쿠키, 현재 사용자 의존성
 │     ├─ users/                # 사용자, 소셜 계정
 │     ├─ companies/            # 기업 프로필, 폐기물 프로필 (온보딩)
-     └─ reviews/              # 검토, 입력 객체(intake)와 보완 질문 규칙 (intake.py)
+     ├─ reviews/              # 검토, 입력 객체(intake)와 보완 질문 규칙 (intake.py)
+     └─ documents/            # 증빙 문서 업로드·교체, 측정값 검수
 └─ tests/
 ```
 

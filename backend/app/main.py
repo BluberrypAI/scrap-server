@@ -19,6 +19,7 @@ TAGS = [
     {"name": "users", "description": "현재 사용자"},
     {"name": "companies", "description": "기업·폐기물 프로필 (온보딩)"},
     {"name": "reviews", "description": "검토 생성·조회, 입력 항목 정리와 보완 질문"},
+    {"name": "documents", "description": "증빙 문서 업로드·교체, 측정값 검수"},
     {"name": "health", "description": "서버 상태 확인"},
 ]
 

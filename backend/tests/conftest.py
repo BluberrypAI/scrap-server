@@ -1,4 +1,5 @@
 import os
+import tempfile
 
 # Must be set before app modules read settings.
 os.environ.update(
@@ -8,6 +9,8 @@ os.environ.update(
     GOOGLE_CLIENT_ID="test-google-client",
     MICROSOFT_CLIENT_ID="test-microsoft-client",
     FRONTEND_URL="http://frontend.test",
+    # 업로드 파일은 테스트마다 임시 폴더에 저장함
+    UPLOAD_DIR=tempfile.mkdtemp(prefix="resource-uploads-"),
 )
 
 from collections.abc import AsyncIterator  # noqa: E402
