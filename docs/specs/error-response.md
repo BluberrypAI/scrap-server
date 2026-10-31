@@ -43,12 +43,17 @@
 | 409 | `INTAKE_INCOMPLETE` | 필수 입력이 확인되지 않은 검토를 실행 |
 | 409 | `RUN_IN_PROGRESS` | 같은 검토에 진행 중인 실행이 있음 |
 | 409 | `RESULT_NOT_READY` | 결과가 없는 실행(진행 중·실패)의 결과 조회 |
+| 409 | `STEP_OUT_OF_ORDER` | 현재 단계가 아닌 리스크 단계에 결정 |
+| 409 | `RISK_OPTION_REQUIRED` | 해소되지 않은 심각 리스크 단계를 proceed_option 없이 confirm |
+| 409 | `NO_APPLICABLE_SUPPLEMENT` | 물량 불일치·미검수 추가 자료로 재실행 |
 | 422 | `VALIDATION_ERROR` | 요청 본문·쿼리·경로 값 검증 실패 |
 | 422 | `EMPTY_INPUT` | 검토 생성 시 상황 설명이 비어 있음 |
 | 422 | `TEXT_TOO_LONG` | 검토 생성 시 상황 설명이 5000자 초과 |
 | 422 | `UNIT_REQUIRED` | 측정값에 값은 있는데 단위가 없음 |
 | 422 | `INVALID_FILTER` | 후보 목록의 judgment 필터 값이 잘못됨 |
 | 422 | `DIFFERENT_REVIEW` | 다른 검토의 실행끼리 비교 |
+| 422 | `EVIDENCE_NOT_APPLICABLE` | 증빙으로 쓸 수 없는 자료(미검수, 물량 불일치)를 리스크에 연결 |
+| 422 | `MISSING_QUANTITY` | 추가 자료에 적용 물량이 없음 |
 | 413 | `FILE_TOO_LARGE` | 업로드 파일이 MAX_UPLOAD_MB 초과 |
 | 415 | `FILE_TYPE_UNSUPPORTED` | 허용되지 않은 문서 형식 |
 | 500 | `INTERNAL_ERROR` | 처리되지 않은 서버 오류 |

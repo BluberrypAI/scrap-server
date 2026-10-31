@@ -33,6 +33,8 @@ TAGS = [
         "name": "results",
         "description": "실행 결과: 후보, 검토 대기, 확인 과제, 버전 비교",
     },
+    {"name": "risks", "description": "리스크 단계 결정과 증빙 연결"},
+    {"name": "supplements", "description": "추가 자료 등록 (재실행에 반영)"},
     {"name": "health", "description": "서버 상태 확인"},
 ]
 

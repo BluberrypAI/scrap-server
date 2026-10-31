@@ -80,9 +80,11 @@ backend/
 │     ├─ users/                # 사용자, 소셜 계정
 │     ├─ companies/            # 기업 프로필, 폐기물 프로필 (온보딩)
      ├─ reviews/              # 검토, 입력 객체(intake)와 보완 질문 규칙 (intake.py)
-     ├─ documents/            # 증빙 문서 업로드·교체, 측정값 검수
+     ├─ documents/            # 증빙 문서 업로드·교체, 측정값 검수, 업로드 검사(uploads.py)
      ├─ runs/                 # 검토 실행: 엔진 클라이언트(engine_client.py), 워커·큐(worker.py), 단계(stages.py)
-     └─ results/              # 실행 결과 조회. 엔진 응답 → 화면용 변환(transform.py), 테이블 없음
+     ├─ results/              # 실행 결과 조회. 엔진 응답 → 화면용 변환(transform.py), 테이블 없음
+     ├─ risks/                # 리스크 단계 결정과 증빙 연결
+     └─ supplements/          # 추가 자료 (재실행에 반영)
 └─ tests/
 ```
 

@@ -46,6 +46,7 @@
 | T-113 | 문서 업로드와 측정값 검수 (documents, values) | 완료 | api-developer | review-documents | 이슈 #18. 값 추출(OCR)은 INT-008 결정 후 |
 | T-114 | 검토 실행과 AI 엔진 연동 (runs, 워커, 오류 분류) | 완료 | api-developer | review-runs | 이슈 #19. 워커는 프로세스 내 실행 |
 | T-115 | 검토 결과 조회 (후보 목록·상세, 검토 대기, 확인 과제, 버전 비교) | 완료 | api-developer | review-results | 이슈 #20 |
+| T-116 | 리스크 단계 결정, 추가 자료, 재실행 | 완료 | api-developer | review-risks-supplements | 이슈 #21. 재실행은 항상 research부터 (INT-005 기능 축소) |
 | T-118 | 검토 실행을 Service Bus + 별도 워커 파드로 이전 | 대기 | backend-architect | review-runs | 요구사항 NFR-6, infra 리소스 확정 후 |
 | T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |

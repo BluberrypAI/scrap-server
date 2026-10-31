@@ -52,7 +52,7 @@
 ### 검토 대기·확인 과제
 
 15. 검토 대기: 엔진 `route`가 REVIEW일 때 `needs_check` 후보와 확인할 리스크 이름. 담당 역할은 정해지지 않아 null (요구사항 가정: 기업 단일 역할)
-16. 확인 과제: 리스크마다 1개(`risk:<risk_id>`), 결과가 없는 법령 검색마다 1개. 현재 status는 모두 `open` (done은 review-risks-supplements에서 리스크가 해소되면 생김)
+16. 확인 과제: 리스크마다 1개(`risk:<risk_id>`), 결과가 없는 법령 검색마다 1개. 리스크 과제는 리스크에 증빙이 연결되면 `done`, 법령 과제는 항상 `open` ([review-risks-supplements.md](review-risks-supplements.md))
 
 ### 버전 비교
 

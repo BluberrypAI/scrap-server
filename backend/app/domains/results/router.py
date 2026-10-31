@@ -1,12 +1,10 @@
 import math
 import uuid
-from typing import Any
 
 from fastapi import APIRouter, Query
 from sqlalchemy import select
 
 from app.core.errors import (
-    ConflictError,
     ErrorCode,
     NotFoundError,
     UnprocessableError,
@@ -25,23 +23,15 @@ from app.domains.results.schemas import (
 )
 from app.domains.reviews.dependencies import MyCompany, MyReview
 from app.domains.reviews.models import Review
+from app.domains.risks import service as risk_service
 from app.domains.runs import service as run_service
-from app.domains.runs.dependencies import MyRun
-from app.domains.runs.models import FINISHED_WITH_RESULT, Run
+from app.domains.runs.dependencies import MyRun, find_candidate, result_of
+from app.domains.runs.models import Run
 
 router = APIRouter(tags=["results"])
 
 RUN = "/reviews/{review_id}/runs/{run_id}"
 _NOT_READY = {409: {"description": "실행이 끝나지 않았거나 실패함 (RESULT_NOT_READY)"}}
-
-
-def _result(run: Run) -> dict[str, Any]:
-    """결과가 있는 실행의 엔진 응답. 없으면 409 RESULT_NOT_READY."""
-    if run.status not in FINISHED_WITH_RESULT or run.result is None:
-        raise ConflictError(
-            ErrorCode.RESULT_NOT_READY, f"실행 결과가 없음 (현재 상태: {run.status.value})"
-        )
-    return run.result
 
 
 def _stale(run: Run, company_profile_version: int) -> bool:
@@ -82,7 +72,7 @@ async def list_candidates(
         raise UnprocessableError(
             ErrorCode.INVALID_FILTER, f"judgment는 {', '.join(transform.JUDGMENTS)} 중 하나"
         )
-    result = _result(run)
+    result = result_of(run)
     stale = _stale(run, company.profile_version)
     items = [
         transform.list_item(c, stale)
@@ -105,15 +95,21 @@ async def list_candidates(
     "법령 근거의 applicability는 엔진이 적용성을 검토하지 않아 not_audited.",
     responses=_NOT_READY,
 )
-async def read_candidate(candidate_id: str, run: MyRun, company: MyCompany) -> CandidateDetail:
-    result = _result(run)
-    candidate = next(
-        (c for c in result.get("candidates", []) if c["plan"]["plan_id"] == candidate_id), None
-    )
-    if candidate is None:
-        raise NotFoundError("후보를 찾을 수 없음")
+async def read_candidate(
+    candidate_id: str, run: MyRun, company: MyCompany, db: DbSession
+) -> CandidateDetail:
+    result = result_of(run)
+    candidate = find_candidate(result, candidate_id)
     data = transform.detail(candidate, result, _stale(run, company.profile_version))
-    return CandidateDetail(**data, evidence_grade=run.pinned_versions.get("evidence_grade"))
+    # 사람이 남긴 단계 결정과 증빙을 리스크 상태에 반영함 (review-risks-supplements)
+    state = await risk_service.load_state(db, run.id)
+    for risk in data["risks"]:
+        risk["status"] = state.risk_status(candidate_id, risk)
+    return CandidateDetail(
+        **data,
+        risk_steps=state.steps(candidate),
+        evidence_grade=run.pinned_versions.get("evidence_grade"),
+    )
 
 
 @router.get(
@@ -124,7 +120,7 @@ async def read_candidate(candidate_id: str, run: MyRun, company: MyCompany) -> C
     responses=_NOT_READY,
 )
 async def read_review_queue(run: MyRun) -> ReviewQueue:
-    result = _result(run)
+    result = result_of(run)
     return ReviewQueue(
         router_state=run.router_state,
         items=transform.review_queue(result, run.router_state),
@@ -140,12 +136,18 @@ async def read_review_queue(run: MyRun) -> ReviewQueue:
 )
 async def list_tasks(
     run: MyRun,
+    db: DbSession,
     status: str | None = Query(None, pattern="^(open|done)$"),
     page_number: int = Query(1, alias="pageNumber", ge=1),
     page_size: int = Query(20, alias="pageSize", ge=1, le=100),
 ) -> TaskPage:
-    result = _result(run)
-    items = [{**task, "status": "open"} for task in transform.tasks(result)]
+    result = result_of(run)
+    resolved = (await risk_service.load_state(db, run.id)).resolved
+    # 리스크 과제는 증빙이 연결되면 done. 법령 과제는 server에서 닫을 방법이 아직 없음
+    items = [
+        {**task, "status": "done" if task["risk_id"] in resolved else "open"}
+        for task in transform.tasks(result)
+    ]
     if status is not None:
         items = [t for t in items if t["status"] == status]
     rows, paging = _page(items, page_number, page_size)
@@ -184,7 +186,7 @@ async def compare_runs(
 ) -> Comparison:
     base = await _run_for_compare(db, review, base_run_id)
     target = await _run_for_compare(db, review, target_run_id)
-    base_result, target_result = _result(base), _result(target)
+    base_result, target_result = result_of(base), result_of(target)
     return Comparison(
         base_run_id=base.id,
         target_run_id=target.id,
