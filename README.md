@@ -103,6 +103,11 @@ ReSource/
 | POST | /api/v1/reviews/{reviewId}/runs | 검토 실행 (202, AI 엔진 호출은 워커) |
 | GET | /api/v1/reviews/{reviewId}/runs | 실행 이력 |
 | GET | /api/v1/reviews/{reviewId}/runs/{runId} | 실행 상태 (polling) |
+| GET | /api/v1/reviews/{reviewId}/runs/{runId}/candidates | 후보 목록 (judgment 필터) |
+| GET | /api/v1/reviews/{reviewId}/runs/{runId}/candidates/{candidateId} | 후보 상세 (경로, 리스크, 법령 근거) |
+| GET | /api/v1/reviews/{reviewId}/runs/{runId}/review-queue | 전문가 검토 대기 |
+| GET | /api/v1/reviews/{reviewId}/runs/{runId}/tasks | 확인 과제 |
+| GET | /api/v1/reviews/{reviewId}/compare | 두 실행 비교 |
 
 오류는 모든 API에서 `{"code", "message", "details"}` 형식으로 반환함. 오류 코드 목록: [docs/specs/error-response.md](docs/specs/error-response.md)
 
