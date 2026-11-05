@@ -141,3 +141,14 @@ TEST_DATABASE_URL=postgresql+asyncpg://resource:resource@localhost:5433/resource
 | `connection was closed in the middle of operation` | 다른 PostgreSQL에 접속 중일 가능성. 포트(Docker는 5433) 확인 |
 | `/api/v1/auth/google/login`이 503 | `.env`에 `GOOGLE_CLIENT_ID`가 비어 있음 |
 | `no such table` | 마이그레이션 미적용. `uv run alembic upgrade head` |
+## SCRAP 처리경로와 전국 명부
+
+마이그레이션 후 `backend/`에서 `uv run python -m app.domains.treatment.import_catalog`를 실행해 공정 참조 데이터를 적재합니다.
+
+전국 명부는 [공공데이터포털 원본](https://www.data.go.kr/data/15114147/standard.do)의 JSON 배열을 사용합니다. 기록된 스냅샷은 2026-10-21 수집본 9,604행입니다. 새 스냅샷에는 해당 파일의 확인된 SHA-256을 지정합니다.
+
+```bash
+uv run python -m app.domains.treatment.import_catalog --registry /path/to/national-facility-registry.json --sha256 b083ea497c37bb11bd9374fc0a5b0850b989d290dbdba9d4a713fef353e79c08
+```
+
+`/api/treatment/next-step`과 `/api/treatment/facility-candidates`는 서버 DB를 조회합니다. `CLASSIFICATION_BASE_URL`은 별도 팀 문진 엔진 주소입니다. 반입 근거 AI 검토는 `AI_BASE_URL`과 두 서비스의 같은 `SCRAP_INTAKE_SERVICE_TOKEN`을 사용합니다.

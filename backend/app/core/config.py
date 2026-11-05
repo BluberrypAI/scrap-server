@@ -1,7 +1,7 @@
 from functools import lru_cache
 from typing import Literal
 
-from pydantic import model_validator
+from pydantic import SecretStr, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 INSECURE_SECRET = "change-me"
@@ -56,14 +56,19 @@ class Settings(BaseSettings):
 
     # AI 엔진(ai 레포) 주소. 비어 있으면 검토 실행 요청을 503 ENGINE_UNAVAILABLE로 거절함
     ai_base_url: str = ""
+    classification_base_url: str = ""
+    scrap_intake_service_token: SecretStr = SecretStr("")
     # 엔진 조사(KG 전체 페이지 + 법령 검색)는 오래 걸릴 수 있음
     ai_timeout_seconds: float = 300
+    transport_demo_facilities: dict[str, str] = {}
 
     # 모델 검증 및 유틸리티
     @model_validator(mode="after")
     def _reject_insecure_secrets_in_prod(self) -> "Settings":
         # prod에서는 비밀키를 change-me로 두거나 SQLite를 사용하면 안 됨
         if self.app_env == "prod":
+            if self.transport_demo_facilities:
+                raise ValueError("Test facility bindings require a local environment")
             if INSECURE_SECRET in (self.jwt_secret, self.session_secret):
                 raise ValueError("JWT_SECRET and SESSION_SECRET must be set in prod")
             if not self.is_postgres:
