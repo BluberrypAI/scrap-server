@@ -61,6 +61,8 @@ class Settings(BaseSettings):
     # 엔진 조사(KG 전체 페이지 + 법령 검색)는 오래 걸릴 수 있음
     ai_timeout_seconds: float = 300
     transport_demo_facilities: dict[str, str] = {}
+    # mock이면 AI 서버 없이 고정 샘플로 실행함 (로컬 검증용, prod에서는 시작을 막음)
+    ai_engine_mode: Literal["http", "mock"] = "http"
 
     # 모델 검증 및 유틸리티
     @model_validator(mode="after")
@@ -73,6 +75,8 @@ class Settings(BaseSettings):
                 raise ValueError("JWT_SECRET and SESSION_SECRET must be set in prod")
             if not self.is_postgres:
                 raise ValueError("DATABASE_URL must point to PostgreSQL in prod")
+            if self.ai_engine_mode == "mock":
+                raise ValueError("AI_ENGINE_MODE=mock is not allowed in prod")
         if not self.cookie_domain:  # 쿠키 도메인이 설정되지 않은 경우 None으로 둠
             self.cookie_domain = None
         return self

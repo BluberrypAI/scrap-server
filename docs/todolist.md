@@ -47,6 +47,7 @@
 | T-114 | 검토 실행과 AI 엔진 연동 (runs, 워커, 오류 분류) | 완료 | api-developer | review-runs | 이슈 #19. 워커는 프로세스 내 실행 |
 | T-115 | 검토 결과 조회 (후보 목록·상세, 검토 대기, 확인 과제, 버전 비교) | 완료 | api-developer | review-results | 이슈 #20 |
 | T-116 | 리스크 단계 결정, 추가 자료, 재실행 | 완료 | api-developer | review-risks-supplements | 이슈 #21. 재실행은 항상 research부터 (INT-005 기능 축소) |
+| T-120 | AI 없이 백엔드를 검증하는 가짜 엔진 모드와 계약 스냅샷 | 완료 | api-developer | dev-mock-engine | 이슈 #27. AI_ENGINE_MODE=mock, 스냅샷은 ai 스키마 변경 시 수동 갱신 |
 | T-121 | 인계 QR의 인수·입고 이벤트 서버 저장 | 완료 | api-developer | transport-handoffs | 로컬 PostgreSQL과 별도 브라우저 시연 확인 |
 | T-122 | 전국 처리업체 명부·다음 공정 API를 서버 PostgreSQL에 연결 | 완료 | db-engineer | treatment-registry | 전국 원본 9,604행 적재. PP·폐금속 번호 조회의 조인 오류 수정 및 웹에서 재검증 |
 | T-123 | PP 문진의 R코드를 공정별 조사에 연결 | 완료 | api-developer | treatment-registry | 화성 A의 사출 잔재·파쇄품을 웹에서 비교. 추가 공개 조사 결과는 인계 보류 |

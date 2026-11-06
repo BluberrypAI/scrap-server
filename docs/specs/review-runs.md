@@ -29,7 +29,7 @@
 5. `intake_version`이 현재 입력 버전과 다르면 409 `VERSION_CONFLICT`
 6. 검토 status가 `intake_ready`가 아니면 409 `INTAKE_INCOMPLETE`
 7. 같은 검토에 queued·running 실행이 있으면 409 `RUN_IN_PROGRESS`
-8. `AI_BASE_URL`이 비어 있으면 503 `ENGINE_UNAVAILABLE` (실행을 만들지 않음)
+8. `AI_BASE_URL`이 비어 있으면 503 `ENGINE_UNAVAILABLE` (실행을 만들지 않음). 로컬에서 `AI_ENGINE_MODE=mock`이면 AI 서버 없이 실행함 ([dev-mock-engine.md](dev-mock-engine.md))
 9. `document_ids`는 이 검토의 문서여야 함. 아니면 422 `VALIDATION_ERROR`. 지정한 문서의 **검수된 측정값 id**를 고정함
 10. 근거 등급(FR-1.6): 지정한 시험성적서에 검수된 측정값이 있으면 A, 사용자가 측정값(함수율·오염도)을 직접 확인했으면 B, 그 외 C
 11. 응답은 202와 `run_id`, `status=queued`, `pinned_versions`

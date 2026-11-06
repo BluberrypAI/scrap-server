@@ -11,6 +11,7 @@ from app.core.config import Settings, get_settings
 from app.core.errors import ErrorResponse, register_error_handlers
 from app.db.session import SessionLocal
 from app.domains.auth.dev_router import router as dev_auth_router
+from app.domains.documents.dev_router import router as dev_documents_router
 from app.domains.runs import service as run_service
 from app.domains.treatment.router import classification_router
 from app.domains.treatment.router import router as treatment_router
@@ -94,6 +95,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(classification_router)
     if settings.app_env in ("local", "test"):
         app.include_router(dev_auth_router, prefix="/api/v1")
+        app.include_router(dev_documents_router, prefix="/api/v1")
 
     @app.get("/health", tags=["health"])
     async def health() -> dict[str, str]:
