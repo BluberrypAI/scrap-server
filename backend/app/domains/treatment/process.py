@@ -284,6 +284,13 @@ def project_next_step(
         if capability and capability.key not in option["facilities"]:
             facility = facilities[capability.facility]
             location, location_url = facility_location(facility)
+            review_form = initial_form
+            if observed_state and transition.input_state == observed_state.key:
+                forms = observed_state.input_forms
+                published = capability.input_profile.form_examples
+                review_form = next((form for form in forms if form in published), None)
+                if review_form is None and len(forms) == 1:
+                    review_form = forms[0]
             option["facilities"][capability.key] = {
                 "capability_key": capability.key,
                 "facility_key": facility.key,
@@ -294,7 +301,7 @@ def project_next_step(
                 "checks": capability.conditions,
                 "sources": links(capability.source_ids),
                 "intake_review": (
-                    review_intake(capability, initial_form, links) if initial_form else None
+                    review_intake(capability, review_form, links) if review_form else None
                 ),
                 "location": location,
                 "location_source_url": location_url,
@@ -353,7 +360,12 @@ def review_intake(capability, form, links):
     else:
         evidence = "form_not_documented"
         check = "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
-    return {"form_evidence": evidence, "next_check": check, "sources": links(profile.source_ids)}
+    return {
+        "form_evidence": evidence,
+        "next_check": check,
+        "sources": links(profile.source_ids),
+        "input_form": form,
+    }
 
 
 def rank_facilities(options, *, first_handoff=False):

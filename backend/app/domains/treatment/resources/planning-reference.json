@@ -634,6 +634,25 @@
           "sarom-hwaseong-2--pe-prepare"
         ]
       }
+    },
+    {
+      "key": "veolia-doksan-public-intake-summary",
+      "url": "https://www.veolia.kr/ko/plastiloop-hwaseong",
+      "publisher": "베올리아코리아",
+      "locator": "독산의 공개 원료 사례",
+      "summary": "The company describes selected PP flakes and baled PP as feedstocks purchased by Doksan to produce recycled pellets. Its separate DSPL site compounds recycled PP pellets.",
+      "checked_date": "2026-11-06",
+      "source_date": null,
+      "sha256": "fccb773d03f518f36205801776281bf590e168c7557699dde9a21830fc8294f7",
+      "acquisition": "Team-authored factual paraphrase of public process description",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "capabilities": [
+          "veolia-doksan-hwaseong--pp-shredded-to-pellet"
+        ]
+      }
     }
   ],
   "states": [
@@ -2417,13 +2436,15 @@
         ],
         "output_description": "재생 PP 펠렛",
         "source_ids": [
-          "veolia-hwaseong-pp-process"
+          "veolia-hwaseong-pp-process",
+          "veolia-doksan-public-intake-summary"
         ],
         "locator": "연결된 사업장 및 공정 공개 자료",
         "verified_intake_limits_available": false
       },
       "source_ids": [
-        "veolia-hwaseong-pp-process"
+        "veolia-hwaseong-pp-process",
+        "veolia-doksan-public-intake-summary"
       ]
     },
     {

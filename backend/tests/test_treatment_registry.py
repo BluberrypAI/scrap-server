@@ -73,3 +73,37 @@ async def test_next_step_uses_seeded_reference_without_ai(db, client):
     assert payload["backend"] == "postgresql" and payload["status"] == "candidates"
     assert payload["options"][0]["transition_key"] == "pp-prepare"
     assert payload["options"][0]["sources"]
+    site = next(
+        facility
+        for facility in payload["options"][0]["facilities"]
+        if facility["facility_key"] == "sarom-hwaseong-2"
+    )
+    assert site["handoff_verification"] == {
+        "process": "public_evidence",
+        "intake_form": "unverified",
+        "intake_specification": "unverified",
+        "current_permit": "unverified",
+        "lot_acceptance": "unverified",
+        "dispatch_status": "held",
+        "simulation_available": False,
+    }
+
+    follow_up = await client.post(
+        "/api/treatment/next-step",
+        json={
+            "waste_code": "51-03-01",
+            "material": "PP",
+            "input_form": "scrap",
+            "completed_transitions": ["pp-prepare"],
+            "observed_output": {"state_key": "pp-shredded", "mass_kg": 90},
+        },
+    )
+    assert follow_up.status_code == 200, follow_up.text
+    doksan = next(
+        facility
+        for option in follow_up.json()["options"]
+        for facility in option["facilities"]
+        if facility["facility_key"] == "veolia-doksan-hwaseong"
+    )
+    assert doksan["handoff_verification"]["intake_form"] == "public_example"
+    assert doksan["handoff_verification"]["dispatch_status"] == "held"

@@ -49,6 +49,17 @@ class IntakeReview(BaseModel):
     form_evidence: Literal["site_example", "form_not_documented", "site_process_unconfirmed"]
     next_check: str
     sources: list[SourceLink]
+    input_form: str | None = None
+
+
+class HandoffVerification(BaseModel):
+    process: Literal["public_evidence", "unverified"]
+    intake_form: Literal["public_example", "unverified"]
+    intake_specification: Literal["unverified"] = "unverified"
+    current_permit: Literal["unverified"] = "unverified"
+    lot_acceptance: Literal["unverified"] = "unverified"
+    dispatch_status: Literal["held"] = "held"
+    simulation_available: bool = False
 
 
 class NextFacility(BaseModel):
@@ -65,6 +76,7 @@ class NextFacility(BaseModel):
     straight_line_distance_km: float | None = None
     distance_rank: int | None = None
     intake_review: IntakeReview | None = None
+    handoff_verification: HandoffVerification | None = None
 
 
 class NextProcess(BaseModel):

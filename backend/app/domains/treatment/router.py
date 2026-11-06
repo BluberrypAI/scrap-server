@@ -7,6 +7,7 @@ from app.core.config import get_settings
 from app.core.errors import AppError, ErrorCode
 from app.db.session import DbSession
 from app.domains.auth.dependencies import CurrentUser
+from app.domains.transport.shared import recipient_for
 from app.domains.treatment.directory import project
 from app.domains.treatment.errors import TreatmentError
 from app.domains.treatment.intake import IntakeRequest, build_intake_packet
@@ -15,6 +16,7 @@ from app.domains.treatment.repository import read_reference, read_registry
 from app.domains.treatment.schemas import (
     FacilitySearchRequest,
     FacilitySearchResponse,
+    HandoffVerification,
     NextStepRequest,
     NextStepResponse,
 )
@@ -35,7 +37,28 @@ def translate(error):
 async def next_process(request: NextStepRequest, db: DbSession):
     try:
         reference, _ = await read_reference(db)
-        return next_step(request, reference)
+        result = next_step(request, reference)
+        simulation_sites = {}
+        for option in result.options:
+            for facility in option.facilities:
+                key = facility.facility_key
+                if key not in simulation_sites:
+                    simulation_sites[key] = bool(await recipient_for(db, key))
+                review = facility.intake_review
+                facility.handoff_verification = HandoffVerification(
+                    process=(
+                        "public_evidence"
+                        if facility.evidence_basis == "published_site_process"
+                        else "unverified"
+                    ),
+                    intake_form=(
+                        "public_example"
+                        if review and review.form_evidence == "site_example"
+                        else "unverified"
+                    ),
+                    simulation_available=simulation_sites[key],
+                )
+        return result
     except TreatmentError as error:
         raise translate(error) from None
 

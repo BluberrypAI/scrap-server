@@ -9,7 +9,10 @@ from app.domains.users.models import User
 
 
 async def recipient_for(db, facility_key):
-    value = get_settings().transport_demo_facilities.get(facility_key)
+    settings = get_settings()
+    if settings.app_env not in {"local", "test"}:
+        return None
+    value = settings.transport_demo_facilities.get(facility_key)
     if not value:
         return None
     user = await db.get(User, uuid.UUID(value))
@@ -39,7 +42,10 @@ async def prepare_registration(db, key, owner, data):
     if not update or not recipient or recipient == owner:
         return None
     snap = update.snapshot
-    if not pending_matches(snap, key, data.lot, data.destination):
+    if (
+        not pending_matches(snap, key, data.lot, data.destination)
+        or snap["pending"].get("facility_key") != data.destination_key
+    ):
         return None
     if data.shared_case_id:
         case = await lock_case(db, data.shared_case_id)

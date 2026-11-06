@@ -5,6 +5,7 @@ from sqlalchemy import update
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core.errors import ConflictError, ErrorCode
 from app.domains.transport.models import TransportHandoff
 from app.domains.transport.schemas import TransportCreate, TransportEvent
 from app.domains.transport.shared import prepare_registration, recipient_for
@@ -14,11 +15,17 @@ async def register(db: AsyncSession, key: uuid.UUID, owner: uuid.UUID, data: Tra
     record = await db.get(TransportHandoff, key)
     fields = data.model_dump(include={"lot", "origin", "destination"})
     if record is None:
+        stagewise = bool(data.destination_key or data.case_update or data.shared_case_id)
+        if stagewise and (
+            not data.case_update or not await recipient_for(db, data.destination_key)
+        ):
+            raise ConflictError(
+                ErrorCode.HANDOFF_EVIDENCE_REQUIRED,
+                "현행 허가·반입 규격·이번 로트 인수 근거를 확인할 때까지 인계를 보류합니다.",
+            )
         try:
             binding = None
-            if data.shared_case_id or (
-                data.case_update and await recipient_for(db, data.destination_key)
-            ):
+            if stagewise:
                 binding = await prepare_registration(db, key, owner, data)
                 if not binding:
                     return None

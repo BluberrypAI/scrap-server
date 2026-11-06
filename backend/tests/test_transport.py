@@ -83,3 +83,45 @@ async def test_bound_recipient_has_card_and_only_assigned_account_can_receive(cl
     assert (
         await client.patch(case_path, json={"revision": 1, "snapshot": after})
     ).status_code == 409
+
+
+@pytest.mark.parametrize("production", [False, True])
+async def test_unverified_treatment_cannot_create_handoff_even_with_client_claim(
+    auth_client, user, monkeypatch, production
+):
+    if production:
+        settings = get_settings()
+        monkeypatch.setattr(settings, "app_env", "prod")
+        monkeypatch.setattr(
+            settings, "transport_demo_facilities", {"unverified-site": str(user.id)}
+        )
+    key = uuid4()
+    path = f"/api/v1/transport/{key}"
+    response = await auth_client.put(
+        path,
+        json={
+            "lot": "test-lot",
+            "origin": "A",
+            "destination": "Unverified",
+            "destination_key": "unverified-site",
+            "case_update": {
+                "revision": 0,
+                "snapshot": {
+                    "version": 1,
+                    "id": "test-lot",
+                    "name": "PP",
+                    "input": {},
+                    "completed": [],
+                    "pending": {
+                        "legId": str(key),
+                        "facility": "Unverified",
+                        "facility_key": "unverified-site",
+                        "source": {"reviewBasis": "operator-confirmed", "reviewReference": "123"},
+                    },
+                },
+            },
+        },
+    )
+    assert response.status_code == 409
+    assert response.json()["code"] == "HANDOFF_EVIDENCE_REQUIRED"
+    assert (await auth_client.get(path)).status_code == 404
