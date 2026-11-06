@@ -150,7 +150,7 @@ async def test_candidate_detail_has_risks_checks_and_evidence(
     severities = {r["risk_id"]: r["severity"] for r in body["risks"]}
     assert severities == {"plan-b-r1": "high", "plan-b-r2": "medium"}
     assert body["risks"][0]["step_no"] == 1
-    assert body["risks"][0]["next_action"] == "함수율 한도을 시설에 확인"
+    assert body["risks"][0]["next_action"] == "시설에 확인: 함수율 한도"
     statute = body["legal_evidence"][0]
     assert statute["search_status"] == "retrieved"
     assert statute["results"][0]["citation"] == "폐기물관리법 제2조"

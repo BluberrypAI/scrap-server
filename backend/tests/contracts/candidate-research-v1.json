@@ -1,0 +1,506 @@
+{
+  "source": {
+    "repo": "Re_AI",
+    "commit": "c210b5c",
+    "contract_version": "candidate-research-v1"
+  },
+  "request": {
+    "$defs": {
+      "AssessedPlansRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "material": {
+            "anyOf": [
+              {
+                "maxLength": 160,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Material"
+          },
+          "input_form": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Input Form"
+          },
+          "color": {
+            "anyOf": [
+              {
+                "maxLength": 80,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Color"
+          },
+          "contamination": {
+            "anyOf": [
+              {
+                "maxLength": 500,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Contamination"
+          },
+          "quantity_kg": {
+            "anyOf": [
+              {
+                "exclusiveMinimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Quantity Kg"
+          },
+          "generation_process": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Generation Process"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Region"
+          },
+          "current_treatment": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Current Treatment"
+          },
+          "page_size": {
+            "default": 25,
+            "maximum": 100,
+            "minimum": 1,
+            "title": "Page Size",
+            "type": "integer"
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "maxLength": 2048,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Cursor"
+          },
+          "audience": {
+            "const": "internal",
+            "default": "internal",
+            "title": "Audience",
+            "type": "string"
+          },
+          "goal_state": {
+            "anyOf": [
+              {
+                "maxLength": 101,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Goal State"
+          },
+          "max_steps": {
+            "default": 6,
+            "maximum": 8,
+            "minimum": 1,
+            "title": "Max Steps",
+            "type": "integer"
+          },
+          "moisture_pct": {
+            "anyOf": [
+              {
+                "maximum": 100,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Moisture Pct"
+          },
+          "contamination_pct": {
+            "anyOf": [
+              {
+                "maximum": 100,
+                "minimum": 0,
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Contamination Pct"
+          },
+          "designated_waste": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Designated Waste"
+          }
+        },
+        "title": "AssessedPlansRequest",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "lot": {
+        "$ref": "#/$defs/AssessedPlansRequest"
+      },
+      "max_pages": {
+        "default": 20,
+        "maximum": 20,
+        "minimum": 1,
+        "title": "Max Pages",
+        "type": "integer"
+      },
+      "max_legal_queries": {
+        "default": 24,
+        "maximum": 100,
+        "minimum": 1,
+        "title": "Max Legal Queries",
+        "type": "integer"
+      },
+      "legal_top_k": {
+        "default": 3,
+        "maximum": 5,
+        "minimum": 1,
+        "title": "Legal Top K",
+        "type": "integer"
+      }
+    },
+    "required": [
+      "lot"
+    ],
+    "title": "ResearchRequest",
+    "type": "object"
+  },
+  "response": {
+    "$defs": {
+      "CandidateResearch": {
+        "additionalProperties": false,
+        "properties": {
+          "plan": {
+            "$ref": "#/$defs/ProcessPlan"
+          },
+          "facility_assessment": {
+            "additionalProperties": true,
+            "title": "Facility Assessment",
+            "type": "object"
+          },
+          "legal_tasks": {
+            "items": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "title": "Legal Tasks",
+            "type": "array"
+          },
+          "blockers": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Blockers",
+            "type": "array"
+          },
+          "status": {
+            "enum": [
+              "unmet",
+              "needs_verification"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "recommended": {
+            "const": false,
+            "default": false,
+            "title": "Recommended",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "plan",
+          "facility_assessment",
+          "legal_tasks",
+          "blockers",
+          "status"
+        ],
+        "title": "CandidateResearch",
+        "type": "object"
+      },
+      "LegalSearch": {
+        "additionalProperties": false,
+        "properties": {
+          "search_id": {
+            "title": "Search Id",
+            "type": "string"
+          },
+          "query": {
+            "title": "Query",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "retrieved",
+              "no_hits",
+              "unavailable",
+              "budget_exhausted"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "attempted": {
+            "title": "Attempted",
+            "type": "boolean"
+          },
+          "results": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Results",
+            "type": "array"
+          },
+          "applicability": {
+            "const": "not_audited",
+            "default": "not_audited",
+            "title": "Applicability",
+            "type": "string"
+          }
+        },
+        "required": [
+          "search_id",
+          "query",
+          "status",
+          "attempted"
+        ],
+        "title": "LegalSearch",
+        "type": "object"
+      },
+      "ProcessPlan": {
+        "properties": {
+          "plan_id": {
+            "title": "Plan Id",
+            "type": "string"
+          },
+          "state": {
+            "const": "graph_compatible",
+            "default": "graph_compatible",
+            "title": "State",
+            "type": "string"
+          },
+          "research_packet": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Research Packet"
+          },
+          "external_model_allowed": {
+            "title": "External Model Allowed",
+            "type": "boolean"
+          },
+          "withheld_evidence_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Withheld Evidence Ids",
+            "type": "array"
+          },
+          "recommended": {
+            "const": false,
+            "default": false,
+            "title": "Recommended",
+            "type": "boolean"
+          },
+          "dispatch_approved": {
+            "const": false,
+            "default": false,
+            "title": "Dispatch Approved",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "plan_id",
+          "research_packet",
+          "external_model_allowed"
+        ],
+        "title": "ProcessPlan",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "contract_version": {
+        "const": "candidate-research-v1",
+        "default": "candidate-research-v1",
+        "title": "Contract Version",
+        "type": "string"
+      },
+      "run_id": {
+        "title": "Run Id",
+        "type": "string"
+      },
+      "request_sha256": {
+        "title": "Request Sha256",
+        "type": "string"
+      },
+      "generated_at": {
+        "title": "Generated At",
+        "type": "string"
+      },
+      "input_context": {
+        "additionalProperties": true,
+        "title": "Input Context",
+        "type": "object"
+      },
+      "graph_trace": {
+        "additionalProperties": true,
+        "title": "Graph Trace",
+        "type": "object"
+      },
+      "coverage": {
+        "additionalProperties": true,
+        "title": "Coverage",
+        "type": "object"
+      },
+      "candidates": {
+        "items": {
+          "$ref": "#/$defs/CandidateResearch"
+        },
+        "title": "Candidates",
+        "type": "array"
+      },
+      "legal_searches": {
+        "items": {
+          "$ref": "#/$defs/LegalSearch"
+        },
+        "title": "Legal Searches",
+        "type": "array"
+      },
+      "next_actions": {
+        "items": {
+          "type": "string"
+        },
+        "title": "Next Actions",
+        "type": "array"
+      },
+      "route": {
+        "const": "REVIEW",
+        "default": "REVIEW",
+        "title": "Route",
+        "type": "string"
+      },
+      "final_recommendations": {
+        "items": {
+          "type": "string"
+        },
+        "maxItems": 0,
+        "title": "Final Recommendations",
+        "type": "array"
+      },
+      "limitations": {
+        "items": {
+          "type": "string"
+        },
+        "title": "Limitations",
+        "type": "array"
+      },
+      "dispatch_approved": {
+        "const": false,
+        "default": false,
+        "title": "Dispatch Approved",
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "run_id",
+      "request_sha256",
+      "generated_at",
+      "input_context",
+      "graph_trace",
+      "coverage",
+      "candidates",
+      "legal_searches",
+      "next_actions",
+      "limitations"
+    ],
+    "title": "ResearchResponse",
+    "type": "object"
+  }
+}

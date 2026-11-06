@@ -115,6 +115,20 @@ TEST_DATABASE_URL=postgresql+asyncpg://resource:resource@localhost:5433/resource
 
 개발용 로그인은 `APP_ENV`가 `local`일 때만 존재하고, 운영(`prod`)에서는 경로 자체가 없음.
 
+### AI 서버 없이 전체 흐름 확인하기
+
+`backend/.env`에 `AI_ENGINE_MODE=mock`을 넣고 서버를 다시 시작하면 AI 서버 없이 고정 샘플로 검토 실행이 끝남. 결과의 `limitations` 첫 줄에 가짜 응답이라고 표시됨. 입력이 달라도 후보는 같으므로 판정 내용이 아니라 입출력과 흐름을 확인하는 용도임 ([docs/specs/dev-mock-engine.md](../docs/specs/dev-mock-engine.md)).
+
+Swagger 호출 순서:
+
+1. `POST /auth/dev-login` → `POST /companies`
+2. `POST /reviews` → `GET /reviews/{reviewId}/intake` → `PATCH /reviews/{reviewId}/intake` (material, quantity_kg 답변)
+3. (선택) `POST /reviews/{reviewId}/documents` → `POST /documents/{documentId}/dev-values` → `PATCH /documents/{documentId}/values/{valueId}`
+4. `POST /reviews/{reviewId}/runs` → `GET /reviews/{reviewId}/runs/{runId}`
+5. `GET .../candidates`, `GET .../candidates/plan-b`, `GET .../review-queue`, `GET .../tasks`
+6. `POST /reviews/{reviewId}/supplements` → `POST .../risks/plan-b-r1/evidence` → `POST .../candidates/plan-b/risk-steps/1/decision`
+7. `POST .../runs/{runId}/rerun` → `GET /reviews/{reviewId}/compare`
+
 실제 소셜 로그인을 확인하려면 `backend/.env`에 Google·Microsoft 키를 설정하고 ([docs/specs/auth-social-login.md](../docs/specs/auth-social-login.md) 4장) 브라우저에서 http://localhost:8000/api/v1/auth/google/login 에 접속함.
 
 ## 설정 (환경변수)
@@ -132,6 +146,7 @@ TEST_DATABASE_URL=postgresql+asyncpg://resource:resource@localhost:5433/resource
 | `UPLOAD_DIR`, `MAX_UPLOAD_MB` | 업로드 문서 저장 폴더(기본 `./uploads`)와 최대 크기(기본 20MB) |
 | `AI_BASE_URL` | AI 엔진(ai 레포) 주소. 비우면 검토 실행이 503. Docker에서 PC의 엔진을 부르면 `http://host.docker.internal:<포트>` |
 | `AI_TIMEOUT_SECONDS` | 엔진 응답 대기 시간 (기본 300초) |
+| `AI_ENGINE_MODE` | `http`(기본, 실제 엔진) 또는 `mock`(AI 서버 없이 고정 샘플). prod에서 mock이면 시작되지 않음 |
 
 ## 문제 해결
 
