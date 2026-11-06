@@ -5,6 +5,16 @@ from typing import Annotated, Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 CatalogKey = Annotated[str, Field(pattern=r"^[a-z0-9][a-z0-9-]{0,100}$")]
+RecyclingCode = Annotated[str, Field(pattern=r"^R-(?:[1-9]|1[01])(?:-[1-9][0-9]?)?$")]
+SearchRegion = Literal[
+    "capital", "chungcheong", "honam", "southeast", "daegyeong", "gangwon", "jeju"
+]
+
+
+class RecyclingTypes(BaseModel):
+    free: list[RecyclingCode] = Field(default_factory=list, max_length=50)
+    analysis: list[RecyclingCode] = Field(default_factory=list, max_length=50)
+    unmarked: list[RecyclingCode] = Field(default_factory=list, max_length=50)
 
 
 class Coordinates(BaseModel):
@@ -14,7 +24,7 @@ class Coordinates(BaseModel):
 
 class ObservedOutput(BaseModel):
     state_key: CatalogKey | None
-    mass_kg: float = Field(ge=0, le=1e9, allow_inf_nan=False)
+    mass_kg: float | None = Field(default=None, ge=0, le=1e9, allow_inf_nan=False)
     purity_percent: float | None = Field(default=None, ge=0, le=100, allow_inf_nan=False)
     review_reference: str | None = Field(default=None, max_length=160)
 
@@ -26,6 +36,8 @@ class NextStepRequest(BaseModel):
     completed_transitions: list[CatalogKey] = Field(default_factory=list, max_length=8)
     origin: Coordinates | None = None
     observed_output: ObservedOutput | None = None
+    recycling_types: RecyclingTypes | None = None
+    preview_transition: CatalogKey | None = None
 
     @model_validator(mode="after")
     def validate_observation(self):
@@ -88,6 +100,8 @@ class NextProcess(BaseModel):
     checks: list[str]
     facilities: list[NextFacility]
     sources: list[SourceLink]
+    recycling_types: RecyclingTypes | None = None
+    web_search_form: str | None = None
 
 
 class PreviewStep(BaseModel):
@@ -149,4 +163,26 @@ class FacilitySearchResponse(BaseModel):
     graph_trace: dict[str, Any]
     search_scope: dict[str, Any]
     limitations: list[str]
+    dispatch_approved: Literal[False] = False
+
+
+class FacilityWebSearchRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    transition_key: CatalogKey
+    input_form: CatalogKey
+    region: SearchRegion
+    waste_code: str | None = Field(default=None, pattern=r"^\d{2}-\d{2}-\d{2}$")
+    recycling_types: RecyclingTypes | None = None
+
+
+class FacilityWebLead(BaseModel):
+    site: str = Field(min_length=2, max_length=150)
+    address: str | None = Field(max_length=240)
+    process: str = Field(min_length=2, max_length=240)
+    url: str = Field(pattern=r"^https://[A-Za-z0-9.-]+(?::443)?(?:[/?#]|$)", max_length=1500)
+
+
+class FacilityWebSearchResponse(BaseModel):
+    status: Literal["searched", "unavailable"]
+    leads: list[FacilityWebLead] = Field(default_factory=list, max_length=5)
     dispatch_approved: Literal[False] = False

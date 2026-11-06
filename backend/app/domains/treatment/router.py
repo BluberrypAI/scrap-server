@@ -10,12 +10,22 @@ from app.domains.auth.dependencies import CurrentUser
 from app.domains.transport.shared import recipient_for
 from app.domains.treatment.directory import project
 from app.domains.treatment.errors import TreatmentError
-from app.domains.treatment.intake import IntakeRequest, build_intake_packet
-from app.domains.treatment.process import next_step
+from app.domains.treatment.intake import (
+    IntakeBatchResult,
+    IntakeRequest,
+    IntakeResult,
+    IntakeSelection,
+    build_intake_batch,
+    build_intake_packet,
+    review_intakes,
+)
+from app.domains.treatment.process import next_step, web_search_packet
 from app.domains.treatment.repository import read_reference, read_registry
 from app.domains.treatment.schemas import (
     FacilitySearchRequest,
     FacilitySearchResponse,
+    FacilityWebSearchRequest,
+    FacilityWebSearchResponse,
     HandoffVerification,
     NextStepRequest,
     NextStepResponse,
@@ -42,7 +52,7 @@ async def next_process(request: NextStepRequest, db: DbSession):
         for option in result.options:
             for facility in option.facilities:
                 key = facility.facility_key
-                if key not in simulation_sites:
+                if request.preview_transition is None and key not in simulation_sites:
                     simulation_sites[key] = bool(await recipient_for(db, key))
                 review = facility.intake_review
                 facility.handoff_verification = HandoffVerification(
@@ -56,7 +66,7 @@ async def next_process(request: NextStepRequest, db: DbSession):
                         if review and review.form_evidence == "site_example"
                         else "unverified"
                     ),
-                    simulation_available=simulation_sites[key],
+                    simulation_available=simulation_sites.get(key, False),
                 )
         return result
     except TreatmentError as error:
@@ -83,38 +93,53 @@ async def facility_candidates(request: FacilitySearchRequest, db: DbSession):
         raise translate(error) from None
 
 
-@router.post("/intake-review")
+@router.post("/intake-review", response_model=IntakeResult)
 async def intake_review(request: IntakeRequest, db: DbSession, user: CurrentUser):
     try:
         reference, _ = await read_reference(db)
         packet = build_intake_packet(request, reference)
     except TreatmentError as error:
         raise translate(error) from None
-    fallback = {
-        "status": "model_unavailable",
-        "finding": "insufficient",
-        "next_check": packet["next_check"],
-        "source": None,
-        "quote": None,
-        "dispatch_approved": False,
-    }
     if not packet["sources"]:
-        return {**fallback, "status": "needs_evidence"}
+        return IntakeResult(status="needs_evidence", next_check=packet["next_check"])
+    await db.rollback()
+    result = await review_intakes([packet], get_settings())
+    return result.results[request.capability_key]
+
+
+@router.post("/intake-reviews", response_model=IntakeBatchResult)
+async def intake_reviews(request: IntakeSelection, db: DbSession, user: CurrentUser):
+    try:
+        reference, _ = await read_reference(db)
+        packets = build_intake_batch(request, reference)
+    except TreatmentError as error:
+        raise translate(error) from None
+    await db.rollback()
+    return await review_intakes(packets, get_settings())
+
+
+@router.post("/facility-web-search", response_model=FacilityWebSearchResponse)
+async def facility_web_search(request: FacilityWebSearchRequest, db: DbSession, user: CurrentUser):
+    try:
+        reference, _ = await read_reference(db)
+        packet = web_search_packet(request, reference)
+    except TreatmentError as error:
+        raise translate(error) from None
     settings = get_settings()
     token = settings.scrap_intake_service_token.get_secret_value()
     if settings.ai_base_url and token:
         try:
-            async with httpx.AsyncClient(timeout=40) as client:
+            async with httpx.AsyncClient(timeout=65) as client:
                 response = await client.post(
-                    f"{settings.ai_base_url.rstrip('/')}/treatment/intake-review",
+                    f"{settings.ai_base_url.rstrip('/')}/treatment/facility-web-search",
                     headers={"Authorization": f"Bearer {token}"},
                     json=packet,
                 )
                 response.raise_for_status()
-                return response.json()
+                return FacilityWebSearchResponse.model_validate(response.json())
         except (httpx.HTTPError, ValueError):
             pass
-    return fallback
+    return FacilityWebSearchResponse(status="unavailable")
 
 
 async def classification_call(request: Request, path: str):

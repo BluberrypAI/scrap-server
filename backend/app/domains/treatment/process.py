@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from app.domains.treatment.directory import load_codebook, straight_line_km
 from app.domains.treatment.errors import TreatmentError
 from app.domains.treatment.reference import normalize_label, resolve_material
-from app.domains.treatment.schemas import NextStepRequest, NextStepResponse
+from app.domains.treatment.schemas import NextStepRequest, NextStepResponse, RecyclingTypes
 
 MAX_EXPANSIONS = 10000
 MAX_PLANS = 2000
@@ -120,6 +120,71 @@ ENTRY_FORMS = {
     "51-29-03": {"aluminium": {"can"}},
 }
 
+# Search hints for the documented outputs. A matching type still needs a site-level check.
+PP_SEARCH_TYPES = {
+    "pp-prepare": ("R-10",),
+    "pp-clean": ("R-10",),
+    "pp-pelletise": ("R-3-3", "R-10"),
+    "pp-shredded-to-pellet": ("R-3-3", "R-10"),
+    "pp-compound": ("R-3-3", "R-4-4", "R-10"),
+}
+
+
+def search_recycling_types(transition_key, types):
+    keys = PP_SEARCH_TYPES.get(transition_key)
+    if types is None or keys is None:
+        return None
+    return RecyclingTypes(
+        **{
+            group: list(
+                dict.fromkeys(
+                    code
+                    for code in codes
+                    if any(code == key or code.startswith(f"{key}-") for key in keys)
+                )
+            )
+            for group, codes in types.model_dump().items()
+        }
+    )
+
+
+def web_search_packet(request, reference):
+    transition = next((t for t in reference.transitions if t.key == request.transition_key), None)
+    if transition is None or transition.key not in PP_SEARCH_TYPES:
+        raise TreatmentError("invalid-transition", "PP의 검수된 공정을 선택해 주세요.")
+    state = next(s for s in reference.states if s.key == transition.input_state)
+    forms = state.input_forms or ["washed"]
+    if request.input_form not in forms or (
+        request.waste_code
+        and request.input_form not in ENTRY_FORMS.get(request.waste_code, {}).get("pp", set())
+    ):
+        raise TreatmentError("invalid-transition", "이 공정에 맞는 PP 형태를 선택해 주세요.")
+    types = search_recycling_types(
+        transition.key, request.recycling_types if request.waste_code else None
+    )
+    sites = {facility.key: facility.label for facility in reference.facilities}
+    sources = {
+        source.key: source.url for source in reference.sources if source.model_transfer_allowed
+    }
+    starting_points = [
+        {"site": sites[capability.facility], "url": sources[source_id]}
+        for capability in reference.capabilities
+        if capability.transition == transition.key
+        and capability.basis == "published_site_process"
+        and request.input_form in capability.input_profile.form_examples
+        for source_id in capability.input_profile.source_ids
+        if source_id in sources
+    ]
+    return {
+        "transition_key": transition.key,
+        "input_form": request.input_form,
+        "region": request.region,
+        "waste_code": request.waste_code,
+        "recycling_types": types.model_dump() if types is not None else None,
+        "starting_points": starting_points[:3],
+    }
+
+
 # Public map points tied to the exact facility/address. Used for approximate
 # distances only. Separate from published process evidence.
 MAP_POINTS = {
@@ -204,31 +269,62 @@ def next_step(request: NextStepRequest, reference_data) -> NextStepResponse:
                         "확인 자료를 기록해 주세요."
                     ),
                 )
-        result, _ = enumerate_paths(
+
+        def paths_from(state):
+            result, _ = enumerate_paths(
+                value, material, form, None, 8, start_state=state.key if state else None
+            )
+            if result.budget_exhausted or result.depth_limited:
+                raise TreatmentError("next-step-limit", "공정 탐색 한도를 초과했습니다.")
+            return result.paths
+
+        current = project_next_step(
             value,
-            material,
-            form,
-            None,
-            8,
-            start_state=current_state.key if current_state else None,
-        )
-        if result.budget_exhausted or result.depth_limited:
-            raise TreatmentError("next-step-limit", "공정 탐색 한도를 초과했습니다.")
-        return project_next_step(
-            value,
-            result.paths,
+            paths_from(current_state),
             [] if observed else completed,
             metadata,
             request.origin,
             observed_state=current_state,
             initial_form=form if not completed else None,
+            recycling_types=request.recycling_types if not completed else None,
+        )
+        if request.preview_transition is None:
+            return current
+        planned = next(
+            (
+                option
+                for option in current.options
+                if option.transition_key == request.preview_transition
+            ),
+            None,
+        )
+        if planned is None:
+            raise TreatmentError(
+                "invalid-transition", "현재 공정에서 이어지는 예정 공정을 확인해 주세요."
+            )
+        expected = states[planned.output_state.key]
+        return project_next_step(
+            value,
+            paths_from(expected),
+            [],
+            {**metadata, "basis": "expected_output"},
+            request.origin,
+            observed_state=expected,
         )
 
     return project(reference_data)
 
 
 def project_next_step(
-    value, paths, completed, base, origin, *, observed_state=None, initial_form=None
+    value,
+    paths,
+    completed,
+    base,
+    origin,
+    *,
+    observed_state=None,
+    initial_form=None,
+    recycling_types=None,
 ):
     states = {state.key: state for state in value.states}
     facilities = {facility.key: facility for facility in value.facilities}
@@ -278,6 +374,12 @@ def project_next_step(
                 "operation_steps": transition.operation_steps,
                 "checks": list(dict.fromkeys(transition.conditions + transition.risk_checks)),
                 "sources": links(transition.source_ids),
+                "recycling_types": search_recycling_types(transition.key, recycling_types),
+                "web_search_form": (
+                    initial_form or next(iter(states[transition.input_state].input_forms), "washed")
+                    if transition.key in PP_SEARCH_TYPES
+                    else None
+                ),
                 "facilities": {},
             },
         )

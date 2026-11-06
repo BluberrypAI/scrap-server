@@ -1,10 +1,13 @@
 import uuid
 from copy import deepcopy
+from datetime import UTC, datetime
 
+from pydantic import ValidationError
 from sqlalchemy import or_, select
 
 from app.core.config import get_settings
 from app.domains.transport.models import TransportHandoff, TransportSharedCase
+from app.domains.treatment.schemas import ObservedOutput
 from app.domains.users.models import User
 
 
@@ -144,7 +147,27 @@ async def update_case(db, key, user, data):
         return None
     old_steps, new_steps = before["completed"], after["completed"]
     current = before.get("pending")
-    if current:
+    if current and after.get("pending"):
+        view = await case_view(db, case, user)
+        if view is None:
+            return None
+        visible = view["snapshot"]["pending"]
+        revised = dict(after["pending"])
+        requested = revised.pop("outputUnconfirmedAt", None)
+        visible.pop("outputUnconfirmedAt", None)
+        if (
+            not requested
+            or after.get("finished")
+            or new_steps != old_steps
+            or revised != visible
+            or not (
+                visible.get("internal")
+                or (visible.get("handoff") or {}).get("status") == "accepted"
+            )
+        ):
+            return None
+        after["pending"]["outputUnconfirmedAt"] = datetime.now(UTC).isoformat()
+    elif current:
         if after.get("pending") or after.get("finished") or len(new_steps) != len(old_steps) + 1:
             return None
         if new_steps[:-1] != old_steps or not isinstance(new_steps[-1], dict):
@@ -171,6 +194,44 @@ async def update_case(db, key, user, data):
         if len(new_steps) != len(old_steps) or new_steps[:-1] != old_steps[:-1]:
             return None
         original, revised = deepcopy(old_steps[-1]), deepcopy(new_steps[-1])
+        if not isinstance(original, dict) or not isinstance(revised, dict):
+            return None
+        if (
+            not original.get("observedOutput")
+            and revised.get("observedOutput") is not None
+            and not after.get("pending")
+            and not after.get("finished")
+        ):
+            try:
+                observed = ObservedOutput.model_validate(revised["observedOutput"])
+            except ValidationError:
+                return None
+            label = revised.get("observedLabel")
+            if observed.review_reference is not None or not isinstance(label, str) or not label:
+                return None
+            for step in (original, revised):
+                step.pop("observedOutput", None)
+                step.pop("observedLabel", None)
+        old_output, new_output = original.get("observedOutput"), revised.get("observedOutput")
+        if (
+            isinstance(old_output, dict)
+            and isinstance(new_output, dict)
+            and not after.get("pending")
+            and not after.get("finished")
+        ):
+            additions = [
+                key
+                for key in ("mass_kg", "purity_percent")
+                if old_output.get(key) is None and new_output.get(key) is not None
+            ]
+            if additions:
+                try:
+                    ObservedOutput.model_validate(new_output)
+                except ValidationError:
+                    return None
+                for key in additions:
+                    old_output.pop(key, None)
+                    new_output.pop(key)
         for step in (original, revised):
             if step.get("observedOutput"):
                 step["observedOutput"].pop("review_reference", None)
@@ -181,7 +242,7 @@ async def update_case(db, key, user, data):
             observed = step.get("observedOutput") or {}
             if (
                 not observed.get("state_key")
-                or not observed.get("mass_kg")
+                or observed.get("mass_kg") == 0
                 or (
                     observed["state_key"] != (step.get("expectedState") or {}).get("key")
                     and not str(observed.get("review_reference") or "").strip()

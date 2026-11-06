@@ -77,12 +77,40 @@ async def test_bound_recipient_has_card_and_only_assigned_account_can_receive(cl
         await client.patch(case_path, json={"revision": 1, "snapshot": after})
     ).status_code == 409
     assert (await client.post(path + "/events", json=event)).status_code == 200
+    accepted = (await client.get(case_path)).json()
+    waiting = accepted["snapshot"]
+    waiting["pending"]["outputUnconfirmedAt"] = "requested"
+    deferred = await client.patch(case_path, json={"revision": 1, "snapshot": waiting})
+    assert deferred.status_code == 200, deferred.text
+    await login("a")
+    visible = (await client.get(case_path)).json()
+    assert not visible["can_process"] and visible["snapshot"]["pending"]["outputUnconfirmedAt"]
+    await login("b")
     assert (
-        await client.patch(case_path, json={"revision": 1, "snapshot": after})
+        await client.patch(case_path, json={"revision": 2, "snapshot": after})
     ).status_code == 200
     assert (
-        await client.patch(case_path, json={"revision": 1, "snapshot": after})
+        await client.patch(case_path, json={"revision": 2, "snapshot": after})
     ).status_code == 409
+    stored = (await client.get(case_path)).json()
+    snapshot = stored["snapshot"]
+    recorded = {
+        **snapshot["completed"][-1],
+        "observedOutput": {"state_key": "pp-shredded", "mass_kg": None, "purity_percent": None},
+        "observedLabel": "PP 파쇄품",
+    }
+    payload = {"revision": stored["revision"], "snapshot": {**snapshot, "completed": [recorded]}}
+    result = await client.patch(case_path, json=payload)
+    assert result.status_code == 200, result.text
+    assert result.json()["snapshot"]["completed"][-1]["observedOutput"]["mass_kg"] is None
+    recorded["observedOutput"]["mass_kg"] = 850
+    payload["revision"] = result.json()["revision"]
+    result = await client.patch(case_path, json=payload)
+    assert result.status_code == 200, result.text
+    assert result.json()["snapshot"]["completed"][-1]["observedOutput"]["mass_kg"] == 850
+    recorded["observedOutput"]["mass_kg"] = 900
+    payload["revision"] = result.json()["revision"]
+    assert (await client.patch(case_path, json=payload)).status_code == 409
 
 
 @pytest.mark.parametrize("production", [False, True])

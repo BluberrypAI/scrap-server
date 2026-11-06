@@ -22,7 +22,7 @@ async def read_reference(db: AsyncSession):
 async def read_registry(db: AsyncSession, *, recycling_only: bool, waste_code: str | None):
     listings = TreatmentFacilityListing
     snapshots = TreatmentSnapshot
-    eligible = listings.is_recycling if recycling_only else listings.is_treatment
+    eligible = (listings.is_recycling if recycling_only else listings.is_treatment).is_(True)
     record = listings.record
     if db.get_bind().dialect.name == "postgresql":
         record = cast(record, JSONB)
