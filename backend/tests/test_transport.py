@@ -15,7 +15,9 @@ async def test_qr_reads_and_records_on_a_separate_client(client):
     assert login.status_code == 200
     assert (await client.put(path, json=body)).status_code == 200
     assert (await client.put(path, json=body)).status_code == 200
-    assert (await client.put(path, json={**body, "destination": "C"})).status_code == 409
+    conflict = await client.put(path, json={**body, "destination": "C"})
+    assert conflict.status_code == 409
+    assert conflict.json()["code"] == "HANDOFF_ALREADY_REGISTERED"
     client.cookies.clear()
     pickup = await client.post(path + "/events", json={"role": "driver", "actor": "기사"})
     assert pickup.json()["pickup_actor"] == "기사" and pickup.json()["receipt_at"] is None
@@ -68,14 +70,16 @@ async def test_bound_recipient_has_card_and_only_assigned_account_can_receive(cl
     assert not (await client.get(case_path)).json()["can_process"]
     event = {"role": "recipient", "actor": "테스트"}
     await login("c")
-    assert (await client.post(path + "/events", json=event)).status_code == 403
+    mismatch = await client.post(path + "/events", json=event)
+    assert mismatch.status_code == 403
+    assert mismatch.json()["code"] == "RECIPIENT_MISMATCH"
     assert (await client.get(case_path)).status_code == 404
     await login("b")
     assert (await client.get(case_path)).json()["can_process"]
     after = {**snapshot, "pending": None, "completed": [pending]}
-    assert (
-        await client.patch(case_path, json={"revision": 1, "snapshot": after})
-    ).status_code == 409
+    rejected = await client.patch(case_path, json={"revision": 1, "snapshot": after})
+    assert rejected.status_code == 409
+    assert rejected.json()["code"] == "CASE_UPDATE_REJECTED"
     assert (await client.post(path + "/events", json=event)).status_code == 200
     accepted = (await client.get(case_path)).json()
     waiting = accepted["snapshot"]
@@ -153,3 +157,22 @@ async def test_unverified_treatment_cannot_create_handoff_even_with_client_claim
     assert response.status_code == 409
     assert response.json()["code"] == "HANDOFF_EVIDENCE_REQUIRED"
     assert (await auth_client.get(path)).status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_inbox_falls_back_to_lot_id_without_name(auth_client, db, user):
+    # 표시용 이름이 빠진 기록이 있어도 인박스 전체가 깨지지 않아야 함
+    from app.domains.transport.models import TransportSharedCase
+
+    db.add(
+        TransportSharedCase(
+            id=uuid4(),
+            owner_id=user.id,
+            active_id=user.id,
+            snapshot={"version": 1, "id": "lot-without-name", "input": {}, "completed": []},
+        )
+    )
+    await db.commit()
+    response = await auth_client.get("/api/v1/transport/inbox")
+    assert response.status_code == 200
+    assert response.json()[0]["name"] == "lot-without-name"

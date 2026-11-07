@@ -129,7 +129,8 @@ async def inbox(db, user):
         {
             "id": case.id,
             "lot": case.snapshot["id"],
-            "name": case.snapshot["name"],
+            # 표시용 이름이라 없으면 로트 ID로 대신 보여줌 (목록 전체가 500으로 깨지지 않게)
+            "name": case.snapshot.get("name") or case.snapshot["id"],
             "can_process": case.active_id == user,
         }
         for case in records
