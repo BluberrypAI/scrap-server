@@ -13,6 +13,13 @@
 - POST /api/treatment/intake-reviews — 현재 공정의 다음 업체 후보 전체를 재산출하고 Astra의 후보별 검토 결과 반환
 - POST /api/classification/sessions[/…] — 팀 문진 엔진으로 전달
 
+## 신규 로트의 문진 범위
+
+- 새 로트의 첫 후보 조회는 PP 사출 제조 잔재·파쇄품, PE 폐필름, 사용 후 PET병, 사용 후 알루미늄 음료캔을 지원합니다. 처리 중인 로트는 기록된 공정과 산출물 상태를 사용합니다.
+- GET /api/classification/profiles에서 지원 유형을 조회합니다. POST /api/classification/sessions의 선택 필드 profile에 유형 키를 보내면 팀 문진 엔진에 재질·고체 상태와 해당 유형에서 이미 확인한 제조 잔재 또는 포장재 여부만 전달합니다. 음료캔의 대상 여부는 문진에서 확인합니다.
+- 새 로트의 POST /api/treatment/next-step 또는 /api/treatment/intake-review(s)에 classification_session_id를 보내면 서버가 팀 엔진의 판정 기록에서 코드·재질·오염 확인 상태와 R코드를 읽습니다. 정보가 없거나 결과가 맞지 않으면 후보 조회와 AI 검토를 보류합니다. 세션 ID가 없는 기존 호출은 지원 조합의 조사 후보를 조회할 수 있습니다.
+- 잠정 판정은 조사 후보 조회에 쓰입니다. 실제 업체 인계 가능 여부는 기존 인계 검증 절차에서 확인합니다.
+
 ## 저장
 
 - 공정 참조 데이터와 명부 스냅샷은 scrap-server가 적재하고 PostgreSQL에서 제공함.

@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 
+from app.domains.treatment.classification import INITIAL_PROFILES
 from app.domains.treatment.directory import load_codebook, straight_line_km
 from app.domains.treatment.errors import TreatmentError
 from app.domains.treatment.reference import normalize_label, resolve_material
@@ -154,9 +155,9 @@ def web_search_packet(request, reference):
         raise TreatmentError("invalid-transition", "PP의 검수된 공정을 선택해 주세요.")
     state = next(s for s in reference.states if s.key == transition.input_state)
     forms = state.input_forms or ["washed"]
+    profile = INITIAL_PROFILES.get(("pp", request.input_form))
     if request.input_form not in forms or (
-        request.waste_code
-        and request.input_form not in ENTRY_FORMS.get(request.waste_code, {}).get("pp", set())
+        request.waste_code and (profile is None or request.waste_code not in profile.waste_codes)
     ):
         raise TreatmentError("invalid-transition", "이 공정에 맞는 PP 형태를 선택해 주세요.")
     types = search_recycling_types(
@@ -222,6 +223,17 @@ def next_step(request: NextStepRequest, reference_data) -> NextStepResponse:
         return NextStepResponse(
             **base, status="needs_input", message="문진의 재질과 현재 형태를 확인해 주세요."
         )
+    if not request.completed_transitions:
+        profile = INITIAL_PROFILES.get((material, form))
+        if profile is None or code not in profile.waste_codes:
+            return NextStepResponse(
+                **base,
+                status="unsupported",
+                message=(
+                    "새 로트의 지원 범위는 PP 사출 잔재·파쇄품, "
+                    "PE 필름, PET병, 알루미늄 음료캔입니다."
+                ),
+            )
     if form not in materials.get(material, set()) or material not in row["query_materials"]:
         return NextStepResponse(
             **base,

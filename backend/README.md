@@ -166,4 +166,4 @@ Swagger 호출 순서:
 uv run python -m app.domains.treatment.import_catalog --registry /path/to/national-facility-registry.json --sha256 b083ea497c37bb11bd9374fc0a5b0850b989d290dbdba9d4a713fef353e79c08
 ```
 
-`/api/treatment/next-step`과 `/api/treatment/facility-candidates`는 서버 DB를 조회합니다. `CLASSIFICATION_BASE_URL`은 별도 팀 문진 엔진 주소입니다. 다음 공정의 전체 업체 검토(`/api/treatment/intake-reviews`)와 PP 공정의 추가 공개 웹 조사(`/api/treatment/facility-web-search`)는 `AI_BASE_URL`과 두 서비스의 같은 `SCRAP_INTAKE_SERVICE_TOKEN`을 사용합니다.
+`/api/treatment/next-step`과 `/api/treatment/facility-candidates`는 서버 DB를 조회합니다. `CLASSIFICATION_BASE_URL`은 별도 팀 문진 엔진 주소입니다. 신규 로트 문진 유형은 GET /api/classification/profiles에서 조회합니다. 문진을 마친 뒤 첫 공정 조회에 classification_session_id를 보내면 서버가 분류 기록을 대조합니다. 다음 공정의 전체 업체 검토(`/api/treatment/intake-reviews`)와 PP 공정의 추가 공개 웹 조사(`/api/treatment/facility-web-search`)는 `AI_BASE_URL`과 두 서비스의 같은 `SCRAP_INTAKE_SERVICE_TOKEN`을 사용합니다.

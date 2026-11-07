@@ -54,6 +54,7 @@
 | T-124 | 첫 공정의 업체 후보 전체를 Astra로 자동 검토 | 완료 | api-developer | treatment-registry | 화성 A의 PP 사출 잔재 3곳과 파쇄품 2곳에 대해 웹에서 Astra 실제 응답 확인 |
 | T-125 | 실제 산출물 기준 후속 업체 후보 전체를 Astra로 자동 검토 | 완료 | api-developer | treatment-registry | B의 PP 파쇄품으로 C 후보 2곳 실검토 및 A·B·C QR 추적 종료 확인 |
 | T-126 | 예정 산출물과 실제 처리 결과를 구분해 추적 | 완료 | api-developer | treatment-registry | A·B 예정 후보 공유, 미확인 기록, 형태 한 번 확인, 측정값 보충, Astra·QR 연동을 웹에서 확인 |
+| T-127 | 신규 로트 문진 유형과 첫 업체 조회 범위 제한 | 완료 | api-developer | treatment-registry | 서버에서 유형과 분류 세션을 검증하고 R코드 전달 |
 | T-118 | 검토 실행을 Service Bus + 별도 워커 파드로 이전 | 대기 | backend-architect | review-runs | 요구사항 NFR-6, infra 리소스 확정 후 |
 | T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |

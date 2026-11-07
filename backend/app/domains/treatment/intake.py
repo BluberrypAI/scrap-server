@@ -1,4 +1,5 @@
 from typing import Literal
+from uuid import UUID
 
 import httpx
 from pydantic import BaseModel, ConfigDict, Field, model_validator
@@ -23,6 +24,7 @@ class IntakeSelection(BaseModel):
     recycling_types: RecyclingTypes | None = None
     completed_transitions: list[CatalogKey] = Field(default_factory=list, max_length=8)
     observed_output: ObservedOutput | None = None
+    classification_session_id: UUID | None = None
 
     @model_validator(mode="after")
     def validate_observation(self):
@@ -57,6 +59,11 @@ def build_intake_batch(request: IntakeSelection, reference):
     allowed = {row.key: row for row in reference.sources if row.model_transfer_allowed}
     material = resolve_material(request.material)
     form = normalize_form(request.input_form)
+
+    def types_for(option):
+        types = option.recycling_types or request.recycling_types
+        return types.model_dump() if not follow_up and types is not None else {}
+
     return [
         {
             "capability_key": facility.capability_key,
@@ -66,9 +73,7 @@ def build_intake_batch(request: IntakeSelection, reference):
             "waste_code": None if follow_up else request.waste_code,
             "material": material,
             "form": option.input_state.label if follow_up else form,
-            "recycling_types": option.recycling_types.model_dump()
-            if not follow_up and option.recycling_types
-            else {},
+            "recycling_types": types_for(option),
             "next_check": (
                 facility.intake_review.next_check
                 if facility.intake_review

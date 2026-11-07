@@ -1,6 +1,7 @@
 """Contract for looking up the next step of a classified waste case."""
 
 from typing import Annotated, Any, Literal
+from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
@@ -38,6 +39,7 @@ class NextStepRequest(BaseModel):
     observed_output: ObservedOutput | None = None
     recycling_types: RecyclingTypes | None = None
     preview_transition: CatalogKey | None = None
+    classification_session_id: UUID | None = None
 
     @model_validator(mode="after")
     def validate_observation(self):
