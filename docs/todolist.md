@@ -48,6 +48,13 @@
 | T-115 | 검토 결과 조회 (후보 목록·상세, 검토 대기, 확인 과제, 버전 비교) | 완료 | api-developer | review-results | 이슈 #20 |
 | T-116 | 리스크 단계 결정, 추가 자료, 재실행 | 완료 | api-developer | review-risks-supplements | 이슈 #21. 재실행은 항상 research부터 (INT-005 기능 축소) |
 | T-120 | AI 없이 백엔드를 검증하는 가짜 엔진 모드와 계약 스냅샷 | 완료 | api-developer | dev-mock-engine | 이슈 #27. AI_ENGINE_MODE=mock, 스냅샷은 ai 스키마 변경 시 수동 갱신 |
+| T-121 | 인계 QR의 인수·입고 이벤트 서버 저장 | 완료 | api-developer | transport-handoffs | 로컬 PostgreSQL과 별도 브라우저 시연 확인 |
+| T-122 | 전국 처리업체 명부·다음 공정 API를 서버 PostgreSQL에 연결 | 완료 | db-engineer | treatment-registry | 전국 원본 9,604행 적재. PP·폐금속 번호 조회의 조인 오류 수정 및 웹에서 재검증 |
+| T-123 | PP 문진의 R코드를 공정별 조사에 연결 | 완료 | api-developer | treatment-registry | 화성 A의 사출 잔재·파쇄품을 웹에서 비교. 추가 공개 조사 결과는 인계 보류 |
+| T-124 | 첫 공정의 업체 후보 전체를 Astra로 자동 검토 | 완료 | api-developer | treatment-registry | 화성 A의 PP 사출 잔재 3곳과 파쇄품 2곳에 대해 웹에서 Astra 실제 응답 확인 |
+| T-125 | 실제 산출물 기준 후속 업체 후보 전체를 Astra로 자동 검토 | 완료 | api-developer | treatment-registry | B의 PP 파쇄품으로 C 후보 2곳 실검토 및 A·B·C QR 추적 종료 확인 |
+| T-126 | 예정 산출물과 실제 처리 결과를 구분해 추적 | 완료 | api-developer | treatment-registry | A·B 예정 후보 공유, 미확인 기록, 형태 한 번 확인, 측정값 보충, Astra·QR 연동을 웹에서 확인 |
+| T-127 | 신규 로트 문진 유형과 첫 업체 조회 범위 제한 | 완료 | api-developer | treatment-registry | 서버에서 유형과 분류 세션을 검증하고 R코드 전달 |
 | T-118 | 검토 실행을 Service Bus + 별도 워커 파드로 이전 | 대기 | backend-architect | review-runs | 요구사항 NFR-6, infra 리소스 확정 후 |
 | T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |
