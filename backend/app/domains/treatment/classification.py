@@ -119,6 +119,11 @@ def recorded_recycling_types(record, profile, waste_code):
     ):
         raise ClassificationHold("문진의 분류번호·재질·오염 여부를 확인해 주세요.")
 
+    if profile.material == "aluminium":
+        can_scope = code.get("facts_used", {}).get("can_scope", {})
+        if can_scope.get("state") != "VALUE" or can_scope.get("value") != "covered_aluminium":
+            raise ClassificationHold("알루미늄 음료캔인지 문진에서 확인해 주세요.")
+
     groups = {"free": [], "analysis": [], "unmarked": []}
     for item in recycling["allowed"]:
         required = item["pre_analysis_required"]

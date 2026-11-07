@@ -122,3 +122,32 @@ async def test_session_uses_recorded_r_codes_and_holds_unclear_lots(client, db, 
     result = (await client.post("/api/treatment/next-step", json=params)).json()
     assert result["status"] == "review_required"
     assert result["options"] == []
+
+
+@pytest.mark.parametrize("can_scope", ["covered_unknown", "covered_steel"])
+def test_metal_can_code_alone_does_not_confirm_aluminium(can_scope):
+    record = {
+        "record_version": "1",
+        "complete": True,
+        "open_items": [],
+        "material": {"id": "metal_can"},
+        "items": {
+            "code": {
+                "status": "PROVISIONAL",
+                "code": "51-29-03",
+                "facts_used": {"can_scope": {"state": "VALUE", "value": can_scope}},
+            },
+            "designated": {"value": "NOT_DESIGNATED"},
+            "recycling": {
+                "prohibited": False,
+                "allowed": [{"r_code": "R-10", "pre_analysis_required": True}],
+            },
+        },
+        "hazards": {
+            key: {"state": "VALUE", "value": value}
+            for key, value in classification.CLEAN_FACTS.items()
+        },
+    }
+    profile = classification.PROFILES["aluminium-beverage-can"]
+    with pytest.raises(classification.ClassificationHold, match="알루미늄 음료캔"):
+        classification.recorded_recycling_types(record, profile, "51-29-03")
