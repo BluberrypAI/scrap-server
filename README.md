@@ -90,30 +90,6 @@ ReSource/
 | GET | /api/v1/companies/me | 내 기업 조회 |
 | PATCH | /api/v1/companies/me | 내 기업 수정 (profile_version으로 충돌 감지) |
 | GET | /api/v1/companies/me/history | 기업 정보 변경 이력 (페이지네이션) |
-| POST | /api/v1/reviews | 검토 생성 (자연어 상황, 구조화 항목) |
-| GET | /api/v1/reviews | 검토 목록 |
-| GET | /api/v1/reviews/{reviewId} | 검토 상세 |
-| GET | /api/v1/reviews/{reviewId}/intake | 입력 항목 정리와 보완 질문 |
-| PATCH | /api/v1/reviews/{reviewId}/intake | 보완 질문 답변 |
-| POST | /api/v1/reviews/{reviewId}/documents | 문서 업로드 (pdf, png, jpg, xlsx, csv) |
-| GET | /api/v1/reviews/{reviewId}/documents | 문서 목록과 추출 상태 |
-| GET | /api/v1/documents/{documentId}/values | 측정값 후보 목록 |
-| PATCH | /api/v1/documents/{documentId}/values/{valueId} | 측정값 검수·수정 |
-| POST | /api/v1/documents/{documentId}/replace | 문서 교체 (검수 상태 해제) |
-| POST | /api/v1/documents/{documentId}/dev-values | 샘플 측정값 넣기 (로컬 전용) |
-| POST | /api/v1/reviews/{reviewId}/runs | 검토 실행 (202, AI 엔진 호출은 워커) |
-| GET | /api/v1/reviews/{reviewId}/runs | 실행 이력 |
-| GET | /api/v1/reviews/{reviewId}/runs/{runId} | 실행 상태 (polling) |
-| GET | /api/v1/reviews/{reviewId}/runs/{runId}/candidates | 후보 목록 (judgment 필터) |
-| GET | /api/v1/reviews/{reviewId}/runs/{runId}/candidates/{candidateId} | 후보 상세 (경로, 리스크, 법령 근거) |
-| GET | /api/v1/reviews/{reviewId}/runs/{runId}/review-queue | 전문가 검토 대기 |
-| GET | /api/v1/reviews/{reviewId}/runs/{runId}/tasks | 확인 과제 |
-| GET | /api/v1/reviews/{reviewId}/compare | 두 실행 비교 |
-| POST | /api/v1/reviews/{reviewId}/runs/{runId}/candidates/{candidateId}/risk-steps/{stepNo}/decision | 리스크 단계 결정 |
-| POST | /api/v1/reviews/{reviewId}/runs/{runId}/risks/{riskId}/evidence | 리스크에 증빙 연결 (해소) |
-| POST | /api/v1/reviews/{reviewId}/supplements | 추가 자료 등록 |
-| GET | /api/v1/reviews/{reviewId}/supplements | 추가 자료 목록 |
-| POST | /api/v1/reviews/{reviewId}/runs/{runId}/rerun | 추가 자료 반영 재실행 |
 
 오류는 모든 API에서 `{"code", "message", "details"}` 형식으로 반환함. 오류 코드 목록: [docs/specs/error-response.md](docs/specs/error-response.md)
 

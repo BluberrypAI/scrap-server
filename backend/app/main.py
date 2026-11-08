@@ -1,7 +1,3 @@
-import logging
-from collections.abc import AsyncIterator
-from contextlib import asynccontextmanager
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
@@ -9,14 +5,9 @@ from starlette.middleware.sessions import SessionMiddleware
 from app.api.v1.router import api_router
 from app.core.config import Settings, get_settings
 from app.core.errors import ErrorResponse, register_error_handlers
-from app.db.session import SessionLocal
 from app.domains.auth.dev_router import router as dev_auth_router
-from app.domains.documents.dev_router import router as dev_documents_router
-from app.domains.runs import service as run_service
 from app.domains.treatment.router import classification_router
 from app.domains.treatment.router import router as treatment_router
-
-logger = logging.getLogger(__name__)
 
 DESCRIPTION = """
 기업 폐기물 처리 의사결정 AI 에이전트 **Re:Source AI**의 백엔드 API.
@@ -29,31 +20,8 @@ TAGS = [
     {"name": "auth", "description": "Google·Microsoft 소셜 로그인, 토큰 갱신·로그아웃"},
     {"name": "users", "description": "현재 사용자"},
     {"name": "companies", "description": "기업·폐기물 프로필 (온보딩)"},
-    {"name": "reviews", "description": "검토 생성·조회, 입력 항목 정리와 보완 질문"},
-    {"name": "documents", "description": "증빙 문서 업로드·교체, 측정값 검수"},
-    {"name": "runs", "description": "검토 실행(AI 엔진 호출)과 실행 상태·이력"},
-    {
-        "name": "results",
-        "description": "실행 결과: 후보, 검토 대기, 확인 과제, 버전 비교",
-    },
-    {"name": "risks", "description": "리스크 단계 결정과 증빙 연결"},
-    {"name": "supplements", "description": "추가 자료 등록 (재실행에 반영)"},
     {"name": "health", "description": "서버 상태 확인"},
 ]
-
-
-@asynccontextmanager
-async def lifespan(app: FastAPI) -> AsyncIterator[None]:
-    # 실행 워커가 API 프로세스 안에 있어, 재시작 전에 끝나지 못한 실행은 이어서 돌릴 수 없음
-    try:
-        async with SessionLocal() as db:
-            count = await run_service.recover_interrupted(db)
-        if count:
-            logger.warning("Marked %d interrupted run(s) as failed", count)
-    except Exception:
-        # 마이그레이션 전 등 테이블이 없어도 서버는 뜨게 함
-        logger.exception("Could not recover interrupted runs")
-    yield
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
@@ -69,7 +37,6 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         openapi_url="/openapi.json" if docs else None,
         # Replaces FastAPI's default 422 schema in the docs with the common error format.
         responses={422: {"model": ErrorResponse, "description": "요청 값 검증 실패"}},
-        lifespan=lifespan,
     )
 
     # Holds OAuth state/nonce between /login and /callback only.
@@ -95,7 +62,6 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(classification_router)
     if settings.app_env in ("local", "test"):
         app.include_router(dev_auth_router, prefix="/api/v1")
-        app.include_router(dev_documents_router, prefix="/api/v1")
 
     @app.get("/health", tags=["health"])
     async def health() -> dict[str, str]:

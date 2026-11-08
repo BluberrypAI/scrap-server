@@ -50,19 +50,11 @@ class Settings(BaseSettings):
     microsoft_client_secret: str = ""
     microsoft_tenant: str = "common"
 
-    # 업로드 문서 저장 위치(로컬 폴더)와 최대 크기. 운영은 Blob Storage로 바꿀 예정
-    upload_dir: str = "./uploads"
-    max_upload_mb: int = 20
-
-    # AI 엔진(ai 레포) 주소. 비어 있으면 검토 실행 요청을 503 ENGINE_UNAVAILABLE로 거절함
+    # AI 서버(ai 레포) 주소. 처리 경로 데모(treatment)가 업체 웹 검색·문진 검토에 씀
     ai_base_url: str = ""
     classification_base_url: str = ""
     scrap_intake_service_token: SecretStr = SecretStr("")
-    # 엔진 조사(KG 전체 페이지 + 법령 검색)는 오래 걸릴 수 있음
-    ai_timeout_seconds: float = 300
     transport_demo_facilities: dict[str, str] = {}
-    # mock이면 AI 서버 없이 고정 샘플로 실행함 (로컬 검증용, prod에서는 시작을 막음)
-    ai_engine_mode: Literal["http", "mock"] = "http"
 
     # 모델 검증 및 유틸리티
     @model_validator(mode="after")
@@ -75,8 +67,6 @@ class Settings(BaseSettings):
                 raise ValueError("JWT_SECRET and SESSION_SECRET must be set in prod")
             if not self.is_postgres:
                 raise ValueError("DATABASE_URL must point to PostgreSQL in prod")
-            if self.ai_engine_mode == "mock":
-                raise ValueError("AI_ENGINE_MODE=mock is not allowed in prod")
         if not self.cookie_domain:  # 쿠키 도메인이 설정되지 않은 경우 None으로 둠
             self.cookie_domain = None
         return self
