@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domains.treatment.directory import load_snapshot
 from app.domains.treatment.errors import TreatmentError
-from app.domains.treatment.models import TreatmentFacilityListing, TreatmentSnapshot
+from app.domains.treatment.models import FacilityImportRow, TreatmentSnapshot
 from app.domains.treatment.reference import PlanningReference, digest, read_bundle
 
 
@@ -20,7 +20,7 @@ async def read_reference(db: AsyncSession):
 
 
 async def read_registry(db: AsyncSession, *, recycling_only: bool, waste_code: str | None):
-    listings = TreatmentFacilityListing
+    listings = FacilityImportRow
     snapshots = TreatmentSnapshot
     eligible = (listings.is_recycling if recycling_only else listings.is_treatment).is_(True)
     record = listings.record
@@ -64,7 +64,7 @@ async def replace_snapshots(db: AsyncSession, registry_path=None, expected_sha25
     )
     if snapshot is not None:
         records, manifest = snapshot
-        await db.execute(delete(TreatmentFacilityListing))
+        await db.execute(delete(FacilityImportRow))
         for start in range(0, len(records), 250):
             batch = [
                 {
@@ -78,7 +78,7 @@ async def replace_snapshots(db: AsyncSession, registry_path=None, expected_sha25
                 }
                 for row in records[start : start + 250]
             ]
-            await db.execute(insert(TreatmentFacilityListing), batch)
+            await db.execute(insert(FacilityImportRow), batch)
         await db.merge(
             TreatmentSnapshot(
                 kind="registry", checksum=manifest["records_sha256"], payload=manifest
