@@ -2,7 +2,7 @@
 
 | 항목 | 내용 |
 | --- | --- |
-| 상태 | 진행 중 |
+| 상태 | 구현 완료 |
 | 관련 기획 | SCRAP 기획서(2026-11-07) 3장 서비스 플로우, product-plan 2장 (관리자 계정 1개 = 기업 1개) |
 | 관련 todo | T-128 |
 
@@ -69,15 +69,15 @@
 ## 6. 완료 조건
 
 - [x] 검토·문서·실행·결과·리스크·보완 자료 API와 테이블이 없고, 남은 테스트가 통과함
-- [ ] 소셜 로그인 첫 로그인 시 `users`에 provider, provider_subject가 있는 행이 생기고, 같은 provider로 다시 로그인하면 같은 사용자로 들어감
-- [ ] 온보딩 전 `GET /companies/me`는 404, `GET /users/me`의 `company_id`는 null
-- [ ] 필수 항목(회사명, 담당자 이메일, 업종, 사업장 이름·주소, 배출시설, 주생산품)이 하나라도 빠지면 `POST /companies`는 422
-- [ ] 주 폐기물 종류 없이도 `POST /companies`가 성공하고 빈 배열로 돌아옴
-- [ ] 없앤 필드(사업자번호, 대표자, 본사 주소, contact 객체)를 보내면 422
-- [ ] 온보딩한 사용자의 `POST /companies`는 409
-- [ ] `PATCH /companies/me`가 profile_version을 올리고 이력을 남기며, 버전이 다르면 409
-- [ ] 탈퇴 purge 시 사용자, 기업, 변경 이력이 함께 지워짐
-- [ ] 마이그레이션: upgrade 후 기존 로그인 정보가 `users`에, 기업·주 폐기물 정보가 `companies`에 남음, downgrade로 이전 구조로 돌아감, `alembic check` 통과
+- [x] 소셜 로그인 첫 로그인 시 `users`에 provider, provider_subject가 있는 행이 생기고, 같은 provider로 다시 로그인하면 같은 사용자로 들어감
+- [x] 온보딩 전 `GET /companies/me`는 404, `GET /users/me`의 `company_id`는 null
+- [x] 필수 항목(회사명, 담당자 이메일, 업종, 사업장 이름·주소, 배출시설, 주생산품)이 하나라도 빠지면 `POST /companies`는 422
+- [x] 주 폐기물 종류 없이도 `POST /companies`가 성공하고 빈 배열로 돌아옴
+- [x] 없앤 필드(사업자번호, 대표자, 본사 주소, contact 객체)를 보내면 422
+- [x] 온보딩한 사용자의 `POST /companies`는 409
+- [x] `PATCH /companies/me`가 profile_version을 올리고 이력을 남기며, 버전이 다르면 409
+- [x] 탈퇴 purge 시 사용자, 기업, 변경 이력이 함께 지워짐
+- [x] 마이그레이션: upgrade 후 기존 로그인 정보가 `users`에, 기업·주 폐기물 정보가 `companies`에 남음, downgrade로 이전 구조로 돌아감, `alembic check` 통과
 
 ## 7. 미정 사항
 
