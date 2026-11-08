@@ -12,7 +12,7 @@ router = APIRouter(prefix="/users", tags=["users"])
 
 @router.get("/me", response_model=UserRead)
 async def read_me(user: CurrentUser, db: DbSession) -> UserRead:
-    company = await company_service.get_company_by_owner(db, user.id)
+    company = await company_service.get_company_by_user(db, user.id)
     return UserRead(
         id=user.id,
         email=user.email,

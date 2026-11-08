@@ -93,11 +93,12 @@ def auth_client(client: AsyncClient, user: User) -> AsyncClient:
 # 검토 관련 테스트가 함께 쓰는 기업 (주요 폐기물이 하나라 소재 기본값이 생김)
 COMPANY_PAYLOAD = {
     "company_name": "가상사출(주)",
-    "business_registration_no": "123-45-67890",
-    "representative_name": "홍대표",
+    "contact_email": "manager@example.com",
     "industry": "플라스틱 사출 성형",
-    "head_office_address": "경기도 시흥시 정왕동",
-    "contact": {"name": "김담당"},
+    "site_name": "시흥 1공장",
+    "site_address": "경기도 시흥시 정왕동",
+    "site_facilities": ["혼합시설"],
+    "main_products": ["자동차 내장 부품"],
     "main_waste_types": [{"category": "PP", "generation_cycle": "monthly"}],
 }
 

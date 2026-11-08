@@ -11,7 +11,7 @@ from app.domains.auth.cookies import ACCESS_COOKIE, REFRESH_COOKIE
 from app.domains.auth.models import RefreshToken
 from app.domains.auth.service import login_or_register, start_session
 from app.domains.companies import service as company_service
-from app.domains.companies.models import Company, CompanyProfileHistory, WasteProfile
+from app.domains.companies.models import Company, CompanyProfileHistory
 from app.domains.companies.schemas import CompanyCreate, CompanyUpdate
 from app.domains.users.models import User
 from app.domains.users.service import purge_withdrawn_users
@@ -19,11 +19,12 @@ from app.domains.users.service import purge_withdrawn_users
 WITHDRAW = "/api/v1/users/me/withdraw"
 COMPANY = CompanyCreate(
     company_name="한빛플라스틱",
-    business_registration_no="1234567890",
-    representative_name="홍대표",
+    contact_email="manager@example.com",
     industry="플라스틱 제품 제조",
-    head_office_address="경기도 안산시",
-    contact={"name": "김담당"},
+    site_name="안산 공장",
+    site_address="경기도 안산시",
+    site_facilities=["혼합시설"],
+    main_products=["플라스틱 용기"],
     main_waste_types=[{"category": "PP", "generation_cycle": "weekly"}],
 )
 
@@ -104,7 +105,6 @@ async def test_purge_deletes_only_users_past_deletion_time(db: AsyncSession):
     assert remaining == {pending.id, active.id}
     assert await count(db, RefreshToken) == 2
     assert await count(db, Company) == 2
-    assert await count(db, WasteProfile) == 2
     assert await count(db, CompanyProfileHistory) == 2
 
 

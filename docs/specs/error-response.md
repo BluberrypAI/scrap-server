@@ -55,7 +55,7 @@
 {
   "code": "VALIDATION_ERROR",
   "message": "요청 값이 올바르지 않음",
-  "details": [{ "field": "body.business_registration_no", "message": "Value error, 사업자등록번호는 숫자 10자리여야 함" }]
+  "details": [{ "field": "body.site_facilities", "message": "List should have at least 1 item after validation, not 0" }]
 }
 ```
 

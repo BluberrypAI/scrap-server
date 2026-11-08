@@ -27,7 +27,7 @@ async def purge_withdrawn_users(db: AsyncSession, now: datetime | None = None) -
         return 0
     # Explicit deletes instead of FK cascades so SQLite (no FK enforcement) behaves the same.
     await auth_service.delete_sessions_of_users(db, user_ids)
-    await company_service.delete_companies_of_owners(db, user_ids)
+    await company_service.delete_companies_of_users(db, user_ids)
     await user_repo.delete_users(db, user_ids)
     await db.commit()
     return len(user_ids)

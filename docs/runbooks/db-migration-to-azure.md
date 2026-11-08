@@ -56,7 +56,7 @@ psql "host=<server>.postgres.database.azure.com port=5432 dbname=resource user=<
 
 - [ ] `GET /health` 200
 - [ ] 소셜 로그인 후 `users`에 provider, provider_subject가 있는 행 생성
-- [ ] 기업 온보딩 후 `companies`, `waste_profiles`에 행 생성
+- [ ] 기업 온보딩 후 `companies`에 행 생성
 - [ ] `DOCS_ENABLED`를 운영 정책에 맞게 설정
 
 ## 6. 되돌리기

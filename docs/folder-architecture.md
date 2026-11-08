@@ -77,7 +77,7 @@ backend/
 │  └─ domains/
 │     ├─ auth/                 # 소셜 로그인, 토큰 쿠키, 현재 사용자 의존성
 │     ├─ users/                # 사용자 (로그인 수단 provider, provider_subject 포함)
-│     ├─ companies/            # 기업 프로필, 폐기물 프로필 (온보딩)
+│     ├─ companies/            # 기업·사업장 정보, 변경 이력 (온보딩)
 │     ├─ transport/            # 현장 인계 기록 (QR 확인 기능으로 옮길 예정)
 │     └─ treatment/            # 처리 경로 데모: 처리 카탈로그, 업체 후보 조회 (/api/treatment, /api/classification)
 └─ tests/

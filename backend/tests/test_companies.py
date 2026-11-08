@@ -16,16 +16,26 @@ HISTORY = "/api/v1/companies/me/history"
 
 COMPANY = {
     "company_name": "가상사출(주)",
-    "business_registration_no": "123-45-67890",
-    "representative_name": "홍대표",
+    "contact_email": "manager@example.com",
     "industry": "플라스틱 사출 성형",
-    "head_office_address": "경기도 시흥시 정왕동 시화산업단지",
-    "contact": {"name": "김담당", "phone": "031-123-4567"},
+    "site_name": "시흥 1공장",
+    "site_address": "경기도 시흥시 정왕동 시화산업단지",
+    "site_facilities": ["혼합시설", "세척시설"],
+    "main_products": ["자동차 내장 부품"],
     "main_waste_types": [
         {"category": "PP", "generation_cycle": "monthly", "expected_monthly_volume_kg": 3000},
         {"category": "PE", "generation_cycle": "irregular"},
     ],
 }
+REQUIRED = (
+    "company_name",
+    "contact_email",
+    "industry",
+    "site_name",
+    "site_address",
+    "site_facilities",
+    "main_products",
+)
 
 
 @pytest.fixture
@@ -47,27 +57,55 @@ async def test_create_company_returns_201_with_version_1(auth_client: AsyncClien
 
     assert res.status_code == 201
     body = res.json()
-    assert body["company_name"] == COMPANY["company_name"]
-    assert body["contact"] == {"name": "김담당", "phone": "031-123-4567", "email": None}
+    for field in REQUIRED:
+        assert body[field] == COMPANY[field]
     assert [w["category"] for w in body["main_waste_types"]] == ["PP", "PE"]
+    assert all(uuid.UUID(w["id"]) for w in body["main_waste_types"])
     assert body["main_waste_types"][1]["expected_monthly_volume_kg"] is None
     assert body["profile_version"] == 1
+
+
+async def test_main_waste_types_are_optional(auth_client: AsyncClient):
+    payload = {k: v for k, v in COMPANY.items() if k != "main_waste_types"}
+
+    res = await auth_client.post(COMPANIES, json=payload)
+
+    assert res.status_code == 201
+    assert res.json()["main_waste_types"] == []
+
+
+@pytest.mark.parametrize("field", REQUIRED)
+async def test_missing_required_field_returns_422(auth_client: AsyncClient, field: str):
+    payload = {k: v for k, v in COMPANY.items() if k != field}
+
+    res = await auth_client.post(COMPANIES, json=payload)
+
+    assert res.status_code == 422
+
+
+@pytest.mark.parametrize("field", ["site_facilities", "main_products"])
+async def test_empty_name_list_returns_422(auth_client: AsyncClient, field: str):
+    res = await auth_client.post(COMPANIES, json={**COMPANY, field: []})
+    assert res.status_code == 422
+
+
+async def test_invalid_contact_email_returns_422(auth_client: AsyncClient):
+    res = await auth_client.post(COMPANIES, json={**COMPANY, "contact_email": "not-an-email"})
+    assert res.status_code == 422
+
+
+@pytest.mark.parametrize(
+    "field",
+    ["business_registration_no", "representative_name", "head_office_address", "contact"],
+)
+async def test_removed_field_returns_422(auth_client: AsyncClient, field: str):
+    res = await auth_client.post(COMPANIES, json={**COMPANY, field: "x"})
+    assert res.status_code == 422
 
 
 async def test_second_company_for_same_user_returns_409(onboarded: AsyncClient):
     res = await onboarded.post(COMPANIES, json=COMPANY)
     assert res.status_code == 409
-
-
-async def test_business_registration_no_is_stored_as_digits(onboarded: AsyncClient):
-    res = await onboarded.get(ME)
-    assert res.json()["business_registration_no"] == "1234567890"
-
-
-@pytest.mark.parametrize("brn", ["123-45-6789", "12345678901", "abc-de-fghij"])
-async def test_invalid_business_registration_no_returns_422(auth_client: AsyncClient, brn: str):
-    res = await auth_client.post(COMPANIES, json={**COMPANY, "business_registration_no": brn})
-    assert res.status_code == 422
 
 
 async def test_invalid_generation_cycle_returns_422(auth_client: AsyncClient):
@@ -87,8 +125,14 @@ async def test_my_company_after_onboarding(onboarded: AsyncClient):
     res = await onboarded.get(ME)
 
     assert res.status_code == 200
+    assert res.json()["site_facilities"] == COMPANY["site_facilities"]
     assert len(res.json()["main_waste_types"]) == 2
     assert res.json()["profile_version"] == 1
+
+
+async def test_me_company_id_is_null_before_onboarding(auth_client: AsyncClient):
+    res = await auth_client.get("/api/v1/users/me")
+    assert res.json()["company_id"] is None
 
 
 async def test_me_company_id_matches_after_onboarding(auth_client: AsyncClient):
@@ -108,18 +152,21 @@ async def test_create_company_requires_login(client: AsyncClient):
 
 
 async def test_update_bumps_version_and_reports_changed_fields(onboarded: AsyncClient):
-    new_contact = {"name": "이담당", "phone": None, "email": "lee@example.com"}
-
     res = await onboarded.patch(
-        ME, json={"profile_version": 1, "industry": "플라스틱 압출 성형", "contact": new_contact}
+        ME,
+        json={
+            "profile_version": 1,
+            "industry": "플라스틱 압출 성형",
+            "main_products": ["포장 필름"],
+        },
     )
 
     assert res.status_code == 200
-    assert res.json() == {"profile_version": 2, "changed_fields": ["industry", "contact"]}
+    assert res.json() == {"profile_version": 2, "changed_fields": ["industry", "main_products"]}
     body = (await onboarded.get(ME)).json()
     assert body["industry"] == "플라스틱 압출 성형"
-    assert body["contact"] == new_contact
-    assert body["head_office_address"] == COMPANY["head_office_address"]
+    assert body["main_products"] == ["포장 필름"]
+    assert body["site_address"] == COMPANY["site_address"]
     assert body["profile_version"] == 2
 
 
@@ -139,7 +186,7 @@ async def test_update_with_same_values_changes_nothing(onboarded: AsyncClient, d
         json={
             "profile_version": 1,
             "industry": COMPANY["industry"],
-            "contact": COMPANY["contact"],
+            "site_facilities": COMPANY["site_facilities"],
             "main_waste_types": COMPANY["main_waste_types"],
         },
     )
@@ -176,13 +223,13 @@ async def test_update_without_version_returns_422(onboarded: AsyncClient):
     assert res.status_code == 422
 
 
-@pytest.mark.parametrize("field", ["company_name", "business_registration_no", "unknown"])
-async def test_update_of_non_editable_field_returns_422(onboarded: AsyncClient, field: str):
+@pytest.mark.parametrize("field", ["business_registration_no", "head_office_address", "unknown"])
+async def test_update_of_unknown_field_returns_422(onboarded: AsyncClient, field: str):
     res = await onboarded.patch(ME, json={"profile_version": 1, field: "x"})
     assert res.status_code == 422
 
 
-@pytest.mark.parametrize("field", ["industry", "head_office_address", "contact"])
+@pytest.mark.parametrize("field", ["company_name", "industry", "site_facilities"])
 async def test_update_to_null_returns_422(onboarded: AsyncClient, field: str):
     res = await onboarded.patch(ME, json={"profile_version": 1, field: None})
     assert res.status_code == 422
@@ -198,14 +245,14 @@ async def test_update_without_company_returns_404(auth_client: AsyncClient):
 
 async def test_history_lists_newest_first(onboarded: AsyncClient):
     await onboarded.patch(ME, json={"profile_version": 1, "industry": "A"})
-    await onboarded.patch(ME, json={"profile_version": 2, "head_office_address": "서울"})
+    await onboarded.patch(ME, json={"profile_version": 2, "site_address": "서울"})
 
     res = await onboarded.get(HISTORY)
 
     assert res.status_code == 200
     items = res.json()["items"]
     assert [(i["profile_version"], i["changed_fields"]) for i in items] == [
-        (3, ["head_office_address"]),
+        (3, ["site_address"]),
         (2, ["industry"]),
     ]
     assert all(datetime.fromisoformat(i["changed_at"]).tzinfo for i in items)

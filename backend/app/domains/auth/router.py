@@ -60,7 +60,7 @@ async def callback(provider: str, request: Request, db: DbSession) -> Response:
     if user.is_withdrawn:
         return RedirectResponse(f"{frontend}/login?error=account_withdrawn", status.HTTP_302_FOUND)
 
-    has_company = await company_service.get_company_by_owner(db, user.id) is not None
+    has_company = await company_service.get_company_by_user(db, user.id) is not None
     response = RedirectResponse(
         f"{frontend}/" if has_company else f"{frontend}/onboarding", status.HTTP_302_FOUND
     )
