@@ -39,28 +39,11 @@
 | 405 | `METHOD_NOT_ALLOWED` | 경로는 있으나 메서드가 다름 |
 | 409 | `COMPANY_ALREADY_EXISTS` | 기업이 있는 사용자가 다시 등록 |
 | 409 | `VERSION_CONFLICT` | 기업 수정 시 profile_version 불일치 |
-| 409 | `COMPANY_REQUIRED` | 기업 정보 없이 검토 API 호출 |
-| 409 | `INTAKE_INCOMPLETE` | 필수 입력이 확인되지 않은 검토를 실행 |
-| 409 | `RUN_IN_PROGRESS` | 같은 검토에 진행 중인 실행이 있음 |
-| 409 | `RESULT_NOT_READY` | 결과가 없는 실행(진행 중·실패)의 결과 조회 |
-| 409 | `STEP_OUT_OF_ORDER` | 현재 단계가 아닌 리스크 단계에 결정 |
-| 409 | `RISK_OPTION_REQUIRED` | 해소되지 않은 심각 리스크 단계를 proceed_option 없이 confirm |
-| 409 | `NO_APPLICABLE_SUPPLEMENT` | 물량 불일치·미검수 추가 자료로 재실행 |
 | 422 | `VALIDATION_ERROR` | 요청 본문·쿼리·경로 값 검증 실패 |
-| 422 | `EMPTY_INPUT` | 검토 생성 시 상황 설명이 비어 있음 |
-| 422 | `TEXT_TOO_LONG` | 검토 생성 시 상황 설명이 5000자 초과 |
-| 422 | `UNIT_REQUIRED` | 측정값에 값은 있는데 단위가 없음 |
-| 422 | `INVALID_FILTER` | 후보 목록의 judgment 필터 값이 잘못됨 |
-| 422 | `DIFFERENT_REVIEW` | 다른 검토의 실행끼리 비교 |
-| 422 | `EVIDENCE_NOT_APPLICABLE` | 증빙으로 쓸 수 없는 자료(미검수, 물량 불일치)를 리스크에 연결 |
-| 422 | `MISSING_QUANTITY` | 추가 자료에 적용 물량이 없음 |
-| 413 | `FILE_TOO_LARGE` | 업로드 파일이 MAX_UPLOAD_MB 초과 |
-| 415 | `FILE_TYPE_UNSUPPORTED` | 허용되지 않은 문서 형식 |
+| 422 | `INVALID_FILTER` | 지원하지 않는 문진 유형이거나 유형과 답변이 맞지 않음 (처리 경로 데모) |
 | 500 | `INTERNAL_ERROR` | 처리되지 않은 서버 오류 |
 | 503 | `PROVIDER_NOT_CONFIGURED` | 클라이언트 ID가 설정되지 않은 소셜 로그인 제공자 |
-| 503 | `ENGINE_UNAVAILABLE` | AI_BASE_URL이 설정되지 않아 검토를 실행할 수 없음 |
-
-실행이 실패한 원인(엔진 연결 실패, 그래프 버전 변경 등)은 HTTP 오류가 아니라 실행 레코드의 `error.code`로 돌려줌 ([review-runs.md](review-runs.md) 15번).
+| 503 | `ENGINE_UNAVAILABLE` | 문진 엔진 주소(CLASSIFICATION_BASE_URL)가 없거나 연결하지 못함 (처리 경로 데모) |
 
 **예시**
 
@@ -72,7 +55,7 @@
 {
   "code": "VALIDATION_ERROR",
   "message": "요청 값이 올바르지 않음",
-  "details": [{ "field": "body.business_registration_no", "message": "Value error, 사업자등록번호는 숫자 10자리여야 함" }]
+  "details": [{ "field": "body.site_facilities", "message": "List should have at least 1 item after validation, not 0" }]
 }
 ```
 

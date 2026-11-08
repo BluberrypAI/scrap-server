@@ -22,7 +22,7 @@ router = APIRouter(prefix="/companies", tags=["companies"])
 
 
 async def _my_company(user: User, db: DbSession) -> Company:
-    company = await service.get_company_by_owner(db, user.id)
+    company = await service.get_company_by_user(db, user.id)
     if company is None:
         raise NotFoundError("등록된 기업이 없음")
     return company
@@ -46,9 +46,10 @@ async def read_my_company(user: CurrentUser, db: DbSession) -> CompanyRead:
     "/me",
     response_model=CompanyUpdateResult,
     summary="내 기업 정보 수정",
-    description="보낸 필드만 바꿈 (industry, head_office_address, contact, main_waste_types). "
-    "contact·main_waste_types는 통째로 교체함. 값이 바뀌면 profile_version이 1 오르고 "
-    "변경 이력이 남음. profile_version이 현재 버전과 다르면 409.",
+    description="보낸 필드만 바꿈 (company_name, contact_email, industry, site_name, "
+    "site_address, site_facilities, main_products, main_waste_types). 목록 필드는 통째로 "
+    "교체함. 값이 바뀌면 profile_version이 1 오르고 변경 이력이 남음. "
+    "profile_version이 현재 버전과 다르면 409.",
     responses={409: {"description": "다른 곳에서 먼저 수정됨 (profile_version 불일치)"}},
 )
 async def update_my_company(

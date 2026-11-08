@@ -1,12 +1,18 @@
 import uuid
 from collections.abc import Sequence
+from typing import Any
 
-from sqlalchemy import Select, delete, func, select
+from sqlalchemy import delete, func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.domains.companies.models import Company, CompanyProfileHistory, WasteProfile
-from app.domains.companies.schemas import CompanyCreate, CompanyUpdate, WasteProfileCreate
+from app.domains.companies.models import Company, CompanyProfileHistory
+from app.domains.companies.schemas import (
+    EDITABLE_FIELDS,
+    CompanyCreate,
+    CompanyUpdate,
+    WasteTypeCreate,
+)
 
 
 class CompanyAlreadyExistsError(Exception):
@@ -17,27 +23,23 @@ class VersionConflictError(Exception):
     pass
 
 
-async def get_company_by_owner(db: AsyncSession, owner_user_id: uuid.UUID) -> Company | None:
-    return await db.scalar(select(Company).where(Company.owner_user_id == owner_user_id))
+async def get_company_by_user(db: AsyncSession, user_id: uuid.UUID) -> Company | None:
+    return await db.scalar(select(Company).where(Company.user_id == user_id))
 
 
-def _waste_profiles(items: Sequence[WasteProfileCreate]) -> list[WasteProfile]:
-    return [WasteProfile(**item.model_dump()) for item in items]
+def _waste_types(items: Sequence[WasteTypeCreate]) -> list[dict[str, Any]]:
+    """API 항목을 JSON 저장 형식으로 바꿈. 항목마다 id를 새로 붙임."""
+    return [{"id": str(uuid.uuid4()), **item.model_dump(mode="json")} for item in items]
 
 
-async def create_company(
-    db: AsyncSession, owner_user_id: uuid.UUID, data: CompanyCreate
-) -> Company:
-    if await get_company_by_owner(db, owner_user_id):
+async def create_company(db: AsyncSession, user_id: uuid.UUID, data: CompanyCreate) -> Company:
+    if await get_company_by_user(db, user_id):
         raise CompanyAlreadyExistsError
 
     company = Company(
-        owner_user_id=owner_user_id,
-        **data.model_dump(exclude={"contact", "main_waste_types"}),
-        contact_name=data.contact.name,
-        contact_phone=data.contact.phone,
-        contact_email=data.contact.email,
-        waste_profiles=_waste_profiles(data.main_waste_types),
+        user_id=user_id,
+        **data.model_dump(exclude={"main_waste_types"}),
+        main_waste_types=_waste_types(data.main_waste_types),
     )
     db.add(company)
     try:
@@ -45,8 +47,11 @@ async def create_company(
     except IntegrityError as exc:  # concurrent onboarding by the same user
         await db.rollback()
         raise CompanyAlreadyExistsError from exc
-    await db.refresh(company, ["waste_profiles"])
     return company
+
+
+def _without_ids(items: Sequence[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [{k: v for k, v in item.items() if k != "id"} for item in items]
 
 
 def _apply_changes(company: Company, data: CompanyUpdate) -> list[str]:
@@ -54,30 +59,20 @@ def _apply_changes(company: Company, data: CompanyUpdate) -> list[str]:
     sent = data.model_fields_set
     changed: list[str] = []
 
-    for field in ("industry", "head_office_address"):
+    for field in EDITABLE_FIELDS:
         value = getattr(data, field)
-        if field in sent and value != getattr(company, field):
-            setattr(company, field, value)
-            changed.append(field)
-
-    if "contact" in sent and data.contact is not None:
-        new = (data.contact.name, data.contact.phone, data.contact.email)
-        if new != (company.contact_name, company.contact_phone, company.contact_email):
-            company.contact_name, company.contact_phone, company.contact_email = new
-            changed.append("contact")
-
-    if "main_waste_types" in sent and data.main_waste_types is not None:
-        current = [
-            (w.category, w.generation_cycle, w.expected_monthly_volume_kg)
-            for w in company.waste_profiles
-        ]
-        new_items = [
-            (w.category, w.generation_cycle, w.expected_monthly_volume_kg)
-            for w in data.main_waste_types
-        ]
-        if new_items != current:
-            company.waste_profiles = _waste_profiles(data.main_waste_types)
-            changed.append("main_waste_types")
+        if field not in sent or value is None:
+            continue
+        if field == "main_waste_types":
+            new = _waste_types(value)
+            if _without_ids(new) == _without_ids(company.main_waste_types):
+                continue
+            value = new
+        elif value == getattr(company, field):
+            continue
+        # JSON 컬럼은 새 객체를 넣어야 변경이 감지됨
+        setattr(company, field, value)
+        changed.append(field)
 
     return changed
 
@@ -126,22 +121,16 @@ async def list_history(
     return list(rows), total or 0
 
 
-def company_ids_of_owners(owner_user_ids: Sequence[uuid.UUID]) -> Select[tuple[uuid.UUID]]:
-    """사용자들이 가진 기업 id 서브쿼리. 다른 도메인이 기업에 딸린 데이터를 지울 때 씀."""
-    return select(Company.id).where(Company.owner_user_id.in_(owner_user_ids))
-
-
-async def delete_companies_of_owners(db: AsyncSession, owner_user_ids: Sequence[uuid.UUID]) -> None:
-    """Delete companies, their waste profiles and history for purged users. The caller commits."""
-    company_ids = company_ids_of_owners(owner_user_ids)
-    for child in (WasteProfile, CompanyProfileHistory):
-        await db.execute(
-            delete(child)
-            .where(child.company_id.in_(company_ids))
-            .execution_options(synchronize_session=False)
-        )
+async def delete_companies_of_users(db: AsyncSession, user_ids: Sequence[uuid.UUID]) -> None:
+    """Delete companies and their history for purged users. The caller commits."""
+    company_ids = select(Company.id).where(Company.user_id.in_(user_ids))
+    await db.execute(
+        delete(CompanyProfileHistory)
+        .where(CompanyProfileHistory.company_id.in_(company_ids))
+        .execution_options(synchronize_session=False)
+    )
     await db.execute(
         delete(Company)
-        .where(Company.owner_user_id.in_(owner_user_ids))
+        .where(Company.user_id.in_(user_ids))
         .execution_options(synchronize_session=False)
     )

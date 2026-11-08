@@ -4,7 +4,6 @@ from app.db.session import DbSession
 from app.domains.auth.cookies import clear_auth_cookies
 from app.domains.auth.dependencies import CurrentUser
 from app.domains.companies import service as company_service
-from app.domains.users import repository as user_repo
 from app.domains.users import service
 from app.domains.users.schemas import UserRead, WithdrawRead, WithdrawRequest
 
@@ -13,14 +12,12 @@ router = APIRouter(prefix="/users", tags=["users"])
 
 @router.get("/me", response_model=UserRead)
 async def read_me(user: CurrentUser, db: DbSession) -> UserRead:
-    company = await company_service.get_company_by_owner(db, user.id)
-    provider = await user_repo.get_provider(db, user.id)
-    assert provider is not None  # every user is created together with a social account
+    company = await company_service.get_company_by_user(db, user.id)
     return UserRead(
         id=user.id,
         email=user.email,
         name=user.name,
-        provider=provider,
+        provider=user.provider,
         company_id=company.id if company else None,
     )
 

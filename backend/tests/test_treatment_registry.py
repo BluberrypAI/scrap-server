@@ -7,7 +7,7 @@ from pydantic import SecretStr
 from sqlalchemy import func, select
 
 from app.domains.treatment.directory import NATIONAL_COLUMNS
-from app.domains.treatment.models import TreatmentFacilityListing
+from app.domains.treatment.models import FacilityImportRow
 from app.domains.treatment.repository import replace_snapshots
 
 
@@ -37,7 +37,7 @@ async def test_registry_ingests_every_row_and_filters_by_exact_code(db, client, 
     checksum = sha256(content).hexdigest()
     assert (await replace_snapshots(db, path, checksum))["registry_rows_imported"] == 4
     assert (await replace_snapshots(db, path, checksum))["registry_rows_imported"] == 4
-    assert await db.scalar(select(func.count()).select_from(TreatmentFacilityListing)) == 4
+    assert await db.scalar(select(func.count()).select_from(FacilityImportRow)) == 4
 
     endpoint = "/api/treatment/facility-candidates"
     filters = {

@@ -1,8 +1,9 @@
 import uuid
 from enum import StrEnum
+from typing import Any
 
-from sqlalchemy import JSON, Enum, Float, ForeignKey, Integer, String, UniqueConstraint
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy import JSON, ForeignKey, Integer, String, UniqueConstraint
+from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base, TimestampMixin
 
@@ -15,53 +16,28 @@ class GenerationCycle(StrEnum):
 
 
 class Company(Base, TimestampMixin):
+    """회원이 온보딩에서 등록한 기업과 사업장(기업당 1곳). 행이 없으면 온보딩 전임."""
+
     __tablename__ = "companies"
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
-    # unique: one company per manager account (product-plan 2장).
-    owner_user_id: Mapped[uuid.UUID] = mapped_column(
+    # unique: 회원 1명 = 기업 1곳 (product-plan 2장)
+    user_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("users.id", ondelete="CASCADE"), unique=True
     )
     company_name: Mapped[str] = mapped_column(String(200))
-    # Digits only (10). Not verified against the tax office.
-    business_registration_no: Mapped[str] = mapped_column(String(10))
-    representative_name: Mapped[str] = mapped_column(String(100))
+    contact_email: Mapped[str] = mapped_column(String(320))
     industry: Mapped[str] = mapped_column(String(100))
-    head_office_address: Mapped[str] = mapped_column(String(500))
-    contact_name: Mapped[str] = mapped_column(String(100))
-    contact_phone: Mapped[str | None] = mapped_column(String(50))
-    contact_email: Mapped[str | None] = mapped_column(String(320))
-    # Bumped on every edit that changes a value; clients send it back to detect conflicts.
+    # 주생산품 이름 목록
+    main_products: Mapped[list[str]] = mapped_column(JSON)
+    # [{"id", "category", "generation_cycle", "expected_monthly_volume_kg"}]. 선택 항목
+    main_waste_types: Mapped[list[dict[str, Any]]] = mapped_column(JSON)
+    site_name: Mapped[str] = mapped_column(String(200))
+    site_address: Mapped[str] = mapped_column(String(500))
+    # 운영 중인 배출시설 이름 목록 (예: 폐수처리시설)
+    site_facilities: Mapped[list[str]] = mapped_column(JSON)
+    # 값이 바뀌는 수정마다 1씩 오름. 클라이언트가 다시 보내 동시 수정을 감지함
     profile_version: Mapped[int] = mapped_column(Integer, default=1, server_default="1")
-
-    waste_profiles: Mapped[list["WasteProfile"]] = relationship(
-        back_populates="company",
-        cascade="all, delete-orphan",
-        lazy="selectin",
-        order_by="WasteProfile.created_at",
-    )
-
-
-class WasteProfile(Base, TimestampMixin):
-    __tablename__ = "waste_profiles"
-
-    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
-    company_id: Mapped[uuid.UUID] = mapped_column(
-        ForeignKey("companies.id", ondelete="CASCADE"), index=True
-    )
-    category: Mapped[str] = mapped_column(String(100))
-    generation_cycle: Mapped[GenerationCycle] = mapped_column(
-        Enum(
-            GenerationCycle,
-            native_enum=False,
-            length=20,
-            values_callable=lambda e: [m.value for m in e],
-        )
-    )
-    # Left empty when unknown; never estimated (product-plan 4장).
-    expected_monthly_volume_kg: Mapped[float | None] = mapped_column(Float)
-
-    company: Mapped[Company] = relationship(back_populates="waste_profiles", lazy="raise")
 
 
 class CompanyProfileHistory(Base, TimestampMixin):
@@ -76,5 +52,5 @@ class CompanyProfileHistory(Base, TimestampMixin):
         ForeignKey("companies.id", ondelete="CASCADE"), index=True
     )
     profile_version: Mapped[int] = mapped_column(Integer)
-    # API field names, e.g. ["industry", "contact"].
+    # API field names, e.g. ["industry", "site_name"].
     changed_fields: Mapped[list[str]] = mapped_column(JSON)

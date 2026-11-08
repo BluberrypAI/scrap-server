@@ -24,12 +24,12 @@ async def test_missing_token_returns_auth_required(client: AsyncClient):
 
 
 async def test_validation_error_lists_fields(auth_client: AsyncClient):
-    payload = {**COMPANY, "contact": {"name": ""}}
+    payload = {**COMPANY, "main_waste_types": [{"category": "", "generation_cycle": "weekly"}]}
 
     res = await auth_client.post(COMPANIES, json=payload)
 
     body = assert_error(res, 422, "VALIDATION_ERROR")
-    assert [d["field"] for d in body["details"]] == ["body.contact.name"]
+    assert [d["field"] for d in body["details"]] == ["body.main_waste_types.0.category"]
 
 
 async def test_query_validation_error_field(auth_client: AsyncClient):

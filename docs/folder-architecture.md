@@ -10,7 +10,7 @@
 | --- | --- |
 | `.github` | 공통 규칙(CONTRIBUTING)과 이슈·PR 템플릿의 원본. 조직 기본 이슈 템플릿이 Private 레포에 적용되지 않아 이 레포에도 같은 이슈 템플릿을 복사해 둠. PR 템플릿은 server용으로 덮어씀 |
 | `infra` | 이 레포를 `../server`로 참조해 전체를 compose로 실행 |
-| `ai` | 에이전트, MCP 도구, 지식 기반 (설계 중). server는 `AI_BASE_URL`로 HTTP 호출함 (`domains/runs/engine_client.py`) |
+| `ai` | 에이전트, MCP 도구, 지식 기반 (설계 중). server는 `AI_BASE_URL`로 HTTP 호출함 (`domains/treatment/`) |
 | `frontend` | server API를 호출. CORS·쿠키 설정 대상 |
 
 ## 1. 전체 구조
@@ -68,8 +68,7 @@ backend/
 │  ├─ core/
 │  │  ├─ config.py             # 환경변수 (pydantic-settings)
 │  │  ├─ security.py           # JWT 발급·검증
-│  │  ├─ errors.py             # 공통 오류 응답 형식, 오류 코드, 예외 핸들러
-│  │  └─ storage.py            # 업로드 파일 저장소 (로컬 폴더, Blob Storage로 교체 예정)
+│  │  └─ errors.py             # 공통 오류 응답 형식, 오류 코드, 예외 핸들러
 │  ├─ db/
 │  │  ├─ base.py               # DeclarativeBase, 공통 컬럼
 │  │  ├─ session.py            # 엔진, 세션, get_db
@@ -77,14 +76,10 @@ backend/
 │  ├─ api/v1/router.py         # 도메인 라우터 묶음 (/api/v1)
 │  └─ domains/
 │     ├─ auth/                 # 소셜 로그인, 토큰 쿠키, 현재 사용자 의존성
-│     ├─ users/                # 사용자, 소셜 계정
-│     ├─ companies/            # 기업 프로필, 폐기물 프로필 (온보딩)
-     ├─ reviews/              # 검토, 입력 객체(intake)와 보완 질문 규칙 (intake.py)
-     ├─ documents/            # 증빙 문서 업로드·교체, 측정값 검수, 업로드 검사(uploads.py)
-     ├─ runs/                 # 검토 실행: 엔진 클라이언트(engine_client.py), 워커·큐(worker.py), 단계(stages.py), 가짜 엔진(mock_engine.py)
-     ├─ results/              # 실행 결과 조회. 엔진 응답 → 화면용 변환(transform.py), 테이블 없음
-     ├─ risks/                # 리스크 단계 결정과 증빙 연결
-     └─ supplements/          # 추가 자료 (재실행에 반영)
+│     ├─ users/                # 사용자 (로그인 수단 provider, provider_subject 포함)
+│     ├─ companies/            # 기업·사업장 정보, 변경 이력 (온보딩)
+│     ├─ transport/            # 현장 인계 기록 (QR 확인 기능으로 옮길 예정)
+│     └─ treatment/            # 처리 경로 데모: 처리 카탈로그, 업체 후보 조회 (/api/treatment, /api/classification)
 └─ tests/
 ```
 

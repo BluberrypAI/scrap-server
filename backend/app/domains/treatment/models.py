@@ -15,8 +15,8 @@ class TreatmentSnapshot(Base):
     payload: Mapped[dict] = mapped_column(RECORD)
 
 
-class TreatmentFacilityListing(Base):
-    __tablename__ = "treatment_facility_listings"
+class FacilityImportRow(Base):
+    __tablename__ = "facility_import_rows"
 
     listing_id: Mapped[str] = mapped_column(String(64), primary_key=True)
     source_row: Mapped[int] = mapped_column(Integer, unique=True)
