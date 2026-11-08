@@ -14,7 +14,7 @@ from app.domains.auth import providers
 from app.domains.auth.cookies import ACCESS_COOKIE, REFRESH_COOKIE
 from app.domains.auth.models import RefreshToken
 from app.domains.auth.service import login_or_register, start_session
-from app.domains.users.models import SocialAccount, User
+from app.domains.users.models import User
 
 GOOGLE_USERINFO = {"sub": "google-sub-1", "email": "a@gmail.com", "name": "김담당"}
 
@@ -59,12 +59,12 @@ def use_refresh_cookie(client: AsyncClient, token: str) -> None:
     client.cookies.set(REFRESH_COOKIE, token)
 
 
-async def test_first_login_creates_user_and_social_account(db: AsyncSession):
+async def test_first_login_creates_user_with_provider_identity(db: AsyncSession):
     user = await login_or_register(db, "google", GOOGLE_USERINFO)
 
     assert user.email == "a@gmail.com"
+    assert (user.provider, user.provider_subject) == ("google", GOOGLE_USERINFO["sub"])
     assert await count(db, User) == 1
-    assert await count(db, SocialAccount) == 1
 
 
 async def test_repeat_login_reuses_existing_user(db: AsyncSession):

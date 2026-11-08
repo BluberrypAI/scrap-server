@@ -26,7 +26,7 @@ from app.core.security import create_token  # noqa: E402
 from app.db.all_models import Base  # noqa: E402
 from app.db.session import get_db  # noqa: E402
 from app.domains.auth.cookies import ACCESS_COOKIE  # noqa: E402
-from app.domains.users.models import SocialAccount, User  # noqa: E402
+from app.domains.users.models import User  # noqa: E402
 from app.main import app  # noqa: E402
 
 # CI sets TEST_DATABASE_URL to a PostgreSQL service; locally tests use in-memory SQLite.
@@ -73,10 +73,13 @@ async def client(session_factory: async_sessionmaker[AsyncSession]) -> AsyncIter
 
 @pytest.fixture
 async def user(db: AsyncSession) -> User:
-    user = User(email="manager@example.com", name="담당자")
+    user = User(
+        provider="google",
+        provider_subject="manager-sub",
+        email="manager@example.com",
+        name="담당자",
+    )
     db.add(user)
-    await db.flush()
-    db.add(SocialAccount(user_id=user.id, provider="google", provider_subject="manager-sub"))
     await db.commit()
     return user
 
@@ -109,10 +112,13 @@ async def company_client(auth_client: AsyncClient) -> AsyncClient:
 @pytest.fixture
 async def other_client(client: AsyncClient, db: AsyncSession) -> AsyncIterator[AsyncClient]:
     """다른 기업 사용자. 접근 격리 확인용."""
-    other = User(email="other@example.com", name="다른담당자")
+    other = User(
+        provider="google",
+        provider_subject="other-sub",
+        email="other@example.com",
+        name="다른담당자",
+    )
     db.add(other)
-    await db.flush()
-    db.add(SocialAccount(user_id=other.id, provider="google", provider_subject="other-sub"))
     await db.commit()
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as c:
         c.cookies.set(ACCESS_COOKIE, create_token(other.id, "access"))

@@ -22,7 +22,7 @@
 
 1. 서버가 OAuth 흐름 전체를 처리함 (BFF 방식). 프론트엔드는 `/api/v1/auth/{provider}/login`으로 이동시키기만 함
 2. 사용자는 이메일이 아니라 `(provider, provider_subject)`로 식별함. MS 계정은 email 클레임이 비어 있거나 바뀔 수 있음
-3. 첫 로그인이면 `users`와 `social_accounts`를 생성하고, 이후에는 기존 사용자를 사용함
+3. 첫 로그인이면 `users`를 (provider, provider_subject)와 함께 생성하고, 이후에는 기존 사용자를 사용함. 사용자당 로그인 수단은 하나임 (db-schema-simplify)
 4. 로그인 성공 후 기업 프로필이 없으면 `{FRONTEND_URL}/onboarding`, 있으면 `{FRONTEND_URL}/`로 이동함
 5. OAuth 실패 시 `{FRONTEND_URL}/login?error=oauth_failed`로 이동함
 6. 탈퇴 처리 중인 사용자가 로그인하면 쿠키를 발급하지 않고 `{FRONTEND_URL}/login?error=account_withdrawn`으로 이동함
@@ -92,15 +92,14 @@
 
 | 테이블 | 필드 | 제약 |
 | --- | --- | --- |
-| users | id, email, name, withdrawn_at, deletion_scheduled_at, created_at, updated_at | email은 nullable, unique 아님. 탈퇴 필드는 [account-withdrawal.md](account-withdrawal.md) |
-| social_accounts | id, user_id, provider, provider_subject, email, created_at, updated_at | (provider, provider_subject) unique |
+| users | id, provider, provider_subject, email, name, withdrawn_at, deletion_scheduled_at, created_at, updated_at | (provider, provider_subject) unique. email은 nullable, unique 아님. 탈퇴 필드는 [account-withdrawal.md](account-withdrawal.md) |
 | refresh_tokens | id(= JWT jti), user_id, expires_at, revoked_at, created_at, updated_at | user_id FK(users, CASCADE), index. revoked_at이 null이면 유효 |
 
 ## 6. 완료 조건
 
 ### 로그인
 
-- [x] 처음 로그인한 제공자 계정은 사용자 1명과 소셜 계정 1개를 생성함
+- [x] 처음 로그인한 제공자 계정은 provider 정보를 가진 사용자 1명을 생성함
 - [x] 같은 제공자 계정으로 다시 로그인하면 새 사용자를 만들지 않음
 - [x] 콜백 성공 시 access·refresh 쿠키를 설정하고, 기업이 없으면 /onboarding으로 이동함
 - [x] 콜백 성공 시 refresh_tokens에 행이 1개 생김

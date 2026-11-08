@@ -13,7 +13,7 @@ from app.domains.auth.service import login_or_register, start_session
 from app.domains.companies import service as company_service
 from app.domains.companies.models import Company, CompanyProfileHistory, WasteProfile
 from app.domains.companies.schemas import CompanyCreate, CompanyUpdate
-from app.domains.users.models import SocialAccount, User
+from app.domains.users.models import User
 from app.domains.users.service import purge_withdrawn_users
 
 WITHDRAW = "/api/v1/users/me/withdraw"
@@ -102,7 +102,6 @@ async def test_purge_deletes_only_users_past_deletion_time(db: AsyncSession):
     assert purged == 1
     remaining = set(await db.scalars(select(User.id)))
     assert remaining == {pending.id, active.id}
-    assert await count(db, SocialAccount) == 2
     assert await count(db, RefreshToken) == 2
     assert await count(db, Company) == 2
     assert await count(db, WasteProfile) == 2

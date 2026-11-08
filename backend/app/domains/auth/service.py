@@ -32,13 +32,11 @@ async def login_or_register(db: AsyncSession, provider: str, userinfo: Mapping[s
     if not subject:
         raise MissingSubjectError
 
-    account = await user_repo.get_social_account(db, provider, subject)
-    if account:
-        user = await user_repo.get_user(db, account.user_id)
-        assert user is not None  # FK with cascade guarantees the user exists
+    user = await user_repo.get_user_by_identity(db, provider, subject)
+    if user:
         return user
 
-    user = await user_repo.create_user_with_social_account(
+    user = await user_repo.create_user(
         db,
         provider=provider,
         provider_subject=subject,
