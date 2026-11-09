@@ -117,6 +117,8 @@ async def _validation_error(request: Request, exc: RequestValidationError) -> JS
 
 
 _HTTP_CODES = {
+    # 본문을 JSON으로 읽지 못함 (예: UTF-8이 아닌 본문)
+    status.HTTP_400_BAD_REQUEST: (ErrorCode.VALIDATION_ERROR, "요청 본문을 읽을 수 없음"),
     status.HTTP_401_UNAUTHORIZED: (ErrorCode.AUTH_REQUIRED, "로그인이 필요함"),
     status.HTTP_404_NOT_FOUND: (ErrorCode.NOT_FOUND, "대상을 찾을 수 없음"),
     status.HTTP_405_METHOD_NOT_ALLOWED: (ErrorCode.METHOD_NOT_ALLOWED, "허용되지 않은 메서드"),
@@ -124,7 +126,7 @@ _HTTP_CODES = {
 
 
 async def _http_error(request: Request, exc: StarletteHTTPException) -> JSONResponse:
-    """Errors raised by the framework itself (unknown route, wrong method)."""
+    """Errors raised by the framework itself (unreadable body, unknown route, wrong method)."""
     code, message = _HTTP_CODES.get(exc.status_code, (ErrorCode.INTERNAL_ERROR, "요청 처리 실패"))
     return _response(exc.status_code, code, message, headers=getattr(exc, "headers", None))
 

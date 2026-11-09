@@ -32,6 +32,18 @@ async def test_validation_error_lists_fields(auth_client: AsyncClient):
     assert [d["field"] for d in body["details"]] == ["body.main_waste_types.0.category"]
 
 
+async def test_unreadable_body_returns_validation_error(auth_client: AsyncClient):
+    # UTF-8이 아닌 본문 (예: cp949로 인코딩된 한글)
+    body = '{"company_name": "가천"}'.encode("cp949")
+
+    res = await auth_client.post(
+        COMPANIES, content=body, headers={"Content-Type": "application/json"}
+    )
+
+    body = assert_error(res, 400, "VALIDATION_ERROR")
+    assert body["message"] == "요청 본문을 읽을 수 없음"
+
+
 async def test_query_validation_error_field(auth_client: AsyncClient):
     await auth_client.post(COMPANIES, json=COMPANY)
 

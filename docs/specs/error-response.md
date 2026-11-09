@@ -39,6 +39,7 @@
 | 405 | `METHOD_NOT_ALLOWED` | 경로는 있으나 메서드가 다름 |
 | 409 | `COMPANY_ALREADY_EXISTS` | 기업이 있는 사용자가 다시 등록 |
 | 409 | `VERSION_CONFLICT` | 기업 수정 시 profile_version 불일치 |
+| 400 | `VALIDATION_ERROR` | 요청 본문을 JSON으로 읽을 수 없음 (예: UTF-8이 아닌 본문) |
 | 422 | `VALIDATION_ERROR` | 요청 본문·쿼리·경로 값 검증 실패 |
 | 422 | `INVALID_FILTER` | 지원하지 않는 문진 유형이거나 유형과 답변이 맞지 않음 (처리 경로 데모) |
 | 500 | `INTERNAL_ERROR` | 처리되지 않은 서버 오류 |
