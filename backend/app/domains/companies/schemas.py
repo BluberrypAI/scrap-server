@@ -13,7 +13,7 @@ from pydantic import (
 )
 from pydantic.alias_generators import to_camel
 
-from app.domains.companies.models import Company, GenerationCycle
+from app.domains.companies.models import Company
 
 # 이름 목록 항목 (배출시설, 주생산품)
 Name = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=100)]
@@ -21,12 +21,16 @@ EMAIL_PATTERN = r"^[^@\s]+@[^@\s]+\.[^@\s]+$"
 
 
 class WasteTypeCreate(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     category: str = Field(min_length=1, max_length=100, examples=["PP"])
-    generation_cycle: GenerationCycle
     expected_monthly_volume_kg: float | None = Field(default=None, ge=0)
 
 
 class WasteTypeRead(WasteTypeCreate):
+    # 저장된 값을 읽을 때는 모르는 키를 무시함 (예전 generation_cycle 등)
+    model_config = ConfigDict(extra="ignore")
+
     id: uuid.UUID
 
 
@@ -45,10 +49,11 @@ class CompanyFields(BaseModel):
         min_length=1, max_length=500, examples=["경기도 화성시 팔탄면 산업로 128"]
     )
     site_facilities: list[Name] = Field(min_length=1, examples=[["혼합시설", "세척시설"]])
-    main_products: list[Name] = Field(min_length=1, examples=[["산업용 윤활유"]])
 
 
 class CompanyCreate(CompanyFields):
+    # 선택 항목. 보내지 않으면 빈 목록
+    main_products: list[Name] = Field(default=[], examples=[["산업용 윤활유"]])
     main_waste_types: list[WasteTypeCreate] = []
 
 
@@ -81,7 +86,7 @@ class CompanyRead(BaseModel):
 
 
 # Field names a PATCH may change. Also used as changed_fields values.
-EDITABLE_FIELDS = (*CompanyFields.model_fields, "main_waste_types")
+EDITABLE_FIELDS = (*CompanyFields.model_fields, "main_products", "main_waste_types")
 
 
 class CompanyUpdate(BaseModel):
@@ -96,7 +101,8 @@ class CompanyUpdate(BaseModel):
     site_name: str | None = Field(default=None, min_length=1, max_length=200)
     site_address: str | None = Field(default=None, min_length=1, max_length=500)
     site_facilities: list[Name] | None = Field(default=None, min_length=1)
-    main_products: list[Name] | None = Field(default=None, min_length=1)
+    # 선택 항목이라 빈 목록으로 비울 수 있음
+    main_products: list[Name] | None = None
     main_waste_types: list[WasteTypeCreate] | None = None
 
     @model_validator(mode="before")
