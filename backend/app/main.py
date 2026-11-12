@@ -5,6 +5,7 @@ from starlette.middleware.sessions import SessionMiddleware
 from app.api.v1.router import api_router
 from app.core.config import Settings, get_settings
 from app.core.errors import ErrorResponse, register_error_handlers
+from app.db import all_models as _all_models  # noqa: F401
 from app.domains.auth.dev_router import router as dev_auth_router
 from app.domains.treatment.router import classification_router
 from app.domains.treatment.router import router as treatment_router

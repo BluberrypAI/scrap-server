@@ -59,6 +59,10 @@
 | T-129 | 프론트 연동 기반: 본문을 읽지 못한 400의 오류 코드를 VALIDATION_ERROR로, 프론트 프록시로 실행하는 방법 문서화 | 완료 | api-developer | error-response | 프론트 Vite 프록시로 로그인·기업 API 호출 확인 |
 | T-131 | ERD v2 반영: wastes, route_steps, qr_field_checks, waste_completion_snapshots, facilities, facility_waste_codes, facility_r_types 추가, companies 좌표·main_products 기본값 | 완료 | db-engineer | erd-v2-alignment | SQLite·PostgreSQL에서 마이그레이션 upgrade/downgrade/check와 테스트 확인. 배출 통계는 보류 |
 | T-130 | 문진 엔진(scrap-diagnosis) 연동: /api/v1/diagnosis/* 중계, 엔진 오류 변환, 탈퇴 purge 엔진 삭제, compose engine 프로필 | 완료 | api-developer | diagnosis-engine-integration | 엔진 develop(LLM off, 토큰 사용)과 실제 연결해 건 생성~확정·reopen·서류 값 오류 확인. Azure LLM 자유 진술은 미확인 |
+| T-132 | 확정 문진 → 첫 공정·업체 전체 AI 검토 연결 | 완료 | api-developer | diagnosis-treatment-bridge | PP 웹/DB/Azure 실호출 확인. R코드·PET/금속·QR 연계는 후속 작업 |
+| T-133 | PP 상태·사진 공유, 수신 기업 수락, QR 입고, 실제 산출물 기반 다음 인계·완료 | 완료 | 구현 | pp-company-workflow | 별도 가상 기업 계정으로 A→B 및 A→B→C 웹 완료. PostgreSQL·Azure 실호출. 파일 선택기·실물 QR·실제 업체 허가는 미검증. 검증 기록: pp-company-e2e.md |
+| T-134 | 현재 상태 설명·사진을 후보 전체 Astra 검토에 반영 | 완료 | 구현 | pp-company-workflow | A→B 3곳, B→C 2곳(사진 없음/새 사진) Azure 실제 호출. 관찰·진술·미확인 분리, 수락은 업체 결정. 서버 166개·신규 PostgreSQL 9개 통과 |
+| T-135 | 사진 전용 관찰과 업체 대조 분리 결과 연동·구버전 검토 차단 | 완료 | api-developer | pp-company-workflow | 기존 웹 계약 유지, 관찰 방식·확인사항 유형 추가. 서버 168개·PostgreSQL 기업 인계 11개 통과. 사진으로 반입 승인하지 않음 |
 | T-118 | 검토 실행을 Service Bus + 별도 워커 파드로 이전 | 대기 | backend-architect | review-runs | 요구사항 NFR-6, infra 리소스 확정 후 |
 | T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |

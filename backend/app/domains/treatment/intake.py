@@ -37,6 +37,38 @@ class IntakeRequest(IntakeSelection):
     capability_key: CatalogKey
 
 
+class PhotoObservation(BaseModel):
+    photo_id: str = Field(max_length=64)
+    description: str = Field(max_length=400)
+    visibility: Literal["clear", "limited", "not_waste"] = "limited"
+
+
+class LotConcern(BaseModel):
+    basis: Literal["photo", "description"]
+    reference: str = Field(max_length=400)
+    concern: str = Field(max_length=400)
+    next_check: str = Field(max_length=400)
+    category: Literal[
+        "cleaning",
+        "sorting",
+        "drying",
+        "testing",
+        "facility_evidence",
+        "description_conflict",
+        "other",
+    ] = "other"
+
+
+class LotReview(BaseModel):
+    status: Literal["reviewed", "model_unavailable"]
+    photo_observations: list[PhotoObservation] = Field(default_factory=list, max_length=8)
+    concerns: list[LotConcern] = Field(default_factory=list, max_length=8)
+    questions: list[str] = Field(default_factory=list, max_length=8)
+    unknowns: list[str] = Field(default_factory=list, max_length=12)
+    recipient_confirmation_required: Literal[True] = True
+    observation_method: Literal["isolated_vision", "no_photo", "unavailable"] = "unavailable"
+
+
 class IntakeResult(BaseModel):
     status: Literal["reviewed", "needs_evidence", "model_unavailable"]
     finding: Literal["form_mentioned", "restriction_mentioned", "insufficient"] = "insufficient"
@@ -44,6 +76,7 @@ class IntakeResult(BaseModel):
     source: SourceLink | None = None
     quote: str | None = None
     dispatch_approved: Literal[False] = False
+    lot_review: LotReview | None = None
 
 
 class IntakeBatchResult(BaseModel):
@@ -103,7 +136,7 @@ def build_intake_packet(request: IntakeRequest, reference):
     raise TreatmentError("invalid-capability", "현재 공정에 연결된 업체를 선택해 주세요.")
 
 
-async def review_intakes(packets, settings):
+async def review_intakes(packets, settings, *, lot_context=None):
     results = {
         packet["capability_key"]: IntakeResult(
             status="model_unavailable", next_check=packet["next_check"]
@@ -114,14 +147,17 @@ async def review_intakes(packets, settings):
     if not packets or not settings.ai_base_url or not token:
         return IntakeBatchResult(results=results)
 
-    async with httpx.AsyncClient(timeout=45) as client:
+    async with httpx.AsyncClient(timeout=175 if lot_context is not None else 45) as client:
         for start in range(0, len(packets), 5):
             batch = packets[start : start + 5]
             try:
                 response = await client.post(
                     f"{settings.ai_base_url.rstrip('/')}/treatment/intake-reviews",
                     headers={"Authorization": f"Bearer {token}"},
-                    json={"candidates": batch},
+                    json={
+                        "candidates": batch,
+                        **({"lot_context": lot_context} if lot_context is not None else {}),
+                    },
                 )
                 response.raise_for_status()
                 reviewed = IntakeBatchResult.model_validate(response.json())
