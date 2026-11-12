@@ -56,6 +56,13 @@ class Settings(BaseSettings):
     scrap_intake_service_token: SecretStr = SecretStr("")
     transport_demo_facilities: dict[str, str] = {}
 
+    # 문진 엔진(scrap-diagnosis) /internal/v1. 비워 두면 문진 API는 503 ENGINE_UNAVAILABLE
+    diagnosis_engine_url: str = ""
+    # 엔진과 같은 값 (엔진 ENGINE_SERVICE_TOKEN)
+    engine_service_token: SecretStr = SecretStr("")
+    # 엔진 권장값 30초 (턴 최대 지연 8.2초 측정)
+    diagnosis_engine_timeout_seconds: float = 30.0
+
     # 모델 검증 및 유틸리티
     @model_validator(mode="after")
     def _reject_insecure_secrets_in_prod(self) -> "Settings":
@@ -67,6 +74,10 @@ class Settings(BaseSettings):
                 raise ValueError("JWT_SECRET and SESSION_SECRET must be set in prod")
             if not self.is_postgres:
                 raise ValueError("DATABASE_URL must point to PostgreSQL in prod")
+            if self.diagnosis_engine_url and not self.engine_service_token.get_secret_value():
+                raise ValueError(
+                    "ENGINE_SERVICE_TOKEN must be set when DIAGNOSIS_ENGINE_URL is set"
+                )
         if not self.cookie_domain:  # 쿠키 도메인이 설정되지 않은 경우 None으로 둠
             self.cookie_domain = None
         return self

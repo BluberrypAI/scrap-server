@@ -131,6 +131,8 @@ TEST_DATABASE_URL=postgresql+asyncpg://resource:resource@localhost:5433/resource
 | `WITHDRAWAL_GRACE_DAYS` | 탈퇴 후 실제 삭제까지 유예 일수 (기본 30) |
 | `BACKEND_URL` | 소셜 로그인 콜백 주소의 기준 (`{BACKEND_URL}/api/v1/auth/{provider}/callback`). Google·Microsoft 콘솔에 등록한 리디렉션 URI와 똑같아야 함 |
 | `FRONTEND_URL` | 로그인 뒤 돌려보낼 화면 주소 (`/onboarding`, `/login?error=...`) |
+| `DIAGNOSIS_ENGINE_URL` | 문진 엔진 주소 (예: `http://localhost:8030`). 비우면 `/api/v1/diagnosis/*`는 503, 탈퇴 purge는 엔진 삭제를 건너뜀 |
+| `ENGINE_SERVICE_TOKEN` | 엔진 `/internal/v1` Bearer 토큰. 엔진과 같은 값. 운영에서 URL만 있고 토큰이 없으면 시작하지 않음 |
 | `AI_BASE_URL` | AI 서버(ai 레포) 주소. 처리 경로 데모(`/api/treatment/*`)가 업체 검토·웹 조사에 씀. Docker에서 PC의 서버를 부르면 `http://host.docker.internal:<포트>` |
 
 ## 프론트엔드와 함께 실행

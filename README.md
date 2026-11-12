@@ -103,7 +103,7 @@ scrap-server/
 │  │  ├─ core/               설정, JWT, 공통 오류 형식
 │  │  ├─ db/                 DB 엔진·세션
 │  │  ├─ api/v1/             라우터 묶음 (/api/v1)
-│  │  └─ domains/            auth, users, companies, wastes, facilities, transport, treatment
+│  │  └─ domains/            auth, users, companies, diagnosis, wastes, facilities, transport, treatment
 │  ├─ alembic/               마이그레이션
 │  └─ tests/
 └─ docker-compose.yml        api + PostgreSQL (호스트 포트 5433)
@@ -128,6 +128,26 @@ scrap-server/
 | GET | /api/v1/companies/me | 내 기업 조회 |
 | PATCH | /api/v1/companies/me | 내 기업 수정 (profile_version으로 충돌 감지) |
 | GET | /api/v1/companies/me/history | 기업 정보 변경 이력 (페이지네이션) |
+
+### 문진 (폐기물 분류번호 판정)
+
+로그인한 기업의 요청을 문진 엔진(scrap-diagnosis) `/internal/v1`로 중계함. 응답 본문은 엔진 것 그대로임. spec: [docs/specs/diagnosis-engine-integration.md](docs/specs/diagnosis-engine-integration.md)
+
+| 메서드 | 경로 | 설명 |
+| --- | --- | --- |
+| POST | /api/v1/diagnosis/cases | 문진 건 만들기 + 첫 질문 |
+| GET | /api/v1/diagnosis/cases | 내 기업의 문진 건 목록 (status, page, size) |
+| GET | /api/v1/diagnosis/cases/{id} | 건 상세 (판정, 대화, 서류, 인계 객체) |
+| POST | /api/v1/diagnosis/cases/{id}/messages | 문진 답변 (말 또는 버튼) |
+| POST | /api/v1/diagnosis/cases/{id}/documents | 서류 업로드 (값은 검수 대기) |
+| POST | /api/v1/diagnosis/cases/{id}/documents/{doc}/versions | 서류 파일 교체 |
+| POST | /api/v1/diagnosis/cases/{id}/documents/{doc}/values/apply | 검수한 서류 값 반영 |
+| POST | /api/v1/diagnosis/cases/{id}/documents/{doc}/revoke | 서류 효력 해제 |
+| POST | /api/v1/diagnosis/cases/{id}/confirm | 판정 확정 + 인계 객체(handoff) |
+| POST | /api/v1/diagnosis/cases/{id}/reopen | 확정 건 다시 열기 |
+| POST | /api/v1/diagnosis/cases/{id}/rebase | 바뀐 규칙으로 다시 평가 |
+| GET | /api/v1/diagnosis/cases/{id}/trace | 판정 근거 추적 |
+| GET | /api/v1/diagnosis/catalog/facts | 질문 항목·선택지 목록 |
 
 ### 처리 경로 데모
 
