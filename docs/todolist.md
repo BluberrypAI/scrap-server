@@ -57,6 +57,7 @@
 | T-127 | 신규 로트 문진 유형과 첫 업체 조회 범위 제한 | 완료 | api-developer | treatment-registry | 서버에서 유형과 분류 세션을 검증하고 R코드 전달 |
 | T-128 | DB 스키마 간소화: 검토·실행·문서·결과·리스크·보완 자료 기능 삭제, social_accounts를 users에·waste_profiles를 companies에 합침, 온보딩 입력을 프론트 화면에 맞춤, treatment_facility_listings → facility_import_rows | 완료 | db-engineer | db-schema-simplify | SQLite에서 마이그레이션 upgrade/downgrade/check 확인. PostgreSQL은 CI에서 확인 |
 | T-129 | 프론트 연동 기반: 본문을 읽지 못한 400의 오류 코드를 VALIDATION_ERROR로, 프론트 프록시로 실행하는 방법 문서화 | 완료 | api-developer | error-response | 프론트 Vite 프록시로 로그인·기업 API 호출 확인 |
+| T-131 | ERD v2 반영: wastes, route_steps, qr_field_checks, waste_completion_snapshots, facilities, facility_waste_codes, facility_r_types 추가, companies 좌표·main_products 기본값 | 완료 | db-engineer | erd-v2-alignment | SQLite·PostgreSQL에서 마이그레이션 upgrade/downgrade/check와 테스트 확인. 배출 통계는 보류 |
 | T-118 | 검토 실행을 Service Bus + 별도 워커 파드로 이전 | 대기 | backend-architect | review-runs | 요구사항 NFR-6, infra 리소스 확정 후 |
 | T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |

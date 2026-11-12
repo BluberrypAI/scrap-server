@@ -13,14 +13,14 @@
 ## 2. 범위
 
 - 포함: 기업 등록(온보딩), 내 기업 조회, 내 기업 수정, 변경 이력 조회(페이지네이션)
-- 제외: 기업당 복수 담당자, 기업당 복수 사업장, 사업자등록번호와 진위 확인(국세청 조회, CORP-012), 사업장 좌표, 변경 전후 값 저장, 기업 삭제(탈퇴 시 삭제는 account-withdrawal), 공통 오류 응답 형식([error-response.md](error-response.md))
+- 제외: 기업당 복수 담당자, 기업당 복수 사업장, 사업자등록번호와 진위 확인(국세청 조회, CORP-012), 사업장 좌표 입력·지오코딩(컬럼과 읽기 전용 응답 필드만 있음, [erd-v2-alignment.md](erd-v2-alignment.md)), 변경 전후 값 저장, 기업 삭제(탈퇴 시 삭제는 account-withdrawal), 공통 오류 응답 형식([error-response.md](error-response.md))
 
 ## 3. 요구사항
 
 ### 등록
 
 1. 기업과 회원(사용자)은 1:1이고, 사업장은 기업당 1곳임. 이미 기업이 있는 사용자가 다시 등록하면 409를 반환함
-2. 필수 항목: 회사명(`company_name`), 담당자 이메일(`contact_email`), 업종(`industry`), 사업장 이름(`site_name`), 사업장 주소(`site_address`), 배출시설(`site_facilities`, 1개 이상). 빠지거나 비어 있으면 422. 주생산품(`main_products`)은 선택이며 보내지 않으면 빈 배열임
+2. 필수 항목: 회사명(`company_name`), 담당자 이메일(`contact_email`), 업종(`industry`), 사업장 이름(`site_name`), 사업장 주소(`site_address`), 배출시설(`site_facilities`, 1개 이상). 빠지거나 비어 있으면 422. 주생산품(`main_products`)은 선택이며 보내지 않으면 빈 배열임. null을 보내면 422 (DB도 NOT NULL DEFAULT '[]')
 3. 담당자 이메일은 `이름@도메인` 형식이어야 함. 아니면 422
 4. 주요 폐기물(`main_waste_types`)은 선택이며 0개 이상임. 각 항목은 종류(`category`, 자유 문자열), 월 예상 물량(kg)임
 5. 발생 주기는 받지 않음 (2026-11-10 화면에서 뺌). 항목에 `generation_cycle` 등 정의되지 않은 키를 보내면 422
@@ -102,7 +102,7 @@
 
 | 테이블 | 필드 | 제약 |
 | --- | --- | --- |
-| companies | id, user_id, company_name, contact_email, industry, site_name, site_address, site_facilities(JSON), main_products(JSON), main_waste_types(JSON), profile_version, created_at, updated_at | user_id unique, FK users (cascade 삭제). profile_version 기본 1 |
+| companies | id, user_id, company_name, contact_email, industry, site_name, site_address, site_latitude, site_longitude, site_facilities(JSON), main_products(JSON), main_waste_types(JSON), profile_version, created_at, updated_at | user_id unique, FK users (cascade 삭제). profile_version 기본 1. main_products NOT NULL DEFAULT '[]'. 좌표는 지오코딩 전까지 null |
 | company_profile_history | id, company_id, profile_version, changed_fields(JSON 배열), created_at(= changed_at), updated_at | FK companies (cascade 삭제), (company_id, profile_version) unique |
 
 `main_waste_types` 항목: `{id, category, expected_monthly_volume_kg}`. 예전 `waste_profiles` 테이블에서 옮겼고 id를 유지함 ([db-schema-simplify.md](db-schema-simplify.md)). 예전에 저장된 `generation_cycle` 키는 마이그레이션 `a7c3e91f5b28`에서 지움.
