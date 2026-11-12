@@ -32,6 +32,7 @@
 6. `companies.main_products`: NOT NULL DEFAULT `'[]'`. 생성·수정 요청에서 null을 보내면 422
 7. 기존 UNIQUE 유지: `users(provider, provider_subject)`, `companies(user_id)`, `company_profile_history(company_id, profile_version)`, `route_steps(waste_id, seq)`, `facilities(import_row_id)`
 8. enum 컬럼(`wastes.status`, `qr_field_checks.role`)은 DB에 값(소문자)을 저장함
+9. 탈퇴 purge로 기업을 지울 때 그 기업의 폐기물 건과 처리 단계·현장 확인·완료 스냅샷도 직접 지움 (SQLite는 FK cascade를 하지 않음)
 
 ## 4. API
 
@@ -61,6 +62,7 @@
 - [x] 허가 코드에 없는 (facility_id, waste_code)의 R유형은 FK 오류
 - [x] main_products null 요청은 422, 컬럼을 빼고 넣으면 `[]`
 - [x] 기업 응답의 좌표는 null
+- [x] purge 후 그 기업의 폐기물 건·처리 단계·현장 확인이 남지 않음
 
 ## 7. 미정 사항
 

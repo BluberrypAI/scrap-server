@@ -188,3 +188,24 @@ async def test_main_products_db_default(fk_db: AsyncSession, user: User):
     await fk_db.commit()
     company = await fk_db.scalar(select(Company).where(Company.id == company_id))
     assert company.main_products == []
+
+
+async def test_purge_deletes_wastes(fk_db: AsyncSession, company: Company, user: User):
+    from datetime import timedelta
+
+    from app.domains.users.service import purge_withdrawn_users
+
+    waste = await _waste(fk_db, company)
+    step = await _step(fk_db, waste)
+    fk_db.add(
+        QrFieldCheck(
+            waste_id=waste.id, route_step_id=step.id, role=CheckRole.DRIVER, actor_name="김운반"
+        )
+    )
+    user.withdrawn_at = datetime.now(UTC) - timedelta(days=40)
+    user.deletion_scheduled_at = datetime.now(UTC) - timedelta(days=10)
+    await fk_db.commit()
+    assert await purge_withdrawn_users(fk_db) == 1
+    assert await fk_db.scalar(select(Waste.id)) is None
+    assert await fk_db.scalar(select(RouteStep.id)) is None
+    assert await fk_db.scalar(select(QrFieldCheck.id)) is None

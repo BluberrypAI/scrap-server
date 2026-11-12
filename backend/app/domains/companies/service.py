@@ -13,6 +13,7 @@ from app.domains.companies.schemas import (
     CompanyUpdate,
     WasteTypeCreate,
 )
+from app.domains.wastes import repository as waste_repo
 
 
 class CompanyAlreadyExistsError(Exception):
@@ -122,8 +123,9 @@ async def list_history(
 
 
 async def delete_companies_of_users(db: AsyncSession, user_ids: Sequence[uuid.UUID]) -> None:
-    """Delete companies and their history for purged users. The caller commits."""
+    """Delete companies, their history and wastes for purged users. The caller commits."""
     company_ids = select(Company.id).where(Company.user_id.in_(user_ids))
+    await waste_repo.delete_wastes_of_companies(db, company_ids)
     await db.execute(
         delete(CompanyProfileHistory)
         .where(CompanyProfileHistory.company_id.in_(company_ids))
