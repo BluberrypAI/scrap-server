@@ -129,7 +129,7 @@ TEST_DATABASE_URL=postgresql+asyncpg://resource:resource@localhost:5433/resource
 | `JWT_SECRET`, `SESSION_SECRET` | 운영(`APP_ENV=prod`)에서는 기본값이면 실행되지 않음 |
 | `GOOGLE_*`, `MICROSOFT_*` | 소셜 로그인 키 |
 | `WITHDRAWAL_GRACE_DAYS` | 탈퇴 후 실제 삭제까지 유예 일수 (기본 30) |
-| `BACKEND_URL` | 소셜 로그인 콜백 주소의 기준. 프론트 프록시로 붙일 때는 프론트 주소로 둠 (아래 "프론트엔드와 함께 실행") |
+| `BACKEND_URL` | 소셜 로그인 콜백 주소의 기준 (`{BACKEND_URL}/api/v1/auth/{provider}/callback`). Google·Microsoft 콘솔에 등록한 리디렉션 URI와 똑같아야 함 |
 | `FRONTEND_URL` | 로그인 뒤 돌려보낼 화면 주소 (`/onboarding`, `/login?error=...`) |
 | `AI_BASE_URL` | AI 서버(ai 레포) 주소. 처리 경로 데모(`/api/treatment/*`)가 업체 검토·웹 조사에 씀. Docker에서 PC의 서버를 부르면 `http://host.docker.internal:<포트>` |
 
@@ -137,20 +137,22 @@ TEST_DATABASE_URL=postgresql+asyncpg://resource:resource@localhost:5433/resource
 
 프론트(scrap-web)는 `/api/v1`을 **같은 출처**로 호출함. 로그인 쿠키(httpOnly)가 프론트 주소에 저장되어야 하기 때문임. 개발 중에는 Vite가, 운영에서는 nginx가 `/api/` 요청을 이 서버로 넘김.
 
-1. 이 서버를 8000 포트로 실행 (위 A 또는 B)
+1. 이 서버를 8000 포트로 실행 (위 A 또는 B). `BACKEND_URL`, `FRONTEND_URL`은 `.env.example` 기본값 그대로 둠
 2. 프론트에서 `npm run dev` (Vite가 `/api/v1`을 `http://127.0.0.1:8000`으로 전달. 바꾸려면 프론트 `.env`의 `SCRAP_SERVER_URL`)
-3. 브라우저에서 프론트 주소(`http://127.0.0.1:5173`)를 엶. 서버 주소로 직접 열지 않음
+3. 브라우저에서 **`http://localhost:5173`**을 엶. `127.0.0.1:5173`이나 서버 주소(8000)로 열지 않음
 
-**개발용 로그인**: OAuth 키 없이 `POST /api/v1/auth/dev-login`을 프론트 주소로 호출하면 됨 (`APP_ENV=local`에서만 있음).
+**개발용 로그인**: OAuth 키 없이 로그인 화면의 "개발용 로그인" 버튼(프론트 dev 모드에서만 보임)을 누르거나, `POST /api/v1/auth/dev-login`을 프론트 주소로 호출하면 됨 (`APP_ENV=local`에서만 있음).
 
-**실제 소셜 로그인**: 콜백도 프록시를 거쳐야 로그인 쿠키와 OAuth 상태 쿠키가 같은 출처에 남음. `backend/.env`를 아래처럼 두고, Google·Microsoft 콘솔에 `http://127.0.0.1:5173/api/v1/auth/{google|microsoft}/callback`을 리디렉션 URI로 등록함.
+**실제 소셜 로그인**: 기본값이면 콜백 주소가 `http://localhost:8000/api/v1/auth/{google|microsoft}/callback`이 됨. Google·Microsoft 콘솔에 이 주소를 리디렉션 URI로 등록함 (Microsoft는 앱 등록 > 인증 > 웹).
 
 ```env
-BACKEND_URL=http://127.0.0.1:5173
-FRONTEND_URL=http://127.0.0.1:5173
+BACKEND_URL=http://localhost:8000
+FRONTEND_URL=http://localhost:5173
 ```
 
-`localhost`와 `127.0.0.1`은 쿠키가 따로 저장되므로 세 주소(브라우저, `BACKEND_URL`, `FRONTEND_URL`)의 호스트를 똑같이 맞춤. 서버는 로그인 뒤 `/onboarding` 같은 일반 경로로 보내고, 프론트가 이를 해시 주소(`/#/onboarding`)로 바꿈.
+로그인 시작은 프론트(5173)를 거치고 콜백은 서버(8000)로 바로 오지만, 쿠키는 포트를 구분하지 않으므로 호스트(`localhost`)만 같으면 OAuth 상태 쿠키와 로그인 쿠키가 둘 다 프론트에서 보임. 반대로 `localhost`와 `127.0.0.1`은 쿠키가 따로 저장되므로 브라우저 주소, `BACKEND_URL`, `FRONTEND_URL`의 호스트를 모두 `localhost`로 맞춤. 서버는 로그인 뒤 `/onboarding` 같은 일반 경로로 보내고, 프론트가 이를 해시 주소(`/#/onboarding`)로 바꿈.
+
+운영처럼 nginx 한 주소로 서비스할 때는 `BACKEND_URL`과 `FRONTEND_URL`을 둘 다 그 주소로 두고, 콘솔에도 `{그 주소}/api/v1/auth/{provider}/callback`을 등록함.
 
 ## 문제 해결
 
@@ -160,7 +162,8 @@ FRONTEND_URL=http://127.0.0.1:5173
 | `connection was closed in the middle of operation` | 다른 PostgreSQL에 접속 중일 가능성. 포트(Docker는 5433) 확인 |
 | `/api/v1/auth/google/login`이 503 | `.env`에 `GOOGLE_CLIENT_ID`가 비어 있음 |
 | `no such table` | 마이그레이션 미적용. `uv run alembic upgrade head` |
-| 소셜 로그인 뒤 `/login?error=oauth_failed` | 로그인 시작과 콜백의 호스트가 다름. 위 "프론트엔드와 함께 실행"처럼 `BACKEND_URL`을 프론트 주소로 맞춤 |
+| Microsoft·Google 화면에 `redirect_uri is not valid` | 콘솔에 등록한 리디렉션 URI와 `{BACKEND_URL}/api/v1/auth/{provider}/callback`이 다름. 기본값이면 `http://localhost:8000/...`을 등록 |
+| 소셜 로그인 뒤 `/login?error=oauth_failed` | 로그인 시작과 콜백의 호스트가 다름. 브라우저를 `http://localhost:5173`으로 열고 `BACKEND_URL`도 `localhost`로 둠 |
 | 로그인했는데 프론트에서 계속 401 | 브라우저 주소와 `FRONTEND_URL`의 호스트가 다름 (`localhost` ↔ `127.0.0.1`) |
 ## SCRAP 처리경로와 전국 명부
 

@@ -25,7 +25,7 @@ COMPANY = CompanyCreate(
     site_address="경기도 안산시",
     site_facilities=["혼합시설"],
     main_products=["플라스틱 용기"],
-    main_waste_types=[{"category": "PP", "generation_cycle": "weekly"}],
+    main_waste_types=[{"category": "PP"}],
 )
 
 

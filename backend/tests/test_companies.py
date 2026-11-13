@@ -23,8 +23,8 @@ COMPANY = {
     "site_facilities": ["혼합시설", "세척시설"],
     "main_products": ["자동차 내장 부품"],
     "main_waste_types": [
-        {"category": "PP", "generation_cycle": "monthly", "expected_monthly_volume_kg": 3000},
-        {"category": "PE", "generation_cycle": "irregular"},
+        {"category": "PP", "expected_monthly_volume_kg": 3000},
+        {"category": "PE"},
     ],
 }
 REQUIRED = (
@@ -34,7 +34,6 @@ REQUIRED = (
     "site_name",
     "site_address",
     "site_facilities",
-    "main_products",
 )
 
 
@@ -83,10 +82,21 @@ async def test_missing_required_field_returns_422(auth_client: AsyncClient, fiel
     assert res.status_code == 422
 
 
-@pytest.mark.parametrize("field", ["site_facilities", "main_products"])
-async def test_empty_name_list_returns_422(auth_client: AsyncClient, field: str):
-    res = await auth_client.post(COMPANIES, json={**COMPANY, field: []})
+async def test_empty_site_facilities_returns_422(auth_client: AsyncClient):
+    res = await auth_client.post(COMPANIES, json={**COMPANY, "site_facilities": []})
     assert res.status_code == 422
+
+
+@pytest.mark.parametrize("main_products", [None, []])
+async def test_main_products_is_optional(auth_client: AsyncClient, main_products):
+    payload = {k: v for k, v in COMPANY.items() if k != "main_products"}
+    if main_products is not None:
+        payload["main_products"] = main_products
+
+    res = await auth_client.post(COMPANIES, json=payload)
+
+    assert res.status_code == 201
+    assert res.json()["main_products"] == []
 
 
 async def test_invalid_contact_email_returns_422(auth_client: AsyncClient):
@@ -108,8 +118,8 @@ async def test_second_company_for_same_user_returns_409(onboarded: AsyncClient):
     assert res.status_code == 409
 
 
-async def test_invalid_generation_cycle_returns_422(auth_client: AsyncClient):
-    payload = {**COMPANY, "main_waste_types": [{"category": "PP", "generation_cycle": "hourly"}]}
+async def test_generation_cycle_is_no_longer_accepted(auth_client: AsyncClient):
+    payload = {**COMPANY, "main_waste_types": [{"category": "PP", "generation_cycle": "weekly"}]}
 
     res = await auth_client.post(COMPANIES, json=payload)
 
@@ -170,14 +180,22 @@ async def test_update_bumps_version_and_reports_changed_fields(onboarded: AsyncC
     assert body["profile_version"] == 2
 
 
+async def test_update_can_clear_main_products(onboarded: AsyncClient):
+    res = await onboarded.patch(ME, json={"profile_version": 1, "main_products": []})
+
+    assert res.status_code == 200
+    assert res.json()["changed_fields"] == ["main_products"]
+    assert (await onboarded.get(ME)).json()["main_products"] == []
+
+
 async def test_update_replaces_waste_types(onboarded: AsyncClient):
-    new_types = [{"category": "ABS", "generation_cycle": "weekly"}]
+    new_types = [{"category": "ABS", "expected_monthly_volume_kg": 50}]
 
     res = await onboarded.patch(ME, json={"profile_version": 1, "main_waste_types": new_types})
 
     assert res.json()["changed_fields"] == ["main_waste_types"]
     types = (await onboarded.get(ME)).json()["main_waste_types"]
-    assert [(t["category"], t["generation_cycle"]) for t in types] == [("ABS", "weekly")]
+    assert [(t["category"], t["expected_monthly_volume_kg"]) for t in types] == [("ABS", 50)]
 
 
 async def test_update_with_same_values_changes_nothing(onboarded: AsyncClient, db: AsyncSession):

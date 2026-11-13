@@ -24,7 +24,7 @@ async def test_missing_token_returns_auth_required(client: AsyncClient):
 
 
 async def test_validation_error_lists_fields(auth_client: AsyncClient):
-    payload = {**COMPANY, "main_waste_types": [{"category": "", "generation_cycle": "weekly"}]}
+    payload = {**COMPANY, "main_waste_types": [{"category": ""}]}
 
     res = await auth_client.post(COMPANIES, json=payload)
 

@@ -99,7 +99,7 @@ COMPANY_PAYLOAD = {
     "site_address": "경기도 시흥시 정왕동",
     "site_facilities": ["혼합시설"],
     "main_products": ["자동차 내장 부품"],
-    "main_waste_types": [{"category": "PP", "generation_cycle": "monthly"}],
+    "main_waste_types": [{"category": "PP"}],
 }
 
 

@@ -20,20 +20,20 @@
 ### 등록
 
 1. 기업과 회원(사용자)은 1:1이고, 사업장은 기업당 1곳임. 이미 기업이 있는 사용자가 다시 등록하면 409를 반환함
-2. 필수 항목: 회사명(`company_name`), 담당자 이메일(`contact_email`), 업종(`industry`), 사업장 이름(`site_name`), 사업장 주소(`site_address`), 배출시설(`site_facilities`, 1개 이상), 주생산품(`main_products`, 1개 이상). 빠지거나 비어 있으면 422
+2. 필수 항목: 회사명(`company_name`), 담당자 이메일(`contact_email`), 업종(`industry`), 사업장 이름(`site_name`), 사업장 주소(`site_address`), 배출시설(`site_facilities`, 1개 이상). 빠지거나 비어 있으면 422. 주생산품(`main_products`)은 선택이며 보내지 않으면 빈 배열임
 3. 담당자 이메일은 `이름@도메인` 형식이어야 함. 아니면 422
-4. 주요 폐기물(`main_waste_types`)은 선택이며 0개 이상임. 각 항목은 종류(`category`, 자유 문자열), 발생 주기, 월 예상 물량(kg)임
-5. 발생 주기는 `daily`, `weekly`, `monthly`, `irregular` 중 하나임
+4. 주요 폐기물(`main_waste_types`)은 선택이며 0개 이상임. 각 항목은 종류(`category`, 자유 문자열), 월 예상 물량(kg)임
+5. 발생 주기는 받지 않음 (2026-11-10 화면에서 뺌). 항목에 `generation_cycle` 등 정의되지 않은 키를 보내면 422
 6. 예상 물량은 월 kg 단위이며, 모르면 비워 둠 (값을 추정해 채우지 않음)
 7. 정의되지 않은 필드(예: 예전 `business_registration_no`, `contact`)를 보내면 422
 8. 등록 시 `profile_version`은 1이며, 등록은 변경 이력에 남기지 않음
 
 ### 수정
 
-9. 2번의 필수 항목과 `main_waste_types`를 수정할 수 있음. 그 외 필드를 보내면 422
+9. 2번의 필수 항목과 `main_products`, `main_waste_types`를 수정할 수 있음. `main_products`는 빈 배열로 비울 수 있음. 그 외 필드를 보내면 422
 10. 요청에는 화면이 불러온 `profile_version`이 반드시 있어야 함. 현재 버전과 다르면 409 (다른 곳에서 먼저 수정됨)
 11. 보내지 않은 필드는 바꾸지 않음. 수정 가능 필드에 `null`을 보내면 422
-12. 목록 필드(`site_facilities`, `main_products`, `main_waste_types`)는 통째로 교체함 (부분 수정 없음). `main_waste_types`는 종류·주기·물량과 순서가 같으면 바뀌지 않은 것으로 봄. 바뀌면 항목 id를 새로 붙임
+12. 목록 필드(`site_facilities`, `main_products`, `main_waste_types`)는 통째로 교체함 (부분 수정 없음). `main_waste_types`는 종류·물량과 순서가 같으면 바뀌지 않은 것으로 봄. 바뀌면 항목 id를 새로 붙임
 13. 실제로 값이 바뀐 필드가 있으면 `profile_version`을 1 올리고, 바뀐 필드 이름을 `changed_fields`로 반환하며 변경 이력을 1건 남김
 14. 바뀐 값이 없으면 버전을 올리지 않고 이력도 남기지 않으며, `changed_fields`는 빈 배열임
 15. 같은 버전으로 동시에 수정하면 하나만 성공하고 나머지는 409임
@@ -67,7 +67,7 @@
   "site_facilities": ["혼합시설", "세척시설"],
   "main_products": ["산업용 윤활유"],
   "main_waste_types": [
-    { "id": "…", "category": "PP", "generation_cycle": "monthly", "expected_monthly_volume_kg": 3000 }
+    { "id": "…", "category": "PP", "expected_monthly_volume_kg": 3000 }
   ],
   "profile_version": 1
 }
@@ -105,7 +105,7 @@
 | companies | id, user_id, company_name, contact_email, industry, site_name, site_address, site_facilities(JSON), main_products(JSON), main_waste_types(JSON), profile_version, created_at, updated_at | user_id unique, FK users (cascade 삭제). profile_version 기본 1 |
 | company_profile_history | id, company_id, profile_version, changed_fields(JSON 배열), created_at(= changed_at), updated_at | FK companies (cascade 삭제), (company_id, profile_version) unique |
 
-`main_waste_types` 항목: `{id, category, generation_cycle, expected_monthly_volume_kg}`. 예전 `waste_profiles` 테이블에서 옮겼고 id를 유지함 ([db-schema-simplify.md](db-schema-simplify.md)).
+`main_waste_types` 항목: `{id, category, expected_monthly_volume_kg}`. 예전 `waste_profiles` 테이블에서 옮겼고 id를 유지함 ([db-schema-simplify.md](db-schema-simplify.md)). 예전에 저장된 `generation_cycle` 키는 마이그레이션 `a7c3e91f5b28`에서 지움.
 
 ## 6. 완료 조건
 
@@ -113,17 +113,19 @@
 
 - [x] 로그인한 사용자가 기업을 등록하면 201과 사업장·주생산품·주요 폐기물을 포함한 기업 정보, profile_version 1을 반환함
 - [x] 주요 폐기물 없이 등록하면 빈 배열로 반환함
-- [x] 필수 항목이 하나라도 빠지거나 배출시설·주생산품이 빈 배열이면 422를 반환함
+- [x] 필수 항목이 하나라도 빠지거나 배출시설이 빈 배열이면 422를 반환함
+- [x] 주생산품 없이(또는 빈 배열로) 등록하면 201과 빈 배열을 반환함
 - [x] 담당자 이메일 형식이 아니면 422를 반환함
 - [x] 없앤 필드(사업자등록번호, 대표자, 본사 주소, contact)를 보내면 422를 반환함
 - [x] 같은 사용자가 다시 등록하면 409를 반환함
-- [x] 허용되지 않은 발생 주기 값은 422를 반환함
+- [x] 주요 폐기물 항목에 generation_cycle을 보내면 422를 반환함
 - [x] 기업이 없을 때 GET /companies/me는 404, /users/me의 company_id는 null임
 - [x] 등록 후 /users/me의 company_id가 등록한 기업 id와 같음
 
 ### 수정
 
 - [x] industry와 main_products를 수정하면 profile_version이 2가 되고 changed_fields가 두 필드이며, 조회 결과에 반영됨
+- [x] main_products를 빈 배열로 보내면 비워지고 changed_fields에 들어감
 - [x] main_waste_types를 보내면 목록이 통째로 교체됨
 - [x] 현재 값과 같은 값만 보내면 profile_version이 그대로이고 changed_fields가 빈 배열이며 이력이 생기지 않음
 - [x] profile_version이 현재 버전과 다르면 409를 반환하고 값이 바뀌지 않음
