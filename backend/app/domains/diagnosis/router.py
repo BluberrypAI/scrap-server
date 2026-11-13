@@ -22,7 +22,11 @@ from app.domains.diagnosis.schemas import (
     MessageIn,
     ReopenIn,
     RevokeIn,
+    TreatmentContextRead,
+    TreatmentSelectionIn,
 )
+from app.domains.diagnosis.treatment import treatment_context
+from app.domains.treatment.errors import TreatmentError
 from app.domains.users.models import User
 
 router = APIRouter(prefix="/diagnosis", tags=["diagnosis"])
@@ -201,3 +205,31 @@ async def rebase_case(case_id: CaseId, company_id: CompanyId, engine: Engine) ->
 @router.get("/cases/{case_id}/trace", summary="판정 근거 추적")
 async def get_trace(case_id: CaseId, company_id: CompanyId, engine: Engine) -> JSONResponse:
     return await _forward(engine, company_id, "GET", f"/cases/{case_id}/trace")
+
+
+@router.post("/cases/{case_id}/treatment/next-step", response_model=TreatmentContextRead)
+async def diagnosis_next_step(
+    case_id: CaseId,
+    body: TreatmentSelectionIn,
+    company_id: CompanyId,
+    db: DbSession,
+    engine: Engine,
+):
+    try:
+        return await treatment_context(engine, db, company_id, case_id, body)
+    except TreatmentError as error:
+        raise AppError(503, ErrorCode.ENGINE_UNAVAILABLE, str(error)) from None
+
+
+@router.post("/cases/{case_id}/treatment/intake-reviews", response_model=TreatmentContextRead)
+async def diagnosis_intake_reviews(
+    case_id: CaseId,
+    body: TreatmentSelectionIn,
+    company_id: CompanyId,
+    db: DbSession,
+    engine: Engine,
+):
+    try:
+        return await treatment_context(engine, db, company_id, case_id, body, audit=True)
+    except TreatmentError as error:
+        raise AppError(503, ErrorCode.ENGINE_UNAVAILABLE, str(error)) from None

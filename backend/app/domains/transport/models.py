@@ -1,7 +1,16 @@
 import uuid
 from datetime import datetime
 
-from sqlalchemy import JSON, DateTime, ForeignKey, Integer, String
+from sqlalchemy import (
+    JSON,
+    Boolean,
+    DateTime,
+    ForeignKey,
+    Integer,
+    LargeBinary,
+    String,
+    UniqueConstraint,
+)
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base, TimestampMixin
@@ -40,3 +49,54 @@ class TransportSharedCase(Base, TimestampMixin):
     active_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"))
     revision: Mapped[int] = mapped_column(Integer, default=1)
     snapshot: Mapped[dict] = mapped_column(JSON)
+
+
+class WorkflowLot(Base, TimestampMixin):
+    __tablename__ = "workflow_lots"
+    __table_args__ = (UniqueConstraint("owner_company_id", "diagnosis_id"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("wastes.id", ondelete="CASCADE"), primary_key=True
+    )
+    owner_company_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("companies.id"), index=True)
+    current_company_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("companies.id"), index=True)
+    diagnosis_id: Mapped[str] = mapped_column(String(64))
+    revision: Mapped[int] = mapped_column(Integer, default=1)
+    status: Mapped[str] = mapped_column(String(32), default="ready")
+    data: Mapped[dict] = mapped_column(JSON)
+    review: Mapped[dict | None] = mapped_column(JSON)
+
+
+class WorkflowFacilityAccount(Base, TimestampMixin):
+    __tablename__ = "workflow_facility_accounts"
+    facility_key: Mapped[str] = mapped_column(String(100), primary_key=True)
+    company_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("companies.id"), index=True)
+    verification_reference: Mapped[str] = mapped_column(String(300))
+    synthetic: Mapped[bool] = mapped_column(Boolean, default=False)
+
+
+class WorkflowOffer(Base, TimestampMixin):
+    __tablename__ = "workflow_offers"
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    lot_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("workflow_lots.id", ondelete="CASCADE"), index=True
+    )
+    sender_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("companies.id"))
+    recipient_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("companies.id"), index=True)
+    status: Mapped[str] = mapped_column(String(32), default="pending")
+    data: Mapped[dict] = mapped_column(JSON)
+    qr_hash: Mapped[str | None] = mapped_column(String(64))
+    qr_expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    route_step_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("route_steps.id"))
+
+
+class WorkflowPhoto(Base, TimestampMixin):
+    __tablename__ = "workflow_photos"
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    lot_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("workflow_lots.id", ondelete="CASCADE"), index=True
+    )
+    company_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("companies.id"))
+    stage: Mapped[int] = mapped_column(Integer)
+    mime: Mapped[str] = mapped_column(String(30))
+    content: Mapped[bytes] = mapped_column(LargeBinary)

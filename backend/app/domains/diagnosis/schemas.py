@@ -61,3 +61,24 @@ class ConfirmIn(_Body):
 
 class ReopenIn(_Body):
     reason: str | None = Field(default=None, max_length=1000)
+
+
+class TreatmentSelectionIn(BaseModel):
+    """Only a missing physical form is supplied by the browser."""
+
+    model_config = ConfigDict(extra="forbid")
+    input_form: str | None = Field(default=None, max_length=80)
+
+
+class TreatmentContextRead(BaseModel):
+    status: Literal["needs_input", "review_required", "unsupported", "ready"]
+    message: str
+    case_id: str
+    handoff: dict[str, Any] | None = None
+    available_forms: list[dict[str, str]] = Field(default_factory=list)
+    origin: dict[str, float] | None = None
+    origin_label: str | None = None
+    warnings: list[str] = Field(default_factory=list)
+    route_input: dict[str, Any] | None = None
+    next_step: dict[str, Any] | None = None
+    reviews: dict[str, Any] | None = None
