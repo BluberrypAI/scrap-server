@@ -103,7 +103,7 @@ scrap-server/
 │  │  ├─ core/               설정, JWT, 공통 오류 형식
 │  │  ├─ db/                 DB 엔진·세션
 │  │  ├─ api/v1/             라우터 묶음 (/api/v1)
-│  │  └─ domains/            auth, users, companies, transport, treatment
+│  │  └─ domains/            auth, users, companies, wastes, facilities, transport, treatment
 │  ├─ alembic/               마이그레이션
 │  └─ tests/
 └─ docker-compose.yml        api + PostgreSQL (호스트 포트 5433)

@@ -64,6 +64,9 @@ class CompanyRead(BaseModel):
     industry: str
     site_name: str
     site_address: str
+    # 반경 검색 기준점. 지오코딩 전에는 null (입력받지 않음)
+    site_latitude: float | None = None
+    site_longitude: float | None = None
     site_facilities: list[str]
     main_products: list[str]
     main_waste_types: list[WasteTypeRead]
@@ -78,6 +81,8 @@ class CompanyRead(BaseModel):
             industry=company.industry,
             site_name=company.site_name,
             site_address=company.site_address,
+            site_latitude=company.site_latitude,
+            site_longitude=company.site_longitude,
             site_facilities=company.site_facilities,
             main_products=company.main_products,
             main_waste_types=[WasteTypeRead.model_validate(w) for w in company.main_waste_types],

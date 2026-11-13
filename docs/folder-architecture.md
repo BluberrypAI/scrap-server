@@ -78,6 +78,8 @@ backend/
 │     ├─ auth/                 # 소셜 로그인, 토큰 쿠키, 현재 사용자 의존성
 │     ├─ users/                # 사용자 (로그인 수단 provider, provider_subject 포함)
 │     ├─ companies/            # 기업·사업장 정보, 변경 이력 (온보딩)
+│     ├─ wastes/               # 폐기물 건, 처리 단계, QR 현장 확인, 완료 스냅샷 (테이블만, API는 기능별로 추가)
+│     ├─ facilities/           # 처리·재활용 시설, 허가 분류번호, 시설 R유형 (테이블만)
 │     ├─ transport/            # 현장 인계 기록 (QR 확인 기능으로 옮길 예정)
 │     └─ treatment/            # 처리 경로 데모: 처리 카탈로그, 업체 후보 조회 (/api/treatment, /api/classification)
 └─ tests/
