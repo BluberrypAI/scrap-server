@@ -44,7 +44,19 @@
 | 422 | `INVALID_FILTER` | 지원하지 않는 문진 유형이거나 유형과 답변이 맞지 않음 (처리 경로 데모) |
 | 500 | `INTERNAL_ERROR` | 처리되지 않은 서버 오류 |
 | 503 | `PROVIDER_NOT_CONFIGURED` | 클라이언트 ID가 설정되지 않은 소셜 로그인 제공자 |
-| 503 | `ENGINE_UNAVAILABLE` | 문진 엔진 주소(CLASSIFICATION_BASE_URL)가 없거나 연결하지 못함 (처리 경로 데모) |
+| 503 | `ENGINE_UNAVAILABLE` | 문진 엔진 주소(CLASSIFICATION_BASE_URL, DIAGNOSIS_ENGINE_URL)가 없거나 연결하지 못함, 엔진 인증 실패·5xx·시간 초과 |
+| 404 | `CASE_NOT_FOUND` | 문진 건이 없거나 다른 기업의 건 ([diagnosis-engine-integration.md](diagnosis-engine-integration.md)) |
+| 404 | `DOCUMENT_NOT_FOUND` | 그 문진 건에 없는 서류 |
+| 409 | `CASE_NOT_DIAGNOSABLE` | 확정된 건에 답변·서류 등. 다시 열기(reopen) 후 진행 |
+| 409 | `ALREADY_CONFIRMED` | 이미 확정한 건을 다시 확정 |
+| 409 | `NOT_CONFIRMABLE` | 확정 조건을 아직 채우지 못함 |
+| 409 | `NOT_REOPENABLE` | 확정되지 않은 건을 다시 열기 |
+| 409 | `CODE_MISMATCH` | 확정 요청의 `expected_code`가 엔진 재평가 결론과 다름 |
+| 409 | `CONCURRENT_UPDATE` | 같은 건을 다른 요청이 먼저 갱신. 다시 조회 후 재시도 |
+| 409 | `KB_CHANGED` | 판정 규칙 버전이 바뀜. rebase 후 다시 요청 |
+| 409 | `DOCUMENT_VERSION_MISMATCH` | 서류 파일이 교체됨. 최신 버전으로 다시 검수 |
+| 413 | `FILE_TOO_LARGE` | 업로드 파일 크기 초과 (엔진 기본 10MB) |
+| 415 | `UNSUPPORTED_DOCUMENT` | 지원하지 않는 서류 형식 |
 
 **예시**
 

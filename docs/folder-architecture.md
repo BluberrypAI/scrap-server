@@ -78,6 +78,7 @@ backend/
 │     ├─ auth/                 # 소셜 로그인, 토큰 쿠키, 현재 사용자 의존성
 │     ├─ users/                # 사용자 (로그인 수단 provider, provider_subject 포함)
 │     ├─ companies/            # 기업·사업장 정보, 변경 이력 (온보딩)
+│     ├─ diagnosis/            # 문진 엔진(scrap-diagnosis) /internal/v1 중계, 엔진 오류 변환 (/api/v1/diagnosis)
 │     ├─ wastes/               # 폐기물 건, 처리 단계, QR 현장 확인, 완료 스냅샷 (테이블만, API는 기능별로 추가)
 │     ├─ facilities/           # 처리·재활용 시설, 허가 분류번호, 시설 R유형 (테이블만)
 │     ├─ transport/            # 현장 인계 기록 (QR 확인 기능으로 옮길 예정)

@@ -32,6 +32,19 @@ class ErrorCode(StrEnum):
     HANDOFF_ALREADY_REGISTERED = "HANDOFF_ALREADY_REGISTERED"
     CASE_UPDATE_REJECTED = "CASE_UPDATE_REJECTED"
     RECIPIENT_MISMATCH = "RECIPIENT_MISMATCH"
+    # 문진 엔진 오류 코드 (엔진 코드 그대로, docs/specs/diagnosis-engine-integration.md 4장)
+    CASE_NOT_FOUND = "CASE_NOT_FOUND"
+    DOCUMENT_NOT_FOUND = "DOCUMENT_NOT_FOUND"
+    CASE_NOT_DIAGNOSABLE = "CASE_NOT_DIAGNOSABLE"
+    ALREADY_CONFIRMED = "ALREADY_CONFIRMED"
+    NOT_CONFIRMABLE = "NOT_CONFIRMABLE"
+    NOT_REOPENABLE = "NOT_REOPENABLE"
+    CODE_MISMATCH = "CODE_MISMATCH"
+    CONCURRENT_UPDATE = "CONCURRENT_UPDATE"
+    KB_CHANGED = "KB_CHANGED"
+    DOCUMENT_VERSION_MISMATCH = "DOCUMENT_VERSION_MISMATCH"
+    FILE_TOO_LARGE = "FILE_TOO_LARGE"
+    UNSUPPORTED_DOCUMENT = "UNSUPPORTED_DOCUMENT"
 
 
 class ErrorDetail(BaseModel):
@@ -54,12 +67,14 @@ class AppError(Exception):
         code: ErrorCode,
         message: str,
         headers: dict[str, str] | None = None,
+        details: list["ErrorDetail"] | None = None,
     ):
         super().__init__(message)
         self.status_code = status_code
         self.code = code
         self.message = message
         self.headers = headers
+        self.details = details
 
 
 class AuthRequiredError(AppError):
@@ -100,7 +115,7 @@ def _response(
 
 
 async def _app_error(request: Request, exc: AppError) -> JSONResponse:
-    return _response(exc.status_code, exc.code, exc.message, headers=exc.headers)
+    return _response(exc.status_code, exc.code, exc.message, exc.details, exc.headers)
 
 
 async def _validation_error(request: Request, exc: RequestValidationError) -> JSONResponse:

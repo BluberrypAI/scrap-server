@@ -24,7 +24,8 @@
 5. 유예 기간 중 같은 소셜 계정으로 로그인하면 차단함 (`/login?error=account_withdrawn`, [auth-social-login.md](auth-social-login.md) 요구사항 6). 탈퇴는 철회할 수 없음
 6. `deletion_scheduled_at`이 지난 사용자는 사용자(로그인 수단 포함), refresh 토큰, 기업을 모두 실제로 삭제함. 삭제 후 같은 소셜 계정으로 로그인하면 새 사용자로 가입됨
 7. 삭제는 `uv run python -m app.domains.users.purge`로 실행함. 하루 한 번 실행하는 스케줄은 배포 시 설정함
-8. 유예 기간 동안 개인정보를 보관하는 것은 개인정보 처리방침에 보관 기간과 사유를 명시해야 함 (서비스 공개 전 확인)
+8. 기업을 지우기 전에 문진 엔진의 기업 데이터 삭제를 부르고, 실패한 사용자는 다음 purge로 미룸 ([diagnosis-engine-integration.md](diagnosis-engine-integration.md) 3장)
+9. 유예 기간 동안 개인정보를 보관하는 것은 개인정보 처리방침에 보관 기간과 사유를 명시해야 함 (서비스 공개 전 확인)
 
 ## 4. API
 

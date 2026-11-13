@@ -24,6 +24,9 @@ services:
         required: false
     environment:
       DATABASE_URL: postgresql+asyncpg://resource:resource@db:5432/resource
+      # 문진 엔진. engine 프로필을 띄우지 않으면 문진 API는 503 ENGINE_UNAVAILABLE
+      DIAGNOSIS_ENGINE_URL: ${DIAGNOSIS_ENGINE_URL:-http://engine:8030}
+      ENGINE_SERVICE_TOKEN: ${ENGINE_SERVICE_TOKEN:-local-engine-token}
     ports:
       - "8000:8000"
     volumes:
@@ -32,6 +35,44 @@ services:
       db:
         condition: service_healthy
     command: sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --reload-dir app"
+
+  # 문진 엔진(resource_engine)과 엔진 DB: docker compose --profile engine up -d --build
+  # 엔진 소스 위치는 ENGINE_REPO_DIR (기본 ../resource_engine)
+  engine-db:
+    image: postgres:17
+    profiles: ["engine"]
+    environment:
+      POSTGRES_USER: wd
+      POSTGRES_PASSWORD: wd
+      POSTGRES_DB: scrap_engine
+    ports:
+      - "${ENGINE_DB_HOST_PORT:-55432}:5432"
+    volumes:
+      - engine-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wd -d scrap_engine"]
+      interval: 2s
+      retries: 30
+
+  engine:
+    build: ${ENGINE_REPO_DIR:-../resource_engine}
+    profiles: ["engine"]
+    environment:
+      APP_ENV: dev
+      DATABASE_URL: postgresql+psycopg://wd:wd@engine-db:5432/scrap_engine
+      DB_CREATE_ALL: "false"
+      # api 서비스와 같은 값이어야 함
+      ENGINE_SERVICE_TOKEN: ${ENGINE_SERVICE_TOKEN:-local-engine-token}
+      LLM_PROVIDER: ${LLM_PROVIDER:-off}
+    env_file:
+      - path: ${ENGINE_REPO_DIR:-../resource_engine}/.env
+        required: false
+    depends_on:
+      engine-db:
+        condition: service_healthy
+    command: ["sh", "-c", "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8030"]
+    ports:
+      - "${ENGINE_PORT:-8030}:8030"
 
   # Blob Storage 에뮬레이터. 문서 업로드 기능부터 사용: docker compose --profile storage up -d
   azurite:
@@ -42,3 +83,4 @@ services:
 
 volumes:
   pgdata:
+  engine-pgdata:
