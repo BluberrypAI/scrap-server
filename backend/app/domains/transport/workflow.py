@@ -9,13 +9,14 @@ from copy import deepcopy
 from datetime import UTC, datetime, timedelta
 from typing import Literal
 
-from fastapi import APIRouter, File, HTTPException, Response, UploadFile
+from fastapi import APIRouter, File, Response, UploadFile
 from PIL import Image, UnidentifiedImageError
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import or_, select
 from sqlalchemy.exc import IntegrityError
 
 from app.core.config import get_settings
+from app.core.errors import AppError, ErrorCode
 from app.db.session import DbSession
 from app.domains.companies.models import Company
 from app.domains.diagnosis.client import Engine
@@ -88,8 +89,18 @@ class Finish(Version):
     confirmed: bool
 
 
-def fail(message, status=409):
-    raise HTTPException(status, detail=message)
+# 공통 오류 형식({code, message})으로 내야 화면에 이유가 그대로 보인다
+_FAIL_CODES = {
+    403: ErrorCode.FORBIDDEN,
+    404: ErrorCode.NOT_FOUND,
+    409: ErrorCode.WORKFLOW_CONFLICT,
+    413: ErrorCode.FILE_TOO_LARGE,
+    422: ErrorCode.VALIDATION_ERROR,
+}
+
+
+def fail(message, status=409, code=None):
+    raise AppError(status, code or _FAIL_CODES[status], message)
 
 
 async def lot_for(db, key, cid, lock=False):
@@ -116,7 +127,10 @@ async def lot_for(db, key, cid, lock=False):
 
 def version(lot, rev):
     if lot.revision != rev:
-        fail("다른 화면에서 기록이 변경됐습니다. 새로고침해 주세요.")
+        fail(
+            "다른 화면에서 기록이 변경됐습니다. 새로고침해 주세요.",
+            code=ErrorCode.VERSION_CONFLICT,
+        )
 
 
 def active(lot, cid, states):
