@@ -63,6 +63,7 @@
 | T-133 | PP 상태·사진 공유, 수신 기업 수락, QR 입고, 실제 산출물 기반 다음 인계·완료 | 완료 | 구현 | pp-company-workflow | 별도 가상 기업 계정으로 A→B 및 A→B→C 웹 완료. PostgreSQL·Azure 실호출. 파일 선택기·실물 QR·실제 업체 허가는 미검증. 검증 기록: pp-company-e2e.md |
 | T-134 | 현재 상태 설명·사진을 후보 전체 Astra 검토에 반영 | 완료 | 구현 | pp-company-workflow | A→B 3곳, B→C 2곳(사진 없음/새 사진) Azure 실제 호출. 관찰·진술·미확인 분리, 수락은 업체 결정. 서버 166개·신규 PostgreSQL 9개 통과 |
 | T-135 | 사진 전용 관찰과 업체 대조 분리 결과 연동·구버전 검토 차단 | 완료 | api-developer | pp-company-workflow | 기존 웹 계약 유지, 관찰 방식·확인사항 유형 추가. 서버 168개·PostgreSQL 기업 인계 11개 통과. 사진으로 반입 승인하지 않음 |
+| T-137 | 기업 인계 테이블 마이그레이션의 시각 기본값을 SQLite에서도 동작하게 수정 | 완료 | db-engineer | pp-company-workflow | now() 문자열 → sa.func.now(). 마이그레이션으로 만든 SQLite DB 회귀 테스트 추가. PostgreSQL 스키마는 동일 |
 | T-118 | 검토 실행을 Service Bus + 별도 워커 파드로 이전 | 대기 | backend-architect | review-runs | 요구사항 NFR-6, infra 리소스 확정 후 |
 | T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |
