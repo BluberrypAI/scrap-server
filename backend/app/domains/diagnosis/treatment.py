@@ -56,7 +56,16 @@ def context_from_handoff(detail, case_id, selection, company):
         )
         return context
     facts = h.get("facts", {})
-    material = resolve_material((facts.get("material") or {}).get("value"))
+    raw_material = (facts.get("material") or {}).get("value")
+    material = resolve_material(raw_material)
+    # A metal-can code includes steel cans too. Only the explicit aluminium-can
+    # form selection below may bridge the classifier's broader material family.
+    if raw_material == "metal_can" and h.get("waste_code") == "51-29-03":
+        material = "aluminium"
+        context.warnings.append(
+            "폐금속캔 번호만으로 알루미늄을 판별하지 않습니다. "
+            "아래에서 알루미늄 음료캔임을 확인한 물량만 연결하세요."
+        )
     state = (facts.get("physical_state") or {}).get("value")
     code = h.get("waste_code")
     profiles = [p for p in PROFILES.values() if p.material == material and code in p.waste_codes]

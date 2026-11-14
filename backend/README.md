@@ -2,6 +2,8 @@
 
 FastAPI 기반 백엔드 API. **팀 표준은 A(Docker)** 이며, B는 Docker 없이 빠르게 확인할 때의 보조 방법임.
 
+업체별 반입 확인을 추가했습니다. 후보별 질문·답변 → AI 재검토 → 수신 업체 조건 제시 → 발송 업체 자료 제출 → 수신 업체 최종 확인 → QR 입고 순서입니다. 전국 명부의 다른 업체도 조회·확인 목록 저장이 가능합니다. [API 명세](../docs/specs/intake-conditions-local.md)와 [검증 결과·남은 데이터](../docs/verification/intake-conditions-20261114.md)를 참고하세요. AI의 `intake_answers` 지원 버전을 먼저 적용해야 합니다. 기존 JSON 업무 기록에 저장하므로 새 마이그레이션은 없습니다.
+
 | 방식 | 필요한 것 | DB | 용도 |
 | --- | --- | --- | --- |
 | [A. Docker](#a-docker로-실행) **(표준)** | Docker Desktop | PostgreSQL (컨테이너) | 평소 개발. 운영과 같은 DB |

@@ -153,10 +153,11 @@ def load_snapshot(path, format_name, expected_sha256):
     }
 
 
-ALGORITHM = "registry-facility-discovery-v2"
+ALGORITHM = "registry-facility-discovery-v3"
 EQUIPMENT_HINTS = {
     "pet-prepare": ["압축", "선별"],
     "pet-bale-to-flake": ["선별", "분쇄", "세척"],
+    "pet-bottle-to-flake": ["선별", "분쇄", "세척", "건조"],
     "pet-wash": ["세척"],
     "pet-finish": ["건조", "금속분리", "금속 분리"],
     "pet-pelletise": ["압출", "펠렛", "펠릿"],
@@ -273,8 +274,8 @@ def registry_matches(records, material, request, *, codebook=None):
     }
     matches.sort(
         key=lambda v: (
-            not bool(equipment_mentions(v[0], request.transition_key)),
             buckets[v[1]],
+            not bool(equipment_mentions(v[0], request.transition_key)),
             v[2] if v[2] is not None else math.inf,
             v[0]["listing_id"],
         )
@@ -552,7 +553,7 @@ def project(value, registry, request, *, generation, fingerprint, namespace, bac
             "registry_record_count": registry["manifest"]["record_count"] if registry else 0,
             "filter_counts": counts,
             "match_counts": dict(Counter(match for _, match, _ in matches)),
-            "ordering": "equipment_mentions_then_material_match_bucket_then_straight_line_then_id",
+            "ordering": "material_match_bucket_then_equipment_mentions_then_straight_line_then_id",
             "not_feasibility_or_cost_ranking": True,
             "code_categories_not_material_or_permit_approval": True,
             "unmapped_codes_preserved": request.waste_code is None,

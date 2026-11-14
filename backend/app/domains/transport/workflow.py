@@ -29,10 +29,13 @@ from app.domains.transport.models import (
     WorkflowOffer,
     WorkflowPhoto,
 )
+from app.domains.treatment.conditions import attach_answers, published_conditions, questionnaire
+from app.domains.treatment.directory import project
 from app.domains.treatment.intake import IntakeSelection, build_intake_batch, review_intakes
 from app.domains.treatment.process import next_step
-from app.domains.treatment.repository import read_reference
-from app.domains.treatment.schemas import NextStepRequest
+from app.domains.treatment.reference import digest
+from app.domains.treatment.repository import read_reference, read_registry
+from app.domains.treatment.schemas import FacilitySearchRequest, NextStepRequest
 from app.domains.wastes.models import (
     CheckRole,
     QrFieldCheck,
@@ -51,14 +54,16 @@ LOT_STARTS = {
     ("pp", "shredded"): "pp-shredded",
     ("pe", "film"): "pe-scrap",
     ("aluminium", "can"): "al-used-can",
+    ("pet", "bottle"): "pet-bottle",  # Only a compatible confirmed code passes treatment_context.
 }
 # 완료로 인정하는 실제 산출물. 파쇄품은 카탈로그 종료 표시가 있어도 완료로 보지 않는다.
 FINISH_STATES = {
     "pp": {"pp-pellet", "pp-compound"},
     "pe": {"pe-pellet", "pe-compound"},
     "aluminium": {"al-sheet", "al-sheet-ingot"},
+    "pet": {"pet-flake", "pet-pellet"},
 }
-MATERIAL_LABELS = {"pp": "PP", "pe": "PE", "aluminium": "알루미늄"}
+MATERIAL_LABELS = {"pp": "PP", "pe": "PE", "aluminium": "알루미늄", "pet": "PET"}
 
 
 class Body(BaseModel):
@@ -67,7 +72,7 @@ class Body(BaseModel):
 
 class CreateLot(Body):
     diagnosis_id: str = Field(pattern=r"^[A-Za-z0-9_-]{1,64}$")
-    input_form: Literal["scrap", "shredded", "film", "can"]
+    input_form: Literal["scrap", "shredded", "film", "bottle", "can"]
     mass_kg: float = Field(gt=0, le=1e9, allow_inf_nan=False)
     condition: str = Field(min_length=3, max_length=1500)
 
@@ -85,6 +90,32 @@ class Decision(Version):
     note: str = Field(min_length=3, max_length=1000)
     scope_checked: bool = False
     intake_checked: bool = False
+    resolved_condition_ids: list[str] = Field(default_factory=list, max_length=12)
+
+
+class IntakeAnswers(Version):
+    capability_key: str = Field(max_length=100)
+    answers: dict[str, str] = Field(min_length=1, max_length=24)
+
+
+class ConditionsIn(Version):
+    conditions: list[str] = Field(min_length=1, max_length=12)
+    note: str = Field(min_length=3, max_length=1000)
+
+
+class ConditionResponses(Version):
+    responses: dict[str, str] = Field(min_length=1, max_length=12)
+
+
+class DirectoryIn(Version):
+    transition_key: str = Field(pattern=r"^[a-z][a-z0-9-]{0,100}$")
+    cursor: str | None = Field(default=None, max_length=2048)
+    page_size: int = Field(default=10, ge=1, le=50)
+
+
+class DirectoryInquiry(DirectoryIn):
+    listing_id: str = Field(min_length=1, max_length=100)
+    answers: dict[str, str] = Field(default_factory=dict, max_length=24)
 
 
 class Receipt(Version):
@@ -172,6 +203,9 @@ def stamp(lot, action, cid, extra=None):
 
 
 async def view(db, lot, cid):
+    ref, _ = await read_reference(db)
+    material = lot.data["initial"]["material"]
+    states = [s for s in ref.states if s.material == material]
     offers = list(
         await db.scalars(
             select(WorkflowOffer)
@@ -197,6 +231,12 @@ async def view(db, lot, cid):
         "can_manage": lot.current_company_id == cid,
         "data": lot.data,
         "review": lot.review,
+        "output_states": [
+            {"key": s.key, "label": s.label}
+            for s in states
+            if s.key in {t.output_state for t in ref.transitions}
+        ],
+        "terminal_states": [s.key for s in states if s.key in FINISH_STATES.get(material, set())],
         "photos": [
             {"id": str(p.id), "stage": p.stage, "url": f"/api/v1/workflow/photos/{p.id}"}
             for p in photos
@@ -208,7 +248,8 @@ async def view(db, lot, cid):
                 "recipient_id": str(o.recipient_id),
                 "status": o.status,
                 "data": o.data,
-                "can_decide": cid == o.recipient_id and o.status == "pending",
+                "can_decide": cid == o.recipient_id and o.status in {"pending", "conditional"},
+                "can_respond_conditions": cid == o.sender_id and o.status == "conditional",
                 "can_receive": cid == o.recipient_id and o.status == "accepted",
                 "can_issue_qr": cid == o.sender_id and o.status == "accepted",
             }
@@ -235,7 +276,7 @@ async def create_lot(body: CreateLot, company_id: CompanyId, db: DbSession, engi
     if ctx.status != "ready" or start is None:
         fail(
             "기업 인계는 확정된 일반 문진 중 PP 사출 잔재·파쇄품, PE 필름, "
-            "알루미늄 음료캔만 지원합니다."
+            "알루미늄 음료캔, 분류번호가 공정 자료와 일치하는 PET병만 지원합니다."
         )
     waste = Waste(
         company_id=cid,
@@ -379,10 +420,15 @@ async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: D
     lot = await lot_for(db, key, cid)
     active(lot, cid, {"ready", "processed"})
     version(lot, body.revision)
+    ref, reference_checksum = await read_reference(db)
+    conditions_checksum = digest(published_conditions())
     if (
         lot.review
         and lot.review.get("version") == "lot-vision-v1"
         and lot.review.get("analysis_version") == "isolated-vision-v2"
+        and lot.review.get("conditions_version") == "intake-questions-v1"
+        and lot.review.get("reference_checksum") == reference_checksum
+        and lot.review.get("conditions_checksum") == conditions_checksum
         and all(
             r.get("status") in {"reviewed", "needs_evidence"}
             and (r.get("lot_review") or {}).get("status") == "reviewed"
@@ -392,7 +438,6 @@ async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: D
         )
     ):
         return await view(db, lot, cid)
-    ref, _ = await read_reference(db)
     request = process_request(lot)
     current_company = await db.get(Company, cid)
     if current_company.site_latitude is not None and current_company.site_longitude is not None:
@@ -429,6 +474,15 @@ async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: D
         }
         for p in photos
     ]
+    # Candidate-specific sender answers are untrusted observations, not facility rules.
+    stage_answers = lot.data.get("intake_answers", {}).get(str(len(lot.data["completed"])), {})
+    for packet in packets:
+        answers = stage_answers.get(packet["capability_key"], {})
+        if answers:
+            packet["intake_answers"] = {
+                f"{k}: {v['question']}" if v.get("question") else k: v["value"]
+                for k, v in answers.items()
+            }
     await db.rollback()
     reviewed = await review_intakes(packets, get_settings(), lot_context=lot_context)
     lot = await lot_for(db, key, cid, lock=True)
@@ -448,13 +502,179 @@ async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: D
                 if target and target.id != cid
                 else None
             )
+            f["intake_conditions"] = attach_answers(
+                questionnaire(
+                    ref,
+                    f["facility_key"],
+                    request.material,
+                    ai_review=reviewed.results[f["capability_key"]].model_dump(),
+                ),
+                stage_answers.get(f["capability_key"], {}),
+            )
     lot.review = {
         "version": "lot-vision-v1",
         "analysis_version": "isolated-vision-v2",
+        "conditions_version": "intake-questions-v1",
+        "reference_checksum": reference_checksum,
+        "conditions_checksum": conditions_checksum,
         "next_step": output,
         "results": reviewed.model_dump()["results"],
         "at": datetime.now(UTC).isoformat(),
     }
+    await db.commit()
+    return await view(db, lot, cid)
+
+
+@router.post("/lots/{key}/intake-answers")
+async def intake_answers(key: uuid.UUID, body: IntakeAnswers, company_id: CompanyId, db: DbSession):
+    cid = uuid.UUID(company_id)
+    lot = await lot_for(db, key, cid, lock=True)
+    active(lot, cid, {"ready", "processed"})
+    version(lot, body.revision)
+    review = deepcopy(lot.review or {})
+    fs = [
+        f
+        for o in review.get("next_step", {}).get("options", [])
+        for f in o["facilities"]
+        if f["capability_key"] == body.capability_key
+    ]
+    if len(fs) != 1 or "intake_conditions" not in fs[0]:
+        fail("현재 업체 후보를 먼저 검토해 주세요.")
+    form = fs[0]["intake_conditions"]
+    questions = {q["key"]: q for q in form["questions"]}
+    if any(
+        k not in questions
+        or not isinstance(v, str)
+        or not 1 <= len(v.strip()) <= 600
+        or (questions[k]["choices"] and v not in questions[k]["choices"])
+        for k, v in body.answers.items()
+    ):
+        fail("현재 질문에 맞는 답변을 입력해 주세요.", 422)
+    data = deepcopy(lot.data)
+    saved = (
+        data.setdefault("intake_answers", {})
+        .setdefault(str(len(data["completed"])), {})
+        .setdefault(body.capability_key, {})
+    )
+    # Retain only the current questionnaire, keeping the AI request bounded.
+    for obsolete in set(saved) - set(questions):
+        del saved[obsolete]
+    for k, v in body.answers.items():
+        saved[k] = {
+            "value": v.strip(),
+            "question": questions[k]["label"],
+            "company_id": str(cid),
+            "at": datetime.now(UTC).isoformat(),
+            "basis": "sender_declared",
+        }
+    lot.data = data
+    # Editing answers invalidates AI judgement, never silently keeps a positive old result.
+    lot.review = None
+    stamp(lot, "업체별 반입 질문 답변", cid, {"capability_key": body.capability_key})
+    await db.commit()
+    return await view(db, lot, cid)
+
+
+@router.post("/lots/{key}/directory")
+async def directory(key: uuid.UUID, body: DirectoryIn, company_id: CompanyId, db: DbSession):
+    cid = uuid.UUID(company_id)
+    lot = await lot_for(db, key, cid)
+    active(lot, cid, {"ready", "processed"})
+    version(lot, body.revision)
+    ref, checksum = await read_reference(db)
+    result = next_step(process_request(lot), ref)
+    if body.transition_key not in {o.transition_key for o in result.options}:
+        fail("현재 단계에서 가능한 공정만 조회할 수 있습니다.", 422)
+    company = await db.get(Company, cid)
+    # B's output is a new observation: never reuse A's original waste code as a permit filter.
+    request = FacilitySearchRequest(
+        transition_key=body.transition_key,
+        waste_code=None if lot.data["completed"] else lot.data["initial"]["waste_code"],
+        origin_latitude=company.site_latitude,
+        origin_longitude=company.site_longitude,
+        page_size=body.page_size,
+        cursor=body.cursor,
+    )
+    registry = await read_registry(db, recycling_only=True, waste_code=None)
+    from app.domains.treatment.errors import TreatmentError
+
+    try:
+        found = project(
+            ref,
+            registry,
+            request,
+            generation=checksum,
+            fingerprint=checksum,
+            namespace=f"lot-{key}-{lot.revision}",
+            backend="postgresql",
+        )
+    except TreatmentError as error:
+        fail(str(error))
+    for row in found.registry_candidates:
+        packet = row["research_packet"]
+        packet["intake_conditions"] = questionnaire(
+            ref, row["listing_id"], lot.data["initial"]["material"], directory_record=packet
+        )
+        packet["can_request_intake"] = False
+        packet["next_action"] = (
+            "사업장별 공정·반입규격 근거와 확인된 수신계정 연결 후 AI 검토가 필요합니다."
+        )
+    return found
+
+
+@router.post("/lots/{key}/directory-inquiries")
+async def save_directory_inquiry(
+    key: uuid.UUID, body: DirectoryInquiry, company_id: CompanyId, db: DbSession
+):
+    page = await directory(
+        key, DirectoryIn(**body.model_dump(exclude={"listing_id", "answers"})), company_id, db
+    )
+    row = next((r for r in page.registry_candidates if r["listing_id"] == body.listing_id), None)
+    if row is None:
+        fail("현재 명부 조회 결과에 있는 업체를 선택해 주세요.", 422)
+    form = row["research_packet"]["intake_conditions"]
+    questions = {q["key"]: q for q in form["questions"]}
+    if any(
+        k not in questions
+        or not 1 <= len(v.strip()) <= 600
+        or (questions[k]["choices"] and v not in questions[k]["choices"])
+        for k, v in body.answers.items()
+    ):
+        fail("명부 후보의 질문에 맞게 답변해 주세요.", 422)
+    # Querying above populated the identity map. Reload under the row lock so
+    # a concurrent edit cannot pass using an already-loaded stale revision.
+    await db.rollback()
+    cid = uuid.UUID(company_id)
+    lot = await lot_for(db, key, cid, lock=True)
+    version(lot, body.revision)
+    active(lot, cid, {"ready", "processed"})
+    data = deepcopy(lot.data)
+    stage = str(len(data["completed"]))
+    entries = data.setdefault("directory_inquiries", {}).setdefault(stage, {})
+    inquiry_key = body.transition_key + ":" + body.listing_id
+    if inquiry_key not in entries and len(entries) >= 100:
+        fail("한 단계에 저장할 수 있는 조사 업체는 100곳입니다.", 422)
+    answers = (entries.get(inquiry_key, {}).get("intake_conditions") or {}).get("answers", {})
+    for k, v in body.answers.items():
+        answers[k] = {
+            "value": v.strip(),
+            "company_id": str(cid),
+            "at": datetime.now(UTC).isoformat(),
+            "basis": "sender_declared",
+        }
+    entries[inquiry_key] = {
+        "transition_key": body.transition_key,
+        "listing_id": body.listing_id,
+        "name": row["research_packet"]["name"],
+        "address": row["research_packet"]["address"],
+        "source_url": row["research_packet"]["source_url"],
+        "status": "evidence_and_account_required",
+        "source_sha256": row["research_packet"]["source_sha256"],
+        "intake_conditions": attach_answers(form, answers),
+        "dispatch_approved": False,
+    }
+    lot.data = data
+    stamp(lot, "명부 업체 확인 목록 저장", cid, {"listing_id": body.listing_id})
     await db.commit()
     return await view(db, lot, cid)
 
@@ -466,6 +686,11 @@ async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSess
     active(lot, cid, {"ready", "processed"})
     version(lot, body.revision)
     review = lot.review or {}
+    _, reference_checksum = await read_reference(db)
+    if review.get("reference_checksum") != reference_checksum or review.get(
+        "conditions_checksum"
+    ) != digest(published_conditions()):
+        fail("공정·반입조건 자료가 바뀌었거나 구버전 검토입니다. 업체 검토를 다시 실행해 주세요.")
     found = [
         (o, f)
         for o in review.get("next_step", {}).get("options", [])
@@ -509,6 +734,7 @@ async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSess
             "option": option,
             "facility": facility,
             "ai_review": check,
+            "intake_conditions": deepcopy(facility.get("intake_conditions")),
             "synthetic": binding.synthetic,
             "photo_ids": [str(p) for p in photos],
         },
@@ -536,8 +762,20 @@ async def decision(key: uuid.UUID, body: Decision, company_id: CompanyId, db: Db
     version(lot, body.revision)
     if cid != row.recipient_id:
         fail("요청받은 업체만 수락·거절할 수 있습니다.", 403)
-    if row.status != "pending" or lot.status != "offered":
+    if row.status not in {"pending", "conditional"} or lot.status not in {"offered", "conditional"}:
         fail("이미 응답한 요청입니다.")
+    conditions = row.data.get("conditions", [])
+    if body.accept and conditions:
+        expected = {c["id"] for c in conditions}
+        responses = row.data.get("condition_responses", {})
+        if set(body.resolved_condition_ids) != expected or not all(
+            responses.get(k, {}).get("text") for k in expected
+        ):
+            fail("조건별 자료가 모두 제출되고 수신기업이 모두 확인해야 최종 수락할 수 있습니다.")
+    form = row.data.get("intake_conditions") or {}
+    declared = {k: v["value"] for k, v in form.get("answers", {}).items()}
+    if body.accept and declared.get("designated") in {"예", "모름"}:
+        fail("지정폐기물 제외 업체입니다. 분류·유해성을 다시 확인하기 전 수락할 수 없습니다.")
     if body.accept and not (body.scope_checked and body.intake_checked):
         fail("업체의 허가 범위·반입 규격과 이번 물량을 확인해 주세요.")
     row.status = "accepted" if body.accept else "rejected"
@@ -559,6 +797,68 @@ async def decision(key: uuid.UUID, body: Decision, company_id: CompanyId, db: Db
         await db.flush()
         row.route_step_id = step.id
     stamp(lot, "인수 수락" if body.accept else "인수 거절", cid, {"note": body.note})
+    await db.commit()
+    return await view(db, lot, cid)
+
+
+@router.post("/offers/{key}/conditions")
+async def set_conditions(key: uuid.UUID, body: ConditionsIn, company_id: CompanyId, db: DbSession):
+    cid = uuid.UUID(company_id)
+    row, lot = await offer_and_lot(db, key, cid)
+    version(lot, body.revision)
+    if cid != row.recipient_id:
+        fail("요청받은 업체만 반입조건을 제시할 수 있습니다.", 403)
+    if row.status != "pending" or lot.status != "offered":
+        fail("응답 대기 중인 요청에 조건을 제시해 주세요.")
+    if any(not isinstance(c, str) or not 3 <= len(c.strip()) <= 600 for c in body.conditions):
+        fail("각 조건을 3~600자로 작성해 주세요.", 422)
+    row.data = {
+        **row.data,
+        "conditions": [
+            {
+                "id": str(uuid.uuid4()),
+                "text": c.strip(),
+                "proposed_by": str(cid),
+                "at": datetime.now(UTC).isoformat(),
+            }
+            for c in body.conditions
+        ],
+        "condition_responses": {},
+        "conditional_note": body.note,
+    }
+    row.status = "conditional"
+    lot.status = "conditional"
+    stamp(lot, "조건부 수락 · 자료 확인 전 운송 보류", cid, {"note": body.note})
+    await db.commit()
+    return await view(db, lot, cid)
+
+
+@router.post("/offers/{key}/condition-responses")
+async def condition_responses(
+    key: uuid.UUID, body: ConditionResponses, company_id: CompanyId, db: DbSession
+):
+    cid = uuid.UUID(company_id)
+    row, lot = await offer_and_lot(db, key, cid)
+    version(lot, body.revision)
+    if cid != row.sender_id:
+        fail("발송기업만 조건별 자료를 제출할 수 있습니다.", 403)
+    if row.status != "conditional" or lot.status != "conditional":
+        fail("조건부 수락 중인 요청이 아닙니다.")
+    allowed = {c["id"] for c in row.data["conditions"]}
+    if any(
+        k not in allowed or not isinstance(v, str) or not 3 <= len(v.strip()) <= 1000
+        for k, v in body.responses.items()
+    ):
+        fail("요청된 조건의 자료·확인 내용을 3~1000자로 입력해 주세요.", 422)
+    data = deepcopy(row.data)
+    for k, v in body.responses.items():
+        data["condition_responses"][k] = {
+            "text": v.strip(),
+            "company_id": str(cid),
+            "at": datetime.now(UTC).isoformat(),
+        }
+    row.data = data
+    stamp(lot, "조건 확인 자료 제출 · 수신기업 최종 확인 대기", cid)
     await db.commit()
     return await view(db, lot, cid)
 
@@ -631,15 +931,19 @@ async def output(key: uuid.UUID, body: Output, company_id: CompanyId, db: DbSess
     lot = await lot_for(db, key, cid, lock=True)
     active(lot, cid, {"processing"})
     version(lot, body.revision)
+    ref, _ = await read_reference(db)
+    if body.state_key not in {
+        s.key
+        for s in ref.states
+        if s.material == lot.data["initial"]["material"]
+        and s.key in {t.output_state for t in ref.transitions}
+    }:
+        fail("현재 소재에 대응하는 산출물 상태를 선택해 주세요.", 422)
     row = await db.scalar(
         select(WorkflowOffer).where(WorkflowOffer.lot_id == key, WorkflowOffer.status == "received")
     )
     if not row or body.mass_kg > row.data["current"]["mass_kg"]:
         fail("입고 중량을 초과한 산출물은 별도 물질수지 확인이 필요합니다.")
-    ref, _ = await read_reference(db)
-    material = lot.data["initial"]["material"]
-    if not any(s.key == body.state_key and s.material == material for s in ref.states):
-        fail("이 물량의 재질에 등록된 산출물 상태를 선택해 주세요.", 422)
     expected = row.data["option"]["output_state"]["key"]
     record = body.model_dump(exclude={"revision"})
     data = deepcopy(lot.data)
@@ -676,7 +980,8 @@ async def finish(key: uuid.UUID, body: Finish, company_id: CompanyId, db: DbSess
     finish_states = FINISH_STATES.get(lot.data["initial"]["material"], set())
     if not body.confirmed or lot.data["current"]["state_key"] not in finish_states:
         fail(
-            "실제 최종 산출물(PP·PE 펠렛·컴파운드, 알루미늄 판재·잉곳)과 완료 확인이 필요합니다. "
+            "실제 최종 산출물(PP·PE 펠렛·컴파운드, PET 플레이크·펠렛, "
+            "알루미늄 판재·잉곳)과 완료 확인이 필요합니다. "
             "파쇄품만으로 종료하지 않습니다."
         )
     lot.status = "completed"

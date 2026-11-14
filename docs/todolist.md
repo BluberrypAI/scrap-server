@@ -67,6 +67,8 @@
 | T-138 | 기업 인계 API 오류를 공통 형식으로 반환 (이유 문구가 "요청 처리 실패"로 바뀌던 문제) | 완료 | api-developer | error-response | HTTPException → AppError, FORBIDDEN·WORKFLOW_CONFLICT 추가. 오류 형식 테스트 2개 추가 |
 | T-136 | 로컬 시험용 업체 계정 연결 스크립트(dev_accounts) | 완료 | api-developer | pp-company-workflow | APP_ENV=local·test 전용. 개발 로그인 기업을 PP 업체 키에 synthetic으로 연결 |
 | T-139 | 기업 인계를 PE 필름·알루미늄캔으로 확장 (문진·처리경로 교집합) | 완료 | api-developer | pp-company-workflow | 재질별 시작 상태·완료 산출물, 산출물 상태 재질 검사, dev_accounts 알루미늄 연결. 테스트 추가(서버 177개 통과). PET병은 분류번호 불일치로 제외, 실제 웹·Azure 검증 전 |
+| T-140 | 업체별 질문·전국 명부 조회·조건부 수락 연결 | 완료 | api-developer | intake-conditions-local | 후보 답변→AI 재검토, 조건별 자료→수신 확인→QR. 공개 프로필 7곳, 시설 15곳/연결 29개. 서버 188개 통과, 웹 조건부 인계 검증 |
+| T-141 | 실제 업체 반입규격·수신계정 인증 및 PET 문진 번호 정리 | 대기 | 사람 | intake-conditions-local | 수분·오염·물량 한도/현행 허가/용량 미확보. 일반 PET 51-03-01 자동 연결 금지. 역할 추정 9개 근거 추가 필요 |
 | T-118 | 검토 실행을 Service Bus + 별도 워커 파드로 이전 | 대기 | backend-architect | review-runs | 요구사항 NFR-6, infra 리소스 확정 후 |
 | T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |
