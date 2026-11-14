@@ -1,4 +1,4 @@
-"""로컬 시험용: 개발 로그인 계정의 기업을 PP 처리 업체에 연결함 (synthetic).
+"""로컬 시험용: 개발 로그인 계정의 기업을 처리 업체에 연결함 (synthetic).
 
 기업 간 인계(/workflow)는 업체(facility_key)에 연결된 수신 기업 계정이 있어야
 인수 요청을 보낼 수 있음.
@@ -8,7 +8,7 @@
 1. 웹에서 개발용 로그인으로 각 이메일에 로그인하고 기업 등록(온보딩)까지 마침
 2. backend/에서 실행
 
-    uv run python -m app.domains.transport.dev_accounts            # 기본 PP 시험 계정 연결
+    uv run python -m app.domains.transport.dev_accounts   # 기본 시험 계정(PP·PE·알루미늄)
     # 다른 계정·업체 연결
     uv run python -m app.domains.transport.dev_accounts
         --email b@example.com --facility sarom-hwaseong-2
@@ -27,7 +27,8 @@ from app.domains.companies.models import Company
 from app.domains.transport.models import WorkflowFacilityAccount
 from app.domains.users.models import User
 
-# 기본 연결: 선별·파쇄 담당과 펠렛·컴파운드 담당 (docs/pp-company-e2e.md의 시험 계정)
+# 기본 연결: 선별·파쇄 담당과 펠렛·컴파운드 담당 (docs/pp-company-e2e.md의 시험 계정).
+# PE는 PP와 같은 업체를 쓰고, 알루미늄캔은 판재·잉곳 업체를 별도 계정에 연결함
 DEFAULT_BINDINGS = {
     "pp-sort@example.com": ["jungang-gongju", "npc-chemical-hwaseong", "sarom-hwaseong-2"],
     "pp-pellet@example.com": [
@@ -36,6 +37,7 @@ DEFAULT_BINDINGS = {
         "bgf-hwaseong",
         "veolia-dspl-hwaseong",
     ],
+    "al-can@example.com": ["novelis-yeongju", "ulsan-aluminium"],
 }
 REFERENCE = "local synthetic binding (dev_accounts), not a real company link"
 

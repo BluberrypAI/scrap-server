@@ -1,4 +1,4 @@
-"""Company-owned PP handoffs. Recorded observations, never browser-built history."""
+"""Company-owned material handoffs. Recorded observations, never browser-built history."""
 
 import base64
 import hashlib
@@ -44,6 +44,22 @@ from app.domains.wastes.models import (
 
 router = APIRouter(prefix="/workflow", tags=["transport"])
 
+# 문진(scrap-diagnosis)과 처리경로(scrap-route)가 함께 지원하는 재질·형태만 인계한다.
+# (재질, 형태) → 참조 자료의 시작 상태
+LOT_STARTS = {
+    ("pp", "scrap"): "pp-scrap",
+    ("pp", "shredded"): "pp-shredded",
+    ("pe", "film"): "pe-scrap",
+    ("aluminium", "can"): "al-used-can",
+}
+# 완료로 인정하는 실제 산출물. 파쇄품은 카탈로그 종료 표시가 있어도 완료로 보지 않는다.
+FINISH_STATES = {
+    "pp": {"pp-pellet", "pp-compound"},
+    "pe": {"pe-pellet", "pe-compound"},
+    "aluminium": {"al-sheet", "al-sheet-ingot"},
+}
+MATERIAL_LABELS = {"pp": "PP", "pe": "PE", "aluminium": "알루미늄"}
+
 
 class Body(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
@@ -51,7 +67,7 @@ class Body(BaseModel):
 
 class CreateLot(Body):
     diagnosis_id: str = Field(pattern=r"^[A-Za-z0-9_-]{1,64}$")
-    input_form: Literal["scrap", "shredded"]
+    input_form: Literal["scrap", "shredded", "film", "can"]
     mass_kg: float = Field(gt=0, le=1e9, allow_inf_nan=False)
     condition: str = Field(min_length=3, max_length=1500)
 
@@ -76,7 +92,8 @@ class Receipt(Version):
 
 
 class Output(Version):
-    state_key: Literal["pp-shredded", "pp-washed", "pp-pellet", "pp-compound"]
+    # 로트 재질의 등록 상태인지는 참조 자료로 따로 확인한다
+    state_key: str = Field(pattern=r"^[a-z0-9-]{1,64}$")
     mass_kg: float = Field(gt=0, le=1e9, allow_inf_nan=False)
     purity_percent: float | None = Field(default=None, ge=0, le=100, allow_inf_nan=False)
     condition: str = Field(min_length=3, max_length=1500)
@@ -213,11 +230,16 @@ async def create_lot(body: CreateLot, company_id: CompanyId, db: DbSession, engi
     ctx = await treatment_context(
         engine, db, company_id, body.diagnosis_id, TreatmentSelectionIn(input_form=body.input_form)
     )
-    if ctx.status != "ready" or ctx.route_input["material"] != "pp":
-        fail("확정된 일반 PP 문진 결과가 필요합니다.")
+    material = (ctx.route_input or {}).get("material")
+    start = LOT_STARTS.get((material, (ctx.route_input or {}).get("input_form")))
+    if ctx.status != "ready" or start is None:
+        fail(
+            "기업 인계는 확정된 일반 문진 중 PP 사출 잔재·파쇄품, PE 필름, "
+            "알루미늄 음료캔만 지원합니다."
+        )
     waste = Waste(
         company_id=cid,
-        name="PP 자원순환",
+        name=f"{MATERIAL_LABELS[material]} 자원순환",
         status=WasteStatus.CANDIDATES,
         waste_code=ctx.handoff["waste_code"],
         category=ctx.handoff["category"],
@@ -240,7 +262,7 @@ async def create_lot(body: CreateLot, company_id: CompanyId, db: DbSession, engi
             "initial": ctx.route_input,
             "completed": [],
             "current": {
-                "state_key": "pp-scrap" if body.input_form == "scrap" else "pp-shredded",
+                "state_key": start,
                 "mass_kg": body.mass_kg,
                 "condition": body.condition,
                 "purity_percent": None,
@@ -340,7 +362,7 @@ def process_request(lot):
     initial = lot.data["initial"]
     return NextStepRequest(
         waste_code=initial["waste_code"],
-        material="pp",
+        material=initial["material"],
         input_form=initial["input_form"],
         completed_transitions=[s["transition_key"] for s in lot.data["completed"]],
         observed_output={
@@ -614,6 +636,10 @@ async def output(key: uuid.UUID, body: Output, company_id: CompanyId, db: DbSess
     )
     if not row or body.mass_kg > row.data["current"]["mass_kg"]:
         fail("입고 중량을 초과한 산출물은 별도 물질수지 확인이 필요합니다.")
+    ref, _ = await read_reference(db)
+    material = lot.data["initial"]["material"]
+    if not any(s.key == body.state_key and s.material == material for s in ref.states):
+        fail("이 물량의 재질에 등록된 산출물 상태를 선택해 주세요.", 422)
     expected = row.data["option"]["output_state"]["key"]
     record = body.model_dump(exclude={"revision"})
     data = deepcopy(lot.data)
@@ -647,8 +673,12 @@ async def finish(key: uuid.UUID, body: Finish, company_id: CompanyId, db: DbSess
     lot = await lot_for(db, key, cid, lock=True)
     active(lot, cid, {"processed"})
     version(lot, body.revision)
-    if not body.confirmed or lot.data["current"]["state_key"] not in {"pp-pellet", "pp-compound"}:
-        fail("실제 펠렛·컴파운드 산출물과 완료 확인이 필요합니다. 파쇄품만으로 종료하지 않습니다.")
+    finish_states = FINISH_STATES.get(lot.data["initial"]["material"], set())
+    if not body.confirmed or lot.data["current"]["state_key"] not in finish_states:
+        fail(
+            "실제 최종 산출물(PP·PE 펠렛·컴파운드, 알루미늄 판재·잉곳)과 완료 확인이 필요합니다. "
+            "파쇄품만으로 종료하지 않습니다."
+        )
     lot.status = "completed"
     stamp(
         lot, "처리 완료 확인", cid, {"reference": body.reference, "intended_use": body.intended_use}

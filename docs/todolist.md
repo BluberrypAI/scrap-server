@@ -66,6 +66,7 @@
 | T-137 | 기업 인계 테이블 마이그레이션의 시각 기본값을 SQLite에서도 동작하게 수정 | 완료 | db-engineer | pp-company-workflow | now() 문자열 → sa.func.now(). 마이그레이션으로 만든 SQLite DB 회귀 테스트 추가. PostgreSQL 스키마는 동일 |
 | T-138 | 기업 인계 API 오류를 공통 형식으로 반환 (이유 문구가 "요청 처리 실패"로 바뀌던 문제) | 완료 | api-developer | error-response | HTTPException → AppError, FORBIDDEN·WORKFLOW_CONFLICT 추가. 오류 형식 테스트 2개 추가 |
 | T-136 | 로컬 시험용 업체 계정 연결 스크립트(dev_accounts) | 완료 | api-developer | pp-company-workflow | APP_ENV=local·test 전용. 개발 로그인 기업을 PP 업체 키에 synthetic으로 연결 |
+| T-139 | 기업 인계를 PE 필름·알루미늄캔으로 확장 (문진·처리경로 교집합) | 완료 | api-developer | pp-company-workflow | 재질별 시작 상태·완료 산출물, 산출물 상태 재질 검사, dev_accounts 알루미늄 연결. 테스트 추가(서버 177개 통과). PET병은 분류번호 불일치로 제외, 실제 웹·Azure 검증 전 |
 | T-118 | 검토 실행을 Service Bus + 별도 워커 파드로 이전 | 대기 | backend-architect | review-runs | 요구사항 NFR-6, infra 리소스 확정 후 |
 | T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |
