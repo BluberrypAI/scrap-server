@@ -1,0 +1,529 @@
+{
+  "checked_on": "2026-11-14",
+  "scenario_kind": "synthetic_inputs_public_sources_only",
+  "queries": [
+    {
+      "material": "abs",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 3
+    },
+    {
+      "material": "abs",
+      "input_form": "rigid",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "abs",
+      "input_form": "scrap",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "abs",
+      "input_form": "shredded",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 3
+    },
+    {
+      "material": "eps",
+      "input_form": "ingot",
+      "waste_code": "51-03-06",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "pa6",
+      "input_form": "net",
+      "waste_code": "51-03-08",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "pa66",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "pa66",
+      "input_form": "shredded",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "pcabs",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "pcabs",
+      "input_form": "shredded",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "pe",
+      "input_form": "bale",
+      "waste_code": "51-03-01",
+      "status": "no_route",
+      "facility_count": 0
+    },
+    {
+      "material": "pe",
+      "input_form": "bale",
+      "waste_code": "51-03-07",
+      "status": "no_route",
+      "facility_count": 0
+    },
+    {
+      "material": "pe",
+      "input_form": "film",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 15
+    },
+    {
+      "material": "pe",
+      "input_form": "film",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 15
+    },
+    {
+      "material": "pe",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 7
+    },
+    {
+      "material": "pe",
+      "input_form": "pellet",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "pe",
+      "input_form": "rigid",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 15
+    },
+    {
+      "material": "pe",
+      "input_form": "rigid",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 15
+    },
+    {
+      "material": "pe",
+      "input_form": "scrap",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 14
+    },
+    {
+      "material": "pe",
+      "input_form": "scrap",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 14
+    },
+    {
+      "material": "pe",
+      "input_form": "shredded",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 7
+    },
+    {
+      "material": "pet",
+      "input_form": "bale",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 5
+    },
+    {
+      "material": "pet",
+      "input_form": "bale",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 5
+    },
+    {
+      "material": "pet",
+      "input_form": "bottle",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 6
+    },
+    {
+      "material": "pet",
+      "input_form": "bottle",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 6
+    },
+    {
+      "material": "pet",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "pp",
+      "input_form": "bale",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "pp",
+      "input_form": "bale",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "pp",
+      "input_form": "film",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 13
+    },
+    {
+      "material": "pp",
+      "input_form": "film",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 13
+    },
+    {
+      "material": "pp",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 9
+    },
+    {
+      "material": "pp",
+      "input_form": "pellet",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "pp",
+      "input_form": "rigid",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 14
+    },
+    {
+      "material": "pp",
+      "input_form": "rigid",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 14
+    },
+    {
+      "material": "pp",
+      "input_form": "scrap",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 14
+    },
+    {
+      "material": "pp",
+      "input_form": "scrap",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 14
+    },
+    {
+      "material": "pp",
+      "input_form": "shredded",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 9
+    },
+    {
+      "material": "ps",
+      "input_form": "bale",
+      "waste_code": "51-03-01",
+      "status": "no_route",
+      "facility_count": 0
+    },
+    {
+      "material": "ps",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 5
+    },
+    {
+      "material": "ps",
+      "input_form": "rigid",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 5
+    },
+    {
+      "material": "ps",
+      "input_form": "scrap",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 5
+    },
+    {
+      "material": "ps",
+      "input_form": "shredded",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 5
+    },
+    {
+      "material": "pvc",
+      "input_form": "rigid",
+      "waste_code": "51-03-03",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "pvc",
+      "input_form": "wallpaper",
+      "waste_code": "51-03-03",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "san",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "san",
+      "input_form": "rigid",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "san",
+      "input_form": "scrap",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "san",
+      "input_form": "shredded",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    }
+  ],
+  "ai_reviews": [
+    {
+      "material": "pp",
+      "form": "scrap",
+      "capability_key": "hcr-paju--pp-registered-melt",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "ps",
+      "form": "scrap",
+      "capability_key": "ilshin-anseong--ps-registered-grind",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pe",
+      "form": "scrap",
+      "capability_key": "ecoplus-yeongju--pe-registered-grind",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pp",
+      "form": "scrap",
+      "capability_key": "afrochem-asan--pp-registered-grind",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pe",
+      "form": "scrap",
+      "capability_key": "daejo-sangju--pe-registered-grind",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pe",
+      "form": "rigid",
+      "capability_key": "samsungchem-miryang--pe-registered-grind",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pe",
+      "form": "flake",
+      "capability_key": "guil-hapcheon--pe-flake-repelletise",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pp",
+      "form": "flake",
+      "capability_key": "daesan-naju--pp-flake-repelletise",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pp",
+      "form": "flake",
+      "capability_key": "yongseong-gyeongsan--pp-flake-repelletise",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pe",
+      "form": "film",
+      "capability_key": "dongmin-yeongcheon--pe-agricultural-film-recovery",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "reviewed",
+        "finding": "form_mentioned",
+        "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요.",
+        "source": {
+          "publisher": "동민산업협동조합",
+          "url": "http://www.dongmin-pe.co.kr/rnd/lldpe",
+          "locator": "LLDPE 생산공정 1~8 및 사업장 주소"
+        },
+        "quote": "영천 오계공단길 36 사업장의 LLDPE 공정은 폐비닐 입고·선별, 분쇄, 세척, 탈수, 이중압출, 커팅, 재생 PE칩 생산이다.",
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pp",
+      "form": "shredded",
+      "capability_key": "bgf-yesan--pp-clean",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "san",
+      "form": "scrap",
+      "capability_key": "cntk-jinju--san-prepare",
+      "site_scope": "site_role_hypothesis",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    }
+  ],
+  "registry_rows": 9604
+}

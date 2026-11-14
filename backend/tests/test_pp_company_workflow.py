@@ -36,6 +36,8 @@ def test_runtime_import_resolves_every_foreign_key_without_test_model_imports():
         ],
         capture_output=True,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         check=False,
     )
     assert result.returncode == 0, result.stderr

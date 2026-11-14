@@ -258,6 +258,139 @@
           "equipment": "분쇄시설 100HP*2, 75HP*5, 40HP*1"
         }
       ]
+    },
+    {
+      "facility_key": "hcr-paju",
+      "official_address": "경기도 파주시 광탄면 수레길 415",
+      "registry_name": "HCR Korea",
+      "status": "exact_site_match",
+      "reason": "사업장명과 주소 토큰을 함께 수동 대조",
+      "registry_rows": [
+        {
+          "source_row": 2387,
+          "name": "HCR Korea",
+          "address": "경기도 파주시 광탄면 수레길 415",
+          "waste_codes": "51-03-01",
+          "as_of": "2026-06-11",
+          "equipment": "파쇄시설 40HP*1+파쇄시설 15HP*1+ 파쇄시설 125HP*1+압축시설 75HP*1+용융시설 75HP*4+용융시설 50HP*1+압축시설 20HP*1"
+        },
+        {
+          "source_row": 2388,
+          "name": "HCR Korea",
+          "address": "경기도 파주시 광탄면 수레길 415",
+          "waste_codes": "51-03-01+51-03-03+51-03-04+51-03-06+51-03-07+51-03-99+51-18-99",
+          "as_of": "2026-06-11",
+          "equipment": ""
+        }
+      ]
+    },
+    {
+      "facility_key": "ilshin-anseong",
+      "official_address": "경기도 안성시 원곡면 지문로 120-60 (총 2 필지) 외 1필지",
+      "registry_name": "일신케미칼",
+      "status": "exact_site_match",
+      "reason": "사업장명과 주소 토큰을 함께 수동 대조",
+      "registry_rows": [
+        {
+          "source_row": 9042,
+          "name": "일신케미칼",
+          "address": "경기도 안성시 원곡면 지문로 120-60",
+          "waste_codes": "51-03-01",
+          "as_of": "2025-11-27",
+          "equipment": "분쇄시설+절단시설+성형시설+탈수건조시설"
+        }
+      ]
+    },
+    {
+      "facility_key": "ecoplus-yeongju",
+      "official_address": "경상북도 영주시 장수면 장수로220번길 47",
+      "registry_name": "주식회사 에코플러스",
+      "status": "exact_site_match",
+      "reason": "사업장명과 주소 토큰을 함께 수동 대조",
+      "registry_rows": [
+        {
+          "source_row": 8817,
+          "name": "주식회사 에코플러스",
+          "address": "경상북도 영주시 장수면 장수로220번길 47",
+          "waste_codes": "51-03-01",
+          "as_of": "2025-07-28",
+          "equipment": ""
+        }
+      ]
+    },
+    {
+      "facility_key": "afrochem-asan",
+      "official_address": "충청남도 아산시 음봉면 월암로 308",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "daejo-sangju",
+      "official_address": "경상북도 상주시 함창읍 새잼이길 16 (총 6 필지) 외 5필지",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "samsungchem-miryang",
+      "official_address": "경상남도 밀양시 하남읍 양동농공단지길 65-10",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "guil-hapcheon",
+      "official_address": "경상남도 합천군 율곡면 임북길 175",
+      "registry_name": "㈜구일알앤씨",
+      "status": "exact_site_match",
+      "reason": "사업장명과 주소 토큰을 함께 수동 대조",
+      "registry_rows": [
+        {
+          "source_row": 1436,
+          "name": "㈜구일알앤씨",
+          "address": "경상남도 합천군 율곡면 임북길 175",
+          "waste_codes": "51-03-01",
+          "as_of": "2026-05-22",
+          "equipment": "폐기물처리시설"
+        }
+      ]
+    },
+    {
+      "facility_key": "daesan-naju",
+      "official_address": "전라남도 나주시 왕곡면 혁신산단6길 14",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "yongseong-gyeongsan",
+      "official_address": "경상북도 경산시 압량읍 가일리 482번지",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "dongmin-yeongcheon",
+      "official_address": "경상북도 영천시 금호읍 오계공단길 36",
+      "registry_name": "동민산업협동조합",
+      "status": "exact_site_match",
+      "reason": "사업장명과 주소 토큰을 함께 수동 대조",
+      "registry_rows": [
+        {
+          "source_row": 5569,
+          "name": "동민산업협동조합",
+          "address": "경상북도 영천시 금호읍 오계공단길 36",
+          "waste_codes": "51-03-01",
+          "as_of": "2025-08-14",
+          "equipment": ""
+        }
+      ]
     }
   ]
 }

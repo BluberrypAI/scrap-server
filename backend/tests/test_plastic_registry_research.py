@@ -125,9 +125,22 @@ def test_all_original_hypotheses_have_explicit_review_decisions(reference):
     assert len(audit["rows"]) == 21
     current = {c.key: c for c in reference.capabilities}
     assert sum(r["after"] == "published_site_process" for r in audit["rows"]) == 2
+    latest = json.loads(
+        (ROOT / "docs/registry-screen/role-review-round3.json").read_text(encoding="utf8")
+    )
+    assert len(latest["rows"]) == 19
+    revised = {r["capability_key"]: r for r in latest["rows"]}
+    assert set(revised) == {
+        r["capability_key"] for r in audit["rows"] if r["after"] == "site_role_hypothesis"
+    }
+    assert sum(r["after"] == "published_site_process" for r in latest["rows"]) == 5
     for row in audit["rows"]:
-        assert current[row["capability_key"]].basis == row["after"]
+        decision = revised.get(row["capability_key"], row)
+        assert current[row["capability_key"]].basis == decision["after"]
         assert set(row["source_ids"]) <= {s.key for s in reference.sources}
+        assert set(decision["source_ids"]) <= {s.key for s in reference.sources}
+        if row["capability_key"] in revised:
+            assert decision["before"] == row["after"]
     assert all(
         c.basis == "site_role_hypothesis"
         for c in reference.capabilities

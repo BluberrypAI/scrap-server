@@ -143,6 +143,8 @@ PP_SEARCH_TYPES = {
     "pp-sort-bale": ("R-10",),
     "pp-bale-to-pellet": ("R-3-3", "R-10"),
     "pp-scrap-to-pellet": ("R-3-3", "R-10"),
+    "pp-registered-grind": ("R-10",),
+    "pp-registered-melt": ("R-3-3", "R-10"),
 }
 
 

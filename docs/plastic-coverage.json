@@ -2,14 +2,14 @@
   "checked_on": "2026-11-14",
   "scope": "Curated research candidates; not verified current permits or acceptance",
   "counts": {
-    "facilities": 37,
-    "capabilities": 81,
+    "facilities": 47,
+    "capabilities": 102,
     "capability_evidence": {
-      "published_site_process": 62,
-      "site_role_hypothesis": 19
+      "published_site_process": 88,
+      "site_role_hypothesis": 14
     },
-    "transitions": 49,
-    "sources": 74,
+    "transitions": 56,
+    "sources": 94,
     "plastic_input_combinations": 48,
     "query_statuses": {
       "candidates": 45,
@@ -308,6 +308,16 @@
       "status": "candidates",
       "sites": [
         {
+          "facility_key": "dongmin-yeongcheon",
+          "label": "동민산업협동조합 영천",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-agricultural-film-recovery"
+          ],
+          "public_input_form_example": true
+        },
+        {
           "facility_key": "saramtech-nonsan",
           "label": "사람과 기술 논산",
           "basis": "published_site_process",
@@ -354,6 +364,56 @@
           "has_coordinates": true,
           "transitions": [
             "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "afrochem-asan",
+          "label": "아프로켐 아산",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daejo-sangju",
+          "label": "대조산업 상주",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ecoplus-yeongju",
+          "label": "에코플러스 영주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-melt"
           ],
           "public_input_form_example": false
         },
@@ -406,6 +466,16 @@
       "status": "candidates",
       "sites": [
         {
+          "facility_key": "dongmin-yeongcheon",
+          "label": "동민산업협동조합 영천",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-agricultural-film-recovery"
+          ],
+          "public_input_form_example": true
+        },
+        {
           "facility_key": "saramtech-nonsan",
           "label": "사람과 기술 논산",
           "basis": "published_site_process",
@@ -452,6 +522,56 @@
           "has_coordinates": true,
           "transitions": [
             "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "afrochem-asan",
+          "label": "아프로켐 아산",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daejo-sangju",
+          "label": "대조산업 상주",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ecoplus-yeongju",
+          "label": "에코플러스 영주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-melt"
           ],
           "public_input_form_example": false
         },
@@ -506,7 +626,7 @@
         {
           "facility_key": "bgf-yesan",
           "label": "BGF에코사이클 재생원료사업장",
-          "basis": "site_role_hypothesis",
+          "basis": "published_site_process",
           "has_coordinates": true,
           "transitions": [
             "pe-clean"
@@ -514,8 +634,38 @@
           "public_input_form_example": false
         },
         {
+          "facility_key": "guil-hapcheon",
+          "label": "구일알앤씨 합천",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-flake-repelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-flake-repelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
           "facility_key": "jinyoung-hwaseong",
           "label": "진영프라스틱 화성",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-flake-repelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "yongseong-gyeongsan",
+          "label": "용성케미칼 경산",
           "basis": "published_site_process",
           "has_coordinates": false,
           "transitions": [
@@ -620,6 +770,66 @@
           "public_input_form_example": false
         },
         {
+          "facility_key": "afrochem-asan",
+          "label": "아프로켐 아산",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daejo-sangju",
+          "label": "대조산업 상주",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ecoplus-yeongju",
+          "label": "에코플러스 영주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "samsungchem-miryang",
+          "label": "삼성케미칼 밀양",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-melt"
+          ],
+          "public_input_form_example": false
+        },
+        {
           "facility_key": "daewoon-naju",
           "label": "대운프라스틱 나주 사업장",
           "basis": "published_site_process",
@@ -718,6 +928,66 @@
           "public_input_form_example": false
         },
         {
+          "facility_key": "afrochem-asan",
+          "label": "아프로켐 아산",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daejo-sangju",
+          "label": "대조산업 상주",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ecoplus-yeongju",
+          "label": "에코플러스 영주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "samsungchem-miryang",
+          "label": "삼성케미칼 밀양",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-melt"
+          ],
+          "public_input_form_example": false
+        },
+        {
           "facility_key": "daewoon-naju",
           "label": "대운프라스틱 나주 사업장",
           "basis": "published_site_process",
@@ -812,6 +1082,56 @@
           "has_coordinates": true,
           "transitions": [
             "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "afrochem-asan",
+          "label": "아프로켐 아산",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daejo-sangju",
+          "label": "대조산업 상주",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ecoplus-yeongju",
+          "label": "에코플러스 영주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-melt"
           ],
           "public_input_form_example": false
         },
@@ -914,6 +1234,56 @@
           "public_input_form_example": false
         },
         {
+          "facility_key": "afrochem-asan",
+          "label": "아프로켐 아산",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daejo-sangju",
+          "label": "대조산업 상주",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ecoplus-yeongju",
+          "label": "에코플러스 영주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-registered-melt"
+          ],
+          "public_input_form_example": false
+        },
+        {
           "facility_key": "daewoon-naju",
           "label": "대운프라스틱 나주 사업장",
           "basis": "published_site_process",
@@ -964,7 +1334,7 @@
         {
           "facility_key": "bgf-yesan",
           "label": "BGF에코사이클 재생원료사업장",
-          "basis": "site_role_hypothesis",
+          "basis": "published_site_process",
           "has_coordinates": true,
           "transitions": [
             "pe-clean"
@@ -972,8 +1342,38 @@
           "public_input_form_example": false
         },
         {
+          "facility_key": "guil-hapcheon",
+          "label": "구일알앤씨 합천",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-flake-repelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-flake-repelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
           "facility_key": "jinyoung-hwaseong",
           "label": "진영프라스틱 화성",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-flake-repelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "yongseong-gyeongsan",
+          "label": "용성케미칼 경산",
           "basis": "published_site_process",
           "has_coordinates": false,
           "transitions": [
@@ -1266,6 +1666,16 @@
       "status": "candidates",
       "sites": [
         {
+          "facility_key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pet-pelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
           "facility_key": "superbin-sunchang",
           "label": "수퍼빈 아이엠팩토리 순창",
           "basis": "published_site_process",
@@ -1274,16 +1684,6 @@
             "pet-pelletise"
           ],
           "public_input_form_example": true
-        },
-        {
-          "facility_key": "bgf-yesan",
-          "label": "BGF에코사이클 재생원료사업장",
-          "basis": "site_role_hypothesis",
-          "has_coordinates": true,
-          "transitions": [
-            "pet-pelletise"
-          ],
-          "public_input_form_example": false
         }
       ]
     },
@@ -1376,6 +1776,56 @@
           "has_coordinates": true,
           "transitions": [
             "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "afrochem-asan",
+          "label": "아프로켐 아산",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daejo-sangju",
+          "label": "대조산업 상주",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ecoplus-yeongju",
+          "label": "에코플러스 영주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-melt"
           ],
           "public_input_form_example": false
         },
@@ -1464,6 +1914,56 @@
           "has_coordinates": true,
           "transitions": [
             "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "afrochem-asan",
+          "label": "아프로켐 아산",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daejo-sangju",
+          "label": "대조산업 상주",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ecoplus-yeongju",
+          "label": "에코플러스 영주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-melt"
           ],
           "public_input_form_example": false
         },
@@ -1508,7 +2008,7 @@
         {
           "facility_key": "bgf-yesan",
           "label": "BGF에코사이클 재생원료사업장",
-          "basis": "site_role_hypothesis",
+          "basis": "published_site_process",
           "has_coordinates": true,
           "transitions": [
             "pp-clean"
@@ -1516,8 +2016,38 @@
           "public_input_form_example": false
         },
         {
+          "facility_key": "daesan-naju",
+          "label": "대산이엔지 나주",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-flake-repelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-flake-repelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
           "facility_key": "jinyoung-hwaseong",
           "label": "진영프라스틱 화성",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-flake-repelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "yongseong-gyeongsan",
+          "label": "용성케미칼 경산",
           "basis": "published_site_process",
           "has_coordinates": false,
           "transitions": [
@@ -1652,6 +2182,56 @@
           "public_input_form_example": false
         },
         {
+          "facility_key": "afrochem-asan",
+          "label": "아프로켐 아산",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daejo-sangju",
+          "label": "대조산업 상주",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ecoplus-yeongju",
+          "label": "에코플러스 영주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-melt"
+          ],
+          "public_input_form_example": false
+        },
+        {
           "facility_key": "daewoon-naju",
           "label": "대운프라스틱 나주 사업장",
           "basis": "published_site_process",
@@ -1750,6 +2330,56 @@
           "public_input_form_example": false
         },
         {
+          "facility_key": "afrochem-asan",
+          "label": "아프로켐 아산",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daejo-sangju",
+          "label": "대조산업 상주",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ecoplus-yeongju",
+          "label": "에코플러스 영주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-melt"
+          ],
+          "public_input_form_example": false
+        },
+        {
           "facility_key": "daewoon-naju",
           "label": "대운프라스틱 나주 사업장",
           "basis": "published_site_process",
@@ -1844,6 +2474,56 @@
           "has_coordinates": true,
           "transitions": [
             "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "afrochem-asan",
+          "label": "아프로켐 아산",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daejo-sangju",
+          "label": "대조산업 상주",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ecoplus-yeongju",
+          "label": "에코플러스 영주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-melt"
           ],
           "public_input_form_example": false
         },
@@ -1946,6 +2626,56 @@
           "public_input_form_example": false
         },
         {
+          "facility_key": "afrochem-asan",
+          "label": "아프로켐 아산",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daejo-sangju",
+          "label": "대조산업 상주",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ecoplus-yeongju",
+          "label": "에코플러스 영주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-registered-melt"
+          ],
+          "public_input_form_example": false
+        },
+        {
           "facility_key": "daewoon-naju",
           "label": "대운프라스틱 나주 사업장",
           "basis": "published_site_process",
@@ -1996,7 +2726,7 @@
         {
           "facility_key": "bgf-yesan",
           "label": "BGF에코사이클 재생원료사업장",
-          "basis": "site_role_hypothesis",
+          "basis": "published_site_process",
           "has_coordinates": true,
           "transitions": [
             "pp-clean"
@@ -2004,8 +2734,38 @@
           "public_input_form_example": false
         },
         {
+          "facility_key": "daesan-naju",
+          "label": "대산이엔지 나주",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-flake-repelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-flake-repelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
           "facility_key": "jinyoung-hwaseong",
           "label": "진영프라스틱 화성",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-flake-repelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "yongseong-gyeongsan",
+          "label": "용성케미칼 경산",
           "basis": "published_site_process",
           "has_coordinates": false,
           "transitions": [
@@ -2079,6 +2839,16 @@
           "public_input_form_example": false
         },
         {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "ps-pelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
           "facility_key": "pne-eumseong",
           "label": "피앤이환경 음성 사업장",
           "basis": "published_site_process",
@@ -2137,6 +2907,26 @@
           "public_input_form_example": false
         },
         {
+          "facility_key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "ps-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "ps-registered-melt"
+          ],
+          "public_input_form_example": false
+        },
+        {
           "facility_key": "veolia-dh-yongin",
           "label": "디에이치 리사이클링 용인 사업장",
           "basis": "published_site_process",
@@ -2175,6 +2965,26 @@
           "public_input_form_example": false
         },
         {
+          "facility_key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "ps-registered-grind"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "ps-registered-melt"
+          ],
+          "public_input_form_example": false
+        },
+        {
           "facility_key": "veolia-dh-yongin",
           "label": "디에이치 리사이클링 용인 사업장",
           "basis": "published_site_process",
@@ -2197,6 +3007,16 @@
           "label": "창맥 성주 공장",
           "basis": "published_site_process",
           "has_coordinates": false,
+          "transitions": [
+            "ps-pelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "basis": "published_site_process",
+          "has_coordinates": true,
           "transitions": [
             "ps-pelletise"
           ],

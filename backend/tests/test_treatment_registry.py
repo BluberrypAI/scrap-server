@@ -267,6 +267,9 @@ async def test_follow_up_reviews_actual_output_without_original_classification(d
         "pne-eumseong--pp-shredded-to-pellet",
         "changmaec-seongju--pp-shredded-to-pellet",
         "jinyoung-hwaseong--pp-flake-repelletise",
+        "hcr-paju--pp-flake-repelletise",
+        "daesan-naju--pp-flake-repelletise",
+        "yongseong-gyeongsan--pp-flake-repelletise",
     }
     for packet in packets:
         assert "PP 파쇄품" in packet["form"]

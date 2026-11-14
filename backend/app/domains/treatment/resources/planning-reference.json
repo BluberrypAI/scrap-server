@@ -2021,6 +2021,507 @@
           "ps-bale-prepare"
         ]
       }
+    },
+    {
+      "key": "factoryon-20251231-110263",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "summary": "2025-12-31 등록공장 원본 순번 110263: HCR Korea, 경기도 파주시 광탄면 수레길 415, 생산품 PE,PP,PS,폐스트로폼원료를 이용한 펠렛. 등록 생산품이며 현행 가동·허가·외부 로트 반입 형태의 확인은 아니다.",
+      "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=110263; 회사명·공장주소·생산품",
+      "checked_date": "2026-11-14",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "Public data portal original ZIP downloaded; digest of ZIP FILE_000000007694518/1; locator identifies CSV record; curated factual summary only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "pe-registered-melt",
+          "pp-registered-melt",
+          "ps-registered-melt"
+        ],
+        "organisations": [
+          "hcr-paju-org"
+        ],
+        "facilities": [
+          "hcr-paju"
+        ],
+        "capabilities": [
+          "hcr-paju--pe-flake-repelletise",
+          "hcr-paju--pe-registered-melt",
+          "hcr-paju--pp-flake-repelletise",
+          "hcr-paju--pp-registered-melt",
+          "hcr-paju--ps-pelletise",
+          "hcr-paju--ps-registered-melt"
+        ]
+      }
+    },
+    {
+      "key": "hcr-paju-registry",
+      "url": "https://www.data.go.kr/data/15114147/standard.do",
+      "publisher": "공공데이터포털 전국폐기물처리업소표준데이터",
+      "summary": "HCR Korea 파주의 명부 사업장명과 주소를 대조했다. 기준일 2026-06-11, 기록 코드 51-03-01. 명부 코드는 현행 허가나 실제 수용 여부의 확인값이 아니다. 명부 설비 기록: 파쇄시설 40HP*1+파쇄시설 15HP*1+ 파쇄시설 125HP*1+압축시설 75HP*1+용융시설 75HP*4+용융시설 50HP*1+압축시설 20HP*1. 장비 보유를 현재 가동·투입 품질·외부 수령으로 해석하지 않는다.",
+      "locator": "명부 원본 행 2387,2388; 주소 경기도 파주시 광탄면 수레길 415",
+      "checked_date": "2026-11-14",
+      "source_date": "2026-06-11",
+      "sha256": "b083ea497c37bb11bd9374fc0a5b0850b989d290dbdba9d4a713fef353e79c08",
+      "acquisition": "Previously acquired public registry JSON, original byte digest; exact source row and address retained in facility-evidence-links.json; factual equipment fields only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "pe-registered-melt",
+          "pp-registered-melt",
+          "ps-registered-melt"
+        ],
+        "facilities": [
+          "hcr-paju"
+        ],
+        "capabilities": [
+          "hcr-paju--pe-flake-repelletise",
+          "hcr-paju--pe-registered-melt",
+          "hcr-paju--pp-flake-repelletise",
+          "hcr-paju--pp-registered-melt",
+          "hcr-paju--ps-pelletise",
+          "hcr-paju--ps-registered-melt"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-114100",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "summary": "2025-12-31 등록공장 원본 순번 114100: (주)일신케미칼, 경기도 안성시 원곡면 지문로 120-60 (총 2 필지) 외 1필지, 생산품 PE.PP.PS 재생재료. 등록 생산품이며 현행 가동·허가·외부 로트 반입 형태의 확인은 아니다.",
+      "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=114100; 회사명·공장주소·생산품",
+      "checked_date": "2026-11-14",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "Public data portal original ZIP downloaded; digest of ZIP FILE_000000007694518/1; locator identifies CSV record; curated factual summary only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "ps-registered-grind"
+        ],
+        "organisations": [
+          "ilshin-anseong-org"
+        ],
+        "facilities": [
+          "ilshin-anseong"
+        ],
+        "capabilities": [
+          "ilshin-anseong--pe-registered-grind",
+          "ilshin-anseong--pp-registered-grind",
+          "ilshin-anseong--ps-registered-grind"
+        ]
+      }
+    },
+    {
+      "key": "ilshin-anseong-registry",
+      "url": "https://www.data.go.kr/data/15114147/standard.do",
+      "publisher": "공공데이터포털 전국폐기물처리업소표준데이터",
+      "summary": "일신케미칼 안성의 명부 사업장명과 주소를 대조했다. 기준일 2025-11-27, 기록 코드 51-03-01. 명부 코드는 현행 허가나 실제 수용 여부의 확인값이 아니다. 명부 설비 기록: 분쇄시설+절단시설+성형시설+탈수건조시설. 장비 보유를 현재 가동·투입 품질·외부 수령으로 해석하지 않는다.",
+      "locator": "명부 원본 행 9042; 주소 경기도 안성시 원곡면 지문로 120-60 (총 2 필지) 외 1필지",
+      "checked_date": "2026-11-14",
+      "source_date": "2025-11-27",
+      "sha256": "b083ea497c37bb11bd9374fc0a5b0850b989d290dbdba9d4a713fef353e79c08",
+      "acquisition": "Previously acquired public registry JSON, original byte digest; exact source row and address retained in facility-evidence-links.json; factual equipment fields only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "ilshin-anseong"
+        ],
+        "capabilities": [
+          "ilshin-anseong--pe-registered-grind",
+          "ilshin-anseong--pp-registered-grind",
+          "ilshin-anseong--ps-registered-grind"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-177557",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "summary": "2025-12-31 등록공장 원본 순번 177557: 주식회사 에코플러스, 경상북도 영주시 장수면 장수로220번길 47, 생산품 PE,PP 분쇄품. 등록 생산품이며 현행 가동·허가·외부 로트 반입 형태의 확인은 아니다.",
+      "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=177557; 회사명·공장주소·생산품",
+      "checked_date": "2026-11-14",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "Public data portal original ZIP downloaded; digest of ZIP FILE_000000007694518/1; locator identifies CSV record; curated factual summary only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "ecoplus-yeongju-org"
+        ],
+        "facilities": [
+          "ecoplus-yeongju"
+        ],
+        "capabilities": [
+          "ecoplus-yeongju--pe-registered-grind",
+          "ecoplus-yeongju--pp-registered-grind"
+        ]
+      }
+    },
+    {
+      "key": "ecoplus-yeongju-registry",
+      "url": "https://www.data.go.kr/data/15114147/standard.do",
+      "publisher": "공공데이터포털 전국폐기물처리업소표준데이터",
+      "summary": "에코플러스 영주의 명부 사업장명과 주소를 대조했다. 기준일 2025-07-28, 기록 코드 51-03-01. 명부 코드는 현행 허가나 실제 수용 여부의 확인값이 아니다. 명부의 구체적 설비 정보는 비어 있다.",
+      "locator": "명부 원본 행 8817; 주소 경상북도 영주시 장수면 장수로220번길 47",
+      "checked_date": "2026-11-14",
+      "source_date": "2025-07-28",
+      "sha256": "b083ea497c37bb11bd9374fc0a5b0850b989d290dbdba9d4a713fef353e79c08",
+      "acquisition": "Previously acquired public registry JSON, original byte digest; exact source row and address retained in facility-evidence-links.json; factual equipment fields only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "ecoplus-yeongju"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-162997",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "summary": "2025-12-31 등록공장 원본 순번 162997: (주)아프로켐, 충청남도 아산시 음봉면 월암로 308, 생산품 분쇄 PE, PP. 등록 생산품이며 현행 가동·허가·외부 로트 반입 형태의 확인은 아니다.",
+      "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=162997; 회사명·공장주소·생산품",
+      "checked_date": "2026-11-14",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "Public data portal original ZIP downloaded; digest of ZIP FILE_000000007694518/1; locator identifies CSV record; curated factual summary only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "pe-registered-grind",
+          "pp-registered-grind"
+        ],
+        "organisations": [
+          "afrochem-asan-org"
+        ],
+        "facilities": [
+          "afrochem-asan"
+        ],
+        "capabilities": [
+          "afrochem-asan--pe-registered-grind",
+          "afrochem-asan--pp-registered-grind"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-179029",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "summary": "2025-12-31 등록공장 원본 순번 179029: 대조산업, 경상북도 상주시 함창읍 새잼이길 16 (총 6 필지) 외 5필지, 생산품 폴리에틸렌분쇄품,폴리프로필렌분쇄품. 등록 생산품이며 현행 가동·허가·외부 로트 반입 형태의 확인은 아니다.",
+      "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=179029; 회사명·공장주소·생산품",
+      "checked_date": "2026-11-14",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "Public data portal original ZIP downloaded; digest of ZIP FILE_000000007694518/1; locator identifies CSV record; curated factual summary only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "daejo-sangju-org"
+        ],
+        "facilities": [
+          "daejo-sangju"
+        ],
+        "capabilities": [
+          "daejo-sangju--pe-registered-grind",
+          "daejo-sangju--pp-registered-grind"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-200542",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "summary": "2025-12-31 등록공장 원본 순번 200542: 삼성케미칼, 경상남도 밀양시 하남읍 양동농공단지길 65-10, 생산품 합성수지 분쇄품(PE관). 등록 생산품이며 현행 가동·허가·외부 로트 반입 형태의 확인은 아니다.",
+      "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=200542; 회사명·공장주소·생산품",
+      "checked_date": "2026-11-14",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "Public data portal original ZIP downloaded; digest of ZIP FILE_000000007694518/1; locator identifies CSV record; curated factual summary only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "samsungchem-miryang-org"
+        ],
+        "facilities": [
+          "samsungchem-miryang"
+        ],
+        "capabilities": [
+          "samsungchem-miryang--pe-registered-grind"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-207413",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "summary": "2025-12-31 등록공장 원본 순번 207413: 주식회사 구일알앤씨, 경상남도 합천군 율곡면 임북길 175, 생산품 PE펠릿. 등록 생산품이며 현행 가동·허가·외부 로트 반입 형태의 확인은 아니다.",
+      "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=207413; 회사명·공장주소·생산품",
+      "checked_date": "2026-11-14",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "Public data portal original ZIP downloaded; digest of ZIP FILE_000000007694518/1; locator identifies CSV record; curated factual summary only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "guil-hapcheon-org"
+        ],
+        "facilities": [
+          "guil-hapcheon"
+        ],
+        "capabilities": [
+          "guil-hapcheon--pe-flake-repelletise"
+        ]
+      }
+    },
+    {
+      "key": "guil-hapcheon-registry",
+      "url": "https://www.data.go.kr/data/15114147/standard.do",
+      "publisher": "공공데이터포털 전국폐기물처리업소표준데이터",
+      "summary": "구일알앤씨 합천의 명부 사업장명과 주소를 대조했다. 기준일 2026-05-22, 기록 코드 51-03-01. 명부 코드는 현행 허가나 실제 수용 여부의 확인값이 아니다. 명부 설비 기록: 폐기물처리시설. 장비 보유를 현재 가동·투입 품질·외부 수령으로 해석하지 않는다.",
+      "locator": "명부 원본 행 1436; 주소 경상남도 합천군 율곡면 임북길 175",
+      "checked_date": "2026-11-14",
+      "source_date": "2026-05-22",
+      "sha256": "b083ea497c37bb11bd9374fc0a5b0850b989d290dbdba9d4a713fef353e79c08",
+      "acquisition": "Previously acquired public registry JSON, original byte digest; exact source row and address retained in facility-evidence-links.json; factual equipment fields only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "guil-hapcheon"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-13761",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "summary": "2025-12-31 등록공장 원본 순번 13761: (주)대산이엔지, 전라남도 나주시 왕곡면 혁신산단6길 14, 생산품 재생pp월료 펠렛제품생산. 등록 생산품이며 현행 가동·허가·외부 로트 반입 형태의 확인은 아니다.",
+      "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=13761; 회사명·공장주소·생산품",
+      "checked_date": "2026-11-14",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "Public data portal original ZIP downloaded; digest of ZIP FILE_000000007694518/1; locator identifies CSV record; curated factual summary only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "daesan-naju-org"
+        ],
+        "facilities": [
+          "daesan-naju"
+        ],
+        "capabilities": [
+          "daesan-naju--pp-flake-repelletise"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-181807",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "summary": "2025-12-31 등록공장 원본 순번 181807: 용성케미칼, 경상북도 경산시 압량읍 가일리 482번지, 생산품 재생플라스틱원료(재생pe, pp펠렛). 등록 생산품이며 현행 가동·허가·외부 로트 반입 형태의 확인은 아니다.",
+      "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=181807; 회사명·공장주소·생산품",
+      "checked_date": "2026-11-14",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "Public data portal original ZIP downloaded; digest of ZIP FILE_000000007694518/1; locator identifies CSV record; curated factual summary only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "yongseong-gyeongsan-org"
+        ],
+        "facilities": [
+          "yongseong-gyeongsan"
+        ],
+        "capabilities": [
+          "yongseong-gyeongsan--pe-flake-repelletise",
+          "yongseong-gyeongsan--pp-flake-repelletise"
+        ]
+      }
+    },
+    {
+      "key": "dongmin-pe-process",
+      "url": "http://www.dongmin-pe.co.kr/rnd/lldpe",
+      "publisher": "동민산업협동조합",
+      "summary": "영천 오계공단길 36 사업장의 LLDPE 공정은 폐비닐 입고·선별, 분쇄, 세척, 탈수, 이중압출, 커팅, 재생 PE칩 생산이다. 본사·2공장이 같은 주소로 표기되어 한 사업장 후보로 묶었다.",
+      "locator": "LLDPE 생산공정 1~8 및 사업장 주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "631cdbf979ea8b89a6acc0e22614ae15ec748e654f8b7dd28fc8cb69c7b00d7c",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "pe-agricultural-film-recovery"
+        ],
+        "organisations": [
+          "dongmin-yeongcheon-org"
+        ],
+        "facilities": [
+          "dongmin-yeongcheon"
+        ],
+        "capabilities": [
+          "dongmin-yeongcheon--pe-agricultural-film-recovery"
+        ]
+      }
+    },
+    {
+      "key": "dongmin-pe-input",
+      "url": "http://www.dongmin-pe.co.kr/business/pe-recycle",
+      "publisher": "동민산업협동조합",
+      "summary": "농업용 비료포대와 곤포사일리지 필름으로 재생 PE칩을 생산한다. 곤포사일리지 포장 필름을 압축 플라스틱 베일 반입으로 해석하지 않는다. 제품용 120mesh·80~100마이크로미터를 반입 기준으로 사용하지 않는다.",
+      "locator": "PE RECYCLE > 원료·LLDPE 칩 설명",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "ad412da09ba1edad75feaca2a935c8e619f813f6b2ca10b4a054173573141458",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "pe-agricultural-film-recovery"
+        ],
+        "organisations": [
+          "dongmin-yeongcheon-org"
+        ],
+        "facilities": [
+          "dongmin-yeongcheon"
+        ],
+        "capabilities": [
+          "dongmin-yeongcheon--pe-agricultural-film-recovery"
+        ]
+      }
+    },
+    {
+      "key": "dongmin-yeongcheon-registry",
+      "url": "https://www.data.go.kr/data/15114147/standard.do",
+      "publisher": "공공데이터포털 전국폐기물처리업소표준데이터",
+      "summary": "동민산업협동조합 영천의 명부 사업장명과 주소를 대조했다. 기준일 2025-08-14, 기록 코드 51-03-01. 명부 코드는 현행 허가나 실제 수용 여부의 확인값이 아니다. 명부의 구체적 설비 정보는 비어 있다.",
+      "locator": "명부 원본 행 5569; 주소 경상북도 영천시 금호읍 오계공단길 36",
+      "checked_date": "2026-11-14",
+      "source_date": "2025-08-14",
+      "sha256": "b083ea497c37bb11bd9374fc0a5b0850b989d290dbdba9d4a713fef353e79c08",
+      "acquisition": "Previously acquired public registry JSON, original byte digest; exact source row and address retained in facility-evidence-links.json; factual equipment fields only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "dongmin-yeongcheon"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-169499",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "summary": "2025-12-31 등록공장 원본 순번 169499: 주식회사 비지에프에코사이클, 충청남도 예산군 고덕면 상몽산단로 180, 생산품 재생플라스틱 펠렛(PP, PE, PET flake&pellet ). 등록 생산품이며 현행 가동·허가·외부 로트 반입 형태의 확인은 아니다.",
+      "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=169499; 회사명·공장주소·생산품",
+      "checked_date": "2026-11-14",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "Public data portal original ZIP downloaded; digest of ZIP FILE_000000007694518/1; locator identifies CSV record; curated factual summary only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "capabilities": [
+          "bgf-yesan--pe-clean",
+          "bgf-yesan--pe-pelletise",
+          "bgf-yesan--pet-pelletise",
+          "bgf-yesan--pp-clean",
+          "bgf-yesan--pp-pelletise"
+        ]
+      }
+    },
+    {
+      "key": "bgf-yesan-site-process",
+      "url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=52651995",
+      "publisher": "BGF에코사이클 작성 채용공고 / 사람인",
+      "summary": "예산 고덕면 상몽산단로 180 사업장 생산 공고(2025-12-24)는 투입·선별·분쇄·세척·압출 공정을 명시한다. 동일 도로명 주소의 공장등록에는 PP·PE·PET flake 및 pellet이 기록된다. 외부 물량·베일 반입 규격은 제시하지 않는다.",
+      "locator": "기업 작성 상세요강 > 주요업무 및 근무지위치; 기업정보의 본사 주소·자동요약은 사용하지 않음",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "d25db4ed4902be0d21d1ecef974ac7c5b7019abbf72a843fd04b15259af72152",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "capabilities": [
+          "bgf-yesan--pe-clean",
+          "bgf-yesan--pe-pelletise",
+          "bgf-yesan--pet-pelletise",
+          "bgf-yesan--pp-clean",
+          "bgf-yesan--pp-pelletise"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-126529",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "summary": "2025-12-31 등록공장 원본 순번 126529: (주)비지에프에코사이클, 경기도 화성시 남양읍 매바위로 540, 생산품 합성수지 및 기타플라스틱 물질. 등록 생산품이며 현행 가동·허가·외부 로트 반입 형태의 확인은 아니다.",
+      "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=126529; 회사명·공장주소·생산품",
+      "checked_date": "2026-11-14",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "Public data portal original ZIP downloaded; digest of ZIP FILE_000000007694518/1; locator identifies CSV record; curated factual summary only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "bgf-hwaseong"
+        ]
+      }
+    },
+    {
+      "key": "cntk-scope-certificates",
+      "url": "https://cntk.co.kr/bbs/board.php?bo_table=cert",
+      "publisher": "씨엔텍코리아 공개 인증서",
+      "summary": "GRS·ISO9001·환경표지 공개 첫 장은 화성 주소와 재활용품 제조 범위를 보여 준다. GRS 제품·시설 별첨은 없고 UL 축하문은 제품/시설 인증서가 아니라고 명시한다. ABS·PS·SAN의 화성/진주별 선별·압출 배정 근거로 승격하지 않는다.",
+      "locator": "공개 GRS 1/3쪽, ISO9001, 환경표지 첫 장, UL ECV 면책 문구",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "1337f9112eb12c383ea6c470a36e738563d38f933a58c001de56b9f9ac5ca232",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "cntk-hwaseong"
+        ]
+      }
     }
   ],
   "states": [
@@ -3657,6 +4158,151 @@
       "risk_checks": [
         "창틀·건설 폐자재의 PVC 여부, 납 안정제·금속·유리·고무 혼입, 건설폐기물 분류 여부 확인"
       ]
+    },
+    {
+      "key": "pp-registered-grind",
+      "label": "PP 분쇄 가공 검토",
+      "source_ids": [
+        "factoryon-20251231-162997"
+      ],
+      "input_state": "pp-scrap",
+      "output_state": "pp-shredded",
+      "operation_steps": [
+        "반입 형태·재질 조건 협의",
+        "분쇄 가공",
+        "산출물 형태·오염 상태 확인"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "분쇄 근거만 확인. 세척·건조·압출·현재 수용 여부를 추정하지 않음"
+      ]
+    },
+    {
+      "key": "pe-registered-grind",
+      "label": "PE 분쇄 가공 검토",
+      "source_ids": [
+        "factoryon-20251231-162997"
+      ],
+      "input_state": "pe-scrap",
+      "output_state": "pe-shredded",
+      "operation_steps": [
+        "반입 형태·재질 조건 협의",
+        "분쇄 가공",
+        "산출물 형태·오염 상태 확인"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "분쇄 근거만 확인. 세척·건조·압출·현재 수용 여부를 추정하지 않음"
+      ]
+    },
+    {
+      "key": "ps-registered-grind",
+      "label": "PS 분쇄 가공 검토",
+      "source_ids": [
+        "factoryon-20251231-114100"
+      ],
+      "input_state": "ps-scrap",
+      "output_state": "ps-flake",
+      "operation_steps": [
+        "반입 형태·재질 조건 협의",
+        "분쇄 가공",
+        "산출물 형태·오염 상태 확인"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "분쇄 근거만 확인. 세척·건조·압출·현재 수용 여부를 추정하지 않음"
+      ]
+    },
+    {
+      "key": "pp-registered-melt",
+      "label": "PP 분쇄·용융 재생 펠릿 가공 검토",
+      "source_ids": [
+        "factoryon-20251231-110263",
+        "hcr-paju-registry"
+      ],
+      "input_state": "pp-scrap",
+      "output_state": "pp-pellet",
+      "operation_steps": [
+        "재질·반입 조건 확인",
+        "등록 분쇄·용융 설비 적용 확인",
+        "재생 펠릿 생산·품질 확인"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "세척 공정·등급·오염 한도 미확인; EPS와 비발포 PS를 구분; 압축 설비는 베일 반입 증거가 아님"
+      ]
+    },
+    {
+      "key": "pe-registered-melt",
+      "label": "PE 분쇄·용융 재생 펠릿 가공 검토",
+      "source_ids": [
+        "factoryon-20251231-110263",
+        "hcr-paju-registry"
+      ],
+      "input_state": "pe-scrap",
+      "output_state": "pe-pellet",
+      "operation_steps": [
+        "재질·반입 조건 확인",
+        "등록 분쇄·용융 설비 적용 확인",
+        "재생 펠릿 생산·품질 확인"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "세척 공정·등급·오염 한도 미확인; EPS와 비발포 PS를 구분; 압축 설비는 베일 반입 증거가 아님"
+      ]
+    },
+    {
+      "key": "ps-registered-melt",
+      "label": "PS 분쇄·용융 재생 펠릿 가공 검토",
+      "source_ids": [
+        "factoryon-20251231-110263",
+        "hcr-paju-registry"
+      ],
+      "input_state": "ps-scrap",
+      "output_state": "ps-pellet",
+      "operation_steps": [
+        "재질·반입 조건 확인",
+        "등록 분쇄·용융 설비 적용 확인",
+        "재생 펠릿 생산·품질 확인"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "세척 공정·등급·오염 한도 미확인; EPS와 비발포 PS를 구분; 압축 설비는 베일 반입 증거가 아님"
+      ]
+    },
+    {
+      "key": "pe-agricultural-film-recovery",
+      "label": "PE 농업용 필름 분쇄·세척·재생",
+      "source_ids": [
+        "dongmin-pe-process",
+        "dongmin-pe-input"
+      ],
+      "input_state": "pe-scrap",
+      "output_state": "pe-pellet",
+      "operation_steps": [
+        "농업용 PE 필름 반입·선별",
+        "분쇄·세척·탈수",
+        "이중압출·커팅",
+        "재생 PE칩 확인"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
     }
   ],
   "organisations": [
@@ -3891,6 +4537,77 @@
         "pureum-pvc-process",
         "pureum-pvc-products"
       ]
+    },
+    {
+      "key": "hcr-paju-org",
+      "label": "HCR Korea 파주",
+      "source_ids": [
+        "factoryon-20251231-110263"
+      ]
+    },
+    {
+      "key": "ilshin-anseong-org",
+      "label": "일신케미칼 안성",
+      "source_ids": [
+        "factoryon-20251231-114100"
+      ]
+    },
+    {
+      "key": "ecoplus-yeongju-org",
+      "label": "에코플러스 영주",
+      "source_ids": [
+        "factoryon-20251231-177557"
+      ]
+    },
+    {
+      "key": "afrochem-asan-org",
+      "label": "아프로켐 아산",
+      "source_ids": [
+        "factoryon-20251231-162997"
+      ]
+    },
+    {
+      "key": "daejo-sangju-org",
+      "label": "대조산업 상주",
+      "source_ids": [
+        "factoryon-20251231-179029"
+      ]
+    },
+    {
+      "key": "samsungchem-miryang-org",
+      "label": "삼성케미칼 밀양",
+      "source_ids": [
+        "factoryon-20251231-200542"
+      ]
+    },
+    {
+      "key": "guil-hapcheon-org",
+      "label": "구일알앤씨 합천",
+      "source_ids": [
+        "factoryon-20251231-207413"
+      ]
+    },
+    {
+      "key": "daesan-naju-org",
+      "label": "대산이엔지 나주",
+      "source_ids": [
+        "factoryon-20251231-13761"
+      ]
+    },
+    {
+      "key": "yongseong-gyeongsan-org",
+      "label": "용성케미칼 경산",
+      "source_ids": [
+        "factoryon-20251231-181807"
+      ]
+    },
+    {
+      "key": "dongmin-yeongcheon-org",
+      "label": "동민산업협동조합 영천",
+      "source_ids": [
+        "dongmin-pe-process",
+        "dongmin-pe-input"
+      ]
     }
   ],
   "facilities": [
@@ -3964,7 +4681,8 @@
       "region": "경기도 화성시",
       "address": "경기 화성시 남양읍 매바위로 540",
       "source_ids": [
-        "bgf-recycling"
+        "bgf-recycling",
+        "factoryon-20251231-126529"
       ],
       "reported_metrics": [],
       "current_permit_scope": null,
@@ -4242,7 +4960,8 @@
       "label": "씨엔텍코리아 화성 본점",
       "source_ids": [
         "cntk-flake",
-        "cntk-pellet"
+        "cntk-pellet",
+        "cntk-scope-certificates"
       ],
       "organisation": "cntk-org",
       "country": "KR",
@@ -4598,6 +5317,192 @@
       "current_price_krw_per_kg": null,
       "latitude": 37.87004302,
       "longitude": 126.9856131
+    },
+    {
+      "key": "hcr-paju",
+      "label": "HCR Korea 파주",
+      "source_ids": [
+        "factoryon-20251231-110263",
+        "hcr-paju-registry"
+      ],
+      "organisation": "hcr-paju-org",
+      "country": "KR",
+      "region": "경기",
+      "address": "경기도 파주시 광탄면 수레길 415",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 37.76974381,
+      "longitude": 126.8485264
+    },
+    {
+      "key": "ilshin-anseong",
+      "label": "일신케미칼 안성",
+      "source_ids": [
+        "factoryon-20251231-114100",
+        "ilshin-anseong-registry"
+      ],
+      "organisation": "ilshin-anseong-org",
+      "country": "KR",
+      "region": "경기",
+      "address": "경기도 안성시 원곡면 지문로 120-60 (총 2 필지) 외 1필지",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 37.04939795,
+      "longitude": 127.1414911
+    },
+    {
+      "key": "ecoplus-yeongju",
+      "label": "에코플러스 영주",
+      "source_ids": [
+        "factoryon-20251231-177557",
+        "ecoplus-yeongju-registry"
+      ],
+      "organisation": "ecoplus-yeongju-org",
+      "country": "KR",
+      "region": "경북",
+      "address": "경상북도 영주시 장수면 장수로220번길 47",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 36.78755697,
+      "longitude": 128.5959796
+    },
+    {
+      "key": "afrochem-asan",
+      "label": "아프로켐 아산",
+      "source_ids": [
+        "factoryon-20251231-162997"
+      ],
+      "organisation": "afrochem-asan-org",
+      "country": "KR",
+      "region": "충남",
+      "address": "충청남도 아산시 음봉면 월암로 308",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "daejo-sangju",
+      "label": "대조산업 상주",
+      "source_ids": [
+        "factoryon-20251231-179029"
+      ],
+      "organisation": "daejo-sangju-org",
+      "country": "KR",
+      "region": "경북",
+      "address": "경상북도 상주시 함창읍 새잼이길 16 (총 6 필지) 외 5필지",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "samsungchem-miryang",
+      "label": "삼성케미칼 밀양",
+      "source_ids": [
+        "factoryon-20251231-200542"
+      ],
+      "organisation": "samsungchem-miryang-org",
+      "country": "KR",
+      "region": "경남",
+      "address": "경상남도 밀양시 하남읍 양동농공단지길 65-10",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "guil-hapcheon",
+      "label": "구일알앤씨 합천",
+      "source_ids": [
+        "factoryon-20251231-207413",
+        "guil-hapcheon-registry"
+      ],
+      "organisation": "guil-hapcheon-org",
+      "country": "KR",
+      "region": "경남",
+      "address": "경상남도 합천군 율곡면 임북길 175",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 35.5789257,
+      "longitude": 128.1800788
+    },
+    {
+      "key": "daesan-naju",
+      "label": "대산이엔지 나주",
+      "source_ids": [
+        "factoryon-20251231-13761"
+      ],
+      "organisation": "daesan-naju-org",
+      "country": "KR",
+      "region": "전남",
+      "address": "전라남도 나주시 왕곡면 혁신산단6길 14",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "yongseong-gyeongsan",
+      "label": "용성케미칼 경산",
+      "source_ids": [
+        "factoryon-20251231-181807"
+      ],
+      "organisation": "yongseong-gyeongsan-org",
+      "country": "KR",
+      "region": "경북",
+      "address": "경상북도 경산시 압량읍 가일리 482번지",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "dongmin-yeongcheon",
+      "label": "동민산업협동조합 영천",
+      "source_ids": [
+        "dongmin-pe-process",
+        "dongmin-pe-input",
+        "dongmin-yeongcheon-registry"
+      ],
+      "organisation": "dongmin-yeongcheon-org",
+      "country": "KR",
+      "region": "경북",
+      "address": "경상북도 영천시 금호읍 오계공단길 36",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 35.91327,
+      "longitude": 128.89137
     }
   ],
   "capabilities": [
@@ -4697,24 +5602,28 @@
       "key": "bgf-yesan--pet-pelletise",
       "facility": "bgf-yesan",
       "transition": "pet-pelletise",
-      "basis": "site_role_hypothesis",
+      "basis": "published_site_process",
       "source_ids": [
-        "bgf-recycling"
+        "bgf-recycling",
+        "factoryon-20251231-169499",
+        "bgf-yesan-site-process"
       ],
       "conditions": [
-        "현재 허가 범위·시설 가동·수탁 규격·해당 로트 인수 및 여유 용량 재확인"
+        "예산 사업장 생산품·공정 교차 확인. 외부 플레이크 반입·현재 허가·수분·오염·일정은 미확인"
       ],
       "input_profile": {
-        "evidence_scope": "organisation_only_not_site_verified",
+        "evidence_scope": "site_publication",
         "material_examples": [
           "pet"
         ],
         "form_examples": [],
         "output_description": "재생 PET 펠렛·등급 미확인",
         "source_ids": [
-          "bgf-recycling"
+          "bgf-recycling",
+          "factoryon-20251231-169499",
+          "bgf-yesan-site-process"
         ],
-        "locator": "사업영역 / 제품 / 사업장 역할",
+        "locator": "공장등록 169499의 수지별 생산품 + 예산 생산 채용공고의 세부 공정·동일 사업장 대조",
         "excludes_designated_waste": null,
         "exclusion_source_ids": [],
         "exclusion_locator": null,
@@ -4763,24 +5672,28 @@
       "key": "bgf-yesan--pp-clean",
       "facility": "bgf-yesan",
       "transition": "pp-clean",
-      "basis": "site_role_hypothesis",
+      "basis": "published_site_process",
       "source_ids": [
-        "bgf-recycling"
+        "bgf-recycling",
+        "factoryon-20251231-169499",
+        "bgf-yesan-site-process"
       ],
       "conditions": [
-        "현재 허가 범위·시설 가동·수탁 규격·해당 로트 인수 및 여유 용량 재확인"
+        "예산 사업장 생산품·공정 교차 확인. 외부 플레이크 반입·현재 허가·수분·오염·일정은 미확인"
       ],
       "input_profile": {
-        "evidence_scope": "organisation_only_not_site_verified",
+        "evidence_scope": "site_publication",
         "material_examples": [
           "pp"
         ],
         "form_examples": [],
         "output_description": "PP 세정 투입물·품질 확인 필요",
         "source_ids": [
-          "bgf-recycling"
+          "bgf-recycling",
+          "factoryon-20251231-169499",
+          "bgf-yesan-site-process"
         ],
-        "locator": "사업영역 / 제품 / 사업장 역할",
+        "locator": "공장등록 169499의 수지별 생산품 + 예산 생산 채용공고의 세부 공정·동일 사업장 대조",
         "excludes_designated_waste": null,
         "exclusion_source_ids": [],
         "exclusion_locator": null,
@@ -4791,24 +5704,28 @@
       "key": "bgf-yesan--pp-pelletise",
       "facility": "bgf-yesan",
       "transition": "pp-pelletise",
-      "basis": "site_role_hypothesis",
+      "basis": "published_site_process",
       "source_ids": [
-        "bgf-recycling"
+        "bgf-recycling",
+        "factoryon-20251231-169499",
+        "bgf-yesan-site-process"
       ],
       "conditions": [
-        "현재 허가 범위·시설 가동·수탁 규격·해당 로트 인수 및 여유 용량 재확인"
+        "예산 사업장 생산품·공정 교차 확인. 외부 플레이크 반입·현재 허가·수분·오염·일정은 미확인"
       ],
       "input_profile": {
-        "evidence_scope": "organisation_only_not_site_verified",
+        "evidence_scope": "site_publication",
         "material_examples": [
           "pp"
         ],
         "form_examples": [],
         "output_description": "재생 PP 펠렛·등급 확인 필요",
         "source_ids": [
-          "bgf-recycling"
+          "bgf-recycling",
+          "factoryon-20251231-169499",
+          "bgf-yesan-site-process"
         ],
-        "locator": "사업영역 / 제품 / 사업장 역할",
+        "locator": "공장등록 169499의 수지별 생산품 + 예산 생산 채용공고의 세부 공정·동일 사업장 대조",
         "excludes_designated_waste": null,
         "exclusion_source_ids": [],
         "exclusion_locator": null,
@@ -4885,24 +5802,28 @@
       "key": "bgf-yesan--pe-clean",
       "facility": "bgf-yesan",
       "transition": "pe-clean",
-      "basis": "site_role_hypothesis",
+      "basis": "published_site_process",
       "source_ids": [
-        "bgf-recycling"
+        "bgf-recycling",
+        "factoryon-20251231-169499",
+        "bgf-yesan-site-process"
       ],
       "conditions": [
-        "현재 허가 범위·시설 가동·수탁 규격·해당 로트 인수 및 여유 용량 재확인"
+        "예산 사업장 생산품·공정 교차 확인. 외부 플레이크 반입·현재 허가·수분·오염·일정은 미확인"
       ],
       "input_profile": {
-        "evidence_scope": "organisation_only_not_site_verified",
+        "evidence_scope": "site_publication",
         "material_examples": [
           "pe"
         ],
         "form_examples": [],
         "output_description": "PE 세정 투입물·품질 확인 필요",
         "source_ids": [
-          "bgf-recycling"
+          "bgf-recycling",
+          "factoryon-20251231-169499",
+          "bgf-yesan-site-process"
         ],
-        "locator": "사업영역 / 제품 / 사업장 역할",
+        "locator": "공장등록 169499의 수지별 생산품 + 예산 생산 채용공고의 세부 공정·동일 사업장 대조",
         "excludes_designated_waste": null,
         "exclusion_source_ids": [],
         "exclusion_locator": null,
@@ -4913,24 +5834,28 @@
       "key": "bgf-yesan--pe-pelletise",
       "facility": "bgf-yesan",
       "transition": "pe-pelletise",
-      "basis": "site_role_hypothesis",
+      "basis": "published_site_process",
       "source_ids": [
-        "bgf-recycling"
+        "bgf-recycling",
+        "factoryon-20251231-169499",
+        "bgf-yesan-site-process"
       ],
       "conditions": [
-        "현재 허가 범위·시설 가동·수탁 규격·해당 로트 인수 및 여유 용량 재확인"
+        "예산 사업장 생산품·공정 교차 확인. 외부 플레이크 반입·현재 허가·수분·오염·일정은 미확인"
       ],
       "input_profile": {
-        "evidence_scope": "organisation_only_not_site_verified",
+        "evidence_scope": "site_publication",
         "material_examples": [
           "pe"
         ],
         "form_examples": [],
         "output_description": "재생 PE 펠렛·등급 확인 필요",
         "source_ids": [
-          "bgf-recycling"
+          "bgf-recycling",
+          "factoryon-20251231-169499",
+          "bgf-yesan-site-process"
         ],
-        "locator": "사업영역 / 제품 / 사업장 역할",
+        "locator": "공장등록 169499의 수지별 생산품 + 예산 생산 채용공고의 세부 공정·동일 사업장 대조",
         "excludes_designated_waste": null,
         "exclusion_source_ids": [],
         "exclusion_locator": null,
@@ -7136,6 +8061,583 @@
       },
       "initial_input_forms": [
         "rigid"
+      ]
+    },
+    {
+      "key": "hcr-paju--pp-registered-melt",
+      "facility": "hcr-paju",
+      "transition": "pp-registered-melt",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-110263",
+        "hcr-paju-registry"
+      ],
+      "conditions": [
+        "국가 공장등록의 수지별 펠릿과 동일 주소 명부의 분쇄·용융 설비 대조. 세척과 베일 반입 미확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [],
+        "output_description": "PP 재생 펠릿",
+        "source_ids": [
+          "factoryon-20251231-110263",
+          "hcr-paju-registry"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=110263; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "hcr-paju--pp-flake-repelletise",
+      "facility": "hcr-paju",
+      "transition": "pp-flake-repelletise",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-110263",
+        "hcr-paju-registry"
+      ],
+      "conditions": [
+        "외부 플레이크 반입 가능 여부·수지 등급·오염·수분은 별도 확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [],
+        "output_description": "PP 재생 펠릿",
+        "source_ids": [
+          "factoryon-20251231-110263",
+          "hcr-paju-registry"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=110263; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "hcr-paju--pe-registered-melt",
+      "facility": "hcr-paju",
+      "transition": "pe-registered-melt",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-110263",
+        "hcr-paju-registry"
+      ],
+      "conditions": [
+        "국가 공장등록의 수지별 펠릿과 동일 주소 명부의 분쇄·용융 설비 대조. 세척과 베일 반입 미확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "PE 재생 펠릿",
+        "source_ids": [
+          "factoryon-20251231-110263",
+          "hcr-paju-registry"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=110263; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "hcr-paju--pe-flake-repelletise",
+      "facility": "hcr-paju",
+      "transition": "pe-flake-repelletise",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-110263",
+        "hcr-paju-registry"
+      ],
+      "conditions": [
+        "외부 플레이크 반입 가능 여부·수지 등급·오염·수분은 별도 확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "PE 재생 펠릿",
+        "source_ids": [
+          "factoryon-20251231-110263",
+          "hcr-paju-registry"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=110263; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "hcr-paju--ps-registered-melt",
+      "facility": "hcr-paju",
+      "transition": "ps-registered-melt",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-110263",
+        "hcr-paju-registry"
+      ],
+      "conditions": [
+        "국가 공장등록의 수지별 펠릿과 동일 주소 명부의 분쇄·용융 설비 대조. 세척과 베일 반입 미확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "ps"
+        ],
+        "form_examples": [],
+        "output_description": "PS 재생 펠릿",
+        "source_ids": [
+          "factoryon-20251231-110263",
+          "hcr-paju-registry"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=110263; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "hcr-paju--ps-pelletise",
+      "facility": "hcr-paju",
+      "transition": "ps-pelletise",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-110263",
+        "hcr-paju-registry"
+      ],
+      "conditions": [
+        "외부 플레이크 반입 가능 여부·수지 등급·오염·수분은 별도 확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "ps"
+        ],
+        "form_examples": [],
+        "output_description": "PS 재생 펠릿",
+        "source_ids": [
+          "factoryon-20251231-110263",
+          "hcr-paju-registry"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=110263; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "ilshin-anseong--pp-registered-grind",
+      "facility": "ilshin-anseong",
+      "transition": "pp-registered-grind",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-114100",
+        "ilshin-anseong-registry"
+      ],
+      "conditions": [
+        "수지별 재생재료와 동일 주소 분쇄·절단 설비만 확인; 세척·펠릿화·최종 제품 규격은 미확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [],
+        "output_description": "PP 분쇄품",
+        "source_ids": [
+          "factoryon-20251231-114100",
+          "ilshin-anseong-registry"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=114100; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "ilshin-anseong--pe-registered-grind",
+      "facility": "ilshin-anseong",
+      "transition": "pe-registered-grind",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-114100",
+        "ilshin-anseong-registry"
+      ],
+      "conditions": [
+        "수지별 재생재료와 동일 주소 분쇄·절단 설비만 확인; 세척·펠릿화·최종 제품 규격은 미확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "PE 분쇄품",
+        "source_ids": [
+          "factoryon-20251231-114100",
+          "ilshin-anseong-registry"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=114100; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "ilshin-anseong--ps-registered-grind",
+      "facility": "ilshin-anseong",
+      "transition": "ps-registered-grind",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-114100",
+        "ilshin-anseong-registry"
+      ],
+      "conditions": [
+        "수지별 재생재료와 동일 주소 분쇄·절단 설비만 확인; 세척·펠릿화·최종 제품 규격은 미확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "ps"
+        ],
+        "form_examples": [],
+        "output_description": "PS 분쇄품",
+        "source_ids": [
+          "factoryon-20251231-114100",
+          "ilshin-anseong-registry"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=114100; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "ecoplus-yeongju--pe-registered-grind",
+      "facility": "ecoplus-yeongju",
+      "transition": "pe-registered-grind",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-177557"
+      ],
+      "conditions": [
+        "등록 생산품의 분쇄만 연결. 공장등록은 현재 폐기물처리 허가·반입 증빙이 아님",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "PE 분쇄품",
+        "source_ids": [
+          "factoryon-20251231-177557"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=177557; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "ecoplus-yeongju--pp-registered-grind",
+      "facility": "ecoplus-yeongju",
+      "transition": "pp-registered-grind",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-177557"
+      ],
+      "conditions": [
+        "등록 생산품의 분쇄만 연결. 공장등록은 현재 폐기물처리 허가·반입 증빙이 아님",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [],
+        "output_description": "PP 분쇄품",
+        "source_ids": [
+          "factoryon-20251231-177557"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=177557; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "afrochem-asan--pe-registered-grind",
+      "facility": "afrochem-asan",
+      "transition": "pe-registered-grind",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-162997"
+      ],
+      "conditions": [
+        "등록 생산품의 분쇄만 연결. 공장등록은 현재 폐기물처리 허가·반입 증빙이 아님",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "PE 분쇄품",
+        "source_ids": [
+          "factoryon-20251231-162997"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=162997; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "afrochem-asan--pp-registered-grind",
+      "facility": "afrochem-asan",
+      "transition": "pp-registered-grind",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-162997"
+      ],
+      "conditions": [
+        "등록 생산품의 분쇄만 연결. 공장등록은 현재 폐기물처리 허가·반입 증빙이 아님",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [],
+        "output_description": "PP 분쇄품",
+        "source_ids": [
+          "factoryon-20251231-162997"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=162997; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "daejo-sangju--pe-registered-grind",
+      "facility": "daejo-sangju",
+      "transition": "pe-registered-grind",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-179029"
+      ],
+      "conditions": [
+        "등록 생산품의 분쇄만 연결. 공장등록은 현재 폐기물처리 허가·반입 증빙이 아님",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "PE 분쇄품",
+        "source_ids": [
+          "factoryon-20251231-179029"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=179029; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "daejo-sangju--pp-registered-grind",
+      "facility": "daejo-sangju",
+      "transition": "pp-registered-grind",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-179029"
+      ],
+      "conditions": [
+        "등록 생산품의 분쇄만 연결. 공장등록은 현재 폐기물처리 허가·반입 증빙이 아님",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [],
+        "output_description": "PP 분쇄품",
+        "source_ids": [
+          "factoryon-20251231-179029"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=179029; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "samsungchem-miryang--pe-registered-grind",
+      "facility": "samsungchem-miryang",
+      "transition": "pe-registered-grind",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-200542"
+      ],
+      "conditions": [
+        "등록 생산품의 분쇄만 연결. 공장등록은 현재 폐기물처리 허가·반입 증빙이 아님",
+        "공개 사례는 PE관 분쇄품이다. 다른 형태는 확인 필요",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [
+          "rigid"
+        ],
+        "output_description": "PE 분쇄품",
+        "source_ids": [
+          "factoryon-20251231-200542"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=200542; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "rigid"
+      ]
+    },
+    {
+      "key": "guil-hapcheon--pe-flake-repelletise",
+      "facility": "guil-hapcheon",
+      "transition": "pe-flake-repelletise",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-207413"
+      ],
+      "conditions": [
+        "원료의 사전 분쇄·세척 요구와 외부 플레이크 수령은 미확인. 제품 생산 등록을 무처리 스크랩 반입으로 확대하지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "PE 재생 펠릿",
+        "source_ids": [
+          "factoryon-20251231-207413"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=207413; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "daesan-naju--pp-flake-repelletise",
+      "facility": "daesan-naju",
+      "transition": "pp-flake-repelletise",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-13761"
+      ],
+      "conditions": [
+        "원료의 사전 분쇄·세척 요구와 외부 플레이크 수령은 미확인. 제품 생산 등록을 무처리 스크랩 반입으로 확대하지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [],
+        "output_description": "PP 재생 펠릿",
+        "source_ids": [
+          "factoryon-20251231-13761"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=13761; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "yongseong-gyeongsan--pe-flake-repelletise",
+      "facility": "yongseong-gyeongsan",
+      "transition": "pe-flake-repelletise",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-181807"
+      ],
+      "conditions": [
+        "원료의 사전 분쇄·세척 요구와 외부 플레이크 수령은 미확인. 제품 생산 등록을 무처리 스크랩 반입으로 확대하지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "PE 재생 펠릿",
+        "source_ids": [
+          "factoryon-20251231-181807"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=181807; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "yongseong-gyeongsan--pp-flake-repelletise",
+      "facility": "yongseong-gyeongsan",
+      "transition": "pp-flake-repelletise",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-181807"
+      ],
+      "conditions": [
+        "원료의 사전 분쇄·세척 요구와 외부 플레이크 수령은 미확인. 제품 생산 등록을 무처리 스크랩 반입으로 확대하지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [],
+        "output_description": "PP 재생 펠릿",
+        "source_ids": [
+          "factoryon-20251231-181807"
+        ],
+        "locator": "한국산업단지공단_전국등록공장현황_등록공장현황자료_20251231.csv, 순번=181807; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "dongmin-yeongcheon--pe-agricultural-film-recovery",
+      "facility": "dongmin-yeongcheon",
+      "transition": "pe-agricultural-film-recovery",
+      "basis": "published_site_process",
+      "source_ids": [
+        "dongmin-pe-process",
+        "dongmin-pe-input"
+      ],
+      "conditions": [
+        "비료포대·곤포사일리지 필름 사례. 잔류 비료·흙·식물체·혼합 수지와 현재 수령 조건 확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [
+          "film"
+        ],
+        "output_description": "재생 LLDPE칩",
+        "source_ids": [
+          "dongmin-pe-process",
+          "dongmin-pe-input"
+        ],
+        "locator": "LLDPE 생산공정 1~8 및 사업장 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "film"
       ]
     }
   ]

@@ -23,13 +23,35 @@
 4. 설비 설명이 있는 재활용업 462행을 우선 조사하고, 설명 없는 1,622행은 공정 원문을 찾는 대기열로 둡니다.
 5. 회사의 공식 공정·제품 자료 또는 공시를 읽고 해당 사업장 주소를 대조합니다. 이 단계에서 확인한 연결만 별도 공정 참조에 넣습니다. CSV의 `material`, `input_form`, `acceptance`는 여전히 `unknown`입니다.
 
-CSV는 **조사 목록**입니다. `폐합성수지 / 분쇄기`라는 명부 기록을 PP·PE·PET를 모두 받는다는 뜻으로 바꾸지 않습니다. 압축 설비를 보유하거나 베일을 판매하는 것도 압축 베일을 반입한다는 증거가 아닙니다. 현재 공정 참조는 37곳·81개 연결이며, 이름·주소 대조는 `backend/app/domains/treatment/resources/facility-evidence-links.json`에 따로 저장합니다.
+CSV는 **조사 목록**입니다. `폐합성수지 / 분쇄기`라는 명부 기록을 PP·PE·PET를 모두 받는다는 뜻으로 바꾸지 않습니다. 압축 설비를 보유하거나 베일을 판매하는 것도 압축 베일을 반입한다는 증거가 아닙니다. 현재 공정 참조는 47곳·102개 연결이며, 이름·주소 대조는 `backend/app/domains/treatment/resources/facility-evidence-links.json`에 따로 저장합니다.
 
-## 역할 확인 21개는 어떻게 됐나
+## 역할 확인 기록: 최초 21개 → 직전 19개 → 현재 14개
 
 - **NPC 화성 2개:** [HDPE 공정 이미지](http://www.npc-chemical.com/images/sub_text_03_1.png), [PP 공정 이미지](http://www.npc-chemical.com/images/sub_text_03_2.png)와 회사 주소를 대조했습니다. PP 분쇄·세척과 HDPE 상자/팔레트 분쇄를 공개 공정 근거로 반영했습니다. HDPE 사례를 LDPE 필름·압축 베일에 확대하지 않습니다.
 - **씨엔텍코리아 12개:** [공식 공정](https://cntk.co.kr/page/?pid=process)에 선별·분쇄·펠릿이 있으나 화성·진주 각각의 소재/라인 배정이 불명확합니다. 사업장별 설비표 또는 해당 공장의 확인 자료가 필요합니다.
-- **BGF 7개:** 그룹 자료의 재활용 공정과 사업장 정보만으로 예산·화성의 수지별 라인을 확정하지 않았습니다. [2025년 공식 회사소개서](https://bgfecomaterials.com/resources/kr/file/BGFecomaterials_Company_Profile_2025_KR.pdf) 7·11쪽도 확인했으나 사업장별 투입 수지·공정표는 없습니다. 회사 전체 제품 설명을 각 공장의 능력으로 복제하지 않습니다.
+- **BGF 7개 중 예산 5개 보강·화성 2개 유지:** [예산 회사 공고](https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=52651995)에 공장등록과 같은 상몽산단로 180 주소와 선별·분쇄·세척·압출이 나옵니다. 같은 사업장의 등록 PP·PE·PET 생산품과 대조했습니다. 화성은 등록 생산품이 포괄적이므로 PP·PE 컴파운딩 역할 추정을 유지합니다.
+
+## 공식 공장등록 220,705행과 추가 대조
+
+| 파일 | 역할 |
+| --- | --- |
+| [factory-crosscheck.json](factory-crosscheck.json) | 재활용업 1,935묶음을 공식 공장등록과 대조한 전수 결과. 자동 후보 승격 없음 |
+| [factory-curation.json](factory-curation.json) | 이번에 수동 검토해 연결한 9개 사업장의 원본 순번·생산품·주소. 동민은 별도 회사 원문으로 연결 |
+| [role-review-round3.json](role-review-round3.json) | 직전 미해결 19개 각각 재검토. 예산 5개 보강, 14개 유지 |
+| [live-validation-round3.json](live-validation-round3.json) | 현재 데이터의 로컬 조회 48개 및 Azure 후보 12개 검토 |
+
+공식 원본: [한국산업단지공단 전국등록공장현황](https://www.data.go.kr/data/15105482/fileData.do), **2025-12-31 기준** 등록공장 파일. 확인 시 Factoryon이 점검 중이어서 같은 발행기관의 공공데이터포털 원본 ZIP을 확보했습니다. 파일의 5개 열은 순번·회사명·단지명·생산품·공장주소입니다. **원료·투입 형태·현행 허가는 이 파일에 없습니다.** 원본 ZIP SHA256은 `factory-crosscheck.json`에 있습니다.
+
+- 이름·주소 일치: **323묶음**. 이 중 생산품에 수지명이 있는 **43묶음**도 조사 단서이며 반입 확정 업체가 아닙니다.
+- 이름만 일치하고 주소가 미해결: **582묶음**. 지번/도로명 또는 이전 주소라고 추정해 병합하지 않습니다.
+- 해당 이름을 찾지 못함: **1,030묶음**. 폐업이나 처리 불능으로 판정하지 않습니다.
+- 신규 연결: **10개 사업장·21개 공정 연결**. 분쇄품 기록만 있으면 분쇄만 연결하고 세척·건조·압출을 추가하지 않습니다.
+
+전체 원본·이미지는 레포에 넣지 않고 사업장별 필요한 사실과 출처만 보존했습니다. 다음 명령은 조사 자료만 생성하며 DB에 후보를 자동 추가하지 않습니다.
+
+```bash
+uv run --project backend python scripts/factory_registry_crosscheck.py /path/to/factoryon-20251231.zip docs/registry-screen/recycler-research-queue.csv --out docs/registry-screen
+```
 
 ## PE·PS 압축 베일
 
@@ -60,4 +82,4 @@ uv run python -m app.domains.treatment.import_catalog
 uv run python ../scripts/plastic_coverage.py ../docs/plastic-coverage.json
 ```
 
-이번 검증은 SQLite/PostgreSQL 각각 259개 테스트, 실제 로컬 API 48개 조회, Azure 공개 근거 검토 11개입니다. 자동 테스트의 계정·물량·문진·모델 대역과 실제 업체의 계약·인수를 구분해야 합니다. 모델 검토 11개는 문장 근거 확인 1개, 추가 자료 필요 10개이며 인수 승인은 전부 `false`입니다.
+이번 검증은 SQLite/PostgreSQL 각각 297개 테스트, 실제 로컬 API 48개 조회, Azure 공개 근거 검토 12개입니다. 자동 테스트의 계정·물량·문진·모델 대역과 실제 업체의 계약·인수를 구분해야 합니다. 이번 모델 검토 12개는 문장 근거 확인 1개, 추가 자료 필요 11개이며 인수 승인은 전부 `false`입니다. 이전 11개 기록은 덮어쓰지 않았습니다.

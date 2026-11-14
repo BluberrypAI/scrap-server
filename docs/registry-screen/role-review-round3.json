@@ -1,0 +1,182 @@
+{
+  "reviewed_on": "2026-11-14",
+  "previous_audit": "role-review.json",
+  "rows": [
+    {
+      "capability_key": "bgf-yesan--pet-pelletise",
+      "before": "site_role_hypothesis",
+      "after": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-169499",
+        "bgf-yesan-site-process"
+      ],
+      "decision": "예산 소재별 등록 생산품 + 기업 작성 예산 공정 공개를 교차 대조"
+    },
+    {
+      "capability_key": "bgf-yesan--pp-clean",
+      "before": "site_role_hypothesis",
+      "after": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-169499",
+        "bgf-yesan-site-process"
+      ],
+      "decision": "예산 소재별 등록 생산품 + 기업 작성 예산 공정 공개를 교차 대조"
+    },
+    {
+      "capability_key": "bgf-yesan--pp-pelletise",
+      "before": "site_role_hypothesis",
+      "after": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-169499",
+        "bgf-yesan-site-process"
+      ],
+      "decision": "예산 소재별 등록 생산품 + 기업 작성 예산 공정 공개를 교차 대조"
+    },
+    {
+      "capability_key": "bgf-hwaseong--pp-compound",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "factoryon-20251231-126529"
+      ],
+      "decision": "인증서 첫 장/포괄 제품으로는 수지별 세부 공정 배정 불가. 역할 추정 유지"
+    },
+    {
+      "capability_key": "bgf-yesan--pe-clean",
+      "before": "site_role_hypothesis",
+      "after": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-169499",
+        "bgf-yesan-site-process"
+      ],
+      "decision": "예산 소재별 등록 생산품 + 기업 작성 예산 공정 공개를 교차 대조"
+    },
+    {
+      "capability_key": "bgf-yesan--pe-pelletise",
+      "before": "site_role_hypothesis",
+      "after": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-169499",
+        "bgf-yesan-site-process"
+      ],
+      "decision": "예산 소재별 등록 생산품 + 기업 작성 예산 공정 공개를 교차 대조"
+    },
+    {
+      "capability_key": "bgf-hwaseong--pe-compound",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "factoryon-20251231-126529"
+      ],
+      "decision": "인증서 첫 장/포괄 제품으로는 수지별 세부 공정 배정 불가. 역할 추정 유지"
+    },
+    {
+      "capability_key": "cntk-hwaseong--abs-prepare",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-scope-certificates"
+      ],
+      "decision": "인증서 첫 장/포괄 제품으로는 수지별 세부 공정 배정 불가. 역할 추정 유지"
+    },
+    {
+      "capability_key": "cntk-hwaseong--abs-pelletise",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-scope-certificates"
+      ],
+      "decision": "인증서 첫 장/포괄 제품으로는 수지별 세부 공정 배정 불가. 역할 추정 유지"
+    },
+    {
+      "capability_key": "cntk-jinju--abs-prepare",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-scope-certificates"
+      ],
+      "decision": "인증서 첫 장/포괄 제품으로는 수지별 세부 공정 배정 불가. 역할 추정 유지"
+    },
+    {
+      "capability_key": "cntk-jinju--abs-pelletise",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-scope-certificates"
+      ],
+      "decision": "인증서 첫 장/포괄 제품으로는 수지별 세부 공정 배정 불가. 역할 추정 유지"
+    },
+    {
+      "capability_key": "cntk-hwaseong--ps-prepare",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-scope-certificates"
+      ],
+      "decision": "인증서 첫 장/포괄 제품으로는 수지별 세부 공정 배정 불가. 역할 추정 유지"
+    },
+    {
+      "capability_key": "cntk-hwaseong--ps-pelletise",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-scope-certificates"
+      ],
+      "decision": "인증서 첫 장/포괄 제품으로는 수지별 세부 공정 배정 불가. 역할 추정 유지"
+    },
+    {
+      "capability_key": "cntk-jinju--ps-prepare",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-scope-certificates"
+      ],
+      "decision": "인증서 첫 장/포괄 제품으로는 수지별 세부 공정 배정 불가. 역할 추정 유지"
+    },
+    {
+      "capability_key": "cntk-jinju--ps-pelletise",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-scope-certificates"
+      ],
+      "decision": "인증서 첫 장/포괄 제품으로는 수지별 세부 공정 배정 불가. 역할 추정 유지"
+    },
+    {
+      "capability_key": "cntk-hwaseong--san-prepare",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-scope-certificates"
+      ],
+      "decision": "인증서 첫 장/포괄 제품으로는 수지별 세부 공정 배정 불가. 역할 추정 유지"
+    },
+    {
+      "capability_key": "cntk-hwaseong--san-pelletise",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-scope-certificates"
+      ],
+      "decision": "인증서 첫 장/포괄 제품으로는 수지별 세부 공정 배정 불가. 역할 추정 유지"
+    },
+    {
+      "capability_key": "cntk-jinju--san-prepare",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-scope-certificates"
+      ],
+      "decision": "인증서 첫 장/포괄 제품으로는 수지별 세부 공정 배정 불가. 역할 추정 유지"
+    },
+    {
+      "capability_key": "cntk-jinju--san-pelletise",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-scope-certificates"
+      ],
+      "decision": "인증서 첫 장/포괄 제품으로는 수지별 세부 공정 배정 불가. 역할 추정 유지"
+    }
+  ]
+}

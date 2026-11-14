@@ -181,6 +181,17 @@ async def test_new_material_company_acceptance_qr_output_and_finish(
             "pe-pellet",
         ),
         ("pet", "51-03-07", "bottle", "hrm-cheongju", "yuil-busan", "pet-bale", "pet-flake"),
+        ("pp", "51-03-01", "scrap", "ecoplus-yeongju", "hcr-paju", "pp-shredded", "pp-pellet"),
+        (
+            "pe",
+            "51-03-01",
+            "rigid",
+            "samsungchem-miryang",
+            "guil-hapcheon",
+            "pe-shredded",
+            "pe-pellet",
+        ),
+        ("ps", "51-03-01", "scrap", "ilshin-anseong", "hcr-paju", "ps-flake", "ps-pellet"),
     ],
 )
 async def test_actual_b_output_drives_c_review_and_qr(
