@@ -158,6 +158,106 @@
       "status": "not_linked",
       "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
       "registry_rows": []
+    },
+    {
+      "facility_key": "saramtech-nonsan",
+      "official_address": "충청남도 논산시 광석면 사월길 360",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "yangil-incheon",
+      "official_address": "인천광역시 남동구 남동동로93번길 44",
+      "registry_name": "양일엔프라㈜",
+      "status": "exact_site_match",
+      "reason": "사업장명과 주소 토큰을 함께 수동 대조",
+      "registry_rows": [
+        {
+          "source_row": 5707,
+          "name": "양일엔프라㈜",
+          "address": "인천광역시 남동구 남동동로93번길 44",
+          "waste_codes": "51-03-01",
+          "as_of": "2025-08-13",
+          "equipment": "분쇄,용융,건조,절단"
+        }
+      ]
+    },
+    {
+      "facility_key": "jinyoung-hwaseong",
+      "official_address": "경기도 화성시 서신면 해운로458번길 94-17",
+      "registry_name": "진영프라스틱",
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "youone-incheon",
+      "official_address": "인천광역시 남동구 능허대로625번길 15",
+      "registry_name": "㈜유원포리머",
+      "status": "exact_site_match",
+      "reason": "사업장명과 주소 토큰을 함께 수동 대조",
+      "registry_rows": [
+        {
+          "source_row": 5706,
+          "name": "㈜유원포리머",
+          "address": "인천광역시 남동구 능허대로625번길 15",
+          "waste_codes": "51-03-01",
+          "as_of": "2025-08-13",
+          "equipment": "분쇄,용융,건조,절단"
+        }
+      ]
+    },
+    {
+      "facility_key": "dakyeong-busan",
+      "official_address": "부산광역시 강서구 생곡산단1로24번길 34",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "nuvotec-munmak",
+      "official_address": "강원특별자치도 원주시 문막읍 동화큰골길 12-1",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "joongil-incheon",
+      "official_address": "인천광역시 남동구 남동대로155번길 22",
+      "registry_name": "㈜중일머티리얼즈",
+      "status": "exact_site_match",
+      "reason": "사업장명과 주소 토큰을 함께 수동 대조",
+      "registry_rows": [
+        {
+          "source_row": 5701,
+          "name": "㈜중일머티리얼즈",
+          "address": "인천광역시 남동구 남동대로155번길 22",
+          "waste_codes": "51-03-01",
+          "as_of": "2025-08-13",
+          "equipment": "분쇄, 용융"
+        }
+      ]
+    },
+    {
+      "facility_key": "pureum-yangju",
+      "official_address": "경기도 양주시 남면 감악산로 59-54",
+      "registry_name": "㈜푸름피알엠",
+      "status": "exact_site_match",
+      "reason": "사업장명과 주소 토큰을 함께 수동 대조",
+      "registry_rows": [
+        {
+          "source_row": 194,
+          "name": "㈜푸름피알엠",
+          "address": "경기도 양주시 남면 감악산로 59-54",
+          "waste_codes": "51-03-01+51-03-03",
+          "as_of": "2026-08-18",
+          "equipment": "분쇄시설 100HP*2, 75HP*5, 40HP*1"
+        }
+      ]
     }
   ]
 }

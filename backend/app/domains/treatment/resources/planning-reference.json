@@ -444,10 +444,6 @@
         ],
         "facilities": [
           "npc-chemical-hwaseong"
-        ],
-        "capabilities": [
-          "npc-chemical-hwaseong--pp-prepare",
-          "npc-chemical-hwaseong--pe-prepare"
         ]
       }
     },
@@ -813,7 +809,6 @@
         "transitions": [
           "pp-bale-prepare",
           "pp-scrap-to-pellet",
-          "pe-bale-prepare",
           "pe-scrap-to-pellet"
         ],
         "organisations": [
@@ -941,8 +936,7 @@
         "transitions": [
           "abs-prepare",
           "ps-prepare",
-          "san-prepare",
-          "ps-bale-prepare"
+          "san-prepare"
         ],
         "organisations": [
           "cntk-org"
@@ -1333,10 +1327,8 @@
           "pp-sort-bale",
           "pp-bale-prepare",
           "pe-sort-bale",
-          "pe-bale-prepare",
           "pet-sort-bale",
-          "ps-sort-bale",
-          "ps-bale-prepare"
+          "ps-sort-bale"
         ],
         "organisations": [
           "veolia-dh-yongin-org"
@@ -1504,6 +1496,529 @@
         ],
         "capabilities": [
           "veolia-doksan-hwaseong--pp-bale-to-pellet"
+        ]
+      }
+    },
+    {
+      "key": "npc-pe-process-image",
+      "url": "http://www.npc-chemical.com/images/sub_text_03_1.png",
+      "publisher": "NPC케미칼",
+      "summary": "화성 사업장의 HDPE 제품 설명은 폐상자·폐파렛트를 수거·분쇄하여 재생 HDPE 원료를 생산한다고 명시한다. LDPE 필름이나 압축 베일 반입 근거가 아니다.",
+      "locator": "공식 사업소개 이미지의 PE 제품 설명; 사업장 주소는 별도 공식 주소 자료와 대조",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "8391df9b5a756a9c998833378159ffefe31f8596c328917ecb0c86961bb9237a",
+      "acquisition": "official product image downloaded and visually reviewed; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "capabilities": [
+          "npc-chemical-hwaseong--pe-prepare"
+        ]
+      }
+    },
+    {
+      "key": "npc-pp-process-image",
+      "url": "http://www.npc-chemical.com/images/sub_text_03_2.png",
+      "publisher": "NPC케미칼",
+      "summary": "화성 사업장의 PP 제품 설명은 생활계 폐플라스틱을 분쇄·세척하여 재생 PP를 생산한다고 명시한다. 이번 외부 로트의 반입 형태와 품질 기준은 미확인이다.",
+      "locator": "공식 사업소개 이미지의 PP 제품 설명; 사업장 주소는 별도 공식 주소 자료와 대조",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "a137359c3bf4a6d2b82264f24fcf005f2029e3636102ff3f1dfb329e6efd5f3f",
+      "acquisition": "official product image downloaded and visually reviewed; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "capabilities": [
+          "npc-chemical-hwaseong--pp-prepare"
+        ]
+      }
+    },
+    {
+      "key": "saramtech-pe-film",
+      "url": "http://www.acencorp.com/content/kor/about.html",
+      "publisher": "에이슨텍코퍼레이션 / 관계사 사람과 기술",
+      "summary": "관계사 사람과 기술의 논산 사월길 360 사업장이 농업용 멀칭 PE 필름을 수집·세척·압축하며 요청 시 재생 펠릿을 직접 생산한다고 공개한다. 압축품은 산출 형태이며 외부 베일을 받는 근거가 아니다.",
+      "locator": "회사소개 > Family Company > 사람과 기술",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "c9c1298ba879085628f14d9a28f537539f49370f8037b83eea0f0c8aad181d1b",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "pe-mulch-to-pellet"
+        ],
+        "organisations": [
+          "saramtech-nonsan-org"
+        ],
+        "facilities": [
+          "saramtech-nonsan"
+        ],
+        "capabilities": [
+          "saramtech-nonsan--pe-mulch-to-pellet"
+        ]
+      }
+    },
+    {
+      "key": "yangil-products",
+      "url": "https://www.yangilenpla.co.kr/bbs/board.php?bo_table=yp_introduction01&wr_id=1",
+      "publisher": "양일엔프라",
+      "summary": "인천 남동동로93번길 44 사업장의 주요 품목으로 재생·신재 나일론6/66과 GF·MF·V0·ST 컴파운드를 공개한다. 신재 제품까지 폐기물 투입 사례로 해석하지 않는다.",
+      "locator": "회사소개 > 주생산품 및 취급품목·주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "c50086dcd6ad8ce92ff3b06bd2f16150649e93a001aba85ba60b832d33802fe2",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "yangil-incheon-org"
+        ],
+        "facilities": [
+          "yangil-incheon"
+        ],
+        "capabilities": [
+          "yangil-incheon--pa6-net-recovery",
+          "yangil-incheon--pa66-compound"
+        ]
+      }
+    },
+    {
+      "key": "yangil-equipment",
+      "url": "https://www.yangilenpla.co.kr/bbs/board.php?bo_table=yp_product03&wr_id=1",
+      "publisher": "양일엔프라",
+      "summary": "인천 사업장 공개 설비에 섬유·어망용 파쇄기, 필름·럼프용 분쇄기, 용융 압출기, 칩 건조·혼합기, 입자 선별 설비가 있다. 어망 재질이 모두 PA6라는 의미는 아니다.",
+      "locator": "설비현황 > 설비 명칭·용도 표 및 주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "3b4f3b61b1fe75601622146d065b770a6ddb3fae23320b82f2937fd4446ac8e5",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "yangil-incheon-org"
+        ],
+        "facilities": [
+          "yangil-incheon"
+        ],
+        "capabilities": [
+          "yangil-incheon--pa6-net-recovery",
+          "yangil-incheon--pa66-compound"
+        ]
+      }
+    },
+    {
+      "key": "yangil-incheon-registry",
+      "url": "https://www.data.go.kr/data/15114147/standard.do",
+      "publisher": "공공데이터포털 전국폐기물처리업소표준데이터",
+      "summary": "양일엔프라 인천의 명부 사업장명과 주소를 대조했다. 기준일 2025-08-13, 기록 코드 51-03-01. 명부 코드는 현행 허가나 실제 수용 여부의 확인값이 아니다.",
+      "locator": "명부 원본 행 5707; 주소 인천광역시 남동구 남동동로93번길 44",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "12d96811c8b0f4cf7220360f4243f4977fde761210be7b7562354200e34c60c2",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "yangil-incheon"
+        ]
+      }
+    },
+    {
+      "key": "jinyoung-company-profile",
+      "url": "https://www.sungple.com/bbs/board.php?bo_table=m06_01&wr_id=26",
+      "publisher": "진영프라스틱 / 성플 기업소개",
+      "summary": "진영프라스틱의 기업 소개는 화성 서신 해운로458번길94-17 공장에서 PP·PE 재생 펠릿을 생산한다고 밝힌다. 투입 형태·세척 여부·허용 오염 기준은 공개되지 않았다.",
+      "locator": "기업소개 > 사업영역·주소·기업 인사말",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "bc03c636131065edf86232859c3bbea53bac8cdb83b884e775b7ad0a76e57be3",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "pe-flake-repelletise",
+          "pp-flake-repelletise"
+        ],
+        "organisations": [
+          "jinyoung-hwaseong-org"
+        ],
+        "facilities": [
+          "jinyoung-hwaseong"
+        ],
+        "capabilities": [
+          "jinyoung-hwaseong--pe-flake-repelletise",
+          "jinyoung-hwaseong--pp-flake-repelletise"
+        ]
+      }
+    },
+    {
+      "key": "youone-products",
+      "url": "http://youonepoly.co.kr/html/sub0101.php",
+      "publisher": "유원포리머",
+      "summary": "유원포리머는 PE·PP 재생원료 전문 생산을 소개한다. 홈페이지의 인천 주소와 인천공장 생산시설, 전국명부의 같은 주소 분쇄·용융·건조·절단 설비를 대조했다. 서산 공장의 공정으로 복제하지 않는다.",
+      "locator": "인사말 / 제품 HDPE·PP·LDPE / 인천 주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "fea6dc5ba4e0cf291495eba8d4e3780de9aa59fafd1aa5e1cb43c5fcab7dcfc4",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "youone-incheon-org"
+        ],
+        "facilities": [
+          "youone-incheon"
+        ],
+        "capabilities": [
+          "youone-incheon--pe-prepare",
+          "youone-incheon--pp-prepare"
+        ]
+      }
+    },
+    {
+      "key": "youone-incheon-factory",
+      "url": "http://youonepoly.co.kr/html/sub0103.php",
+      "publisher": "유원포리머",
+      "summary": "공장전경에서 인천공장 생산시설과 서산공장을 분리 표기한다. 회사 전체 제품을 서산 공장의 처리 능력으로 배정하지 않는다.",
+      "locator": "공장전경 > 인천공장 생산시설",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "db7eb38b6a0e03ccd3a1a6873877bd092913c0fb99b2e62026229a39b2de920e",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "youone-incheon-org"
+        ],
+        "facilities": [
+          "youone-incheon"
+        ],
+        "capabilities": [
+          "youone-incheon--pe-prepare",
+          "youone-incheon--pp-prepare"
+        ]
+      }
+    },
+    {
+      "key": "youone-incheon-registry",
+      "url": "https://www.data.go.kr/data/15114147/standard.do",
+      "publisher": "공공데이터포털 전국폐기물처리업소표준데이터",
+      "summary": "유원포리머 인천의 명부 사업장명과 주소를 대조했다. 기준일 2025-08-13, 기록 코드 51-03-01. 명부 코드는 현행 허가나 실제 수용 여부의 확인값이 아니다.",
+      "locator": "명부 원본 행 5706; 주소 인천광역시 남동구 능허대로625번길 15",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "5ac85747407cb625be9c57268bd025e271c60bcb8099b948700d3a406d3ecccf",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "youone-incheon"
+        ],
+        "capabilities": [
+          "youone-incheon--pe-prepare",
+          "youone-incheon--pp-prepare"
+        ]
+      }
+    },
+    {
+      "key": "dakyeong-process",
+      "url": "https://www.dk-ecogreenbiz.com/disposal",
+      "publisher": "다경산업",
+      "summary": "부산 생곡 사업장은 PET와 기타 폐플라스틱의 분류, 라벨·금속·이물 제거, 세척, 재질·색상 분류와 7~12mm 분쇄 공정을 공개한다. 7~12mm는 산출물 설명이며 반입 허용 크기가 아니다.",
+      "locator": "폐플라스틱 처리 > 전처리·분류 및 분쇄 / 부산 주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "13d72de1f78a47e061fa8d2998154fbfb7133207839498eda981ea130c5c3a06",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "dakyeong-busan-org"
+        ],
+        "facilities": [
+          "dakyeong-busan"
+        ],
+        "capabilities": [
+          "dakyeong-busan--pe-prepare",
+          "dakyeong-busan--pet-bottle-to-flake",
+          "dakyeong-busan--pp-prepare"
+        ]
+      }
+    },
+    {
+      "key": "dakyeong-products",
+      "url": "https://www.dk-ecogreenbiz.com/home",
+      "publisher": "다경산업",
+      "summary": "부산 다경산업은 재생 PET 플레이크와 PP/PE 플레이크를 소개한다. 홈페이지의 연구 중인 섬유·신제품 계획은 가동 처리 능력으로 연결하지 않는다.",
+      "locator": "PET FLAKES·PP/PE FLAKES / 주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "3aebd6e9c962fb71d99eb70feb5e014705deb42f97ba9dd87f7bae71da2235de",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "dakyeong-busan-org"
+        ],
+        "facilities": [
+          "dakyeong-busan"
+        ],
+        "capabilities": [
+          "dakyeong-busan--pe-prepare",
+          "dakyeong-busan--pet-bottle-to-flake",
+          "dakyeong-busan--pp-prepare"
+        ]
+      }
+    },
+    {
+      "key": "nuvotec-recycling-2026",
+      "url": "https://kind.krx.co.kr/external/2026/05/13/000332/20260513000629/11013.htm",
+      "publisher": "뉴보텍 / 한국거래소 기업공시",
+      "summary": "2026년 1분기 보고서는 재활용사업부의 유일 생산공장을 원주 문막공장으로 기재하고 폐플라스틱 수거·세척·분쇄 및 재생 원료 생산, PE 원재료 매입과 재생 펠릿 매출을 보고한다. IBC·드럼의 지정폐기물 처리 사업과 일반 PE를 혼동하지 않는다.",
+      "locator": "II 사업내용 > 재활용사업부 원재료·생산설비·주요제품",
+      "checked_date": "2026-11-14",
+      "source_date": "2026-05-13",
+      "sha256": "1b3c5794dfb777a9144177e6eac27aa2db1f542392331fa56d2518bbd45a0651",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "nuvotec-munmak-org"
+        ],
+        "facilities": [
+          "nuvotec-munmak"
+        ],
+        "capabilities": [
+          "nuvotec-munmak--pe-scrap-to-pellet"
+        ]
+      }
+    },
+    {
+      "key": "nuvotec-munmak-address",
+      "url": "https://www.wonju.go.kr/selectLifeInfoMapList.do?ad3=VIEWMAP&si4=13144175",
+      "publisher": "원주시",
+      "summary": "원주시 생활정보 지도에서 뉴보텍 문막공장의 주소를 문막읍 동화큰골길12-1로 확인한다. 본사 태장공단 주소를 처리 사업장으로 사용하지 않는다.",
+      "locator": "생활정보 > 뉴보텍 문막공장",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "c9339c679eece541b97a5329739e86cf5bc2ec01a3cd6ade3c197c6af0a4ceba",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "nuvotec-munmak-org"
+        ],
+        "facilities": [
+          "nuvotec-munmak"
+        ],
+        "capabilities": [
+          "nuvotec-munmak--pe-scrap-to-pellet"
+        ]
+      }
+    },
+    {
+      "key": "cntk-process-separation",
+      "url": "https://cntk.co.kr/page/?pid=process",
+      "publisher": "씨엔텍코리아",
+      "summary": "공식 공정도는 폐가전 스크랩의 이물 제거, 분쇄, 담수·염수 비중선별, 풍력·정전·색상 선별과 플레이크의 혼합·압출·펠릿화를 제시한다. 화성·진주 중 어느 공정이 어느 주소에서 수행되는지는 이 공정도만으로 확정하지 않는다.",
+      "locator": "공정도 이미지 process_pc.jpg > FLAKE·PELLET",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "83e67bb82fc9a23cff93a2412a9ba3f9cba7eb108fdef1c5cdbe06d30e6093ff",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "capabilities": [
+          "cntk-hwaseong--abs-pelletise",
+          "cntk-hwaseong--abs-prepare",
+          "cntk-hwaseong--ps-pelletise",
+          "cntk-hwaseong--ps-prepare",
+          "cntk-hwaseong--san-pelletise",
+          "cntk-hwaseong--san-prepare",
+          "cntk-jinju--abs-pelletise",
+          "cntk-jinju--abs-prepare",
+          "cntk-jinju--ps-pelletise",
+          "cntk-jinju--ps-prepare",
+          "cntk-jinju--san-pelletise",
+          "cntk-jinju--san-prepare"
+        ]
+      }
+    },
+    {
+      "key": "joongil-pp-recycling",
+      "url": "https://jimatls.com/plastic-recycling/",
+      "publisher": "중일머티리얼즈",
+      "summary": "인천 남동대로155번길 22 사업장은 PP 배터리 케이스를 원료로 세척·건조·압출·절단하여 재생 펠릿을 만드는 공정과 분쇄기를 공개한다. 배터리 통째나 산·납 잔류물을 받는다는 근거가 아니며 공개 제품 물성은 반입 허용치가 아니다.",
+      "locator": "재생 플라스틱 > 원재료·제품 공정·보유 설비·사업장 주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "bec8e8f32a7a9ec9db46335baecfe6b6638540996b0a632f2587d4e3b1cd6489",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "joongil-incheon-org"
+        ],
+        "facilities": [
+          "joongil-incheon"
+        ],
+        "capabilities": [
+          "joongil-incheon--pp-scrap-to-pellet"
+        ]
+      }
+    },
+    {
+      "key": "joongil-incheon-registry",
+      "url": "https://www.data.go.kr/data/15114147/standard.do",
+      "publisher": "공공데이터포털 전국폐기물처리업소표준데이터",
+      "summary": "중일머티리얼즈 인천의 명부 사업장명과 주소를 대조했다. 기준일 2025-08-13, 기록 코드 51-03-01. 명부 코드는 현행 허가나 실제 수용 여부의 확인값이 아니다.",
+      "locator": "명부 원본 행 5701; 주소 인천광역시 남동구 남동대로155번길 22",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "96e4a27bbf6c394dbbd1101db3de4ec4873155c069572bdda531ddfd43cc863e",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "joongil-incheon"
+        ]
+      }
+    },
+    {
+      "key": "pureum-pvc-process",
+      "url": "https://pureumprm.com/pureumprm/compeny_info_con3.html",
+      "publisher": "푸름피알엠",
+      "summary": "양주 감악산로59-54 사업장은 수거업체에서 원료를 반입한 뒤 선별·분쇄·광학선별·분말 가공을 거쳐 납품하는 공정을 공개한다. 제품 페이지의 PVC 건설 폐자재와 대조했으며 모든 건설폐기물 반입을 의미하지 않는다.",
+      "locator": "제조공정 > 자원순환공정 1~6 / 사업장 주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "3c9269c6e0e80fea203be37a39896704d1db026b7d327ea53c80f165c9068535",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "states": [
+          "pvc-powder",
+          "pvc-rigid"
+        ],
+        "transitions": [
+          "pvc-rigid-recovery"
+        ],
+        "organisations": [
+          "pureum-yangju-org"
+        ],
+        "facilities": [
+          "pureum-yangju"
+        ],
+        "capabilities": [
+          "pureum-yangju--pvc-rigid-recovery"
+        ]
+      }
+    },
+    {
+      "key": "pureum-pvc-products",
+      "url": "https://pureumprm.com/pureumprm/compeny_info_con2.html",
+      "publisher": "푸름피알엠",
+      "summary": "PVC 건설폐자재 재생원료, 창틀 백색·잡색 및 유납·무납 원료를 구분해 공개한다. 연간 규모는 공시 설명일 뿐 현재 여유 용량이 아니며 R유형 표기는 이번 로트의 법적 허용 판단을 대신하지 않는다.",
+      "locator": "제품소개 > PVC 건설폐자재류 재생원료·창틀 제품",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "5fdd9c0ca46f1b914fb730b8097305a7582efcfd523ee77ae412cc334bb669d9",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "states": [
+          "pvc-powder",
+          "pvc-rigid"
+        ],
+        "transitions": [
+          "pvc-rigid-recovery"
+        ],
+        "organisations": [
+          "pureum-yangju-org"
+        ],
+        "facilities": [
+          "pureum-yangju"
+        ],
+        "capabilities": [
+          "pureum-yangju--pvc-rigid-recovery"
+        ]
+      }
+    },
+    {
+      "key": "pureum-yangju-registry",
+      "url": "https://www.data.go.kr/data/15114147/standard.do",
+      "publisher": "공공데이터포털 전국폐기물처리업소표준데이터",
+      "summary": "푸름피알엠 양주의 명부 사업장명과 주소를 대조했다. 기준일 2026-08-18, 기록 코드 51-03-01+51-03-03. 명부 코드는 현행 허가나 실제 수용 여부의 확인값이 아니다.",
+      "locator": "명부 원본 행 194; 주소 경기도 양주시 남면 감악산로 59-54",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "db794469874ccbf568b613a0e5f841d168cf009c8950a7df9894089bf09eae11",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "pureum-yangju"
+        ]
+      }
+    },
+    {
+      "key": "pre-bale-process-2026",
+      "url": "https://www.plasticsrecyclers.eu/wp-content/uploads/2026/10/Mapping-of-plastics-recycling-PRE-October-2026.pdf",
+      "publisher": "Plastics Recyclers Europe",
+      "summary": "유럽 공정 조사에서 PE 경질·필름 베일의 해체·재선별·분쇄와 PS 경질 포장 베일의 이물 제거·분쇄·세척을 제시한다. PE와 PP는 물 비중 선별만으로 분리하기 어렵다. 국내 특정 사업장 반입 능력·허용 오염도·허가를 입증하지 않는다.",
+      "locator": "2026년 10월 판 p.35~38 PO 경질·필름, p.47~48 PS 공정도·준비 단계",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "3f4d7abaf950b8c66c430dc8757318d64f67f9d214982ac8d64111914f887ea7",
+      "acquisition": "official PDF downloaded; process figures visually reviewed; factual summary only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "pe-bale-prepare",
+          "ps-bale-prepare"
         ]
       }
     }
@@ -2098,6 +2613,32 @@
       "input_forms": [],
       "is_entry": false,
       "is_output": true
+    },
+    {
+      "key": "pvc-rigid",
+      "label": "PVC 경질 건설 폐자재",
+      "source_ids": [
+        "pureum-pvc-process",
+        "pureum-pvc-products"
+      ],
+      "material": "pvc",
+      "input_forms": [
+        "rigid"
+      ],
+      "is_entry": true,
+      "is_output": false
+    },
+    {
+      "key": "pvc-powder",
+      "label": "회수 PVC 분말 원료",
+      "source_ids": [
+        "pureum-pvc-process",
+        "pureum-pvc-products"
+      ],
+      "material": "pvc",
+      "input_forms": [],
+      "is_entry": false,
+      "is_output": true
     }
   ],
   "transitions": [
@@ -2657,22 +3198,24 @@
     },
     {
       "key": "pe-bale-prepare",
-      "label": "PE 베일 해체·분쇄",
+      "label": "PE 베일 해체·선별·분쇄 검토 (국내 수행 업체 미확인)",
       "source_ids": [
-        "veolia-dh-sorting",
-        "daewoon-production"
+        "pre-bale-process-2026"
       ],
       "input_state": "pe-bale",
       "output_state": "pe-shredded",
       "operation_steps": [
-        "베일 해체·선별",
+        "베일 해체·결속재 제거",
+        "비대상 수지·금속·이물 선별",
         "분쇄"
       ],
       "conditions": [
-        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+        "유럽 공정 자료의 일반 경로이며 국내 수행 사업장은 아직 확인되지 않음",
+        "PE 경질·필름 또는 PS 비발포 포장품 여부와 혼합률 확인"
       ],
       "risk_checks": [
-        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+        "베일 크기·중량·결속재, 수지 식별·혼합률, 이물·수분, 실제 해체·선별 설비 및 업체 반입 자료 확인",
+        "해외 공정 수치를 국내 업체의 반입 기준으로 적용하지 않음"
       ]
     },
     {
@@ -2894,22 +3437,24 @@
     },
     {
       "key": "ps-bale-prepare",
-      "label": "PS 베일 해체·분쇄",
+      "label": "PS 베일 해체·선별·분쇄 검토 (국내 수행 업체 미확인)",
       "source_ids": [
-        "cntk-flake",
-        "veolia-dh-sorting"
+        "pre-bale-process-2026"
       ],
       "input_state": "ps-bale",
       "output_state": "ps-flake",
       "operation_steps": [
-        "베일 해체",
-        "재질별 선별·분쇄"
+        "베일 해체·결속재 제거",
+        "비대상 수지·금속·이물 선별",
+        "분쇄"
       ],
       "conditions": [
-        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+        "유럽 공정 자료의 일반 경로이며 국내 수행 사업장은 아직 확인되지 않음",
+        "PE 경질·필름 또는 PS 비발포 포장품 여부와 혼합률 확인"
       ],
       "risk_checks": [
-        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+        "베일 크기·중량·결속재, 수지 식별·혼합률, 이물·수분, 실제 해체·선별 설비 및 업체 반입 자료 확인",
+        "해외 공정 수치를 국내 업체의 반입 기준으로 적용하지 않음"
       ]
     },
     {
@@ -3031,6 +3576,86 @@
       ],
       "risk_checks": [
         "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "pe-mulch-to-pellet",
+      "label": "PE 멀칭 필름 세척·재생 펠릿 생산",
+      "source_ids": [
+        "saramtech-pe-film"
+      ],
+      "input_state": "pe-scrap",
+      "output_state": "pe-pellet",
+      "operation_steps": [
+        "멀칭 PE 필름 확인",
+        "세척",
+        "고객 요청 조건 확인·재생 펠릿 생산"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "pp-flake-repelletise",
+      "label": "PP 분쇄 원료 재생 펠릿 가공 검토",
+      "source_ids": [
+        "jinyoung-company-profile"
+      ],
+      "input_state": "pp-shredded",
+      "output_state": "pp-pellet",
+      "operation_steps": [
+        "투입 분쇄 원료 규격 확인",
+        "재생 펠릿 가공·출하 조건 협의"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "분쇄품 반입 가능 여부와 추가 세척 필요 여부 미확인"
+      ]
+    },
+    {
+      "key": "pe-flake-repelletise",
+      "label": "PE 분쇄 원료 재생 펠릿 가공 검토",
+      "source_ids": [
+        "jinyoung-company-profile"
+      ],
+      "input_state": "pe-shredded",
+      "output_state": "pe-pellet",
+      "operation_steps": [
+        "투입 분쇄 원료 규격 확인",
+        "재생 펠릿 가공·출하 조건 협의"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "분쇄품 반입 가능 여부와 추가 세척 필요 여부 미확인"
+      ]
+    },
+    {
+      "key": "pvc-rigid-recovery",
+      "label": "PVC 창틀 선별·분쇄·분말 회수",
+      "source_ids": [
+        "pureum-pvc-process",
+        "pureum-pvc-products"
+      ],
+      "input_state": "pvc-rigid",
+      "output_state": "pvc-powder",
+      "operation_steps": [
+        "원료·유납 여부 확인",
+        "선별·분쇄",
+        "광학 선별",
+        "분말 가공·출하"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "창틀·건설 폐자재의 PVC 여부, 납 안정제·금속·유리·고무 혼입, 건설폐기물 분류 여부 확인"
       ]
     }
   ],
@@ -3204,6 +3829,67 @@
       "label": "창맥 성주 공장",
       "source_ids": [
         "changmaec-process"
+      ]
+    },
+    {
+      "key": "saramtech-nonsan-org",
+      "label": "사람과 기술 논산",
+      "source_ids": [
+        "saramtech-pe-film"
+      ]
+    },
+    {
+      "key": "yangil-incheon-org",
+      "label": "양일엔프라 인천",
+      "source_ids": [
+        "yangil-products",
+        "yangil-equipment"
+      ]
+    },
+    {
+      "key": "jinyoung-hwaseong-org",
+      "label": "진영프라스틱 화성",
+      "source_ids": [
+        "jinyoung-company-profile"
+      ]
+    },
+    {
+      "key": "youone-incheon-org",
+      "label": "유원포리머 인천",
+      "source_ids": [
+        "youone-products",
+        "youone-incheon-factory"
+      ]
+    },
+    {
+      "key": "dakyeong-busan-org",
+      "label": "다경산업 부산",
+      "source_ids": [
+        "dakyeong-process",
+        "dakyeong-products"
+      ]
+    },
+    {
+      "key": "nuvotec-munmak-org",
+      "label": "뉴보텍 문막공장",
+      "source_ids": [
+        "nuvotec-recycling-2026",
+        "nuvotec-munmak-address"
+      ]
+    },
+    {
+      "key": "joongil-incheon-org",
+      "label": "중일머티리얼즈 인천",
+      "source_ids": [
+        "joongil-pp-recycling"
+      ]
+    },
+    {
+      "key": "pureum-yangju-org",
+      "label": "푸름피알엠 양주",
+      "source_ids": [
+        "pureum-pvc-process",
+        "pureum-pvc-products"
       ]
     }
   ],
@@ -3759,6 +4445,159 @@
       "current_price_krw_per_kg": null,
       "latitude": null,
       "longitude": null
+    },
+    {
+      "key": "saramtech-nonsan",
+      "label": "사람과 기술 논산",
+      "source_ids": [
+        "saramtech-pe-film"
+      ],
+      "organisation": "saramtech-nonsan-org",
+      "country": "KR",
+      "region": "충남",
+      "address": "충청남도 논산시 광석면 사월길 360",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "yangil-incheon",
+      "label": "양일엔프라 인천",
+      "source_ids": [
+        "yangil-products",
+        "yangil-equipment",
+        "yangil-incheon-registry"
+      ],
+      "organisation": "yangil-incheon-org",
+      "country": "KR",
+      "region": "인천",
+      "address": "인천광역시 남동구 남동동로93번길 44",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 37.39505555,
+      "longitude": 126.694148
+    },
+    {
+      "key": "jinyoung-hwaseong",
+      "label": "진영프라스틱 화성",
+      "source_ids": [
+        "jinyoung-company-profile"
+      ],
+      "organisation": "jinyoung-hwaseong-org",
+      "country": "KR",
+      "region": "경기",
+      "address": "경기도 화성시 서신면 해운로458번길 94-17",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "youone-incheon",
+      "label": "유원포리머 인천",
+      "source_ids": [
+        "youone-products",
+        "youone-incheon-factory",
+        "youone-incheon-registry"
+      ],
+      "organisation": "youone-incheon-org",
+      "country": "KR",
+      "region": "인천",
+      "address": "인천광역시 남동구 능허대로625번길 15",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 37.39251708,
+      "longitude": 126.6821762
+    },
+    {
+      "key": "dakyeong-busan",
+      "label": "다경산업 부산",
+      "source_ids": [
+        "dakyeong-process",
+        "dakyeong-products"
+      ],
+      "organisation": "dakyeong-busan-org",
+      "country": "KR",
+      "region": "부산",
+      "address": "부산광역시 강서구 생곡산단1로24번길 34",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "nuvotec-munmak",
+      "label": "뉴보텍 문막공장",
+      "source_ids": [
+        "nuvotec-recycling-2026",
+        "nuvotec-munmak-address"
+      ],
+      "organisation": "nuvotec-munmak-org",
+      "country": "KR",
+      "region": "강원",
+      "address": "강원특별자치도 원주시 문막읍 동화큰골길 12-1",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "joongil-incheon",
+      "label": "중일머티리얼즈 인천",
+      "source_ids": [
+        "joongil-pp-recycling",
+        "joongil-incheon-registry"
+      ],
+      "organisation": "joongil-incheon-org",
+      "country": "KR",
+      "region": "인천",
+      "address": "인천광역시 남동구 남동대로155번길 22",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 37.40035972,
+      "longitude": 126.6930622
+    },
+    {
+      "key": "pureum-yangju",
+      "label": "푸름피알엠 양주",
+      "source_ids": [
+        "pureum-pvc-process",
+        "pureum-pvc-products",
+        "pureum-yangju-registry"
+      ],
+      "organisation": "pureum-yangju-org",
+      "country": "KR",
+      "region": "경기",
+      "address": "경기도 양주시 남면 감악산로 59-54",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 37.87004302,
+      "longitude": 126.9856131
     }
   ],
   "capabilities": [
@@ -4372,27 +5211,27 @@
       "key": "npc-chemical-hwaseong--pp-prepare",
       "facility": "npc-chemical-hwaseong",
       "transition": "pp-prepare",
-      "basis": "site_role_hypothesis",
+      "basis": "published_site_process",
       "conditions": [
-        "폐플라스틱 분쇄와 재생 PP 제품은 공개됐으며, 이 사업장의 사출 잔재·형태별 반입과 실제 산출물은 추가 확인",
-        "사업장 현행 허가·반입 규격·여유 용량과 이 로트의 인수 여부 확인"
+        "화성 사업장의 PP 제품 설명은 생활계 폐플라스틱을 분쇄·세척하여 재생 PP를 생산한다고 명시한다. 이번 외부 로트의 반입 형태와 품질 기준은 미확인이다.",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
       ],
       "input_profile": {
-        "evidence_scope": "organisation_only_not_site_verified",
+        "evidence_scope": "site_publication",
         "material_examples": [
           "pp"
         ],
         "form_examples": [],
-        "output_description": "PP 계열 처리 공정 조사",
+        "output_description": "분쇄 PP 재생원료",
         "source_ids": [
-          "npc-chemical-process",
+          "npc-pp-process-image",
           "npc-chemical-hwaseong-address"
         ],
-        "locator": "연결된 사업장 및 공정 공개 자료",
+        "locator": "공식 사업소개 이미지의 PP 제품 설명; 사업장 주소는 별도 공식 주소 자료와 대조",
         "verified_intake_limits_available": false
       },
       "source_ids": [
-        "npc-chemical-process",
+        "npc-pp-process-image",
         "npc-chemical-hwaseong-address"
       ]
     },
@@ -4400,28 +5239,35 @@
       "key": "npc-chemical-hwaseong--pe-prepare",
       "facility": "npc-chemical-hwaseong",
       "transition": "pe-prepare",
-      "basis": "site_role_hypothesis",
+      "basis": "published_site_process",
       "conditions": [
-        "공개 제품 사례는 HDPE에 해당합니다. 일반 PE·LDPE·필름과 해당 로트의 반입을 별도 확인",
-        "사업장 현행 허가·반입 규격·여유 용량과 이 로트의 인수 여부 확인"
+        "화성 사업장의 HDPE 제품 설명은 폐상자·폐파렛트를 수거·분쇄하여 재생 HDPE 원료를 생산한다고 명시한다. LDPE 필름이나 압축 베일 반입 근거가 아니다.",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
       ],
       "input_profile": {
-        "evidence_scope": "organisation_only_not_site_verified",
+        "evidence_scope": "site_publication",
         "material_examples": [
           "pe"
         ],
-        "form_examples": [],
-        "output_description": "HDPE 계열 처리 공정 조사",
+        "form_examples": [
+          "rigid",
+          "scrap"
+        ],
+        "output_description": "분쇄 PE 재생원료",
         "source_ids": [
-          "npc-chemical-process",
+          "npc-pe-process-image",
           "npc-chemical-hwaseong-address"
         ],
-        "locator": "연결된 사업장 및 공정 공개 자료",
+        "locator": "공식 사업소개 이미지의 PE 제품 설명; 사업장 주소는 별도 공식 주소 자료와 대조",
         "verified_intake_limits_available": false
       },
       "source_ids": [
-        "npc-chemical-process",
+        "npc-pe-process-image",
         "npc-chemical-hwaseong-address"
+      ],
+      "initial_input_forms": [
+        "rigid",
+        "scrap"
       ]
     },
     {
@@ -5149,11 +5995,13 @@
       "transition": "abs-prepare",
       "basis": "site_role_hypothesis",
       "source_ids": [
-        "cntk-flake"
+        "cntk-flake",
+        "cntk-process-separation"
       ],
       "conditions": [
         "회사 제품 근거는 있으나 화성·진주 중 해당 라인 설치 사업장 확인 필요",
-        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인"
       ],
       "input_profile": {
         "evidence_scope": "organisation_only_not_site_verified",
@@ -5166,7 +6014,8 @@
         ],
         "output_description": "ABS 플레이크",
         "source_ids": [
-          "cntk-flake"
+          "cntk-flake",
+          "cntk-process-separation"
         ],
         "locator": "FLAKE 제품·본점/진주지점 주소",
         "verified_intake_limits_available": false
@@ -5182,10 +6031,12 @@
       "transition": "abs-pelletise",
       "basis": "site_role_hypothesis",
       "source_ids": [
-        "cntk-pellet"
+        "cntk-pellet",
+        "cntk-process-separation"
       ],
       "conditions": [
-        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인"
       ],
       "input_profile": {
         "evidence_scope": "organisation_only_not_site_verified",
@@ -5198,7 +6049,8 @@
         ],
         "output_description": "ABS 펠릿",
         "source_ids": [
-          "cntk-pellet"
+          "cntk-pellet",
+          "cntk-process-separation"
         ],
         "locator": "PELLET 제품·본점/진주지점 주소",
         "verified_intake_limits_available": false
@@ -5215,11 +6067,13 @@
       "basis": "site_role_hypothesis",
       "source_ids": [
         "cntk-flake",
-        "cntk-jinju-registry"
+        "cntk-jinju-registry",
+        "cntk-process-separation"
       ],
       "conditions": [
         "회사 제품 근거는 있으나 화성·진주 중 해당 라인 설치 사업장 확인 필요",
-        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인"
       ],
       "input_profile": {
         "evidence_scope": "organisation_only_not_site_verified",
@@ -5233,7 +6087,8 @@
         "output_description": "ABS 플레이크",
         "source_ids": [
           "cntk-flake",
-          "cntk-jinju-registry"
+          "cntk-jinju-registry",
+          "cntk-process-separation"
         ],
         "locator": "FLAKE 제품·본점/진주지점 주소",
         "verified_intake_limits_available": false
@@ -5250,10 +6105,12 @@
       "basis": "site_role_hypothesis",
       "source_ids": [
         "cntk-pellet",
-        "cntk-jinju-registry"
+        "cntk-jinju-registry",
+        "cntk-process-separation"
       ],
       "conditions": [
-        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인"
       ],
       "input_profile": {
         "evidence_scope": "organisation_only_not_site_verified",
@@ -5267,7 +6124,8 @@
         "output_description": "ABS 펠릿",
         "source_ids": [
           "cntk-pellet",
-          "cntk-jinju-registry"
+          "cntk-jinju-registry",
+          "cntk-process-separation"
         ],
         "locator": "PELLET 제품·본점/진주지점 주소",
         "verified_intake_limits_available": false
@@ -5283,11 +6141,13 @@
       "transition": "ps-prepare",
       "basis": "site_role_hypothesis",
       "source_ids": [
-        "cntk-flake"
+        "cntk-flake",
+        "cntk-process-separation"
       ],
       "conditions": [
         "회사 제품 근거는 있으나 화성·진주 중 해당 라인 설치 사업장 확인 필요",
-        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인"
       ],
       "input_profile": {
         "evidence_scope": "organisation_only_not_site_verified",
@@ -5300,7 +6160,8 @@
         ],
         "output_description": "PS 플레이크",
         "source_ids": [
-          "cntk-flake"
+          "cntk-flake",
+          "cntk-process-separation"
         ],
         "locator": "FLAKE 제품·본점/진주지점 주소",
         "verified_intake_limits_available": false
@@ -5316,10 +6177,12 @@
       "transition": "ps-pelletise",
       "basis": "site_role_hypothesis",
       "source_ids": [
-        "cntk-pellet"
+        "cntk-pellet",
+        "cntk-process-separation"
       ],
       "conditions": [
-        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인"
       ],
       "input_profile": {
         "evidence_scope": "organisation_only_not_site_verified",
@@ -5332,7 +6195,8 @@
         ],
         "output_description": "PS 펠릿",
         "source_ids": [
-          "cntk-pellet"
+          "cntk-pellet",
+          "cntk-process-separation"
         ],
         "locator": "PELLET 제품·본점/진주지점 주소",
         "verified_intake_limits_available": false
@@ -5349,11 +6213,13 @@
       "basis": "site_role_hypothesis",
       "source_ids": [
         "cntk-flake",
-        "cntk-jinju-registry"
+        "cntk-jinju-registry",
+        "cntk-process-separation"
       ],
       "conditions": [
         "회사 제품 근거는 있으나 화성·진주 중 해당 라인 설치 사업장 확인 필요",
-        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인"
       ],
       "input_profile": {
         "evidence_scope": "organisation_only_not_site_verified",
@@ -5367,7 +6233,8 @@
         "output_description": "PS 플레이크",
         "source_ids": [
           "cntk-flake",
-          "cntk-jinju-registry"
+          "cntk-jinju-registry",
+          "cntk-process-separation"
         ],
         "locator": "FLAKE 제품·본점/진주지점 주소",
         "verified_intake_limits_available": false
@@ -5384,10 +6251,12 @@
       "basis": "site_role_hypothesis",
       "source_ids": [
         "cntk-pellet",
-        "cntk-jinju-registry"
+        "cntk-jinju-registry",
+        "cntk-process-separation"
       ],
       "conditions": [
-        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인"
       ],
       "input_profile": {
         "evidence_scope": "organisation_only_not_site_verified",
@@ -5401,7 +6270,8 @@
         "output_description": "PS 펠릿",
         "source_ids": [
           "cntk-pellet",
-          "cntk-jinju-registry"
+          "cntk-jinju-registry",
+          "cntk-process-separation"
         ],
         "locator": "PELLET 제품·본점/진주지점 주소",
         "verified_intake_limits_available": false
@@ -5417,11 +6287,13 @@
       "transition": "san-prepare",
       "basis": "site_role_hypothesis",
       "source_ids": [
-        "cntk-flake"
+        "cntk-flake",
+        "cntk-process-separation"
       ],
       "conditions": [
         "회사 제품 근거는 있으나 화성·진주 중 해당 라인 설치 사업장 확인 필요",
-        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인"
       ],
       "input_profile": {
         "evidence_scope": "organisation_only_not_site_verified",
@@ -5434,7 +6306,8 @@
         ],
         "output_description": "SAN 플레이크",
         "source_ids": [
-          "cntk-flake"
+          "cntk-flake",
+          "cntk-process-separation"
         ],
         "locator": "FLAKE 제품·본점/진주지점 주소",
         "verified_intake_limits_available": false
@@ -5450,10 +6323,12 @@
       "transition": "san-pelletise",
       "basis": "site_role_hypothesis",
       "source_ids": [
-        "cntk-pellet"
+        "cntk-pellet",
+        "cntk-process-separation"
       ],
       "conditions": [
-        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인"
       ],
       "input_profile": {
         "evidence_scope": "organisation_only_not_site_verified",
@@ -5466,7 +6341,8 @@
         ],
         "output_description": "SAN 펠릿",
         "source_ids": [
-          "cntk-pellet"
+          "cntk-pellet",
+          "cntk-process-separation"
         ],
         "locator": "PELLET 제품·본점/진주지점 주소",
         "verified_intake_limits_available": false
@@ -5483,11 +6359,13 @@
       "basis": "site_role_hypothesis",
       "source_ids": [
         "cntk-flake",
-        "cntk-jinju-registry"
+        "cntk-jinju-registry",
+        "cntk-process-separation"
       ],
       "conditions": [
         "회사 제품 근거는 있으나 화성·진주 중 해당 라인 설치 사업장 확인 필요",
-        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인"
       ],
       "input_profile": {
         "evidence_scope": "organisation_only_not_site_verified",
@@ -5501,7 +6379,8 @@
         "output_description": "SAN 플레이크",
         "source_ids": [
           "cntk-flake",
-          "cntk-jinju-registry"
+          "cntk-jinju-registry",
+          "cntk-process-separation"
         ],
         "locator": "FLAKE 제품·본점/진주지점 주소",
         "verified_intake_limits_available": false
@@ -5518,10 +6397,12 @@
       "basis": "site_role_hypothesis",
       "source_ids": [
         "cntk-pellet",
-        "cntk-jinju-registry"
+        "cntk-jinju-registry",
+        "cntk-process-separation"
       ],
       "conditions": [
-        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인"
       ],
       "input_profile": {
         "evidence_scope": "organisation_only_not_site_verified",
@@ -5535,7 +6416,8 @@
         "output_description": "SAN 펠릿",
         "source_ids": [
           "cntk-pellet",
-          "cntk-jinju-registry"
+          "cntk-jinju-registry",
+          "cntk-process-separation"
         ],
         "locator": "PELLET 제품·본점/진주지점 주소",
         "verified_intake_limits_available": false
@@ -5868,6 +6750,392 @@
       },
       "initial_input_forms": [
         "bale"
+      ]
+    },
+    {
+      "key": "saramtech-nonsan--pe-mulch-to-pellet",
+      "facility": "saramtech-nonsan",
+      "transition": "pe-mulch-to-pellet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "saramtech-pe-film"
+      ],
+      "conditions": [
+        "농업용 멀칭 필름 공개 사례. 일반 포장 필름·토사·농약 오염·펠릿 생산 주문 조건은 별도 확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [
+          "film"
+        ],
+        "output_description": "세척된 농업용 PE의 재생 펠릿",
+        "source_ids": [
+          "saramtech-pe-film"
+        ],
+        "locator": "회사소개 > Family Company > 사람과 기술",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "film"
+      ]
+    },
+    {
+      "key": "yangil-incheon--pa66-compound",
+      "facility": "yangil-incheon",
+      "transition": "pa66-compound",
+      "basis": "published_site_process",
+      "source_ids": [
+        "yangil-products",
+        "yangil-equipment"
+      ],
+      "conditions": [
+        "PA6·PA66 식별과 충전제·난연제 여부, 외부 플레이크 반입 조건 확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pa66"
+        ],
+        "form_examples": [],
+        "output_description": "재생 PA66 컴파운드",
+        "source_ids": [
+          "yangil-products",
+          "yangil-equipment"
+        ],
+        "locator": "회사소개 > 주생산품 및 취급품목·주소",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "yangil-incheon--pa6-net-recovery",
+      "facility": "yangil-incheon",
+      "transition": "pa6-net-recovery",
+      "basis": "published_site_process",
+      "source_ids": [
+        "yangil-products",
+        "yangil-equipment"
+      ],
+      "conditions": [
+        "공개 설비의 어망과 나일론 제품을 대조한 후보. 이번 어망이 PA6인지와 부착물·염분 허용 조건은 업체 확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pa6"
+        ],
+        "form_examples": [
+          "net"
+        ],
+        "output_description": "재생 나일론 원료",
+        "source_ids": [
+          "yangil-products",
+          "yangil-equipment"
+        ],
+        "locator": "회사소개 > 주생산품 및 취급품목·주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "net"
+      ]
+    },
+    {
+      "key": "jinyoung-hwaseong--pp-flake-repelletise",
+      "facility": "jinyoung-hwaseong",
+      "transition": "pp-flake-repelletise",
+      "basis": "published_site_process",
+      "source_ids": [
+        "jinyoung-company-profile"
+      ],
+      "conditions": [
+        "재생 펠릿 생산은 공개됐으나 외부 분쇄품을 받는지는 미확인. 현물·오염·세척 조건 확인 전 발송 불가",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [],
+        "output_description": "PP 재생 펠릿",
+        "source_ids": [
+          "jinyoung-company-profile"
+        ],
+        "locator": "기업소개 > 사업영역·주소·기업 인사말",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "jinyoung-hwaseong--pe-flake-repelletise",
+      "facility": "jinyoung-hwaseong",
+      "transition": "pe-flake-repelletise",
+      "basis": "published_site_process",
+      "source_ids": [
+        "jinyoung-company-profile"
+      ],
+      "conditions": [
+        "재생 펠릿 생산은 공개됐으나 외부 분쇄품을 받는지는 미확인. 현물·오염·세척 조건 확인 전 발송 불가",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "PE 재생 펠릿",
+        "source_ids": [
+          "jinyoung-company-profile"
+        ],
+        "locator": "기업소개 > 사업영역·주소·기업 인사말",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "youone-incheon--pp-prepare",
+      "facility": "youone-incheon",
+      "transition": "pp-prepare",
+      "basis": "published_site_process",
+      "source_ids": [
+        "youone-products",
+        "youone-incheon-factory",
+        "youone-incheon-registry"
+      ],
+      "conditions": [
+        "공식 재생원료 생산 소개와 같은 주소의 분쇄 설비 대조. 특정 포장·베일·영농 필름 반입은 확인되지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [],
+        "output_description": "PP 분쇄 재생 원료",
+        "source_ids": [
+          "youone-products",
+          "youone-incheon-factory",
+          "youone-incheon-registry"
+        ],
+        "locator": "인사말 / 제품 HDPE·PP·LDPE / 인천 주소",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "youone-incheon--pe-prepare",
+      "facility": "youone-incheon",
+      "transition": "pe-prepare",
+      "basis": "published_site_process",
+      "source_ids": [
+        "youone-products",
+        "youone-incheon-factory",
+        "youone-incheon-registry"
+      ],
+      "conditions": [
+        "공식 재생원료 생산 소개와 같은 주소의 분쇄 설비 대조. 특정 포장·베일·영농 필름 반입은 확인되지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "PE 분쇄 재생 원료",
+        "source_ids": [
+          "youone-products",
+          "youone-incheon-factory",
+          "youone-incheon-registry"
+        ],
+        "locator": "인사말 / 제품 HDPE·PP·LDPE / 인천 주소",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "dakyeong-busan--pet-bottle-to-flake",
+      "facility": "dakyeong-busan",
+      "transition": "pet-bottle-to-flake",
+      "basis": "published_site_process",
+      "source_ids": [
+        "dakyeong-process",
+        "dakyeong-products"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [
+          "bottle"
+        ],
+        "output_description": "세척·분쇄 PET 플레이크",
+        "source_ids": [
+          "dakyeong-process",
+          "dakyeong-products"
+        ],
+        "locator": "폐플라스틱 처리 > 전처리·분류 및 분쇄 / 부산 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "bottle"
+      ]
+    },
+    {
+      "key": "dakyeong-busan--pp-prepare",
+      "facility": "dakyeong-busan",
+      "transition": "pp-prepare",
+      "basis": "published_site_process",
+      "source_ids": [
+        "dakyeong-process",
+        "dakyeong-products"
+      ],
+      "conditions": [
+        "공개 PP/PE 플레이크 제품과 폐플라스틱 전처리 공정을 대조. 개별 형태와 오염 허용치는 미확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [],
+        "output_description": "PP 플레이크",
+        "source_ids": [
+          "dakyeong-process",
+          "dakyeong-products"
+        ],
+        "locator": "폐플라스틱 처리 > 전처리·분류 및 분쇄 / 부산 주소",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "dakyeong-busan--pe-prepare",
+      "facility": "dakyeong-busan",
+      "transition": "pe-prepare",
+      "basis": "published_site_process",
+      "source_ids": [
+        "dakyeong-process",
+        "dakyeong-products"
+      ],
+      "conditions": [
+        "공개 PP/PE 플레이크 제품과 폐플라스틱 전처리 공정을 대조. 개별 형태와 오염 허용치는 미확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "PE 플레이크",
+        "source_ids": [
+          "dakyeong-process",
+          "dakyeong-products"
+        ],
+        "locator": "폐플라스틱 처리 > 전처리·분류 및 분쇄 / 부산 주소",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "nuvotec-munmak--pe-scrap-to-pellet",
+      "facility": "nuvotec-munmak",
+      "transition": "pe-scrap-to-pellet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "nuvotec-recycling-2026",
+        "nuvotec-munmak-address"
+      ],
+      "conditions": [
+        "투입 형태·성상 및 일반/지정폐기물 구분을 별도 확인. 공시에 허가 보유가 기재되어도 현행 허가와 해당 물량 인수를 확정하지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "PE 재생 펠릿",
+        "source_ids": [
+          "nuvotec-recycling-2026",
+          "nuvotec-munmak-address"
+        ],
+        "locator": "II 사업내용 > 재활용사업부 원재료·생산설비·주요제품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "joongil-incheon--pp-scrap-to-pellet",
+      "facility": "joongil-incheon",
+      "transition": "pp-scrap-to-pellet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "joongil-pp-recycling"
+      ],
+      "conditions": [
+        "공개 사례는 배터리 케이스. 분리된 PP인지, 산·납·다른 유해 잔류물이 제거되었는지 확인. 일반 PP 포장물·다른 원료는 별도 협의",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [
+          "rigid",
+          "scrap"
+        ],
+        "output_description": "PP 재생 펠릿",
+        "source_ids": [
+          "joongil-pp-recycling"
+        ],
+        "locator": "재생 플라스틱 > 원재료·제품 공정·보유 설비·사업장 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "rigid",
+        "scrap"
+      ]
+    },
+    {
+      "key": "pureum-yangju--pvc-rigid-recovery",
+      "facility": "pureum-yangju",
+      "transition": "pvc-rigid-recovery",
+      "basis": "published_site_process",
+      "source_ids": [
+        "pureum-pvc-process",
+        "pureum-pvc-products"
+      ],
+      "conditions": [
+        "창틀·건설 폐자재 공개 사례. 다른 PVC 제품·복합재는 별도 확인. 문진에서 확정한 폐기물 분류가 맞는 경우에만 연결",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pvc"
+        ],
+        "form_examples": [
+          "rigid"
+        ],
+        "output_description": "PVC 재생 분말",
+        "source_ids": [
+          "pureum-pvc-process",
+          "pureum-pvc-products"
+        ],
+        "locator": "제조공정 > 자원순환공정 1~6 / 사업장 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "rigid"
       ]
     }
   ]

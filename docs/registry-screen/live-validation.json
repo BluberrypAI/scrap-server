@@ -1,0 +1,515 @@
+{
+  "checked_on": "2026-11-14",
+  "scenario_kind": "synthetic_inputs_public_sources_only",
+  "queries": [
+    {
+      "material": "abs",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 3
+    },
+    {
+      "material": "abs",
+      "input_form": "rigid",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "abs",
+      "input_form": "scrap",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "abs",
+      "input_form": "shredded",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 3
+    },
+    {
+      "material": "eps",
+      "input_form": "ingot",
+      "waste_code": "51-03-06",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "pa6",
+      "input_form": "net",
+      "waste_code": "51-03-08",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "pa66",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "pa66",
+      "input_form": "shredded",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "pcabs",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "pcabs",
+      "input_form": "shredded",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "pe",
+      "input_form": "bale",
+      "waste_code": "51-03-01",
+      "status": "no_route",
+      "facility_count": 0
+    },
+    {
+      "material": "pe",
+      "input_form": "bale",
+      "waste_code": "51-03-07",
+      "status": "no_route",
+      "facility_count": 0
+    },
+    {
+      "material": "pe",
+      "input_form": "film",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 9
+    },
+    {
+      "material": "pe",
+      "input_form": "film",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 9
+    },
+    {
+      "material": "pe",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 4
+    },
+    {
+      "material": "pe",
+      "input_form": "pellet",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "pe",
+      "input_form": "rigid",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 9
+    },
+    {
+      "material": "pe",
+      "input_form": "rigid",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 9
+    },
+    {
+      "material": "pe",
+      "input_form": "scrap",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 9
+    },
+    {
+      "material": "pe",
+      "input_form": "scrap",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 9
+    },
+    {
+      "material": "pe",
+      "input_form": "shredded",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 4
+    },
+    {
+      "material": "pet",
+      "input_form": "bale",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 5
+    },
+    {
+      "material": "pet",
+      "input_form": "bale",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 5
+    },
+    {
+      "material": "pet",
+      "input_form": "bottle",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 6
+    },
+    {
+      "material": "pet",
+      "input_form": "bottle",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 6
+    },
+    {
+      "material": "pet",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "pp",
+      "input_form": "bale",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "pp",
+      "input_form": "bale",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "pp",
+      "input_form": "film",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 8
+    },
+    {
+      "material": "pp",
+      "input_form": "film",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 8
+    },
+    {
+      "material": "pp",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 6
+    },
+    {
+      "material": "pp",
+      "input_form": "pellet",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "pp",
+      "input_form": "rigid",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 9
+    },
+    {
+      "material": "pp",
+      "input_form": "rigid",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 9
+    },
+    {
+      "material": "pp",
+      "input_form": "scrap",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 9
+    },
+    {
+      "material": "pp",
+      "input_form": "scrap",
+      "waste_code": "51-03-07",
+      "status": "candidates",
+      "facility_count": 9
+    },
+    {
+      "material": "pp",
+      "input_form": "shredded",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 6
+    },
+    {
+      "material": "ps",
+      "input_form": "bale",
+      "waste_code": "51-03-01",
+      "status": "no_route",
+      "facility_count": 0
+    },
+    {
+      "material": "ps",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 4
+    },
+    {
+      "material": "ps",
+      "input_form": "rigid",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 3
+    },
+    {
+      "material": "ps",
+      "input_form": "scrap",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 3
+    },
+    {
+      "material": "ps",
+      "input_form": "shredded",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 4
+    },
+    {
+      "material": "pvc",
+      "input_form": "rigid",
+      "waste_code": "51-03-03",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "pvc",
+      "input_form": "wallpaper",
+      "waste_code": "51-03-03",
+      "status": "candidates",
+      "facility_count": 1
+    },
+    {
+      "material": "san",
+      "input_form": "flake",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "san",
+      "input_form": "rigid",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "san",
+      "input_form": "scrap",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    },
+    {
+      "material": "san",
+      "input_form": "shredded",
+      "waste_code": "51-03-01",
+      "status": "candidates",
+      "facility_count": 2
+    }
+  ],
+  "ai_reviews": [
+    {
+      "material": "pe",
+      "form": "film",
+      "capability_key": "saramtech-nonsan--pe-mulch-to-pellet",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "reviewed",
+        "finding": "form_mentioned",
+        "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요.",
+        "source": {
+          "publisher": "에이슨텍코퍼레이션 / 관계사 사람과 기술",
+          "url": "http://www.acencorp.com/content/kor/about.html",
+          "locator": "회사소개 > Family Company > 사람과 기술"
+        },
+        "quote": "관계사 사람과 기술의 논산 사월길 360 사업장이 농업용 멀칭 PE 필름을 수집·세척·압축하며 요청 시 재생 펠릿을 직접 생산한다고 공개한다.",
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pa66",
+      "form": "flake",
+      "capability_key": "yangil-incheon--pa66-compound",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pp",
+      "form": "flake",
+      "capability_key": "jinyoung-hwaseong--pp-flake-repelletise",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pe",
+      "form": "rigid",
+      "capability_key": "youone-incheon--pe-prepare",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pet",
+      "form": "bottle",
+      "capability_key": "dakyeong-busan--pet-bottle-to-flake",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pe",
+      "form": "scrap",
+      "capability_key": "nuvotec-munmak--pe-scrap-to-pellet",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pp",
+      "form": "rigid",
+      "capability_key": "joongil-incheon--pp-scrap-to-pellet",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pvc",
+      "form": "rigid",
+      "capability_key": "pureum-yangju--pvc-rigid-recovery",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pe",
+      "form": "rigid",
+      "capability_key": "npc-chemical-hwaseong--pe-prepare",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "pp",
+      "form": "scrap",
+      "capability_key": "npc-chemical-hwaseong--pp-prepare",
+      "site_scope": "published_site_process",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    },
+    {
+      "material": "san",
+      "form": "scrap",
+      "capability_key": "cntk-jinju--san-prepare",
+      "site_scope": "site_role_hypothesis",
+      "result": {
+        "status": "needs_evidence",
+        "finding": "insufficient",
+        "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    }
+  ],
+  "registry_rows": 9604,
+  "interpretation": "합성 입력과 공개 요약의 조회·모델 연결 검사. 정확도·실제 업체 인수·허가 검증이 아님."
+}

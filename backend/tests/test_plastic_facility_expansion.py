@@ -28,6 +28,8 @@ CASES = [
     ("abs", "51-03-01", "flake", "changmaec-seongju", "abs-pellet"),
     ("ps", "51-03-01", "shredded", "changmaec-seongju", "ps-pellet"),
     ("pvc", "51-03-03", "wallpaper", "sungji-hwaseong", "pvc-recovered"),
+    ("pvc", "51-03-03", "rigid", "pureum-yangju", "pvc-powder"),
+    ("pp", "51-03-01", "rigid", "joongil-incheon", "pp-pellet"),
     ("eps", "51-03-06", "ingot", "ecops-yeongcheon", "eps-ps-pellet"),
     ("pa6", "51-03-08", "net", "netspa-busan", "pa6-resin"),
     ("pa66", "51-03-01", "flake", "changmaec-seongju", "pa66-compound"),

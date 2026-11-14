@@ -41,7 +41,7 @@ FORM_STATES = {
         "flake": "san-flake",
         "shredded": "san-flake",
     },
-    "pvc": {"wallpaper": "pvc-wallpaper"},
+    "pvc": {"wallpaper": "pvc-wallpaper", "rigid": "pvc-rigid"},
     "eps": {"ingot": "eps-ingot"},
     "pa6": {"net": "pa6-net"},
     "pa66": {"flake": "pa66-flake", "shredded": "pa66-flake"},
@@ -60,6 +60,7 @@ for _form in ("bottle", "bale"):
 FORM_CODES.update(
     {
         ("pvc", "wallpaper"): ("51-03-03",),
+        ("pvc", "rigid"): ("51-03-03",),
         ("eps", "ingot"): ("51-03-06",),
         ("pa6", "net"): ("51-03-08",),
         ("aluminium", "can"): ("51-29-03",),
@@ -74,7 +75,7 @@ FINISH_STATES = {
     "abs": {"abs-pellet"},
     "ps": {"ps-pellet"},
     "san": {"san-pellet"},
-    "pvc": {"pvc-recovered"},
+    "pvc": {"pvc-recovered", "pvc-powder"},
     "eps": {"eps-ps-pellet"},
     "pa6": {"pa6-resin"},
     "pa66": {"pa66-compound"},

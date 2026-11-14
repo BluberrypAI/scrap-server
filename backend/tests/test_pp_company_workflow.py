@@ -561,7 +561,7 @@ async def test_pe_film_shredded_output_is_not_final(setup_flow, db):
     ).status_code == 409
     lot = (await req("B", f"/lots/{lot['id']}/candidates", {"revision": lot["revision"]})).json()
     options = {o["transition_key"] for o in lot["review"]["next_step"]["options"]}
-    assert options == {"pe-clean", "pe-shredded-to-pellet"}
+    assert options == {"pe-clean", "pe-shredded-to-pellet", "pe-flake-repelletise"}
 
 
 @pytest.mark.parametrize(

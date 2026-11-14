@@ -1,0 +1,291 @@
+{
+  "reviewed_on": "2026-11-14",
+  "rows": [
+    {
+      "capability_key": "bgf-yesan--pet-pelletise",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "bgf-recycling"
+      ],
+      "decision": "회사 재활용 사업·제품·공장 역할 확인. 예산/화성의 소재별 세부 공정 배정은 미확인 유지",
+      "additional_sources_reviewed": [
+        {
+          "url": "https://bgfecomaterials.com/resources/kr/file/BGFecomaterials_Company_Profile_2025_KR.pdf",
+          "locator": "PDF pp.7,11",
+          "sha256": "8ff98344f29fdf428215734258f0540fbf7f00bbca8937700ffcae1974ab5a16",
+          "finding": "공장 위치와 PCR/PIR/R-Compound 사업 설명은 있으나 수지별 공정을 사업장에 배정하는 근거는 없음"
+        }
+      ]
+    },
+    {
+      "capability_key": "bgf-yesan--pp-clean",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "bgf-recycling"
+      ],
+      "decision": "회사 재활용 사업·제품·공장 역할 확인. 예산/화성의 소재별 세부 공정 배정은 미확인 유지",
+      "additional_sources_reviewed": [
+        {
+          "url": "https://bgfecomaterials.com/resources/kr/file/BGFecomaterials_Company_Profile_2025_KR.pdf",
+          "locator": "PDF pp.7,11",
+          "sha256": "8ff98344f29fdf428215734258f0540fbf7f00bbca8937700ffcae1974ab5a16",
+          "finding": "공장 위치와 PCR/PIR/R-Compound 사업 설명은 있으나 수지별 공정을 사업장에 배정하는 근거는 없음"
+        }
+      ]
+    },
+    {
+      "capability_key": "bgf-yesan--pp-pelletise",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "bgf-recycling"
+      ],
+      "decision": "회사 재활용 사업·제품·공장 역할 확인. 예산/화성의 소재별 세부 공정 배정은 미확인 유지",
+      "additional_sources_reviewed": [
+        {
+          "url": "https://bgfecomaterials.com/resources/kr/file/BGFecomaterials_Company_Profile_2025_KR.pdf",
+          "locator": "PDF pp.7,11",
+          "sha256": "8ff98344f29fdf428215734258f0540fbf7f00bbca8937700ffcae1974ab5a16",
+          "finding": "공장 위치와 PCR/PIR/R-Compound 사업 설명은 있으나 수지별 공정을 사업장에 배정하는 근거는 없음"
+        }
+      ]
+    },
+    {
+      "capability_key": "bgf-hwaseong--pp-compound",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "bgf-recycling"
+      ],
+      "decision": "회사 재활용 사업·제품·공장 역할 확인. 예산/화성의 소재별 세부 공정 배정은 미확인 유지",
+      "additional_sources_reviewed": [
+        {
+          "url": "https://bgfecomaterials.com/resources/kr/file/BGFecomaterials_Company_Profile_2025_KR.pdf",
+          "locator": "PDF pp.7,11",
+          "sha256": "8ff98344f29fdf428215734258f0540fbf7f00bbca8937700ffcae1974ab5a16",
+          "finding": "공장 위치와 PCR/PIR/R-Compound 사업 설명은 있으나 수지별 공정을 사업장에 배정하는 근거는 없음"
+        }
+      ]
+    },
+    {
+      "capability_key": "bgf-yesan--pe-clean",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "bgf-recycling"
+      ],
+      "decision": "회사 재활용 사업·제품·공장 역할 확인. 예산/화성의 소재별 세부 공정 배정은 미확인 유지",
+      "additional_sources_reviewed": [
+        {
+          "url": "https://bgfecomaterials.com/resources/kr/file/BGFecomaterials_Company_Profile_2025_KR.pdf",
+          "locator": "PDF pp.7,11",
+          "sha256": "8ff98344f29fdf428215734258f0540fbf7f00bbca8937700ffcae1974ab5a16",
+          "finding": "공장 위치와 PCR/PIR/R-Compound 사업 설명은 있으나 수지별 공정을 사업장에 배정하는 근거는 없음"
+        }
+      ]
+    },
+    {
+      "capability_key": "bgf-yesan--pe-pelletise",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "bgf-recycling"
+      ],
+      "decision": "회사 재활용 사업·제품·공장 역할 확인. 예산/화성의 소재별 세부 공정 배정은 미확인 유지",
+      "additional_sources_reviewed": [
+        {
+          "url": "https://bgfecomaterials.com/resources/kr/file/BGFecomaterials_Company_Profile_2025_KR.pdf",
+          "locator": "PDF pp.7,11",
+          "sha256": "8ff98344f29fdf428215734258f0540fbf7f00bbca8937700ffcae1974ab5a16",
+          "finding": "공장 위치와 PCR/PIR/R-Compound 사업 설명은 있으나 수지별 공정을 사업장에 배정하는 근거는 없음"
+        }
+      ]
+    },
+    {
+      "capability_key": "bgf-hwaseong--pe-compound",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "bgf-recycling"
+      ],
+      "decision": "회사 재활용 사업·제품·공장 역할 확인. 예산/화성의 소재별 세부 공정 배정은 미확인 유지",
+      "additional_sources_reviewed": [
+        {
+          "url": "https://bgfecomaterials.com/resources/kr/file/BGFecomaterials_Company_Profile_2025_KR.pdf",
+          "locator": "PDF pp.7,11",
+          "sha256": "8ff98344f29fdf428215734258f0540fbf7f00bbca8937700ffcae1974ab5a16",
+          "finding": "공장 위치와 PCR/PIR/R-Compound 사업 설명은 있으나 수지별 공정을 사업장에 배정하는 근거는 없음"
+        }
+      ]
+    },
+    {
+      "capability_key": "npc-chemical-hwaseong--pp-prepare",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "published_site_process",
+      "source_ids": [
+        "npc-pp-process-image",
+        "npc-chemical-hwaseong-address"
+      ],
+      "decision": "공식 제품 이미지와 주소로 PP/HDPE 분쇄 공정 확인; 로트 반입 미확인"
+    },
+    {
+      "capability_key": "npc-chemical-hwaseong--pe-prepare",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "published_site_process",
+      "source_ids": [
+        "npc-pe-process-image",
+        "npc-chemical-hwaseong-address"
+      ],
+      "decision": "공식 제품 이미지와 주소로 PP/HDPE 분쇄 공정 확인; 로트 반입 미확인"
+    },
+    {
+      "capability_key": "cntk-hwaseong--abs-prepare",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-flake",
+        "cntk-process-separation"
+      ],
+      "decision": "회사 제품·공정 공개 확인. 화성/진주 사업장별 소재·공정 배정 미확인 유지"
+    },
+    {
+      "capability_key": "cntk-hwaseong--abs-pelletise",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-pellet",
+        "cntk-process-separation"
+      ],
+      "decision": "회사 제품·공정 공개 확인. 화성/진주 사업장별 소재·공정 배정 미확인 유지"
+    },
+    {
+      "capability_key": "cntk-jinju--abs-prepare",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-flake",
+        "cntk-jinju-registry",
+        "cntk-process-separation"
+      ],
+      "decision": "회사 제품·공정 공개 확인. 화성/진주 사업장별 소재·공정 배정 미확인 유지"
+    },
+    {
+      "capability_key": "cntk-jinju--abs-pelletise",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-pellet",
+        "cntk-jinju-registry",
+        "cntk-process-separation"
+      ],
+      "decision": "회사 제품·공정 공개 확인. 화성/진주 사업장별 소재·공정 배정 미확인 유지"
+    },
+    {
+      "capability_key": "cntk-hwaseong--ps-prepare",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-flake",
+        "cntk-process-separation"
+      ],
+      "decision": "회사 제품·공정 공개 확인. 화성/진주 사업장별 소재·공정 배정 미확인 유지"
+    },
+    {
+      "capability_key": "cntk-hwaseong--ps-pelletise",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-pellet",
+        "cntk-process-separation"
+      ],
+      "decision": "회사 제품·공정 공개 확인. 화성/진주 사업장별 소재·공정 배정 미확인 유지"
+    },
+    {
+      "capability_key": "cntk-jinju--ps-prepare",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-flake",
+        "cntk-jinju-registry",
+        "cntk-process-separation"
+      ],
+      "decision": "회사 제품·공정 공개 확인. 화성/진주 사업장별 소재·공정 배정 미확인 유지"
+    },
+    {
+      "capability_key": "cntk-jinju--ps-pelletise",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-pellet",
+        "cntk-jinju-registry",
+        "cntk-process-separation"
+      ],
+      "decision": "회사 제품·공정 공개 확인. 화성/진주 사업장별 소재·공정 배정 미확인 유지"
+    },
+    {
+      "capability_key": "cntk-hwaseong--san-prepare",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-flake",
+        "cntk-process-separation"
+      ],
+      "decision": "회사 제품·공정 공개 확인. 화성/진주 사업장별 소재·공정 배정 미확인 유지"
+    },
+    {
+      "capability_key": "cntk-hwaseong--san-pelletise",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-pellet",
+        "cntk-process-separation"
+      ],
+      "decision": "회사 제품·공정 공개 확인. 화성/진주 사업장별 소재·공정 배정 미확인 유지"
+    },
+    {
+      "capability_key": "cntk-jinju--san-prepare",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-flake",
+        "cntk-jinju-registry",
+        "cntk-process-separation"
+      ],
+      "decision": "회사 제품·공정 공개 확인. 화성/진주 사업장별 소재·공정 배정 미확인 유지"
+    },
+    {
+      "capability_key": "cntk-jinju--san-pelletise",
+      "reviewed_on": "2026-11-14",
+      "before": "site_role_hypothesis",
+      "after": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-pellet",
+        "cntk-jinju-registry",
+        "cntk-process-separation"
+      ],
+      "decision": "회사 제품·공정 공개 확인. 화성/진주 사업장별 소재·공정 배정 미확인 유지"
+    }
+  ]
+}

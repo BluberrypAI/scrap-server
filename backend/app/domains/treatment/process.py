@@ -138,6 +138,7 @@ PP_SEARCH_TYPES = {
     "pp-clean": ("R-10",),
     "pp-pelletise": ("R-3-3", "R-10"),
     "pp-shredded-to-pellet": ("R-3-3", "R-10"),
+    "pp-flake-repelletise": ("R-3-3", "R-10"),
     "pp-compound": ("R-3-3", "R-4-4", "R-10"),
     "pp-sort-bale": ("R-10",),
     "pp-bale-to-pellet": ("R-3-3", "R-10"),
@@ -346,7 +347,23 @@ def next_step(request: NextStepRequest, reference_data) -> NextStepResponse:
             bind_current=True,
         )
 
-    return project(reference_data)
+    result = project(reference_data)
+    # A bale is a physical state, not just packaging around a proven flake route.
+    # A site's bale OUTPUT or EPS ingot line cannot establish PE/PS bale intake.
+    is_bale = (
+        request.observed_output.state_key == f"{material}-bale"
+        and request.observed_output.mass_kg > 0
+        if request.observed_output
+        else not request.completed_transitions and form == "bale"
+    )
+    if result.status == "no_route" and material in {"pe", "ps"} and is_bale:
+        result.message = (
+            f"{material.upper()} 압축 베일을 받아 처리하는 국내 사업장 근거가 아직 없습니다. "
+            "수지 종류·혼합률, 베일 크기·중량, 결속재와 오염 상태, "
+            "업체의 해체·선별 설비 및 베일 반입 확인 자료가 필요합니다. "
+            "베일 생산 업체나 분쇄품 처리 업체를 반입 가능 업체로 대신 표시하지 않습니다."
+        )
+    return result
 
 
 def project_next_step(
