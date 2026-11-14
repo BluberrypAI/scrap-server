@@ -25,7 +25,8 @@
         "transitions": [
           "pet-finish",
           "pet-prepare",
-          "pet-wash"
+          "pet-wash",
+          "pet-bottle-to-flake"
         ],
         "organisations": [
           "samyang-ecotech"
@@ -36,7 +37,8 @@
         "capabilities": [
           "samyang-sihwa--pet-finish",
           "samyang-sihwa--pet-prepare",
-          "samyang-sihwa--pet-wash"
+          "samyang-sihwa--pet-wash",
+          "samyang-sihwa--pet-bottle-to-flake"
         ]
       }
     },
@@ -651,6 +653,146 @@
       "supported_records": {
         "capabilities": [
           "veolia-doksan-hwaseong--pp-shredded-to-pellet"
+        ]
+      }
+    },
+    {
+      "key": "intake-veolia-doksan-hwaseong",
+      "url": "https://www.veolia.kr/ko/plastiloop-hwaseong",
+      "publisher": "베올리아코리아",
+      "locator": "사업장별 투입 예시 확인 / 수치 규격·현재 인수 미확인",
+      "summary": "독산은 선별된 PP 분쇄품 또는 압축품을 구매해 세척 등을 거쳐 펠렛을 생산한다고 공개한다.",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "85a6de5d3249f5e2e9905fea4542e927a6a23fe97b83651c19f7e315a506c344",
+      "acquisition": "public source reviewed; curated factual record",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "capabilities": [
+          "veolia-doksan-hwaseong--pp-shredded-to-pellet"
+        ]
+      }
+    },
+    {
+      "key": "intake-veolia-dspl-hwaseong",
+      "url": "https://www.veolia.kr/ko/plastiloop-hwaseong",
+      "publisher": "베올리아코리아",
+      "locator": "사업장별 투입 예시 확인 / 수치 규격·현재 인수 미확인",
+      "summary": "DSPL은 재생 PP 펠렛을 투입하여 컴파운드를 생산한다고 공개한다.",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "a03a8f99f3c852ddc2bb212407d6cf486b167d6efe06f2d2b8be1ff7a56aae9d",
+      "acquisition": "public source reviewed; curated factual record",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "capabilities": [
+          "veolia-dspl-hwaseong--pp-compound"
+        ]
+      }
+    },
+    {
+      "acquisition": "official-html-acquired-and-reviewed",
+      "digest_basis": "downloaded-original-bytes",
+      "key": "intake-jungang-gongju",
+      "url": "https://www.jungangenb.com/",
+      "publisher": "중앙이엔비",
+      "locator": "사업장별 투입 예시 확인 / 수치 규격·현재 인수 미확인",
+      "summary": "지정폐기물은 취급하지 않는다고 안내한다. PE·PP는 상담 대상이며 지역 밖 운송은 물량별 협의한다.",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "11c5cc02b63f0f0965bc1ef1a680869c380ffd21da5acfd04d743e9d30b389d8",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "capabilities": [
+          "jungang-gongju--pp-prepare",
+          "jungang-gongju--pe-prepare"
+        ]
+      }
+    },
+    {
+      "key": "intake-superbin-hwaseong",
+      "url": "https://superbin.co.kr/business/factory",
+      "publisher": "수퍼빈",
+      "locator": "사업장별 투입 예시 확인 / 수치 규격·현재 인수 미확인",
+      "summary": "화성은 수퍼빈이 직접 회수·운반한 고순도 PET병으로 플레이크를 생산한다. 외부 공급자의 반입 가능 여부는 공개 자료만으로 확인되지 않는다.",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "429c0bbe93ca8ad8f63e2db040be03d834d7379abfd6d25780dfdc98e32d990d",
+      "acquisition": "public source reviewed; curated factual record",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "capabilities": [
+          "superbin-hwaseong--pet-bale-to-flake"
+        ]
+      }
+    },
+    {
+      "acquisition": "official-html-acquired-and-reviewed",
+      "digest_basis": "downloaded-original-bytes",
+      "key": "intake-samyang-sihwa",
+      "url": "https://www.samyangpackaging.com/kr/business/pet-recycling",
+      "publisher": "삼양패키징",
+      "locator": "사업장별 투입 예시 확인 / 수치 규격·현재 인수 미확인",
+      "summary": "시화 공장은 폐PET병 압축, 색상·라벨·마개 선별, 분쇄·세척·건조·금속 분리 공정을 공개한다.",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "6ab3331c1f05244c21e630ca33597d42042b69a666c18fb5dab84f3293aa7759",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "capabilities": [
+          "samyang-sihwa--pet-prepare",
+          "samyang-sihwa--pet-wash",
+          "samyang-sihwa--pet-finish",
+          "samyang-sihwa--pet-bottle-to-flake"
+        ]
+      }
+    },
+    {
+      "key": "intake-ulsan-aluminium",
+      "url": "https://investors.novelis.com/news-events/press-releases/detail/1390/novelis-opens-ulsan-aluminum-recycling-center",
+      "publisher": "노벨리스",
+      "locator": "사업장별 투입 예시 확인 / 수치 규격·현재 인수 미확인",
+      "summary": "울산 센터는 음료캔·자동차·산업 발생 알루미늄 스크랩을 처리해 시트 잉곳을 생산한다고 공개한다. 합금별 규격은 별도 확인이 필요하다.",
+      "checked_date": "2026-11-14",
+      "source_date": "2025-04-15",
+      "sha256": "b63b2e10c01e7b9c9d3a188f446952c975fab4826615f47ed0812545c9aec3b0",
+      "acquisition": "public source reviewed; curated factual record",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "capabilities": [
+          "ulsan-aluminium--al-can-to-ingot"
+        ]
+      }
+    },
+    {
+      "key": "superbin-sunchang-process",
+      "url": "https://superbin.co.kr/business/factory",
+      "publisher": "수퍼빈",
+      "locator": "02 고품질 r-PET 펠릿 / 아이엠팩토리 순창",
+      "summary": "수퍼빈은 순창 아이엠팩토리에서 화성공장 생산 PET 플레이크를 펠릿으로 가공한다고 설명한다. 외부 공급자 물량의 반입 가능 여부·수치 규격·여유 용량은 확인되지 않았다.",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "e2a32a946080c151135cdfc34f05f280ecf970ddc6042ff74c3fabb2cd1eb47d",
+      "acquisition": "public source reviewed; curated factual record",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "superbin-sunchang"
+        ],
+        "capabilities": [
+          "superbin-sunchang--pet-pelletise"
         ]
       }
     }
@@ -1408,6 +1550,27 @@
         "novelis-ulsan-recycling",
         "novelis-ulsan-address"
       ]
+    },
+    {
+      "key": "pet-bottle-to-flake",
+      "label": "PET병 선별·세척·분쇄·건조 일괄 처리",
+      "input_state": "pet-bottle",
+      "output_state": "pet-flake",
+      "operation_steps": [
+        "압축·이물 및 색상별 선별",
+        "라벨·마개 선별",
+        "분쇄·세척",
+        "건조·금속 분리"
+      ],
+      "conditions": [
+        "일괄 수행 범위와 외부 물량 반입 조건 확인"
+      ],
+      "risk_checks": [
+        "색상·오염·혼입물과 최종 플레이크 규격 확인"
+      ],
+      "source_ids": [
+        "samyang-pet"
+      ]
     }
   ],
   "organisations": [
@@ -1762,6 +1925,24 @@
       "source_ids": [
         "sarom-hwaseong-2-process"
       ]
+    },
+    {
+      "key": "superbin-sunchang",
+      "label": "수퍼빈 아이엠팩토리 순창",
+      "organisation": "superbin",
+      "country": "KR",
+      "region": "전북특별자치도 순창군",
+      "address": null,
+      "latitude": null,
+      "longitude": null,
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "source_ids": [
+        "superbin-sunchang-process"
+      ]
     }
   ],
   "capabilities": [
@@ -1771,7 +1952,8 @@
       "transition": "pet-prepare",
       "basis": "published_site_process",
       "source_ids": [
-        "samyang-pet"
+        "samyang-pet",
+        "intake-samyang-sihwa"
       ],
       "conditions": [
         "현재 허가 범위·시설 가동·수탁 규격·해당 로트 인수 및 여유 용량 재확인"
@@ -1786,7 +1968,8 @@
         ],
         "output_description": "선별된 PET 분쇄 투입물",
         "source_ids": [
-          "samyang-pet"
+          "samyang-pet",
+          "intake-samyang-sihwa"
         ],
         "locator": "PET 재활용 표 / 생산공정 1~8",
         "excludes_designated_waste": null,
@@ -1801,7 +1984,8 @@
       "transition": "pet-wash",
       "basis": "published_site_process",
       "source_ids": [
-        "samyang-pet"
+        "samyang-pet",
+        "intake-samyang-sihwa"
       ],
       "conditions": [
         "현재 허가 범위·시설 가동·수탁 규격·해당 로트 인수 및 여유 용량 재확인"
@@ -1814,7 +1998,8 @@
         "form_examples": [],
         "output_description": "세척 후 PET 파쇄물",
         "source_ids": [
-          "samyang-pet"
+          "samyang-pet",
+          "intake-samyang-sihwa"
         ],
         "locator": "PET 재활용 표 / 생산공정 1~8",
         "excludes_designated_waste": null,
@@ -1829,7 +2014,8 @@
       "transition": "pet-finish",
       "basis": "published_site_process",
       "source_ids": [
-        "samyang-pet"
+        "samyang-pet",
+        "intake-samyang-sihwa"
       ],
       "conditions": [
         "현재 허가 범위·시설 가동·수탁 규격·해당 로트 인수 및 여유 용량 재확인"
@@ -1842,7 +2028,8 @@
         "form_examples": [],
         "output_description": "건조·금속 분리 후 PET 플레이크",
         "source_ids": [
-          "samyang-pet"
+          "samyang-pet",
+          "intake-samyang-sihwa"
         ],
         "locator": "PET 재활용 표 / 생산공정 1~8",
         "excludes_designated_waste": null,
@@ -1886,7 +2073,8 @@
       "basis": "published_site_process",
       "source_ids": [
         "jungang-materials",
-        "jungang-process"
+        "jungang-process",
+        "intake-jungang-gongju"
       ],
       "conditions": [
         "현재 허가 범위·시설 가동·수탁 규격·해당 로트 인수 및 여유 용량 재확인"
@@ -1903,7 +2091,8 @@
         "output_description": "PP 파쇄품·순도 및 세척 상태 미확인",
         "source_ids": [
           "jungang-materials",
-          "jungang-process"
+          "jungang-process",
+          "intake-jungang-gongju"
         ],
         "locator": "FAQ Q02·Q05 / 처리공정 01~05",
         "excludes_designated_waste": true,
@@ -2006,7 +2195,8 @@
       "basis": "published_site_process",
       "source_ids": [
         "jungang-materials",
-        "jungang-process"
+        "jungang-process",
+        "intake-jungang-gongju"
       ],
       "conditions": [
         "현재 허가 범위·시설 가동·수탁 규격·해당 로트 인수 및 여유 용량 재확인"
@@ -2023,7 +2213,8 @@
         "output_description": "PE 파쇄품·순도 및 세척 상태 미확인",
         "source_ids": [
           "jungang-materials",
-          "jungang-process"
+          "jungang-process",
+          "intake-jungang-gongju"
         ],
         "locator": "FAQ Q02·Q05 / 처리공정 01~05",
         "excludes_designated_waste": true,
@@ -2313,7 +2504,8 @@
         "output_description": "재생 PET 플레이크",
         "source_ids": [
           "superbin-hwaseong-process",
-          "superbin-hwaseong-bale"
+          "superbin-hwaseong-bale",
+          "intake-superbin-hwaseong"
         ],
         "locator": "연결된 사업장 및 공정 공개 자료",
         "verified_intake_limits_available": false
@@ -2323,7 +2515,8 @@
       ],
       "source_ids": [
         "superbin-hwaseong-process",
-        "superbin-hwaseong-bale"
+        "superbin-hwaseong-bale",
+        "intake-superbin-hwaseong"
       ]
     },
     {
@@ -2437,14 +2630,16 @@
         "output_description": "재생 PP 펠렛",
         "source_ids": [
           "veolia-hwaseong-pp-process",
-          "veolia-doksan-public-intake-summary"
+          "veolia-doksan-public-intake-summary",
+          "intake-veolia-doksan-hwaseong"
         ],
         "locator": "연결된 사업장 및 공정 공개 자료",
         "verified_intake_limits_available": false
       },
       "source_ids": [
         "veolia-hwaseong-pp-process",
-        "veolia-doksan-public-intake-summary"
+        "veolia-doksan-public-intake-summary",
+        "intake-veolia-doksan-hwaseong"
       ]
     },
     {
@@ -2467,13 +2662,15 @@
         ],
         "output_description": "재생 PP 컴파운드",
         "source_ids": [
-          "veolia-hwaseong-pp-process"
+          "veolia-hwaseong-pp-process",
+          "intake-veolia-dspl-hwaseong"
         ],
         "locator": "연결된 사업장 및 공정 공개 자료",
         "verified_intake_limits_available": false
       },
       "source_ids": [
-        "veolia-hwaseong-pp-process"
+        "veolia-hwaseong-pp-process",
+        "intake-veolia-dspl-hwaseong"
       ]
     },
     {
@@ -2496,14 +2693,16 @@
         "output_description": "판재용 잉곳",
         "source_ids": [
           "novelis-ulsan-recycling",
-          "novelis-ulsan-address"
+          "novelis-ulsan-address",
+          "intake-ulsan-aluminium"
         ],
         "locator": "연결된 사업장 및 공정 공개 자료",
         "verified_intake_limits_available": false
       },
       "source_ids": [
         "novelis-ulsan-recycling",
-        "novelis-ulsan-address"
+        "novelis-ulsan-address",
+        "intake-ulsan-aluminium"
       ]
     },
     {
@@ -2557,6 +2756,65 @@
       "source_ids": [
         "sarom-hwaseong-2-process"
       ]
+    },
+    {
+      "key": "superbin-sunchang--pet-pelletise",
+      "facility": "superbin-sunchang",
+      "transition": "pet-pelletise",
+      "basis": "published_site_process",
+      "source_ids": [
+        "superbin-sunchang-process"
+      ],
+      "conditions": [
+        "화성공장 생산 플레이크의 자체 공급 사례. 외부 물량 수용 여부 별도 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [
+          "flake"
+        ],
+        "output_description": "재생 PET 펠릿",
+        "source_ids": [
+          "superbin-sunchang-process"
+        ],
+        "locator": "02 고품질 r-PET 펠릿 / 아이엠팩토리 순창",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "samyang-sihwa--pet-bottle-to-flake",
+      "facility": "samyang-sihwa",
+      "transition": "pet-bottle-to-flake",
+      "basis": "published_site_process",
+      "source_ids": [
+        "samyang-pet",
+        "intake-samyang-sihwa"
+      ],
+      "conditions": [
+        "현재 허가 범위·시설 가동·수탁 규격·해당 로트 인수 및 여유 용량 재확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [
+          "bottle"
+        ],
+        "output_description": "건조·금속 분리 후 PET 플레이크",
+        "source_ids": [
+          "samyang-pet",
+          "intake-samyang-sihwa"
+        ],
+        "locator": "PET 재활용 표 / 생산공정 1~8",
+        "excludes_designated_waste": null,
+        "exclusion_source_ids": [],
+        "exclusion_locator": null,
+        "verified_intake_limits_available": false
+      }
     }
   ]
 }

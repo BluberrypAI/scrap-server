@@ -1,0 +1,157 @@
+{
+  "version": "intake-conditions-v1",
+  "scope": "업체 공개 투입 예시와 추가 확인 질문. 수치 규격·허가·현재 인수 승인 아님.",
+  "facilities": {
+    "veolia-doksan-hwaseong": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "veolia-hwaseong-pp-process",
+          "kind": "public_example",
+          "text": "독산은 선별된 PP 분쇄품 또는 압축품을 구매해 세척 등을 거쳐 펠렛을 생산한다고 공개한다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "pp_selection",
+          "label": "PP로 선별된 물량인가요?",
+          "choices": [
+            "PP로 선별됨",
+            "미선별",
+            "모름"
+          ],
+          "source_id": "veolia-hwaseong-pp-process",
+          "reason": "공개 투입 예시와 이번 물량을 비교하기 위한 질문. 독점적 허용 규격 아님."
+        }
+      ]
+    },
+    "veolia-dspl-hwaseong": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "veolia-hwaseong-pp-process",
+          "kind": "public_example",
+          "text": "DSPL은 재생 PP 펠렛을 투입하여 컴파운드를 생산한다고 공개한다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "pellet_spec",
+          "label": "펠렛의 재질·첨가제 또는 물성 자료가 있나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "source_id": "veolia-hwaseong-pp-process",
+          "reason": "공개된 펠렛 투입 공정과 맞는지 수신 업체가 확인할 자료"
+        }
+      ]
+    },
+    "jungang-gongju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "jungang-materials",
+          "kind": "explicit_exclusion",
+          "text": "지정폐기물은 취급하지 않는다고 안내한다. PE·PP는 상담 대상이며 지역 밖 운송은 물량별 협의한다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "designated",
+          "label": "현재 물량이 지정폐기물로 확인되었나요?",
+          "choices": [
+            "아니요",
+            "예",
+            "모름"
+          ],
+          "source_id": "jungang-materials",
+          "reason": "공개된 지정폐기물 제외 정책. 예 또는 모름이면 문진·분류를 재확인해야 함."
+        }
+      ]
+    },
+    "superbin-hwaseong": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "superbin-hwaseong-process",
+          "kind": "supply_chain_example",
+          "text": "화성은 수퍼빈이 직접 회수·운반한 고순도 PET병으로 플레이크를 생산한다. 외부 공급자의 반입 가능 여부는 공개 자료만으로 확인되지 않는다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "collection_channel",
+          "label": "수퍼빈 자체 회수망의 물량인가요, 외부 회수 물량인가요?",
+          "choices": [
+            "자체 회수망",
+            "외부 회수 물량",
+            "모름"
+          ],
+          "source_id": "superbin-hwaseong-process",
+          "reason": "공개 사례의 공급망 범위 확인. 외부 물량 수용을 추정하지 않음."
+        }
+      ]
+    },
+    "samyang-sihwa": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "samyang-pet",
+          "kind": "public_example",
+          "text": "시화 공장은 폐PET병 압축, 색상·라벨·마개 선별, 분쇄·세척·건조·금속 분리 공정을 공개한다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "pet_colour",
+          "label": "PET병 색상과 라벨·마개 분리 상태를 알려 주세요.",
+          "source_id": "samyang-pet",
+          "reason": "공개 선별 공정과 현재 상태를 대조하기 위한 질문. 유색병 금지라는 뜻은 아님."
+        }
+      ]
+    },
+    "ulsan-aluminium": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "novelis-ulsan-recycling",
+          "kind": "public_example",
+          "text": "울산 센터는 음료캔·자동차·산업 발생 알루미늄 스크랩을 처리해 시트 잉곳을 생산한다고 공개한다. 합금별 규격은 별도 확인이 필요하다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "scrap_origin",
+          "label": "알루미늄의 발생처와 합금 정보를 알려 주세요.",
+          "source_id": "novelis-ulsan-recycling",
+          "reason": "공개 품목과 로트별 합금·불순물 조건 확인"
+        }
+      ]
+    },
+    "superbin-sunchang": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "superbin-sunchang-process",
+          "kind": "supply_chain_example",
+          "text": "수퍼빈은 순창 아이엠팩토리에서 화성공장 생산 PET 플레이크를 펠릿으로 가공한다고 설명한다. 외부 공급자 물량의 반입 가능 여부·수치 규격·여유 용량은 확인되지 않았다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "collection_channel",
+          "label": "수퍼빈 화성공장에서 생산된 플레이크인가요?",
+          "choices": [
+            "자체 회수망",
+            "외부 회수 물량",
+            "모름"
+          ],
+          "source_id": "superbin-sunchang-process",
+          "reason": "공개된 공장 간 공급망의 범위 확인; 외부 물량 수용 미확인"
+        }
+      ]
+    }
+  }
+}
