@@ -475,3 +475,104 @@ async def test_qr_expiry_and_reissue(setup_flow, db):
     assert (
         await req("B", f"/offers/{oid}/receive", {"revision": q2["revision"], "token": q2["token"]})
     ).status_code == 403
+
+
+async def use_handoff(db, actors, material, code, bindings=()):
+    """다른 재질의 확정 문진으로 바꾸고, 필요한 업체를 합성 계정에 연결함."""
+    for facility, role in bindings:
+        db.add(
+            WorkflowFacilityAccount(
+                facility_key=facility,
+                company_id=uuid.UUID(actors[role][1]),
+                synthetic=True,
+                verification_reference="synthetic test fixture, not a real company link",
+            )
+        )
+    await db.commit()
+    d = detail()
+    d["handoff"].update(
+        waste_code=code,
+        facts={"material": {"value": material}, "physical_state": {"value": "solid"}},
+    )
+    fake = FakeEngine()
+    fake.reply = httpx.Response(200, json=d)
+    app.dependency_overrides[get_engine_client] = fake.client
+
+
+async def test_aluminium_can_handoff_completes_with_sheet(setup_flow, db):
+    req, create, actors, _ = setup_flow
+    await use_handoff(db, actors, "aluminium", "51-29-03", [("novelis-yeongju", "B")])
+    lot = await create("can")
+    assert lot["data"]["current"]["state_key"] == "al-used-can"
+    assert (await db.get(Waste, uuid.UUID(lot["id"]))).name == "알루미늄 자원순환"
+    lot = await choose(req, lot, "A", "novelis-yeongju")
+    lot = await accept_receive(req, lot, "A", "B")
+    wrong = await req(
+        "B",
+        f"/lots/{lot['id']}/output",
+        {
+            "revision": lot["revision"],
+            "state_key": "pp-pellet",
+            "mass_kg": 900,
+            "condition": "다른 재질 상태",
+            "evidence": "TEST",
+        },
+    )
+    assert wrong.status_code == 422
+    lot = await save_output(req, lot, "B", "al-sheet", 900)
+    assert lot["status"] == "processed"
+    done = await req(
+        "B",
+        f"/lots/{lot['id']}/finish",
+        {
+            "revision": lot["revision"],
+            "reference": "TEST-AL",
+            "intended_use": "가상 압연 원료",
+            "confirmed": True,
+        },
+    )
+    assert done.status_code == 200, done.text
+    assert done.json()["status"] == "completed"
+
+
+async def test_pe_film_shredded_output_is_not_final(setup_flow, db):
+    req, create, actors, _ = setup_flow
+    await use_handoff(db, actors, "pe", "51-03-01")
+    lot = await create("film")
+    assert lot["data"]["current"]["state_key"] == "pe-scrap"
+    assert lot["data"]["initial"]["material"] == "pe"
+    lot = await choose(req, lot, "A", "sarom-hwaseong-2")
+    assert lot["offers"][-1]["data"]["option"]["transition_key"] == "pe-prepare"
+    lot = await accept_receive(req, lot, "A", "B")
+    lot = await save_output(req, lot, "B", "pe-shredded", 950)
+    assert lot["status"] == "processed"
+    assert (
+        await req(
+            "B",
+            f"/lots/{lot['id']}/finish",
+            {
+                "revision": lot["revision"],
+                "reference": "TEST",
+                "intended_use": "테스트",
+                "confirmed": True,
+            },
+        )
+    ).status_code == 409
+    lot = (await req("B", f"/lots/{lot['id']}/candidates", {"revision": lot["revision"]})).json()
+    options = {o["transition_key"] for o in lot["review"]["next_step"]["options"]}
+    assert options == {"pe-clean"}
+
+
+@pytest.mark.parametrize(
+    "material, code, form",
+    [("pet", "51-03-01", "bottle"), ("pp", "51-03-01", "film"), ("pe", "51-03-01", "scrap")],
+)
+async def test_unsupported_material_form_is_rejected(setup_flow, db, material, code, form):
+    req, _, actors, _ = setup_flow
+    await use_handoff(db, actors, material, code)
+    res = await req(
+        "A",
+        "/lots",
+        {"diagnosis_id": "C1", "input_form": form, "mass_kg": 10, "condition": "합성 테스트"},
+    )
+    assert res.status_code in {409, 422}

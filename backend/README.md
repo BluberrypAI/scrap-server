@@ -179,7 +179,7 @@ uv run python -m app.domains.treatment.import_catalog --registry /path/to/nation
 
 `/api/treatment/next-step`과 `/api/treatment/facility-candidates`는 서버 DB를 조회합니다. `CLASSIFICATION_BASE_URL`은 별도 팀 문진 엔진 주소입니다. 신규 로트 문진 유형은 GET /api/classification/profiles에서 조회합니다. 문진을 마친 뒤 첫 공정 조회에 classification_session_id를 보내면 서버가 분류 기록을 대조합니다. 다음 공정의 전체 업체 검토(`/api/treatment/intake-reviews`)와 PP 공정의 추가 공개 웹 조사(`/api/treatment/facility-web-search`)는 `AI_BASE_URL`과 두 서비스의 같은 `SCRAP_INTAKE_SERVICE_TOKEN`을 사용합니다.
 
-기업 간 인계(`/api/v1/workflow/*`)를 로컬에서 시험하려면 업체에 수신 기업 계정이 연결돼 있어야 인수 요청을 보낼 수 있습니다. 웹의 개발용 로그인으로 `pp-sort@example.com`(선별·파쇄), `pp-pellet@example.com`(펠렛·컴파운드)에 각각 로그인해 기업을 등록한 뒤 아래를 실행합니다. `APP_ENV=local`·`test`에서만 동작하며, 연결은 실제 업체 확인이 아닌 시험용(synthetic)으로 표시됩니다.
+기업 간 인계(`/api/v1/workflow/*`)를 로컬에서 시험하려면 업체에 수신 기업 계정이 연결돼 있어야 인수 요청을 보낼 수 있습니다. 웹의 개발용 로그인으로 `pp-sort@example.com`(PP·PE 선별·파쇄), `pp-pellet@example.com`(PP·PE 펠렛·컴파운드), `al-can@example.com`(알루미늄캔 판재·잉곳)에 각각 로그인해 기업을 등록한 뒤 아래를 실행합니다. `APP_ENV=local`·`test`에서만 동작하며, 연결은 실제 업체 확인이 아닌 시험용(synthetic)으로 표시됩니다.
 
 ```bash
 uv run python -m app.domains.transport.dev_accounts
