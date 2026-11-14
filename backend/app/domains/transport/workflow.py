@@ -32,6 +32,7 @@ from app.domains.transport.models import (
 from app.domains.treatment.conditions import attach_answers, published_conditions, questionnaire
 from app.domains.treatment.directory import project
 from app.domains.treatment.intake import IntakeSelection, build_intake_batch, review_intakes
+from app.domains.treatment.material_scope import FINISH_STATES, LOT_STARTS
 from app.domains.treatment.process import next_step
 from app.domains.treatment.reference import digest
 from app.domains.treatment.repository import read_reference, read_registry
@@ -47,23 +48,8 @@ from app.domains.wastes.models import (
 
 router = APIRouter(prefix="/workflow", tags=["transport"])
 
-# 문진(scrap-diagnosis)과 처리경로(scrap-route)가 함께 지원하는 재질·형태만 인계한다.
-# (재질, 형태) → 참조 자료의 시작 상태
-LOT_STARTS = {
-    ("pp", "scrap"): "pp-scrap",
-    ("pp", "shredded"): "pp-shredded",
-    ("pe", "film"): "pe-scrap",
-    ("aluminium", "can"): "al-used-can",
-    ("pet", "bottle"): "pet-bottle",  # Only a compatible confirmed code passes treatment_context.
-}
-# 완료로 인정하는 실제 산출물. 파쇄품은 카탈로그 종료 표시가 있어도 완료로 보지 않는다.
-FINISH_STATES = {
-    "pp": {"pp-pellet", "pp-compound"},
-    "pe": {"pe-pellet", "pe-compound"},
-    "aluminium": {"al-sheet", "al-sheet-ingot"},
-    "pet": {"pet-flake", "pet-pellet"},
-}
-MATERIAL_LABELS = {"pp": "PP", "pe": "PE", "aluminium": "알루미늄", "pet": "PET"}
+MATERIAL_LABELS = {material: material.upper() for material in FINISH_STATES}
+MATERIAL_LABELS["aluminium"] = "알루미늄"
 
 
 class Body(BaseModel):
@@ -72,7 +58,20 @@ class Body(BaseModel):
 
 class CreateLot(Body):
     diagnosis_id: str = Field(pattern=r"^[A-Za-z0-9_-]{1,64}$")
-    input_form: Literal["scrap", "shredded", "film", "bottle", "can"]
+    input_form: Literal[
+        "scrap",
+        "rigid",
+        "shredded",
+        "flake",
+        "pellet",
+        "bale",
+        "film",
+        "bottle",
+        "can",
+        "wallpaper",
+        "ingot",
+        "net",
+    ]
     mass_kg: float = Field(gt=0, le=1e9, allow_inf_nan=False)
     condition: str = Field(min_length=3, max_length=1500)
 

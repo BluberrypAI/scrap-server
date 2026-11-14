@@ -1065,9 +1065,14 @@
       "page": 6,
       "section": "business_non_designated",
       "query_materials": [
-        "pet",
         "pp",
-        "pe"
+        "pe",
+        "pet",
+        "abs",
+        "ps",
+        "san",
+        "pa66",
+        "pcabs"
       ],
       "match_kind": "code_category_only"
     },
@@ -1084,8 +1089,10 @@
       "label_excerpt": "폐폴리염화비닐수지류",
       "page": 6,
       "section": "business_non_designated",
-      "query_materials": [],
-      "match_kind": null
+      "query_materials": [
+        "pvc"
+      ],
+      "match_kind": "code_category_only"
     },
     {
       "code": "51-03-04",
@@ -1109,9 +1116,10 @@
       "page": 6,
       "section": "business_non_designated",
       "query_materials": [
-        "pet",
         "pp",
-        "pe"
+        "pe",
+        "pet",
+        "eps"
       ],
       "match_kind": "code_category_only"
     },
@@ -1132,8 +1140,10 @@
       "label_excerpt": "폐어망",
       "page": 6,
       "section": "business_non_designated",
-      "query_materials": [],
-      "match_kind": null
+      "query_materials": [
+        "pa6"
+      ],
+      "match_kind": "code_category_only"
     },
     {
       "code": "51-03-99",

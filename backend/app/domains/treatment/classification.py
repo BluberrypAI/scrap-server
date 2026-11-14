@@ -9,6 +9,7 @@ from pydantic import BaseModel, ValidationError
 
 from app.core.config import get_settings
 from app.core.errors import AppError, ErrorCode
+from app.domains.treatment.material_scope import FORM_CODES, FORM_LABELS
 from app.domains.treatment.schemas import RecyclingTypes
 
 
@@ -42,7 +43,25 @@ PROFILES = {
     ),
 }
 
+# Treatment compatibility is separate from the upstream questionnaire's menu.
+# A confirmed handoff can use these inputs; it does not enable new questionnaire
+# profiles whose question/rule coverage has not been verified here.
 INITIAL_PROFILES = {(row.material, row.input_form): row for row in PROFILES.values()}
+for (_material, _form), _codes in FORM_CODES.items():
+    _existing = INITIAL_PROFILES.get((_material, _form))
+    if _existing:
+        INITIAL_PROFILES[_material, _form] = Profile(
+            _existing.label,
+            _material,
+            _form,
+            _codes,
+            _existing.engine_material,
+            _existing.resin_stream,
+        )
+    else:
+        INITIAL_PROFILES[_material, _form] = Profile(
+            f"{_material.upper()} {FORM_LABELS[_form]}", _material, _form, _codes, _material
+        )
 
 
 class ClassifierStart(BaseModel):

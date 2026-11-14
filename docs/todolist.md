@@ -68,6 +68,7 @@
 | T-136 | 로컬 시험용 업체 계정 연결 스크립트(dev_accounts) | 완료 | api-developer | pp-company-workflow | APP_ENV=local·test 전용. 개발 로그인 기업을 PP 업체 키에 synthetic으로 연결 |
 | T-139 | 기업 인계를 PE 필름·알루미늄캔으로 확장 (문진·처리경로 교집합) | 완료 | api-developer | pp-company-workflow | 재질별 시작 상태·완료 산출물, 산출물 상태 재질 검사, dev_accounts 알루미늄 연결. 테스트 추가(서버 177개 통과). PET병은 분류번호 불일치로 제외, 실제 웹·Azure 검증 전 |
 | T-140 | 업체별 질문·전국 명부 조회·조건부 수락 연결 | 완료 | api-developer | intake-conditions-local | 후보 답변→AI 재검토, 조건별 자료→수신 확인→QR. 공개 프로필 7곳, 시설 15곳/연결 29개. 서버 188개 통과, 웹 조건부 인계 검증 |
+| T-142 | 플라스틱별 공개 사업장·다음 공정 확장 | 완료 | api-developer | plastic-facility-expansion | 29곳·68개 연결. 47개 조합 중 44개 조사 후보·3개 보류. 서버/PostgreSQL 232개 통과. 소재별 실제 반입·허가는 미확인. [범위와 검증](plastic-facility-expansion.md) |
 | T-141 | 실제 업체 반입규격·수신계정 인증 및 PET 문진 번호 정리 | 대기 | 사람 | intake-conditions-local | 수분·오염·물량 한도/현행 허가/용량 미확보. 일반 PET 51-03-01 자동 연결 금지. 역할 추정 9개 근거 추가 필요 |
 | T-118 | 검토 실행을 Service Bus + 별도 워커 파드로 이전 | 대기 | backend-architect | review-runs | 요구사항 NFR-6, infra 리소스 확정 후 |
 | T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |

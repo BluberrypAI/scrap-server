@@ -73,7 +73,8 @@ async def test_model_failure_cannot_offer_and_can_retry(setup_flow, monkeypatch)
     available = True
     lot = (await req("A", f"/lots/{lot['id']}/candidates", body)).json()
     assert all(r["status"] == "needs_evidence" for r in lot["review"]["results"].values())
-    assert calls == [3, 3]
+    assert calls == [len(lot["review"]["results"])] * 2
+    assert calls[0] >= 6
 
 
 @pytest.fixture
@@ -560,12 +561,12 @@ async def test_pe_film_shredded_output_is_not_final(setup_flow, db):
     ).status_code == 409
     lot = (await req("B", f"/lots/{lot['id']}/candidates", {"revision": lot["revision"]})).json()
     options = {o["transition_key"] for o in lot["review"]["next_step"]["options"]}
-    assert options == {"pe-clean"}
+    assert options == {"pe-clean", "pe-shredded-to-pellet"}
 
 
 @pytest.mark.parametrize(
     "material, code, form",
-    [("pet", "51-03-01", "bottle"), ("pp", "51-03-01", "film"), ("pe", "51-03-01", "scrap")],
+    [("pvc", "51-03-01", "wallpaper"), ("eps", "51-03-01", "ingot"), ("pa66", "51-03-08", "net")],
 )
 async def test_unsupported_material_form_is_rejected(setup_flow, db, material, code, form):
     req, _, actors, _ = setup_flow

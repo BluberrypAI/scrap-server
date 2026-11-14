@@ -152,6 +152,294 @@
           "reason": "공개된 공장 간 공급망의 범위 확인; 외부 물량 수용 미확인"
         }
       ]
+    },
+    "daewoon-naju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "대운프라스틱 나주 사업장은 PP·PE 폐플라스틱 스크랩·경질 제품·폐비닐을 선별·분쇄·세척·건조·용융압출·냉각절단하여 재생 펠릿으로 만드는 공정을 공개한다. PE 파이프·생활용품, PP 보빈·생활용품 원료를 소개한다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "daewoon-production",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "PP/PE가 재질별로 분리되어 있고 발생 제품·색상을 설명할 수 있나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "daewoon-production"
+        }
+      ]
+    },
+    "youngshin-naju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "영신케미칼 나주 사업장은 PP·PE 폐플라스틱 스크랩·폐비닐을 선별·분쇄·세척·건조·용융압출·냉각절단하여 재생 펠릿을 생산하는 공정을 공개한다. PP·PE·PPC 제품이 안내되어 있다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "youngshin-production",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "비닐과 경질 제품의 수지 종류·색상·이물을 구분했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "youngshin-production"
+        }
+      ]
+    },
+    "greenpol-cheonan": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "그린폴 천안 공장은 분쇄품 건조기·분쇄기·자석 및 와류 선별기·압출기·컴파운딩 라인을 공개한다. 자체 시편으로 물성시험을 수행한다. 투입 분쇄품의 수지·첨가제·물성은 사전 확인이 필요하다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "greenpol-production",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "분쇄 원료의 수지 등급·수분·충전재·용융지수 자료가 있나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "greenpol-production"
+        }
+      ]
+    },
+    "yuil-yangsan": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "유일산업은 수거한 PET병을 선별·분쇄·세척·건조해 재생 PET 플레이크로 만드는 공정을 공개한다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "yuil-pet",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "PET병의 색상·라벨·다른 수지 혼입 상태를 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "yuil-pet"
+        }
+      ]
+    },
+    "yuil-busan": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "유일산업은 수거한 PET병을 선별·분쇄·세척·건조해 재생 PET 플레이크로 만드는 공정을 공개한다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "yuil-pet",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "PET병의 색상·라벨·다른 수지 혼입 상태를 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "yuil-pet"
+        }
+      ]
+    },
+    "sungji-hwaseong": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "성지 화성 사업장은 PVC 벽지를 분리하여 PVC 페이스트 원료와 종이 분말을 재생하는 제조상품을 소개한다. 장판 스크랩 원료도 소개하지만 이번 연결은 벽지 잔재만 대상으로 한다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "sungji-pvc",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "PVC 벽지 잔재인지, 접착제·종이·다른 수지가 함께 있는지 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "sungji-pvc"
+        }
+      ]
+    },
+    "ecops-yeongcheon": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "에코피에스 영천 공장은 열압축된 EPS 인고트를 외부에서 받아 검수·분쇄·용융압출·절단·냉각하여 PS 펠릿을 생산한다. 아직 감용되지 않은 스티로폼을 받는다는 근거는 아니다. 공개 펠릿 물성은 반입 원료 허용 기준이 아니다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "ecops-ingot",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "EPS가 이미 감용된 인고트이며 이물·압축 상태를 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "ecops-ingot"
+        }
+      ]
+    },
+    "pne-eumseong": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "피앤이환경 음성 사업장은 일반 폐합성수지 PE·PP·PS를 용융압출하여 재생원료를 생산하는 수지 사업부를 소개한다. 폐광케이블·폐전선과 지정폐기물 사업은 이 일반수지 연결에 포함하지 않는다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "pne-resin",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "일반 PP·PE·PS 수지인지, 기름함유 전선·케이블이 섞이지 않았는지 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "pne-resin"
+        }
+      ]
+    },
+    "netspa-busan": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "넷스파는 PA6 폐어망에서 회수한 재생 나일론 원료를 수지·섬유·산업재에 공급하는 사업을 공개한다. 부산 생곡산단 본사를 안내한다. 어망이 아닌 PA66·혼합 플라스틱 부품으로 확대하지 않는다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "netspa-nylon",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "폐어망이 PA6이며 부착물·염분·다른 어망 재질을 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "netspa-nylon"
+        }
+      ]
+    },
+    "hrm-cheongju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "HRM 청주 자원순환센터는 투명 PET병 수집·운반과 압축 베일 물량 대응을 공개한다. 그 밖의 품목은 사전 협의 대상이다. 펠릿 생산 근거는 아니다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "hrm-pet-collection",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "투명 PET병 여부와 발생량·보관 방식·수거 지역을 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "hrm-pet-collection"
+        }
+      ]
+    },
+    "veolia-dh-yongin": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "베올리아는 경기도 용인의 디에이치 리사이클링에서 가정용 플라스틱 PE·PP·PET·PS를 유형별 선별하여 압축 베일로 전처리한다고 공개한다. 상세 도로명 주소·외부 사업장 물량 반입은 미확인이다. 화성의 동명 명부 업체와 연결하지 않는다.",
+          "source_id": "veolia-dh-sorting",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "가정 회수 포장재인지 사업장 잔재인지, 실제 반입 주소를 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "veolia-dh-sorting"
+        }
+      ]
+    },
+    "changmaec-seongju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "창맥 성주 공장은 분쇄된 폐플라스틱 원료를 수거하여 건조·1차 압출·컴파운딩·펠릿화하는 과정을 공개한다. 제품에는 ABS·PP·HIPS·PA66·PC/ABS가 있다. 현재 경질 폐제품 자체의 파쇄·세척 수탁이나 각 등급의 혼합 허용은 미확인이다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "changmaec-process",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "분쇄 원료의 수지 등급·난연제·충전재와 요구 물성 자료가 있나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "changmaec-process"
+        }
+      ]
     }
   }
 }

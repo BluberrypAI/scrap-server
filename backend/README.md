@@ -171,6 +171,8 @@ FRONTEND_URL=http://localhost:5173
 | 로그인했는데 프론트에서 계속 401 | 브라우저 주소와 `FRONTEND_URL`의 호스트가 다름 (`localhost` ↔ `127.0.0.1`) |
 ## SCRAP 처리경로와 전국 명부
 
+2026-11-14 참조는 29개 사업장·68개 공정 연결입니다. 공개 사업장 공정에 근거한 연결 47개와 역할 확인이 필요한 21개를 구분합니다. 소재·형태별 조회와 합성 기업 인계 검증은 [확장 기록](../docs/plastic-facility-expansion.md)을 참고하세요. 문진 엔진의 신규 소재 분류 지원을 뜻하지 않습니다.
+
 마이그레이션 후 `backend/`에서 `uv run python -m app.domains.treatment.import_catalog`를 실행해 공정 참조 데이터를 적재합니다.
 
 전국 명부는 [공공데이터포털 원본](https://www.data.go.kr/data/15114147/standard.do)의 JSON 배열을 사용합니다. 기록된 스냅샷은 2026-10-21 수집본 9,604행입니다. 새 스냅샷에는 해당 파일의 확인된 SHA-256을 지정합니다.

@@ -1,0 +1,1938 @@
+{
+  "checked_on": "2026-11-14",
+  "scope": "Curated research candidates; not verified current permits or acceptance",
+  "counts": {
+    "facilities": 29,
+    "capabilities": 68,
+    "capability_evidence": {
+      "published_site_process": 47,
+      "site_role_hypothesis": 21
+    },
+    "transitions": 45,
+    "sources": 53,
+    "plastic_input_combinations": 47,
+    "query_statuses": {
+      "candidates": 44,
+      "no_route": 3
+    }
+  },
+  "rows": [
+    {
+      "material": "abs",
+      "form": "flake",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "changmaec-seongju",
+          "label": "창맥 성주 공장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "abs-pelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-hwaseong",
+          "label": "씨엔텍코리아 화성 본점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": false,
+          "transitions": [
+            "abs-pelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-jinju",
+          "label": "씨엔텍코리아 진주지점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "abs-pelletise"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "abs",
+      "form": "rigid",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "cntk-hwaseong",
+          "label": "씨엔텍코리아 화성 본점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": false,
+          "transitions": [
+            "abs-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-jinju",
+          "label": "씨엔텍코리아 진주지점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "abs-prepare"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "abs",
+      "form": "scrap",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "cntk-hwaseong",
+          "label": "씨엔텍코리아 화성 본점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": false,
+          "transitions": [
+            "abs-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-jinju",
+          "label": "씨엔텍코리아 진주지점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "abs-prepare"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "abs",
+      "form": "shredded",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "changmaec-seongju",
+          "label": "창맥 성주 공장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "abs-pelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-hwaseong",
+          "label": "씨엔텍코리아 화성 본점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": false,
+          "transitions": [
+            "abs-pelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-jinju",
+          "label": "씨엔텍코리아 진주지점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "abs-pelletise"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "eps",
+      "form": "ingot",
+      "code": "51-03-06",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "ecops-yeongcheon",
+          "label": "에코피에스 영천 공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "eps-ingot-pelletise"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pa6",
+      "form": "net",
+      "code": "51-03-08",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "netspa-busan",
+          "label": "넷스파 부산 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pa6-net-recovery"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pa66",
+      "form": "flake",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "changmaec-seongju",
+          "label": "창맥 성주 공장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pa66-compound"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "pa66",
+      "form": "shredded",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "changmaec-seongju",
+          "label": "창맥 성주 공장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pa66-compound"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "pcabs",
+      "form": "flake",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "changmaec-seongju",
+          "label": "창맥 성주 공장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pcabs-compound"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "pcabs",
+      "form": "shredded",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "changmaec-seongju",
+          "label": "창맥 성주 공장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pcabs-compound"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "pe",
+      "form": "bale",
+      "code": "51-03-01",
+      "status": "no_route",
+      "sites": []
+    },
+    {
+      "material": "pe",
+      "form": "bale",
+      "code": "51-03-07",
+      "status": "no_route",
+      "sites": []
+    },
+    {
+      "material": "pe",
+      "form": "film",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "jungang-gongju",
+          "label": "중앙이엔비 공주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daewoon-naju",
+          "label": "대운프라스틱 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "youngshin-naju",
+          "label": "영신케미칼 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pe",
+      "form": "film",
+      "code": "51-03-07",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "jungang-gongju",
+          "label": "중앙이엔비 공주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daewoon-naju",
+          "label": "대운프라스틱 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "youngshin-naju",
+          "label": "영신케미칼 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pe",
+      "form": "flake",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-clean"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-shredded-to-pellet"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "pne-eumseong",
+          "label": "피앤이환경 음성 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-shredded-to-pellet"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "pe",
+      "form": "pellet",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "bgf-hwaseong",
+          "label": "BGF에코사이클 컴파운드사업장",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-compound"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "pe",
+      "form": "rigid",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "jungang-gongju",
+          "label": "중앙이엔비 공주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daewoon-naju",
+          "label": "대운프라스틱 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "youngshin-naju",
+          "label": "영신케미칼 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pe",
+      "form": "rigid",
+      "code": "51-03-07",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "jungang-gongju",
+          "label": "중앙이엔비 공주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daewoon-naju",
+          "label": "대운프라스틱 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "youngshin-naju",
+          "label": "영신케미칼 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pe",
+      "form": "scrap",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "jungang-gongju",
+          "label": "중앙이엔비 공주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daewoon-naju",
+          "label": "대운프라스틱 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "youngshin-naju",
+          "label": "영신케미칼 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pe",
+      "form": "scrap",
+      "code": "51-03-07",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "jungang-gongju",
+          "label": "중앙이엔비 공주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daewoon-naju",
+          "label": "대운프라스틱 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "youngshin-naju",
+          "label": "영신케미칼 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pe",
+      "form": "shredded",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pe-clean"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-shredded-to-pellet"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "pne-eumseong",
+          "label": "피앤이환경 음성 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pe-shredded-to-pellet"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "pet",
+      "form": "bale",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "rm-hwaseong",
+          "label": "알엠 화성공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pet-bale-to-flake"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "superbin-hwaseong",
+          "label": "수퍼빈 아이엠팩토리 화성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pet-bale-to-flake"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "samyang-sihwa",
+          "label": "삼양에코테크 시화공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pet-bottle-to-flake",
+            "pet-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "yuil-busan",
+          "label": "유일산업 부산지사",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pet-bottle-to-flake"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "yuil-yangsan",
+          "label": "유일산업 양산 본사",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pet-bottle-to-flake"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "pet",
+      "form": "bale",
+      "code": "51-03-07",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "rm-hwaseong",
+          "label": "알엠 화성공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pet-bale-to-flake"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "superbin-hwaseong",
+          "label": "수퍼빈 아이엠팩토리 화성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pet-bale-to-flake"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "samyang-sihwa",
+          "label": "삼양에코테크 시화공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pet-bottle-to-flake",
+            "pet-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "yuil-busan",
+          "label": "유일산업 부산지사",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pet-bottle-to-flake"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "yuil-yangsan",
+          "label": "유일산업 양산 본사",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pet-bottle-to-flake"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "pet",
+      "form": "bottle",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "samyang-sihwa",
+          "label": "삼양에코테크 시화공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pet-bottle-to-flake",
+            "pet-prepare"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "yuil-busan",
+          "label": "유일산업 부산지사",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pet-bottle-to-flake"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "yuil-yangsan",
+          "label": "유일산업 양산 본사",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pet-bottle-to-flake"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "hrm-cheongju",
+          "label": "HRM 청주 자원순환센터",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pet-sort-bale"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pet-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pet",
+      "form": "bottle",
+      "code": "51-03-07",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "samyang-sihwa",
+          "label": "삼양에코테크 시화공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pet-bottle-to-flake",
+            "pet-prepare"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "yuil-busan",
+          "label": "유일산업 부산지사",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pet-bottle-to-flake"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "yuil-yangsan",
+          "label": "유일산업 양산 본사",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pet-bottle-to-flake"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "hrm-cheongju",
+          "label": "HRM 청주 자원순환센터",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pet-sort-bale"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pet-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pet",
+      "form": "flake",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "superbin-sunchang",
+          "label": "수퍼빈 아이엠팩토리 순창",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pet-pelletise"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pet-pelletise"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "pp",
+      "form": "bale",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-bale-to-pellet"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pp",
+      "form": "bale",
+      "code": "51-03-07",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-bale-to-pellet"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pp",
+      "form": "film",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "jungang-gongju",
+          "label": "중앙이엔비 공주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daewoon-naju",
+          "label": "대운프라스틱 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "youngshin-naju",
+          "label": "영신케미칼 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pp",
+      "form": "film",
+      "code": "51-03-07",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "jungang-gongju",
+          "label": "중앙이엔비 공주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daewoon-naju",
+          "label": "대운프라스틱 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "youngshin-naju",
+          "label": "영신케미칼 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pp",
+      "form": "flake",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-clean"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "changmaec-seongju",
+          "label": "창맥 성주 공장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-shredded-to-pellet"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-shredded-to-pellet"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "pne-eumseong",
+          "label": "피앤이환경 음성 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-shredded-to-pellet"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-shredded-to-pellet"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pp",
+      "form": "pellet",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "veolia-dspl-hwaseong",
+          "label": "DSPL 화성",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-compound"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "bgf-hwaseong",
+          "label": "BGF에코사이클 컴파운드사업장",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-compound"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "pp",
+      "form": "rigid",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "jungang-gongju",
+          "label": "중앙이엔비 공주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daewoon-naju",
+          "label": "대운프라스틱 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "youngshin-naju",
+          "label": "영신케미칼 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pp",
+      "form": "rigid",
+      "code": "51-03-07",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "jungang-gongju",
+          "label": "중앙이엔비 공주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daewoon-naju",
+          "label": "대운프라스틱 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "youngshin-naju",
+          "label": "영신케미칼 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pp",
+      "form": "scrap",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "jungang-gongju",
+          "label": "중앙이엔비 공주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daewoon-naju",
+          "label": "대운프라스틱 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "youngshin-naju",
+          "label": "영신케미칼 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pp",
+      "form": "scrap",
+      "code": "51-03-07",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "jungang-gongju",
+          "label": "중앙이엔비 공주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "daewoon-naju",
+          "label": "대운프라스틱 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "youngshin-naju",
+          "label": "영신케미칼 나주 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-scrap-to-pellet"
+          ],
+          "public_input_form_example": true
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "pp",
+      "form": "shredded",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-clean"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "changmaec-seongju",
+          "label": "창맥 성주 공장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-shredded-to-pellet"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-shredded-to-pellet"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "pne-eumseong",
+          "label": "피앤이환경 음성 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "pp-shredded-to-pellet"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pp-shredded-to-pellet"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "ps",
+      "form": "bale",
+      "code": "51-03-01",
+      "status": "no_route",
+      "sites": []
+    },
+    {
+      "material": "ps",
+      "form": "flake",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "changmaec-seongju",
+          "label": "창맥 성주 공장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "ps-pelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "pne-eumseong",
+          "label": "피앤이환경 음성 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "ps-pelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-hwaseong",
+          "label": "씨엔텍코리아 화성 본점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": false,
+          "transitions": [
+            "ps-pelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-jinju",
+          "label": "씨엔텍코리아 진주지점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "ps-pelletise"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "ps",
+      "form": "rigid",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "cntk-hwaseong",
+          "label": "씨엔텍코리아 화성 본점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": false,
+          "transitions": [
+            "ps-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-jinju",
+          "label": "씨엔텍코리아 진주지점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "ps-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "ps-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "ps",
+      "form": "scrap",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "cntk-hwaseong",
+          "label": "씨엔텍코리아 화성 본점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": false,
+          "transitions": [
+            "ps-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-jinju",
+          "label": "씨엔텍코리아 진주지점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "ps-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "ps-sort-bale"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "ps",
+      "form": "shredded",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "changmaec-seongju",
+          "label": "창맥 성주 공장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "ps-pelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "pne-eumseong",
+          "label": "피앤이환경 음성 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "ps-pelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-hwaseong",
+          "label": "씨엔텍코리아 화성 본점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": false,
+          "transitions": [
+            "ps-pelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-jinju",
+          "label": "씨엔텍코리아 진주지점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "ps-pelletise"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "pvc",
+      "form": "wallpaper",
+      "code": "51-03-03",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "sungji-hwaseong",
+          "label": "성지 화성 사업장",
+          "basis": "published_site_process",
+          "has_coordinates": true,
+          "transitions": [
+            "pvc-wallpaper-recovery"
+          ],
+          "public_input_form_example": true
+        }
+      ]
+    },
+    {
+      "material": "san",
+      "form": "flake",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "cntk-hwaseong",
+          "label": "씨엔텍코리아 화성 본점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": false,
+          "transitions": [
+            "san-pelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-jinju",
+          "label": "씨엔텍코리아 진주지점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "san-pelletise"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "san",
+      "form": "rigid",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "cntk-hwaseong",
+          "label": "씨엔텍코리아 화성 본점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": false,
+          "transitions": [
+            "san-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-jinju",
+          "label": "씨엔텍코리아 진주지점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "san-prepare"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "san",
+      "form": "scrap",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "cntk-hwaseong",
+          "label": "씨엔텍코리아 화성 본점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": false,
+          "transitions": [
+            "san-prepare"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-jinju",
+          "label": "씨엔텍코리아 진주지점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "san-prepare"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "san",
+      "form": "shredded",
+      "code": "51-03-01",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "cntk-hwaseong",
+          "label": "씨엔텍코리아 화성 본점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": false,
+          "transitions": [
+            "san-pelletise"
+          ],
+          "public_input_form_example": false
+        },
+        {
+          "facility_key": "cntk-jinju",
+          "label": "씨엔텍코리아 진주지점",
+          "basis": "site_role_hypothesis",
+          "has_coordinates": true,
+          "transitions": [
+            "san-pelletise"
+          ],
+          "public_input_form_example": false
+        }
+      ]
+    }
+  ]
+}

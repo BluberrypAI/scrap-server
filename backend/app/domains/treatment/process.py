@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from app.domains.treatment.classification import INITIAL_PROFILES
 from app.domains.treatment.directory import load_codebook, straight_line_km
 from app.domains.treatment.errors import TreatmentError
+from app.domains.treatment.material_scope import FORM_CODES
 from app.domains.treatment.reference import normalize_label, resolve_material
 from app.domains.treatment.schemas import NextStepRequest, NextStepResponse, RecyclingTypes
 
@@ -21,6 +22,9 @@ FORM_ALIASES = {
     "shredded": ["파쇄품", "파쇄물"],
     "pellet": ["펠렛", "펠릿"],
     "can": ["캔", "음료캔", "사용후음료캔", "ubc"],
+    "wallpaper": ["벽지", "pvc벽지", "실크벽지"],
+    "ingot": ["인고트", "감용인고트", "eps인고트"],
+    "net": ["어망", "폐어망"],
     "cardboard": ["골판지", "폐골판지"],
     "recovered_paper": ["폐지", "고지"],
 }
@@ -44,14 +48,17 @@ class Enumeration:
     depth_limited: bool = False
 
 
-def enumerate_paths(value, material, input_form, goal_state, max_steps, *, start_state=None):
+def enumerate_paths(
+    value, material, input_form, goal_state, max_steps, *, start_state=None, bind_facilities=True
+):
     """Deterministic bounded DFS; outputs can be intermediate states, not only sinks."""
     states = {s.key: s for s in value.states}
     adjacency, bindings = {}, {}
     for transition in sorted(value.transitions, key=lambda t: t.key):
         adjacency.setdefault(transition.input_state, []).append(transition)
-    for capability in sorted(value.capabilities, key=lambda c: c.key):
-        bindings.setdefault(capability.transition, []).append(capability)
+    if bind_facilities:
+        for capability in sorted(value.capabilities, key=lambda c: c.key):
+            bindings.setdefault(capability.transition, []).append(capability)
     starts = sorted(
         s.key
         for s in value.states
@@ -120,6 +127,10 @@ ENTRY_FORMS = {
     },
     "51-29-03": {"aluminium": {"can"}},
 }
+# This is a query compatibility table; it never classifies a waste lot.
+for (_material, _form), _codes in FORM_CODES.items():
+    for _code in _codes:
+        ENTRY_FORMS.setdefault(_code, {}).setdefault(_material, set()).add(_form)
 
 # Search hints for the documented outputs. A matching type still needs a site-level check.
 PP_SEARCH_TYPES = {
@@ -128,6 +139,9 @@ PP_SEARCH_TYPES = {
     "pp-pelletise": ("R-3-3", "R-10"),
     "pp-shredded-to-pellet": ("R-3-3", "R-10"),
     "pp-compound": ("R-3-3", "R-4-4", "R-10"),
+    "pp-sort-bale": ("R-10",),
+    "pp-bale-to-pellet": ("R-3-3", "R-10"),
+    "pp-scrap-to-pellet": ("R-3-3", "R-10"),
 }
 
 
@@ -230,8 +244,8 @@ def next_step(request: NextStepRequest, reference_data) -> NextStepResponse:
                 **base,
                 status="unsupported",
                 message=(
-                    "새 로트의 지원 범위는 PP 사출 잔재·파쇄품, "
-                    "PE 필름, PET병, 알루미늄 음료캔입니다."
+                    "이 재질·현재 형태·분류번호에 맞는 공개 공정 자료가 아직 없습니다. "
+                    "다른 형태나 일반 플라스틱으로 대신 연결하지 않습니다."
                 ),
             )
     if form not in materials.get(material, set()) or material not in row["query_materials"]:
@@ -284,7 +298,13 @@ def next_step(request: NextStepRequest, reference_data) -> NextStepResponse:
 
         def paths_from(state):
             result, _ = enumerate_paths(
-                value, material, form, None, 8, start_state=state.key if state else None
+                value,
+                material,
+                form,
+                None,
+                8,
+                start_state=state.key if state else None,
+                bind_facilities=False,
             )
             if result.budget_exhausted or result.depth_limited:
                 raise TreatmentError("next-step-limit", "공정 탐색 한도를 초과했습니다.")
@@ -299,6 +319,7 @@ def next_step(request: NextStepRequest, reference_data) -> NextStepResponse:
             observed_state=current_state,
             initial_form=form if not completed else None,
             recycling_types=request.recycling_types if not completed else None,
+            bind_current=True,
         )
         if request.preview_transition is None:
             return current
@@ -322,6 +343,7 @@ def next_step(request: NextStepRequest, reference_data) -> NextStepResponse:
             {**metadata, "basis": "expected_output"},
             request.origin,
             observed_state=expected,
+            bind_current=True,
         )
 
     return project(reference_data)
@@ -337,6 +359,7 @@ def project_next_step(
     observed_state=None,
     initial_form=None,
     recycling_types=None,
+    bind_current=False,
 ):
     states = {state.key: state for state in value.states}
     facilities = {facility.key: facility for facility in value.facilities}
@@ -360,7 +383,30 @@ def project_next_step(
     current = {observed_state.key} if observed_state else set()
     previews = {}
     index = len(completed)
-    for path in paths:
+
+    # Bind ONLY the next edge. Future facility combinations are neither choices
+    # made by A nor necessary to determine B; enumerating their product can hide B.
+    def immediate_paths():
+        for path in paths:
+            if not bind_current or len(path) <= index:
+                yield path
+                continue
+            transition = path[index][0]
+            forms = (
+                {initial_form}
+                if initial_form
+                else set((observed_state or states[transition.input_state]).input_forms)
+            )
+            caps = [
+                c
+                for c in value.capabilities
+                if c.transition == transition.key
+                and (c.initial_input_forms is None or forms.intersection(c.initial_input_forms))
+            ]
+            for cap in caps or [None]:
+                yield (*path[:index], (transition, cap), *path[index + 1 :])
+
+    for path in immediate_paths():
         if [transition.key for transition, _ in path[:index]] != completed:
             continue
         current.add(path[index - 1][0].output_state if index else path[0][0].input_state)
@@ -435,14 +481,14 @@ def project_next_step(
     preview_keys = sorted(previews, key=lambda keys: (-len(keys), keys))
     prefixes = {keys[:length] for keys in previews for length in range(1, len(keys))}
     full_previews = [previews[keys] for keys in preview_keys if keys not in prefixes][:8]
-    if items:
+    if any(option["facilities"] for option in items):
         status, message = "candidates", "현재 상태에서 바로 이어지는 공정의 조사 후보입니다."
         if observed_state:
             message = "기록된 산출물로 찾은 후보입니다. 순도와 중량은 업체에 확인하세요."
     elif can_finish:
         status, message = "end_of_route", "현재 공정 자료에 등록된 마지막 산출 상태입니다."
     else:
-        status, message = "no_route", "입력 상태에서 이어지는 검수된 경로를 찾지 못했습니다."
+        status, message = "no_route", "현재 형태에서 바로 받을 사업장의 공정 근거가 없습니다."
     return NextStepResponse(
         **base,
         status=status,

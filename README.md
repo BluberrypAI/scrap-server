@@ -1,5 +1,7 @@
 # SCRAP
 
+> **2026-11-14 플라스틱 업체 확장:** 공정 참조를 15곳·29개 연결에서 **29곳·68개 연결**로 확장했습니다. PP·PE·PET와 ABS·PS·SAN·PVC·EPS·PA6·PA66·PC/ABS는 확인된 형태부터 다음 업체를 조회합니다. 47개 입력 조합 중 44개에 조사 후보가 있고 3개는 보류입니다. 9,604행 전체의 처리 능력을 검증한 것은 아닙니다. [어느 업체가 연결됐고 무엇이 남았는지](docs/plastic-facility-expansion.md)를 참고하세요. 반영하려면 `backend/`에서 `uv run python -m app.domains.treatment.import_catalog`로 DB 참조를 갱신해야 합니다.
+
 > **이번 통합 브랜치의 PP 검증:** 문진 확정 → 상태·사진 → 업체 AI 검토 → 수신 기업 수락 → QR 입고 → 실제 산출물 → 다음 인계/완료를 연결했습니다. 별도 가상 기업 계정으로 A→B와 A→B→C를 웹에서 완료했습니다. 기존 본문의 단계 표는 팀 계획이며 이번 구현 범위·실제 검증·미확인 항목은 [PP 기업별 검증 기록](docs/pp-company-e2e.md)과 [구현 명세](docs/specs/pp-company-workflow.md)를 참고하세요.
 
 > 버려지는 자원을 연결하고 앝태한다

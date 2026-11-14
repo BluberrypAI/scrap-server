@@ -1,0 +1,163 @@
+{
+  "checked_on": "2026-11-14",
+  "registry_source": "https://www.data.go.kr/data/15114147/standard.do",
+  "registry_sha256": "b083ea497c37bb11bd9374fc0a5b0850b989d290dbdba9d4a713fef353e79c08",
+  "rows": [
+    {
+      "facility_key": "daewoon-naju",
+      "official_address": "전라남도 나주시 동수농공단지길 100-23",
+      "registry_name": "대운프라스틱㈜",
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "youngshin-naju",
+      "official_address": "전라남도 나주시 동수농공단지길 75",
+      "registry_name": "영신케미칼㈜",
+      "status": "exact_site_match",
+      "reason": "사업장명과 주소 토큰을 함께 수동 대조",
+      "registry_rows": [
+        {
+          "source_row": 738,
+          "name": "영신케미칼㈜",
+          "address": "전라남도 나주시 동수농공단지길 75",
+          "waste_codes": "51-20-21",
+          "as_of": "2026-06-29",
+          "equipment": "용융시설, 성형시설, 절단시설 등"
+        }
+      ]
+    },
+    {
+      "facility_key": "greenpol-cheonan",
+      "official_address": "충청남도 천안시 동남구 수신면 백자1길 29",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "cntk-hwaseong",
+      "official_address": "경기도 화성시 우정읍 매바위로237번길 86-25",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "cntk-jinju",
+      "official_address": "경상남도 진주시 사봉면 산업단지로 92",
+      "registry_name": "㈜씨엔텍코리아-진주",
+      "status": "exact_site_match",
+      "reason": "사업장명과 주소 토큰을 함께 수동 대조",
+      "registry_rows": [
+        {
+          "source_row": 493,
+          "name": "㈜씨엔텍코리아-진주",
+          "address": "경상남도 진주시 사봉면 산업단지로 92",
+          "waste_codes": "51-03-01+51-18-01",
+          "as_of": "2026-08-29",
+          "equipment": ""
+        }
+      ]
+    },
+    {
+      "facility_key": "sungji-hwaseong",
+      "official_address": "경기도 화성시 양감면 송산리 284",
+      "registry_name": "(주)성지",
+      "status": "exact_site_match",
+      "reason": "사업장명과 주소 토큰을 함께 수동 대조",
+      "registry_rows": [
+        {
+          "source_row": 3635,
+          "name": "(주)성지",
+          "address": "경기도 화성시 만세구 양감면 송산리 284",
+          "waste_codes": "51-01-00+51-02-00+51-03-00+51-04-00+51-05-00+51-06-00+51-07-00+51-08-00+51-09-00+51-10-00+51-11-00",
+          "as_of": "2026-02-27",
+          "equipment": ""
+        },
+        {
+          "source_row": 4248,
+          "name": "(주)성지",
+          "address": "경기도 화성시 만세구 양감면 송산리 284",
+          "waste_codes": "51-03-01+51-28-03+51-03-03+51-28-02",
+          "as_of": "2026-02-27",
+          "equipment": ""
+        }
+      ]
+    },
+    {
+      "facility_key": "yuil-yangsan",
+      "official_address": "경상남도 양산시 유산공단4길 94",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "yuil-busan",
+      "official_address": "부산광역시 강서구 생곡산단1로 19",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "ecops-yeongcheon",
+      "official_address": "경상북도 영천시 신녕면 장수로 1446-23",
+      "registry_name": "에코피에스",
+      "status": "exact_site_match",
+      "reason": "사업장명과 주소 토큰을 함께 수동 대조",
+      "registry_rows": [
+        {
+          "source_row": 5558,
+          "name": "에코피에스",
+          "address": "경상북도 영천시 신녕면 장수로 1446-23",
+          "waste_codes": "51-03-06",
+          "as_of": "2025-08-14",
+          "equipment": ""
+        }
+      ]
+    },
+    {
+      "facility_key": "pne-eumseong",
+      "official_address": "충청북도 음성군 생극면 오신로 398",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "netspa-busan",
+      "official_address": "부산광역시 강서구 생곡산단로61번길 13",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "hrm-cheongju",
+      "official_address": "충청북도 청주시 청원구 북이면 장양길 88-18",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "veolia-dh-yongin",
+      "official_address": null,
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "changmaec-seongju",
+      "official_address": "경상북도 성주군 선남면 선노로 55-36",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "동명이인·주소 불일치·미등재는 자동 연결하지 않음",
+      "registry_rows": []
+    }
+  ]
+}

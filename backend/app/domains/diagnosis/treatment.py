@@ -9,20 +9,13 @@ from app.core.config import get_settings
 from app.domains.companies.models import Company
 from app.domains.diagnosis.client import EngineUnavailableError
 from app.domains.diagnosis.schemas import TreatmentContextRead, TreatmentSelectionIn
-from app.domains.treatment.classification import PROFILES
+from app.domains.treatment.classification import INITIAL_PROFILES
 from app.domains.treatment.intake import IntakeSelection, build_intake_batch, review_intakes
+from app.domains.treatment.material_scope import FORM_LABELS
 from app.domains.treatment.process import next_step, normalize_form
 from app.domains.treatment.reference import resolve_material
 from app.domains.treatment.repository import read_reference
 from app.domains.treatment.schemas import HandoffVerification, NextStepRequest
-
-FORM_LABELS = {
-    "scrap": "사출 제조 잔재·스크랩",
-    "shredded": "파쇄품",
-    "film": "폐필름",
-    "bottle": "사용 후 PET병",
-    "can": "사용 후 알루미늄 음료캔",
-}
 
 
 def context_from_handoff(detail, case_id, selection, company):
@@ -68,7 +61,9 @@ def context_from_handoff(detail, case_id, selection, company):
         )
     state = (facts.get("physical_state") or {}).get("value")
     code = h.get("waste_code")
-    profiles = [p for p in PROFILES.values() if p.material == material and code in p.waste_codes]
+    profiles = [
+        p for p in INITIAL_PROFILES.values() if p.material == material and code in p.waste_codes
+    ]
     if not profiles:
         context.status = "unsupported"
         context.message = "이 분류번호·재질의 검수된 첫 공정 자료가 아직 없습니다."

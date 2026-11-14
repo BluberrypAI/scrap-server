@@ -45,7 +45,15 @@ def detail():
 def test_form_is_not_invented_and_warnings_survive():
     result = context_from_handoff(detail(), "C1", TreatmentSelectionIn(), COMPANY)
     assert result.status == "needs_input"
-    assert {x["value"] for x in result.available_forms} == {"scrap", "shredded"}
+    assert {x["value"] for x in result.available_forms} == {
+        "scrap",
+        "rigid",
+        "film",
+        "bale",
+        "shredded",
+        "flake",
+        "pellet",
+    }
     assert result.handoff["review"] == "UNVERIFIED"
     assert any("R코드" in x for x in result.warnings)
     assert result.route_input is None

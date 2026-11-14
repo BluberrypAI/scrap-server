@@ -4,6 +4,7 @@ import hashlib
 from copy import deepcopy
 from functools import lru_cache
 
+from app.domains.treatment.material_scope import PLASTICS
 from app.domains.treatment.reference import read_bundle
 
 
@@ -39,7 +40,11 @@ def questionnaire(reference, facility_key, material, *, ai_review=None, director
                 "checked_at": profile.get("checked_at"),
             }
         )
-    caps = [c for c in reference.capabilities if c.facility == facility_key]
+    caps = [
+        c
+        for c in reference.capabilities
+        if c.facility == facility_key and material in c.input_profile.material_examples
+    ]
     if not facts:
         for cap in caps[:1]:
             p = cap.input_profile
@@ -67,12 +72,23 @@ def questionnaire(reference, facility_key, material, *, ai_review=None, director
         ),
         question("shipment_date", "반출 희망일 또는 가능한 기간을 알려 주세요."),
     ]
-    if material in {"pp", "pe", "pet"}:
+    if material in PLASTICS:
         qs.append(
             question(
                 "moisture",
                 "세척 후 수분이나 젖은 부분이 남아 있나요?",
                 ["건조됨", "젖어 있음", "모름"],
+            )
+        )
+    if material in {"pe", "ps", "abs", "san", "pvc", "eps", "pa6", "pa66", "pcabs"}:
+        qs.append(
+            question(
+                "resin_grade",
+                "수지 세부 등급·첨가제·충전재 정보를 알고 있나요?",
+                ["자료 있음", "자료 없음", "모름"],
+                reason=(
+                    "PE의 밀도 등급, PS의 발포 여부, 난연제·충전재 등은 재질명만으로 확인되지 않음"
+                ),
             )
         )
     if material == "aluminium":

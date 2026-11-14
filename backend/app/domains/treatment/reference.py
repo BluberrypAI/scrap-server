@@ -16,6 +16,14 @@ MATERIAL_ALIASES = {
     "paper": ["paper", "종이", "종이류", "폐지"],
     "pp": ["pp", "polypropylene", "폴리프로필렌"],
     "pe": ["pe", "polyethylene", "폴리에틸렌", "hdpe", "ldpe", "lldpe"],
+    "abs": ["abs", "아크릴로니트릴부타디엔스티렌"],
+    "ps": ["ps", "polystyrene", "폴리스티렌", "hips", "gpps"],
+    "san": ["san", "as", "styrene acrylonitrile"],
+    "pvc": ["pvc", "polyvinyl chloride", "폴리염화비닐", "염화비닐"],
+    "eps": ["eps", "expanded polystyrene", "발포폴리스티렌", "스티로폼"],
+    "pa6": ["pa6", "pa 6", "nylon 6", "나일론6"],
+    "pa66": ["pa66", "pa 66", "nylon 66", "나일론66"],
+    "pcabs": ["pc/abs", "pc-abs", "pc abs", "pcabs"],
 }
 
 
@@ -79,7 +87,8 @@ SupportTargets = Annotated[list[SupportKey], Field(min_length=1)]
 class SourceRecord(Record):
     """Curator-declared linkage scope, not an audit of the source's contents."""
 
-    url: str = Field(pattern=r"^https://")
+    # Citation metadata only; this field never triggers an HTTP fetch.
+    url: str = Field(pattern=r"^https?://")
     publisher: str = Field(min_length=1)
     locator: str = Field(min_length=1)
     summary: str = Field(min_length=1)

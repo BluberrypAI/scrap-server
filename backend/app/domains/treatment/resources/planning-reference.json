@@ -1,6 +1,6 @@
 {
   "version": "planning-reference-v2",
-  "scope": "source-backed-research-transitions; not validated operating routes",
+  "scope": "국내 공개 공정·사업장 조사 후보. 명부는 별도이며 현재 허가·인수·가격·용량을 확정하지 않는다. 공정별 투입 형태를 확인하고 다음 사업장만 선택한다.",
   "sources": [
     {
       "acquisition": "official-html-acquired-and-reviewed",
@@ -795,6 +795,717 @@
           "superbin-sunchang--pet-pelletise"
         ]
       }
+    },
+    {
+      "key": "daewoon-production",
+      "url": "https://dwplastic.co.kr",
+      "publisher": "대운프라스틱",
+      "summary": "대운프라스틱 나주 사업장은 PP·PE 폐플라스틱 스크랩·경질 제품·폐비닐을 선별·분쇄·세척·건조·용융압출·냉각절단하여 재생 펠릿으로 만드는 공정을 공개한다. PE 파이프·생활용품, PP 보빈·생활용품 원료를 소개한다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+      "locator": "제품소개·제조공정·회사주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "cf0d4cb40df4af977943cc88feda243fa27061d59561e5cf01046e0eb539d4fa",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "pp-bale-prepare",
+          "pp-scrap-to-pellet",
+          "pe-bale-prepare",
+          "pe-scrap-to-pellet"
+        ],
+        "organisations": [
+          "daewoon-naju-org"
+        ],
+        "facilities": [
+          "daewoon-naju"
+        ],
+        "capabilities": [
+          "daewoon-naju--pp-scrap-to-pellet",
+          "daewoon-naju--pe-scrap-to-pellet"
+        ]
+      }
+    },
+    {
+      "key": "youngshin-production",
+      "url": "https://yschemical.co.kr",
+      "publisher": "영신케미칼",
+      "summary": "영신케미칼 나주 사업장은 PP·PE 폐플라스틱 스크랩·폐비닐을 선별·분쇄·세척·건조·용융압출·냉각절단하여 재생 펠릿을 생산하는 공정을 공개한다. PP·PE·PPC 제품이 안내되어 있다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+      "locator": "제조공정·주요제품·회사주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "4eeee624b5a05c40c5bdb84555e47aec90121ccabe7f93567220703ea9808b54",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "pp-scrap-to-pellet",
+          "pe-scrap-to-pellet"
+        ],
+        "organisations": [
+          "youngshin-naju-org"
+        ],
+        "facilities": [
+          "youngshin-naju"
+        ],
+        "capabilities": [
+          "youngshin-naju--pp-scrap-to-pellet",
+          "youngshin-naju--pe-scrap-to-pellet"
+        ]
+      }
+    },
+    {
+      "key": "greenpol-production",
+      "url": "http://www.greenpol.co.kr/theme/home/html/menu2_2.php",
+      "publisher": "그린폴",
+      "summary": "그린폴 천안 공장은 분쇄품 건조기·분쇄기·자석 및 와류 선별기·압출기·컴파운딩 라인을 공개한다. 자체 시편으로 물성시험을 수행한다. 투입 분쇄품의 수지·첨가제·물성은 사전 확인이 필요하다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+      "locator": "연구/생산장비 > 주요 생산라인 및 공장주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "54f2b40a8b77de1ffd878d6410098e56829afd99be053abc31981cc93c5d138a",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "pe-shredded-to-pellet"
+        ],
+        "organisations": [
+          "greenpol-cheonan-org"
+        ],
+        "facilities": [
+          "greenpol-cheonan"
+        ],
+        "capabilities": [
+          "greenpol-cheonan--pp-shredded-to-pellet",
+          "greenpol-cheonan--pe-shredded-to-pellet"
+        ]
+      }
+    },
+    {
+      "key": "greenpol-products",
+      "url": "http://www.greenpol.co.kr",
+      "publisher": "그린폴",
+      "summary": "그린폴은 PP·PE 폐플라스틱 재생 펠릿과 PP 복합수지를 생산한다고 소개한다. 천안 주소가 공개되어 있다. PVC 등 수출 품목은 해당 공장의 재생 공정 증거로 사용하지 않는다.",
+      "locator": "회사소개·제품소개·주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "3720e536b16701822c19b5e0688beafbb3f3760ab3edc6a0752ca4a7cf4fb63b",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "pe-shredded-to-pellet"
+        ],
+        "organisations": [
+          "greenpol-cheonan-org"
+        ],
+        "facilities": [
+          "greenpol-cheonan"
+        ],
+        "capabilities": [
+          "greenpol-cheonan--pp-shredded-to-pellet",
+          "greenpol-cheonan--pe-shredded-to-pellet"
+        ]
+      }
+    },
+    {
+      "key": "cntk-flake",
+      "url": "https://cntk.co.kr/page/?pid=flake",
+      "publisher": "씨엔텍코리아",
+      "summary": "씨엔텍코리아는 폐가전에서 회수한 ABS·PP·HIPS·GPPS·SAN 경질 부품을 선별·분쇄한 플레이크를 소개한다. 본점 화성과 진주지점이 함께 표기되어 있으나 제품별 생산 사업장 배정은 이 페이지에서 확인되지 않는다.",
+      "locator": "FLAKE 제품·본점/진주지점 주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "668d8f9e99236823404528651323b9f6b12ea58c603f2f85054d99df20237772",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "states": [
+          "abs-scrap",
+          "abs-flake",
+          "ps-scrap",
+          "ps-flake",
+          "san-scrap",
+          "san-flake"
+        ],
+        "transitions": [
+          "abs-prepare",
+          "ps-prepare",
+          "san-prepare",
+          "ps-bale-prepare"
+        ],
+        "organisations": [
+          "cntk-org"
+        ],
+        "facilities": [
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "capabilities": [
+          "cntk-hwaseong--abs-prepare",
+          "cntk-jinju--abs-prepare",
+          "cntk-hwaseong--ps-prepare",
+          "cntk-jinju--ps-prepare",
+          "cntk-hwaseong--san-prepare",
+          "cntk-jinju--san-prepare"
+        ]
+      }
+    },
+    {
+      "key": "cntk-pellet",
+      "url": "https://cntk.co.kr/page/?pid=pellet",
+      "publisher": "씨엔텍코리아",
+      "summary": "씨엔텍코리아는 ABS·PP·HIPS·GPPS·SAN 플레이크를 가열·압출하여 펠릿으로 만드는 제품을 소개한다. 제품별 생산 사업장 배정과 외부 물량 수용은 미확인이다.",
+      "locator": "PELLET 제품·본점/진주지점 주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "c13133d9e787050716c8dd5efafe048ac533d4ccdf166e0a11bdd8fa23e140cf",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "states": [
+          "abs-pellet",
+          "ps-pellet",
+          "san-pellet"
+        ],
+        "transitions": [
+          "abs-pelletise",
+          "ps-pelletise",
+          "san-pelletise"
+        ],
+        "organisations": [
+          "cntk-org"
+        ],
+        "facilities": [
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "capabilities": [
+          "cntk-hwaseong--abs-pelletise",
+          "cntk-jinju--abs-pelletise",
+          "cntk-hwaseong--ps-pelletise",
+          "cntk-jinju--ps-pelletise",
+          "cntk-hwaseong--san-pelletise",
+          "cntk-jinju--san-pelletise"
+        ]
+      }
+    },
+    {
+      "key": "sungji-pvc",
+      "url": "https://sungjikorea.co.kr/manufactured-products",
+      "publisher": "성지",
+      "summary": "성지 화성 사업장은 PVC 벽지를 분리하여 PVC 페이스트 원료와 종이 분말을 재생하는 제조상품을 소개한다. 장판 스크랩 원료도 소개하지만 이번 연결은 벽지 잔재만 대상으로 한다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+      "locator": "제조상품 > PVC 원료·벽지 재생 / 화성 양감면 주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "6e11d0318e1682086e9fa5dc40c1bbf18141eef51e6ff797c713e6437b588c2d",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "states": [
+          "pvc-wallpaper",
+          "pvc-recovered"
+        ],
+        "transitions": [
+          "pvc-wallpaper-recovery"
+        ],
+        "organisations": [
+          "sungji-hwaseong-org"
+        ],
+        "facilities": [
+          "sungji-hwaseong"
+        ],
+        "capabilities": [
+          "sungji-hwaseong--pvc-wallpaper-recovery"
+        ]
+      }
+    },
+    {
+      "key": "yuil-pet",
+      "url": "http://yuil.or.kr",
+      "publisher": "유일산업",
+      "summary": "유일산업은 수거한 PET병을 선별·분쇄·세척·건조해 재생 PET 플레이크로 만드는 공정을 공개한다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+      "locator": "PET 재활용 공정 소개",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "81622bae2351e7d6c1ad0d6b66c27741a384fee62c4c32935523a5bb85890ddb",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "pet-sorted-bale-to-flake"
+        ],
+        "organisations": [
+          "yuil-org"
+        ],
+        "facilities": [
+          "yuil-yangsan",
+          "yuil-busan"
+        ],
+        "capabilities": [
+          "yuil-yangsan--pet-bottle-to-flake",
+          "yuil-yangsan--pet-sorted-bale-to-flake",
+          "yuil-busan--pet-bottle-to-flake",
+          "yuil-busan--pet-sorted-bale-to-flake"
+        ]
+      }
+    },
+    {
+      "key": "yuil-locations",
+      "url": "http://yuil.or.kr/ko/pages/location.php",
+      "publisher": "유일산업",
+      "summary": "유일산업은 양산 본사(유산공단4길 94), 어곡공장(어실로 415), 부산지사(생곡산단1로 19) 주소를 구분한다. 이번에는 처리능력 페이지에서 사업장이 명시된 양산 본사와 부산지사만 연결한다.",
+      "locator": "오시는길 > 본사·어곡공장·부산지사",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "c78fdbf3c9d7a07b51b81f0a06cd3e1004869cf1e72e8a38d690839fdae60b73",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "yuil-org"
+        ],
+        "facilities": [
+          "yuil-yangsan",
+          "yuil-busan"
+        ],
+        "capabilities": [
+          "yuil-yangsan--pet-bottle-to-flake",
+          "yuil-yangsan--pet-sorted-bale-to-flake",
+          "yuil-busan--pet-bottle-to-flake",
+          "yuil-busan--pet-sorted-bale-to-flake"
+        ]
+      }
+    },
+    {
+      "key": "yuil-sites-process",
+      "url": "http://yuil.or.kr/ko/pages/disposal.php",
+      "publisher": "유일산업",
+      "summary": "유일산업은 PET 재활용 처리능력을 양산 본사와 부산지사로 나누어 공개한다. 공개된 연간 설계 용량은 현재 여유 용량이나 이번 물량 인수 승인이 아니다.",
+      "locator": "처리능력 > 양산본사·부산지사",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "dd31492041bc5390e3be579d4300083d8a00952141f3132b384ea0d592127343",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "yuil-org"
+        ],
+        "facilities": [
+          "yuil-yangsan",
+          "yuil-busan"
+        ],
+        "capabilities": [
+          "yuil-yangsan--pet-bottle-to-flake",
+          "yuil-yangsan--pet-sorted-bale-to-flake",
+          "yuil-busan--pet-bottle-to-flake",
+          "yuil-busan--pet-sorted-bale-to-flake"
+        ]
+      }
+    },
+    {
+      "key": "ecops-ingot",
+      "url": "http://ecops.kr/",
+      "publisher": "에코피에스",
+      "summary": "에코피에스 영천 공장은 열압축된 EPS 인고트를 외부에서 받아 검수·분쇄·용융압출·절단·냉각하여 PS 펠릿을 생산한다. 아직 감용되지 않은 스티로폼을 받는다는 근거는 아니다. 공개 펠릿 물성은 반입 원료 허용 기준이 아니다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+      "locator": "생산공정 01 인고트 입고 → 02 분쇄 → 03 펠릿 / 영천 공장주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "a9ec3308488b9f6e623c6c4b8739767d7c2ac3de5be83626834d7e5792bd4db8",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "states": [
+          "eps-ingot",
+          "eps-ps-pellet"
+        ],
+        "transitions": [
+          "eps-ingot-pelletise"
+        ],
+        "organisations": [
+          "ecops-yeongcheon-org"
+        ],
+        "facilities": [
+          "ecops-yeongcheon"
+        ],
+        "capabilities": [
+          "ecops-yeongcheon--eps-ingot-pelletise"
+        ]
+      }
+    },
+    {
+      "key": "pne-resin",
+      "url": "https://www.pne114.com/27",
+      "publisher": "피앤이환경",
+      "summary": "피앤이환경 음성 사업장은 일반 폐합성수지 PE·PP·PS를 용융압출하여 재생원료를 생산하는 수지 사업부를 소개한다. 폐광케이블·폐전선과 지정폐기물 사업은 이 일반수지 연결에 포함하지 않는다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+      "locator": "사업분야 > 일반폐기물·수지 사업부 / 음성 사업장주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "633814b672f2491850c5a97c6f3afffc58b03ab065146ed411fc936621d2d393",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "pne-eumseong-org"
+        ],
+        "facilities": [
+          "pne-eumseong"
+        ],
+        "capabilities": [
+          "pne-eumseong--pp-shredded-to-pellet",
+          "pne-eumseong--pe-shredded-to-pellet",
+          "pne-eumseong--ps-pelletise"
+        ]
+      }
+    },
+    {
+      "key": "netspa-nylon",
+      "url": "http://www.netspa.co.kr/sub_rnylon.php",
+      "publisher": "넷스파",
+      "summary": "넷스파는 PA6 폐어망에서 회수한 재생 나일론 원료를 수지·섬유·산업재에 공급하는 사업을 공개한다. 부산 생곡산단 본사를 안내한다. 어망이 아닌 PA66·혼합 플라스틱 부품으로 확대하지 않는다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+      "locator": "PRODUCT > 폐어망 기반 R-Nylon 및 부산 주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "1cac49b21b6188df618b0c822c1e783bc65437326ee9aeb82b22ed76ca84af36",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "states": [
+          "pa6-net",
+          "pa6-resin"
+        ],
+        "transitions": [
+          "pa6-net-recovery"
+        ],
+        "organisations": [
+          "netspa-busan-org"
+        ],
+        "facilities": [
+          "netspa-busan"
+        ],
+        "capabilities": [
+          "netspa-busan--pa6-net-recovery"
+        ]
+      }
+    },
+    {
+      "key": "netspa-pa6",
+      "url": "http://www.netspa.co.kr/",
+      "publisher": "넷스파",
+      "summary": "넷스파는 사용 후 해양 폐기물 재활용 공장과 고순도 PA6 R-Nylon 생산을 소개한다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+      "locator": "Recycle Plant / PRODUCT R-Nylon PA6",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "f703857af71f08d0a1c84bb0428ff4f8f88d3afde15682e8fe3cb5c05e0b4a59",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "states": [
+          "pa6-net",
+          "pa6-resin"
+        ],
+        "transitions": [
+          "pa6-net-recovery"
+        ],
+        "organisations": [
+          "netspa-busan-org"
+        ],
+        "facilities": [
+          "netspa-busan"
+        ],
+        "capabilities": [
+          "netspa-busan--pa6-net-recovery"
+        ]
+      }
+    },
+    {
+      "key": "hrm-pet-collection",
+      "url": "https://hrmcorp.co.kr/ko/cheongju-mrf/pet-collection",
+      "publisher": "HRM",
+      "summary": "HRM 청주 자원순환센터는 투명 PET병 수집·운반과 압축 베일 물량 대응을 공개한다. 그 밖의 품목은 사전 협의 대상이다. 펠릿 생산 근거는 아니다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+      "locator": "품목·서비스 / 청주 센터주소",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "adf4055e3f2708028214c8ed45e11c62c33300db4ddf6dd941e2cf8313d948f6",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "states": [
+          "pet-bale"
+        ],
+        "transitions": [
+          "pet-sort-bale"
+        ],
+        "organisations": [
+          "hrm-cheongju-org"
+        ],
+        "facilities": [
+          "hrm-cheongju"
+        ],
+        "capabilities": [
+          "hrm-cheongju--pet-sort-bale"
+        ]
+      }
+    },
+    {
+      "key": "hrm-mrf",
+      "url": "https://hrmcorp.co.kr/ko",
+      "publisher": "HRM",
+      "summary": "HRM 청주 센터는 입고·계량·자동 선별·압축 및 출하하는 자체 MRF를 운영한다고 소개한다. 거래 데스크의 rPP·rHDPE·rLDPE 판매 목록을 센터의 펠릿 생산 능력으로 보지 않는다.",
+      "locator": "청주 자원순환센터 > 처리 공정",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "24906d946b85c75275c632c4852a652630d8faa0bdc7030c6750e7a147b83a77",
+      "acquisition": "public primary page downloaded; team factual summary",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "states": [
+          "pet-bale"
+        ],
+        "transitions": [
+          "pet-sort-bale"
+        ],
+        "organisations": [
+          "hrm-cheongju-org"
+        ],
+        "facilities": [
+          "hrm-cheongju"
+        ],
+        "capabilities": [
+          "hrm-cheongju--pet-sort-bale"
+        ]
+      }
+    },
+    {
+      "key": "veolia-dh-sorting",
+      "url": "https://www.veolia.kr/ko/beolliaui-seobiseu/dieichi-lisaikeulling",
+      "publisher": "베올리아",
+      "summary": "베올리아는 경기도 용인의 디에이치 리사이클링에서 가정용 플라스틱 PE·PP·PET·PS를 유형별 선별하여 압축 베일로 전처리한다고 공개한다. 상세 도로명 주소·외부 사업장 물량 반입은 미확인이다. 화성의 동명 명부 업체와 연결하지 않는다.",
+      "locator": "위치 경기도 용인 / 서비스 범위 플라스틱 유형별 베일 전처리",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "f1af63edf3896fa0701f1eb718acdef715e4bf58a7f1ad26c4d087ec985d711a",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "states": [
+          "pp-bale",
+          "pe-bale",
+          "pet-bale",
+          "ps-bale"
+        ],
+        "transitions": [
+          "pp-sort-bale",
+          "pp-bale-prepare",
+          "pe-sort-bale",
+          "pe-bale-prepare",
+          "pet-sort-bale",
+          "ps-sort-bale",
+          "ps-bale-prepare"
+        ],
+        "organisations": [
+          "veolia-dh-yongin-org"
+        ],
+        "facilities": [
+          "veolia-dh-yongin"
+        ],
+        "capabilities": [
+          "veolia-dh-yongin--pp-sort-bale",
+          "veolia-dh-yongin--pe-sort-bale",
+          "veolia-dh-yongin--pet-sort-bale",
+          "veolia-dh-yongin--ps-sort-bale"
+        ]
+      }
+    },
+    {
+      "key": "changmaec-process",
+      "url": "https://www.changmaec1.com/",
+      "publisher": "창맥",
+      "summary": "창맥 성주 공장은 분쇄된 폐플라스틱 원료를 수거하여 건조·1차 압출·컴파운딩·펠릿화하는 과정을 공개한다. 제품에는 ABS·PP·HIPS·PA66·PC/ABS가 있다. 현재 경질 폐제품 자체의 파쇄·세척 수탁이나 각 등급의 혼합 허용은 미확인이다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+      "locator": "사업소개 > 6단계 제조공정·제품라인업 / 본사 및 공장 선노로55-36",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "4a28e4936f249a025bafc8e491b312956e9ffafad694314b3af85057974c665a",
+      "acquisition": "public primary page downloaded; team factual summary; byte digest refers to https://www.changmaec1.com/assets/index-CACbLRnH.js",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "states": [
+          "pa66-flake",
+          "pa66-compound",
+          "pcabs-flake",
+          "pcabs-compound"
+        ],
+        "transitions": [
+          "pa66-compound",
+          "pcabs-compound"
+        ],
+        "organisations": [
+          "changmaec-seongju-org"
+        ],
+        "facilities": [
+          "changmaec-seongju"
+        ],
+        "capabilities": [
+          "changmaec-seongju--abs-pelletise",
+          "changmaec-seongju--ps-pelletise",
+          "changmaec-seongju--pp-shredded-to-pellet",
+          "changmaec-seongju--pa66-compound",
+          "changmaec-seongju--pcabs-compound"
+        ]
+      }
+    },
+    {
+      "key": "youngshin-naju-registry",
+      "url": "https://www.data.go.kr/data/15114147/standard.do",
+      "publisher": "공공데이터포털 전국폐기물처리업소표준데이터",
+      "summary": "영신케미칼 나주 사업장의 명부 사업장명과 주소를 대조했다. 기준일 2026-06-29, 기록 코드 51-20-21. 명부 코드는 현행 허가나 실제 수용 여부의 확인값이 아니다.",
+      "locator": "명부 원본 행 738; 주소 전라남도 나주시 동수농공단지길 75",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "8f552f43c1636ffd7c8f40ac543ed1804be0d581d052165bc66b0b1c9835bbe7",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "youngshin-naju"
+        ],
+        "capabilities": [
+          "youngshin-naju--pp-scrap-to-pellet",
+          "youngshin-naju--pe-scrap-to-pellet"
+        ]
+      }
+    },
+    {
+      "key": "cntk-jinju-registry",
+      "url": "https://www.data.go.kr/data/15114147/standard.do",
+      "publisher": "공공데이터포털 전국폐기물처리업소표준데이터",
+      "summary": "씨엔텍코리아 진주지점의 명부 사업장명과 주소를 대조했다. 기준일 2026-08-29, 기록 코드 51-03-01+51-18-01. 명부 코드는 현행 허가나 실제 수용 여부의 확인값이 아니다.",
+      "locator": "명부 원본 행 493; 주소 경상남도 진주시 사봉면 산업단지로 92",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "b59e6b481526bed17b5620ad9039a128183f20b7d498b4d009552d0c6e2db760",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "cntk-jinju"
+        ],
+        "capabilities": [
+          "cntk-jinju--abs-prepare",
+          "cntk-jinju--abs-pelletise",
+          "cntk-jinju--ps-prepare",
+          "cntk-jinju--ps-pelletise",
+          "cntk-jinju--san-prepare",
+          "cntk-jinju--san-pelletise"
+        ]
+      }
+    },
+    {
+      "key": "sungji-hwaseong-registry",
+      "url": "https://www.data.go.kr/data/15114147/standard.do",
+      "publisher": "공공데이터포털 전국폐기물처리업소표준데이터",
+      "summary": "성지 화성 사업장의 명부 사업장명과 주소를 대조했다. 기준일 2026-02-27, 기록 코드 51-01-00+51-02-00+51-03-00+51-04-00+51-05-00+51-06-00+51-07-00+51-08-00+51-09-00+51-10-00+51-11-00. 명부 코드는 현행 허가나 실제 수용 여부의 확인값이 아니다.",
+      "locator": "명부 원본 행 3635,4248; 주소 경기도 화성시 양감면 송산리 284",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "54197a55dff9e81e486a88f209da47f54a28dc30e786c6cd2f1e32bfdcfd3bdf",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "sungji-hwaseong"
+        ],
+        "capabilities": [
+          "sungji-hwaseong--pvc-wallpaper-recovery"
+        ]
+      }
+    },
+    {
+      "key": "ecops-yeongcheon-registry",
+      "url": "https://www.data.go.kr/data/15114147/standard.do",
+      "publisher": "공공데이터포털 전국폐기물처리업소표준데이터",
+      "summary": "에코피에스 영천 공장의 명부 사업장명과 주소를 대조했다. 기준일 2025-08-14, 기록 코드 51-03-06. 명부 코드는 현행 허가나 실제 수용 여부의 확인값이 아니다.",
+      "locator": "명부 원본 행 5558; 주소 경상북도 영천시 신녕면 장수로 1446-23",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "4a61800d42f336605081233463abcd9efb08999cdc9437f86661468164a4eaa7",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "ecops-yeongcheon"
+        ],
+        "capabilities": [
+          "ecops-yeongcheon--eps-ingot-pelletise"
+        ]
+      }
+    },
+    {
+      "key": "veolia-pp-bale",
+      "url": "https://www.veolia.kr/ko/plastiloop-hwaseong",
+      "publisher": "베올리아",
+      "summary": "베올리아 독산 화성 사업장은 선별된 PP 분쇄품 또는 압축품(베일)을 구매하여 선별·분쇄·세척 후 PP 펠릿을 생산한다. DSPL은 PP 펠릿으로 컴파운딩 제품을 만든다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+      "locator": "독산/DSPL 사업장 역할 설명, PP 분쇄품 혹은 압축품 구매 문단",
+      "checked_date": "2026-11-14",
+      "source_date": null,
+      "sha256": "d74dd2d39faed18ac0da4a5d6012fb3be68bc1f73ab28dfc2dbd3c217528d8a2",
+      "acquisition": "public primary page read with browser search tool; team factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "pp-bale-to-pellet"
+        ],
+        "capabilities": [
+          "veolia-doksan-hwaseong--pp-bale-to-pellet"
+        ]
+      }
     }
   ],
   "states": [
@@ -1094,6 +1805,299 @@
         "novelis-ulsan-recycling",
         "novelis-ulsan-address"
       ]
+    },
+    {
+      "key": "pp-bale",
+      "label": "PP 선별 압축 베일",
+      "source_ids": [
+        "veolia-dh-sorting"
+      ],
+      "material": "pp",
+      "input_forms": [
+        "bale"
+      ],
+      "is_entry": true,
+      "is_output": false
+    },
+    {
+      "key": "pe-bale",
+      "label": "PE 선별 압축 베일",
+      "source_ids": [
+        "veolia-dh-sorting"
+      ],
+      "material": "pe",
+      "input_forms": [
+        "bale"
+      ],
+      "is_entry": true,
+      "is_output": false
+    },
+    {
+      "key": "pet-bale",
+      "label": "선별 PET 압축 베일",
+      "source_ids": [
+        "hrm-pet-collection",
+        "hrm-mrf",
+        "veolia-dh-sorting"
+      ],
+      "material": "pet",
+      "input_forms": [],
+      "is_entry": false,
+      "is_output": false
+    },
+    {
+      "key": "abs-scrap",
+      "label": "ABS 경질 제품·스크랩",
+      "source_ids": [
+        "cntk-flake"
+      ],
+      "material": "abs",
+      "input_forms": [
+        "scrap",
+        "rigid"
+      ],
+      "is_entry": true,
+      "is_output": false
+    },
+    {
+      "key": "abs-flake",
+      "label": "ABS 분리된 플레이크",
+      "source_ids": [
+        "cntk-flake"
+      ],
+      "material": "abs",
+      "input_forms": [
+        "flake",
+        "shredded"
+      ],
+      "is_entry": true,
+      "is_output": true
+    },
+    {
+      "key": "abs-pellet",
+      "label": "ABS 재생 펠릿",
+      "source_ids": [
+        "cntk-pellet"
+      ],
+      "material": "abs",
+      "input_forms": [],
+      "is_entry": false,
+      "is_output": true
+    },
+    {
+      "key": "ps-scrap",
+      "label": "PS 경질 제품·스크랩",
+      "source_ids": [
+        "cntk-flake"
+      ],
+      "material": "ps",
+      "input_forms": [
+        "scrap",
+        "rigid"
+      ],
+      "is_entry": true,
+      "is_output": false
+    },
+    {
+      "key": "ps-flake",
+      "label": "PS 분리된 플레이크",
+      "source_ids": [
+        "cntk-flake"
+      ],
+      "material": "ps",
+      "input_forms": [
+        "flake",
+        "shredded"
+      ],
+      "is_entry": true,
+      "is_output": true
+    },
+    {
+      "key": "ps-pellet",
+      "label": "PS 재생 펠릿",
+      "source_ids": [
+        "cntk-pellet"
+      ],
+      "material": "ps",
+      "input_forms": [],
+      "is_entry": false,
+      "is_output": true
+    },
+    {
+      "key": "san-scrap",
+      "label": "SAN 경질 제품·스크랩",
+      "source_ids": [
+        "cntk-flake"
+      ],
+      "material": "san",
+      "input_forms": [
+        "scrap",
+        "rigid"
+      ],
+      "is_entry": true,
+      "is_output": false
+    },
+    {
+      "key": "san-flake",
+      "label": "SAN 분리된 플레이크",
+      "source_ids": [
+        "cntk-flake"
+      ],
+      "material": "san",
+      "input_forms": [
+        "flake",
+        "shredded"
+      ],
+      "is_entry": true,
+      "is_output": true
+    },
+    {
+      "key": "san-pellet",
+      "label": "SAN 재생 펠릿",
+      "source_ids": [
+        "cntk-pellet"
+      ],
+      "material": "san",
+      "input_forms": [],
+      "is_entry": false,
+      "is_output": true
+    },
+    {
+      "key": "ps-bale",
+      "label": "선별 PS 압축 베일",
+      "source_ids": [
+        "veolia-dh-sorting"
+      ],
+      "material": "ps",
+      "input_forms": [
+        "bale"
+      ],
+      "is_entry": true,
+      "is_output": false
+    },
+    {
+      "key": "pvc-wallpaper",
+      "label": "분리 대상 PVC 벽지 잔재",
+      "source_ids": [
+        "sungji-pvc"
+      ],
+      "material": "pvc",
+      "input_forms": [
+        "wallpaper"
+      ],
+      "is_entry": true,
+      "is_output": false
+    },
+    {
+      "key": "pvc-recovered",
+      "label": "회수 PVC 페이스트 원료",
+      "source_ids": [
+        "sungji-pvc"
+      ],
+      "material": "pvc",
+      "input_forms": [],
+      "is_entry": false,
+      "is_output": true
+    },
+    {
+      "key": "eps-ingot",
+      "label": "감용된 EPS 인고트",
+      "source_ids": [
+        "ecops-ingot"
+      ],
+      "material": "eps",
+      "input_forms": [
+        "ingot"
+      ],
+      "is_entry": true,
+      "is_output": false
+    },
+    {
+      "key": "eps-ps-pellet",
+      "label": "EPS 유래 재생 PS 펠릿",
+      "source_ids": [
+        "ecops-ingot"
+      ],
+      "material": "eps",
+      "input_forms": [],
+      "is_entry": false,
+      "is_output": true
+    },
+    {
+      "key": "pa6-net",
+      "label": "분리한 PA6 폐어망",
+      "source_ids": [
+        "netspa-nylon",
+        "netspa-pa6"
+      ],
+      "material": "pa6",
+      "input_forms": [
+        "net"
+      ],
+      "is_entry": true,
+      "is_output": false
+    },
+    {
+      "key": "pa6-resin",
+      "label": "회수 PA6 재생 나일론 원료",
+      "source_ids": [
+        "netspa-nylon",
+        "netspa-pa6"
+      ],
+      "material": "pa6",
+      "input_forms": [],
+      "is_entry": false,
+      "is_output": true
+    },
+    {
+      "key": "pa66-flake",
+      "label": "PA66 분리된 분쇄 원료",
+      "source_ids": [
+        "changmaec-process"
+      ],
+      "material": "pa66",
+      "input_forms": [
+        "flake",
+        "shredded"
+      ],
+      "is_entry": true,
+      "is_output": false
+    },
+    {
+      "key": "pa66-compound",
+      "label": "PA66 재생 컴파운드 펠릿",
+      "source_ids": [
+        "changmaec-process"
+      ],
+      "material": "pa66",
+      "input_forms": [],
+      "is_entry": false,
+      "is_output": true
+    },
+    {
+      "key": "pcabs-flake",
+      "label": "PCABS 분리된 분쇄 원료",
+      "source_ids": [
+        "changmaec-process"
+      ],
+      "material": "pcabs",
+      "input_forms": [
+        "flake",
+        "shredded"
+      ],
+      "is_entry": true,
+      "is_output": false
+    },
+    {
+      "key": "pcabs-compound",
+      "label": "PCABS 재생 컴파운드 펠릿",
+      "source_ids": [
+        "changmaec-process"
+      ],
+      "material": "pcabs",
+      "input_forms": [],
+      "is_entry": false,
+      "is_output": true
     }
   ],
   "transitions": [
@@ -1571,6 +2575,463 @@
       "source_ids": [
         "samyang-pet"
       ]
+    },
+    {
+      "key": "pp-sort-bale",
+      "label": "PP 선별·압축",
+      "source_ids": [
+        "veolia-dh-sorting"
+      ],
+      "input_state": "pp-scrap",
+      "output_state": "pp-bale",
+      "operation_steps": [
+        "재질별 선별",
+        "압축 베일 출하"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "pp-bale-prepare",
+      "label": "PP 베일 해체·분쇄",
+      "source_ids": [
+        "veolia-dh-sorting",
+        "daewoon-production"
+      ],
+      "input_state": "pp-bale",
+      "output_state": "pp-shredded",
+      "operation_steps": [
+        "베일 해체·선별",
+        "분쇄"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "pp-scrap-to-pellet",
+      "label": "PP 선별·분쇄·세척·펠릿화 일괄",
+      "source_ids": [
+        "daewoon-production",
+        "youngshin-production"
+      ],
+      "input_state": "pp-scrap",
+      "output_state": "pp-pellet",
+      "operation_steps": [
+        "선별·분쇄",
+        "세척·탈수·건조",
+        "용융압출·냉각·절단"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "pe-sort-bale",
+      "label": "PE 선별·압축",
+      "source_ids": [
+        "veolia-dh-sorting"
+      ],
+      "input_state": "pe-scrap",
+      "output_state": "pe-bale",
+      "operation_steps": [
+        "재질별 선별",
+        "압축 베일 출하"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "pe-bale-prepare",
+      "label": "PE 베일 해체·분쇄",
+      "source_ids": [
+        "veolia-dh-sorting",
+        "daewoon-production"
+      ],
+      "input_state": "pe-bale",
+      "output_state": "pe-shredded",
+      "operation_steps": [
+        "베일 해체·선별",
+        "분쇄"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "pe-scrap-to-pellet",
+      "label": "PE 선별·분쇄·세척·펠릿화 일괄",
+      "source_ids": [
+        "daewoon-production",
+        "youngshin-production"
+      ],
+      "input_state": "pe-scrap",
+      "output_state": "pe-pellet",
+      "operation_steps": [
+        "선별·분쇄",
+        "세척·탈수·건조",
+        "용융압출·냉각·절단"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "pe-shredded-to-pellet",
+      "label": "PE 파쇄품 건조·압출 펠릿화",
+      "source_ids": [
+        "greenpol-production",
+        "greenpol-products"
+      ],
+      "input_state": "pe-shredded",
+      "output_state": "pe-pellet",
+      "operation_steps": [
+        "투입품 확인·건조",
+        "용융압출·냉각·절단"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "pet-sort-bale",
+      "label": "PET병 선별·압축",
+      "source_ids": [
+        "hrm-pet-collection",
+        "hrm-mrf",
+        "veolia-dh-sorting"
+      ],
+      "input_state": "pet-bottle",
+      "output_state": "pet-bale",
+      "operation_steps": [
+        "PET병 선별",
+        "압축·출하"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "pet-sorted-bale-to-flake",
+      "label": "선별 PET 베일 세척·분쇄",
+      "source_ids": [
+        "yuil-pet"
+      ],
+      "input_state": "pet-bale",
+      "output_state": "pet-flake",
+      "operation_steps": [
+        "베일 해체",
+        "선별·분쇄·세척·건조"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "abs-prepare",
+      "label": "ABS 선별·분쇄",
+      "source_ids": [
+        "cntk-flake"
+      ],
+      "input_state": "abs-scrap",
+      "output_state": "abs-flake",
+      "operation_steps": [
+        "재질별 선별",
+        "분쇄·분리"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "abs-pelletise",
+      "label": "ABS 플레이크 압출·펠릿화",
+      "source_ids": [
+        "cntk-pellet"
+      ],
+      "input_state": "abs-flake",
+      "output_state": "abs-pellet",
+      "operation_steps": [
+        "원료 확인",
+        "가열·압출",
+        "냉각·펠릿화"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "ps-prepare",
+      "label": "PS 선별·분쇄",
+      "source_ids": [
+        "cntk-flake"
+      ],
+      "input_state": "ps-scrap",
+      "output_state": "ps-flake",
+      "operation_steps": [
+        "재질별 선별",
+        "분쇄·분리"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "ps-pelletise",
+      "label": "PS 플레이크 압출·펠릿화",
+      "source_ids": [
+        "cntk-pellet"
+      ],
+      "input_state": "ps-flake",
+      "output_state": "ps-pellet",
+      "operation_steps": [
+        "원료 확인",
+        "가열·압출",
+        "냉각·펠릿화"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "san-prepare",
+      "label": "SAN 선별·분쇄",
+      "source_ids": [
+        "cntk-flake"
+      ],
+      "input_state": "san-scrap",
+      "output_state": "san-flake",
+      "operation_steps": [
+        "재질별 선별",
+        "분쇄·분리"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "san-pelletise",
+      "label": "SAN 플레이크 압출·펠릿화",
+      "source_ids": [
+        "cntk-pellet"
+      ],
+      "input_state": "san-flake",
+      "output_state": "san-pellet",
+      "operation_steps": [
+        "원료 확인",
+        "가열·압출",
+        "냉각·펠릿화"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "ps-sort-bale",
+      "label": "PS 선별·압축",
+      "source_ids": [
+        "veolia-dh-sorting"
+      ],
+      "input_state": "ps-scrap",
+      "output_state": "ps-bale",
+      "operation_steps": [
+        "재질별 선별",
+        "압축·출하"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "ps-bale-prepare",
+      "label": "PS 베일 해체·분쇄",
+      "source_ids": [
+        "cntk-flake",
+        "veolia-dh-sorting"
+      ],
+      "input_state": "ps-bale",
+      "output_state": "ps-flake",
+      "operation_steps": [
+        "베일 해체",
+        "재질별 선별·분쇄"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "pvc-wallpaper-recovery",
+      "label": "PVC 벽지 원료 분리·회수",
+      "source_ids": [
+        "sungji-pvc"
+      ],
+      "input_state": "pvc-wallpaper",
+      "output_state": "pvc-recovered",
+      "operation_steps": [
+        "PVC·종이 분리",
+        "PVC 원료 회수"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "벽지 원료 구분·접착제·첨가제 및 회수 원료 품질 확인"
+      ]
+    },
+    {
+      "key": "eps-ingot-pelletise",
+      "label": "EPS 인고트 분쇄·압출 펠릿화",
+      "source_ids": [
+        "ecops-ingot"
+      ],
+      "input_state": "eps-ingot",
+      "output_state": "eps-ps-pellet",
+      "operation_steps": [
+        "인고트 검수",
+        "분쇄",
+        "용융압출·냉각·절단"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "감용 전 발포체와 인고트 구분",
+        "오염·이물·건축용 난연제 유래 여부 확인"
+      ]
+    },
+    {
+      "key": "pa6-net-recovery",
+      "label": "PA6 폐어망 원료 회수",
+      "source_ids": [
+        "netspa-nylon",
+        "netspa-pa6"
+      ],
+      "input_state": "pa6-net",
+      "output_state": "pa6-resin",
+      "operation_steps": [
+        "어망 재질·부착물 확인",
+        "재생 나일론 원료 회수"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "PA6와 PA66·PE·PP 어망 혼합 구분",
+        "염분·어구 부착물·외부 로트 반입 조건 확인"
+      ]
+    },
+    {
+      "key": "pa66-compound",
+      "label": "PA66 건조·압출·컴파운딩",
+      "source_ids": [
+        "changmaec-process"
+      ],
+      "input_state": "pa66-flake",
+      "output_state": "pa66-compound",
+      "operation_steps": [
+        "건조",
+        "1차 압출",
+        "첨가제 배합·컴파운딩·펠릿화"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "pcabs-compound",
+      "label": "PCABS 건조·압출·컴파운딩",
+      "source_ids": [
+        "changmaec-process"
+      ],
+      "input_state": "pcabs-flake",
+      "output_state": "pcabs-compound",
+      "operation_steps": [
+        "건조",
+        "1차 압출",
+        "첨가제 배합·컴파운딩·펠릿화"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
+    },
+    {
+      "key": "pp-bale-to-pellet",
+      "label": "선별 PP 베일 분쇄·세척·펠릿화",
+      "source_ids": [
+        "veolia-pp-bale"
+      ],
+      "input_state": "pp-bale",
+      "output_state": "pp-pellet",
+      "operation_steps": [
+        "베일 해체·선별",
+        "분쇄·세척",
+        "용융압출·펠릿화"
+      ],
+      "conditions": [
+        "공개된 공정의 조사 후보이며 외부 물량 반입은 업체에 확인"
+      ],
+      "risk_checks": [
+        "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
+      ]
     }
   ],
   "organisations": [
@@ -1653,6 +3114,96 @@
       "label": "새롬이엔지",
       "source_ids": [
         "sarom-hwaseong-2-process"
+      ]
+    },
+    {
+      "key": "daewoon-naju-org",
+      "label": "대운프라스틱 나주 사업장",
+      "source_ids": [
+        "daewoon-production"
+      ]
+    },
+    {
+      "key": "youngshin-naju-org",
+      "label": "영신케미칼 나주 사업장",
+      "source_ids": [
+        "youngshin-production"
+      ]
+    },
+    {
+      "key": "greenpol-cheonan-org",
+      "label": "그린폴 천안 공장",
+      "source_ids": [
+        "greenpol-production",
+        "greenpol-products"
+      ]
+    },
+    {
+      "key": "cntk-org",
+      "label": "씨엔텍코리아 화성 본점",
+      "source_ids": [
+        "cntk-flake",
+        "cntk-pellet"
+      ]
+    },
+    {
+      "key": "sungji-hwaseong-org",
+      "label": "성지 화성 사업장",
+      "source_ids": [
+        "sungji-pvc"
+      ]
+    },
+    {
+      "key": "yuil-org",
+      "label": "유일산업 양산 본사",
+      "source_ids": [
+        "yuil-pet",
+        "yuil-locations",
+        "yuil-sites-process"
+      ]
+    },
+    {
+      "key": "ecops-yeongcheon-org",
+      "label": "에코피에스 영천 공장",
+      "source_ids": [
+        "ecops-ingot"
+      ]
+    },
+    {
+      "key": "pne-eumseong-org",
+      "label": "피앤이환경 음성 사업장",
+      "source_ids": [
+        "pne-resin"
+      ]
+    },
+    {
+      "key": "netspa-busan-org",
+      "label": "넷스파 부산 사업장",
+      "source_ids": [
+        "netspa-nylon",
+        "netspa-pa6"
+      ]
+    },
+    {
+      "key": "hrm-cheongju-org",
+      "label": "HRM 청주 자원순환센터",
+      "source_ids": [
+        "hrm-pet-collection",
+        "hrm-mrf"
+      ]
+    },
+    {
+      "key": "veolia-dh-yongin-org",
+      "label": "디에이치 리사이클링 용인 사업장",
+      "source_ids": [
+        "veolia-dh-sorting"
+      ]
+    },
+    {
+      "key": "changmaec-seongju-org",
+      "label": "창맥 성주 공장",
+      "source_ids": [
+        "changmaec-process"
       ]
     }
   ],
@@ -1943,6 +3494,271 @@
       "source_ids": [
         "superbin-sunchang-process"
       ]
+    },
+    {
+      "key": "daewoon-naju",
+      "label": "대운프라스틱 나주 사업장",
+      "source_ids": [
+        "daewoon-production"
+      ],
+      "organisation": "daewoon-naju-org",
+      "country": "KR",
+      "region": "전라남도 나주시",
+      "address": "전라남도 나주시 동수농공단지길 100-23",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "youngshin-naju",
+      "label": "영신케미칼 나주 사업장",
+      "source_ids": [
+        "youngshin-production",
+        "youngshin-naju-registry"
+      ],
+      "organisation": "youngshin-naju-org",
+      "country": "KR",
+      "region": "전라남도 나주시",
+      "address": "전라남도 나주시 동수농공단지길 75",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 34.98396867,
+      "longitude": 126.6843061
+    },
+    {
+      "key": "greenpol-cheonan",
+      "label": "그린폴 천안 공장",
+      "source_ids": [
+        "greenpol-production",
+        "greenpol-products"
+      ],
+      "organisation": "greenpol-cheonan-org",
+      "country": "KR",
+      "region": "충청남도 천안시",
+      "address": "충청남도 천안시 동남구 수신면 백자1길 29",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "cntk-hwaseong",
+      "label": "씨엔텍코리아 화성 본점",
+      "source_ids": [
+        "cntk-flake",
+        "cntk-pellet"
+      ],
+      "organisation": "cntk-org",
+      "country": "KR",
+      "region": "경기도 화성시",
+      "address": "경기도 화성시 우정읍 매바위로237번길 86-25",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "cntk-jinju",
+      "label": "씨엔텍코리아 진주지점",
+      "source_ids": [
+        "cntk-flake",
+        "cntk-pellet",
+        "cntk-jinju-registry"
+      ],
+      "organisation": "cntk-org",
+      "country": "KR",
+      "region": "경상남도 진주시",
+      "address": "경상남도 진주시 사봉면 산업단지로 92",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 35.18801814,
+      "longitude": 128.2798025
+    },
+    {
+      "key": "sungji-hwaseong",
+      "label": "성지 화성 사업장",
+      "source_ids": [
+        "sungji-pvc",
+        "sungji-hwaseong-registry"
+      ],
+      "organisation": "sungji-hwaseong-org",
+      "country": "KR",
+      "region": "경기도 화성시",
+      "address": "경기도 화성시 양감면 송산리 284",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 37.11419617,
+      "longitude": 126.9788096
+    },
+    {
+      "key": "yuil-yangsan",
+      "label": "유일산업 양산 본사",
+      "source_ids": [
+        "yuil-pet",
+        "yuil-locations",
+        "yuil-sites-process"
+      ],
+      "organisation": "yuil-org",
+      "country": "KR",
+      "region": "경상남도 양산시",
+      "address": "경상남도 양산시 유산공단4길 94",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "yuil-busan",
+      "label": "유일산업 부산지사",
+      "source_ids": [
+        "yuil-pet",
+        "yuil-locations",
+        "yuil-sites-process"
+      ],
+      "organisation": "yuil-org",
+      "country": "KR",
+      "region": "부산광역시 강서구",
+      "address": "부산광역시 강서구 생곡산단1로 19",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "ecops-yeongcheon",
+      "label": "에코피에스 영천 공장",
+      "source_ids": [
+        "ecops-ingot",
+        "ecops-yeongcheon-registry"
+      ],
+      "organisation": "ecops-yeongcheon-org",
+      "country": "KR",
+      "region": "경상북도 영천시",
+      "address": "경상북도 영천시 신녕면 장수로 1446-23",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 36.0314,
+      "longitude": 128.80198
+    },
+    {
+      "key": "pne-eumseong",
+      "label": "피앤이환경 음성 사업장",
+      "source_ids": [
+        "pne-resin"
+      ],
+      "organisation": "pne-eumseong-org",
+      "country": "KR",
+      "region": "충청북도 음성군",
+      "address": "충청북도 음성군 생극면 오신로 398",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "netspa-busan",
+      "label": "넷스파 부산 사업장",
+      "source_ids": [
+        "netspa-nylon",
+        "netspa-pa6"
+      ],
+      "organisation": "netspa-busan-org",
+      "country": "KR",
+      "region": "부산광역시 강서구",
+      "address": "부산광역시 강서구 생곡산단로61번길 13",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "hrm-cheongju",
+      "label": "HRM 청주 자원순환센터",
+      "source_ids": [
+        "hrm-pet-collection",
+        "hrm-mrf"
+      ],
+      "organisation": "hrm-cheongju-org",
+      "country": "KR",
+      "region": "충청북도 청주시",
+      "address": "충청북도 청주시 청원구 북이면 장양길 88-18",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "veolia-dh-yongin",
+      "label": "디에이치 리사이클링 용인 사업장",
+      "source_ids": [
+        "veolia-dh-sorting"
+      ],
+      "organisation": "veolia-dh-yongin-org",
+      "country": "KR",
+      "region": "경기도 용인시",
+      "address": null,
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "changmaec-seongju",
+      "label": "창맥 성주 공장",
+      "source_ids": [
+        "changmaec-process"
+      ],
+      "organisation": "changmaec-seongju-org",
+      "country": "KR",
+      "region": "경상북도 성주군",
+      "address": "경상북도 성주군 선남면 선노로 55-36",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
     }
   ],
   "capabilities": [
@@ -2815,6 +4631,1244 @@
         "exclusion_locator": null,
         "verified_intake_limits_available": false
       }
+    },
+    {
+      "key": "daewoon-naju--pp-scrap-to-pellet",
+      "facility": "daewoon-naju",
+      "transition": "pp-scrap-to-pellet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "daewoon-production"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "명부와 공식 페이지의 주소 번지가 달라 현재 사업장 주소 확인 필요"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [
+          "scrap",
+          "rigid",
+          "film"
+        ],
+        "output_description": "PP 재생 펠릿",
+        "source_ids": [
+          "daewoon-production"
+        ],
+        "locator": "제품소개·제조공정·회사주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "scrap",
+        "rigid",
+        "film"
+      ]
+    },
+    {
+      "key": "youngshin-naju--pp-scrap-to-pellet",
+      "facility": "youngshin-naju",
+      "transition": "pp-scrap-to-pellet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "youngshin-production",
+        "youngshin-naju-registry"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [
+          "scrap",
+          "rigid",
+          "film"
+        ],
+        "output_description": "PP 재생 펠릿",
+        "source_ids": [
+          "youngshin-production",
+          "youngshin-naju-registry"
+        ],
+        "locator": "제조공정·주요제품·회사주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "scrap",
+        "rigid",
+        "film"
+      ]
+    },
+    {
+      "key": "greenpol-cheonan--pp-shredded-to-pellet",
+      "facility": "greenpol-cheonan",
+      "transition": "pp-shredded-to-pellet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "greenpol-production",
+        "greenpol-products"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [],
+        "output_description": "PP 재생 펠릿",
+        "source_ids": [
+          "greenpol-production",
+          "greenpol-products"
+        ],
+        "locator": "연구/생산장비 > 주요 생산라인 및 공장주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": null
+    },
+    {
+      "key": "pne-eumseong--pp-shredded-to-pellet",
+      "facility": "pne-eumseong",
+      "transition": "pp-shredded-to-pellet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "pne-resin"
+      ],
+      "conditions": [
+        "공개 자료는 수지 종류·압출을 설명하며 상세 투입 형상·전처리 완료 여부는 확인 필요",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [],
+        "output_description": "PP 재생원료",
+        "source_ids": [
+          "pne-resin"
+        ],
+        "locator": "사업분야 > 일반폐기물·수지 사업부 / 음성 사업장주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": null
+    },
+    {
+      "key": "veolia-dh-yongin--pp-sort-bale",
+      "facility": "veolia-dh-yongin",
+      "transition": "pp-sort-bale",
+      "basis": "published_site_process",
+      "source_ids": [
+        "veolia-dh-sorting"
+      ],
+      "conditions": [
+        "가정 회수품 공정; 사업장 발생 물량의 반입 별도 협의",
+        "상세 주소 미확인으로 거리 순위 없음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [
+          "rigid",
+          "film",
+          "scrap"
+        ],
+        "output_description": "PP 선별 베일",
+        "source_ids": [
+          "veolia-dh-sorting"
+        ],
+        "locator": "위치 경기도 용인 / 서비스 범위 플라스틱 유형별 베일 전처리",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "rigid",
+        "film",
+        "scrap"
+      ]
+    },
+    {
+      "key": "daewoon-naju--pe-scrap-to-pellet",
+      "facility": "daewoon-naju",
+      "transition": "pe-scrap-to-pellet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "daewoon-production"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "명부와 공식 페이지의 주소 번지가 달라 현재 사업장 주소 확인 필요"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [
+          "scrap",
+          "rigid",
+          "film"
+        ],
+        "output_description": "PE 재생 펠릿",
+        "source_ids": [
+          "daewoon-production"
+        ],
+        "locator": "제품소개·제조공정·회사주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "scrap",
+        "rigid",
+        "film"
+      ]
+    },
+    {
+      "key": "youngshin-naju--pe-scrap-to-pellet",
+      "facility": "youngshin-naju",
+      "transition": "pe-scrap-to-pellet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "youngshin-production",
+        "youngshin-naju-registry"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [
+          "scrap",
+          "rigid",
+          "film"
+        ],
+        "output_description": "PE 재생 펠릿",
+        "source_ids": [
+          "youngshin-production",
+          "youngshin-naju-registry"
+        ],
+        "locator": "제조공정·주요제품·회사주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "scrap",
+        "rigid",
+        "film"
+      ]
+    },
+    {
+      "key": "greenpol-cheonan--pe-shredded-to-pellet",
+      "facility": "greenpol-cheonan",
+      "transition": "pe-shredded-to-pellet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "greenpol-production",
+        "greenpol-products"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "PE 재생 펠릿",
+        "source_ids": [
+          "greenpol-production",
+          "greenpol-products"
+        ],
+        "locator": "연구/생산장비 > 주요 생산라인 및 공장주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": null
+    },
+    {
+      "key": "pne-eumseong--pe-shredded-to-pellet",
+      "facility": "pne-eumseong",
+      "transition": "pe-shredded-to-pellet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "pne-resin"
+      ],
+      "conditions": [
+        "공개 자료는 수지 종류·압출을 설명하며 상세 투입 형상·전처리 완료 여부는 확인 필요",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "PE 재생원료",
+        "source_ids": [
+          "pne-resin"
+        ],
+        "locator": "사업분야 > 일반폐기물·수지 사업부 / 음성 사업장주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": null
+    },
+    {
+      "key": "veolia-dh-yongin--pe-sort-bale",
+      "facility": "veolia-dh-yongin",
+      "transition": "pe-sort-bale",
+      "basis": "published_site_process",
+      "source_ids": [
+        "veolia-dh-sorting"
+      ],
+      "conditions": [
+        "가정 회수품 공정; 사업장 발생 물량의 반입 별도 협의",
+        "상세 주소 미확인으로 거리 순위 없음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [
+          "rigid",
+          "film",
+          "scrap"
+        ],
+        "output_description": "PE 선별 베일",
+        "source_ids": [
+          "veolia-dh-sorting"
+        ],
+        "locator": "위치 경기도 용인 / 서비스 범위 플라스틱 유형별 베일 전처리",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "rigid",
+        "film",
+        "scrap"
+      ]
+    },
+    {
+      "key": "yuil-yangsan--pet-bottle-to-flake",
+      "facility": "yuil-yangsan",
+      "transition": "pet-bottle-to-flake",
+      "basis": "published_site_process",
+      "source_ids": [
+        "yuil-pet",
+        "yuil-sites-process",
+        "yuil-locations"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [
+          "bottle"
+        ],
+        "output_description": "재생 PET 플레이크",
+        "source_ids": [
+          "yuil-pet",
+          "yuil-sites-process",
+          "yuil-locations"
+        ],
+        "locator": "PET 재활용 공정 소개",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": null
+    },
+    {
+      "key": "yuil-yangsan--pet-sorted-bale-to-flake",
+      "facility": "yuil-yangsan",
+      "transition": "pet-sorted-bale-to-flake",
+      "basis": "published_site_process",
+      "source_ids": [
+        "yuil-pet",
+        "yuil-sites-process",
+        "yuil-locations"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [],
+        "output_description": "재생 PET 플레이크",
+        "source_ids": [
+          "yuil-pet",
+          "yuil-sites-process",
+          "yuil-locations"
+        ],
+        "locator": "PET 재활용 공정 소개",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": null
+    },
+    {
+      "key": "yuil-busan--pet-bottle-to-flake",
+      "facility": "yuil-busan",
+      "transition": "pet-bottle-to-flake",
+      "basis": "published_site_process",
+      "source_ids": [
+        "yuil-pet",
+        "yuil-sites-process",
+        "yuil-locations"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [
+          "bottle"
+        ],
+        "output_description": "재생 PET 플레이크",
+        "source_ids": [
+          "yuil-pet",
+          "yuil-sites-process",
+          "yuil-locations"
+        ],
+        "locator": "PET 재활용 공정 소개",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": null
+    },
+    {
+      "key": "yuil-busan--pet-sorted-bale-to-flake",
+      "facility": "yuil-busan",
+      "transition": "pet-sorted-bale-to-flake",
+      "basis": "published_site_process",
+      "source_ids": [
+        "yuil-pet",
+        "yuil-sites-process",
+        "yuil-locations"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [],
+        "output_description": "재생 PET 플레이크",
+        "source_ids": [
+          "yuil-pet",
+          "yuil-sites-process",
+          "yuil-locations"
+        ],
+        "locator": "PET 재활용 공정 소개",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": null
+    },
+    {
+      "key": "hrm-cheongju--pet-sort-bale",
+      "facility": "hrm-cheongju",
+      "transition": "pet-sort-bale",
+      "basis": "published_site_process",
+      "source_ids": [
+        "hrm-pet-collection",
+        "hrm-mrf"
+      ],
+      "conditions": [
+        "투명 PET병 기본, 기타 품목·수거 범위는 별도 협의",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [
+          "bottle"
+        ],
+        "output_description": "선별 압축 PET 베일",
+        "source_ids": [
+          "hrm-pet-collection",
+          "hrm-mrf"
+        ],
+        "locator": "품목·서비스 / 청주 센터주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "bottle"
+      ]
+    },
+    {
+      "key": "veolia-dh-yongin--pet-sort-bale",
+      "facility": "veolia-dh-yongin",
+      "transition": "pet-sort-bale",
+      "basis": "published_site_process",
+      "source_ids": [
+        "veolia-dh-sorting"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [
+          "bottle"
+        ],
+        "output_description": "선별 압축 PET 베일",
+        "source_ids": [
+          "veolia-dh-sorting"
+        ],
+        "locator": "위치 경기도 용인 / 서비스 범위 플라스틱 유형별 베일 전처리",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "bottle"
+      ]
+    },
+    {
+      "key": "cntk-hwaseong--abs-prepare",
+      "facility": "cntk-hwaseong",
+      "transition": "abs-prepare",
+      "basis": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-flake"
+      ],
+      "conditions": [
+        "회사 제품 근거는 있으나 화성·진주 중 해당 라인 설치 사업장 확인 필요",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "organisation_only_not_site_verified",
+        "material_examples": [
+          "abs"
+        ],
+        "form_examples": [
+          "scrap",
+          "rigid"
+        ],
+        "output_description": "ABS 플레이크",
+        "source_ids": [
+          "cntk-flake"
+        ],
+        "locator": "FLAKE 제품·본점/진주지점 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "scrap",
+        "rigid"
+      ]
+    },
+    {
+      "key": "cntk-hwaseong--abs-pelletise",
+      "facility": "cntk-hwaseong",
+      "transition": "abs-pelletise",
+      "basis": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-pellet"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "organisation_only_not_site_verified",
+        "material_examples": [
+          "abs"
+        ],
+        "form_examples": [
+          "flake",
+          "shredded"
+        ],
+        "output_description": "ABS 펠릿",
+        "source_ids": [
+          "cntk-pellet"
+        ],
+        "locator": "PELLET 제품·본점/진주지점 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "flake",
+        "shredded"
+      ]
+    },
+    {
+      "key": "cntk-jinju--abs-prepare",
+      "facility": "cntk-jinju",
+      "transition": "abs-prepare",
+      "basis": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-flake",
+        "cntk-jinju-registry"
+      ],
+      "conditions": [
+        "회사 제품 근거는 있으나 화성·진주 중 해당 라인 설치 사업장 확인 필요",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "organisation_only_not_site_verified",
+        "material_examples": [
+          "abs"
+        ],
+        "form_examples": [
+          "scrap",
+          "rigid"
+        ],
+        "output_description": "ABS 플레이크",
+        "source_ids": [
+          "cntk-flake",
+          "cntk-jinju-registry"
+        ],
+        "locator": "FLAKE 제품·본점/진주지점 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "scrap",
+        "rigid"
+      ]
+    },
+    {
+      "key": "cntk-jinju--abs-pelletise",
+      "facility": "cntk-jinju",
+      "transition": "abs-pelletise",
+      "basis": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-pellet",
+        "cntk-jinju-registry"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "organisation_only_not_site_verified",
+        "material_examples": [
+          "abs"
+        ],
+        "form_examples": [
+          "flake",
+          "shredded"
+        ],
+        "output_description": "ABS 펠릿",
+        "source_ids": [
+          "cntk-pellet",
+          "cntk-jinju-registry"
+        ],
+        "locator": "PELLET 제품·본점/진주지점 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "flake",
+        "shredded"
+      ]
+    },
+    {
+      "key": "cntk-hwaseong--ps-prepare",
+      "facility": "cntk-hwaseong",
+      "transition": "ps-prepare",
+      "basis": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-flake"
+      ],
+      "conditions": [
+        "회사 제품 근거는 있으나 화성·진주 중 해당 라인 설치 사업장 확인 필요",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "organisation_only_not_site_verified",
+        "material_examples": [
+          "ps"
+        ],
+        "form_examples": [
+          "scrap",
+          "rigid"
+        ],
+        "output_description": "PS 플레이크",
+        "source_ids": [
+          "cntk-flake"
+        ],
+        "locator": "FLAKE 제품·본점/진주지점 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "scrap",
+        "rigid"
+      ]
+    },
+    {
+      "key": "cntk-hwaseong--ps-pelletise",
+      "facility": "cntk-hwaseong",
+      "transition": "ps-pelletise",
+      "basis": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-pellet"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "organisation_only_not_site_verified",
+        "material_examples": [
+          "ps"
+        ],
+        "form_examples": [
+          "flake",
+          "shredded"
+        ],
+        "output_description": "PS 펠릿",
+        "source_ids": [
+          "cntk-pellet"
+        ],
+        "locator": "PELLET 제품·본점/진주지점 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "flake",
+        "shredded"
+      ]
+    },
+    {
+      "key": "cntk-jinju--ps-prepare",
+      "facility": "cntk-jinju",
+      "transition": "ps-prepare",
+      "basis": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-flake",
+        "cntk-jinju-registry"
+      ],
+      "conditions": [
+        "회사 제품 근거는 있으나 화성·진주 중 해당 라인 설치 사업장 확인 필요",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "organisation_only_not_site_verified",
+        "material_examples": [
+          "ps"
+        ],
+        "form_examples": [
+          "scrap",
+          "rigid"
+        ],
+        "output_description": "PS 플레이크",
+        "source_ids": [
+          "cntk-flake",
+          "cntk-jinju-registry"
+        ],
+        "locator": "FLAKE 제품·본점/진주지점 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "scrap",
+        "rigid"
+      ]
+    },
+    {
+      "key": "cntk-jinju--ps-pelletise",
+      "facility": "cntk-jinju",
+      "transition": "ps-pelletise",
+      "basis": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-pellet",
+        "cntk-jinju-registry"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "organisation_only_not_site_verified",
+        "material_examples": [
+          "ps"
+        ],
+        "form_examples": [
+          "flake",
+          "shredded"
+        ],
+        "output_description": "PS 펠릿",
+        "source_ids": [
+          "cntk-pellet",
+          "cntk-jinju-registry"
+        ],
+        "locator": "PELLET 제품·본점/진주지점 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "flake",
+        "shredded"
+      ]
+    },
+    {
+      "key": "cntk-hwaseong--san-prepare",
+      "facility": "cntk-hwaseong",
+      "transition": "san-prepare",
+      "basis": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-flake"
+      ],
+      "conditions": [
+        "회사 제품 근거는 있으나 화성·진주 중 해당 라인 설치 사업장 확인 필요",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "organisation_only_not_site_verified",
+        "material_examples": [
+          "san"
+        ],
+        "form_examples": [
+          "scrap",
+          "rigid"
+        ],
+        "output_description": "SAN 플레이크",
+        "source_ids": [
+          "cntk-flake"
+        ],
+        "locator": "FLAKE 제품·본점/진주지점 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "scrap",
+        "rigid"
+      ]
+    },
+    {
+      "key": "cntk-hwaseong--san-pelletise",
+      "facility": "cntk-hwaseong",
+      "transition": "san-pelletise",
+      "basis": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-pellet"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "organisation_only_not_site_verified",
+        "material_examples": [
+          "san"
+        ],
+        "form_examples": [
+          "flake",
+          "shredded"
+        ],
+        "output_description": "SAN 펠릿",
+        "source_ids": [
+          "cntk-pellet"
+        ],
+        "locator": "PELLET 제품·본점/진주지점 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "flake",
+        "shredded"
+      ]
+    },
+    {
+      "key": "cntk-jinju--san-prepare",
+      "facility": "cntk-jinju",
+      "transition": "san-prepare",
+      "basis": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-flake",
+        "cntk-jinju-registry"
+      ],
+      "conditions": [
+        "회사 제품 근거는 있으나 화성·진주 중 해당 라인 설치 사업장 확인 필요",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "organisation_only_not_site_verified",
+        "material_examples": [
+          "san"
+        ],
+        "form_examples": [
+          "scrap",
+          "rigid"
+        ],
+        "output_description": "SAN 플레이크",
+        "source_ids": [
+          "cntk-flake",
+          "cntk-jinju-registry"
+        ],
+        "locator": "FLAKE 제품·본점/진주지점 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "scrap",
+        "rigid"
+      ]
+    },
+    {
+      "key": "cntk-jinju--san-pelletise",
+      "facility": "cntk-jinju",
+      "transition": "san-pelletise",
+      "basis": "site_role_hypothesis",
+      "source_ids": [
+        "cntk-pellet",
+        "cntk-jinju-registry"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "organisation_only_not_site_verified",
+        "material_examples": [
+          "san"
+        ],
+        "form_examples": [
+          "flake",
+          "shredded"
+        ],
+        "output_description": "SAN 펠릿",
+        "source_ids": [
+          "cntk-pellet",
+          "cntk-jinju-registry"
+        ],
+        "locator": "PELLET 제품·본점/진주지점 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "flake",
+        "shredded"
+      ]
+    },
+    {
+      "key": "veolia-dh-yongin--ps-sort-bale",
+      "facility": "veolia-dh-yongin",
+      "transition": "ps-sort-bale",
+      "basis": "published_site_process",
+      "source_ids": [
+        "veolia-dh-sorting"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "ps"
+        ],
+        "form_examples": [
+          "rigid",
+          "scrap"
+        ],
+        "output_description": "선별 PS 베일",
+        "source_ids": [
+          "veolia-dh-sorting"
+        ],
+        "locator": "위치 경기도 용인 / 서비스 범위 플라스틱 유형별 베일 전처리",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "rigid",
+        "scrap"
+      ]
+    },
+    {
+      "key": "pne-eumseong--ps-pelletise",
+      "facility": "pne-eumseong",
+      "transition": "ps-pelletise",
+      "basis": "published_site_process",
+      "source_ids": [
+        "pne-resin"
+      ],
+      "conditions": [
+        "공개 자료의 수지 압출을 연결했으나 상세 투입 형상은 확인 필요",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "ps"
+        ],
+        "form_examples": [],
+        "output_description": "PS 재생원료",
+        "source_ids": [
+          "pne-resin"
+        ],
+        "locator": "사업분야 > 일반폐기물·수지 사업부 / 음성 사업장주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": null
+    },
+    {
+      "key": "sungji-hwaseong--pvc-wallpaper-recovery",
+      "facility": "sungji-hwaseong",
+      "transition": "pvc-wallpaper-recovery",
+      "basis": "published_site_process",
+      "source_ids": [
+        "sungji-pvc",
+        "sungji-hwaseong-registry"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pvc"
+        ],
+        "form_examples": [
+          "wallpaper"
+        ],
+        "output_description": "PVC 재생 원료; 종이 분말은 별도 산출물",
+        "source_ids": [
+          "sungji-pvc",
+          "sungji-hwaseong-registry"
+        ],
+        "locator": "제조상품 > PVC 원료·벽지 재생 / 화성 양감면 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "wallpaper"
+      ]
+    },
+    {
+      "key": "ecops-yeongcheon--eps-ingot-pelletise",
+      "facility": "ecops-yeongcheon",
+      "transition": "eps-ingot-pelletise",
+      "basis": "published_site_process",
+      "source_ids": [
+        "ecops-ingot",
+        "ecops-yeongcheon-registry"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "eps"
+        ],
+        "form_examples": [
+          "ingot"
+        ],
+        "output_description": "EPS 유래 PS 재생 펠릿",
+        "source_ids": [
+          "ecops-ingot",
+          "ecops-yeongcheon-registry"
+        ],
+        "locator": "생산공정 01 인고트 입고 → 02 분쇄 → 03 펠릿 / 영천 공장주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "ingot"
+      ]
+    },
+    {
+      "key": "netspa-busan--pa6-net-recovery",
+      "facility": "netspa-busan",
+      "transition": "pa6-net-recovery",
+      "basis": "published_site_process",
+      "source_ids": [
+        "netspa-nylon",
+        "netspa-pa6"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pa6"
+        ],
+        "form_examples": [
+          "net"
+        ],
+        "output_description": "PA6 재생 원료",
+        "source_ids": [
+          "netspa-nylon",
+          "netspa-pa6"
+        ],
+        "locator": "PRODUCT > 폐어망 기반 R-Nylon 및 부산 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "net"
+      ]
+    },
+    {
+      "key": "changmaec-seongju--abs-pelletise",
+      "facility": "changmaec-seongju",
+      "transition": "abs-pelletise",
+      "basis": "published_site_process",
+      "source_ids": [
+        "changmaec-process"
+      ],
+      "conditions": [
+        "고품질 분쇄 원료 대상; 난연제·유리섬유·첨가제·수지 등급별 별도 협의",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "공개 자료의 수지별 제품과 분쇄 원료 공정은 별도 항목이다. 이 수지 등급의 실제 반입은 미확인이다."
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "abs"
+        ],
+        "form_examples": [],
+        "output_description": "ABS 컴파운드 펠릿",
+        "source_ids": [
+          "changmaec-process"
+        ],
+        "locator": "사업소개 > 6단계 제조공정·제품라인업 / 본사 및 공장 선노로55-36",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": null
+    },
+    {
+      "key": "changmaec-seongju--ps-pelletise",
+      "facility": "changmaec-seongju",
+      "transition": "ps-pelletise",
+      "basis": "published_site_process",
+      "source_ids": [
+        "changmaec-process"
+      ],
+      "conditions": [
+        "고품질 분쇄 원료 대상; 난연제·유리섬유·첨가제·수지 등급별 별도 협의",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "공개 자료의 수지별 제품과 분쇄 원료 공정은 별도 항목이다. 이 수지 등급의 실제 반입은 미확인이다."
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "ps"
+        ],
+        "form_examples": [],
+        "output_description": "PS 컴파운드 펠릿",
+        "source_ids": [
+          "changmaec-process"
+        ],
+        "locator": "사업소개 > 6단계 제조공정·제품라인업 / 본사 및 공장 선노로55-36",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": null
+    },
+    {
+      "key": "changmaec-seongju--pp-shredded-to-pellet",
+      "facility": "changmaec-seongju",
+      "transition": "pp-shredded-to-pellet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "changmaec-process"
+      ],
+      "conditions": [
+        "고품질 분쇄 원료 대상; 난연제·유리섬유·첨가제·수지 등급별 별도 협의",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "공개 자료의 수지별 제품과 분쇄 원료 공정은 별도 항목이다. 이 수지 등급의 실제 반입은 미확인이다."
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [],
+        "output_description": "PP 컴파운드 펠릿",
+        "source_ids": [
+          "changmaec-process"
+        ],
+        "locator": "사업소개 > 6단계 제조공정·제품라인업 / 본사 및 공장 선노로55-36",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": null
+    },
+    {
+      "key": "changmaec-seongju--pa66-compound",
+      "facility": "changmaec-seongju",
+      "transition": "pa66-compound",
+      "basis": "published_site_process",
+      "source_ids": [
+        "changmaec-process"
+      ],
+      "conditions": [
+        "분리된 분쇄 원료의 등급·충전재·난연제·배합 적합성 별도 검토",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "공개 자료의 수지별 제품과 분쇄 원료 공정은 별도 항목이다. 이 수지 등급의 실제 반입은 미확인이다."
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pa66"
+        ],
+        "form_examples": [],
+        "output_description": "PA66 재생 컴파운드",
+        "source_ids": [
+          "changmaec-process"
+        ],
+        "locator": "사업소개 > 6단계 제조공정·제품라인업 / 본사 및 공장 선노로55-36",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": null
+    },
+    {
+      "key": "changmaec-seongju--pcabs-compound",
+      "facility": "changmaec-seongju",
+      "transition": "pcabs-compound",
+      "basis": "published_site_process",
+      "source_ids": [
+        "changmaec-process"
+      ],
+      "conditions": [
+        "분리된 분쇄 원료의 등급·충전재·난연제·배합 적합성 별도 검토",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
+        "공개 자료의 수지별 제품과 분쇄 원료 공정은 별도 항목이다. 이 수지 등급의 실제 반입은 미확인이다."
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pcabs"
+        ],
+        "form_examples": [],
+        "output_description": "PCABS 재생 컴파운드",
+        "source_ids": [
+          "changmaec-process"
+        ],
+        "locator": "사업소개 > 6단계 제조공정·제품라인업 / 본사 및 공장 선노로55-36",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": null
+    },
+    {
+      "key": "veolia-doksan-hwaseong--pp-bale-to-pellet",
+      "facility": "veolia-doksan-hwaseong",
+      "transition": "pp-bale-to-pellet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "veolia-pp-bale"
+      ],
+      "conditions": [
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [
+          "bale"
+        ],
+        "output_description": "PP 재생 펠릿",
+        "source_ids": [
+          "veolia-pp-bale"
+        ],
+        "locator": "독산/DSPL 사업장 역할 설명, PP 분쇄품 혹은 압축품 구매 문단",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "bale"
+      ]
     }
   ]
 }
