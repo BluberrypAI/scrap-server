@@ -60,7 +60,10 @@ def test_detail_narrows_and_preserves_code_with_real_catalog(family, code, mater
     assert result.status == "candidates"
     assert any(o.facilities for o in result.options)
     if family == "nonferrous_scrap":
-        assert {o.transition_key for o in result.options} == {"al-scrap-to-slab"}
+        assert {o.transition_key for o in result.options} == {
+            "al-scrap-to-slab",
+            "al-scrap-to-granule",
+        }
 
 
 @pytest.mark.parametrize(

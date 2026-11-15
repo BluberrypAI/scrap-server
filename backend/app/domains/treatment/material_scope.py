@@ -88,7 +88,7 @@ FINISH_STATES = {
     "pa6": {"pa6-resin"},
     "pa66": {"pa66-compound"},
     "pcabs": {"pcabs-compound"},
-    "aluminium": {"al-sheet", "al-sheet-ingot"},
+    "aluminium": {"al-sheet", "al-sheet-ingot", "al-granule"},
     "ferrous": {"ferrous-billet", "steel-reconditioned-drum"},
 }
 FORM_LABELS = {

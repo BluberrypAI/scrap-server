@@ -101,7 +101,21 @@ def test_company_products_do_not_certify_each_of_its_factories(reference):
     assert {"daewoon-naju", "veolia-dh-yongin"} <= unresolved
     for f in reference.facilities:
         if f.key in unresolved:
-            assert f.latitude is f.longitude is None
+            # A failed registry join must not borrow a namesake's coordinates.
+            # A separately cited, official address marker is independent evidence.
+            location_sources = [
+                s
+                for s in reference.sources
+                if s.key in f.source_ids and s.key.endswith("-published-location")
+            ]
+            if location_sources:
+                assert f.latitude is not None and f.longitude is not None
+                assert all(
+                    f.key in s.supported_records.get("facilities", []) for s in location_sources
+                )
+                assert all("지도 주소 마커" in s.locator for s in location_sources)
+            else:
+                assert f.latitude is f.longitude is None
 
 
 def test_form_unknown_stays_unknown_and_new_questionnaire_profiles_are_not_invented(reference):

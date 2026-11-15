@@ -1,5 +1,5 @@
 {
-  "checked_on": "2026-11-14",
+  "checked_on": "2026-11-16",
   "registry_source": "https://www.data.go.kr/data/15114147/standard.do",
   "registry_sha256": "b083ea497c37bb11bd9374fc0a5b0850b989d290dbdba9d4a713fef353e79c08",
   "rows": [
@@ -398,6 +398,96 @@
       "registry_name": null,
       "status": "not_linked",
       "reason": "2026-11-15 공식 사업장 공정 페이지로 연결. 기존 명부의 이름·주소 일치 행을 확보하지 못해 좌표·허가를 복사하지 않음.",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "kers-hwaseong",
+      "official_address": "경기도 화성시 양감면 용소금각로 2",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "공정·도로명주소는 원문 확인; 명부의 동일 사업장 좌표는 미확인. 임의 지오코딩하지 않음.",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "incheon-recycling-gojan",
+      "official_address": "인천광역시 남동구 청능대로468번길 23",
+      "registry_name": "㈜인천리사이클링",
+      "status": "exact_site_match",
+      "reason": "동일 사업장명과 도로명주소 전체 일치. 다른 동명 사업장 제외.",
+      "registry_rows": [
+        {
+          "source_row": 5708,
+          "name": "㈜인천리사이클링",
+          "address": "인천광역시 남동구 청능대로468번길 23",
+          "waste_codes": "51-03-01",
+          "as_of": "2025-08-13",
+          "equipment": "파쇄, 감용시설"
+        }
+      ]
+    },
+    {
+      "facility_key": "cwrs-hwaseong",
+      "official_address": "경기도 화성시 남양읍 매바위로569",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "공정·도로명주소는 원문 확인; 명부의 동일 사업장 좌표는 미확인. 임의 지오코딩하지 않음.",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "dongyang-gwangju",
+      "official_address": "경기도 광주시 초월읍 산수로682번길 27-6",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "명부의 동일 사업장 연결은 미확인. 좌표는 별도 공식 오시는길의 지도 주소 마커를 사용하며 planning-reference 출처에 기록.",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "hyundai-incheon",
+      "official_address": "인천광역시 제물포구 중봉대로 63",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "공정·도로명주소는 원문 확인; 명부의 동일 사업장 좌표는 미확인. 임의 지오코딩하지 않음.",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "jmtech-gimpo",
+      "official_address": "경기도 김포시 대곶면 쇄암로 156-11",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "명부의 동일 사업장 연결은 미확인. 좌표는 별도 공식 오시는길의 지도 주소 마커를 사용하며 planning-reference 출처에 기록.",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "hyundai-resource-hwaseong",
+      "official_address": "경기도 화성시 만세구 남양읍 신남로 104-17",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "공정·도로명주소는 원문 확인; 명부의 동일 사업장 좌표는 미확인. 임의 지오코딩하지 않음.",
+      "registry_rows": []
+    },
+    {
+      "facility_key": "hwangyeong-anseong",
+      "official_address": "경기도 안성시 대덕면 소사길 171",
+      "registry_name": "(주)환경수지",
+      "status": "exact_site_match",
+      "reason": "동일 사업장명과 도로명주소 전체 일치. 다른 동명 사업장 제외.",
+      "registry_rows": [
+        {
+          "source_row": 9051,
+          "name": "(주)환경수지",
+          "address": "경기도 안성시 대덕면 소사길 171",
+          "waste_codes": "51-03-01",
+          "as_of": "2025-11-27",
+          "equipment": "분쇄시설+용융시설"
+        }
+      ]
+    },
+    {
+      "facility_key": "saerom-hwaseong-one",
+      "official_address": "경기도 화성시 장안면 3.1만세로322번길 49-9",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "공정·도로명주소는 원문 확인; 명부의 동일 사업장 좌표는 미확인. 임의 지오코딩하지 않음.",
       "registry_rows": []
     }
   ]

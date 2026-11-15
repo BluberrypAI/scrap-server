@@ -1,0 +1,722 @@
+{
+  "checked_on": "2026-11-16",
+  "scope": "합성 문진·기업 입력과 공개 업체 요약. 현장 검사·실배송·현행 허가 검증이 아님.",
+  "diagnosis": {
+    "choices": 18,
+    "codes": [
+      "51-03-01",
+      "51-03-02",
+      "51-03-03",
+      "51-03-04",
+      "51-03-05",
+      "51-03-06",
+      "51-03-07",
+      "51-03-08",
+      "51-29-01",
+      "51-29-02",
+      "51-29-03",
+      "51-29-04"
+    ],
+    "form_combinations": 56,
+    "with_candidates": 53,
+    "unsupported_choices": [
+      "phenol_resin",
+      "pu_foam",
+      "rubber"
+    ],
+    "every_confirmed_code_matches": true
+  },
+  "browser": {
+    "checks": 59,
+    "passed": 59,
+    "results": [
+      {
+        "material": "pp",
+        "detail": null,
+        "form": "scrap",
+        "passed": true,
+        "candidates": 14,
+        "recycling_visible": true
+      },
+      {
+        "material": "pp",
+        "detail": null,
+        "form": "shredded",
+        "passed": true,
+        "candidates": 9,
+        "recycling_visible": true
+      },
+      {
+        "material": "pp",
+        "detail": null,
+        "form": "rigid",
+        "passed": true,
+        "candidates": 16,
+        "recycling_visible": true
+      },
+      {
+        "material": "pp",
+        "detail": null,
+        "form": "film",
+        "passed": true,
+        "candidates": 13,
+        "recycling_visible": true
+      },
+      {
+        "material": "pp",
+        "detail": null,
+        "form": "bale",
+        "passed": true,
+        "candidates": 1,
+        "recycling_visible": true
+      },
+      {
+        "material": "pp",
+        "detail": null,
+        "form": "flake",
+        "passed": true,
+        "candidates": 9,
+        "recycling_visible": true
+      },
+      {
+        "material": "pp",
+        "detail": null,
+        "form": "pellet",
+        "passed": true,
+        "candidates": 2,
+        "recycling_visible": true
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "film",
+        "passed": true,
+        "candidates": 16,
+        "recycling_visible": true
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "scrap",
+        "passed": true,
+        "candidates": 15,
+        "recycling_visible": true
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "rigid",
+        "passed": true,
+        "candidates": 19,
+        "recycling_visible": true
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "bale",
+        "passed": true,
+        "candidates": 0,
+        "recycling_visible": true
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "film-bale",
+        "passed": true,
+        "candidates": 1,
+        "recycling_visible": true
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "shredded",
+        "passed": true,
+        "candidates": 7,
+        "recycling_visible": true
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "flake",
+        "passed": true,
+        "candidates": 7,
+        "recycling_visible": true
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "pellet",
+        "passed": true,
+        "candidates": 1,
+        "recycling_visible": true
+      },
+      {
+        "material": "ps",
+        "detail": null,
+        "form": "scrap",
+        "passed": true,
+        "candidates": 5,
+        "recycling_visible": true
+      },
+      {
+        "material": "ps",
+        "detail": null,
+        "form": "rigid",
+        "passed": true,
+        "candidates": 7,
+        "recycling_visible": true
+      },
+      {
+        "material": "ps",
+        "detail": null,
+        "form": "bale",
+        "passed": true,
+        "candidates": 0,
+        "recycling_visible": true
+      },
+      {
+        "material": "ps",
+        "detail": null,
+        "form": "flake",
+        "passed": true,
+        "candidates": 5,
+        "recycling_visible": true
+      },
+      {
+        "material": "ps",
+        "detail": null,
+        "form": "shredded",
+        "passed": true,
+        "candidates": 5,
+        "recycling_visible": true
+      },
+      {
+        "material": "pet",
+        "detail": null,
+        "form": "bottle",
+        "passed": true,
+        "candidates": 11,
+        "recycling_visible": true
+      },
+      {
+        "material": "pet",
+        "detail": null,
+        "form": "bale",
+        "passed": true,
+        "candidates": 6,
+        "recycling_visible": true
+      },
+      {
+        "material": "pet",
+        "detail": null,
+        "form": "flake",
+        "passed": true,
+        "candidates": 2,
+        "recycling_visible": true
+      },
+      {
+        "material": "abs",
+        "detail": null,
+        "form": "scrap",
+        "passed": true,
+        "candidates": 2,
+        "recycling_visible": true
+      },
+      {
+        "material": "abs",
+        "detail": null,
+        "form": "rigid",
+        "passed": true,
+        "candidates": 2,
+        "recycling_visible": true
+      },
+      {
+        "material": "abs",
+        "detail": null,
+        "form": "flake",
+        "passed": true,
+        "candidates": 3,
+        "recycling_visible": true
+      },
+      {
+        "material": "abs",
+        "detail": null,
+        "form": "shredded",
+        "passed": true,
+        "candidates": 3,
+        "recycling_visible": true
+      },
+      {
+        "material": "phenol_resin",
+        "detail": null,
+        "form": null,
+        "passed": true,
+        "outcome": "explicit_hold"
+      },
+      {
+        "material": "other_resin",
+        "detail": "san",
+        "form": "scrap",
+        "passed": true,
+        "candidates": 2,
+        "recycling_visible": true
+      },
+      {
+        "material": "other_resin",
+        "detail": "san",
+        "form": "rigid",
+        "passed": true,
+        "candidates": 2,
+        "recycling_visible": true
+      },
+      {
+        "material": "other_resin",
+        "detail": "san",
+        "form": "flake",
+        "passed": true,
+        "candidates": 2,
+        "recycling_visible": true
+      },
+      {
+        "material": "other_resin",
+        "detail": "san",
+        "form": "shredded",
+        "passed": true,
+        "candidates": 2,
+        "recycling_visible": true
+      },
+      {
+        "material": "other_resin",
+        "detail": "pa66",
+        "form": "flake",
+        "passed": true,
+        "candidates": 2,
+        "recycling_visible": true
+      },
+      {
+        "material": "other_resin",
+        "detail": "pa66",
+        "form": "shredded",
+        "passed": true,
+        "candidates": 2,
+        "recycling_visible": true
+      },
+      {
+        "material": "other_resin",
+        "detail": "pcabs",
+        "form": "flake",
+        "passed": true,
+        "candidates": 1,
+        "recycling_visible": true
+      },
+      {
+        "material": "other_resin",
+        "detail": "pcabs",
+        "form": "shredded",
+        "passed": true,
+        "candidates": 1,
+        "recycling_visible": true
+      },
+      {
+        "material": "pvc",
+        "detail": null,
+        "form": "wallpaper",
+        "passed": true,
+        "candidates": 1,
+        "recycling_visible": true
+      },
+      {
+        "material": "pvc",
+        "detail": null,
+        "form": "rigid",
+        "passed": true,
+        "candidates": 1,
+        "recycling_visible": true
+      },
+      {
+        "material": "pu_foam",
+        "detail": null,
+        "form": null,
+        "passed": true,
+        "outcome": "explicit_hold"
+      },
+      {
+        "material": "eps",
+        "detail": null,
+        "form": "foam",
+        "passed": true,
+        "candidates": 1,
+        "recycling_visible": true
+      },
+      {
+        "material": "eps",
+        "detail": null,
+        "form": "ingot",
+        "passed": true,
+        "candidates": 1,
+        "recycling_visible": true
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pp",
+        "form": "scrap",
+        "passed": true,
+        "candidates": 14,
+        "recycling_visible": true
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pp",
+        "form": "rigid",
+        "passed": true,
+        "candidates": 16,
+        "recycling_visible": true
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pp",
+        "form": "film",
+        "passed": true,
+        "candidates": 13,
+        "recycling_visible": true
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pp",
+        "form": "bale",
+        "passed": true,
+        "candidates": 1,
+        "recycling_visible": true
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pe",
+        "form": "film",
+        "passed": true,
+        "candidates": 16,
+        "recycling_visible": true
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pe",
+        "form": "scrap",
+        "passed": true,
+        "candidates": 15,
+        "recycling_visible": true
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pe",
+        "form": "rigid",
+        "passed": true,
+        "candidates": 19,
+        "recycling_visible": true
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pe",
+        "form": "bale",
+        "passed": true,
+        "candidates": 0,
+        "recycling_visible": true
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pe",
+        "form": "film-bale",
+        "passed": true,
+        "candidates": 1,
+        "recycling_visible": true
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pet",
+        "form": "bottle",
+        "passed": true,
+        "candidates": 11,
+        "recycling_visible": true
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pet",
+        "form": "bale",
+        "passed": true,
+        "candidates": 6,
+        "recycling_visible": true
+      },
+      {
+        "material": "fishing_net",
+        "detail": "pa6",
+        "form": "net",
+        "passed": true,
+        "candidates": 2,
+        "recycling_visible": true
+      },
+      {
+        "material": "aqua_buoy",
+        "detail": "eps",
+        "form": "buoy",
+        "passed": true,
+        "candidates": 1,
+        "recycling_visible": true
+      },
+      {
+        "material": "rubber",
+        "detail": null,
+        "form": null,
+        "passed": true,
+        "outcome": "explicit_hold"
+      },
+      {
+        "material": "ferrous_scrap",
+        "detail": null,
+        "form": "scrap",
+        "passed": true,
+        "candidates": 4,
+        "recycling_visible": true
+      },
+      {
+        "material": "metal_can",
+        "detail": null,
+        "form": "can",
+        "passed": true,
+        "candidates": 3,
+        "recycling_visible": true
+      },
+      {
+        "material": "nonferrous_scrap",
+        "detail": "aluminium",
+        "form": "scrap",
+        "passed": true,
+        "candidates": 2,
+        "recycling_visible": true
+      },
+      {
+        "material": "metal_container",
+        "detail": "ferrous",
+        "form": "drum",
+        "passed": true,
+        "candidates": 1,
+        "recycling_visible": true
+      }
+    ]
+  },
+  "http": {
+    "facilities": 61,
+    "transitions": 68,
+    "capabilities": 128,
+    "reached_capabilities": 123,
+    "reached_processes": 63,
+    "queries": 212,
+    "statuses": {
+      "candidates": 141,
+      "no_route": 15,
+      "end_of_route": 56
+    }
+  },
+  "ai": {
+    "initial_contexts": 7,
+    "followup_contexts": 2,
+    "candidate_review_occurrences": 67,
+    "unique_capabilities": 65,
+    "final_statuses": {
+      "needs_evidence": 46,
+      "reviewed": 21
+    },
+    "new_capability_statuses": {
+      "needs_evidence": 12,
+      "reviewed": 7
+    },
+    "initial_recycling_types_transferred": true,
+    "automatic_dispatch_approval": false,
+    "new_capabilities": [
+      {
+        "key": "cwrs-hwaseong--pe-sort-bale",
+        "status": "needs_evidence",
+        "gaps": [
+          "input_form_unproven"
+        ],
+        "source": null
+      },
+      {
+        "key": "cwrs-hwaseong--pet-sort-bale",
+        "status": "needs_evidence",
+        "gaps": [
+          "input_form_unproven"
+        ],
+        "source": null
+      },
+      {
+        "key": "daehan-noksan--ferrous-prepared-eaf-billet",
+        "status": "reviewed",
+        "gaps": [],
+        "source": {
+          "publisher": "대한제강 / 한국거래소 공시",
+          "url": "https://kind.krx.co.kr/external/2026/03/18/001011/20260318004841/11011.htm",
+          "locator": "제73기 사업보고서 II. 사업의 내용: 원재료, 3) 생산 및 설비 현황"
+        }
+      },
+      {
+        "key": "dongyang-gwangju--ferrous-shear",
+        "status": "reviewed",
+        "gaps": [],
+        "source": {
+          "publisher": "동양산업자원",
+          "url": "https://recycler.co.kr/회사개요/",
+          "locator": "회사개요 사업종목 고철가공처리·SCRAP SHEAR 가동 연혁·현 사업장 주소"
+        }
+      },
+      {
+        "key": "hwangyeong-anseong--pe-registered-grind",
+        "status": "needs_evidence",
+        "gaps": [
+          "input_form_unproven",
+          "process_unproven"
+        ],
+        "source": null
+      },
+      {
+        "key": "hyundai-incheon--ferrous-eaf-billet",
+        "status": "reviewed",
+        "gaps": [],
+        "source": {
+          "publisher": "현대제철",
+          "url": "https://moment.hyundai-steel.com/moment-detail/12249",
+          "locator": "모먼트 12249: 인천공장 제강부 철스크랩 검수 및 120톤 전기로 작업"
+        }
+      },
+      {
+        "key": "hyundai-incheon--ferrous-prepared-eaf-billet",
+        "status": "reviewed",
+        "gaps": [],
+        "source": {
+          "publisher": "현대제철",
+          "url": "https://moment.hyundai-steel.com/moment-detail/12249",
+          "locator": "모먼트 12249: 인천공장 제강부 철스크랩 검수 및 120톤 전기로 작업"
+        }
+      },
+      {
+        "key": "hyundai-resource-hwaseong--al-can-prepare",
+        "status": "reviewed",
+        "gaps": [],
+        "source": {
+          "publisher": "현대자원산업 · 고용24 기업 공고",
+          "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet&wantedAuthNo=K180032611100076",
+          "locator": "K180032611100076 직무소개·근무 예정지; 채용 담당자 개인정보는 활용하지 않음"
+        }
+      },
+      {
+        "key": "incheon-recycling-gojan--pe-sort-bale",
+        "status": "needs_evidence",
+        "gaps": [
+          "input_form_unproven"
+        ],
+        "source": null
+      },
+      {
+        "key": "incheon-recycling-gojan--pet-sort-bale",
+        "status": "needs_evidence",
+        "gaps": [
+          "input_form_unproven"
+        ],
+        "source": null
+      },
+      {
+        "key": "incheon-recycling-gojan--pp-sort-bale",
+        "status": "needs_evidence",
+        "gaps": [
+          "input_form_unproven"
+        ],
+        "source": null
+      },
+      {
+        "key": "incheon-recycling-gojan--ps-sort-bale",
+        "status": "needs_evidence",
+        "gaps": [
+          "input_form_unproven"
+        ],
+        "source": null
+      },
+      {
+        "key": "jmtech-gimpo--al-scrap-to-granule",
+        "status": "reviewed",
+        "gaps": [],
+        "source": {
+          "publisher": "제이엠테크",
+          "url": "https://jmtechkorea.com/common/business/business1.php",
+          "locator": "사업소개: 원료 수거→재질 분류/오염 제거→파쇄/정밀 선별→제품화; 하단 주소"
+        }
+      },
+      {
+        "key": "kers-hwaseong--pe-sort-bale",
+        "status": "needs_evidence",
+        "gaps": [
+          "input_form_unproven"
+        ],
+        "source": null
+      },
+      {
+        "key": "kers-hwaseong--pet-sort-bale",
+        "status": "needs_evidence",
+        "gaps": [
+          "input_form_unproven"
+        ],
+        "source": null
+      },
+      {
+        "key": "kers-hwaseong--pp-sort-bale",
+        "status": "needs_evidence",
+        "gaps": [
+          "input_form_unproven"
+        ],
+        "source": null
+      },
+      {
+        "key": "kers-hwaseong--ps-sort-bale",
+        "status": "needs_evidence",
+        "gaps": [
+          "input_form_unproven",
+          "output_only"
+        ],
+        "source": null
+      },
+      {
+        "key": "kisco-changwon--ferrous-prepared-eaf-billet",
+        "status": "needs_evidence",
+        "gaps": [
+          "input_form_unproven",
+          "process_unproven",
+          "output_only"
+        ],
+        "source": null
+      },
+      {
+        "key": "saerom-hwaseong-one--pet-bottle-wash-grind",
+        "status": "reviewed",
+        "gaps": [],
+        "source": {
+          "publisher": "새롬이엔지 제1공장 · 공개 채용 직무자료",
+          "url": "https://www.theteams.kr/recruit/wanted/2898319",
+          "locator": "공고 2898319 직무내용·사업장 Location; 2024-12-30 마감"
+        }
+      }
+    ]
+  },
+  "tests": {
+    "server_sqlite_passed": 477,
+    "server_postgresql_passed_on_first_run": 477,
+    "server_final_postgresql": {
+      "passed": 475,
+      "connection_setup_errors": 2,
+      "rerun_errors_passed": 2
+    },
+    "route_passed": 550,
+    "route_skipped": 72,
+    "route_subtests_passed": 24
+  },
+  "interruptions": [
+    "로컬 server 재빌드 중 HTTP 502로 중단한 문진은 저장된 확정 결과를 재조회하고 모든 형태를 재검사; 미확정 두 문진은 새로 실행.",
+    "로컬 route 재빌드 중 알루미늄캔 3후보 호출 불가 후 health 200 확인·동일 문진 재검토. 최종 3후보 응답 완료.",
+    "PostgreSQL 최종 재실행에서 Windows 연결 시간초과 2개. 같은 두 테스트를 다시 실행해 통과."
+  ]
+}

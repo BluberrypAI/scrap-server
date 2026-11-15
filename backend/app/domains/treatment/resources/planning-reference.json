@@ -2546,7 +2546,9 @@
         ],
         "capabilities": [
           "daehan-noksan--ferrous-eaf-billet",
-          "kisco-changwon--ferrous-eaf-billet"
+          "kisco-changwon--ferrous-eaf-billet",
+          "daehan-noksan--ferrous-prepared-eaf-billet",
+          "kisco-changwon--ferrous-prepared-eaf-billet"
         ]
       }
     },
@@ -2571,7 +2573,8 @@
           "daehan-noksan"
         ],
         "capabilities": [
-          "daehan-noksan--ferrous-eaf-billet"
+          "daehan-noksan--ferrous-eaf-billet",
+          "daehan-noksan--ferrous-prepared-eaf-billet"
         ]
       }
     },
@@ -2596,7 +2599,8 @@
           "kisco-changwon"
         ],
         "capabilities": [
-          "kisco-changwon--ferrous-eaf-billet"
+          "kisco-changwon--ferrous-eaf-billet",
+          "kisco-changwon--ferrous-prepared-eaf-billet"
         ]
       }
     },
@@ -2830,6 +2834,391 @@
         ],
         "capabilities": [
           "netspa-busan--pa6-net-recovery"
+        ]
+      }
+    },
+    {
+      "key": "kers-hwaseong-sorting",
+      "url": "https://www.kieungroup.com/content/kers",
+      "publisher": "기은그룹 · 기은알에스",
+      "locator": "기은알에스: 사업개요·주소·압축기/광학선별기·제품소개",
+      "summary": "화성 양감면 용소금각로 2 사업장에서 원료 선별 후 재생원료 생산업체에 공급한다. 압축기와 광학선별기, PE·PP·PET·PS 압축제품을 공개한다. 압축 베일은 출하품이며 베일 반입·산업체 로트 수탁을 입증하지 않는다. 제품 색상·오염 허용치와 현재 가동·허가는 별도 확인한다.",
+      "checked_date": "2026-11-16",
+      "source_date": null,
+      "sha256": "b948d252842ca5c4f001128f1dfa874f32426e96cae3fd1c4a863f41d34c7e4d",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "kers-hwaseong-org"
+        ],
+        "facilities": [
+          "kers-hwaseong"
+        ],
+        "capabilities": [
+          "kers-hwaseong--pp-sort-bale",
+          "kers-hwaseong--pe-sort-bale",
+          "kers-hwaseong--ps-sort-bale",
+          "kers-hwaseong--pet-sort-bale"
+        ]
+      }
+    },
+    {
+      "key": "incheon-gojan-sorting",
+      "url": "https://www.kieungroup.com/content/incheon",
+      "publisher": "기은그룹 · 인천리사이클링",
+      "locator": "인천리사이클링: 사업개요·청능대로 사업장·선별/압축 공정·제품",
+      "summary": "인천 남동구 청능대로468번길 23의 회수 재활용품 선별장에서 광학·수선별 및 압축을 거쳐 PE·PP·PET·PS 재질별 원료를 출하한다. 다른 음실로 사업장 좌표와 구분한다. 회수품 공정의 공개이지 사업장 폐기물·베일의 자유로운 반입 승인이 아니다.",
+      "checked_date": "2026-11-16",
+      "source_date": null,
+      "sha256": "0066a9062ba39434f07186dfcd8cbc9b999ed61316ac077e973fe20227a1b17e",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "incheon-recycling-gojan-org"
+        ],
+        "facilities": [
+          "incheon-recycling-gojan"
+        ],
+        "capabilities": [
+          "incheon-recycling-gojan--pp-sort-bale",
+          "incheon-recycling-gojan--pe-sort-bale",
+          "incheon-recycling-gojan--ps-sort-bale",
+          "incheon-recycling-gojan--pet-sort-bale"
+        ]
+      }
+    },
+    {
+      "key": "incheon-recycling-gojan-registry-2026",
+      "url": "https://www.data.go.kr/data/15114147/standard.do",
+      "publisher": "공공데이터포털 · 전국폐기물처리업소표준데이터",
+      "locator": "전국 명부 1-based 행 5708; 사업장명·도로명주소 대조",
+      "summary": "㈜인천리사이클링, 인천광역시 남동구 청능대로468번길 23; 기준일 2025-08-13; 기록 코드 51-03-01; 설비 파쇄, 감용시설. 이 좌표와 과거 설비기록은 현행 허가·여유 용량·수락의 확인값이 아니다.",
+      "checked_date": "2026-11-16",
+      "source_date": "2025-08-13",
+      "sha256": "b083ea497c37bb11bd9374fc0a5b0850b989d290dbdba9d4a713fef353e79c08",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "incheon-recycling-gojan"
+        ]
+      }
+    },
+    {
+      "key": "cwrs-hwaseong-sorting",
+      "url": "https://www.kieungroup.com/content/cwrsws",
+      "publisher": "기은그룹 · 창우RS 화성지점",
+      "locator": "화성지점 사업개요·매바위로569·원료 입고/검수/선별/압축·압축 PE 제품",
+      "summary": "화성 남양읍 매바위로569에서 PET·PE 회수품을 확보하고 재생원료 생산업체에 공급한다. 원료 입고·계근·검수·선별·압축·출고 과정과 압축 PE 제품을 공개한다. PP·PS나 베일 반입, 후속 세척·펠릿 공정으로 확대하지 않는다.",
+      "checked_date": "2026-11-16",
+      "source_date": null,
+      "sha256": "9fcf7f29c73075a8d1c4b65c40c76564cab69487a62d34264666650d2ef508ba",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "cwrs-hwaseong-org"
+        ],
+        "facilities": [
+          "cwrs-hwaseong"
+        ],
+        "capabilities": [
+          "cwrs-hwaseong--pe-sort-bale",
+          "cwrs-hwaseong--pet-sort-bale"
+        ]
+      }
+    },
+    {
+      "key": "dongyang-gwangju-shear",
+      "url": "https://recycler.co.kr/회사개요/",
+      "publisher": "동양산업자원",
+      "locator": "회사개요 사업종목 고철가공처리·SCRAP SHEAR 가동 연혁·현 사업장 주소",
+      "summary": "동양산업자원은 경기 광주시 초월읍 산수로682번길 27-6의 철스크랩 가공업체다. 회사개요에 SCRAP SHEAR 설비와 고철 가공을 공개한다. 절단·등급 관리한 스크랩은 제강 전 중간 원료이며 이 사업장의 용해·연속주조를 의미하지 않는다.",
+      "checked_date": "2026-11-16",
+      "source_date": null,
+      "sha256": "908f4206bbb434a7f1522dc227985e633e00c2cba4f448422f3e746aa0e9911a",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "dongyang-gwangju-org"
+        ],
+        "facilities": [
+          "dongyang-gwangju"
+        ],
+        "states": [
+          "ferrous-prepared"
+        ],
+        "transitions": [
+          "ferrous-shear",
+          "ferrous-prepared-eaf-billet"
+        ],
+        "capabilities": [
+          "dongyang-gwangju--ferrous-shear"
+        ]
+      }
+    },
+    {
+      "key": "hyundai-incheon-eaf",
+      "url": "https://moment.hyundai-steel.com/moment-detail/12249",
+      "publisher": "현대제철",
+      "locator": "모먼트 12249: 인천공장 제강부 철스크랩 검수 및 120톤 전기로 작업",
+      "summary": "현대제철 인천공장 제강부는 철스크랩을 등급별로 검수·관리해 전기로에 투입한다. 해당 사업장의 전기로 제강 사실을 확인하며, 이번 스크랩의 지정 등급·치수·오염도와 구매·반입 계약은 별도 확인해야 한다.",
+      "checked_date": "2026-11-16",
+      "source_date": "2020-04-27",
+      "sha256": "0edf0a1b0fcd59394be05d2e77955c9b69be46543bf1640ec7d20e8fb8ca9543",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "hyundai-incheon-org"
+        ],
+        "facilities": [
+          "hyundai-incheon"
+        ],
+        "capabilities": [
+          "hyundai-incheon--ferrous-eaf-billet",
+          "hyundai-incheon--ferrous-prepared-eaf-billet"
+        ],
+        "transitions": [
+          "ferrous-prepared-eaf-billet"
+        ]
+      }
+    },
+    {
+      "key": "hyundai-incheon-address",
+      "url": "https://hyundai-steel.com/kr/company/network",
+      "publisher": "현대제철",
+      "locator": "글로벌 네트워크 > 국내 > 인천공장",
+      "summary": "인천공장 주소는 인천광역시 제물포구 중봉대로 63이다. 판교 사무소·당진·포항 공장의 주소 및 공정과 구분한다.",
+      "checked_date": "2026-11-16",
+      "source_date": null,
+      "sha256": "ad9433cc30814ceca8c16909b71434acc60778714ed1e39ecbac4de24f476bb9",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "hyundai-incheon-org"
+        ],
+        "facilities": [
+          "hyundai-incheon"
+        ]
+      }
+    },
+    {
+      "key": "hyundai-steel-eaf-casting",
+      "url": "https://www.hyundai-steel.com/upload/down/Hyundai%20Steel_History.pdf",
+      "publisher": "현대제철",
+      "locator": "공식 70년사 PDF 16페이지(인쇄면 028~029): 전기로사업본부, 인천·포항 사업장, 제강·연속주조 빌릿/블룸/빔블랭크",
+      "summary": "현대제철의 전기로 제강은 철스크랩 원료를 용해·정련하고 연속주조해 빌릿 등 철강 반제품으로 만든다. 인천공장의 스크랩 투입 사실은 별도 현장 자료로 대조한다. 공정 설명만으로 특정 외부 물량의 수탁이나 회수율을 확정하지 않는다.",
+      "checked_date": "2026-11-16",
+      "source_date": null,
+      "sha256": "c07f97290299e7081011165626f6bb5c7ab4e62726dc0a788ae2f0182d8c8940",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "hyundai-incheon-org"
+        ],
+        "facilities": [
+          "hyundai-incheon"
+        ],
+        "capabilities": [
+          "hyundai-incheon--ferrous-eaf-billet",
+          "hyundai-incheon--ferrous-prepared-eaf-billet"
+        ],
+        "transitions": [
+          "ferrous-prepared-eaf-billet"
+        ]
+      }
+    },
+    {
+      "key": "jmtech-gimpo-al-granule",
+      "url": "https://jmtechkorea.com/common/business/business1.php",
+      "publisher": "제이엠테크",
+      "locator": "사업소개: 원료 수거→재질 분류/오염 제거→파쇄/정밀 선별→제품화; 하단 주소",
+      "summary": "김포 대곶면 쇄암로 156-11의 제이엠테크는 비철 스크랩에서 재질별 분류·오염물 제거·파쇄·정밀 선별로 알루미늄 그래뉼을 생산한다. 제품은 합금철·탈산제 등의 원료다. 용해 공정이 아니며 혼합 비철 전체를 알루미늄으로 처리하거나 회수량을 전량으로 추정하지 않는다.",
+      "checked_date": "2026-11-16",
+      "source_date": null,
+      "sha256": "733e676de7578a9c533213ffb9db1622a1efae80ef579ef06f55342ed74ac71a",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "jmtech-gimpo-org"
+        ],
+        "facilities": [
+          "jmtech-gimpo"
+        ],
+        "states": [
+          "al-granule"
+        ],
+        "transitions": [
+          "al-scrap-to-granule"
+        ],
+        "capabilities": [
+          "jmtech-gimpo--al-scrap-to-granule"
+        ]
+      }
+    },
+    {
+      "key": "hyundai-resource-can-prepare",
+      "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet&wantedAuthNo=K180032611100076",
+      "publisher": "현대자원산업 · 고용24 기업 공고",
+      "locator": "K180032611100076 직무소개·근무 예정지; 채용 담당자 개인정보는 활용하지 않음",
+      "summary": "화성 남양읍 신남로 104-17의 현대자원산업은 알루미늄캔을 수거·선별·가공하는 사업장으로 생산·출하 업무를 공개했다. 구체 산출물 규격과 용해·잉곳 생산은 확인되지 않는다. 성남의 동명 수집업체 기록을 이 공장의 허가·좌표로 사용하지 않는다.",
+      "checked_date": "2026-11-16",
+      "source_date": "2026-11-10",
+      "sha256": "ba24bd65bec0d92e5a45a68463aea46ef734c7033208b6568af1273c4566bbc3",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "hyundai-resource-hwaseong-org"
+        ],
+        "facilities": [
+          "hyundai-resource-hwaseong"
+        ],
+        "transitions": [
+          "al-can-prepare"
+        ],
+        "capabilities": [
+          "hyundai-resource-hwaseong--al-can-prepare"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-113700",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 · 전국등록공장현황",
+      "locator": "2025-12-31 CSV 순번 113700; 회사명·공장주소·생산품",
+      "summary": "환경수지 안성 대덕면 소사길 171의 등록 생산품은 PE다. 동일 주소 폐기물업체 명부의 분쇄·용융 설비를 함께 대조했다. 생산품에 펠릿 규격은 없어 분쇄 후보만 연결하며 세척·재펠릿화·현재 수락은 추정하지 않는다.",
+      "checked_date": "2026-11-16",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "hwangyeong-anseong-org"
+        ],
+        "facilities": [
+          "hwangyeong-anseong"
+        ],
+        "capabilities": [
+          "hwangyeong-anseong--pe-registered-grind"
+        ]
+      }
+    },
+    {
+      "key": "hwangyeong-anseong-registry-2026",
+      "url": "https://www.data.go.kr/data/15114147/standard.do",
+      "publisher": "공공데이터포털 · 전국폐기물처리업소표준데이터",
+      "locator": "전국 명부 1-based 행 9051; 사업장명·도로명주소 대조",
+      "summary": "(주)환경수지, 경기도 안성시 대덕면 소사길 171; 기준일 2025-11-27; 기록 코드 51-03-01; 설비 분쇄시설+용융시설. 이 좌표와 과거 설비기록은 현행 허가·여유 용량·수락의 확인값이 아니다.",
+      "checked_date": "2026-11-16",
+      "source_date": "2025-11-27",
+      "sha256": "b083ea497c37bb11bd9374fc0a5b0850b989d290dbdba9d4a713fef353e79c08",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "hwangyeong-anseong"
+        ],
+        "capabilities": [
+          "hwangyeong-anseong--pe-registered-grind"
+        ]
+      }
+    },
+    {
+      "key": "saerom-hwaseong-one-pet",
+      "url": "https://www.theteams.kr/recruit/wanted/2898319",
+      "publisher": "새롬이엔지 제1공장 · 공개 채용 직무자료",
+      "locator": "공고 2898319 직무내용·사업장 Location; 2024-12-30 마감",
+      "summary": "화성 장안면 3.1만세로322번길 49-9의 새롬이엔지 제1공장은 폐PET병을 분쇄·세척해 분쇄세척품을 생산한다고 공개했다. 제2공장 PP·PE 공정과 구분하고, 이 자료만으로 PET 베일·건조·식품접촉 품질을 확인하지 않는다. 과거 공고이므로 현재 가동·수탁을 다시 확인한다.",
+      "checked_date": "2026-11-16",
+      "source_date": null,
+      "sha256": "a05aa73a66322063642ca0acee1b5aadae505e6831d5d4567825140721cc4ccc",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "saerom-hwaseong-one-org"
+        ],
+        "facilities": [
+          "saerom-hwaseong-one"
+        ],
+        "transitions": [
+          "pet-bottle-wash-grind"
+        ],
+        "capabilities": [
+          "saerom-hwaseong-one--pet-bottle-wash-grind"
+        ]
+      }
+    },
+    {
+      "key": "dongyang-gwangju-published-location",
+      "url": "https://recycler.co.kr/오시는길/",
+      "publisher": "동양산업자원 광주",
+      "locator": "공식 오시는길 페이지의 연결 지도 주소 마커 0x356353390dc80fc9:0x298f2dcfd435901; 뷰포트 중심값 제외",
+      "summary": "공식 홈페이지가 표시한 경기도 광주시 초월읍 산수로682번길 27-6의 지도 주소 마커는 위도 37.4202135, 경도 127.3111563이다. 주변 시·군 중심이나 지도 화면 중심을 사용하지 않았다. 사업장 조사 위치이며 실제 반입 출입구·화물 운송 경로와는 다르다.",
+      "checked_date": "2026-11-16",
+      "source_date": null,
+      "sha256": "329a333d484ce78bf29f1e0b46d55b67162c64f0574a92ee666e8e256d9f968c",
+      "acquisition": "공식 오시는길 및 iframe 지도 주소 마커 대조. 연결 지도 SHA256 1fda1901b45c4b55d1061cfd0f39816c277c86000033a9c193d3b671ef928604",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "dongyang-gwangju"
+        ]
+      }
+    },
+    {
+      "key": "jmtech-gimpo-published-location",
+      "url": "https://jmtechkorea.com/common/about/about6.php",
+      "publisher": "제이엠테크 김포",
+      "locator": "공식 오시는길 페이지의 연결 지도 주소 마커 0x357c7c1e95d1edb3:0x516d5b8f8106b2a1; 뷰포트 중심값 제외",
+      "summary": "공식 홈페이지가 표시한 경기도 김포시 대곶면 쇄암로 156-11의 지도 주소 마커는 위도 37.6818167, 경도 126.5402162이다. 주변 시·군 중심이나 지도 화면 중심을 사용하지 않았다. 사업장 조사 위치이며 실제 반입 출입구·화물 운송 경로와는 다르다.",
+      "checked_date": "2026-11-16",
+      "source_date": null,
+      "sha256": "3e1738e5100d4042ed60abb89aefa6ce600a77496ad25a0d1069ccaf94f62937",
+      "acquisition": "공식 오시는길 및 iframe 지도 주소 마커 대조. 연결 지도 SHA256 a20588d3caeb26d7f456ee5330e9c2d8a229967125d5dd04567fe238a44ecc4d",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "jmtech-gimpo"
         ]
       }
     }
@@ -3572,6 +3961,28 @@
       "is_output": true,
       "source_ids": [
         "codil-dh1-film-bale"
+      ]
+    },
+    {
+      "key": "ferrous-prepared",
+      "label": "가공 철스크랩 · 제강 반입 규격 확인 필요",
+      "material": "ferrous",
+      "input_forms": [],
+      "is_entry": false,
+      "is_output": false,
+      "source_ids": [
+        "dongyang-gwangju-shear"
+      ]
+    },
+    {
+      "key": "al-granule",
+      "label": "재생 알루미늄 그래뉼 · 용도 규격 확인 필요",
+      "material": "aluminium",
+      "input_forms": [],
+      "is_entry": false,
+      "is_output": true,
+      "source_ids": [
+        "jmtech-gimpo-al-granule"
       ]
     }
   ],
@@ -4887,6 +5298,110 @@
       "source_ids": [
         "codil-dh1-film-bale"
       ]
+    },
+    {
+      "key": "ferrous-shear",
+      "label": "철스크랩 절단·규격 가공",
+      "input_state": "ferrous-scrap",
+      "output_state": "ferrous-prepared",
+      "operation_steps": [
+        "반입 철스크랩 검수",
+        "스크랩 절단 가공",
+        "등급·치수·이물과 실중량 확인"
+      ],
+      "source_ids": [
+        "dongyang-gwangju-shear"
+      ],
+      "conditions": [
+        "외부 로트의 재질·형태·오염·규격과 실제 반입 가능 여부를 업체에 확인"
+      ],
+      "risk_checks": [
+        "공개 공정과 현재 로트의 수탁·현행 허가는 별개이며 실제 산출물·중량·규격을 확인"
+      ]
+    },
+    {
+      "key": "ferrous-prepared-eaf-billet",
+      "label": "가공 철스크랩 제강·연속주조",
+      "input_state": "ferrous-prepared",
+      "output_state": "ferrous-billet",
+      "operation_steps": [
+        "가공품 등급·치수·혼입물 검수",
+        "전기로 용해",
+        "정련",
+        "연속주조"
+      ],
+      "source_ids": [
+        "dongyang-gwangju-shear",
+        "hyundai-incheon-eaf",
+        "hyundai-steel-eaf-casting"
+      ],
+      "conditions": [
+        "외부 로트의 재질·형태·오염·규격과 실제 반입 가능 여부를 업체에 확인"
+      ],
+      "risk_checks": [
+        "공개 공정과 현재 로트의 수탁·현행 허가는 별개이며 실제 산출물·중량·규격을 확인"
+      ]
+    },
+    {
+      "key": "al-scrap-to-granule",
+      "label": "알루미늄 스크랩 파쇄·정밀 선별",
+      "input_state": "al-scrap",
+      "output_state": "al-granule",
+      "operation_steps": [
+        "알루미늄 원료·오염물 검수",
+        "재질 분류·오염물 제거",
+        "파쇄·정밀 선별",
+        "그래뉼 품질·실중량 확인"
+      ],
+      "source_ids": [
+        "jmtech-gimpo-al-granule"
+      ],
+      "conditions": [
+        "외부 로트의 재질·형태·오염·규격과 실제 반입 가능 여부를 업체에 확인"
+      ],
+      "risk_checks": [
+        "공개 공정과 현재 로트의 수탁·현행 허가는 별개이며 실제 산출물·중량·규격을 확인"
+      ]
+    },
+    {
+      "key": "al-can-prepare",
+      "label": "알루미늄캔 선별·가공",
+      "input_state": "al-used-can",
+      "output_state": "al-scrap",
+      "operation_steps": [
+        "알루미늄캔 반입 검수",
+        "선별·가공",
+        "실제 산출물 재질·형태·중량 확인"
+      ],
+      "source_ids": [
+        "hyundai-resource-can-prepare"
+      ],
+      "conditions": [
+        "산출물의 실제 형태·품질 확인 전 후속 업체·재활용 완료를 확정하지 않음"
+      ],
+      "risk_checks": [
+        "공개 공정과 현재 로트의 수탁·현행 허가는 별개이며 실제 산출물·중량·규격을 확인"
+      ]
+    },
+    {
+      "key": "pet-bottle-wash-grind",
+      "label": "PET병 분쇄·세척",
+      "input_state": "pet-bottle",
+      "output_state": "pet-flake",
+      "operation_steps": [
+        "폐PET병 투입 규격 검수",
+        "분쇄·세척",
+        "분쇄세척품의 실제 품질·수분·중량 확인"
+      ],
+      "source_ids": [
+        "saerom-hwaseong-one-pet"
+      ],
+      "conditions": [
+        "외부 로트의 재질·형태·오염·규격과 실제 반입 가능 여부를 업체에 확인"
+      ],
+      "risk_checks": [
+        "공개 공정과 현재 로트의 수탁·현행 허가는 별개이며 실제 산출물·중량·규격을 확인"
+      ]
     }
   ],
   "organisations": [
@@ -5226,6 +5741,71 @@
       "label": "주식회사 디에이치원",
       "source_ids": [
         "keco-dh1-film-destination-2026"
+      ]
+    },
+    {
+      "key": "kers-hwaseong-org",
+      "label": "기은알에스 화성 선별장",
+      "source_ids": [
+        "kers-hwaseong-sorting"
+      ]
+    },
+    {
+      "key": "incheon-recycling-gojan-org",
+      "label": "인천리사이클링 고잔 선별장",
+      "source_ids": [
+        "incheon-gojan-sorting"
+      ]
+    },
+    {
+      "key": "cwrs-hwaseong-org",
+      "label": "창우RS 화성지점",
+      "source_ids": [
+        "cwrs-hwaseong-sorting"
+      ]
+    },
+    {
+      "key": "dongyang-gwangju-org",
+      "label": "동양산업자원 광주",
+      "source_ids": [
+        "dongyang-gwangju-shear"
+      ]
+    },
+    {
+      "key": "hyundai-incheon-org",
+      "label": "현대제철 인천공장",
+      "source_ids": [
+        "hyundai-incheon-eaf",
+        "hyundai-incheon-address",
+        "hyundai-steel-eaf-casting"
+      ]
+    },
+    {
+      "key": "jmtech-gimpo-org",
+      "label": "제이엠테크 김포",
+      "source_ids": [
+        "jmtech-gimpo-al-granule"
+      ]
+    },
+    {
+      "key": "hyundai-resource-hwaseong-org",
+      "label": "현대자원산업 화성",
+      "source_ids": [
+        "hyundai-resource-can-prepare"
+      ]
+    },
+    {
+      "key": "hwangyeong-anseong-org",
+      "label": "환경수지 안성",
+      "source_ids": [
+        "factoryon-20251231-113700"
+      ]
+    },
+    {
+      "key": "saerom-hwaseong-one-org",
+      "label": "새롬이엔지 화성 제1공장",
+      "source_ids": [
+        "saerom-hwaseong-one-pet"
       ]
     }
   ],
@@ -6213,6 +6793,174 @@
       "source_ids": [
         "keco-dh1-film-destination-2026"
       ]
+    },
+    {
+      "key": "kers-hwaseong",
+      "label": "기은알에스 화성 선별장",
+      "organisation": "kers-hwaseong-org",
+      "source_ids": [
+        "kers-hwaseong-sorting"
+      ],
+      "country": "KR",
+      "region": "경기도",
+      "address": "경기도 화성시 양감면 용소금각로 2",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "incheon-recycling-gojan",
+      "label": "인천리사이클링 고잔 선별장",
+      "organisation": "incheon-recycling-gojan-org",
+      "source_ids": [
+        "incheon-gojan-sorting",
+        "incheon-recycling-gojan-registry-2026"
+      ],
+      "country": "KR",
+      "region": "인천광역시",
+      "address": "인천광역시 남동구 청능대로468번길 23",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 37.39791914,
+      "longitude": 126.7112538
+    },
+    {
+      "key": "cwrs-hwaseong",
+      "label": "창우RS 화성지점",
+      "organisation": "cwrs-hwaseong-org",
+      "source_ids": [
+        "cwrs-hwaseong-sorting"
+      ],
+      "country": "KR",
+      "region": "경기도",
+      "address": "경기도 화성시 남양읍 매바위로569",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "dongyang-gwangju",
+      "label": "동양산업자원 광주",
+      "organisation": "dongyang-gwangju-org",
+      "source_ids": [
+        "dongyang-gwangju-shear",
+        "dongyang-gwangju-published-location"
+      ],
+      "country": "KR",
+      "region": "경기도",
+      "address": "경기도 광주시 초월읍 산수로682번길 27-6",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 37.4202135,
+      "longitude": 127.3111563
+    },
+    {
+      "key": "hyundai-incheon",
+      "label": "현대제철 인천공장",
+      "organisation": "hyundai-incheon-org",
+      "source_ids": [
+        "hyundai-incheon-eaf",
+        "hyundai-incheon-address",
+        "hyundai-steel-eaf-casting"
+      ],
+      "country": "KR",
+      "region": "인천광역시",
+      "address": "인천광역시 제물포구 중봉대로 63",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "jmtech-gimpo",
+      "label": "제이엠테크 김포",
+      "organisation": "jmtech-gimpo-org",
+      "source_ids": [
+        "jmtech-gimpo-al-granule",
+        "jmtech-gimpo-published-location"
+      ],
+      "country": "KR",
+      "region": "경기도",
+      "address": "경기도 김포시 대곶면 쇄암로 156-11",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 37.6818167,
+      "longitude": 126.5402162
+    },
+    {
+      "key": "hyundai-resource-hwaseong",
+      "label": "현대자원산업 화성",
+      "organisation": "hyundai-resource-hwaseong-org",
+      "source_ids": [
+        "hyundai-resource-can-prepare"
+      ],
+      "country": "KR",
+      "region": "경기도",
+      "address": "경기도 화성시 만세구 남양읍 신남로 104-17",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "hwangyeong-anseong",
+      "label": "환경수지 안성",
+      "organisation": "hwangyeong-anseong-org",
+      "source_ids": [
+        "factoryon-20251231-113700",
+        "hwangyeong-anseong-registry-2026"
+      ],
+      "country": "KR",
+      "region": "경기도",
+      "address": "경기도 안성시 대덕면 소사길 171",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 37.04174375,
+      "longitude": 127.2167669
+    },
+    {
+      "key": "saerom-hwaseong-one",
+      "label": "새롬이엔지 화성 제1공장",
+      "organisation": "saerom-hwaseong-one-org",
+      "source_ids": [
+        "saerom-hwaseong-one-pet"
+      ],
+      "country": "KR",
+      "region": "경기도",
+      "address": "경기도 화성시 장안면 3.1만세로322번길 49-9",
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": null,
+      "longitude": null
     }
   ],
   "capabilities": [
@@ -9582,6 +10330,585 @@
         "locator": "2023 실증 성주지점과 2026 공단 하차지 연결",
         "verified_intake_limits_available": false
       }
+    },
+    {
+      "key": "kers-hwaseong--pp-sort-bale",
+      "facility": "kers-hwaseong",
+      "transition": "pp-sort-bale",
+      "basis": "published_site_process",
+      "source_ids": [
+        "kers-hwaseong-sorting"
+      ],
+      "conditions": [
+        "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [
+          "rigid"
+        ],
+        "output_description": "PP 선별 압축 베일",
+        "source_ids": [
+          "kers-hwaseong-sorting"
+        ],
+        "locator": "기은알에스: 사업개요·주소·압축기/광학선별기·제품소개",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "rigid"
+      ]
+    },
+    {
+      "key": "kers-hwaseong--pe-sort-bale",
+      "facility": "kers-hwaseong",
+      "transition": "pe-sort-bale",
+      "basis": "published_site_process",
+      "source_ids": [
+        "kers-hwaseong-sorting"
+      ],
+      "conditions": [
+        "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [
+          "rigid"
+        ],
+        "output_description": "PE 선별 압축 베일",
+        "source_ids": [
+          "kers-hwaseong-sorting"
+        ],
+        "locator": "기은알에스: 사업개요·주소·압축기/광학선별기·제품소개",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "rigid"
+      ]
+    },
+    {
+      "key": "kers-hwaseong--ps-sort-bale",
+      "facility": "kers-hwaseong",
+      "transition": "ps-sort-bale",
+      "basis": "published_site_process",
+      "source_ids": [
+        "kers-hwaseong-sorting"
+      ],
+      "conditions": [
+        "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "ps"
+        ],
+        "form_examples": [
+          "rigid"
+        ],
+        "output_description": "선별 PS 압축 베일",
+        "source_ids": [
+          "kers-hwaseong-sorting"
+        ],
+        "locator": "기은알에스: 사업개요·주소·압축기/광학선별기·제품소개",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "rigid"
+      ]
+    },
+    {
+      "key": "kers-hwaseong--pet-sort-bale",
+      "facility": "kers-hwaseong",
+      "transition": "pet-sort-bale",
+      "basis": "published_site_process",
+      "source_ids": [
+        "kers-hwaseong-sorting"
+      ],
+      "conditions": [
+        "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [
+          "bottle"
+        ],
+        "output_description": "선별 PET 압축 베일",
+        "source_ids": [
+          "kers-hwaseong-sorting"
+        ],
+        "locator": "기은알에스: 사업개요·주소·압축기/광학선별기·제품소개",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "bottle"
+      ]
+    },
+    {
+      "key": "incheon-recycling-gojan--pp-sort-bale",
+      "facility": "incheon-recycling-gojan",
+      "transition": "pp-sort-bale",
+      "basis": "published_site_process",
+      "source_ids": [
+        "incheon-gojan-sorting"
+      ],
+      "conditions": [
+        "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pp"
+        ],
+        "form_examples": [
+          "rigid"
+        ],
+        "output_description": "PP 선별 압축 베일",
+        "source_ids": [
+          "incheon-gojan-sorting"
+        ],
+        "locator": "인천리사이클링: 사업개요·청능대로 사업장·선별/압축 공정·제품",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "rigid"
+      ]
+    },
+    {
+      "key": "incheon-recycling-gojan--pe-sort-bale",
+      "facility": "incheon-recycling-gojan",
+      "transition": "pe-sort-bale",
+      "basis": "published_site_process",
+      "source_ids": [
+        "incheon-gojan-sorting"
+      ],
+      "conditions": [
+        "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [
+          "rigid"
+        ],
+        "output_description": "PE 선별 압축 베일",
+        "source_ids": [
+          "incheon-gojan-sorting"
+        ],
+        "locator": "인천리사이클링: 사업개요·청능대로 사업장·선별/압축 공정·제품",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "rigid"
+      ]
+    },
+    {
+      "key": "incheon-recycling-gojan--ps-sort-bale",
+      "facility": "incheon-recycling-gojan",
+      "transition": "ps-sort-bale",
+      "basis": "published_site_process",
+      "source_ids": [
+        "incheon-gojan-sorting"
+      ],
+      "conditions": [
+        "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "ps"
+        ],
+        "form_examples": [
+          "rigid"
+        ],
+        "output_description": "선별 PS 압축 베일",
+        "source_ids": [
+          "incheon-gojan-sorting"
+        ],
+        "locator": "인천리사이클링: 사업개요·청능대로 사업장·선별/압축 공정·제품",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "rigid"
+      ]
+    },
+    {
+      "key": "incheon-recycling-gojan--pet-sort-bale",
+      "facility": "incheon-recycling-gojan",
+      "transition": "pet-sort-bale",
+      "basis": "published_site_process",
+      "source_ids": [
+        "incheon-gojan-sorting"
+      ],
+      "conditions": [
+        "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [
+          "bottle"
+        ],
+        "output_description": "선별 PET 압축 베일",
+        "source_ids": [
+          "incheon-gojan-sorting"
+        ],
+        "locator": "인천리사이클링: 사업개요·청능대로 사업장·선별/압축 공정·제품",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "bottle"
+      ]
+    },
+    {
+      "key": "cwrs-hwaseong--pe-sort-bale",
+      "facility": "cwrs-hwaseong",
+      "transition": "pe-sort-bale",
+      "basis": "published_site_process",
+      "source_ids": [
+        "cwrs-hwaseong-sorting"
+      ],
+      "conditions": [
+        "PE 압축제품과 선별공정 근거. 구체 반입 형태·발생처 협의 필요",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [
+          "rigid"
+        ],
+        "output_description": "PE 선별 압축 베일",
+        "source_ids": [
+          "cwrs-hwaseong-sorting"
+        ],
+        "locator": "화성지점 사업개요·매바위로569·원료 입고/검수/선별/압축·압축 PE 제품",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "rigid"
+      ]
+    },
+    {
+      "key": "cwrs-hwaseong--pet-sort-bale",
+      "facility": "cwrs-hwaseong",
+      "transition": "pet-sort-bale",
+      "basis": "published_site_process",
+      "source_ids": [
+        "cwrs-hwaseong-sorting"
+      ],
+      "conditions": [
+        "PET 회수·선별·압축 공정 근거. 투명/유색 규격과 반입 형태 협의 필요",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [
+          "bottle"
+        ],
+        "output_description": "선별 PET 압축 베일",
+        "source_ids": [
+          "cwrs-hwaseong-sorting"
+        ],
+        "locator": "화성지점 사업개요·매바위로569·원료 입고/검수/선별/압축·압축 PE 제품",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "bottle"
+      ]
+    },
+    {
+      "key": "dongyang-gwangju--ferrous-shear",
+      "facility": "dongyang-gwangju",
+      "transition": "ferrous-shear",
+      "basis": "published_site_process",
+      "source_ids": [
+        "dongyang-gwangju-shear"
+      ],
+      "conditions": [
+        "스크랩 등급·합금·밀폐용기 및 오염 상태 확인. 절단 후 완료 처리하지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "ferrous"
+        ],
+        "form_examples": [
+          "scrap"
+        ],
+        "output_description": "가공 철스크랩 · 제강 반입 규격 확인 필요",
+        "source_ids": [
+          "dongyang-gwangju-shear"
+        ],
+        "locator": "회사개요 사업종목 고철가공처리·SCRAP SHEAR 가동 연혁·현 사업장 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "scrap"
+      ]
+    },
+    {
+      "key": "hyundai-incheon--ferrous-eaf-billet",
+      "facility": "hyundai-incheon",
+      "transition": "ferrous-eaf-billet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "hyundai-incheon-eaf",
+        "hyundai-steel-eaf-casting"
+      ],
+      "conditions": [
+        "공개 전기로 공정 사례. 외부 스크랩 구매·등급·납품 자격은 별도 협의",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "ferrous"
+        ],
+        "form_examples": [
+          "scrap"
+        ],
+        "output_description": "철강 반제품 빌릿",
+        "source_ids": [
+          "hyundai-incheon-eaf",
+          "hyundai-steel-eaf-casting"
+        ],
+        "locator": "모먼트 12249: 인천공장 제강부 철스크랩 검수 및 120톤 전기로 작업",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "scrap"
+      ]
+    },
+    {
+      "key": "hyundai-incheon--ferrous-prepared-eaf-billet",
+      "facility": "hyundai-incheon",
+      "transition": "ferrous-prepared-eaf-billet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "hyundai-incheon-eaf",
+        "hyundai-steel-eaf-casting"
+      ],
+      "conditions": [
+        "절단했더라도 제강사의 원료 규격·밀폐물·수분·합금 검수 후 반입",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "ferrous"
+        ],
+        "form_examples": [],
+        "output_description": "철강 반제품 빌릿",
+        "source_ids": [
+          "hyundai-incheon-eaf",
+          "hyundai-steel-eaf-casting"
+        ],
+        "locator": "모먼트 12249: 인천공장 제강부 철스크랩 검수 및 120톤 전기로 작업",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "daehan-noksan--ferrous-prepared-eaf-billet",
+      "facility": "daehan-noksan",
+      "transition": "ferrous-prepared-eaf-billet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "daehan-2025-site-production",
+        "kosa-ferrous-route"
+      ],
+      "conditions": [
+        "전기로 철스크랩 원료 공정의 후속 후보. 절단 여부와 무관하게 등급·치수·오염과 실제 수용을 다시 확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "ferrous"
+        ],
+        "form_examples": [],
+        "output_description": "철강 반제품 빌릿",
+        "source_ids": [
+          "daehan-2025-site-production",
+          "kosa-ferrous-route"
+        ],
+        "locator": "제73기 사업보고서 II. 사업의 내용: 원재료, 3) 생산 및 설비 현황",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "kisco-changwon--ferrous-prepared-eaf-billet",
+      "facility": "kisco-changwon",
+      "transition": "ferrous-prepared-eaf-billet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "kisco-changwon-production",
+        "kosa-ferrous-route"
+      ],
+      "conditions": [
+        "전기로 철스크랩 원료 공정의 후속 후보. 절단 여부와 무관하게 등급·치수·오염과 실제 수용을 다시 확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "ferrous"
+        ],
+        "form_examples": [],
+        "output_description": "철강 반제품 빌릿",
+        "source_ids": [
+          "kisco-changwon-production",
+          "kosa-ferrous-route"
+        ],
+        "locator": "철강사업 / 창원 본사 및 사업장 소재지",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "jmtech-gimpo--al-scrap-to-granule",
+      "facility": "jmtech-gimpo",
+      "transition": "al-scrap-to-granule",
+      "basis": "published_site_process",
+      "source_ids": [
+        "jmtech-gimpo-al-granule"
+      ],
+      "conditions": [
+        "합금·혼입물과 규격별 반입 여부 확인. 알루미늄캔·모든 혼합 비철을 자동 허용하지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "aluminium"
+        ],
+        "form_examples": [
+          "scrap"
+        ],
+        "output_description": "재생 알루미늄 그래뉼 · 용도 규격 확인 필요",
+        "source_ids": [
+          "jmtech-gimpo-al-granule"
+        ],
+        "locator": "사업소개: 원료 수거→재질 분류/오염 제거→파쇄/정밀 선별→제품화; 하단 주소",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "scrap"
+      ]
+    },
+    {
+      "key": "hyundai-resource-hwaseong--al-can-prepare",
+      "facility": "hyundai-resource-hwaseong",
+      "transition": "al-can-prepare",
+      "basis": "published_site_process",
+      "source_ids": [
+        "hyundai-resource-can-prepare"
+      ],
+      "conditions": [
+        "캔 수거·선별·가공만 확인. 최종 제품 생산으로 간주하지 않음",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "aluminium"
+        ],
+        "form_examples": [
+          "can"
+        ],
+        "output_description": "재질 확인된 알루미늄 스크랩",
+        "source_ids": [
+          "hyundai-resource-can-prepare"
+        ],
+        "locator": "K180032611100076 직무소개·근무 예정지; 채용 담당자 개인정보는 활용하지 않음",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "can"
+      ]
+    },
+    {
+      "key": "hwangyeong-anseong--pe-registered-grind",
+      "facility": "hwangyeong-anseong",
+      "transition": "pe-registered-grind",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-113700",
+        "hwangyeong-anseong-registry-2026"
+      ],
+      "conditions": [
+        "공장 등록 PE 제품과 같은 주소 분쇄 설비 근거. 세부 반입 형태·세척·산출물 품질은 확인 필요",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "PE 파쇄품·순도 및 세척 상태 미확인",
+        "source_ids": [
+          "factoryon-20251231-113700",
+          "hwangyeong-anseong-registry-2026"
+        ],
+        "locator": "2025-12-31 CSV 순번 113700; 회사명·공장주소·생산품",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "saerom-hwaseong-one--pet-bottle-wash-grind",
+      "facility": "saerom-hwaseong-one",
+      "transition": "pet-bottle-wash-grind",
+      "basis": "published_site_process",
+      "source_ids": [
+        "saerom-hwaseong-one-pet"
+      ],
+      "conditions": [
+        "과거 생산 직무자료의 PET병 공정. 베일 수령·식품용 등급·현재 가동은 미확인",
+        "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [
+          "bottle"
+        ],
+        "output_description": "건조·금속 분리 후 PET 플레이크",
+        "source_ids": [
+          "saerom-hwaseong-one-pet"
+        ],
+        "locator": "공고 2898319 직무내용·사업장 Location; 2024-12-30 마감",
+        "verified_intake_limits_available": false
+      },
+      "initial_input_forms": [
+        "bottle"
+      ]
     }
   ]
 }
