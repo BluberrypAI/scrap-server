@@ -134,9 +134,16 @@ def test_all_original_hypotheses_have_explicit_review_decisions(reference):
         r["capability_key"] for r in audit["rows"] if r["after"] == "site_role_hypothesis"
     }
     assert sum(r["after"] == "published_site_process" for r in latest["rows"]) == 5
+    round4 = json.loads(
+        (ROOT / "docs/registry-screen/role-review-round4.json").read_text(encoding="utf8")
+    )
+    updates = {r["capability_key"]: r for r in round4["rows"]}
+    assert len(updates) == 3
     for row in audit["rows"]:
         decision = revised.get(row["capability_key"], row)
-        assert current[row["capability_key"]].basis == decision["after"]
+        final = updates.get(row["capability_key"], decision)
+        assert current[row["capability_key"]].basis == final["after"]
+        assert set(final["source_ids"]) <= {s.key for s in reference.sources}
         assert set(row["source_ids"]) <= {s.key for s in reference.sources}
         assert set(decision["source_ids"]) <= {s.key for s in reference.sources}
         if row["capability_key"] in revised:
@@ -144,7 +151,7 @@ def test_all_original_hypotheses_have_explicit_review_decisions(reference):
     assert all(
         c.basis == "site_role_hypothesis"
         for c in reference.capabilities
-        if c.facility.startswith("cntk-")
+        if c.facility.startswith("cntk-") and c.key not in updates
     )
 
 

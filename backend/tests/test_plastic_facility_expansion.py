@@ -88,7 +88,11 @@ def test_no_generic_resin_fallback(reference, material, code, form):
 def test_company_products_do_not_certify_each_of_its_factories(reference):
     candidates = [c for c in reference.capabilities if c.facility.startswith("cntk-")]
     assert len(candidates) == 12
-    assert all(c.basis == "site_role_hypothesis" for c in candidates)
+    for c in candidates:
+        documented = c.facility == "cntk-hwaseong" and c.transition.endswith("-prepare")
+        assert c.basis == ("published_site_process" if documented else "site_role_hypothesis")
+        if documented:
+            assert "mcee-cntk-hwaseong-202512" in c.source_ids
     for f in reference.facilities:
         assert f.current_acceptance is f.current_permit_scope is None
         assert f.current_price_krw_per_kg is f.current_available_capacity_kg is None

@@ -79,6 +79,9 @@
 | T-149 | 미지원 금속 공정·베일 반입·사업장 좌표 추가 확인 | 진행 | api-developer | plastic-facility-expansion | 철스크랩 2곳 연결(T-150). 일반 비철은 재질 특정 필요. EPS 감용 1곳 추가(T-151). PE·PS 베일 수령 사업장과 좌표 근거 부족은 유지. 실제 업체 수락은 별도. 도로 거리 API는 키·연동 검증 필요 |
 | T-150 | 현재 상태의 모든 등록 공정 조회·업체 없는 공정 표시·공개 조사 확장 | 완료 | api-developer | next-process-coverage | HTTP 197회로 지원 공정 53개·연결 99개 도달. 최종 경로·미리보기 예산과 직접 후보 분리. 철스크랩 2곳/EPS 감용 공정 추가. SQLite 413, route 512, web 47 통과. [범위·근거](route-coverage-20261115.md) |
 | T-151 | EPS 감용 사업장 연결·베일 수령 근거 추가 대조 | 완료 | api-developer | plastic-facility-expansion | 50곳·105연결. EPS 감용물/인고트 분리, SQLite 415, HTTP 198회, 신규 Azure 1건 확인. PE·PS 베일은 실제 수행 사업장 부족으로 보류. [근거](registry-screen/bale-eps-review-20261115.md) |
+| T-152 | 실제 문진 18선택지→번호→형태 32개→업체·AI 연결 전수 검사 | 완료 | test-engineer | diagnosis-treatment-bridge | 일반 12번호. 9선택지·30형태 후보 연결, 9선택지 미지원·2베일 보류. Azure 174건 중 근거 확인 23/부족 151. web 지도 worker 수정·재검사. [결과](classification-route-e2e-20261115.md) |
+| T-153 | 포장재·어망·기타 수지·비철의 세부 재질 보충과 물량 전달 | 완료 | api-developer | material-detail-bridge | 원래 번호 보존, 8개 세부 재질 선택·AI·로트 저장 연결. 실제 18문진/52형태 중 49조합 후보, 신규 20형태 브라우저 확인. 서버 SQLite·PG 439개씩. [결과](material-detail-e2e-20261115.md) |
+| T-154 | AI 공개 근거 부족과 호출 장애의 원인별 보강 | 진행 | api-developer | treatment-registry | 울산 Al 스크랩 신규 연결·CNTK 화성 3역할 보강(추정 14→11). Azure 290건 최종 확인 38/근거 부족 252. 미완료 74건 재시도 필요했고 안전한 실패 유형 로그 추가. [후속 조사 목록](registry-screen/intake-evidence-gaps-20261115.json) |
 | T-118 | 검토 실행을 Service Bus + 별도 워커 파드로 이전 | 대기 | backend-architect | review-runs | 요구사항 NFR-6, infra 리소스 확정 후 |
 | T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |

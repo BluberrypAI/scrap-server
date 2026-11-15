@@ -46,7 +46,7 @@ FORM_STATES = {
     "pa6": {"net": "pa6-net"},
     "pa66": {"flake": "pa66-flake", "shredded": "pa66-flake"},
     "pcabs": {"flake": "pcabs-flake", "shredded": "pcabs-flake"},
-    "aluminium": {"can": "al-used-can"},
+    "aluminium": {"can": "al-used-can", "scrap": "al-scrap"},
     "ferrous": {"scrap": "ferrous-scrap"},
 }
 
@@ -66,6 +66,7 @@ FORM_CODES.update(
         ("eps", "foam"): ("51-03-06",),
         ("pa6", "net"): ("51-03-08",),
         ("aluminium", "can"): ("51-29-03",),
+        ("aluminium", "scrap"): ("51-29-02",),
         ("ferrous", "scrap"): ("51-29-01",),
     }
 )

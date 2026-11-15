@@ -1348,12 +1348,12 @@
       "key": "changmaec-process",
       "url": "https://www.changmaec1.com/",
       "publisher": "창맥",
-      "summary": "창맥 성주 공장은 분쇄된 폐플라스틱 원료를 수거하여 건조·1차 압출·컴파운딩·펠릿화하는 과정을 공개한다. 제품에는 ABS·PP·HIPS·PA66·PC/ABS가 있다. 현재 경질 폐제품 자체의 파쇄·세척 수탁이나 각 등급의 혼합 허용은 미확인이다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
-      "locator": "사업소개 > 6단계 제조공정·제품라인업 / 본사 및 공장 선노로55-36",
-      "checked_date": "2026-11-14",
+      "summary": "창맥 성주 선노로 55-36 공장은 산업현장에서 분쇄된 폐플라스틱 원료를 수거해 건조·불순물 제거 압출·컴파운드·펠릿화하는 공정을 공개한다. 재생 제품 목록에는 ABS·PP·HIPS(PS)·PA66·PC/ABS가 있다. 이 제품 목록만으로 각 재질의 외부 분쇄품·플레이크 반입 규격을 확정할 수 없다. 현장 고체 원료의 재질·등급·오염·수분·이물·물량·현행 허가·반입 수락은 업체 확인이 필요하다.",
+      "locator": "제품·공정·본사 및 공장; 공개 화면 JS /assets/index-CACbLRnH.js (원본 해시 대상)",
+      "checked_date": "2026-11-15",
       "source_date": null,
       "sha256": "4a28e4936f249a025bafc8e491b312956e9ffafad694314b3af85057974c665a",
-      "acquisition": "public primary page downloaded; team factual summary; byte digest refers to https://www.changmaec1.com/assets/index-CACbLRnH.js",
+      "acquisition": "Official page and its publicly served UI bundle reviewed; digest of /assets/index-CACbLRnH.js; factual summary only",
       "digest_basis": "downloaded-original-bytes",
       "model_transfer_allowed": true,
       "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
@@ -2652,6 +2652,56 @@
           "eps-foam-volume-reduce"
         ]
       }
+    },
+    {
+      "key": "ulsan-scrap-remelt",
+      "url": "https://ulsanaluminum.com/home/product/product02_01.jsp",
+      "publisher": "울산알루미늄",
+      "locator": "생산제품 > 생산공정 > 주조: 원재료·용해·주조·슬라브 및 하단 사업장 주소",
+      "summary": "울산알루미늄은 울산 남구 부두로 393 사업장의 주조 공정에서 알루미늄 스크랩을 원료로 사용하며 용해·성분 보정·탈가스·여과·직접냉각 주조로 슬라브(시트 잉곳)를 생산한다고 설명한다. 외부 폐기물의 허가 범위·합금별 규격·오염·수분·최소 물량·현재 반입 가능 여부는 미확인이다.",
+      "checked_date": "2026-11-15",
+      "source_date": null,
+      "sha256": "043533bece8efecd69eadfac15e4f6c89aed056d3d01aac6d88bf419f93cdfb9",
+      "acquisition": "Official production page reviewed; team factual summary only",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "states": [
+          "al-scrap",
+          "al-sheet-ingot"
+        ],
+        "transitions": [
+          "al-scrap-to-slab"
+        ],
+        "facilities": [
+          "ulsan-aluminium"
+        ],
+        "capabilities": [
+          "ulsan-aluminium--al-scrap-to-slab"
+        ]
+      }
+    },
+    {
+      "key": "mcee-cntk-hwaseong-202512",
+      "url": "https://www.mcee.go.kr/home/web/newsRead.do?boardId=1830900&boardMasterId=939&menuId=10607",
+      "publisher": "기후에너지환경부",
+      "locator": "2025-12-26 화성 현장방문 보도자료 첫 일정 씨엔텍코리아; 2025-12-29 영상 자막(boardId=1831790) 교차 확인",
+      "summary": "기후에너지환경부의 2025-12-26 화성 현장 방문 기록은 씨엔텍코리아에서 폐전자제품 플라스틱을 파쇄·분쇄해 재생원료를 생산하는 공정을 확인한다. 수지별 ABS·PS·SAN 종류는 별도 회사 제품 자료와 대조해야 하며, 이 정부 기록 자체는 수지별 원료 규격·압출·펠릿 라인이나 진주 공장 역할을 확정하지 않는다.",
+      "checked_date": "2026-11-15",
+      "source_date": "2025-12-26",
+      "sha256": "ee80b079551cd18bed68995cbc2e023ebf0278a084fabc08b165a18c8bb25b0f",
+      "acquisition": "Official government indexed article and video transcript reviewed via web reader; factual summary, not downloaded original",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "capabilities": [
+          "cntk-hwaseong--abs-prepare",
+          "cntk-hwaseong--ps-prepare",
+          "cntk-hwaseong--san-prepare"
+        ]
+      }
     }
   ],
   "states": [
@@ -2949,7 +2999,8 @@
       "is_output": true,
       "source_ids": [
         "novelis-ulsan-recycling",
-        "novelis-ulsan-address"
+        "novelis-ulsan-address",
+        "ulsan-scrap-remelt"
       ]
     },
     {
@@ -3317,6 +3368,19 @@
       "is_output": true,
       "source_ids": [
         "hanul-ulju-eps-process"
+      ]
+    },
+    {
+      "key": "al-scrap",
+      "label": "재질 확인된 알루미늄 스크랩",
+      "material": "aluminium",
+      "input_forms": [
+        "scrap"
+      ],
+      "is_entry": true,
+      "is_output": false,
+      "source_ids": [
+        "ulsan-scrap-remelt"
       ]
     }
   ],
@@ -4545,6 +4609,29 @@
       "source_ids": [
         "hanul-ulju-eps-process"
       ]
+    },
+    {
+      "key": "al-scrap-to-slab",
+      "label": "알루미늄 스크랩 용해·주조",
+      "input_state": "al-scrap",
+      "output_state": "al-sheet-ingot",
+      "operation_steps": [
+        "원료 성분 확인",
+        "용해·합금 성분 보정",
+        "탈가스·여과",
+        "직접냉각 주조"
+      ],
+      "conditions": [
+        "합금 성분·도금·도장·이물·수분과 로트별 반입 규격 확인",
+        "현재 폐기물 허가 범위·수탁 가능 여부·가격·일정 및 수신 기업 수락 필요"
+      ],
+      "risk_checks": [
+        "합금 성분·도금·도장·이물·수분과 로트별 반입 규격 확인",
+        "현재 폐기물 허가 범위·수탁 가능 여부·가격·일정 및 수신 기업 수락 필요"
+      ],
+      "source_ids": [
+        "ulsan-scrap-remelt"
+      ]
     }
   ],
   "organisations": [
@@ -5123,7 +5210,8 @@
       "source_ids": [
         "novelis-ulsan-recycling",
         "novelis-ulsan-address",
-        "ulsan-aluminium-map"
+        "ulsan-aluminium-map",
+        "ulsan-scrap-remelt"
       ]
     },
     {
@@ -7235,18 +7323,20 @@
       "key": "cntk-hwaseong--abs-prepare",
       "facility": "cntk-hwaseong",
       "transition": "abs-prepare",
-      "basis": "site_role_hypothesis",
+      "basis": "published_site_process",
       "source_ids": [
         "cntk-flake",
-        "cntk-process-separation"
+        "cntk-process-separation",
+        "mcee-cntk-hwaseong-202512"
       ],
       "conditions": [
         "회사 제품 근거는 있으나 화성·진주 중 해당 라인 설치 사업장 확인 필요",
         "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
-        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인"
+        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인",
+        "화성 파·분쇄 역할만 정부 기록으로 보강. 수지별 외부 반입 규격·오염·등급은 별도 확인"
       ],
       "input_profile": {
-        "evidence_scope": "organisation_only_not_site_verified",
+        "evidence_scope": "site_publication",
         "material_examples": [
           "abs"
         ],
@@ -7257,9 +7347,10 @@
         "output_description": "ABS 플레이크",
         "source_ids": [
           "cntk-flake",
-          "cntk-process-separation"
+          "cntk-process-separation",
+          "mcee-cntk-hwaseong-202512"
         ],
-        "locator": "FLAKE 제품·본점/진주지점 주소",
+        "locator": "FLAKE 제품·본점/진주지점 주소; 정부 화성 현장 파·분쇄 공정 기록 대조",
         "verified_intake_limits_available": false
       },
       "initial_input_forms": [
@@ -7381,18 +7472,20 @@
       "key": "cntk-hwaseong--ps-prepare",
       "facility": "cntk-hwaseong",
       "transition": "ps-prepare",
-      "basis": "site_role_hypothesis",
+      "basis": "published_site_process",
       "source_ids": [
         "cntk-flake",
-        "cntk-process-separation"
+        "cntk-process-separation",
+        "mcee-cntk-hwaseong-202512"
       ],
       "conditions": [
         "회사 제품 근거는 있으나 화성·진주 중 해당 라인 설치 사업장 확인 필요",
         "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
-        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인"
+        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인",
+        "화성 파·분쇄 역할만 정부 기록으로 보강. 수지별 외부 반입 규격·오염·등급은 별도 확인"
       ],
       "input_profile": {
-        "evidence_scope": "organisation_only_not_site_verified",
+        "evidence_scope": "site_publication",
         "material_examples": [
           "ps"
         ],
@@ -7403,9 +7496,10 @@
         "output_description": "PS 플레이크",
         "source_ids": [
           "cntk-flake",
-          "cntk-process-separation"
+          "cntk-process-separation",
+          "mcee-cntk-hwaseong-202512"
         ],
-        "locator": "FLAKE 제품·본점/진주지점 주소",
+        "locator": "FLAKE 제품·본점/진주지점 주소; 정부 화성 현장 파·분쇄 공정 기록 대조",
         "verified_intake_limits_available": false
       },
       "initial_input_forms": [
@@ -7527,18 +7621,20 @@
       "key": "cntk-hwaseong--san-prepare",
       "facility": "cntk-hwaseong",
       "transition": "san-prepare",
-      "basis": "site_role_hypothesis",
+      "basis": "published_site_process",
       "source_ids": [
         "cntk-flake",
-        "cntk-process-separation"
+        "cntk-process-separation",
+        "mcee-cntk-hwaseong-202512"
       ],
       "conditions": [
         "회사 제품 근거는 있으나 화성·진주 중 해당 라인 설치 사업장 확인 필요",
         "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인",
-        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인"
+        "폐가전 유래 난연제·브롬·금속·우레탄 혼입 및 이 사업장의 실제 수행 단계 확인",
+        "화성 파·분쇄 역할만 정부 기록으로 보강. 수지별 외부 반입 규격·오염·등급은 별도 확인"
       ],
       "input_profile": {
-        "evidence_scope": "organisation_only_not_site_verified",
+        "evidence_scope": "site_publication",
         "material_examples": [
           "san"
         ],
@@ -7549,9 +7645,10 @@
         "output_description": "SAN 플레이크",
         "source_ids": [
           "cntk-flake",
-          "cntk-process-separation"
+          "cntk-process-separation",
+          "mcee-cntk-hwaseong-202512"
         ],
-        "locator": "FLAKE 제품·본점/진주지점 주소",
+        "locator": "FLAKE 제품·본점/진주지점 주소; 정부 화성 현장 파·분쇄 공정 기록 대조",
         "verified_intake_limits_available": false
       },
       "initial_input_forms": [
@@ -9047,6 +9144,37 @@
           "hanul-ulju-eps-process"
         ],
         "locator": "LINE 03 INPUT 스티로폼 → 분쇄·감용 → OUTPUT 스티로폼 감용물",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "ulsan-aluminium--al-scrap-to-slab",
+      "facility": "ulsan-aluminium",
+      "transition": "al-scrap-to-slab",
+      "basis": "published_site_process",
+      "source_ids": [
+        "ulsan-scrap-remelt"
+      ],
+      "initial_input_forms": [
+        "scrap"
+      ],
+      "conditions": [
+        "합금 성분·도금·도장·이물·수분과 로트별 반입 규격 확인",
+        "현재 폐기물 허가 범위·수탁 가능 여부·가격·일정 및 수신 기업 수락 필요"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "aluminium"
+        ],
+        "form_examples": [
+          "scrap"
+        ],
+        "output_description": "슬라브(시트 잉곳), 실제 성분·규격은 출하 증빙 확인",
+        "source_ids": [
+          "ulsan-scrap-remelt"
+        ],
+        "locator": "주조 공정 원재료 스크랩 → 용해 → 유지 → 주조 → 슬라브",
         "verified_intake_limits_available": false
       }
     }

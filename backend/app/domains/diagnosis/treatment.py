@@ -17,6 +17,24 @@ from app.domains.treatment.reference import resolve_material
 from app.domains.treatment.repository import read_reference
 from app.domains.treatment.schemas import HandoffVerification, NextStepRequest
 
+# Confirmations narrow an upstream family; they never change its legal code.
+MATERIAL_DETAILS = {
+    ("plastic_packaging", "51-03-07"): ("pp", "pe", "pet"),
+    ("fishing_net", "51-03-08"): ("pa6",),
+    ("other_resin", "51-03-01"): ("san", "pa66", "pcabs"),
+    ("nonferrous_scrap", "51-29-02"): ("aluminium",),
+}
+DETAIL_LABELS = {
+    "pp": "PP (폴리프로필렌)",
+    "pe": "PE (폴리에틸렌)",
+    "pet": "PET",
+    "pa6": "PA6 (나일론 6) 폐어망",
+    "san": "SAN (AS 수지)",
+    "pa66": "PA66 (나일론 66)",
+    "pcabs": "PC/ABS",
+    "aluminium": "알루미늄 스크랩",
+}
+
 
 def context_from_handoff(detail, case_id, selection, company):
     h = detail.get("handoff")
@@ -61,6 +79,37 @@ def context_from_handoff(detail, case_id, selection, company):
         )
     state = (facts.get("physical_state") or {}).get("value")
     code = h.get("waste_code")
+    allowed = MATERIAL_DETAILS.get((raw_material, code))
+    chosen = resolve_material(selection.material_detail)
+    if allowed:
+        allowed = tuple(
+            m
+            for m in allowed
+            if any(p.material == m and code in p.waste_codes for p in INITIAL_PROFILES.values())
+        )
+        context.available_materials = [{"value": m, "label": DETAIL_LABELS[m]} for m in allowed]
+        if not selection.material_detail:
+            context.status = "needs_input"
+            context.message = (
+                "분류번호는 확인됐어요. 제품 표시·성적서로 확인한 세부 재질을 선택해 주세요."
+            )
+            return context
+        if chosen not in allowed:
+            context.message = (
+                "재질이 미확인이거나 이 분류와 맞지 않습니다. 혼합물은 단일 재질로 선택하지 마세요."
+            )
+            return context
+        material = chosen
+        context.warnings.append(
+            f"세부 재질 {DETAIL_LABELS[material]}은 사용자의 추가 확인입니다. "
+            "원래 분류번호를 유지하며 성분 검사·반입 승인을 대신하지 않습니다."
+        )
+    elif selection.material_detail and (not chosen or chosen != material):
+        context.message = (
+            "확정 문진의 재질과 다른 재질로 변경할 수 없습니다. 문진을 다시 확인해 주세요."
+        )
+        return context
+    context.selected_material = material
     profiles = [
         p for p in INITIAL_PROFILES.values() if p.material == material and code in p.waste_codes
     ]

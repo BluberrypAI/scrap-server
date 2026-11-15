@@ -77,6 +77,7 @@ class CreateLot(Body):
     mass_kg: float = Field(gt=0, le=1e9, allow_inf_nan=False)
     condition: str = Field(min_length=3, max_length=1500)
     solid_confirmed: bool = Field(default=False, strict=True)
+    material_detail: str | None = Field(default=None, max_length=40)
 
 
 class Version(Body):
@@ -275,15 +276,16 @@ async def create_lot(body: CreateLot, company_id: CompanyId, db: DbSession, engi
         db,
         company_id,
         body.diagnosis_id,
-        TreatmentSelectionIn(input_form=body.input_form, solid_confirmed=body.solid_confirmed),
+        TreatmentSelectionIn(
+            input_form=body.input_form,
+            solid_confirmed=body.solid_confirmed,
+            material_detail=body.material_detail,
+        ),
     )
     material = (ctx.route_input or {}).get("material")
     start = LOT_STARTS.get((material, (ctx.route_input or {}).get("input_form")))
     if ctx.status != "ready" or start is None:
-        fail(
-            "기업 인계는 확정된 일반 문진 중 PP 사출 잔재·파쇄품, PE 필름, "
-            "알루미늄 음료캔, 분류번호가 공정 자료와 일치하는 PET병만 지원합니다."
-        )
+        fail("확정 분류번호·세부 재질·현재 형태가 공정 자료와 일치해야 물량을 등록할 수 있습니다.")
     waste = Waste(
         company_id=cid,
         name=f"{MATERIAL_LABELS[material]} 자원순환",
@@ -307,7 +309,10 @@ async def create_lot(body: CreateLot, company_id: CompanyId, db: DbSession, engi
             "handoff": ctx.handoff,
             "warnings": ctx.warnings,
             "initial": ctx.route_input,
-            "sender_confirmations": {"solid_confirmed": body.solid_confirmed},
+            "sender_confirmations": {
+                "solid_confirmed": body.solid_confirmed,
+                "material_detail": body.material_detail,
+            },
             "completed": [],
             "current": {
                 "state_key": start,

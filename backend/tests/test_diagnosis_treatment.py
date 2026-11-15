@@ -89,7 +89,7 @@ def test_real_ferrous_classifier_name_bridges_but_generic_nonferrous_does_not():
     d["handoff"]["waste_code"] = "51-29-02"
     assert (
         context_from_handoff(d, "C1", TreatmentSelectionIn(input_form="scrap"), COMPANY).status
-        == "unsupported"
+        == "needs_input"
     )
 
 
