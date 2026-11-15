@@ -69,7 +69,7 @@ uv run uvicorn app.main:app --reload
 | 영역 | 선택 |
 | --- | --- |
 | 언어 / 프레임워크 | Python 3.12 / FastAPI |
-| DB | PostgreSQL 16 (로컬 개발은 SQLite도 가능) |
+| DB | PostgreSQL 17 (로컬 개발은 SQLite도 가능) |
 | ORM / 마이그레이션 | SQLAlchemy 2.0 (async) / Alembic |
 | 인증 | Google·Microsoft 소셜 로그인 (Authlib), JWT httpOnly 쿠키 |
 | 패키지 / 품질 | uv / ruff, pytest |
