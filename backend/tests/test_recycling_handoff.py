@@ -1,6 +1,7 @@
 from copy import deepcopy
 from types import SimpleNamespace
 
+import httpx
 import pytest
 
 from app.domains.diagnosis.recycling import recycling_for_handoff
@@ -9,7 +10,9 @@ from app.domains.diagnosis.treatment import context_from_handoff
 from app.domains.transport.workflow import process_request
 from app.domains.treatment.intake import IntakeSelection, build_intake_batch
 from app.domains.treatment.reference import PlanningReference, read_bundle
+from app.domains.treatment.repository import replace_snapshots
 from tests.test_diagnosis_treatment import COMPANY, detail
+from tests.test_diagnosis_treatment import fake_engine as fake_engine
 
 
 def with_recycling():
@@ -86,3 +89,30 @@ def test_b_output_never_reuses_a_recycling_types():
     lot.data["current"] = {"state_key": "pp-sorted", "mass_kg": 90}
     request = process_request(lot)
     assert request.recycling_types is None and request.recycling_basis is None
+
+
+async def test_changed_r_supplement_during_ai_does_not_publish_old_review(
+    company_client, fake_engine, db, monkeypatch
+):
+    from app.domains.treatment.intake import IntakeBatchResult
+
+    await replace_snapshots(db)
+    d = with_recycling()
+    fake_engine.reply = httpx.Response(200, json=d)
+
+    async def review(packets, settings):
+        assert all(p["recycling_types"] == d["recycling"]["types"] for p in packets)
+        updated = deepcopy(d)
+        updated["recycling"]["checksum"] = "b" * 64
+        updated["recycling"]["types"]["analysis"].append("R-9-1")
+        fake_engine.reply = httpx.Response(200, json=updated)
+        return IntakeBatchResult(results={})
+
+    monkeypatch.setattr("app.domains.diagnosis.treatment.review_intakes", review)
+    response = await company_client.post(
+        "/api/v1/diagnosis/cases/C1/treatment/intake-reviews", json={"input_form": "scrap"}
+    )
+    assert response.status_code == 200
+    assert response.json()["status"] == "review_required"
+    assert response.json()["reviews"] is None
+    assert response.json()["next_step"] is None

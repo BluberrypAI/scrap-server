@@ -202,12 +202,14 @@ async def treatment_context(
         await db.rollback()
         context.reviews = (await review_intakes(packets, get_settings())).model_dump(mode="json")
         latest = (await engine.request("GET", f"/cases/{case_id}", company_id)).body
-        if latest.get("case", {}).get("status") != "CODE_CONFIRMED" or latest.get(
-            "handoff"
-        ) != detail.get("handoff"):
+        if (
+            latest.get("case", {}).get("status") != "CODE_CONFIRMED"
+            or latest.get("handoff") != detail.get("handoff")
+            or recycling_for_handoff(latest) != context.recycling
+        ):
             return TreatmentContextRead(
                 status="review_required",
                 case_id=case_id,
-                message="AI 검토 중 문진 결과가 바뀌었습니다. 최신 분류 결과를 다시 확인해 주세요.",
+                message="AI 검토 중 문진 결과 또는 R유형 자료가 바뀌었습니다. 다시 확인해 주세요.",
             )
     return context
