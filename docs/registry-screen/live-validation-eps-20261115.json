@@ -1,0 +1,63 @@
+{
+  "checked_on": "2026-11-15",
+  "scope": "Actual local HTTP/PostgreSQL traversal and Azure public-summary review; synthetic input, not company acceptance",
+  "counts": {
+    "facilities": 50,
+    "transitions": 59,
+    "capabilities": 105,
+    "reached_capabilities": 100,
+    "reached_processes": 54,
+    "queries": 198,
+    "statuses": {
+      "candidates": 134,
+      "no_route": 12,
+      "end_of_route": 52
+    }
+  },
+  "unreached_processes": [
+    "paper-pulping",
+    "paper-stock-preparation",
+    "paper-forming",
+    "paper-drying",
+    "paper-board"
+  ],
+  "azure": {
+    "results": {
+      "hanul-ulju--eps-foam-volume-reduce": {
+        "status": "reviewed",
+        "finding": "form_mentioned",
+        "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요.",
+        "source": {
+          "publisher": "한울메탈",
+          "url": "https://hanul-metal.com/process",
+          "locator": "공정·설비 / LINE 03 스티로폼 감용 / 회수 소재 EPS / 시설 소재지"
+        },
+        "quote": "한울메탈은 울산 울주군 삼동면 사촌신복로 359-14 사업장의 EPS 라인에서 입고된 스티로폼을 분쇄·감용한다고 안내한다.",
+        "dispatch_approved": false,
+        "lot_review": null
+      }
+    }
+  },
+  "plastic_inputs": {
+    "total": 49,
+    "candidates": 46,
+    "no_route": 3
+  },
+  "held_inputs": [
+    {
+      "material": "pe",
+      "input_form": "bale",
+      "waste_code": "51-03-01"
+    },
+    {
+      "material": "pe",
+      "input_form": "bale",
+      "waste_code": "51-03-07"
+    },
+    {
+      "material": "ps",
+      "input_form": "bale",
+      "waste_code": "51-03-01"
+    }
+  ]
+}

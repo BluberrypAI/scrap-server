@@ -68,6 +68,7 @@ class TreatmentSelectionIn(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
     input_form: str | None = Field(default=None, max_length=80)
+    solid_confirmed: bool = Field(default=False, strict=True)
 
 
 class TreatmentContextRead(BaseModel):
@@ -76,6 +77,7 @@ class TreatmentContextRead(BaseModel):
     case_id: str
     handoff: dict[str, Any] | None = None
     available_forms: list[dict[str, str]] = Field(default_factory=list)
+    requires_solid_confirmation: bool = False
     origin: dict[str, float] | None = None
     origin_label: str | None = None
     warnings: list[str] = Field(default_factory=list)

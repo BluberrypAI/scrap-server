@@ -122,6 +122,7 @@ class NextStepResponse(BaseModel):
     can_finish: bool = False
     options: list[NextProcess] = Field(default_factory=list)
     process_previews: list[list[PreviewStep]] = Field(default_factory=list)
+    process_previews_truncated: bool = False
     output_states: list[StateLabel] = Field(default_factory=list)
     basis: Literal["initial_input", "expected_output", "observed_output"] = "initial_input"
     message: str

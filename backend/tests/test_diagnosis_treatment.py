@@ -7,6 +7,7 @@ import pytest
 from app.domains.diagnosis.client import get_engine_client
 from app.domains.diagnosis.schemas import TreatmentSelectionIn
 from app.domains.diagnosis.treatment import context_from_handoff
+from app.domains.treatment.material_scope import FORM_CODES
 from app.domains.treatment.repository import replace_snapshots
 from app.main import app
 from tests.test_diagnosis import FakeEngine
@@ -42,6 +43,25 @@ def detail():
     return {"case": {"id": "C1", "status": "CODE_CONFIRMED"}, "handoff": deepcopy(HANDOFF)}
 
 
+def test_missing_can_state_requires_explicit_confirmation_and_preserves_handoff():
+    d = detail()
+    d["handoff"]["waste_code"] = "51-29-03"
+    d["handoff"]["facts"] = {"material": {"value": "metal_can"}}
+    waiting = context_from_handoff(d, "C1", TreatmentSelectionIn(input_form="can"), COMPANY)
+    assert waiting.status == "needs_input" and waiting.requires_solid_confirmation
+    confirmed = context_from_handoff(
+        d, "C1", TreatmentSelectionIn(input_form="can", solid_confirmed=True), COMPANY
+    )
+    assert confirmed.status == "ready"
+    assert confirmed.route_input["material"] == "aluminium"
+    assert "physical_state" not in confirmed.handoff["facts"]
+    d["handoff"]["facts"]["physical_state"] = {"value": "liquid"}
+    conflict = context_from_handoff(
+        d, "C1", TreatmentSelectionIn(input_form="can", solid_confirmed=True), COMPANY
+    )
+    assert conflict.status == "review_required" and conflict.route_input is None
+
+
 def test_form_is_not_invented_and_warnings_survive():
     result = context_from_handoff(detail(), "C1", TreatmentSelectionIn(), COMPANY)
     assert result.status == "needs_input"
@@ -57,6 +77,71 @@ def test_form_is_not_invented_and_warnings_survive():
     assert result.handoff["review"] == "UNVERIFIED"
     assert any("R코드" in x for x in result.warnings)
     assert result.route_input is None
+
+
+def test_real_ferrous_classifier_name_bridges_but_generic_nonferrous_does_not():
+    d = detail()
+    d["handoff"]["facts"]["material"]["value"] = "ferrous_scrap"
+    d["handoff"]["waste_code"] = "51-29-01"
+    context = context_from_handoff(d, "C1", TreatmentSelectionIn(input_form="scrap"), COMPANY)
+    assert context.status == "ready" and context.route_input["material"] == "ferrous"
+    d["handoff"]["facts"]["material"]["value"] = "nonferrous_scrap"
+    d["handoff"]["waste_code"] = "51-29-02"
+    assert (
+        context_from_handoff(d, "C1", TreatmentSelectionIn(input_form="scrap"), COMPANY).status
+        == "unsupported"
+    )
+
+
+PLASTIC_HANDOFFS = [
+    (material, form, code)
+    for (material, form), codes in FORM_CODES.items()
+    if material != "aluminium"
+    for code in codes
+]
+
+
+@pytest.mark.parametrize("material,form,code", PLASTIC_HANDOFFS)
+async def test_plastic_handoff_preserves_code_and_queries_actual_reference(
+    company_client, fake_engine, db, material, form, code
+):
+    """지원 조합의 번호를 보존한다. 빈 후보를 다른 번호로 우회하지 않는다."""
+    await replace_snapshots(db)
+    d = detail()
+    d["handoff"]["waste_code"] = code
+    d["handoff"]["facts"]["material"]["value"] = material
+    fake_engine.reply = httpx.Response(200, json=d)
+    waiting = await company_client.post(BASE + "/next-step", json={})
+    assert waiting.status_code == 200
+    assert waiting.json()["status"] == "needs_input"
+    assert form in {item["value"] for item in waiting.json()["available_forms"]}
+    result = await company_client.post(BASE + "/next-step", json={"input_form": form})
+    assert result.status_code == 200
+    context = result.json()
+    assert context["status"] == "ready"
+    assert context["route_input"]["waste_code"] == context["handoff"]["waste_code"] == code
+    assert context["route_input"]["material"] == material
+    assert context["route_input"]["recycling_types"] is None
+    next_step = context["next_step"]
+    assert next_step["current_state"]
+    held = material in {"pe", "ps"} and form == "bale"
+    expected_status = "no_route" if held else "candidates"
+    assert next_step["status"] == expected_status
+    assert bool([f for p in next_step["options"] for f in p["facilities"]]) == (
+        expected_status == "candidates"
+    )
+    assert next_step["message"]
+    assert next_step["dispatch_approved"] is False
+
+
+@pytest.mark.parametrize("material", ["pet", "PET", "페트"])
+def test_pet_ordinary_resin_handoff_offers_forms_without_changing_code(material):
+    d = detail()
+    d["handoff"]["facts"]["material"]["value"] = material
+    context = context_from_handoff(d, "C1", TreatmentSelectionIn(), COMPANY)
+    assert context.status == "needs_input"
+    assert {x["value"] for x in context.available_forms} == {"bottle", "bale", "flake"}
+    assert context.handoff["waste_code"] == "51-03-01"
 
 
 @pytest.mark.parametrize(

@@ -42,11 +42,12 @@ FORM_STATES = {
         "shredded": "san-flake",
     },
     "pvc": {"wallpaper": "pvc-wallpaper", "rigid": "pvc-rigid"},
-    "eps": {"ingot": "eps-ingot"},
+    "eps": {"foam": "eps-foam", "ingot": "eps-ingot"},
     "pa6": {"net": "pa6-net"},
     "pa66": {"flake": "pa66-flake", "shredded": "pa66-flake"},
     "pcabs": {"flake": "pcabs-flake", "shredded": "pcabs-flake"},
     "aluminium": {"can": "al-used-can"},
+    "ferrous": {"scrap": "ferrous-scrap"},
 }
 
 FORM_CODES = {
@@ -62,8 +63,10 @@ FORM_CODES.update(
         ("pvc", "wallpaper"): ("51-03-03",),
         ("pvc", "rigid"): ("51-03-03",),
         ("eps", "ingot"): ("51-03-06",),
+        ("eps", "foam"): ("51-03-06",),
         ("pa6", "net"): ("51-03-08",),
         ("aluminium", "can"): ("51-29-03",),
+        ("ferrous", "scrap"): ("51-29-01",),
     }
 )
 
@@ -81,6 +84,7 @@ FINISH_STATES = {
     "pa66": {"pa66-compound"},
     "pcabs": {"pcabs-compound"},
     "aluminium": {"al-sheet", "al-sheet-ingot"},
+    "ferrous": {"ferrous-billet"},
 }
 FORM_LABELS = {
     "scrap": "제조 잔재·스크랩",
@@ -95,5 +99,6 @@ FORM_LABELS = {
     "ingot": "EPS 감용 인고트",
     "net": "PA6 폐어망",
     "can": "사용 후 알루미늄 음료캔",
+    "foam": "감용 전 EPS 스티로폼",
 }
-PLASTICS = set(FORM_STATES) - {"aluminium"}
+PLASTICS = set(FORM_STATES) - {"aluminium", "ferrous"}

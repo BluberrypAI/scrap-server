@@ -50,6 +50,7 @@ router = APIRouter(prefix="/workflow", tags=["transport"])
 
 MATERIAL_LABELS = {material: material.upper() for material in FINISH_STATES}
 MATERIAL_LABELS["aluminium"] = "알루미늄"
+MATERIAL_LABELS["ferrous"] = "철스크랩"
 
 
 class Body(BaseModel):
@@ -71,9 +72,11 @@ class CreateLot(Body):
         "wallpaper",
         "ingot",
         "net",
+        "foam",
     ]
     mass_kg: float = Field(gt=0, le=1e9, allow_inf_nan=False)
     condition: str = Field(min_length=3, max_length=1500)
+    solid_confirmed: bool = Field(default=False, strict=True)
 
 
 class Version(Body):
@@ -268,7 +271,11 @@ async def create_lot(body: CreateLot, company_id: CompanyId, db: DbSession, engi
     if existing:
         return await view(db, existing, cid)
     ctx = await treatment_context(
-        engine, db, company_id, body.diagnosis_id, TreatmentSelectionIn(input_form=body.input_form)
+        engine,
+        db,
+        company_id,
+        body.diagnosis_id,
+        TreatmentSelectionIn(input_form=body.input_form, solid_confirmed=body.solid_confirmed),
     )
     material = (ctx.route_input or {}).get("material")
     start = LOT_STARTS.get((material, (ctx.route_input or {}).get("input_form")))
@@ -300,6 +307,7 @@ async def create_lot(body: CreateLot, company_id: CompanyId, db: DbSession, engi
             "handoff": ctx.handoff,
             "warnings": ctx.warnings,
             "initial": ctx.route_input,
+            "sender_confirmations": {"solid_confirmed": body.solid_confirmed},
             "completed": [],
             "current": {
                 "state_key": start,
@@ -421,6 +429,9 @@ async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: D
     version(lot, body.revision)
     ref, reference_checksum = await read_reference(db)
     conditions_checksum = digest(published_conditions())
+    current_company = await db.get(Company, cid)
+    origin_version = current_company.profile_version
+    origin_label = current_company.site_name
     if (
         lot.review
         and lot.review.get("version") == "lot-vision-v1"
@@ -428,6 +439,8 @@ async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: D
         and lot.review.get("conditions_version") == "intake-questions-v1"
         and lot.review.get("reference_checksum") == reference_checksum
         and lot.review.get("conditions_checksum") == conditions_checksum
+        and lot.review.get("origin_company_id") == str(cid)
+        and lot.review.get("origin_profile_version") == origin_version
         and all(
             r.get("status") in {"reviewed", "needs_evidence"}
             and (r.get("lot_review") or {}).get("status") == "reviewed"
@@ -438,7 +451,6 @@ async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: D
     ):
         return await view(db, lot, cid)
     request = process_request(lot)
-    current_company = await db.get(Company, cid)
     if current_company.site_latitude is not None and current_company.site_longitude is not None:
         from app.domains.treatment.schemas import Coordinates
 
@@ -484,6 +496,9 @@ async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: D
             }
     await db.rollback()
     reviewed = await review_intakes(packets, get_settings(), lot_context=lot_context)
+    current_company = await db.get(Company, cid, populate_existing=True)
+    if current_company.profile_version != origin_version:
+        fail("사업장 정보가 바뀌었습니다. 업체를 다시 검토해 주세요.")
     lot = await lot_for(db, key, cid, lock=True)
     active(lot, cid, {"ready", "processed"})
     version(lot, body.revision)
@@ -516,6 +531,10 @@ async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: D
         "conditions_version": "intake-questions-v1",
         "reference_checksum": reference_checksum,
         "conditions_checksum": conditions_checksum,
+        "origin_company_id": str(cid),
+        "origin_profile_version": origin_version,
+        "origin_label": origin_label,
+        "origin": request.origin.model_dump() if request.origin else None,
         "next_step": output,
         "results": reviewed.model_dump()["results"],
         "at": datetime.now(UTC).isoformat(),

@@ -2522,6 +2522,136 @@
           "cntk-hwaseong"
         ]
       }
+    },
+    {
+      "key": "kosa-ferrous-route",
+      "url": "https://steelpr.kosa.or.kr/promote/sub/sub13.jsp",
+      "publisher": "한국철강협회",
+      "locator": "제품관 강반제품: 전기로 제조공정 및 제조사",
+      "summary": "한국철강협회는 철스크랩을 전기로에서 용해·정련하고 연속주조해 빌릿 등 반제품을 만드는 공정을 제시한다. 제조사 목록에 대한제강과 한국철강이 있다. 특정 물량의 불순물·크기·등급·허가·수락 조건을 제공하는 자료는 아니다.",
+      "checked_date": "2026-11-15",
+      "source_date": null,
+      "sha256": "b5d66f72520f03418e59b809441abeb81b75b279cadb10b7685e3ddf4b80d5f7",
+      "acquisition": "public primary source reviewed; curator factual summary, not original page bytes",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "states": [
+          "ferrous-scrap",
+          "ferrous-billet"
+        ],
+        "transitions": [
+          "ferrous-eaf-billet"
+        ],
+        "capabilities": [
+          "daehan-noksan--ferrous-eaf-billet",
+          "kisco-changwon--ferrous-eaf-billet"
+        ]
+      }
+    },
+    {
+      "key": "daehan-2025-site-production",
+      "url": "https://kind.krx.co.kr/external/2026/03/18/001011/20260318004841/11011.htm",
+      "publisher": "대한제강 / 한국거래소 공시",
+      "locator": "제73기 사업보고서 II. 사업의 내용: 원재료, 3) 생산 및 설비 현황",
+      "summary": "대한제강은 철스크랩을 원료로 빌릿을 생산한다. 2025년 생산표는 부산 강서구 녹산산업북로의 녹산공장에 제강(빌릿)과 압연을 명시한다. 신평·평택의 압연 공장을 철스크랩 제강 수령지로 대신 연결하지 않는다. 이 보고서는 해당 로트의 허가·외부 반입 승인·현재 영업 또는 여유 용량을 확인한 자료가 아니다.",
+      "checked_date": "2026-11-15",
+      "source_date": "2026-03-18",
+      "sha256": "1c9f183184a81a2234feef0615638f6105979403c245e7bc25e0af3311418768",
+      "acquisition": "public primary source reviewed; curator factual summary, not original page bytes",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "daehan-steel"
+        ],
+        "facilities": [
+          "daehan-noksan"
+        ],
+        "capabilities": [
+          "daehan-noksan--ferrous-eaf-billet"
+        ]
+      }
+    },
+    {
+      "key": "kisco-changwon-production",
+      "url": "https://www.kisco.co.kr/kor/index.php?pCode=steelbs",
+      "publisher": "한국철강",
+      "locator": "철강사업 / 창원 본사 및 사업장 소재지",
+      "summary": "한국철강은 창원시 성산구 공단로103번길 12 사업장에서 철근과 BILLET을 생산한다고 안내한다. 철스크랩 전기로 공정은 한국철강협회 자료와 함께 대조했다. 이 페이지는 이번 로트의 등급·크기·오염 한도 또는 인수 승인을 명시하지 않는다.",
+      "checked_date": "2026-11-15",
+      "source_date": null,
+      "sha256": "749143aa865e6b49635b920f921fc38cc04661c7a4d3a837d1b7c06d4ca449e8",
+      "acquisition": "public primary source reviewed; curator factual summary, not original page bytes",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "kisco"
+        ],
+        "facilities": [
+          "kisco-changwon"
+        ],
+        "capabilities": [
+          "kisco-changwon--ferrous-eaf-billet"
+        ]
+      }
+    },
+    {
+      "key": "codil-eps-recovery-route",
+      "url": "https://www.codil.or.kr/filebank/original/RK/OTKCRK200680/OTKCRK200680.pdf?stream=T",
+      "publisher": "건설기술정보시스템 공개 연구보고서",
+      "locator": "본문 인쇄면 115: 국내 EPS 재활용 현황 조사",
+      "summary": "국내 EPS 재활용 현황 조사에는 수거 후 감용하여 인고트를 만들고 후속 공정에서 펠릿 원료로 가공하는 경로가 제시된다. 특정 수령 사업장은 제시하지 않는다. 건축 단열재의 난연제 및 XPS 혼합 여부는 별도 확인 대상이다. 오래된 일반 공정 자료이므로 현재 업체 가동·허가·반입 승인의 근거로 사용하지 않는다.",
+      "checked_date": "2026-11-15",
+      "source_date": null,
+      "sha256": "5642c10a85be58a6f3fdec0774d8d8ef5c09b4f432422e173a8cb2823ff0d4c5",
+      "acquisition": "public primary source reviewed; curator factual summary, not original page bytes",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "states": [
+          "eps-foam"
+        ],
+        "transitions": [
+          "eps-foam-densify"
+        ]
+      }
+    },
+    {
+      "key": "hanul-ulju-eps-process",
+      "url": "https://hanul-metal.com/process",
+      "publisher": "한울메탈",
+      "locator": "공정·설비 / LINE 03 스티로폼 감용 / 회수 소재 EPS / 시설 소재지",
+      "summary": "한울메탈은 울산 울주군 삼동면 사촌신복로 359-14 사업장의 EPS 라인에서 입고된 스티로폼을 분쇄·감용한다고 안내한다. 산출물은 스티로폼 감용물로 기재되어 있다. 감용물의 인고트 형태·품질, 현재 로트의 반입 승인·허가 유효성·여유 용량·가격은 이 안내로 확인되지 않는다. 허용보관량을 처리능력으로 사용하지 않는다.",
+      "checked_date": "2026-11-15",
+      "source_date": null,
+      "sha256": "57778b03ee4060350a9f3b8b8f8f150094b41d7112d375eedd3ba015f0336757",
+      "acquisition": "official page reviewed with web reader; direct download returned 403; factual summary only",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "hanul-metal"
+        ],
+        "facilities": [
+          "hanul-ulju"
+        ],
+        "capabilities": [
+          "hanul-ulju--eps-foam-volume-reduce"
+        ],
+        "states": [
+          "eps-reduced"
+        ],
+        "transitions": [
+          "eps-foam-volume-reduce"
+        ]
+      }
     }
   ],
   "states": [
@@ -3140,6 +3270,54 @@
       "input_forms": [],
       "is_entry": false,
       "is_output": true
+    },
+    {
+      "key": "ferrous-scrap",
+      "label": "철스크랩",
+      "material": "ferrous",
+      "input_forms": [
+        "scrap"
+      ],
+      "is_entry": true,
+      "is_output": false,
+      "source_ids": [
+        "kosa-ferrous-route"
+      ]
+    },
+    {
+      "key": "ferrous-billet",
+      "label": "철강 반제품 빌릿",
+      "material": "ferrous",
+      "input_forms": [],
+      "is_entry": false,
+      "is_output": true,
+      "source_ids": [
+        "kosa-ferrous-route"
+      ]
+    },
+    {
+      "key": "eps-foam",
+      "label": "감용 전 EPS 스티로폼",
+      "material": "eps",
+      "input_forms": [
+        "foam"
+      ],
+      "is_entry": true,
+      "is_output": false,
+      "source_ids": [
+        "codil-eps-recovery-route"
+      ]
+    },
+    {
+      "key": "eps-reduced",
+      "label": "EPS 감용물(인고트 형태 미확인)",
+      "material": "eps",
+      "input_forms": [],
+      "is_entry": false,
+      "is_output": true,
+      "source_ids": [
+        "hanul-ulju-eps-process"
+      ]
     }
   ],
   "transitions": [
@@ -4303,6 +4481,70 @@
       "risk_checks": [
         "재질 분리·오염·수분·첨가제 및 출하 품질 확인"
       ]
+    },
+    {
+      "key": "ferrous-eaf-billet",
+      "label": "철스크랩 제강·연속주조",
+      "input_state": "ferrous-scrap",
+      "output_state": "ferrous-billet",
+      "operation_steps": [
+        "원료 검수",
+        "전기로 용해",
+        "정련",
+        "연속주조"
+      ],
+      "conditions": [
+        "철스크랩의 등급·규격·이물질·합금 성분을 수령 사업장에 확인한다."
+      ],
+      "risk_checks": [
+        "밀폐 용기·수분·기름·유해물 혼입은 확인 전 투입하지 않는다.",
+        "문진 분류번호는 제강사의 허가나 반입 승인을 대신하지 않는다."
+      ],
+      "source_ids": [
+        "kosa-ferrous-route"
+      ]
+    },
+    {
+      "key": "eps-foam-densify",
+      "label": "EPS 선별·감용",
+      "input_state": "eps-foam",
+      "output_state": "eps-ingot",
+      "operation_steps": [
+        "EPS 재질·이물 확인",
+        "감용",
+        "인고트 상태 확인"
+      ],
+      "conditions": [
+        "EPS인지 확인하고 이물·오염·난연제 사용 이력을 확인한다.",
+        "인고트는 일반 공정의 예상 산출물이다. 사업장별 실제 감용물 형태·규격을 확인하기 전 후속 수령지를 확정하지 않는다."
+      ],
+      "risk_checks": [
+        "XPS 또는 다른 수지·건축 잔재를 EPS로 자동 간주하지 않는다.",
+        "감용 전 스티로폼을 인고트 취급 업체에 바로 보내지 않는다."
+      ],
+      "source_ids": [
+        "codil-eps-recovery-route"
+      ]
+    },
+    {
+      "key": "eps-foam-volume-reduce",
+      "label": "EPS 분쇄·감용(산출 형태 확인)",
+      "input_state": "eps-foam",
+      "output_state": "eps-reduced",
+      "operation_steps": [
+        "EPS·이물 확인",
+        "분쇄·감용",
+        "실제 산출물 형태 확인"
+      ],
+      "conditions": [
+        "원문은 감용물로만 기재되어 있어 인고트 규격을 보증하지 않는다."
+      ],
+      "risk_checks": [
+        "감용물 상태만으로 인고트 수령 업체를 연결하거나 처리 완료로 판정하지 않는다."
+      ],
+      "source_ids": [
+        "hanul-ulju-eps-process"
+      ]
     }
   ],
   "organisations": [
@@ -4607,6 +4849,27 @@
       "source_ids": [
         "dongmin-pe-process",
         "dongmin-pe-input"
+      ]
+    },
+    {
+      "key": "daehan-steel",
+      "label": "대한제강",
+      "source_ids": [
+        "daehan-2025-site-production"
+      ]
+    },
+    {
+      "key": "kisco",
+      "label": "한국철강",
+      "source_ids": [
+        "kisco-changwon-production"
+      ]
+    },
+    {
+      "key": "hanul-metal",
+      "label": "한울메탈",
+      "source_ids": [
+        "hanul-ulju-eps-process"
       ]
     }
   ],
@@ -5503,6 +5766,60 @@
       "current_price_krw_per_kg": null,
       "latitude": 35.91327,
       "longitude": 128.89137
+    },
+    {
+      "key": "daehan-noksan",
+      "label": "대한제강 녹산공장",
+      "organisation": "daehan-steel",
+      "country": "KR",
+      "region": "부산 강서구",
+      "address": null,
+      "latitude": null,
+      "longitude": null,
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "source_ids": [
+        "daehan-2025-site-production"
+      ]
+    },
+    {
+      "key": "kisco-changwon",
+      "label": "한국철강 창원사업장",
+      "organisation": "kisco",
+      "country": "KR",
+      "region": "경남 창원시",
+      "address": "경상남도 창원시 성산구 공단로103번길 12",
+      "latitude": null,
+      "longitude": null,
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "source_ids": [
+        "kisco-changwon-production"
+      ]
+    },
+    {
+      "key": "hanul-ulju",
+      "label": "한울메탈 울주사업장",
+      "organisation": "hanul-metal",
+      "country": "KR",
+      "region": "울산 울주군",
+      "address": "울산광역시 울주군 삼동면 사촌신복로 359-14",
+      "latitude": null,
+      "longitude": null,
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "source_ids": [
+        "hanul-ulju-eps-process"
+      ]
     }
   ],
   "capabilities": [
@@ -8639,6 +8956,99 @@
       "initial_input_forms": [
         "film"
       ]
+    },
+    {
+      "key": "daehan-noksan--ferrous-eaf-billet",
+      "facility": "daehan-noksan",
+      "transition": "ferrous-eaf-billet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "daehan-2025-site-production",
+        "kosa-ferrous-route"
+      ],
+      "conditions": [
+        "공개 생산공정 조사 후보이며 현재 가동·반입 가능 여부는 업체에 확인한다.",
+        "원료 등급·합금 성분·오염·규격·물량과 현행 허가를 확인한다."
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "ferrous"
+        ],
+        "form_examples": [
+          "scrap"
+        ],
+        "output_description": "전기로 제강 및 연속주조에 의한 철강 반제품 빌릿",
+        "source_ids": [
+          "daehan-2025-site-production",
+          "kosa-ferrous-route"
+        ],
+        "locator": "사업장 생산 자료와 한국철강협회 철스크랩 전기로 제조공정 교차 확인",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "kisco-changwon--ferrous-eaf-billet",
+      "facility": "kisco-changwon",
+      "transition": "ferrous-eaf-billet",
+      "basis": "published_site_process",
+      "source_ids": [
+        "kisco-changwon-production",
+        "kosa-ferrous-route"
+      ],
+      "conditions": [
+        "공개 생산공정 조사 후보이며 현재 가동·반입 가능 여부는 업체에 확인한다.",
+        "원료 등급·합금 성분·오염·규격·물량과 현행 허가를 확인한다."
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "ferrous"
+        ],
+        "form_examples": [
+          "scrap"
+        ],
+        "output_description": "전기로 제강 및 연속주조에 의한 철강 반제품 빌릿",
+        "source_ids": [
+          "kisco-changwon-production",
+          "kosa-ferrous-route"
+        ],
+        "locator": "사업장 생산 자료와 한국철강협회 철스크랩 전기로 제조공정 교차 확인",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "hanul-ulju--eps-foam-volume-reduce",
+      "facility": "hanul-ulju",
+      "transition": "eps-foam-volume-reduce",
+      "basis": "published_site_process",
+      "source_ids": [
+        "hanul-ulju-eps-process"
+      ],
+      "initial_input_forms": [
+        "foam"
+      ],
+      "conditions": [
+        "공개된 스티로폼 입고·분쇄·감용 라인에 대한 조사 후보이며 현재 반입 승인은 아니다.",
+        "회사 원문은 감용물까지만 설명한다. 예상 인고트 형태와 후속 수령 규격은 별도 확인하고 실제 산출물을 기록한다.",
+        "EPS 여부, 포장재·부표·판넬 등 발생처, 난연제·염분·이물·수분과 분리 필요 여부를 수신 사업장에 확인한다.",
+        "최신 허가 범위·물량·규격·운송·조건별 반입 승인과 수신 기업 수락이 필요하다."
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "eps"
+        ],
+        "form_examples": [
+          "foam"
+        ],
+        "output_description": "회사 공개 산출물: 스티로폼 감용물. 인고트 형태·순도·후속 반입 규격은 미확인.",
+        "source_ids": [
+          "hanul-ulju-eps-process"
+        ],
+        "locator": "LINE 03 INPUT 스티로폼 → 분쇄·감용 → OUTPUT 스티로폼 감용물",
+        "verified_intake_limits_available": false
+      }
     }
   ]
 }

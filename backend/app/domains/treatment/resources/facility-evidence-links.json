@@ -391,6 +391,14 @@
           "equipment": ""
         }
       ]
+    },
+    {
+      "facility_key": "hanul-ulju",
+      "official_address": "울산광역시 울주군 삼동면 사촌신복로 359-14",
+      "registry_name": null,
+      "status": "not_linked",
+      "reason": "2026-11-15 공식 사업장 공정 페이지로 연결. 기존 명부의 이름·주소 일치 행을 확보하지 못해 좌표·허가를 복사하지 않음.",
+      "registry_rows": []
     }
   ]
 }

@@ -60,7 +60,11 @@ for (_material, _form), _codes in FORM_CODES.items():
         )
     else:
         INITIAL_PROFILES[_material, _form] = Profile(
-            f"{_material.upper()} {FORM_LABELS[_form]}", _material, _form, _codes, _material
+            f"{_material.upper()} {FORM_LABELS[_form]}",
+            _material,
+            _form,
+            _codes,
+            "ferrous_scrap" if _material == "ferrous" else _material,
         )
 
 

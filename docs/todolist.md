@@ -69,9 +69,16 @@
 | T-139 | 기업 인계를 PE 필름·알루미늄캔으로 확장 (문진·처리경로 교집합) | 완료 | api-developer | pp-company-workflow | 재질별 시작 상태·완료 산출물, 산출물 상태 재질 검사, dev_accounts 알루미늄 연결. 테스트 추가(서버 177개 통과). PET병은 분류번호 불일치로 제외, 실제 웹·Azure 검증 전 |
 | T-140 | 업체별 질문·전국 명부 조회·조건부 수락 연결 | 완료 | api-developer | intake-conditions-local | 후보 답변→AI 재검토, 조건별 자료→수신 확인→QR. 공개 프로필 7곳, 시설 15곳/연결 29개. 서버 188개 통과, 웹 조건부 인계 검증 |
 | T-142 | 플라스틱별 공개 사업장·다음 공정 확장 | 완료 | api-developer | plastic-facility-expansion | 37곳·81개 연결. 원본 전수 선별 4,359행, 재활용업 1,935묶음. 48개 조합 중 45개 조사 후보·3개 보류. 서버/PostgreSQL 각각 259개 통과. 소재별 실제 반입·허가는 미확인. [범위와 검증](plastic-facility-expansion.md) |
-| T-141 | 실제 업체 반입규격·수신계정 인증 및 PET 문진 번호 정리 | 대기 | 사람 | intake-conditions-local | 수분·오염·물량 한도/현행 허가/용량 미확보. 일반 PET 51-03-01 자동 연결 금지. 역할 추정 14개(CNTK 12·BGF 화성 2) 사업장별 근거 추가 필요 |
+| T-141 | 실제 업체 반입규격·수신계정 인증 및 PET 문진 번호 정리 | 대기 | 사람 | intake-conditions-local | 수분·오염·물량 한도/현행 허가/용량 미확보. PET는 확정 문진 번호를 유지하고 지원 형태의 조사 후보만 연결(T-142/145); 반입 승인 아님. 역할 추정 14개(CNTK 12·BGF 화성 2) 사업장별 근거 추가 필요 |
 | T-143 | 플라스틱 조사 대기열의 사업장별 공정·반입 형태 추가 대조 | 완료 | api-developer | plastic-facility-expansion | 47곳·102연결. 공장등록 220,705행 대조→이름/주소 일치 323묶음(조사 단서). 신규 10곳, 역할 5개 보강/14개 유지. SQLite·PostgreSQL 297개씩, 로컬 조회 48개, Azure 12개. [검증](plastic-facility-expansion.md) |
 | T-144 | 남은 사업장별 반입 형태·공정 근거 확보 | 대기 | api-developer | plastic-facility-expansion | 전수 대조 323묶음 중 미검토 공정, 주소 미해결 582묶음, CNTK 12/BGF 화성 2, 국내 PE·PS 베일 수령 근거 추가. 원료/설비와 제품판매 구분. [보류 단서](registry-screen/held-leads.md) |
+| T-145 | 문진 확정→경로 연결의 플라스틱 전 조합 회귀 검증 | 완료 | test-engineer | diagnosis-treatment-bridge | 48개 조합의 형태 선택·번호 보존·후보/보류 응답 확인. PET 51-03-01 미지원 화면의 배포 버전·handoff 대조는 별도 필요. 웹의 빈 결과 안내도 보강 |
+| T-146 | 기업 좌표 입력·변경 이력·현재 보유 기업 기준 Top 5 연결 | 완료 | api-developer | company-onboarding | 좌표 쌍 검증, 주소 변경 시 초기화, AI 캐시 버전 및 호출 중 변경 검사. 브라우저 저장·재조회 확인. 직선거리이며 좌표 미확인 업체는 별도 표시 |
+| T-147 | 문진 고체 정보 누락 시 사용자 확인으로 경로 연결 | 완료 | api-developer | missing-solid-confirmation | 알루미늄 음료캔 문진에 고체 질문이 없어 막힌 문제 수정. 액체 결과를 덮어쓰지 않음. 실제 Azure·별도 계정 QR 완료 확인 |
+| T-148 | 최신 5레포와 전체 활성 공정 연결 통합 검증 | 완료 | test-engineer | diagnosis-treatment-bridge | 176개 HTTP 조회로 97/102 연결 도달(5개는 범위 밖 종이), Azure 97개 전부 검토. PP·PET·PE 각 직접/중간 인계 및 캔 7건 완료. server SQLite·PostgreSQL 각 356 통과. [결과](full-stack-validation-20261115.md) |
+| T-149 | 미지원 금속 공정·베일 반입·사업장 좌표 추가 확인 | 진행 | api-developer | plastic-facility-expansion | 철스크랩 2곳 연결(T-150). 일반 비철은 재질 특정 필요. EPS 감용 1곳 추가(T-151). PE·PS 베일 수령 사업장과 좌표 근거 부족은 유지. 실제 업체 수락은 별도. 도로 거리 API는 키·연동 검증 필요 |
+| T-150 | 현재 상태의 모든 등록 공정 조회·업체 없는 공정 표시·공개 조사 확장 | 완료 | api-developer | next-process-coverage | HTTP 197회로 지원 공정 53개·연결 99개 도달. 최종 경로·미리보기 예산과 직접 후보 분리. 철스크랩 2곳/EPS 감용 공정 추가. SQLite 413, route 512, web 47 통과. [범위·근거](route-coverage-20261115.md) |
+| T-151 | EPS 감용 사업장 연결·베일 수령 근거 추가 대조 | 완료 | api-developer | plastic-facility-expansion | 50곳·105연결. EPS 감용물/인고트 분리, SQLite 415, HTTP 198회, 신규 Azure 1건 확인. PE·PS 베일은 실제 수행 사업장 부족으로 보류. [근거](registry-screen/bale-eps-review-20261115.md) |
 | T-118 | 검토 실행을 Service Bus + 별도 워커 파드로 이전 | 대기 | backend-architect | review-runs | 요구사항 NFR-6, infra 리소스 확정 후 |
 | T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |

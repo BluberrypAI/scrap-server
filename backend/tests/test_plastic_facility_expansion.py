@@ -6,6 +6,7 @@ import pytest
 from app.domains.treatment.classification import PROFILES
 from app.domains.treatment.conditions import questionnaire
 from app.domains.treatment.intake import IntakeSelection, build_intake_batch
+from app.domains.treatment.material_scope import PLASTICS
 from app.domains.treatment.process import next_step
 from app.domains.treatment.reference import PlanningReference, read_bundle
 from app.domains.treatment.schemas import NextStepRequest
@@ -34,6 +35,8 @@ CASES = [
     ("pa6", "51-03-08", "net", "netspa-busan", "pa6-resin"),
     ("pa66", "51-03-01", "flake", "changmaec-seongju", "pa66-compound"),
     ("pcabs", "51-03-01", "flake", "changmaec-seongju", "pcabs-compound"),
+    ("ferrous", "51-29-01", "scrap", "daehan-noksan", "ferrous-billet"),
+    ("ferrous", "51-29-01", "scrap", "kisco-changwon", "ferrous-billet"),
 ]
 
 
@@ -57,7 +60,7 @@ def test_documented_site_is_an_immediate_candidate_and_in_every_ai_batch(
     assert {p["capability_key"] for p in packets} == {f.capability_key for f in rows}
     assert all(p["material"] == material and p["form"] == form for p in packets)
     questions = questionnaire(reference, facility, material)["questions"]
-    assert "moisture" in {q["key"] for q in questions}
+    assert ("moisture" in {q["key"] for q in questions}) == (material in PLASTICS)
 
 
 @pytest.mark.parametrize(
@@ -65,7 +68,7 @@ def test_documented_site_is_an_immediate_candidate_and_in_every_ai_batch(
     [
         ("PVC", "51-03-01", "wallpaper"),
         ("PVC", "51-03-03", "pipe"),
-        ("EPS", "51-03-06", "loose_foam"),
+        ("XPS", "51-03-06", "foam"),
         ("PS", "51-03-06", "ingot"),
         ("PA66", "51-03-08", "net"),
         ("PA", "51-03-01", "flake"),
@@ -227,3 +230,41 @@ async def test_actual_b_output_drives_c_review_and_qr(
     )
     assert done.status_code == 200, done.text
     assert done.json()["status"] == "completed"
+
+
+@pytest.mark.parametrize("output_state", ["eps-reduced", "eps-ingot"])
+async def test_eps_reduction_site_receives_foam_but_c_needs_output_evidence(
+    setup_flow, db, output_state
+):
+    req, create, actors, packets = setup_flow
+    await use_handoff(db, actors, "eps", "51-03-06", [("hanul-ulju", "B")])
+    lot = await choose(req, await create("foam"), "A", "hanul-ulju")
+    sent = next(
+        p
+        for p in packets[-1]["packets"]
+        if p["capability_key"] == "hanul-ulju--eps-foam-volume-reduce"
+    )
+    assert sent["material"] == "eps" and sent["form"] == "foam"
+    lot = await accept_receive(req, lot, "A", "B")
+    lot = await save_output(req, lot, "B", output_state, 950)
+    assert lot["status"] == ("processed" if output_state == "eps-reduced" else "review_required")
+    # A public description of "reduced material" is not proof of an ingot. Neither
+    # an unqualified output nor a different declared output grants automatic dispatch.
+    result = await req("B", f"/lots/{lot['id']}/candidates", {"revision": lot["revision"]})
+    if output_state == "eps-ingot":
+        assert result.status_code == 409
+    else:
+        assert result.status_code == 200, result.text
+        lot = result.json()
+        assert lot["review"]["next_step"]["status"] == "no_route"
+    done = await req(
+        "B",
+        f"/lots/{lot['id']}/finish",
+        {
+            "revision": lot["revision"],
+            "reference": "SYNTHETIC-EPS-REDUCTION",
+            "intended_use": "미확인 감용물",
+            "confirmed": True,
+        },
+    )
+    assert done.status_code == 409

@@ -1928,8 +1928,10 @@
       "label_excerpt": "고철",
       "page": 10,
       "section": "business_non_designated",
-      "query_materials": [],
-      "match_kind": null
+      "query_materials": [
+        "ferrous"
+      ],
+      "match_kind": "named_material_code_only"
     },
     {
       "code": "51-29-02",

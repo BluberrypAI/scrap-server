@@ -181,10 +181,18 @@ FRONTEND_URL=http://localhost:5173
 uv run python -m app.domains.treatment.import_catalog --registry /path/to/national-facility-registry.json --sha256 b083ea497c37bb11bd9374fc0a5b0850b989d290dbdba9d4a713fef353e79c08
 ```
 
-`/api/treatment/next-step`과 `/api/treatment/facility-candidates`는 서버 DB를 조회합니다. `CLASSIFICATION_BASE_URL`은 별도 팀 문진 엔진 주소입니다. 신규 로트 문진 유형은 GET /api/classification/profiles에서 조회합니다. 문진을 마친 뒤 첫 공정 조회에 classification_session_id를 보내면 서버가 분류 기록을 대조합니다. 다음 공정의 전체 업체 검토(`/api/treatment/intake-reviews`)와 PP 공정의 추가 공개 웹 조사(`/api/treatment/facility-web-search`)는 `AI_BASE_URL`과 두 서비스의 같은 `SCRAP_INTAKE_SERVICE_TOKEN`을 사용합니다.
+`/api/treatment/next-step`과 `/api/treatment/facility-candidates`는 서버 DB를 조회합니다. `CLASSIFICATION_BASE_URL`은 별도 팀 문진 엔진 주소입니다. 신규 로트 문진 유형은 GET /api/classification/profiles에서 조회합니다. 문진을 마친 뒤 첫 공정 조회에 classification_session_id를 보내면 서버가 분류 기록을 대조합니다. 다음 공정의 전체 업체 검토(`/api/treatment/intake-reviews`)와 지원 소재 공정의 추가 공개 웹 조사(`/api/treatment/facility-web-search`)는 `AI_BASE_URL`과 두 서비스의 같은 `SCRAP_INTAKE_SERVICE_TOKEN`을 사용합니다.
+
+웹 조사에는 `transition_key`, `input_form`, `region`을 보냅니다. 서버가 등록 공정의 재질·공정명·단계를 붙여 AI에 전달하며, 기업 정보·사진·좌표는 이 호출에 포함하지 않습니다. 검색 결과는 조사 단서이며 업체 연결이나 인수 승인으로 자동 저장하지 않습니다. 다음 공정 응답의 `process_previews_truncated`는 후속 미리보기 생략 여부입니다. 현재 상태의 직접 공정 후보는 미리보기 한도 때문에 빠지지 않습니다.
 
 기업 간 인계(`/api/v1/workflow/*`)를 로컬에서 시험하려면 업체에 수신 기업 계정이 연결돼 있어야 인수 요청을 보낼 수 있습니다. 웹의 개발용 로그인으로 `pp-sort@example.com`(PP·PE 선별·파쇄), `pp-pellet@example.com`(PP·PE 펠렛·컴파운드), `al-can@example.com`(알루미늄캔 판재·잉곳)에 각각 로그인해 기업을 등록한 뒤 아래를 실행합니다. `APP_ENV=local`·`test`에서만 동작하며, 연결은 실제 업체 확인이 아닌 시험용(synthetic)으로 표시됩니다.
 
 ```bash
 uv run python -m app.domains.transport.dev_accounts
 ```
+# 2026-11-15 로컬 통합 변경
+
+- 기업 생성·수정은 선택 필드 `site_latitude`, `site_longitude`를 함께 받습니다. 함께 null로 보내면 해제되며, 주소만 바꾸면 이전 좌표는 지워집니다.
+- 확정 문진의 경로 조회·AI 검토와 `/api/v1/workflow/lots` 등록은 선택 boolean `solid_confirmed`(기본 false)를 받습니다. 문진에 고체 여부가 없는 경우에만 사용자 확인을 보완하며, 액체·슬러지 응답을 덮어쓰지 않습니다.
+- 경로 응답의 `requires_solid_confirmation`이 true이면 화면에서 고체 상태를 확인받습니다. 좌표로 비교하는 거리는 직선거리입니다.
+- 실행 구성, 7개 합성 기업 인계 시험과 소재별 한계: [통합 검증 결과](../docs/full-stack-validation-20261115.md).

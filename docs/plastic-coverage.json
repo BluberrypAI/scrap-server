@@ -1,18 +1,18 @@
 {
-  "checked_on": "2026-11-14",
+  "checked_on": "2026-11-15",
   "scope": "Curated research candidates; not verified current permits or acceptance",
   "counts": {
-    "facilities": 47,
-    "capabilities": 102,
+    "facilities": 50,
+    "capabilities": 105,
     "capability_evidence": {
-      "published_site_process": 88,
+      "published_site_process": 91,
       "site_role_hypothesis": 14
     },
-    "transitions": 56,
-    "sources": 94,
-    "plastic_input_combinations": 48,
+    "transitions": 59,
+    "sources": 99,
+    "plastic_input_combinations": 49,
     "query_statuses": {
-      "candidates": 45,
+      "candidates": 46,
       "no_route": 3
     }
   },
@@ -146,6 +146,24 @@
             "abs-pelletise"
           ],
           "public_input_form_example": false
+        }
+      ]
+    },
+    {
+      "material": "eps",
+      "form": "foam",
+      "code": "51-03-06",
+      "status": "candidates",
+      "sites": [
+        {
+          "facility_key": "hanul-ulju",
+          "label": "한울메탈 울주사업장",
+          "basis": "published_site_process",
+          "has_coordinates": false,
+          "transitions": [
+            "eps-foam-volume-reduce"
+          ],
+          "public_input_form_example": true
         }
       ]
     },

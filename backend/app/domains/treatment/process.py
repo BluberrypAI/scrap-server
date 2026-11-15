@@ -1,11 +1,12 @@
 """Deterministic next-process lookup over the server's curated reference."""
 
+from collections import deque
 from dataclasses import dataclass
 
 from app.domains.treatment.classification import INITIAL_PROFILES
 from app.domains.treatment.directory import load_codebook, straight_line_km
 from app.domains.treatment.errors import TreatmentError
-from app.domains.treatment.material_scope import FORM_CODES
+from app.domains.treatment.material_scope import FINISH_STATES, FORM_CODES
 from app.domains.treatment.reference import normalize_label, resolve_material
 from app.domains.treatment.schemas import NextStepRequest, NextStepResponse, RecyclingTypes
 
@@ -25,6 +26,7 @@ FORM_ALIASES = {
     "wallpaper": ["벽지", "pvc벽지", "실크벽지"],
     "ingot": ["인고트", "감용인고트", "eps인고트"],
     "net": ["어망", "폐어망"],
+    "foam": ["스티로폼", "감용전스티로폼", "loose_foam", "epsfoam"],
     "cardboard": ["골판지", "폐골판지"],
     "recovered_paper": ["폐지", "고지"],
 }
@@ -113,6 +115,66 @@ def enumerate_paths(
     return result, starts
 
 
+def continuation_paths(value, material, input_form, completed, *, observed_state=None):
+    """All immediate edges first; bounded previews never determine candidate coverage."""
+    states = {s.key: s for s in value.states if s.material == material}
+    transitions = {
+        t.key: t for t in value.transitions if t.input_state in states and t.output_state in states
+    }
+    adjacency = {}
+    for t in sorted(transitions.values(), key=lambda t: t.key):
+        adjacency.setdefault(t.input_state, []).append(t)
+    starts = (
+        [observed_state.key]
+        if observed_state
+        else sorted(s.key for s in states.values() if s.is_entry and input_form in s.input_forms)
+    )
+    cursors = []
+    for start in starts:
+        current, prefix, visited = start, [], {start}
+        for key in completed:
+            t = transitions.get(key)
+            if t is None or t.input_state != current or t.output_state in visited:
+                break
+            prefix.append((t, None))
+            current = t.output_state
+            visited.add(current)
+        else:
+            cursors.append((current, tuple(prefix), visited))
+    if completed and not cursors:
+        raise TreatmentError(
+            "invalid-progress", "완료한 공정이 현재 공정 경로와 일치하지 않습니다."
+        )
+
+    result = Enumeration([])
+    queue = deque()
+    # Seed every direct edge before spending any optional preview budget.
+    for current, prefix, visited in cursors:
+        if prefix:
+            result.paths.append(prefix)
+        for t in adjacency.get(current, []):
+            if t.output_state in visited:
+                continue
+            path = (*prefix, (t, None))
+            result.paths.append(path)
+            queue.append((t.output_state, path, visited | {t.output_state}))
+    while queue:
+        current, path, visited = queue.popleft()
+        following = [t for t in adjacency.get(current, []) if t.output_state not in visited]
+        if len(path) - len(completed) >= 8:
+            result.depth_limited |= bool(following)
+            continue
+        for t in following:
+            if result.expansions >= MAX_EXPANSIONS or len(result.paths) >= MAX_PLANS:
+                result.budget_exhausted = True
+                return result, [states[key] for key, _, _ in cursors]
+            result.expansions += 1
+            extended = (*path, (t, None))
+            result.paths.append(extended)
+            queue.append((t.output_state, extended, visited | {t.output_state}))
+    return result, [states[key] for key, _, _ in cursors]
+
+
 # Curated MVP entry cases. A code alone cannot resolve a resin or a lot's state.
 ENTRY_FORMS = {
     "51-03-01": {
@@ -168,15 +230,19 @@ def search_recycling_types(transition_key, types):
 
 def web_search_packet(request, reference):
     transition = next((t for t in reference.transitions if t.key == request.transition_key), None)
-    if transition is None or transition.key not in PP_SEARCH_TYPES:
-        raise TreatmentError("invalid-transition", "PP의 검수된 공정을 선택해 주세요.")
+    if transition is None:
+        raise TreatmentError("invalid-transition", "등록된 공정을 선택해 주세요.")
     state = next(s for s in reference.states if s.key == transition.input_state)
+    if state.material not in {material for material, _ in FORM_CODES}:
+        raise TreatmentError("invalid-transition", "현재 지원하는 재질의 공정을 선택해 주세요.")
     forms = state.input_forms or ["washed"]
-    profile = INITIAL_PROFILES.get(("pp", request.input_form))
+    profile = INITIAL_PROFILES.get((state.material, request.input_form))
     if request.input_form not in forms or (
         request.waste_code and (profile is None or request.waste_code not in profile.waste_codes)
     ):
-        raise TreatmentError("invalid-transition", "이 공정에 맞는 PP 형태를 선택해 주세요.")
+        raise TreatmentError(
+            "invalid-transition", "이 공정에 맞는 재질·형태·분류번호를 확인해 주세요."
+        )
     types = search_recycling_types(
         transition.key, request.recycling_types if request.waste_code else None
     )
@@ -191,10 +257,13 @@ def web_search_packet(request, reference):
         and capability.basis == "published_site_process"
         and request.input_form in capability.input_profile.form_examples
         for source_id in capability.input_profile.source_ids
-        if source_id in sources
+        if source_id in sources and sources[source_id].startswith("https://")
     ]
     return {
         "transition_key": transition.key,
+        "material": state.material,
+        "process_label": transition.label,
+        "operation_steps": transition.operation_steps,
         "input_form": request.input_form,
         "region": request.region,
         "waste_code": request.waste_code,
@@ -300,22 +369,14 @@ def next_step(request: NextStepRequest, reference_data) -> NextStepResponse:
                 )
 
         def paths_from(state):
-            result, _ = enumerate_paths(
-                value,
-                material,
-                form,
-                None,
-                8,
-                start_state=state.key if state else None,
-                bind_facilities=False,
+            return continuation_paths(
+                value, material, form, [] if state else completed, observed_state=state
             )
-            if result.budget_exhausted or result.depth_limited:
-                raise TreatmentError("next-step-limit", "공정 탐색 한도를 초과했습니다.")
-            return result.paths
 
+        traversal, current_states = paths_from(current_state)
         current = project_next_step(
             value,
-            paths_from(current_state),
+            traversal.paths,
             [] if observed else completed,
             metadata,
             request.origin,
@@ -323,6 +384,8 @@ def next_step(request: NextStepRequest, reference_data) -> NextStepResponse:
             initial_form=form if not completed else None,
             recycling_types=request.recycling_types if not completed else None,
             bind_current=True,
+            current_states=current_states,
+            previews_truncated=traversal.budget_exhausted or traversal.depth_limited,
         )
         if request.preview_transition is None:
             return current
@@ -339,14 +402,17 @@ def next_step(request: NextStepRequest, reference_data) -> NextStepResponse:
                 "invalid-transition", "현재 공정에서 이어지는 예정 공정을 확인해 주세요."
             )
         expected = states[planned.output_state.key]
+        traversal, current_states = paths_from(expected)
         return project_next_step(
             value,
-            paths_from(expected),
+            traversal.paths,
             [],
             {**metadata, "basis": "expected_output"},
             request.origin,
             observed_state=expected,
             bind_current=True,
+            current_states=current_states,
+            previews_truncated=traversal.budget_exhausted or traversal.depth_limited,
         )
 
     result = project(reference_data)
@@ -379,6 +445,8 @@ def project_next_step(
     initial_form=None,
     recycling_types=None,
     bind_current=False,
+    current_states=(),
+    previews_truncated=False,
 ):
     states = {state.key: state for state in value.states}
     facilities = {facility.key: facility for facility in value.facilities}
@@ -398,8 +466,16 @@ def project_next_step(
         ]
 
     options = {}
-    can_finish = bool(observed_state and observed_state.is_output)
-    current = {observed_state.key} if observed_state else set()
+
+    def final_product(state):
+        return state.key in FINISH_STATES.get(state.material, set())
+
+    can_finish = any(final_product(state) for state in current_states) or bool(
+        observed_state and final_product(observed_state)
+    )
+    current = {state.key for state in current_states}
+    if observed_state:
+        current.add(observed_state.key)
     previews = {}
     index = len(completed)
 
@@ -430,7 +506,7 @@ def project_next_step(
             continue
         current.add(path[index - 1][0].output_state if index else path[0][0].input_state)
         if len(path) == index:
-            can_finish = True
+            can_finish |= final_product(states[path[-1][0].output_state])
             continue
         transition, capability = path[index]
         remaining = tuple(transition.key for transition, _ in path[index:])
@@ -452,11 +528,8 @@ def project_next_step(
                 "checks": list(dict.fromkeys(transition.conditions + transition.risk_checks)),
                 "sources": links(transition.source_ids),
                 "recycling_types": search_recycling_types(transition.key, recycling_types),
-                "web_search_form": (
-                    initial_form or next(iter(states[transition.input_state].input_forms), "washed")
-                    if transition.key in PP_SEARCH_TYPES
-                    else None
-                ),
+                "web_search_form": initial_form
+                or next(iter(states[transition.input_state].input_forms), "washed"),
                 "facilities": {},
             },
         )
@@ -499,7 +572,8 @@ def project_next_step(
     rank_facilities(items, first_handoff=initial_form is not None)
     preview_keys = sorted(previews, key=lambda keys: (-len(keys), keys))
     prefixes = {keys[:length] for keys in previews for length in range(1, len(keys))}
-    full_previews = [previews[keys] for keys in preview_keys if keys not in prefixes][:8]
+    full_previews = [previews[keys] for keys in preview_keys if keys not in prefixes]
+    previews_truncated |= len(full_previews) > 8
     if any(option["facilities"] for option in items):
         status, message = "candidates", "현재 상태에서 바로 이어지는 공정의 조사 후보입니다."
         if observed_state:
@@ -514,7 +588,8 @@ def project_next_step(
         current_state=state_label(next(iter(current))) if len(current) == 1 else None,
         can_finish=can_finish,
         options=items,
-        process_previews=full_previews,
+        process_previews=full_previews[:8],
+        process_previews_truncated=previews_truncated,
         message=message,
     )
 

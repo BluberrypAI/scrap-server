@@ -68,9 +68,19 @@ def context_from_handoff(detail, case_id, selection, company):
         context.status = "unsupported"
         context.message = "이 분류번호·재질의 검수된 첫 공정 자료가 아직 없습니다."
         return context
-    if state != "solid":
+    context.requires_solid_confirmation = state is None
+    if state is None and not selection.solid_confirmed:
+        context.status = "needs_input"
+        context.message = "문진에 고체 여부가 없어 현재 물량의 상태를 확인해 주세요."
+        return context
+    if state is not None and state != "solid":
         context.message = "현재 고체 상태가 확인되지 않아 고체 재활용 공정 조회를 보류합니다."
         return context
+    if state is None:
+        context.warnings.append(
+            "현재 고체 상태는 경로 화면에서 사용자가 추가 확인했습니다. "
+            "성분·품질 검사 결과가 아닙니다."
+        )
     context.available_forms = [
         {"value": p.input_form, "label": FORM_LABELS[p.input_form]} for p in profiles
     ]

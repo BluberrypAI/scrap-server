@@ -3,6 +3,7 @@
 import json
 import sys
 from collections import Counter
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -52,7 +53,7 @@ def report():
                 }
             )
     return {
-        "checked_on": "2026-11-14",
+        "checked_on": date.today().isoformat(),
         "scope": "Curated research candidates; not verified current permits or acceptance",
         "counts": {
             "facilities": len(reference.facilities),
