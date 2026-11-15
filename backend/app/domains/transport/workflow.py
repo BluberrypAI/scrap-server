@@ -20,6 +20,7 @@ from app.core.errors import AppError, ErrorCode
 from app.db.session import DbSession
 from app.domains.companies.models import Company
 from app.domains.diagnosis.client import Engine
+from app.domains.diagnosis.recycling import recycling_for_handoff, route_recycling
 from app.domains.diagnosis.router import CompanyId
 from app.domains.diagnosis.schemas import TreatmentSelectionIn
 from app.domains.diagnosis.treatment import treatment_context
@@ -310,6 +311,7 @@ async def create_lot(body: CreateLot, company_id: CompanyId, db: DbSession, engi
         status="ready",
         data={
             "handoff": ctx.handoff,
+            "recycling": ctx.recycling,
             "warnings": ctx.warnings,
             "initial": ctx.route_input,
             "sender_confirmations": {
@@ -420,6 +422,7 @@ def process_request(lot):
         waste_code=initial["waste_code"],
         material=initial["material"],
         input_form=initial["input_form"],
+        **(route_recycling(lot.data.get("recycling")) if not lot.data["completed"] else {}),
         completed_transitions=[s["transition_key"] for s in lot.data["completed"]],
         observed_output={
             k: lot.data["current"].get(k) for k in ("state_key", "mass_kg", "purity_percent")
@@ -430,11 +433,33 @@ def process_request(lot):
 
 
 @router.post("/lots/{key}/candidates")
-async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: DbSession):
+async def candidates(
+    key: uuid.UUID, body: Version, company_id: CompanyId, db: DbSession, engine: Engine
+):
     cid = uuid.UUID(company_id)
     lot = await lot_for(db, key, cid)
     active(lot, cid, {"ready", "processed"})
     version(lot, body.revision)
+    if not lot.data["completed"]:
+        # Re-read the authenticated engine supplement. Never edit the original verdict.
+        diagnosis_id = lot.diagnosis_id
+        original_handoff = deepcopy(lot.data["handoff"])
+        await db.rollback()
+        detail = (await engine.request("GET", f"/cases/{diagnosis_id}", company_id)).body
+        lot = await lot_for(db, key, cid)
+        active(lot, cid, {"ready", "processed"})
+        version(lot, body.revision)
+        if (
+            detail.get("case", {}).get("status") != "CODE_CONFIRMED"
+            or detail.get("handoff") != original_handoff
+        ):
+            fail("문진 결과가 바뀌었습니다. 새 분류 결과로 물량을 등록해 주세요.")
+        data = deepcopy(lot.data)
+        data["recycling"] = recycling_for_handoff(detail)
+        data["initial"].update(route_recycling(data["recycling"]))
+        lot.data = data
+    recycling_value = deepcopy(lot.data.get("recycling"))
+    recycling_checksum = digest(None if lot.data["completed"] else recycling_value)
     ref, reference_checksum = await read_reference(db)
     conditions_checksum = digest(published_conditions())
     current_company = await db.get(Company, cid)
@@ -445,6 +470,7 @@ async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: D
         and lot.review.get("version") == "lot-vision-v1"
         and lot.review.get("analysis_version") == "isolated-vision-v2"
         and lot.review.get("conditions_version") == "intake-questions-v1"
+        and lot.review.get("recycling_checksum") == recycling_checksum
         and lot.review.get("reference_checksum") == reference_checksum
         and lot.review.get("conditions_checksum") == conditions_checksum
         and lot.review.get("origin_company_id") == str(cid)
@@ -504,12 +530,26 @@ async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: D
             }
     await db.rollback()
     reviewed = await review_intakes(packets, get_settings(), lot_context=lot_context)
+    if not request.completed_transitions:
+        latest = (await engine.request("GET", f"/cases/{diagnosis_id}", company_id)).body
+        if (
+            latest.get("case", {}).get("status") != "CODE_CONFIRMED"
+            or latest.get("handoff") != original_handoff
+            or digest(recycling_for_handoff(latest)) != recycling_checksum
+        ):
+            fail("AI 검토 중 분류 또는 R유형 자료가 바뀌었습니다. 다시 검토해 주세요.")
+
     current_company = await db.get(Company, cid, populate_existing=True)
     if current_company.profile_version != origin_version:
         fail("사업장 정보가 바뀌었습니다. 업체를 다시 검토해 주세요.")
     lot = await lot_for(db, key, cid, lock=True)
     active(lot, cid, {"ready", "processed"})
     version(lot, body.revision)
+    if not lot.data["completed"]:
+        data = deepcopy(lot.data)
+        data["recycling"] = recycling_value
+        data["initial"].update(route_recycling(recycling_value))
+        lot.data = data
     output = result.model_dump(mode="json")
     bindings = {b.facility_key: b for b in await db.scalars(select(WorkflowFacilityAccount))}
     for option in output["options"]:
@@ -538,6 +578,7 @@ async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: D
         "analysis_version": "isolated-vision-v2",
         "conditions_version": "intake-questions-v1",
         "reference_checksum": reference_checksum,
+        "recycling_checksum": recycling_checksum,
         "conditions_checksum": conditions_checksum,
         "origin_company_id": str(cid),
         "origin_profile_version": origin_version,
@@ -717,6 +758,10 @@ async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSess
         "conditions_checksum"
     ) != digest(published_conditions()):
         fail("공정·반입조건 자료가 바뀌었거나 구버전 검토입니다. 업체 검토를 다시 실행해 주세요.")
+    if review.get("recycling_checksum") != digest(
+        None if lot.data["completed"] else lot.data.get("recycling")
+    ):
+        fail("재활용 유형 전달 전의 검토입니다. 업체 검토를 다시 실행해 주세요.")
     found = [
         (o, f)
         for o in review.get("next_step", {}).get("options", [])

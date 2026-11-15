@@ -73,6 +73,7 @@ class TreatmentSelectionIn(BaseModel):
 
 
 class TreatmentContextRead(BaseModel):
+    recycling: dict[str, Any] | None = None
     status: Literal["needs_input", "review_required", "unsupported", "ready"]
     message: str
     case_id: str

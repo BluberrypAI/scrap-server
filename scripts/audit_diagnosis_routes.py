@@ -92,7 +92,9 @@ async def run(args):
                 if material in previous:
                     row.update(previous[material])
                     if row["status"] != "interview_incomplete":
-                        raise ValueError("Resume accepts incomplete synthetic interviews only")
+                        raise ValueError(
+                            "Resume accepts incomplete synthetic interviews only"
+                        )
                     case_id = row["case_id"]
                     turn = {"ui": row["final_ui"]}
                     row.pop("unanswered_question", None)
@@ -125,7 +127,9 @@ async def run(args):
                         (
                             o
                             for o in question.get("options", [])
-                            if o["kind"] == value or value is not None and o["value"] == value
+                            if o["kind"] == value
+                            or value is not None
+                            and o["value"] == value
                         ),
                         None,
                     )
@@ -160,10 +164,14 @@ async def run(args):
                     row["initial_context"] = await request("POST", path, json={})
                     context = row["initial_context"]
                     if context.get("requires_solid_confirmation"):
-                        context = await request("POST", path, json={"solid_confirmed": True})
+                        context = await request(
+                            "POST", path, json={"solid_confirmed": True}
+                        )
                     row["context"] = context
                     row["forms"] = []
-                    choices = [m["value"] for m in context.get("available_materials", [])] or [None]
+                    choices = [
+                        m["value"] for m in context.get("available_materials", [])
+                    ] or [None]
                     for material_detail in choices:
                         selected = await request(
                             "POST",
@@ -183,13 +191,27 @@ async def run(args):
                                     "material_detail": material_detail,
                                 },
                             )
+                            r = result.get("recycling")
+                            assert r and r["status"] == "table_listed", (
+                                "Missing R-code lookup"
+                            )
+                            assert r["waste_code"] == code and r["case_id"] == case_id
+                            assert (
+                                result["route_input"]["recycling_types"] == r["types"]
+                            )
+                            assert (
+                                result["route_input"]["recycling_basis"]["source_url"]
+                                == r["source"]["url"]
+                            )
                             options = (result.get("next_step") or {}).get("options", [])
                             row["forms"].append(
                                 {
                                     "form": form["value"],
                                     "material_detail": material_detail,
                                     "status": result["status"],
-                                    "next_status": (result.get("next_step") or {}).get("status"),
+                                    "next_status": (result.get("next_step") or {}).get(
+                                        "status"
+                                    ),
                                     "facilities": sorted(
                                         {
                                             f["facility_key"]
@@ -206,7 +228,9 @@ async def run(args):
                             context["status"] == "review_required" and not row["forms"]
                         )
                     reread = await request("GET", f"/diagnosis/cases/{case_id}")
-                    assert reread.get("handoff") == row["handoff"], "Confirmed handoff changed"
+                    assert reread.get("handoff") == row["handoff"], (
+                        "Confirmed handoff changed"
+                    )
             except (
                 httpx.HTTPError,
                 ValueError,
@@ -240,7 +264,9 @@ async def run(args):
             )
 
     scenarios = (
-        {m: ("plastic", None) for m in RESIDUE_MATERIALS} if args.hazards_only else MATERIALS
+        {m: ("plastic", None) for m in RESIDUE_MATERIALS}
+        if args.hazards_only
+        else MATERIALS
     )
     if args.materials:
         scenarios = {m: scenarios[m] for m in args.materials}

@@ -1181,13 +1181,13 @@
       "key": "netspa-nylon",
       "url": "http://www.netspa.co.kr/sub_rnylon.php",
       "publisher": "넷스파",
-      "summary": "넷스파는 PA6 폐어망에서 회수한 재생 나일론 원료를 수지·섬유·산업재에 공급하는 사업을 공개한다. 부산 생곡산단 본사를 안내한다. 어망이 아닌 PA66·혼합 플라스틱 부품으로 확대하지 않는다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
-      "locator": "PRODUCT > 폐어망 기반 R-Nylon 및 부산 주소",
-      "checked_date": "2026-11-14",
+      "summary": "넷스파는 폐어망에서 나일론을 회수하는 공정의 재생 원료인 PA6를 소개한다. 공식 제품 페이지의 폐어망 유래 재생 나일론과 홈페이지의 Post Consumer Waste PA6 제품 설명을 함께 대조했다. 본사 주소는 부산 강서구 생곡산단로61번길 13이다. 실제 부산 설비의 운영 이력은 SK에코플랜트의 별도 사업 현장 자료로 대조한다. PA66 부품·혼합 플라스틱의 반입으로 확대하지 않는다. 이번 물량의 오염·수분·허가·가격·인수 여부는 미확인이다.",
+      "locator": "PRODUCT > 폐어망 기반 R-Nylon; 홈페이지 PRODUCT > PA6; 부산 설비는 netspa-busan-partner-process 교차 대조",
+      "checked_date": "2026-11-16",
       "source_date": null,
-      "sha256": "1cac49b21b6188df618b0c822c1e783bc65437326ee9aeb82b22ed76ca84af36",
-      "acquisition": "public primary page downloaded; team factual summary",
-      "digest_basis": "downloaded-original-bytes",
+      "sha256": "12c2541920b197cf11eab0ffdc25561b94df6afac2c4da608dc39de4060e1257",
+      "acquisition": "public product and home pages cross-checked; curator factual summary",
+      "digest_basis": "curator-record-not-original-page",
       "model_transfer_allowed": true,
       "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
       "supported_records": {
@@ -2555,10 +2555,10 @@
       "url": "https://kind.krx.co.kr/external/2026/03/18/001011/20260318004841/11011.htm",
       "publisher": "대한제강 / 한국거래소 공시",
       "locator": "제73기 사업보고서 II. 사업의 내용: 원재료, 3) 생산 및 설비 현황",
-      "summary": "대한제강은 철스크랩을 원료로 빌릿을 생산한다. 2025년 생산표는 부산 강서구 녹산산업북로의 녹산공장에 제강(빌릿)과 압연을 명시한다. 신평·평택의 압연 공장을 철스크랩 제강 수령지로 대신 연결하지 않는다. 이 보고서는 해당 로트의 허가·외부 반입 승인·현재 영업 또는 여유 용량을 확인한 자료가 아니다.",
-      "checked_date": "2026-11-15",
+      "summary": "대한제강 녹산공장은 철스크랩을 원료로 전기로 제강 및 연속주조를 거쳐 빌릿을 생산하는 사업장이다. 사업보고서 II.1의 원료·공정 설명과 II.3 생산설비 표의 녹산 제강(빌릿)을 교차 대조했다. 생산표에서 신평·평택은 압연 사업장으로 구분되어 있어 녹산의 철스크랩 투입 공정과 혼동하지 않는다. 2025년 생산 이력이며 현재 로트의 허가·등급·인수·여유 용량은 별도 확인 대상이다.",
+      "checked_date": "2026-11-16",
       "source_date": "2026-03-18",
-      "sha256": "1c9f183184a81a2234feef0615638f6105979403c245e7bc25e0af3311418768",
+      "sha256": "404a77beda46e8106401a70f06d7351f30eb7ca6be6949bdeb0258866bfab93b",
       "acquisition": "public primary source reviewed; curator factual summary, not original page bytes",
       "digest_basis": "curator-record-not-original-page",
       "model_transfer_allowed": true,
@@ -2808,6 +2808,28 @@
         ],
         "capabilities": [
           "dh1-seongju--pe-film-bale-recovery"
+        ]
+      }
+    },
+    {
+      "key": "netspa-busan-partner-process",
+      "url": "https://news.skecoplant.com/board/3196",
+      "publisher": "SK에코플랜트",
+      "locator": "2022-05-31 폐어망 사업 소개: 부산 파일럿 설비 운영, 기계 선별·분리 및 염분·이물 제거; 상업화 설비는 당시 계획",
+      "summary": "사업 파트너 SK에코플랜트는 넷스파가 부산 파일럿 설비에서 폐어망을 기계식 선별·분리하고 염분과 이물질을 제거하여 재생 나일론 원료를 생산하는 공정을 설명한다. 상업화 설비의 가동은 이 자료에서 향후 계획이다. 공식 PA6 제품 자료와 교차 대조하는 부산 공정 운영 이력이며, 현재 생곡 주소의 허가·용량·이번 물량 인수 승인을 증명하지 않는다.",
+      "checked_date": "2026-11-16",
+      "source_date": "2022-05-31",
+      "sha256": "18a8059b108fba3c255f3d730692bccb7d1e820f61bcd9321be875eb3fedf552",
+      "acquisition": "public primary partner process account reviewed; curator factual summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "netspa-busan"
+        ],
+        "capabilities": [
+          "netspa-busan--pa6-net-recovery"
         ]
       }
     }
@@ -8179,7 +8201,8 @@
       "basis": "published_site_process",
       "source_ids": [
         "netspa-nylon",
-        "netspa-pa6"
+        "netspa-pa6",
+        "netspa-busan-partner-process"
       ],
       "conditions": [
         "현행 허가·품질 조건·일정·이번 로트 인수는 수신 업체가 최종 확인"
@@ -8195,7 +8218,8 @@
         "output_description": "PA6 재생 원료",
         "source_ids": [
           "netspa-nylon",
-          "netspa-pa6"
+          "netspa-pa6",
+          "netspa-busan-partner-process"
         ],
         "locator": "PRODUCT > 폐어망 기반 R-Nylon 및 부산 주소",
         "verified_intake_limits_available": false

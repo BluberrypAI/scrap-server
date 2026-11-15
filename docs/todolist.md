@@ -83,8 +83,8 @@
 | T-153 | 포장재·어망·기타 수지·비철의 세부 재질 보충과 물량 전달 | 완료 | api-developer | material-detail-bridge | 원래 번호 보존, 8개 세부 재질 선택·AI·로트 저장 연결. 실제 18문진/52형태 중 49조합 후보, 신규 20형태 브라우저 확인. 서버 SQLite·PG 439개씩. [결과](material-detail-e2e-20261115.md) |
 | T-154 | AI 공개 근거 부족과 호출 장애의 원인별 보강 | 완료 | api-developer | evidence-gap-audit | 부족 사유 9종·PET병 인용 검사·제한된 재시도·프록시 대기 보강. 기존 252회(35사업장·79연결) 재검토: 확인 10/부족 242. 전체 53형태·294검토: 확인 50/부족 244/최종 호출 오류 0. 59브라우저 검사 통과. 근거 부족이 전부 해소됐다는 뜻은 아님. [사유별 결과](registry-screen/intake-evidence-gaps-20261116.md) |
 | T-118 | 검토 실행을 Service Bus + 별도 워커 파드로 이전 | 대기 | backend-architect | review-runs | 요구사항 NFR-6, infra 리소스 확정 후 |
-| T-155 | diagnosis의 허용 R유형 전달 계약과 시설 허가 대조 | 대기 | api-developer | - | 실제 diagnosis-handoff-v1에 R유형 필드가 없음. 분류번호·재질·형태의 조사 후보 조회와 구분. 출처·적용 조건·필드 계약 확정 후 추가하며 현재 R코드 미확인 유지 |
-| T-156 | 공개 근거 검토의 과도한 보류·잘못된 통과를 독립 정답셋으로 평가 | 대기 | test-engineer | - | 11/16 넷스파 PA6 어망·대한제강 녹산 철스크랩은 원문 관련 요약을 전달했으나 사업장 근거 부족 응답. 단순 성공 응답 수를 정확도로 쓰지 않고 원문 대조·반복 판정 편차를 평가할 필요 |
+| T-155 | diagnosis의 R유형·분석 조건을 UI·물량·AI에 전달 | 진행 | api-developer | recycling-handoff | 일반 14번호의 법령표·분석 조건·출처 연결, 이전 확정 건 보충 조회와 검토 캐시 갱신 구현. 새 문진 18건·브라우저 59검사 통과. 전체 형태 Azure 재검토 및 PR 검사 진행. [전달 구조](r-code-handoff.md) |
+| T-156 | 공개 근거 검토의 과도한 보류·잘못된 통과를 독립 정답셋으로 평가 | 진행 | test-engineer | recycling-handoff | 넷스파 PA6 어망·대한제강 녹산 철스크랩 원문을 추가 대조하고 실제 Azure에서 공개 근거 확인 응답. 다른 재질·사업장·반입 제한 음성 테스트 추가. 독립 전문가 정답셋 및 반복 판정 편차 평가는 미완료이며 실제 반입 허가 확인과 별개 |
 | T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |
 | T-502 | 배포 대상 결정 (App Service 기본안) 및 배포 | 대기 | 사람 | - | T-008 이후 |

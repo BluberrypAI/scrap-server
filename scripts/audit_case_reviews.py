@@ -96,6 +96,15 @@ async def run(args):
                     response.raise_for_status()
                     data = response.json()
                     actual = (data.get("reviews") or {}).get("results", {})
+                    recycling = data.get("recycling") or {}
+                    route_input = data.get("route_input") or {}
+                    row["recycling_transferred"] = (
+                        recycling.get("status") == "table_listed"
+                        and recycling.get("case_id") == case_id
+                        and route_input.get("recycling_types") == recycling.get("types")
+                        and (route_input.get("recycling_basis") or {}).get("source_url")
+                        == (recycling.get("source") or {}).get("url")
+                    )
                     row.update(
                         response=data,
                         keys_match=set(actual) == expected,
@@ -133,6 +142,7 @@ async def run(args):
     return int(
         any(
             r.get("error")
+            or not r.get("recycling_transferred")
             or not r.get("keys_match")
             or r.get("statuses", {}).get("model_unavailable", 0)
             for r in results

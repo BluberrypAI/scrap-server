@@ -184,6 +184,13 @@ async def test_every_first_handoff_candidate_is_sent_for_review(db, auth_client,
         "material": "PP",
         "input_form": "scrap",
         "recycling_types": {"free": ["R-10", "R-9-3"]},
+        "recycling_basis": {
+            "version": "browser-forged",
+            "as_of": "2026-11-16",
+            "source_url": "https://www.law.go.kr/forged",
+            "pages": [1],
+            "notes": [],
+        },
     }
     route = await auth_client.post("/api/treatment/next-step", json=selection)
     expected = {
@@ -205,6 +212,7 @@ async def test_every_first_handoff_candidate_is_sent_for_review(db, auth_client,
         seen.extend(keys)
         omitted.append(packets[-1]["capability_key"])
         assert all(packet["recycling_types"]["free"] == ["R-10"] for packet in packets)
+        assert all("recycling_basis" not in packet for packet in packets)
         assert all(packet["form"] == "scrap" and "origin" not in packet for packet in packets)
         for p in packets:
             if p["site"].startswith("새롬이엔지"):

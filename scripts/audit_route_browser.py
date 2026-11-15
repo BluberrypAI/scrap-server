@@ -92,7 +92,16 @@ async def run(args):
                             case["expected_code"]
                         )
                         await expect(choice).to_be_checked()
-                        row.update(passed=True, candidates=expected)
+                        rbox = page.get_by_test_id("recycling-types")
+                        await expect(rbox).to_be_visible()
+                        await rbox.locator("summary").click()
+                        await expect(rbox).to_contain_text("R-10")
+                        await expect(rbox.locator("a")).to_have_attribute(
+                            "href", form["response"]["recycling"]["source"]["url"]
+                        )
+                        row.update(
+                            passed=True, candidates=expected, recycling_visible=True
+                        )
                 except (AssertionError, PlaywrightError) as error:
                     # No cookies or input documents are serialized.
                     row.update(

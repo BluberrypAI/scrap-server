@@ -18,6 +18,14 @@ class RecyclingTypes(BaseModel):
     unmarked: list[RecyclingCode] = Field(default_factory=list, max_length=50)
 
 
+class RecyclingBasis(BaseModel):
+    version: str = Field(max_length=120)
+    as_of: str = Field(max_length=10)
+    source_url: str = Field(pattern=r"^https://www\.law\.go\.kr/", max_length=1500)
+    pages: list[int] = Field(max_length=30)
+    notes: list[str] = Field(max_length=10)
+
+
 class Coordinates(BaseModel):
     latitude: float = Field(ge=-90, le=90)
     longitude: float = Field(ge=-180, le=180)
@@ -38,6 +46,7 @@ class NextStepRequest(BaseModel):
     origin: Coordinates | None = None
     observed_output: ObservedOutput | None = None
     recycling_types: RecyclingTypes | None = None
+    recycling_basis: RecyclingBasis | None = None
     preview_transition: CatalogKey | None = None
     classification_session_id: UUID | None = None
 

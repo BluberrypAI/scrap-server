@@ -11,6 +11,7 @@ from app.domains.treatment.schemas import (
     CatalogKey,
     NextStepRequest,
     ObservedOutput,
+    RecyclingBasis,
     RecyclingTypes,
     SourceLink,
 )
@@ -22,6 +23,7 @@ class IntakeSelection(BaseModel):
     material: str = Field(min_length=1, max_length=80)
     input_form: str = Field(min_length=1, max_length=80)
     recycling_types: RecyclingTypes | None = None
+    recycling_basis: RecyclingBasis | None = None
     completed_transitions: list[CatalogKey] = Field(default_factory=list, max_length=8)
     observed_output: ObservedOutput | None = None
     classification_session_id: UUID | None = None
@@ -107,7 +109,11 @@ def build_intake_batch(request: IntakeSelection, reference):
     form = normalize_form(request.input_form)
 
     def types_for(option):
-        types = option.recycling_types or request.recycling_types
+        types = (
+            request.recycling_types
+            if request.recycling_basis is not None
+            else option.recycling_types or request.recycling_types
+        )
         return types.model_dump() if not follow_up and types is not None else {}
 
     return [
@@ -120,6 +126,11 @@ def build_intake_batch(request: IntakeSelection, reference):
             "material": material,
             "form": option.input_state.label if follow_up else form,
             "recycling_types": types_for(option),
+            **(
+                {"recycling_basis": request.recycling_basis.model_dump()}
+                if request.recycling_basis is not None and not follow_up
+                else {}
+            ),
             "next_check": (
                 facility.intake_review.next_check
                 if facility.intake_review

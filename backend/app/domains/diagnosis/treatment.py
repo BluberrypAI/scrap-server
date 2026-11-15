@@ -8,6 +8,7 @@ from uuid import UUID
 from app.core.config import get_settings
 from app.domains.companies.models import Company
 from app.domains.diagnosis.client import EngineUnavailableError
+from app.domains.diagnosis.recycling import recycling_for_handoff, route_recycling
 from app.domains.diagnosis.schemas import TreatmentContextRead, TreatmentSelectionIn
 from app.domains.treatment.classification import INITIAL_PROFILES
 from app.domains.treatment.intake import IntakeSelection, build_intake_batch, review_intakes
@@ -55,7 +56,10 @@ def context_from_handoff(detail, case_id, selection, company):
     context.warnings = list(h.get("assumptions") or [])
     if h.get("review") != "VERIFIED":
         context.warnings.append("검토 전 규칙에 따른 참고용 분류 결과입니다.")
-    context.warnings.append("R코드는 미확인입니다. 공정 후보는 허가·반입 승인을 뜻하지 않습니다.")
+    context.recycling = recycling_for_handoff(detail)
+    if not context.recycling or context.recycling.get("status") != "table_listed":
+        context.warnings.append("R코드는 미확인입니다. 적용 가능한 법령표를 확인해 주세요.")
+    context.warnings.append("공정 후보와 R유형 조회는 업체 허가·반입 승인을 뜻하지 않습니다.")
     if (
         h.get("result_type") != "WASTE_CODE"
         or h.get("route_guidance", {}).get("action") != "RECOMMEND_ROUTE"
@@ -152,7 +156,11 @@ def context_from_handoff(detail, case_id, selection, company):
         context.message = "이 분류 결과와 현재 형태를 함께 지원하는 공정 자료가 없습니다."
         return context
     request = NextStepRequest(
-        waste_code=code, material=material, input_form=form, origin=context.origin
+        waste_code=code,
+        material=material,
+        input_form=form,
+        origin=context.origin,
+        **route_recycling(context.recycling),
     )
     context.route_input = request.model_dump(mode="json")
     context.status = "ready"
