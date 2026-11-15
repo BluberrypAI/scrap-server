@@ -8,9 +8,9 @@
 - 실제 문진 18선택지 중 15개에 후보가 있고, 그 안의 형태 조합 56개 중 53개가 연결됩니다. 미지원·근거 부족은 승인으로 바꾸지 않습니다.
 - 기업 위치를 지도에서 저장하고 현재 보유 기업 기준으로 가까운 후보를 표시합니다. **직선거리**이며 도로 운송거리는 아닙니다.
 - 이번 재검사는 문진·후보·AI·위치 저장 범위입니다. 이전 PP/PET/PE·캔의 7개 합성 QR 완료 시나리오와 구분합니다.
-- 실제 Azure 294회 검토의 최종 결과는 공개 근거 확인 50회·부족 244회·호출 오류 0회입니다. 기존 부족 252회는 35개 사업장의 반복 검토이며 10회가 확인으로 바뀌었습니다. 재시도 후 결과이고 실제 반입 승인은 아닙니다.
+- R유형을 포함한 최신 Azure 294개 후보별 결과는 공개 근거 확인 **56회·부족 238회·최종 호출 오류 0회**입니다. 호출 장애가 난 PP 2조합 재시도 후 결과입니다. 정확도나 실제 반입 승인율을 뜻하지 않습니다.
 
-[최신 연결 점검·적용 방법](docs/flow-audit-20261116.md) · [252회 부족 사유·업체별 표](docs/registry-screen/intake-evidence-gaps-20261116.md) · [공개 근거 보강·남은 소재](docs/registry-screen/remaining-material-evidence-20261116.md)
+[최신 R코드·화면·AI 연결 검사와 적용 방법](docs/r-code-flow-audit-20261116.md) · [앞선 252회 부족 사유·업체별 표](docs/registry-screen/intake-evidence-gaps-20261116.md) · [공개 근거 보강·남은 소재](docs/registry-screen/remaining-material-evidence-20261116.md)
 
 이전 기록: [11/15 세부 재질·252회 근거 부족](docs/material-detail-e2e-20261115.md) · [7개 기업 인계 시험](docs/full-stack-validation-20261115.md) · [전체 조사 목록](docs/registry-screen/README.md)
 

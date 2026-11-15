@@ -54,7 +54,10 @@ async def run(args):
     completed = {
         (r["case_id"], r["form"], r.get("material_detail"))
         for r in results
-        if r.get("keys_match") and "model_unavailable" not in r.get("statuses", {})
+        if r.get("keys_match")
+        and r.get("recycling_transferred")
+        and r.get("dispatch_not_approved")
+        and "model_unavailable" not in r.get("statuses", {})
     }
     selected = [c for c in selected if (c[0], c[2], c[4]) not in completed]
     async with httpx.AsyncClient(base_url=args.base, timeout=300) as client:
@@ -143,6 +146,7 @@ async def run(args):
         any(
             r.get("error")
             or not r.get("recycling_transferred")
+            or not r.get("dispatch_not_approved")
             or not r.get("keys_match")
             or r.get("statuses", {}).get("model_unavailable", 0)
             for r in results
