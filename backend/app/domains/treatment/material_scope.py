@@ -17,6 +17,7 @@ FORM_STATES = {
         "rigid": "pe-scrap",
         "film": "pe-scrap",
         "bale": "pe-bale",
+        "film-bale": "pe-film-bale",
         "shredded": "pe-shredded",
         "flake": "pe-shredded",
         "pellet": "pe-pellet",
@@ -42,12 +43,12 @@ FORM_STATES = {
         "shredded": "san-flake",
     },
     "pvc": {"wallpaper": "pvc-wallpaper", "rigid": "pvc-rigid"},
-    "eps": {"foam": "eps-foam", "ingot": "eps-ingot"},
+    "eps": {"foam": "eps-foam", "ingot": "eps-ingot", "buoy": "eps-buoy"},
     "pa6": {"net": "pa6-net"},
     "pa66": {"flake": "pa66-flake", "shredded": "pa66-flake"},
     "pcabs": {"flake": "pcabs-flake", "shredded": "pcabs-flake"},
     "aluminium": {"can": "al-used-can", "scrap": "al-scrap"},
-    "ferrous": {"scrap": "ferrous-scrap"},
+    "ferrous": {"scrap": "ferrous-scrap", "drum": "steel-used-drum"},
 }
 
 FORM_CODES = {
@@ -58,16 +59,19 @@ for _material in ("pp", "pe"):
         FORM_CODES[_material, _form] = ("51-03-01", "51-03-07")
 for _form in ("bottle", "bale"):
     FORM_CODES["pet", _form] = ("51-03-01", "51-03-07")
+FORM_CODES["pe", "film-bale"] = ("51-03-01", "51-03-07")
 FORM_CODES.update(
     {
         ("pvc", "wallpaper"): ("51-03-03",),
         ("pvc", "rigid"): ("51-03-03",),
         ("eps", "ingot"): ("51-03-06",),
         ("eps", "foam"): ("51-03-06",),
+        ("eps", "buoy"): ("51-03-05",),
         ("pa6", "net"): ("51-03-08",),
         ("aluminium", "can"): ("51-29-03",),
         ("aluminium", "scrap"): ("51-29-02",),
         ("ferrous", "scrap"): ("51-29-01",),
+        ("ferrous", "drum"): ("51-29-04",),
     }
 )
 
@@ -85,7 +89,7 @@ FINISH_STATES = {
     "pa66": {"pa66-compound"},
     "pcabs": {"pcabs-compound"},
     "aluminium": {"al-sheet", "al-sheet-ingot"},
-    "ferrous": {"ferrous-billet"},
+    "ferrous": {"ferrous-billet", "steel-reconditioned-drum"},
 }
 FORM_LABELS = {
     "scrap": "제조 잔재·스크랩",
@@ -101,5 +105,8 @@ FORM_LABELS = {
     "net": "PA6 폐어망",
     "can": "사용 후 알루미늄 음료캔",
     "foam": "감용 전 EPS 스티로폼",
+    "buoy": "EPS 스티로폼 폐부표",
+    "drum": "200L 폐철드럼 (이전 내용물·잔류물 별도 확인)",
+    "film-bale": "PE 폐비닐 압축 베일 (경질 제품 제외)",
 }
 PLASTICS = set(FORM_STATES) - {"aluminium", "ferrous"}

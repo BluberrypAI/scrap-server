@@ -75,6 +75,19 @@ class IntakeResult(BaseModel):
     next_check: str
     source: SourceLink | None = None
     quote: str | None = None
+    evidence_gaps: list[
+        Literal[
+            "source_missing",
+            "site_scope_unverified",
+            "input_form_unproven",
+            "material_unproven",
+            "output_only",
+            "process_unproven",
+            "source_context_conflict",
+            "citation_invalid",
+            "unspecified",
+        ]
+    ] = Field(default_factory=list, max_length=9)
     dispatch_approved: Literal[False] = False
     lot_review: LotReview | None = None
 
@@ -147,7 +160,7 @@ async def review_intakes(packets, settings, *, lot_context=None):
     if not packets or not settings.ai_base_url or not token:
         return IntakeBatchResult(results=results)
 
-    async with httpx.AsyncClient(timeout=175 if lot_context is not None else 45) as client:
+    async with httpx.AsyncClient(timeout=175 if lot_context is not None else 95) as client:
         for start in range(0, len(packets), 5):
             batch = packets[start : start + 5]
             try:

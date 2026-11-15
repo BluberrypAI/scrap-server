@@ -50,7 +50,7 @@ router = APIRouter(prefix="/workflow", tags=["transport"])
 
 MATERIAL_LABELS = {material: material.upper() for material in FINISH_STATES}
 MATERIAL_LABELS["aluminium"] = "알루미늄"
-MATERIAL_LABELS["ferrous"] = "철스크랩"
+MATERIAL_LABELS["ferrous"] = "철계 자원"
 
 
 class Body(BaseModel):
@@ -73,6 +73,9 @@ class CreateLot(Body):
         "ingot",
         "net",
         "foam",
+        "buoy",
+        "drum",
+        "film-bale",
     ]
     mass_kg: float = Field(gt=0, le=1e9, allow_inf_nan=False)
     condition: str = Field(min_length=3, max_length=1500)

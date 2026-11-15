@@ -1271,6 +1271,80 @@
           "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
         }
       ]
+    },
+    "hanul-ulju": {
+      "checked_at": "2026-11-16",
+      "facts": [
+        {
+          "source_id": "hanul-eps-buoy-process",
+          "kind": "public_example",
+          "text": "EPS 스티로폼 부표를 감용하는 업무를 공개한다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "buoy_material",
+          "label": "부표의 EPS 재질과 염분·부착 이물 상태를 확인했나요?",
+          "choices": [
+            "EPS 확인·상태 자료 있음",
+            "재질 또는 상태 미확인"
+          ],
+          "source_id": "hanul-eps-buoy-process",
+          "reason": "PE·PP 부표와 혼동하지 않고 개별 반입 조건을 업체가 확인하기 위한 질문"
+        }
+      ]
+    },
+    "cheoldang-yangsan": {
+      "checked_at": "2026-11-16",
+      "facts": [
+        {
+          "source_id": "cheoldang-steel-drum-process",
+          "kind": "public_example",
+          "text": "200L 폐철드럼의 내용물 제거·세척·재생 공정을 공개한다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "previous_contents",
+          "label": "드럼에 담겼던 내용물과 잔류물 정보를 알려 주세요. MSDS가 있다면 함께 확인해 주세요.",
+          "source_id": "cheoldang-steel-drum-process",
+          "reason": "일반 폐용기 분류와 현재 물량 반입 가능 여부를 대조하기 위한 확인. 미확인 상태를 무해로 간주하지 않음."
+        },
+        {
+          "key": "drum_spec",
+          "label": "철제 200L 드럼인지, 파손·부식 상태는 어떤지 알려 주세요.",
+          "source_id": "cheoldang-steel-drum-process",
+          "reason": "공개된 재생 공정의 대상 규격과 이번 물량을 비교"
+        }
+      ]
+    },
+    "dh1-seongju": {
+      "checked_at": "2026-11-16",
+      "facts": [
+        {
+          "source_id": "codil-dh1-film-bale",
+          "kind": "public_example",
+          "text": "2023 보고서의 압축 폐비닐 투입 실증이며 현재 상용 인수 조건은 미확인이다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "film_bale_scope",
+          "label": "경질 제품이 아닌 PE 폐비닐 베일인가요? 수분·흙·다른 재질 혼입 상태를 알려 주세요.",
+          "source_id": "codil-dh1-film-bale",
+          "reason": "공개 실증의 비닐 투입 범위 확인. 회사의 실제 허용 규격을 뜻하지 않음."
+        },
+        {
+          "key": "commercial_intake",
+          "label": "현재 운영 라인과 외부 물량 수락 여부를 업체에 확인했나요?",
+          "choices": [
+            "확인 자료 있음",
+            "아직 미확인"
+          ],
+          "source_id": "keco-dh1-film-destination-2026",
+          "reason": "공단 공급 계획과 별개로 이번 기업의 물량을 받을 수 있는지 확인"
+        }
+      ]
     }
   }
 }

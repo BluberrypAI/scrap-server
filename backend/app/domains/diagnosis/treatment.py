@@ -23,6 +23,8 @@ MATERIAL_DETAILS = {
     ("fishing_net", "51-03-08"): ("pa6",),
     ("other_resin", "51-03-01"): ("san", "pa66", "pcabs"),
     ("nonferrous_scrap", "51-29-02"): ("aluminium",),
+    ("aqua_buoy", "51-03-05"): ("eps",),
+    ("metal_container", "51-29-04"): ("ferrous",),
 }
 DETAIL_LABELS = {
     "pp": "PP (폴리프로필렌)",
@@ -33,6 +35,8 @@ DETAIL_LABELS = {
     "pa66": "PA66 (나일론 66)",
     "pcabs": "PC/ABS",
     "aluminium": "알루미늄 스크랩",
+    "eps": "EPS (스티로폼) 부표 — PE·PP 부표 제외",
+    "ferrous": "철제 드럼 — IBC·플라스틱 용기 제외",
 }
 
 

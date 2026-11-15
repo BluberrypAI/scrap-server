@@ -1,0 +1,1300 @@
+{
+  "scope": "Local synthetic button interview through web HTTP proxy; not independent classification/legal truth verification",
+  "diagnosis_choices": 18,
+  "choices_with_candidates": 15,
+  "codes": [
+    "51-03-01",
+    "51-03-02",
+    "51-03-03",
+    "51-03-04",
+    "51-03-05",
+    "51-03-06",
+    "51-03-07",
+    "51-03-08",
+    "51-29-01",
+    "51-29-02",
+    "51-29-03",
+    "51-29-04"
+  ],
+  "forms": 56,
+  "forms_with_candidates": 53,
+  "unsupported_choices": [
+    "phenol_resin",
+    "pu_foam",
+    "rubber"
+  ],
+  "rows": [
+    {
+      "material": "pp",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "scrap",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "afrochem-asan",
+        "daejo-sangju",
+        "daewoon-naju",
+        "dakyeong-busan",
+        "ecoplus-yeongju",
+        "hcr-paju",
+        "ilshin-anseong",
+        "joongil-incheon",
+        "jungang-gongju",
+        "npc-chemical-hwaseong",
+        "sarom-hwaseong-2",
+        "veolia-dh-yongin",
+        "youngshin-naju",
+        "youone-incheon"
+      ]
+    },
+    {
+      "material": "pp",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "shredded",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "bgf-yesan",
+        "changmaec-seongju",
+        "daesan-naju",
+        "greenpol-cheonan",
+        "hcr-paju",
+        "jinyoung-hwaseong",
+        "pne-eumseong",
+        "veolia-doksan-hwaseong",
+        "yongseong-gyeongsan"
+      ]
+    },
+    {
+      "material": "pp",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "rigid",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "afrochem-asan",
+        "daejo-sangju",
+        "daewoon-naju",
+        "dakyeong-busan",
+        "ecoplus-yeongju",
+        "hcr-paju",
+        "ilshin-anseong",
+        "joongil-incheon",
+        "jungang-gongju",
+        "npc-chemical-hwaseong",
+        "sarom-hwaseong-2",
+        "veolia-dh-yongin",
+        "youngshin-naju",
+        "youone-incheon"
+      ]
+    },
+    {
+      "material": "pp",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "film",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "afrochem-asan",
+        "daejo-sangju",
+        "daewoon-naju",
+        "dakyeong-busan",
+        "ecoplus-yeongju",
+        "hcr-paju",
+        "ilshin-anseong",
+        "jungang-gongju",
+        "npc-chemical-hwaseong",
+        "sarom-hwaseong-2",
+        "veolia-dh-yongin",
+        "youngshin-naju",
+        "youone-incheon"
+      ]
+    },
+    {
+      "material": "pp",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "bale",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "veolia-doksan-hwaseong"
+      ]
+    },
+    {
+      "material": "pp",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "flake",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "bgf-yesan",
+        "changmaec-seongju",
+        "daesan-naju",
+        "greenpol-cheonan",
+        "hcr-paju",
+        "jinyoung-hwaseong",
+        "pne-eumseong",
+        "veolia-doksan-hwaseong",
+        "yongseong-gyeongsan"
+      ]
+    },
+    {
+      "material": "pp",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "pellet",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "bgf-hwaseong",
+        "veolia-dspl-hwaseong"
+      ]
+    },
+    {
+      "material": "pe",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "film",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "afrochem-asan",
+        "daejo-sangju",
+        "daewoon-naju",
+        "dakyeong-busan",
+        "dongmin-yeongcheon",
+        "ecoplus-yeongju",
+        "hcr-paju",
+        "ilshin-anseong",
+        "jungang-gongju",
+        "nuvotec-munmak",
+        "saramtech-nonsan",
+        "sarom-hwaseong-2",
+        "veolia-dh-yongin",
+        "youngshin-naju",
+        "youone-incheon"
+      ]
+    },
+    {
+      "material": "pe",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "scrap",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "afrochem-asan",
+        "daejo-sangju",
+        "daewoon-naju",
+        "dakyeong-busan",
+        "ecoplus-yeongju",
+        "hcr-paju",
+        "ilshin-anseong",
+        "jungang-gongju",
+        "npc-chemical-hwaseong",
+        "nuvotec-munmak",
+        "sarom-hwaseong-2",
+        "veolia-dh-yongin",
+        "youngshin-naju",
+        "youone-incheon"
+      ]
+    },
+    {
+      "material": "pe",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "rigid",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "afrochem-asan",
+        "daejo-sangju",
+        "daewoon-naju",
+        "dakyeong-busan",
+        "ecoplus-yeongju",
+        "hcr-paju",
+        "ilshin-anseong",
+        "jungang-gongju",
+        "npc-chemical-hwaseong",
+        "nuvotec-munmak",
+        "samsungchem-miryang",
+        "sarom-hwaseong-2",
+        "veolia-dh-yongin",
+        "youngshin-naju",
+        "youone-incheon"
+      ]
+    },
+    {
+      "material": "pe",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "bale",
+      "context": "ready",
+      "result": "no_route",
+      "facilities": []
+    },
+    {
+      "material": "pe",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "film-bale",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "dh1-seongju"
+      ]
+    },
+    {
+      "material": "pe",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "shredded",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "bgf-yesan",
+        "greenpol-cheonan",
+        "guil-hapcheon",
+        "hcr-paju",
+        "jinyoung-hwaseong",
+        "pne-eumseong",
+        "yongseong-gyeongsan"
+      ]
+    },
+    {
+      "material": "pe",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "flake",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "bgf-yesan",
+        "greenpol-cheonan",
+        "guil-hapcheon",
+        "hcr-paju",
+        "jinyoung-hwaseong",
+        "pne-eumseong",
+        "yongseong-gyeongsan"
+      ]
+    },
+    {
+      "material": "pe",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "pellet",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "bgf-hwaseong"
+      ]
+    },
+    {
+      "material": "pet",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "bottle",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "dakyeong-busan",
+        "hrm-cheongju",
+        "samyang-sihwa",
+        "veolia-dh-yongin",
+        "yuil-busan",
+        "yuil-yangsan"
+      ]
+    },
+    {
+      "material": "pet",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "bale",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "rm-hwaseong",
+        "samyang-sihwa",
+        "superbin-hwaseong",
+        "yuil-busan",
+        "yuil-yangsan"
+      ]
+    },
+    {
+      "material": "pet",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "flake",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "bgf-yesan",
+        "superbin-sunchang"
+      ]
+    },
+    {
+      "material": "ps",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "scrap",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "cntk-hwaseong",
+        "cntk-jinju",
+        "hcr-paju",
+        "ilshin-anseong",
+        "veolia-dh-yongin"
+      ]
+    },
+    {
+      "material": "ps",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "rigid",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "cntk-hwaseong",
+        "cntk-jinju",
+        "hcr-paju",
+        "ilshin-anseong",
+        "veolia-dh-yongin"
+      ]
+    },
+    {
+      "material": "ps",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "bale",
+      "context": "ready",
+      "result": "no_route",
+      "facilities": []
+    },
+    {
+      "material": "ps",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "flake",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "changmaec-seongju",
+        "cntk-hwaseong",
+        "cntk-jinju",
+        "hcr-paju",
+        "pne-eumseong"
+      ]
+    },
+    {
+      "material": "ps",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "shredded",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "changmaec-seongju",
+        "cntk-hwaseong",
+        "cntk-jinju",
+        "hcr-paju",
+        "pne-eumseong"
+      ]
+    },
+    {
+      "material": "abs",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "scrap",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "cntk-hwaseong",
+        "cntk-jinju"
+      ]
+    },
+    {
+      "material": "abs",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "rigid",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "cntk-hwaseong",
+        "cntk-jinju"
+      ]
+    },
+    {
+      "material": "abs",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "flake",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "changmaec-seongju",
+        "cntk-hwaseong",
+        "cntk-jinju"
+      ]
+    },
+    {
+      "material": "abs",
+      "material_detail": null,
+      "code": "51-03-01",
+      "form": "shredded",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "changmaec-seongju",
+        "cntk-hwaseong",
+        "cntk-jinju"
+      ]
+    },
+    {
+      "material": "pvc",
+      "material_detail": null,
+      "code": "51-03-03",
+      "form": "wallpaper",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "sungji-hwaseong"
+      ]
+    },
+    {
+      "material": "pvc",
+      "material_detail": null,
+      "code": "51-03-03",
+      "form": "rigid",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "pureum-yangju"
+      ]
+    },
+    {
+      "material": "other_resin",
+      "material_detail": "san",
+      "code": "51-03-01",
+      "form": "scrap",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "cntk-hwaseong",
+        "cntk-jinju"
+      ]
+    },
+    {
+      "material": "other_resin",
+      "material_detail": "san",
+      "code": "51-03-01",
+      "form": "rigid",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "cntk-hwaseong",
+        "cntk-jinju"
+      ]
+    },
+    {
+      "material": "other_resin",
+      "material_detail": "san",
+      "code": "51-03-01",
+      "form": "flake",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "cntk-hwaseong",
+        "cntk-jinju"
+      ]
+    },
+    {
+      "material": "other_resin",
+      "material_detail": "san",
+      "code": "51-03-01",
+      "form": "shredded",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "cntk-hwaseong",
+        "cntk-jinju"
+      ]
+    },
+    {
+      "material": "other_resin",
+      "material_detail": "pa66",
+      "code": "51-03-01",
+      "form": "flake",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "changmaec-seongju",
+        "yangil-incheon"
+      ]
+    },
+    {
+      "material": "other_resin",
+      "material_detail": "pa66",
+      "code": "51-03-01",
+      "form": "shredded",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "changmaec-seongju",
+        "yangil-incheon"
+      ]
+    },
+    {
+      "material": "other_resin",
+      "material_detail": "pcabs",
+      "code": "51-03-01",
+      "form": "flake",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "changmaec-seongju"
+      ]
+    },
+    {
+      "material": "other_resin",
+      "material_detail": "pcabs",
+      "code": "51-03-01",
+      "form": "shredded",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "changmaec-seongju"
+      ]
+    },
+    {
+      "material": "eps",
+      "material_detail": null,
+      "code": "51-03-06",
+      "form": "foam",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "hanul-ulju"
+      ]
+    },
+    {
+      "material": "eps",
+      "material_detail": null,
+      "code": "51-03-06",
+      "form": "ingot",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "ecops-yeongcheon"
+      ]
+    },
+    {
+      "material": "fishing_net",
+      "material_detail": "pa6",
+      "code": "51-03-08",
+      "form": "net",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "netspa-busan",
+        "yangil-incheon"
+      ]
+    },
+    {
+      "material": "plastic_packaging",
+      "material_detail": "pp",
+      "code": "51-03-07",
+      "form": "scrap",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "afrochem-asan",
+        "daejo-sangju",
+        "daewoon-naju",
+        "dakyeong-busan",
+        "ecoplus-yeongju",
+        "hcr-paju",
+        "ilshin-anseong",
+        "joongil-incheon",
+        "jungang-gongju",
+        "npc-chemical-hwaseong",
+        "sarom-hwaseong-2",
+        "veolia-dh-yongin",
+        "youngshin-naju",
+        "youone-incheon"
+      ]
+    },
+    {
+      "material": "plastic_packaging",
+      "material_detail": "pp",
+      "code": "51-03-07",
+      "form": "rigid",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "afrochem-asan",
+        "daejo-sangju",
+        "daewoon-naju",
+        "dakyeong-busan",
+        "ecoplus-yeongju",
+        "hcr-paju",
+        "ilshin-anseong",
+        "joongil-incheon",
+        "jungang-gongju",
+        "npc-chemical-hwaseong",
+        "sarom-hwaseong-2",
+        "veolia-dh-yongin",
+        "youngshin-naju",
+        "youone-incheon"
+      ]
+    },
+    {
+      "material": "plastic_packaging",
+      "material_detail": "pp",
+      "code": "51-03-07",
+      "form": "film",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "afrochem-asan",
+        "daejo-sangju",
+        "daewoon-naju",
+        "dakyeong-busan",
+        "ecoplus-yeongju",
+        "hcr-paju",
+        "ilshin-anseong",
+        "jungang-gongju",
+        "npc-chemical-hwaseong",
+        "sarom-hwaseong-2",
+        "veolia-dh-yongin",
+        "youngshin-naju",
+        "youone-incheon"
+      ]
+    },
+    {
+      "material": "plastic_packaging",
+      "material_detail": "pp",
+      "code": "51-03-07",
+      "form": "bale",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "veolia-doksan-hwaseong"
+      ]
+    },
+    {
+      "material": "plastic_packaging",
+      "material_detail": "pe",
+      "code": "51-03-07",
+      "form": "film",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "afrochem-asan",
+        "daejo-sangju",
+        "daewoon-naju",
+        "dakyeong-busan",
+        "dongmin-yeongcheon",
+        "ecoplus-yeongju",
+        "hcr-paju",
+        "ilshin-anseong",
+        "jungang-gongju",
+        "nuvotec-munmak",
+        "saramtech-nonsan",
+        "sarom-hwaseong-2",
+        "veolia-dh-yongin",
+        "youngshin-naju",
+        "youone-incheon"
+      ]
+    },
+    {
+      "material": "plastic_packaging",
+      "material_detail": "pe",
+      "code": "51-03-07",
+      "form": "scrap",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "afrochem-asan",
+        "daejo-sangju",
+        "daewoon-naju",
+        "dakyeong-busan",
+        "ecoplus-yeongju",
+        "hcr-paju",
+        "ilshin-anseong",
+        "jungang-gongju",
+        "npc-chemical-hwaseong",
+        "nuvotec-munmak",
+        "sarom-hwaseong-2",
+        "veolia-dh-yongin",
+        "youngshin-naju",
+        "youone-incheon"
+      ]
+    },
+    {
+      "material": "plastic_packaging",
+      "material_detail": "pe",
+      "code": "51-03-07",
+      "form": "rigid",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "afrochem-asan",
+        "daejo-sangju",
+        "daewoon-naju",
+        "dakyeong-busan",
+        "ecoplus-yeongju",
+        "hcr-paju",
+        "ilshin-anseong",
+        "jungang-gongju",
+        "npc-chemical-hwaseong",
+        "nuvotec-munmak",
+        "samsungchem-miryang",
+        "sarom-hwaseong-2",
+        "veolia-dh-yongin",
+        "youngshin-naju",
+        "youone-incheon"
+      ]
+    },
+    {
+      "material": "plastic_packaging",
+      "material_detail": "pe",
+      "code": "51-03-07",
+      "form": "bale",
+      "context": "ready",
+      "result": "no_route",
+      "facilities": []
+    },
+    {
+      "material": "plastic_packaging",
+      "material_detail": "pe",
+      "code": "51-03-07",
+      "form": "film-bale",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "dh1-seongju"
+      ]
+    },
+    {
+      "material": "plastic_packaging",
+      "material_detail": "pet",
+      "code": "51-03-07",
+      "form": "bottle",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "dakyeong-busan",
+        "hrm-cheongju",
+        "samyang-sihwa",
+        "veolia-dh-yongin",
+        "yuil-busan",
+        "yuil-yangsan"
+      ]
+    },
+    {
+      "material": "plastic_packaging",
+      "material_detail": "pet",
+      "code": "51-03-07",
+      "form": "bale",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "rm-hwaseong",
+        "samyang-sihwa",
+        "superbin-hwaseong",
+        "yuil-busan",
+        "yuil-yangsan"
+      ]
+    },
+    {
+      "material": "aqua_buoy",
+      "material_detail": "eps",
+      "code": "51-03-05",
+      "form": "buoy",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "hanul-ulju"
+      ]
+    },
+    {
+      "material": "ferrous_scrap",
+      "material_detail": null,
+      "code": "51-29-01",
+      "form": "scrap",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "daehan-noksan",
+        "kisco-changwon"
+      ]
+    },
+    {
+      "material": "nonferrous_scrap",
+      "material_detail": "aluminium",
+      "code": "51-29-02",
+      "form": "scrap",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "ulsan-aluminium"
+      ]
+    },
+    {
+      "material": "metal_container",
+      "material_detail": "ferrous",
+      "code": "51-29-04",
+      "form": "drum",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "cheoldang-yangsan"
+      ]
+    },
+    {
+      "material": "metal_can",
+      "material_detail": null,
+      "code": "51-29-03",
+      "form": "can",
+      "context": "ready",
+      "result": "candidates",
+      "facilities": [
+        "novelis-yeongju",
+        "ulsan-aluminium"
+      ]
+    }
+  ],
+  "browser": {
+    "checks": 59,
+    "passed": 59,
+    "forms": 56,
+    "unsupported_material_holds": 3,
+    "results": [
+      {
+        "material": "pp",
+        "detail": null,
+        "form": "scrap",
+        "passed": true,
+        "candidates": 14
+      },
+      {
+        "material": "pp",
+        "detail": null,
+        "form": "shredded",
+        "passed": true,
+        "candidates": 9
+      },
+      {
+        "material": "pp",
+        "detail": null,
+        "form": "rigid",
+        "passed": true,
+        "candidates": 14
+      },
+      {
+        "material": "pp",
+        "detail": null,
+        "form": "film",
+        "passed": true,
+        "candidates": 13
+      },
+      {
+        "material": "pp",
+        "detail": null,
+        "form": "bale",
+        "passed": true,
+        "candidates": 1
+      },
+      {
+        "material": "pp",
+        "detail": null,
+        "form": "flake",
+        "passed": true,
+        "candidates": 9
+      },
+      {
+        "material": "pp",
+        "detail": null,
+        "form": "pellet",
+        "passed": true,
+        "candidates": 2
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "film",
+        "passed": true,
+        "candidates": 15
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "scrap",
+        "passed": true,
+        "candidates": 14
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "rigid",
+        "passed": true,
+        "candidates": 15
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "bale",
+        "passed": true,
+        "candidates": 0
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "film-bale",
+        "passed": true,
+        "candidates": 1
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "shredded",
+        "passed": true,
+        "candidates": 7
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "flake",
+        "passed": true,
+        "candidates": 7
+      },
+      {
+        "material": "pe",
+        "detail": null,
+        "form": "pellet",
+        "passed": true,
+        "candidates": 1
+      },
+      {
+        "material": "pet",
+        "detail": null,
+        "form": "bottle",
+        "passed": true,
+        "candidates": 7
+      },
+      {
+        "material": "pet",
+        "detail": null,
+        "form": "bale",
+        "passed": true,
+        "candidates": 6
+      },
+      {
+        "material": "pet",
+        "detail": null,
+        "form": "flake",
+        "passed": true,
+        "candidates": 2
+      },
+      {
+        "material": "ps",
+        "detail": null,
+        "form": "scrap",
+        "passed": true,
+        "candidates": 5
+      },
+      {
+        "material": "ps",
+        "detail": null,
+        "form": "rigid",
+        "passed": true,
+        "candidates": 5
+      },
+      {
+        "material": "ps",
+        "detail": null,
+        "form": "bale",
+        "passed": true,
+        "candidates": 0
+      },
+      {
+        "material": "ps",
+        "detail": null,
+        "form": "flake",
+        "passed": true,
+        "candidates": 5
+      },
+      {
+        "material": "ps",
+        "detail": null,
+        "form": "shredded",
+        "passed": true,
+        "candidates": 5
+      },
+      {
+        "material": "phenol_resin",
+        "detail": null,
+        "form": null,
+        "passed": true,
+        "outcome": "explicit_hold"
+      },
+      {
+        "material": "abs",
+        "detail": null,
+        "form": "scrap",
+        "passed": true,
+        "candidates": 2
+      },
+      {
+        "material": "abs",
+        "detail": null,
+        "form": "rigid",
+        "passed": true,
+        "candidates": 2
+      },
+      {
+        "material": "abs",
+        "detail": null,
+        "form": "flake",
+        "passed": true,
+        "candidates": 3
+      },
+      {
+        "material": "abs",
+        "detail": null,
+        "form": "shredded",
+        "passed": true,
+        "candidates": 3
+      },
+      {
+        "material": "pvc",
+        "detail": null,
+        "form": "wallpaper",
+        "passed": true,
+        "candidates": 1
+      },
+      {
+        "material": "pvc",
+        "detail": null,
+        "form": "rigid",
+        "passed": true,
+        "candidates": 1
+      },
+      {
+        "material": "other_resin",
+        "detail": "san",
+        "form": "scrap",
+        "passed": true,
+        "candidates": 2
+      },
+      {
+        "material": "other_resin",
+        "detail": "san",
+        "form": "rigid",
+        "passed": true,
+        "candidates": 2
+      },
+      {
+        "material": "other_resin",
+        "detail": "san",
+        "form": "flake",
+        "passed": true,
+        "candidates": 2
+      },
+      {
+        "material": "other_resin",
+        "detail": "san",
+        "form": "shredded",
+        "passed": true,
+        "candidates": 2
+      },
+      {
+        "material": "other_resin",
+        "detail": "pa66",
+        "form": "flake",
+        "passed": true,
+        "candidates": 2
+      },
+      {
+        "material": "other_resin",
+        "detail": "pa66",
+        "form": "shredded",
+        "passed": true,
+        "candidates": 2
+      },
+      {
+        "material": "other_resin",
+        "detail": "pcabs",
+        "form": "flake",
+        "passed": true,
+        "candidates": 1
+      },
+      {
+        "material": "other_resin",
+        "detail": "pcabs",
+        "form": "shredded",
+        "passed": true,
+        "candidates": 1
+      },
+      {
+        "material": "eps",
+        "detail": null,
+        "form": "foam",
+        "passed": true,
+        "candidates": 1
+      },
+      {
+        "material": "eps",
+        "detail": null,
+        "form": "ingot",
+        "passed": true,
+        "candidates": 1
+      },
+      {
+        "material": "pu_foam",
+        "detail": null,
+        "form": null,
+        "passed": true,
+        "outcome": "explicit_hold"
+      },
+      {
+        "material": "fishing_net",
+        "detail": "pa6",
+        "form": "net",
+        "passed": true,
+        "candidates": 2
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pp",
+        "form": "scrap",
+        "passed": true,
+        "candidates": 14
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pp",
+        "form": "rigid",
+        "passed": true,
+        "candidates": 14
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pp",
+        "form": "film",
+        "passed": true,
+        "candidates": 13
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pp",
+        "form": "bale",
+        "passed": true,
+        "candidates": 1
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pe",
+        "form": "film",
+        "passed": true,
+        "candidates": 15
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pe",
+        "form": "scrap",
+        "passed": true,
+        "candidates": 14
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pe",
+        "form": "rigid",
+        "passed": true,
+        "candidates": 15
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pe",
+        "form": "bale",
+        "passed": true,
+        "candidates": 0
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pe",
+        "form": "film-bale",
+        "passed": true,
+        "candidates": 1
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pet",
+        "form": "bottle",
+        "passed": true,
+        "candidates": 7
+      },
+      {
+        "material": "plastic_packaging",
+        "detail": "pet",
+        "form": "bale",
+        "passed": true,
+        "candidates": 6
+      },
+      {
+        "material": "rubber",
+        "detail": null,
+        "form": null,
+        "passed": true,
+        "outcome": "explicit_hold"
+      },
+      {
+        "material": "aqua_buoy",
+        "detail": "eps",
+        "form": "buoy",
+        "passed": true,
+        "candidates": 1
+      },
+      {
+        "material": "ferrous_scrap",
+        "detail": null,
+        "form": "scrap",
+        "passed": true,
+        "candidates": 2
+      },
+      {
+        "material": "nonferrous_scrap",
+        "detail": "aluminium",
+        "form": "scrap",
+        "passed": true,
+        "candidates": 1
+      },
+      {
+        "material": "metal_container",
+        "detail": "ferrous",
+        "form": "drum",
+        "passed": true,
+        "candidates": 1
+      },
+      {
+        "material": "metal_can",
+        "detail": null,
+        "form": "can",
+        "passed": true,
+        "candidates": 2
+      }
+    ]
+  },
+  "hazardous_interviews": {
+    "count": 11,
+    "review_required": 11
+  }
+}

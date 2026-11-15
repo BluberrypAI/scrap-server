@@ -27,6 +27,9 @@ FORM_ALIASES = {
     "ingot": ["인고트", "감용인고트", "eps인고트"],
     "net": ["어망", "폐어망"],
     "foam": ["스티로폼", "감용전스티로폼", "loose_foam", "epsfoam"],
+    "buoy": ["부표", "eps부표", "스티로폼부표"],
+    "drum": ["철드럼", "폐철드럼", "steel_drum"],
+    "film-bale": ["filmbale", "압축폐비닐", "비닐베일"],
     "cardboard": ["골판지", "폐골판지"],
     "recovered_paper": ["폐지", "고지"],
 }

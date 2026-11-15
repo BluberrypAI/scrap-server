@@ -1107,8 +1107,10 @@
       "label_excerpt": "양식용폐부자",
       "page": 6,
       "section": "business_non_designated",
-      "query_materials": [],
-      "match_kind": null
+      "query_materials": [
+        "eps"
+      ],
+      "match_kind": "code_category_only"
     },
     {
       "code": "51-03-06",
@@ -1959,7 +1961,8 @@
       "page": 11,
       "section": "business_non_designated",
       "query_materials": [
-        "aluminium"
+        "aluminium",
+        "ferrous"
       ],
       "match_kind": "code_category_only"
     },

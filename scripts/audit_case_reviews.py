@@ -10,9 +10,9 @@ import httpx
 
 
 async def run(args):
-    rows = json.loads(await asyncio.to_thread(Path(args.input).read_text, encoding="utf-8"))[
-        "cases"
-    ]
+    rows = json.loads(
+        await asyncio.to_thread(Path(args.input).read_text, encoding="utf-8")
+    )["cases"]
     choices = []
     for row in rows:
         for form in row.get("forms", []):
@@ -43,9 +43,9 @@ async def run(args):
     output.parent.mkdir(parents=True, exist_ok=True)
     semaphore = asyncio.Semaphore(args.concurrency)
     results = (
-        json.loads(await asyncio.to_thread(Path(args.resume).read_text, encoding="utf-8"))[
-            "results"
-        ]
+        json.loads(
+            await asyncio.to_thread(Path(args.resume).read_text, encoding="utf-8")
+        )["results"]
         if args.resume
         else []
     )
@@ -58,7 +58,9 @@ async def run(args):
     selected = [c for c in selected if (c[0], c[2], c[4]) not in completed]
     async with httpx.AsyncClient(base_url=args.base, timeout=300) as client:
         (
-            await client.post("/api/v1/auth/dev-login", json={"email": "dev@example.com"})
+            await client.post(
+                "/api/v1/auth/dev-login", json={"email": "dev@example.com"}
+            )
         ).raise_for_status()
 
         async def review(choice):
@@ -114,6 +116,8 @@ async def run(args):
                     row.get("statuses", row.get("error")),
                     flush=True,
                 )
+                if args.delay:
+                    await asyncio.sleep(args.delay)
 
         await asyncio.gather(*(review(c) for c in selected))
     return int(
@@ -128,6 +132,12 @@ async def run(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--delay",
+        type=float,
+        default=0,
+        help="Seconds between synthetic audit requests",
+    )
     parser.add_argument("--base", default="http://localhost:5178")
     parser.add_argument("--input", required=True)
     parser.add_argument("--output", required=True)

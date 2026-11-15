@@ -22,6 +22,8 @@ CASES = [
     ("other_resin", "51-03-01", "pa66", "shredded"),
     ("other_resin", "51-03-01", "pcabs", "shredded"),
     ("nonferrous_scrap", "51-29-02", "aluminium", "scrap"),
+    ("aqua_buoy", "51-03-05", "eps", "buoy"),
+    ("metal_container", "51-29-04", "ferrous", "drum"),
 ]
 
 
@@ -71,6 +73,9 @@ def test_detail_narrows_and_preserves_code_with_real_catalog(family, code, mater
         ("nonferrous_scrap", "51-29-02", "ferrous", "solid"),
         ("nonferrous_scrap", "51-03-01", "aluminium", "solid"),
         ("plastic_packaging", "51-03-07", "pe", "liquid"),
+        ("aqua_buoy", "51-03-05", "pe", "solid"),
+        ("aqua_buoy", "51-03-05", "pp", "solid"),
+        ("metal_container", "51-29-04", "pe", "solid"),
     ],
 )
 def test_unknown_conflicting_or_liquid_cannot_make_candidates(family, code, chosen, state):
