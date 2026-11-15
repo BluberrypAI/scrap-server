@@ -12,6 +12,8 @@
 | 고무 | [아스폴리머 기업 소개](https://chemknock.co.kr/chem/earthpolymer/main.do), [금산군 입주업체](https://www.geumsan.go.kr/kr/html/sub05/05040503.html) | EPDM·BR·NBR·SBR·SBS 스크랩 사업 단서는 있음. 제품명·공장등록만으로 현재 재생 수행 사업장과 구체 투입 형태를 확정하지 않음. 소재별 반입·재생 라인 원문 필요 |
 | 페놀수지 | 열경화성 수지 재활용 연구 및 공정 단서 조사 | 국내 외부 폐페놀수지를 실제로 받는 사업장·투입 형태를 입증할 공개 자료 미확보. 연구·특허를 운영 공장으로 바꾸지 않음 |
 | 삼양 PET | [삼양패키징 PET 재활용](https://www.samyangpackaging.com/kr/business/pet-recycling) 표·생산공정 | 회사·시화 사업장·폐PET병 투입·플레이크 산출이 AI 요약에 함께 남도록 보강. 내부 압축 공정을 외부 베일 구매 근거로 해석하지 않음 |
+| 알엠 화성 PET 압축물 | [데일리한국 현장 취재의 네이트 제휴 원문](https://news.nate.com/view/20250704n16665), 2025-07-04 | 기존 publisher의 헤럴드경제 오기를 정정. 오산에서 보내온 PET 압축물 투입과 화성의 플레이크 생산을 짧은 자체 사실 요약으로 새로 검토해 AI 전달 허용. 기사 원문·사진은 전달하지 않음 |
+| 새롬 제2공장 | [공고의 이용조건](https://www.jobploy.kr/ko/recruit/RS0000112388), [고용24 원공고](https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet&wantedAuthNo=K151152511180099) | 기존 자료의 AI 전달 제한 유지. 이번 고용24 공개 응답은 본문을 확인하지 못함. 따라서 공장 자료가 전혀 없다는 뜻이 아니라 **AI에 전달 가능한 반입 근거가 없는 경우**로 구분. 별도 공식 사업장 자료 필요 |
 
 신규 기업·공정은 `planning-reference.json`, 후보별 확인 질문은 `intake-conditions.json`에 들어 있습니다. 출처와 요약의 해시 방식을 구분하며 원본 PDF·HWP·이미지를 저장소에 재배포하지 않습니다.
 

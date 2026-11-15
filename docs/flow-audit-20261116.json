@@ -1296,5 +1296,52 @@
   "hazardous_interviews": {
     "count": 11,
     "review_required": 11
-  }
+  },
+  "real_lot_registration_checks": [
+    {
+      "material": "pet",
+      "detail": null,
+      "form": "bottle",
+      "code": "51-03-01",
+      "state": "pet-bottle",
+      "created_and_reread": true,
+      "status": "ready"
+    },
+    {
+      "material": "plastic_packaging",
+      "detail": "pet",
+      "form": "bottle",
+      "code": "51-03-07",
+      "state": "pet-bottle",
+      "created_and_reread": true,
+      "status": "ready"
+    },
+    {
+      "material": "pe",
+      "detail": null,
+      "form": "film-bale",
+      "code": "51-03-01",
+      "state": "pe-film-bale",
+      "created_and_reread": true,
+      "status": "ready"
+    },
+    {
+      "material": "aqua_buoy",
+      "detail": "eps",
+      "form": "buoy",
+      "code": "51-03-05",
+      "state": "eps-buoy",
+      "created_and_reread": true,
+      "status": "ready"
+    },
+    {
+      "material": "metal_container",
+      "detail": "ferrous",
+      "form": "drum",
+      "code": "51-29-04",
+      "state": "steel-used-drum",
+      "created_and_reread": true,
+      "status": "ready"
+    }
+  ]
 }

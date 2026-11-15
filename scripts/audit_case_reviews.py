@@ -50,6 +50,7 @@ async def run(args):
         else []
     )
     write_lock = asyncio.Lock()
+    refresh_lock = asyncio.Lock()
     completed = {
         (r["case_id"], r["form"], r.get("material_detail"))
         for r in results
@@ -74,14 +75,23 @@ async def run(args):
                     "expected_keys": sorted(expected),
                 }
                 try:
+                    path = f"/api/v1/diagnosis/cases/{case_id}/treatment/intake-reviews"
+                    body = {
+                        "input_form": form,
+                        "solid_confirmed": True,
+                        "material_detail": material_detail,
+                    }
                     response = await client.post(
-                        f"/api/v1/diagnosis/cases/{case_id}/treatment/intake-reviews",
-                        json={
-                            "input_form": form,
-                            "solid_confirmed": True,
-                            "material_detail": material_detail,
-                        },
+                        path,
+                        json=body,
                     )
+                    if response.status_code == 401:
+                        # Long synthetic runs must refresh just as the web does.
+                        # Retry an explicit auth rejection only, never a timeout.
+                        async with refresh_lock:
+                            refreshed = await client.post("/api/v1/auth/refresh")
+                            refreshed.raise_for_status()
+                        response = await client.post(path, json=body)
                     row["http_status"] = response.status_code
                     response.raise_for_status()
                     data = response.json()

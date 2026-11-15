@@ -406,15 +406,15 @@
     {
       "key": "rm-hwaseong-process",
       "url": "https://news.nate.com/view/20250704n16665",
-      "publisher": "헤럴드경제",
-      "locator": "화성 PET 현장 취재",
-      "summary": "오산에서 압축한 PET가 화성에 반입돼 선별·분쇄·세척 등 플레이크 공정을 거치는 사례다.",
-      "checked_date": "2026-11-05",
-      "source_date": null,
-      "sha256": "402db59d9bf6e46926b5b2b87810c76698c7f999e6af4c57d97c6efafa7d530d",
-      "acquisition": "public source reviewed; curated factual record",
+      "publisher": "데일리한국",
+      "locator": "2025-07-04 안희민 기자의 알엠 화성 현장 취재; 네이트 제휴 원문",
+      "summary": "알엠 화성사업장은 오산에서 운반한 폐PET 압축물을 투입해 선별·분쇄·세척한 PET 플레이크를 생산하는 현장이 보도됐다. 생산된 플레이크는 인근 에이치투의 후속 공정으로 이동한다. 이는 보도 당시 공정 사례이며 이번 물량의 수락·현재 허가·여유 용량을 입증하지 않는다.",
+      "checked_date": "2026-11-16",
+      "source_date": "2025-07-04",
+      "sha256": "5158e33e06c61cab798772bbdb95cdcbbfff77bdd7151bbd121d0cd23e9628cf",
+      "acquisition": "Primary field report re-reviewed via publisher-syndicated article; short team-authored factual summary",
       "digest_basis": "curator-record-not-original-page",
-      "model_transfer_allowed": false,
+      "model_transfer_allowed": true,
       "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
       "supported_records": {
         "transitions": [

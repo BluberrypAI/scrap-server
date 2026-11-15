@@ -7,8 +7,9 @@
 - 실제 문진 18선택지 중 15개에 후보가 있고, 그 안의 형태 조합 56개 중 53개가 연결됩니다. 미지원·근거 부족은 승인으로 바꾸지 않습니다.
 - 기업 위치를 지도에서 저장하고 현재 보유 기업 기준으로 가까운 후보를 표시합니다. **직선거리**이며 도로 운송거리는 아닙니다.
 - 이번 재검사는 문진·후보·AI·위치 저장 범위입니다. 이전 PP/PET/PE·캔의 7개 합성 QR 완료 시나리오와 구분합니다.
+- 실제 Azure 294회 검토의 최종 결과는 공개 근거 확인 50회·부족 244회·호출 오류 0회입니다. 기존 부족 252회는 35개 사업장의 반복 검토이며 10회가 확인으로 바뀌었습니다. 재시도 후 결과이고 실제 반입 승인은 아닙니다.
 
-[최신 연결 점검·적용 방법](docs/flow-audit-20261116.md) · [공개 근거 보강·남은 소재](docs/registry-screen/remaining-material-evidence-20261116.md)
+[최신 연결 점검·적용 방법](docs/flow-audit-20261116.md) · [252회 부족 사유·업체별 표](docs/registry-screen/intake-evidence-gaps-20261116.md) · [공개 근거 보강·남은 소재](docs/registry-screen/remaining-material-evidence-20261116.md)
 
 이전 기록: [11/15 세부 재질·252회 근거 부족](docs/material-detail-e2e-20261115.md) · [7개 기업 인계 시험](docs/full-stack-validation-20261115.md) · [전체 조사 목록](docs/registry-screen/README.md)
 
@@ -30,7 +31,7 @@
 | --- | --- | --- |
 | 온보딩 | 로그인·기업 정보·지도 위치 저장 | 구현 |
 | S1·S2 문진 | diagnosis 질문 응답 → 분류 결과 | 연동, 버튼 문진 실제 검사 |
-| S3 유형 조회 | 문진의 분류번호·R유형·보류사항 전달 | 연동, 원래 번호 보존 |
+| S3 유형 조회 | 분류번호·보류사항 전달 / 허용 R유형 확인 | 번호·주의사항 연동. 현재 diagnosis handoff에 R유형 필드는 없어 미연동 |
 | S4 업체 조회 | 재질·현재 형태 → 공정·업체 → AI 근거 검토 | 지원 범위 구현, 공개 근거 부족은 별도 표시 |
 | S5 문서 작성 | 문의·위탁 문서 초안 | 예정 |
 | S6 결과 보관 | 문진·검토 결과·기업별 인계 저장 | 구현 |
@@ -42,10 +43,11 @@
 
 | 레포 | 역할 |
 | --- | --- |
-| **server (이 레포)** | API, 인증·회원, 기업·사업장 정보, DB 스키마 |
-| ai | 문진·판정 엔진, 에이전트, MCP 도구, 지식 기반 |
-| frontend | 화면 |
-| infra | 전체 통합 실행(compose), Azure 리소스 정의 |
+| **scrap-server (이 레포)** | API, 인증·회원, 기업 위치, PostgreSQL 공정·사업장 참조, 물량·인계 저장 |
+| scrap-diagnosis | 문진·분류 판정, 확정 결과 전달 |
+| scrap-route | 후보별 공개 근거·상태·사진 AI 검토 |
+| scrap-web | 화면, 기업 지도 위치 입력, 문진·후보·인계 UI |
+| scrap-infra | 전체 통합 실행(compose), 서비스 연결·실행 설정 |
 | .github | 공통 규칙·템플릿 |
 
 ## 빠른 시작
@@ -90,12 +92,16 @@ uv run uvicorn app.main:app --reload
 | --- | --- |
 | users | 로그인 정보 (provider, provider_subject, 탈퇴 정보) |
 | refresh_tokens | 로그인 갱신 토큰 (회전·폐기) |
-| companies | 기업·사업장 정보 (회원당 1곳). 회사명, 담당자 이메일, 업종, 사업장 이름·주소, 배출시설, 주생산품, 주 폐기물 종류 |
+| companies | 기업·사업장 정보 (회원당 1곳). 회사명·담당자·업종·주소·지도 좌표·배출 정보·변경 버전 |
 | company_profile_history | 기업 정보 변경 이력 |
 | facility_import_rows | 전국폐기물처리업소표준데이터 원본 행 |
 | treatment_snapshots | 처리 카탈로그 원본 데이터 |
+| workflow_lots | 문진 번호·세부 재질·현재 물량 상태·후보 검토·진행 이력 |
+| workflow_offers / workflow_photos | 기업 간 인수 요청·수락·QR 입고 상태와 물량 사진 |
+| workflow_facility_accounts | 서비스 기업 계정과 공개 사업장 연결. 시험용 연결은 synthetic으로 구분 |
+| wastes / route_steps / qr_field_checks / waste_completion_snapshots | 폐기물 카드·인계 단계·입고 확인·완료 시점 기록 |
 
-폐기물 건, QR 현장 확인, 처리 경로 단계, 시설 테이블은 문진·업체 추천 로직이 정해진 뒤 추가함 ([docs/specs/db-schema-simplify.md](docs/specs/db-schema-simplify.md)).
+공정 후보는 `treatment_snapshots`의 공개 참조와 명부를 조회하고, 실제 진행은 기업 소유 물량·인계 기록에 저장합니다. 문진 판정 원본은 diagnosis에서 관리합니다. 과거 간소화 문서는 당시 설계이며 현재 흐름은 [최신 연결 점검](docs/flow-audit-20261116.md)을 참고합니다.
 
 ## 현재 구조
 
