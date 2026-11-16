@@ -2869,8 +2869,8 @@
       "key": "incheon-gojan-sorting",
       "url": "https://www.kieungroup.com/content/incheon",
       "publisher": "기은그룹 · 인천리사이클링",
-      "locator": "인천리사이클링: 사업개요·청능대로 사업장·선별/압축 공정·제품",
-      "summary": "인천 남동구 청능대로468번길 23의 회수 재활용품 선별장에서 광학·수선별 및 압축을 거쳐 PE·PP·PET·PS 재질별 원료를 출하한다. 다른 음실로 사업장 좌표와 구분한다. 회수품 공정의 공개이지 사업장 폐기물·베일의 자유로운 반입 승인이 아니다.",
+      "locator": "사업개요(수거·운반) / 선별1호기 원료투입부터 출하까지 / 제품소개 / 청능대로 주소",
+      "summary": "인천리사이클링은 인천 남동구 청능대로468번길 23에서 지자체·공동주택의 폐플라스틱·폐비닐 등을 수집해 공장으로 운반한다고 공개한다. 선별1호기는 플라스틱 원료 투입, 파봉, 수선별, 자력·트롬멜 선별, PET·PP·PE·PS 광학선별, 최종 수선별, 압축·밴딩, 보관·출하 순서다. 압축 PE·말통·PP·PET·PS는 출하 제품이다. 이 출하품 목록이 외부 압축 베일 반입을 입증하지는 않는다. 개별 경질·병 형태의 외부 사업장 로트 규격과 현재 수탁·허가는 확인이 필요하다. 음실로 사업장과 구분한다.",
       "checked_date": "2026-11-16",
       "source_date": null,
       "sha256": "0066a9062ba39434f07186dfcd8cbc9b999ed61316ac077e973fe20227a1b17e",
@@ -3219,6 +3219,130 @@
       "supported_records": {
         "facilities": [
           "jmtech-gimpo"
+        ]
+      }
+    },
+    {
+      "key": "sungwon-hwaseong-ldpe",
+      "url": "https://sungwonind.co.kr/",
+      "publisher": "성원산업",
+      "locator": "생산공정 1~5 · SW-PRO/SW-ECO 원재료 · FAQ LDPE 스크랩 매입 · 오시는 길",
+      "summary": "성원산업은 경기 화성시 양감면 은행나무로170번길 60 공장에서 LDPE 폐필름·폐비닐 스크랩을 매입하고 선별, 1차 압출·용융, 가스 벤팅, 2차 여과·압출, 냉각·절단으로 재생 LDPE 펠릿을 만든다고 공개한다. 원재료는 인쇄 파지·생지 등 필름이며 SW-PRO는 본드·테이프 없는 필름, SW-ECO는 테이프 포함 일반 필름으로 구분한다. 필름 등급과 샘플 확인이 필요하다. HDPE 경질·일반 PE/PS 압축 베일의 반입이나 자체 열분해 수행을 입증하는 자료는 아니다. 현재 허가·인수 물량·가격·여유 용량은 확인되지 않았다.",
+      "checked_date": "2026-11-16",
+      "source_date": null,
+      "sha256": "aa3b4c3891506cdbba1490953a6e13b17c9808cbda91f99b098b72d6a5894143",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "sungwon-industry"
+        ],
+        "facilities": [
+          "sungwon-hwaseong"
+        ],
+        "transitions": [
+          "pe-film-double-extrude"
+        ],
+        "capabilities": [
+          "sungwon-hwaseong--pe-film-double-extrude"
+        ]
+      }
+    },
+    {
+      "key": "kisco-2026-half-scrap-input",
+      "url": "https://www.kisco.co.kr/kor/index.php?idx=1325&mode=fdn&num=1&pCode=anew_report",
+      "publisher": "한국철강",
+      "locator": "2026 반기보고서 PDF 16쪽(인쇄14) 원재료, PDF27쪽(인쇄25) 창원공장",
+      "summary": "한국철강 2026 반기보고서는 철스크랩을 전기로 제강의 주원료로 사용하며 국내 고철을 공급사에서 매입한다고 명시한다. 창원공장에서 철근을 생산한다고 설명한다. 별도 공식 BILLET 공정 페이지와 함께 창원 사업장의 철스크랩 투입과 전기로 제강·후속 정련을 대조한다. 보고서에는 특정 로트의 절단 치수·등급·오염 한도·현행 수탁 승인이 없어 업체 확인이 필요하다. 서울·화성 하치장과 영업소를 제강공장으로 연결하지 않는다.",
+      "checked_date": "2026-11-16",
+      "source_date": null,
+      "sha256": "e66c9a535b11bb39bb1d0d2bec49a3bb915fae3ae3eb97acf5a7aaca207c143a",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "kisco-changwon"
+        ],
+        "capabilities": [
+          "kisco-changwon--ferrous-eaf-billet",
+          "kisco-changwon--ferrous-prepared-eaf-billet"
+        ]
+      }
+    },
+    {
+      "key": "kisco-billet-refining",
+      "url": "https://www.kisco.co.kr/kor/index.php?pCode=BILLET",
+      "publisher": "한국철강",
+      "locator": "제품 BILLET / 제강·정련 공정",
+      "summary": "한국철강은 120톤 DC 전기로와 2차 정련·탈가스·연속주조를 거친 BILLET 생산을 공개한다. 원료 투입은 별도 반기보고서의 철스크랩 구매·사용 설명으로 확인한다. 제품 소개만으로 개별 공급 물량의 승인이나 가공 규격을 확정하지 않는다.",
+      "checked_date": "2026-11-16",
+      "source_date": null,
+      "sha256": "718a3b88fce5737fd274d253ca604d7b0d3a0b2bc6be9a219441b63c114afdd9",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "kisco-changwon"
+        ],
+        "capabilities": [
+          "kisco-changwon--ferrous-eaf-billet",
+          "kisco-changwon--ferrous-prepared-eaf-billet"
+        ]
+      }
+    },
+    {
+      "key": "suwon-2024-mixed-plastic-contract",
+      "url": "https://council.suwon.go.kr/kr/bbs/download.do?bbs_id=open&uid=CC955F90C404E3BCF40936E0F27808EC",
+      "publisher": "수원시의회",
+      "locator": "생활폐기물 수집·운반 대행업체 민간위탁 개선방안 연구용역, PDF46쪽 표5-3(인쇄79)",
+      "summary": "수원시의회 공개 보고서의 2024 재활용품 계약 현황은 인천리사이클링(인천 남동구)을 미선별 혼합 플라스틱 계약업체 중 하나로 기록한다. PET병 계약업체 알엠과 구분된다. 이 과거 계약은 소재별 경질·병·베일의 규격, 2026년 수탁 여부 또는 산업체 임의 반입의 근거가 아니다.",
+      "checked_date": "2026-11-16",
+      "source_date": null,
+      "sha256": "905abf2f422816d446274bb977eb8f3bf339a76e0f08a4e358e09a583f61d968",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "incheon-recycling-gojan"
+        ],
+        "capabilities": [
+          "incheon-recycling-gojan--pp-sort-bale",
+          "incheon-recycling-gojan--pe-sort-bale",
+          "incheon-recycling-gojan--ps-sort-bale",
+          "incheon-recycling-gojan--pet-sort-bale"
+        ]
+      }
+    },
+    {
+      "key": "kers-2025-ministry-visit",
+      "url": "https://www.mcee.go.kr/m/mob/board/read.do?boardId=1831790&boardMasterId=53&menuId=58",
+      "publisher": "기후에너지환경부",
+      "locator": "버려진 플라스틱이 다시 자원으로, 2025-12-29 게시 동영상 자막의 기은알에스 방문 구간",
+      "summary": "기후에너지환경부는 2025-12-26 화성 기은알에스 방문에서 광학선별장치로 플라스틱 폐기물을 재질별 분류하는 현장을 확인했다고 공개했다. 같은 영상의 페트병 분쇄·세척·플레이크·펠릿 생산은 알엠, 식품용기 재생원료는 수퍼빈의 공정이다. 이웃 업체 공정을 기은알에스에 합치지 않는다. 기은알에스의 개별 투입 형태·베일 반입·현재 수탁 규격은 이 자막으로 확인되지 않는다.",
+      "checked_date": "2026-11-16",
+      "source_date": "2025-12-29",
+      "sha256": "a6aba06b277814c0142881dd5ea9a3196c39d35be5fd5580ac90c8a061f59186",
+      "acquisition": "공개 원문 확인 후 직접 작성한 사업장별 사실 요약",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "kers-hwaseong"
+        ],
+        "capabilities": [
+          "kers-hwaseong--pp-sort-bale",
+          "kers-hwaseong--pe-sort-bale",
+          "kers-hwaseong--ps-sort-bale",
+          "kers-hwaseong--pet-sort-bale"
         ]
       }
     }
@@ -5402,6 +5526,30 @@
       "risk_checks": [
         "공개 공정과 현재 로트의 수탁·현행 허가는 별개이며 실제 산출물·중량·규격을 확인"
       ]
+    },
+    {
+      "key": "pe-film-double-extrude",
+      "label": "LDPE 필름 선별·이중 압출 재생",
+      "input_state": "pe-scrap",
+      "output_state": "pe-pellet",
+      "source_ids": [
+        "sungwon-hwaseong-ldpe"
+      ],
+      "operation_steps": [
+        "LDPE 필름 원료·접착물 등급 확인",
+        "원료 선별",
+        "1차 압출·용융",
+        "가스 벤팅",
+        "2차 여과·압출",
+        "냉각·절단·펠릿 포장"
+      ],
+      "conditions": [
+        "LDPE 필름인지 확인. HDPE 경질이나 일반 압축 베일 반입으로 확대하지 않음",
+        "본드·테이프 등 이물질과 등급·샘플 수탁 조건은 업체와 확인"
+      ],
+      "risk_checks": [
+        "원문에 없는 세척 공정·정량 오염 허용치·현행 반입 승인을 추정하지 않음"
+      ]
     }
   ],
   "organisations": [
@@ -5806,6 +5954,13 @@
       "label": "새롬이엔지 화성 제1공장",
       "source_ids": [
         "saerom-hwaseong-one-pet"
+      ]
+    },
+    {
+      "key": "sungwon-industry",
+      "label": "성원산업",
+      "source_ids": [
+        "sungwon-hwaseong-ldpe"
       ]
     }
   ],
@@ -6737,7 +6892,9 @@
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
       "source_ids": [
-        "kisco-changwon-production"
+        "kisco-changwon-production",
+        "kisco-2026-half-scrap-input",
+        "kisco-billet-refining"
       ]
     },
     {
@@ -6799,7 +6956,8 @@
       "label": "기은알에스 화성 선별장",
       "organisation": "kers-hwaseong-org",
       "source_ids": [
-        "kers-hwaseong-sorting"
+        "kers-hwaseong-sorting",
+        "kers-2025-ministry-visit"
       ],
       "country": "KR",
       "region": "경기도",
@@ -6818,7 +6976,8 @@
       "organisation": "incheon-recycling-gojan-org",
       "source_ids": [
         "incheon-gojan-sorting",
-        "incheon-recycling-gojan-registry-2026"
+        "incheon-recycling-gojan-registry-2026",
+        "suwon-2024-mixed-plastic-contract"
       ],
       "country": "KR",
       "region": "인천광역시",
@@ -6961,6 +7120,24 @@
       "current_price_krw_per_kg": null,
       "latitude": null,
       "longitude": null
+    },
+    {
+      "key": "sungwon-hwaseong",
+      "label": "성원산업 화성 양감 공장",
+      "organisation": "sungwon-industry",
+      "source_ids": [
+        "sungwon-hwaseong-ldpe"
+      ],
+      "country": "KR",
+      "region": "경기도",
+      "address": "경기도 화성시 양감면 은행나무로170번길 60",
+      "latitude": null,
+      "longitude": null,
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "current_available_capacity_kg": null
     }
   ],
   "capabilities": [
@@ -10146,7 +10323,9 @@
       "basis": "published_site_process",
       "source_ids": [
         "kisco-changwon-production",
-        "kosa-ferrous-route"
+        "kosa-ferrous-route",
+        "kisco-2026-half-scrap-input",
+        "kisco-billet-refining"
       ],
       "conditions": [
         "공개 생산공정 조사 후보이며 현재 가동·반입 가능 여부는 업체에 확인한다.",
@@ -10163,7 +10342,9 @@
         "output_description": "전기로 제강 및 연속주조에 의한 철강 반제품 빌릿",
         "source_ids": [
           "kisco-changwon-production",
-          "kosa-ferrous-route"
+          "kosa-ferrous-route",
+          "kisco-2026-half-scrap-input",
+          "kisco-billet-refining"
         ],
         "locator": "사업장 생산 자료와 한국철강협회 철스크랩 전기로 제조공정 교차 확인",
         "verified_intake_limits_available": false
@@ -10337,7 +10518,8 @@
       "transition": "pp-sort-bale",
       "basis": "published_site_process",
       "source_ids": [
-        "kers-hwaseong-sorting"
+        "kers-hwaseong-sorting",
+        "kers-2025-ministry-visit"
       ],
       "conditions": [
         "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
@@ -10353,7 +10535,8 @@
         ],
         "output_description": "PP 선별 압축 베일",
         "source_ids": [
-          "kers-hwaseong-sorting"
+          "kers-hwaseong-sorting",
+          "kers-2025-ministry-visit"
         ],
         "locator": "기은알에스: 사업개요·주소·압축기/광학선별기·제품소개",
         "verified_intake_limits_available": false
@@ -10368,7 +10551,8 @@
       "transition": "pe-sort-bale",
       "basis": "published_site_process",
       "source_ids": [
-        "kers-hwaseong-sorting"
+        "kers-hwaseong-sorting",
+        "kers-2025-ministry-visit"
       ],
       "conditions": [
         "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
@@ -10384,7 +10568,8 @@
         ],
         "output_description": "PE 선별 압축 베일",
         "source_ids": [
-          "kers-hwaseong-sorting"
+          "kers-hwaseong-sorting",
+          "kers-2025-ministry-visit"
         ],
         "locator": "기은알에스: 사업개요·주소·압축기/광학선별기·제품소개",
         "verified_intake_limits_available": false
@@ -10399,7 +10584,8 @@
       "transition": "ps-sort-bale",
       "basis": "published_site_process",
       "source_ids": [
-        "kers-hwaseong-sorting"
+        "kers-hwaseong-sorting",
+        "kers-2025-ministry-visit"
       ],
       "conditions": [
         "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
@@ -10415,7 +10601,8 @@
         ],
         "output_description": "선별 PS 압축 베일",
         "source_ids": [
-          "kers-hwaseong-sorting"
+          "kers-hwaseong-sorting",
+          "kers-2025-ministry-visit"
         ],
         "locator": "기은알에스: 사업개요·주소·압축기/광학선별기·제품소개",
         "verified_intake_limits_available": false
@@ -10430,7 +10617,8 @@
       "transition": "pet-sort-bale",
       "basis": "published_site_process",
       "source_ids": [
-        "kers-hwaseong-sorting"
+        "kers-hwaseong-sorting",
+        "kers-2025-ministry-visit"
       ],
       "conditions": [
         "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
@@ -10446,7 +10634,8 @@
         ],
         "output_description": "선별 PET 압축 베일",
         "source_ids": [
-          "kers-hwaseong-sorting"
+          "kers-hwaseong-sorting",
+          "kers-2025-ministry-visit"
         ],
         "locator": "기은알에스: 사업개요·주소·압축기/광학선별기·제품소개",
         "verified_intake_limits_available": false
@@ -10461,7 +10650,8 @@
       "transition": "pp-sort-bale",
       "basis": "published_site_process",
       "source_ids": [
-        "incheon-gojan-sorting"
+        "incheon-gojan-sorting",
+        "suwon-2024-mixed-plastic-contract"
       ],
       "conditions": [
         "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
@@ -10477,7 +10667,8 @@
         ],
         "output_description": "PP 선별 압축 베일",
         "source_ids": [
-          "incheon-gojan-sorting"
+          "incheon-gojan-sorting",
+          "suwon-2024-mixed-plastic-contract"
         ],
         "locator": "인천리사이클링: 사업개요·청능대로 사업장·선별/압축 공정·제품",
         "verified_intake_limits_available": false
@@ -10492,7 +10683,8 @@
       "transition": "pe-sort-bale",
       "basis": "published_site_process",
       "source_ids": [
-        "incheon-gojan-sorting"
+        "incheon-gojan-sorting",
+        "suwon-2024-mixed-plastic-contract"
       ],
       "conditions": [
         "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
@@ -10508,7 +10700,8 @@
         ],
         "output_description": "PE 선별 압축 베일",
         "source_ids": [
-          "incheon-gojan-sorting"
+          "incheon-gojan-sorting",
+          "suwon-2024-mixed-plastic-contract"
         ],
         "locator": "인천리사이클링: 사업개요·청능대로 사업장·선별/압축 공정·제품",
         "verified_intake_limits_available": false
@@ -10523,7 +10716,8 @@
       "transition": "ps-sort-bale",
       "basis": "published_site_process",
       "source_ids": [
-        "incheon-gojan-sorting"
+        "incheon-gojan-sorting",
+        "suwon-2024-mixed-plastic-contract"
       ],
       "conditions": [
         "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
@@ -10539,7 +10733,8 @@
         ],
         "output_description": "선별 PS 압축 베일",
         "source_ids": [
-          "incheon-gojan-sorting"
+          "incheon-gojan-sorting",
+          "suwon-2024-mixed-plastic-contract"
         ],
         "locator": "인천리사이클링: 사업개요·청능대로 사업장·선별/압축 공정·제품",
         "verified_intake_limits_available": false
@@ -10554,7 +10749,8 @@
       "transition": "pet-sort-bale",
       "basis": "published_site_process",
       "source_ids": [
-        "incheon-gojan-sorting"
+        "incheon-gojan-sorting",
+        "suwon-2024-mixed-plastic-contract"
       ],
       "conditions": [
         "선별·압축 출하까지만 확인. 베일 반입, 필름·산업 잔재의 수탁과 세척·펠릿화는 확인되지 않음",
@@ -10570,7 +10766,8 @@
         ],
         "output_description": "선별 PET 압축 베일",
         "source_ids": [
-          "incheon-gojan-sorting"
+          "incheon-gojan-sorting",
+          "suwon-2024-mixed-plastic-contract"
         ],
         "locator": "인천리사이클링: 사업개요·청능대로 사업장·선별/압축 공정·제품",
         "verified_intake_limits_available": false
@@ -10768,7 +10965,9 @@
       "basis": "published_site_process",
       "source_ids": [
         "kisco-changwon-production",
-        "kosa-ferrous-route"
+        "kosa-ferrous-route",
+        "kisco-2026-half-scrap-input",
+        "kisco-billet-refining"
       ],
       "conditions": [
         "전기로 철스크랩 원료 공정의 후속 후보. 절단 여부와 무관하게 등급·치수·오염과 실제 수용을 다시 확인",
@@ -10783,7 +10982,9 @@
         "output_description": "철강 반제품 빌릿",
         "source_ids": [
           "kisco-changwon-production",
-          "kosa-ferrous-route"
+          "kosa-ferrous-route",
+          "kisco-2026-half-scrap-input",
+          "kisco-billet-refining"
         ],
         "locator": "철강사업 / 창원 본사 및 사업장 소재지",
         "verified_intake_limits_available": false
@@ -10909,6 +11110,38 @@
       "initial_input_forms": [
         "bottle"
       ]
+    },
+    {
+      "key": "sungwon-hwaseong--pe-film-double-extrude",
+      "facility": "sungwon-hwaseong",
+      "transition": "pe-film-double-extrude",
+      "basis": "published_site_process",
+      "source_ids": [
+        "sungwon-hwaseong-ldpe"
+      ],
+      "initial_input_forms": [
+        "film"
+      ],
+      "conditions": [
+        "PE 중 LDPE 필름·인쇄 파지·생지에 한정한 공개 공정 후보",
+        "압축 베일·HDPE·혼합재질은 이 연결로 수탁 가능하다고 판단하지 않음",
+        "현행 허가·샘플 품질·일정·이번 로트 인수는 업체 최종 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [
+          "film"
+        ],
+        "output_description": "재생 LDPE 펠릿",
+        "source_ids": [
+          "sungwon-hwaseong-ldpe"
+        ],
+        "locator": "LDPE 필름 매입 FAQ와 화성 공장 이중 압출 공정",
+        "verified_intake_limits_available": false
+      }
     }
   ]
 }

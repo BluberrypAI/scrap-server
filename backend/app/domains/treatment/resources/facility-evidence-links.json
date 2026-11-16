@@ -489,6 +489,14 @@
       "status": "not_linked",
       "reason": "공정·도로명주소는 원문 확인; 명부의 동일 사업장 좌표는 미확인. 임의 지오코딩하지 않음.",
       "registry_rows": []
+    },
+    {
+      "facility_key": "sungwon-hwaseong",
+      "official_address": "경기도 화성시 양감면 은행나무로170번길 60",
+      "registry_name": "성원산업",
+      "status": "not_linked",
+      "reason": "공장등록 132764행 도로명주소 일치. 전국 처리명부 4008행은 요당리19-13 지번만 있어 도로명주소 대응 미확인. 좌표를 복사하지 않음.",
+      "registry_rows": []
     }
   ]
 }

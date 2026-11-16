@@ -23,6 +23,37 @@ def sites(result):
     return {f.facility_key: f for o in result.options for f in o.facilities}
 
 
+@pytest.mark.parametrize("form", ["scrap", "rigid", "bale", "film-bale", "shredded", "pellet"])
+def test_ldpe_film_processor_is_not_promoted_to_other_pe_forms(reference, form):
+    assert "sungwon-hwaseong" not in sites(lookup(reference, "pe", form))
+
+
+def test_ldpe_film_extrusion_has_its_own_steps_and_needs_actual_pellets(reference):
+    first = lookup(reference, "pe", "film")
+    option = next(o for o in first.options if o.transition_key == "pe-film-double-extrude")
+    assert "sungwon-hwaseong" in {f.facility_key for f in option.facilities}
+    assert not first.can_finish and not first.dispatch_approved
+    transition = next(t for t in reference.transitions if t.key == option.transition_key)
+    assert not any("세척" in step for step in transition.operation_steps)
+    assert any("LDPE" in check for check in transition.conditions)
+    actual = lookup(
+        reference,
+        "pe",
+        "film",
+        completed_transitions=[option.transition_key],
+        observed_output={"state_key": "pe-pellet", "mass_kg": 90},
+    )
+    assert actual.can_finish and not actual.dispatch_approved
+    mismatch = lookup(
+        reference,
+        "pe",
+        "film",
+        completed_transitions=[option.transition_key],
+        observed_output={"state_key": "pe-shredded", "mass_kg": 90},
+    )
+    assert mismatch.status == "review_required" and not mismatch.can_finish
+
+
 @pytest.mark.parametrize("material", ["pp", "pe", "ps"])
 def test_container_sorters_are_not_film_or_bale_receivers(reference, material):
     sorters = {"kers-hwaseong", "incheon-recycling-gojan"}
