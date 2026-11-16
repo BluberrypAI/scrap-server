@@ -1,0 +1,39 @@
+{
+  "reviewed_on": "2026-11-15",
+  "previous_audit": "role-review-round3.json",
+  "rows": [
+    {
+      "capability_key": "cntk-hwaseong--abs-prepare",
+      "before": "site_role_hypothesis",
+      "after": "published_site_process",
+      "source_ids": [
+        "mcee-cntk-hwaseong-202512",
+        "cntk-flake",
+        "cntk-process-separation"
+      ],
+      "decision": "정부 화성 현장 파·분쇄 기록으로 사업장 역할 보강. 제품 자료의 재질과 대조. 펠릿화·진주 공장·실제 반입 규격은 승격하지 않음"
+    },
+    {
+      "capability_key": "cntk-hwaseong--ps-prepare",
+      "before": "site_role_hypothesis",
+      "after": "published_site_process",
+      "source_ids": [
+        "mcee-cntk-hwaseong-202512",
+        "cntk-flake",
+        "cntk-process-separation"
+      ],
+      "decision": "정부 화성 현장 파·분쇄 기록으로 사업장 역할 보강. 제품 자료의 재질과 대조. 펠릿화·진주 공장·실제 반입 규격은 승격하지 않음"
+    },
+    {
+      "capability_key": "cntk-hwaseong--san-prepare",
+      "before": "site_role_hypothesis",
+      "after": "published_site_process",
+      "source_ids": [
+        "mcee-cntk-hwaseong-202512",
+        "cntk-flake",
+        "cntk-process-separation"
+      ],
+      "decision": "정부 화성 현장 파·분쇄 기록으로 사업장 역할 보강. 제품 자료의 재질과 대조. 펠릿화·진주 공장·실제 반입 규격은 승격하지 않음"
+    }
+  ]
+}

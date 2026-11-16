@@ -1,0 +1,2021 @@
+{
+  "scope": "문진 49개 후보 조합의 실제 Azure 결과; 업체 고유 수 아님",
+  "rows": [
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "dakyeong-busan--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "jungang-gongju--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "npc-chemical-hwaseong--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "sarom-hwaseong-2--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "youone-incheon--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "afrochem-asan--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "daejo-sangju--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "ecoplus-yeongju--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "ilshin-anseong--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "hcr-paju--pe-registered-melt",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "nuvotec-munmak--pe-scrap-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "veolia-dh-yongin--pe-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "bgf-yesan--pe-clean",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "guil-hapcheon--pe-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "hcr-paju--pe-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "jinyoung-hwaseong--pe-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "yongseong-gyeongsan--pe-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "greenpol-cheonan--pe-shredded-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "pne-eumseong--pe-shredded-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "bgf-yesan--pe-clean",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "guil-hapcheon--pe-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "hcr-paju--pe-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "jinyoung-hwaseong--pe-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "yongseong-gyeongsan--pe-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "greenpol-cheonan--pe-shredded-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "pne-eumseong--pe-shredded-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "pellet",
+      "capability_key": "bgf-hwaseong--pe-compound",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "changmaec-seongju--ps-pelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "hcr-paju--ps-pelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "pne-eumseong--ps-pelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "cntk-hwaseong--ps-pelletise",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "cntk-jinju--ps-pelletise",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pet",
+      "material_detail": null,
+      "form": "bale",
+      "capability_key": "rm-hwaseong--pet-bale-to-flake",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pet",
+      "material_detail": null,
+      "form": "bale",
+      "capability_key": "superbin-hwaseong--pet-bale-to-flake",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pet",
+      "material_detail": null,
+      "form": "bale",
+      "capability_key": "samyang-sihwa--pet-bottle-to-flake",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pet",
+      "material_detail": null,
+      "form": "bale",
+      "capability_key": "yuil-busan--pet-bottle-to-flake",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pet",
+      "material_detail": null,
+      "form": "bale",
+      "capability_key": "yuil-yangsan--pet-bottle-to-flake",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pet",
+      "material_detail": null,
+      "form": "bale",
+      "capability_key": "samyang-sihwa--pet-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pet",
+      "material_detail": null,
+      "form": "bottle",
+      "capability_key": "dakyeong-busan--pet-bottle-to-flake",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pet",
+      "material_detail": null,
+      "form": "bottle",
+      "capability_key": "samyang-sihwa--pet-bottle-to-flake",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pet",
+      "material_detail": null,
+      "form": "bottle",
+      "capability_key": "yuil-busan--pet-bottle-to-flake",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pet",
+      "material_detail": null,
+      "form": "bottle",
+      "capability_key": "yuil-yangsan--pet-bottle-to-flake",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pet",
+      "material_detail": null,
+      "form": "bottle",
+      "capability_key": "samyang-sihwa--pet-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pet",
+      "material_detail": null,
+      "form": "bottle",
+      "capability_key": "hrm-cheongju--pet-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pet",
+      "material_detail": null,
+      "form": "bottle",
+      "capability_key": "veolia-dh-yongin--pet-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "abs",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "cntk-hwaseong--abs-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "abs",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "cntk-jinju--abs-prepare",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pet",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "bgf-yesan--pet-pelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "abs",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "cntk-hwaseong--abs-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "abs",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "cntk-jinju--abs-prepare",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "abs",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "changmaec-seongju--abs-pelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "abs",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "cntk-hwaseong--abs-pelletise",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "abs",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "cntk-jinju--abs-pelletise",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "abs",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "changmaec-seongju--abs-pelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "abs",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "cntk-hwaseong--abs-pelletise",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "abs",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "cntk-jinju--abs-pelletise",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "other_resin",
+      "material_detail": "san",
+      "form": "scrap",
+      "capability_key": "cntk-hwaseong--san-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "other_resin",
+      "material_detail": "san",
+      "form": "scrap",
+      "capability_key": "cntk-jinju--san-prepare",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "other_resin",
+      "material_detail": "san",
+      "form": "rigid",
+      "capability_key": "cntk-hwaseong--san-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "other_resin",
+      "material_detail": "san",
+      "form": "rigid",
+      "capability_key": "cntk-jinju--san-prepare",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "other_resin",
+      "material_detail": "san",
+      "form": "flake",
+      "capability_key": "cntk-hwaseong--san-pelletise",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "other_resin",
+      "material_detail": "san",
+      "form": "flake",
+      "capability_key": "cntk-jinju--san-pelletise",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "other_resin",
+      "material_detail": "san",
+      "form": "shredded",
+      "capability_key": "cntk-hwaseong--san-pelletise",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "other_resin",
+      "material_detail": "san",
+      "form": "shredded",
+      "capability_key": "cntk-jinju--san-pelletise",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "other_resin",
+      "material_detail": "pa66",
+      "form": "flake",
+      "capability_key": "changmaec-seongju--pa66-compound",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "other_resin",
+      "material_detail": "pa66",
+      "form": "flake",
+      "capability_key": "yangil-incheon--pa66-compound",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "other_resin",
+      "material_detail": "pcabs",
+      "form": "flake",
+      "capability_key": "changmaec-seongju--pcabs-compound",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "other_resin",
+      "material_detail": "pa66",
+      "form": "shredded",
+      "capability_key": "changmaec-seongju--pa66-compound",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "other_resin",
+      "material_detail": "pa66",
+      "form": "shredded",
+      "capability_key": "yangil-incheon--pa66-compound",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "other_resin",
+      "material_detail": "pcabs",
+      "form": "shredded",
+      "capability_key": "changmaec-seongju--pcabs-compound",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pvc",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "pureum-yangju--pvc-rigid-recovery",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "rigid",
+      "capability_key": "dakyeong-busan--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "rigid",
+      "capability_key": "jungang-gongju--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "rigid",
+      "capability_key": "npc-chemical-hwaseong--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "rigid",
+      "capability_key": "sarom-hwaseong-2--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "rigid",
+      "capability_key": "youone-incheon--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "rigid",
+      "capability_key": "afrochem-asan--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "rigid",
+      "capability_key": "daejo-sangju--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "rigid",
+      "capability_key": "ecoplus-yeongju--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "rigid",
+      "capability_key": "ilshin-anseong--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "rigid",
+      "capability_key": "hcr-paju--pp-registered-melt",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "rigid",
+      "capability_key": "joongil-incheon--pp-scrap-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "rigid",
+      "capability_key": "youngshin-naju--pp-scrap-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "rigid",
+      "capability_key": "veolia-dh-yongin--pp-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "scrap",
+      "capability_key": "dakyeong-busan--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "scrap",
+      "capability_key": "jungang-gongju--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "scrap",
+      "capability_key": "npc-chemical-hwaseong--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "scrap",
+      "capability_key": "sarom-hwaseong-2--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "scrap",
+      "capability_key": "youone-incheon--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "scrap",
+      "capability_key": "afrochem-asan--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "scrap",
+      "capability_key": "daejo-sangju--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "scrap",
+      "capability_key": "ecoplus-yeongju--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "scrap",
+      "capability_key": "ilshin-anseong--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "scrap",
+      "capability_key": "hcr-paju--pp-registered-melt",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "scrap",
+      "capability_key": "joongil-incheon--pp-scrap-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "scrap",
+      "capability_key": "veolia-dh-yongin--pp-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "film",
+      "capability_key": "dakyeong-busan--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "film",
+      "capability_key": "jungang-gongju--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "film",
+      "capability_key": "npc-chemical-hwaseong--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "film",
+      "capability_key": "sarom-hwaseong-2--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "film",
+      "capability_key": "youone-incheon--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "film",
+      "capability_key": "afrochem-asan--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "film",
+      "capability_key": "daejo-sangju--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "film",
+      "capability_key": "ecoplus-yeongju--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "film",
+      "capability_key": "ilshin-anseong--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "film",
+      "capability_key": "hcr-paju--pp-registered-melt",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pp",
+      "form": "film",
+      "capability_key": "veolia-dh-yongin--pp-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "film",
+      "capability_key": "dakyeong-busan--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "film",
+      "capability_key": "jungang-gongju--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "film",
+      "capability_key": "sarom-hwaseong-2--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "film",
+      "capability_key": "youone-incheon--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "film",
+      "capability_key": "afrochem-asan--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "film",
+      "capability_key": "daejo-sangju--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "film",
+      "capability_key": "ecoplus-yeongju--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "film",
+      "capability_key": "ilshin-anseong--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "film",
+      "capability_key": "hcr-paju--pe-registered-melt",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "film",
+      "capability_key": "nuvotec-munmak--pe-scrap-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "film",
+      "capability_key": "veolia-dh-yongin--pe-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "scrap",
+      "capability_key": "dakyeong-busan--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "scrap",
+      "capability_key": "jungang-gongju--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "scrap",
+      "capability_key": "npc-chemical-hwaseong--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "scrap",
+      "capability_key": "sarom-hwaseong-2--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "scrap",
+      "capability_key": "youone-incheon--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "scrap",
+      "capability_key": "afrochem-asan--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "scrap",
+      "capability_key": "daejo-sangju--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "scrap",
+      "capability_key": "ecoplus-yeongju--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "scrap",
+      "capability_key": "ilshin-anseong--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "scrap",
+      "capability_key": "hcr-paju--pe-registered-melt",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "scrap",
+      "capability_key": "nuvotec-munmak--pe-scrap-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "scrap",
+      "capability_key": "veolia-dh-yongin--pe-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "rigid",
+      "capability_key": "dakyeong-busan--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "rigid",
+      "capability_key": "jungang-gongju--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "rigid",
+      "capability_key": "npc-chemical-hwaseong--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "rigid",
+      "capability_key": "sarom-hwaseong-2--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "rigid",
+      "capability_key": "youone-incheon--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "rigid",
+      "capability_key": "afrochem-asan--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "rigid",
+      "capability_key": "daejo-sangju--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "rigid",
+      "capability_key": "ecoplus-yeongju--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "rigid",
+      "capability_key": "ilshin-anseong--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "rigid",
+      "capability_key": "samsungchem-miryang--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "rigid",
+      "capability_key": "hcr-paju--pe-registered-melt",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "rigid",
+      "capability_key": "nuvotec-munmak--pe-scrap-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "rigid",
+      "capability_key": "youngshin-naju--pe-scrap-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pe",
+      "form": "rigid",
+      "capability_key": "veolia-dh-yongin--pe-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pet",
+      "form": "bale",
+      "capability_key": "rm-hwaseong--pet-bale-to-flake",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pet",
+      "form": "bale",
+      "capability_key": "superbin-hwaseong--pet-bale-to-flake",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pet",
+      "form": "bale",
+      "capability_key": "samyang-sihwa--pet-bottle-to-flake",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pet",
+      "form": "bale",
+      "capability_key": "yuil-busan--pet-bottle-to-flake",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pet",
+      "form": "bale",
+      "capability_key": "yuil-yangsan--pet-bottle-to-flake",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pet",
+      "form": "bale",
+      "capability_key": "samyang-sihwa--pet-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "fishing_net",
+      "material_detail": "pa6",
+      "form": "net",
+      "capability_key": "yangil-incheon--pa6-net-recovery",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pet",
+      "form": "bottle",
+      "capability_key": "dakyeong-busan--pet-bottle-to-flake",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pet",
+      "form": "bottle",
+      "capability_key": "samyang-sihwa--pet-bottle-to-flake",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pet",
+      "form": "bottle",
+      "capability_key": "yuil-busan--pet-bottle-to-flake",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pet",
+      "form": "bottle",
+      "capability_key": "yuil-yangsan--pet-bottle-to-flake",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pet",
+      "form": "bottle",
+      "capability_key": "samyang-sihwa--pet-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pet",
+      "form": "bottle",
+      "capability_key": "hrm-cheongju--pet-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "plastic_packaging",
+      "material_detail": "pet",
+      "form": "bottle",
+      "capability_key": "veolia-dh-yongin--pet-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "dakyeong-busan--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "jungang-gongju--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "sarom-hwaseong-2--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "youone-incheon--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "afrochem-asan--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "daejo-sangju--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "ecoplus-yeongju--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "ilshin-anseong--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "hcr-paju--pe-registered-melt",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "nuvotec-munmak--pe-scrap-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "veolia-dh-yongin--pe-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "dakyeong-busan--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "jungang-gongju--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "npc-chemical-hwaseong--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "sarom-hwaseong-2--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "youone-incheon--pe-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "afrochem-asan--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "daejo-sangju--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "ecoplus-yeongju--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "ilshin-anseong--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "samsungchem-miryang--pe-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "hcr-paju--pe-registered-melt",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "nuvotec-munmak--pe-scrap-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "youngshin-naju--pe-scrap-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pe",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "veolia-dh-yongin--pe-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "dakyeong-busan--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "jungang-gongju--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "npc-chemical-hwaseong--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "sarom-hwaseong-2--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "youone-incheon--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "afrochem-asan--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "daejo-sangju--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "ecoplus-yeongju--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "ilshin-anseong--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "hcr-paju--pp-registered-melt",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "joongil-incheon--pp-scrap-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "veolia-dh-yongin--pp-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "bgf-yesan--pp-clean",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "daesan-naju--pp-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "hcr-paju--pp-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "jinyoung-hwaseong--pp-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "yongseong-gyeongsan--pp-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "changmaec-seongju--pp-shredded-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "greenpol-cheonan--pp-shredded-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "shredded",
+      "capability_key": "pne-eumseong--pp-shredded-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "dakyeong-busan--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "jungang-gongju--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "npc-chemical-hwaseong--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "sarom-hwaseong-2--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "youone-incheon--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "afrochem-asan--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "daejo-sangju--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "ecoplus-yeongju--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "ilshin-anseong--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "hcr-paju--pp-registered-melt",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "joongil-incheon--pp-scrap-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "youngshin-naju--pp-scrap-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "veolia-dh-yongin--pp-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "dakyeong-busan--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "jungang-gongju--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "npc-chemical-hwaseong--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "sarom-hwaseong-2--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "youone-incheon--pp-prepare",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "afrochem-asan--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "daejo-sangju--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "ecoplus-yeongju--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "ilshin-anseong--pp-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "hcr-paju--pp-registered-melt",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "film",
+      "capability_key": "veolia-dh-yongin--pp-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "bgf-yesan--pp-clean",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "daesan-naju--pp-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "hcr-paju--pp-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "jinyoung-hwaseong--pp-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "yongseong-gyeongsan--pp-flake-repelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "changmaec-seongju--pp-shredded-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "greenpol-cheonan--pp-shredded-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "pne-eumseong--pp-shredded-to-pellet",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "pp",
+      "material_detail": null,
+      "form": "pellet",
+      "capability_key": "bgf-hwaseong--pp-compound",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "cntk-hwaseong--ps-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "cntk-jinju--ps-prepare",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "ilshin-anseong--ps-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "hcr-paju--ps-registered-melt",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "veolia-dh-yongin--ps-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "cntk-hwaseong--ps-prepare",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "cntk-jinju--ps-prepare",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "ilshin-anseong--ps-registered-grind",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "hcr-paju--ps-registered-melt",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "rigid",
+      "capability_key": "veolia-dh-yongin--ps-sort-bale",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "changmaec-seongju--ps-pelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "hcr-paju--ps-pelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "pne-eumseong--ps-pelletise",
+      "status": "needs_evidence",
+      "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "cntk-hwaseong--ps-pelletise",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ps",
+      "material_detail": null,
+      "form": "flake",
+      "capability_key": "cntk-jinju--ps-pelletise",
+      "status": "needs_evidence",
+      "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요."
+    },
+    {
+      "diagnosis_material": "ferrous_scrap",
+      "material_detail": null,
+      "form": "scrap",
+      "capability_key": "kisco-changwon--ferrous-eaf-billet",
+      "status": "needs_evidence",
+      "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요."
+    }
+  ]
+}

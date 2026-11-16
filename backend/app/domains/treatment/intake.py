@@ -11,6 +11,7 @@ from app.domains.treatment.schemas import (
     CatalogKey,
     NextStepRequest,
     ObservedOutput,
+    RecyclingBasis,
     RecyclingTypes,
     SourceLink,
 )
@@ -22,6 +23,7 @@ class IntakeSelection(BaseModel):
     material: str = Field(min_length=1, max_length=80)
     input_form: str = Field(min_length=1, max_length=80)
     recycling_types: RecyclingTypes | None = None
+    recycling_basis: RecyclingBasis | None = None
     completed_transitions: list[CatalogKey] = Field(default_factory=list, max_length=8)
     observed_output: ObservedOutput | None = None
     classification_session_id: UUID | None = None
@@ -75,6 +77,19 @@ class IntakeResult(BaseModel):
     next_check: str
     source: SourceLink | None = None
     quote: str | None = None
+    evidence_gaps: list[
+        Literal[
+            "source_missing",
+            "site_scope_unverified",
+            "input_form_unproven",
+            "material_unproven",
+            "output_only",
+            "process_unproven",
+            "source_context_conflict",
+            "citation_invalid",
+            "unspecified",
+        ]
+    ] = Field(default_factory=list, max_length=9)
     dispatch_approved: Literal[False] = False
     lot_review: LotReview | None = None
 
@@ -94,7 +109,11 @@ def build_intake_batch(request: IntakeSelection, reference):
     form = normalize_form(request.input_form)
 
     def types_for(option):
-        types = option.recycling_types or request.recycling_types
+        types = (
+            request.recycling_types
+            if request.recycling_basis is not None
+            else option.recycling_types or request.recycling_types
+        )
         return types.model_dump() if not follow_up and types is not None else {}
 
     return [
@@ -107,6 +126,11 @@ def build_intake_batch(request: IntakeSelection, reference):
             "material": material,
             "form": option.input_state.label if follow_up else form,
             "recycling_types": types_for(option),
+            **(
+                {"recycling_basis": request.recycling_basis.model_dump()}
+                if request.recycling_basis is not None and not follow_up
+                else {}
+            ),
             "next_check": (
                 facility.intake_review.next_check
                 if facility.intake_review
@@ -147,7 +171,7 @@ async def review_intakes(packets, settings, *, lot_context=None):
     if not packets or not settings.ai_base_url or not token:
         return IntakeBatchResult(results=results)
 
-    async with httpx.AsyncClient(timeout=175 if lot_context is not None else 45) as client:
+    async with httpx.AsyncClient(timeout=175 if lot_context is not None else 95) as client:
         for start in range(0, len(packets), 5):
             batch = packets[start : start + 5]
             try:

@@ -184,6 +184,13 @@ async def test_every_first_handoff_candidate_is_sent_for_review(db, auth_client,
         "material": "PP",
         "input_form": "scrap",
         "recycling_types": {"free": ["R-10", "R-9-3"]},
+        "recycling_basis": {
+            "version": "browser-forged",
+            "as_of": "2026-11-16",
+            "source_url": "https://www.law.go.kr/forged",
+            "pages": [1],
+            "notes": [],
+        },
     }
     route = await auth_client.post("/api/treatment/next-step", json=selection)
     expected = {
@@ -191,17 +198,25 @@ async def test_every_first_handoff_candidate_is_sent_for_review(db, auth_client,
         for option in route.json()["options"]
         for item in option["facilities"]
     }
-    assert len(expected) >= 3
+    assert len(expected) >= 6
+    seen = []
+    omitted = []
 
     def upstream(request):
         assert request.url.path == "/treatment/intake-reviews"
         assert request.headers["authorization"] == "Bearer local-test-token"
         packets = json.loads(request.content)["candidates"]
-        assert {packet["capability_key"] for packet in packets} == expected
+        keys = {packet["capability_key"] for packet in packets}
+        assert keys <= expected and not keys.intersection(seen)
+        assert len(packets) <= 5
+        seen.extend(keys)
+        omitted.append(packets[-1]["capability_key"])
         assert all(packet["recycling_types"]["free"] == ["R-10"] for packet in packets)
+        assert all("recycling_basis" not in packet for packet in packets)
         assert all(packet["form"] == "scrap" and "origin" not in packet for packet in packets)
-        source_free = next(p for p in packets if p["site"].startswith("새롬이엔지"))
-        assert source_free["sources"] == []
+        for p in packets:
+            if p["site"].startswith("새롬이엔지"):
+                assert p["sources"] == []
         return httpx.Response(
             200,
             json={
@@ -228,7 +243,8 @@ async def test_every_first_handoff_candidate_is_sent_for_review(db, auth_client,
     assert response.status_code == 200, response.text
     results = response.json()["results"]
     assert set(results) == expected
-    assert sum(row["status"] == "model_unavailable" for row in results.values()) == 1
+    assert set(seen) == expected
+    assert {k for k, r in results.items() if r["status"] == "model_unavailable"} == set(omitted)
     assert all(row["dispatch_approved"] is False for row in results.values())
 
 
@@ -255,6 +271,13 @@ async def test_follow_up_reviews_actual_output_without_original_classification(d
     assert {packet["capability_key"] for packet in packets} == {
         "bgf-yesan--pp-clean",
         "veolia-doksan-hwaseong--pp-shredded-to-pellet",
+        "greenpol-cheonan--pp-shredded-to-pellet",
+        "pne-eumseong--pp-shredded-to-pellet",
+        "changmaec-seongju--pp-shredded-to-pellet",
+        "jinyoung-hwaseong--pp-flake-repelletise",
+        "hcr-paju--pp-flake-repelletise",
+        "daesan-naju--pp-flake-repelletise",
+        "yongseong-gyeongsan--pp-flake-repelletise",
     }
     for packet in packets:
         assert "PP 파쇄품" in packet["form"]

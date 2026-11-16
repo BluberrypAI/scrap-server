@@ -1,0 +1,7514 @@
+{
+  "after": {
+    "scope": "공개 공정 조사 후보. 현행 허가·실제 로트 수락·도로 운송시간을 검증한 수치가 아님.",
+    "synthetic_origin_points": {
+      "seoul": [
+        37.5665,
+        126.978
+      ],
+      "hwaseong": [
+        37.1996,
+        126.8312
+      ],
+      "paju": [
+        37.7599,
+        126.78
+      ],
+      "anseong": [
+        37.0079,
+        127.2797
+      ],
+      "namyangju": [
+        37.636,
+        127.2165
+      ]
+    },
+    "counts": {
+      "facilities": 61,
+      "linked_facilities": 60,
+      "capabilities": 128,
+      "capability_basis": {
+        "published_site_process": 117,
+        "site_role_hypothesis": 11
+      },
+      "linked_site_regions": {
+        "기타": 33,
+        "경기": 22,
+        "인천": 5
+      },
+      "code_form_combinations": 56,
+      "status_counts": {
+        "candidates": 53,
+        "no_route": 3
+      }
+    },
+    "rows": [
+      {
+        "material": "abs",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 3,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 2,
+          "경기": 1
+        },
+        "sites": [
+          "changmaec-seongju",
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "abs",
+        "form": "rigid",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "경기": 1,
+          "기타": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "abs",
+        "form": "scrap",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "경기": 1,
+          "기타": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "abs",
+        "form": "shredded",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 3,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 2,
+          "경기": 1
+        },
+        "sites": [
+          "changmaec-seongju",
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "aluminium",
+        "form": "can",
+        "code": "51-29-03",
+        "status": "candidates",
+        "national_sites": 3,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "경기": 1,
+          "기타": 2
+        },
+        "sites": [
+          "hyundai-resource-hwaseong",
+          "novelis-yeongju",
+          "ulsan-aluminium"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "novelis-yeongju",
+              "distance_km": 169.3
+            },
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 310.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "novelis-yeongju",
+              "distance_km": 165.5
+            },
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 292.6
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "novelis-yeongju",
+              "distance_km": 195.4
+            },
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 338.0
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "novelis-yeongju",
+              "distance_km": 121.9
+            },
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 248.3
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "novelis-yeongju",
+              "distance_km": 155.9
+            },
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 302.1
+            }
+          ]
+        }
+      },
+      {
+        "material": "aluminium",
+        "form": "scrap",
+        "code": "51-29-02",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "경기": 1,
+          "기타": 1
+        },
+        "sites": [
+          "jmtech-gimpo",
+          "ulsan-aluminium"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "jmtech-gimpo",
+              "distance_km": 40.6
+            },
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 310.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "jmtech-gimpo",
+              "distance_km": 59.5
+            },
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 292.6
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "jmtech-gimpo",
+              "distance_km": 22.8
+            },
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 338.0
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "jmtech-gimpo",
+              "distance_km": 99.4
+            },
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 248.3
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "jmtech-gimpo",
+              "distance_km": 59.7
+            },
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 302.1
+            }
+          ]
+        }
+      },
+      {
+        "material": "eps",
+        "form": "buoy",
+        "code": "51-03-05",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "hanul-ulju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "eps",
+        "form": "foam",
+        "code": "51-03-06",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "hanul-ulju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "eps",
+        "form": "ingot",
+        "code": "51-03-06",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "ecops-yeongcheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "ecops-yeongcheon",
+              "distance_km": 235.6
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "ecops-yeongcheon",
+              "distance_km": 218.7
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "ecops-yeongcheon",
+              "distance_km": 263.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ecops-yeongcheon",
+              "distance_km": 174.1
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "ecops-yeongcheon",
+              "distance_km": 227.5
+            }
+          ]
+        }
+      },
+      {
+        "material": "ferrous",
+        "form": "drum",
+        "code": "51-29-04",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "cheoldang-yangsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "ferrous",
+        "form": "scrap",
+        "code": "51-29-01",
+        "status": "candidates",
+        "national_sites": 4,
+        "capital_sites": 2,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "기타": 2,
+          "인천": 1,
+          "경기": 1
+        },
+        "sites": [
+          "daehan-noksan",
+          "dongyang-gwangju",
+          "hyundai-incheon",
+          "kisco-changwon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "dongyang-gwangju",
+              "distance_km": 33.6
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "dongyang-gwangju",
+              "distance_km": 49.0
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "dongyang-gwangju",
+              "distance_km": 60.1
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "dongyang-gwangju",
+              "distance_km": 45.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "dongyang-gwangju",
+              "distance_km": 25.4
+            }
+          ]
+        }
+      },
+      {
+        "material": "pa6",
+        "form": "net",
+        "code": "51-03-08",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "인천": 1,
+          "기타": 1
+        },
+        "sites": [
+          "netspa-busan",
+          "yangil-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 31.5
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 24.9
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 41.3
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 67.4
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 53.3
+            }
+          ]
+        }
+      },
+      {
+        "material": "pa66",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "인천": 1,
+          "기타": 1
+        },
+        "sites": [
+          "changmaec-seongju",
+          "yangil-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 31.5
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 24.9
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 41.3
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 67.4
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 53.3
+            }
+          ]
+        }
+      },
+      {
+        "material": "pa66",
+        "form": "shredded",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "인천": 1,
+          "기타": 1
+        },
+        "sites": [
+          "changmaec-seongju",
+          "yangil-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 31.5
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 24.9
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 41.3
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 67.4
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 53.3
+            }
+          ]
+        }
+      },
+      {
+        "material": "pcabs",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "changmaec-seongju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pcabs",
+        "form": "shredded",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "changmaec-seongju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pe",
+        "form": "bale",
+        "code": "51-03-01",
+        "status": "no_route",
+        "national_sites": 0,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {},
+        "sites": [],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pe",
+        "form": "bale",
+        "code": "51-03-07",
+        "status": "no_route",
+        "national_sites": 0,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {},
+        "sites": [],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pe",
+        "form": "film",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 16,
+        "capital_sites": 6,
+        "capital_sites_with_coordinates": 5,
+        "regions": {
+          "기타": 10,
+          "인천": 1,
+          "경기": 5
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "dongmin-yeongcheon",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "hwangyeong-anseong",
+          "ilshin-anseong",
+          "jungang-gongju",
+          "nuvotec-munmak",
+          "saramtech-nonsan",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            },
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 62.1
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 38.4
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            },
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 88.7
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 6.7
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 79.8
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 66.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 68.2
+            }
+          ]
+        }
+      },
+      {
+        "material": "pe",
+        "form": "film",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 16,
+        "capital_sites": 6,
+        "capital_sites_with_coordinates": 5,
+        "regions": {
+          "기타": 10,
+          "인천": 1,
+          "경기": 5
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "dongmin-yeongcheon",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "hwangyeong-anseong",
+          "ilshin-anseong",
+          "jungang-gongju",
+          "nuvotec-munmak",
+          "saramtech-nonsan",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            },
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 62.1
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 38.4
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            },
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 88.7
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 6.7
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 79.8
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 66.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 68.2
+            }
+          ]
+        }
+      },
+      {
+        "material": "pe",
+        "form": "film-bale",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "dh1-seongju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pe",
+        "form": "film-bale",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "dh1-seongju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pe",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 7,
+        "capital_sites": 2,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "기타": 5,
+          "경기": 2
+        },
+        "sites": [
+          "bgf-yesan",
+          "greenpol-cheonan",
+          "guil-hapcheon",
+          "hcr-paju",
+          "jinyoung-hwaseong",
+          "pne-eumseong",
+          "yongseong-gyeongsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 88.9
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 245.7
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 46.1
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 216.9
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 107.1
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 272.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 56.9
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 178.2
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 103.9
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 244.4
+            }
+          ]
+        }
+      },
+      {
+        "material": "pe",
+        "form": "pellet",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "경기": 1
+        },
+        "sites": [
+          "bgf-hwaseong"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pe",
+        "form": "rigid",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 19,
+        "capital_sites": 10,
+        "capital_sites_with_coordinates": 7,
+        "regions": {
+          "인천": 2,
+          "경기": 8,
+          "기타": 9
+        },
+        "sites": [
+          "afrochem-asan",
+          "cwrs-hwaseong",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "hwangyeong-anseong",
+          "ilshin-anseong",
+          "incheon-recycling-gojan",
+          "jungang-gongju",
+          "kers-hwaseong",
+          "npc-chemical-hwaseong",
+          "nuvotec-munmak",
+          "samsungchem-miryang",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 30.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 24.5
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 40.7
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 6.7
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 66.4
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 51.8
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 66.1
+            }
+          ]
+        }
+      },
+      {
+        "material": "pe",
+        "form": "rigid",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 19,
+        "capital_sites": 10,
+        "capital_sites_with_coordinates": 7,
+        "regions": {
+          "인천": 2,
+          "경기": 8,
+          "기타": 9
+        },
+        "sites": [
+          "afrochem-asan",
+          "cwrs-hwaseong",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "hwangyeong-anseong",
+          "ilshin-anseong",
+          "incheon-recycling-gojan",
+          "jungang-gongju",
+          "kers-hwaseong",
+          "npc-chemical-hwaseong",
+          "nuvotec-munmak",
+          "samsungchem-miryang",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 30.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 24.5
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 40.7
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 6.7
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 66.4
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 51.8
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 66.1
+            }
+          ]
+        }
+      },
+      {
+        "material": "pe",
+        "form": "scrap",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 15,
+        "capital_sites": 7,
+        "capital_sites_with_coordinates": 6,
+        "regions": {
+          "인천": 1,
+          "경기": 6,
+          "기타": 8
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "hwangyeong-anseong",
+          "ilshin-anseong",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "nuvotec-munmak",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 38.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 6.7
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 66.1
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            }
+          ]
+        }
+      },
+      {
+        "material": "pe",
+        "form": "scrap",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 15,
+        "capital_sites": 7,
+        "capital_sites_with_coordinates": 6,
+        "regions": {
+          "인천": 1,
+          "경기": 6,
+          "기타": 8
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "hwangyeong-anseong",
+          "ilshin-anseong",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "nuvotec-munmak",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 38.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 6.7
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "hwangyeong-anseong",
+              "distance_km": 66.1
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            }
+          ]
+        }
+      },
+      {
+        "material": "pe",
+        "form": "shredded",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 7,
+        "capital_sites": 2,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "기타": 5,
+          "경기": 2
+        },
+        "sites": [
+          "bgf-yesan",
+          "greenpol-cheonan",
+          "guil-hapcheon",
+          "hcr-paju",
+          "jinyoung-hwaseong",
+          "pne-eumseong",
+          "yongseong-gyeongsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 88.9
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 245.7
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 46.1
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 216.9
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 107.1
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 272.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 56.9
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 178.2
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 103.9
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 244.4
+            }
+          ]
+        }
+      },
+      {
+        "material": "pet",
+        "form": "bale",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 5,
+        "capital_sites": 3,
+        "capital_sites_with_coordinates": 3,
+        "regions": {
+          "경기": 3,
+          "기타": 2
+        },
+        "sites": [
+          "rm-hwaseong",
+          "samyang-sihwa",
+          "superbin-hwaseong",
+          "yuil-busan",
+          "yuil-yangsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 35.4
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 52.5
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 57.2
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 14.4
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 16.2
+            },
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 18.7
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 47.8
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 75.7
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 76.3
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 30.1
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 43.6
+            },
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 62.6
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 56.3
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 64.4
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 72.8
+            }
+          ]
+        }
+      },
+      {
+        "material": "pet",
+        "form": "bale",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 5,
+        "capital_sites": 3,
+        "capital_sites_with_coordinates": 3,
+        "regions": {
+          "경기": 3,
+          "기타": 2
+        },
+        "sites": [
+          "rm-hwaseong",
+          "samyang-sihwa",
+          "superbin-hwaseong",
+          "yuil-busan",
+          "yuil-yangsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 35.4
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 52.5
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 57.2
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 14.4
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 16.2
+            },
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 18.7
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 47.8
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 75.7
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 76.3
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 30.1
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 43.6
+            },
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 62.6
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 56.3
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 64.4
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 72.8
+            }
+          ]
+        }
+      },
+      {
+        "material": "pet",
+        "form": "bottle",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 10,
+        "capital_sites": 6,
+        "capital_sites_with_coordinates": 2,
+        "regions": {
+          "경기": 5,
+          "기타": 4,
+          "인천": 1
+        },
+        "sites": [
+          "cwrs-hwaseong",
+          "dakyeong-busan",
+          "hrm-cheongju",
+          "incheon-recycling-gojan",
+          "kers-hwaseong",
+          "saerom-hwaseong-one",
+          "samyang-sihwa",
+          "veolia-dh-yongin",
+          "yuil-busan",
+          "yuil-yangsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 30.1
+            },
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 35.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 18.7
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 24.5
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 40.7
+            },
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 47.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 62.6
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 66.4
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 51.8
+            },
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 56.3
+            }
+          ]
+        }
+      },
+      {
+        "material": "pet",
+        "form": "bottle",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 10,
+        "capital_sites": 6,
+        "capital_sites_with_coordinates": 2,
+        "regions": {
+          "경기": 5,
+          "기타": 4,
+          "인천": 1
+        },
+        "sites": [
+          "cwrs-hwaseong",
+          "dakyeong-busan",
+          "hrm-cheongju",
+          "incheon-recycling-gojan",
+          "kers-hwaseong",
+          "saerom-hwaseong-one",
+          "samyang-sihwa",
+          "veolia-dh-yongin",
+          "yuil-busan",
+          "yuil-yangsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 30.1
+            },
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 35.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 18.7
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 24.5
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 40.7
+            },
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 47.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 62.6
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 66.4
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 51.8
+            },
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 56.3
+            }
+          ]
+        }
+      },
+      {
+        "material": "pet",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 2
+        },
+        "sites": [
+          "bgf-yesan",
+          "superbin-sunchang"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 88.9
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 46.1
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 107.1
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 56.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 103.9
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "bale",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "경기": 1
+        },
+        "sites": [
+          "veolia-doksan-hwaseong"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 49.0
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 6.2
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 68.4
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 44.0
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 65.1
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "bale",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "경기": 1
+        },
+        "sites": [
+          "veolia-doksan-hwaseong"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 49.0
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 6.2
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 68.4
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 44.0
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 65.1
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "film",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 13,
+        "capital_sites": 6,
+        "capital_sites_with_coordinates": 5,
+        "regions": {
+          "인천": 1,
+          "경기": 5,
+          "기타": 7
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 79.8
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 68.2
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "film",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 13,
+        "capital_sites": 6,
+        "capital_sites_with_coordinates": 5,
+        "regions": {
+          "인천": 1,
+          "경기": 5,
+          "기타": 7
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 79.8
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 68.2
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 9,
+        "capital_sites": 3,
+        "capital_sites_with_coordinates": 2,
+        "regions": {
+          "기타": 6,
+          "경기": 3
+        },
+        "sites": [
+          "bgf-yesan",
+          "changmaec-seongju",
+          "daesan-naju",
+          "greenpol-cheonan",
+          "hcr-paju",
+          "jinyoung-hwaseong",
+          "pne-eumseong",
+          "veolia-doksan-hwaseong",
+          "yongseong-gyeongsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 49.0
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 88.9
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 6.2
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 46.1
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 68.4
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 107.1
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 44.0
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 56.9
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 65.1
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 103.9
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "pellet",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 2,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "경기": 2
+        },
+        "sites": [
+          "bgf-hwaseong",
+          "veolia-dspl-hwaseong"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pp",
+        "form": "rigid",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 16,
+        "capital_sites": 9,
+        "capital_sites_with_coordinates": 7,
+        "regions": {
+          "인천": 3,
+          "경기": 6,
+          "기타": 7
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "incheon-recycling-gojan",
+          "joongil-incheon",
+          "jungang-gongju",
+          "kers-hwaseong",
+          "npc-chemical-hwaseong",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 30.1
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 31.2
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 24.5
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 25.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 40.7
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 40.7
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 66.4
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 67.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 51.8
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 53.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "rigid",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 16,
+        "capital_sites": 9,
+        "capital_sites_with_coordinates": 7,
+        "regions": {
+          "인천": 3,
+          "경기": 6,
+          "기타": 7
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "incheon-recycling-gojan",
+          "joongil-incheon",
+          "jungang-gongju",
+          "kers-hwaseong",
+          "npc-chemical-hwaseong",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 30.1
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 31.2
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 24.5
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 25.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 40.7
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 40.7
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 66.4
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 67.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 51.8
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 53.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "scrap",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 14,
+        "capital_sites": 7,
+        "capital_sites_with_coordinates": 6,
+        "regions": {
+          "인천": 2,
+          "경기": 5,
+          "기타": 7
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "joongil-incheon",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 31.2
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 25.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 40.7
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 67.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 53.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "scrap",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 14,
+        "capital_sites": 7,
+        "capital_sites_with_coordinates": 6,
+        "regions": {
+          "인천": 2,
+          "경기": 5,
+          "기타": 7
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "joongil-incheon",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 31.2
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 25.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 40.7
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 67.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 53.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "shredded",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 9,
+        "capital_sites": 3,
+        "capital_sites_with_coordinates": 2,
+        "regions": {
+          "기타": 6,
+          "경기": 3
+        },
+        "sites": [
+          "bgf-yesan",
+          "changmaec-seongju",
+          "daesan-naju",
+          "greenpol-cheonan",
+          "hcr-paju",
+          "jinyoung-hwaseong",
+          "pne-eumseong",
+          "veolia-doksan-hwaseong",
+          "yongseong-gyeongsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 49.0
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 88.9
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 6.2
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 46.1
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 68.4
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 107.1
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 44.0
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 56.9
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 65.1
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 103.9
+            }
+          ]
+        }
+      },
+      {
+        "material": "ps",
+        "form": "bale",
+        "code": "51-03-01",
+        "status": "no_route",
+        "national_sites": 0,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {},
+        "sites": [],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "ps",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 5,
+        "capital_sites": 2,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "경기": 2,
+          "기타": 3
+        },
+        "sites": [
+          "changmaec-seongju",
+          "cntk-hwaseong",
+          "cntk-jinju",
+          "hcr-paju",
+          "pne-eumseong"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            }
+          ]
+        }
+      },
+      {
+        "material": "ps",
+        "form": "rigid",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 7,
+        "capital_sites": 6,
+        "capital_sites_with_coordinates": 3,
+        "regions": {
+          "경기": 5,
+          "기타": 1,
+          "인천": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "incheon-recycling-gojan",
+          "kers-hwaseong",
+          "veolia-dh-yongin"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 30.1
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 24.5
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 40.7
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 66.4
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "incheon-recycling-gojan",
+              "distance_km": 51.8
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            }
+          ]
+        }
+      },
+      {
+        "material": "ps",
+        "form": "scrap",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 5,
+        "capital_sites": 4,
+        "capital_sites_with_coordinates": 2,
+        "regions": {
+          "경기": 4,
+          "기타": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "veolia-dh-yongin"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            }
+          ]
+        }
+      },
+      {
+        "material": "ps",
+        "form": "shredded",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 5,
+        "capital_sites": 2,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "경기": 2,
+          "기타": 3
+        },
+        "sites": [
+          "changmaec-seongju",
+          "cntk-hwaseong",
+          "cntk-jinju",
+          "hcr-paju",
+          "pne-eumseong"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            }
+          ]
+        }
+      },
+      {
+        "material": "pvc",
+        "form": "rigid",
+        "code": "51-03-03",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "경기": 1
+        },
+        "sites": [
+          "pureum-yangju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "pureum-yangju",
+              "distance_km": 33.8
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "pureum-yangju",
+              "distance_km": 75.8
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "pureum-yangju",
+              "distance_km": 21.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "pureum-yangju",
+              "distance_km": 99.3
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "pureum-yangju",
+              "distance_km": 33.0
+            }
+          ]
+        }
+      },
+      {
+        "material": "pvc",
+        "form": "wallpaper",
+        "code": "51-03-03",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "경기": 1
+        },
+        "sites": [
+          "sungji-hwaseong"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "sungji-hwaseong",
+              "distance_km": 50.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "sungji-hwaseong",
+              "distance_km": 16.2
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "sungji-hwaseong",
+              "distance_km": 73.9
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "sungji-hwaseong",
+              "distance_km": 29.2
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "sungji-hwaseong",
+              "distance_km": 61.7
+            }
+          ]
+        }
+      },
+      {
+        "material": "san",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1,
+          "경기": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "san",
+        "form": "rigid",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "경기": 1,
+          "기타": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "san",
+        "form": "scrap",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "경기": 1,
+          "기타": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "san",
+        "form": "shredded",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1,
+          "경기": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      }
+    ]
+  },
+  "before": {
+    "scope": "공개 공정 조사 후보. 현행 허가·실제 로트 수락·도로 운송시간을 검증한 수치가 아님.",
+    "synthetic_origin_points": {
+      "seoul": [
+        37.5665,
+        126.978
+      ],
+      "hwaseong": [
+        37.1996,
+        126.8312
+      ],
+      "paju": [
+        37.7599,
+        126.78
+      ],
+      "anseong": [
+        37.0079,
+        127.2797
+      ],
+      "namyangju": [
+        37.636,
+        127.2165
+      ]
+    },
+    "counts": {
+      "facilities": 52,
+      "linked_facilities": 51,
+      "capabilities": 109,
+      "capability_basis": {
+        "published_site_process": 98,
+        "site_role_hypothesis": 11
+      },
+      "linked_site_regions": {
+        "기타": 33,
+        "경기": 15,
+        "인천": 3
+      },
+      "code_form_combinations": 56,
+      "status_counts": {
+        "candidates": 53,
+        "no_route": 3
+      }
+    },
+    "rows": [
+      {
+        "material": "abs",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 3,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 2,
+          "경기": 1
+        },
+        "sites": [
+          "changmaec-seongju",
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "abs",
+        "form": "rigid",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "경기": 1,
+          "기타": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "abs",
+        "form": "scrap",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "경기": 1,
+          "기타": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "abs",
+        "form": "shredded",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 3,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 2,
+          "경기": 1
+        },
+        "sites": [
+          "changmaec-seongju",
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "aluminium",
+        "form": "can",
+        "code": "51-29-03",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 2
+        },
+        "sites": [
+          "novelis-yeongju",
+          "ulsan-aluminium"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "novelis-yeongju",
+              "distance_km": 169.3
+            },
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 310.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "novelis-yeongju",
+              "distance_km": 165.5
+            },
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 292.6
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "novelis-yeongju",
+              "distance_km": 195.4
+            },
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 338.0
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "novelis-yeongju",
+              "distance_km": 121.9
+            },
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 248.3
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "novelis-yeongju",
+              "distance_km": 155.9
+            },
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 302.1
+            }
+          ]
+        }
+      },
+      {
+        "material": "aluminium",
+        "form": "scrap",
+        "code": "51-29-02",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "ulsan-aluminium"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 310.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 292.6
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 338.0
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 248.3
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "ulsan-aluminium",
+              "distance_km": 302.1
+            }
+          ]
+        }
+      },
+      {
+        "material": "eps",
+        "form": "buoy",
+        "code": "51-03-05",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "hanul-ulju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "eps",
+        "form": "foam",
+        "code": "51-03-06",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "hanul-ulju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "eps",
+        "form": "ingot",
+        "code": "51-03-06",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "ecops-yeongcheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "ecops-yeongcheon",
+              "distance_km": 235.6
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "ecops-yeongcheon",
+              "distance_km": 218.7
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "ecops-yeongcheon",
+              "distance_km": 263.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ecops-yeongcheon",
+              "distance_km": 174.1
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "ecops-yeongcheon",
+              "distance_km": 227.5
+            }
+          ]
+        }
+      },
+      {
+        "material": "ferrous",
+        "form": "drum",
+        "code": "51-29-04",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "cheoldang-yangsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "ferrous",
+        "form": "scrap",
+        "code": "51-29-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 2
+        },
+        "sites": [
+          "daehan-noksan",
+          "kisco-changwon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pa6",
+        "form": "net",
+        "code": "51-03-08",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "인천": 1,
+          "기타": 1
+        },
+        "sites": [
+          "netspa-busan",
+          "yangil-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 31.5
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 24.9
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 41.3
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 67.4
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 53.3
+            }
+          ]
+        }
+      },
+      {
+        "material": "pa66",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "인천": 1,
+          "기타": 1
+        },
+        "sites": [
+          "changmaec-seongju",
+          "yangil-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 31.5
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 24.9
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 41.3
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 67.4
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 53.3
+            }
+          ]
+        }
+      },
+      {
+        "material": "pa66",
+        "form": "shredded",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "인천": 1,
+          "기타": 1
+        },
+        "sites": [
+          "changmaec-seongju",
+          "yangil-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 31.5
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 24.9
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 41.3
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 67.4
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "yangil-incheon",
+              "distance_km": 53.3
+            }
+          ]
+        }
+      },
+      {
+        "material": "pcabs",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "changmaec-seongju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pcabs",
+        "form": "shredded",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "changmaec-seongju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pe",
+        "form": "bale",
+        "code": "51-03-01",
+        "status": "no_route",
+        "national_sites": 0,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {},
+        "sites": [],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pe",
+        "form": "bale",
+        "code": "51-03-07",
+        "status": "no_route",
+        "national_sites": 0,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {},
+        "sites": [],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pe",
+        "form": "film",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 15,
+        "capital_sites": 5,
+        "capital_sites_with_coordinates": 4,
+        "regions": {
+          "기타": 10,
+          "인천": 1,
+          "경기": 4
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "dongmin-yeongcheon",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "jungang-gongju",
+          "nuvotec-munmak",
+          "saramtech-nonsan",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 138.8
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 99.5
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 161.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 79.8
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 68.2
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 147.4
+            }
+          ]
+        }
+      },
+      {
+        "material": "pe",
+        "form": "film",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 15,
+        "capital_sites": 5,
+        "capital_sites_with_coordinates": 4,
+        "regions": {
+          "기타": 10,
+          "인천": 1,
+          "경기": 4
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "dongmin-yeongcheon",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "jungang-gongju",
+          "nuvotec-munmak",
+          "saramtech-nonsan",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 138.8
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 99.5
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 161.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 79.8
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 68.2
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 147.4
+            }
+          ]
+        }
+      },
+      {
+        "material": "pe",
+        "form": "film-bale",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "dh1-seongju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pe",
+        "form": "film-bale",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1
+        },
+        "sites": [
+          "dh1-seongju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pe",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 7,
+        "capital_sites": 2,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "기타": 5,
+          "경기": 2
+        },
+        "sites": [
+          "bgf-yesan",
+          "greenpol-cheonan",
+          "guil-hapcheon",
+          "hcr-paju",
+          "jinyoung-hwaseong",
+          "pne-eumseong",
+          "yongseong-gyeongsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 88.9
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 245.7
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 46.1
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 216.9
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 107.1
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 272.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 56.9
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 178.2
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 103.9
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 244.4
+            }
+          ]
+        }
+      },
+      {
+        "material": "pe",
+        "form": "pellet",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "경기": 1
+        },
+        "sites": [
+          "bgf-hwaseong"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pe",
+        "form": "rigid",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 15,
+        "capital_sites": 6,
+        "capital_sites_with_coordinates": 5,
+        "regions": {
+          "인천": 1,
+          "경기": 5,
+          "기타": 9
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "nuvotec-munmak",
+          "samsungchem-miryang",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 79.8
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 68.2
+            }
+          ]
+        }
+      },
+      {
+        "material": "pe",
+        "form": "rigid",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 15,
+        "capital_sites": 6,
+        "capital_sites_with_coordinates": 5,
+        "regions": {
+          "인천": 1,
+          "경기": 5,
+          "기타": 9
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "nuvotec-munmak",
+          "samsungchem-miryang",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 79.8
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 68.2
+            }
+          ]
+        }
+      },
+      {
+        "material": "pe",
+        "form": "scrap",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 14,
+        "capital_sites": 6,
+        "capital_sites_with_coordinates": 5,
+        "regions": {
+          "인천": 1,
+          "경기": 5,
+          "기타": 8
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "nuvotec-munmak",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 79.8
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 68.2
+            }
+          ]
+        }
+      },
+      {
+        "material": "pe",
+        "form": "scrap",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 14,
+        "capital_sites": 6,
+        "capital_sites_with_coordinates": 5,
+        "regions": {
+          "인천": 1,
+          "경기": 5,
+          "기타": 8
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "nuvotec-munmak",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 79.8
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 68.2
+            }
+          ]
+        }
+      },
+      {
+        "material": "pe",
+        "form": "shredded",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 7,
+        "capital_sites": 2,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "기타": 5,
+          "경기": 2
+        },
+        "sites": [
+          "bgf-yesan",
+          "greenpol-cheonan",
+          "guil-hapcheon",
+          "hcr-paju",
+          "jinyoung-hwaseong",
+          "pne-eumseong",
+          "yongseong-gyeongsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 88.9
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 245.7
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 46.1
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 216.9
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 107.1
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 272.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 56.9
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 178.2
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 103.9
+            },
+            {
+              "facility_key": "guil-hapcheon",
+              "distance_km": 244.4
+            }
+          ]
+        }
+      },
+      {
+        "material": "pet",
+        "form": "bale",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 5,
+        "capital_sites": 3,
+        "capital_sites_with_coordinates": 3,
+        "regions": {
+          "경기": 3,
+          "기타": 2
+        },
+        "sites": [
+          "rm-hwaseong",
+          "samyang-sihwa",
+          "superbin-hwaseong",
+          "yuil-busan",
+          "yuil-yangsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 35.4
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 52.5
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 57.2
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 14.4
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 16.2
+            },
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 18.7
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 47.8
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 75.7
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 76.3
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 30.1
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 43.6
+            },
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 62.6
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 56.3
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 64.4
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 72.8
+            }
+          ]
+        }
+      },
+      {
+        "material": "pet",
+        "form": "bale",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 5,
+        "capital_sites": 3,
+        "capital_sites_with_coordinates": 3,
+        "regions": {
+          "경기": 3,
+          "기타": 2
+        },
+        "sites": [
+          "rm-hwaseong",
+          "samyang-sihwa",
+          "superbin-hwaseong",
+          "yuil-busan",
+          "yuil-yangsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 35.4
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 52.5
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 57.2
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 14.4
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 16.2
+            },
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 18.7
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 47.8
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 75.7
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 76.3
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 30.1
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 43.6
+            },
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 62.6
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 56.3
+            },
+            {
+              "facility_key": "rm-hwaseong",
+              "distance_km": 64.4
+            },
+            {
+              "facility_key": "superbin-hwaseong",
+              "distance_km": 72.8
+            }
+          ]
+        }
+      },
+      {
+        "material": "pet",
+        "form": "bottle",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 6,
+        "capital_sites": 2,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "경기": 2,
+          "기타": 4
+        },
+        "sites": [
+          "dakyeong-busan",
+          "hrm-cheongju",
+          "samyang-sihwa",
+          "veolia-dh-yongin",
+          "yuil-busan",
+          "yuil-yangsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 35.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 18.7
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 47.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 62.6
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 56.3
+            }
+          ]
+        }
+      },
+      {
+        "material": "pet",
+        "form": "bottle",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 6,
+        "capital_sites": 2,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "경기": 2,
+          "기타": 4
+        },
+        "sites": [
+          "dakyeong-busan",
+          "hrm-cheongju",
+          "samyang-sihwa",
+          "veolia-dh-yongin",
+          "yuil-busan",
+          "yuil-yangsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 35.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 18.7
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 47.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 62.6
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "samyang-sihwa",
+              "distance_km": 56.3
+            }
+          ]
+        }
+      },
+      {
+        "material": "pet",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 2
+        },
+        "sites": [
+          "bgf-yesan",
+          "superbin-sunchang"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 88.9
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 46.1
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 107.1
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 56.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 103.9
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "bale",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "경기": 1
+        },
+        "sites": [
+          "veolia-doksan-hwaseong"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 49.0
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 6.2
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 68.4
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 44.0
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 65.1
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "bale",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "경기": 1
+        },
+        "sites": [
+          "veolia-doksan-hwaseong"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 49.0
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 6.2
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 68.4
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 44.0
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 65.1
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "film",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 13,
+        "capital_sites": 6,
+        "capital_sites_with_coordinates": 5,
+        "regions": {
+          "인천": 1,
+          "경기": 5,
+          "기타": 7
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 79.8
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 68.2
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "film",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 13,
+        "capital_sites": 6,
+        "capital_sites_with_coordinates": 5,
+        "regions": {
+          "인천": 1,
+          "경기": 5,
+          "기타": 7
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            },
+            {
+              "facility_key": "jungang-gongju",
+              "distance_km": 79.8
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 68.2
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 9,
+        "capital_sites": 3,
+        "capital_sites_with_coordinates": 2,
+        "regions": {
+          "기타": 6,
+          "경기": 3
+        },
+        "sites": [
+          "bgf-yesan",
+          "changmaec-seongju",
+          "daesan-naju",
+          "greenpol-cheonan",
+          "hcr-paju",
+          "jinyoung-hwaseong",
+          "pne-eumseong",
+          "veolia-doksan-hwaseong",
+          "yongseong-gyeongsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 49.0
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 88.9
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 6.2
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 46.1
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 68.4
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 107.1
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 44.0
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 56.9
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 65.1
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 103.9
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "pellet",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 2,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "경기": 2
+        },
+        "sites": [
+          "bgf-hwaseong",
+          "veolia-dspl-hwaseong"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "pp",
+        "form": "rigid",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 14,
+        "capital_sites": 7,
+        "capital_sites_with_coordinates": 6,
+        "regions": {
+          "인천": 2,
+          "경기": 5,
+          "기타": 7
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "joongil-incheon",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 31.2
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 25.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 40.7
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 67.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 53.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "rigid",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 14,
+        "capital_sites": 7,
+        "capital_sites_with_coordinates": 6,
+        "regions": {
+          "인천": 2,
+          "경기": 5,
+          "기타": 7
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "joongil-incheon",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 31.2
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 25.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 40.7
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 67.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 53.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "scrap",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 14,
+        "capital_sites": 7,
+        "capital_sites_with_coordinates": 6,
+        "regions": {
+          "인천": 2,
+          "경기": 5,
+          "기타": 7
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "joongil-incheon",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 31.2
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 25.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 40.7
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 67.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 53.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "scrap",
+        "code": "51-03-07",
+        "status": "candidates",
+        "national_sites": 14,
+        "capital_sites": 7,
+        "capital_sites_with_coordinates": 6,
+        "regions": {
+          "인천": 2,
+          "경기": 5,
+          "기타": 7
+        },
+        "sites": [
+          "afrochem-asan",
+          "daejo-sangju",
+          "daewoon-naju",
+          "dakyeong-busan",
+          "ecoplus-yeongju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "joongil-incheon",
+          "jungang-gongju",
+          "npc-chemical-hwaseong",
+          "sarom-hwaseong-2",
+          "veolia-dh-yongin",
+          "youngshin-naju",
+          "youone-incheon"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 31.2
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 32.5
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 50.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 53.4
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 7.8
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 11.3
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 25.2
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 25.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 40.7
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 41.8
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 69.6
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 73.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "sarom-hwaseong-2",
+              "distance_km": 39.9
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 44.9
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 67.9
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 68.0
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "joongil-incheon",
+              "distance_km": 53.1
+            },
+            {
+              "facility_key": "youone-incheon",
+              "distance_km": 54.4
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            },
+            {
+              "facility_key": "npc-chemical-hwaseong",
+              "distance_km": 66.9
+            }
+          ]
+        }
+      },
+      {
+        "material": "pp",
+        "form": "shredded",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 9,
+        "capital_sites": 3,
+        "capital_sites_with_coordinates": 2,
+        "regions": {
+          "기타": 6,
+          "경기": 3
+        },
+        "sites": [
+          "bgf-yesan",
+          "changmaec-seongju",
+          "daesan-naju",
+          "greenpol-cheonan",
+          "hcr-paju",
+          "jinyoung-hwaseong",
+          "pne-eumseong",
+          "veolia-doksan-hwaseong",
+          "yongseong-gyeongsan"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 49.0
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 88.9
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 6.2
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 46.1
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 68.4
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 107.1
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 44.0
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 56.9
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "veolia-doksan-hwaseong",
+              "distance_km": 65.1
+            },
+            {
+              "facility_key": "bgf-yesan",
+              "distance_km": 103.9
+            }
+          ]
+        }
+      },
+      {
+        "material": "ps",
+        "form": "bale",
+        "code": "51-03-01",
+        "status": "no_route",
+        "national_sites": 0,
+        "capital_sites": 0,
+        "capital_sites_with_coordinates": 0,
+        "regions": {},
+        "sites": [],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "ps",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 5,
+        "capital_sites": 2,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "경기": 2,
+          "기타": 3
+        },
+        "sites": [
+          "changmaec-seongju",
+          "cntk-hwaseong",
+          "cntk-jinju",
+          "hcr-paju",
+          "pne-eumseong"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            }
+          ]
+        }
+      },
+      {
+        "material": "ps",
+        "form": "rigid",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 5,
+        "capital_sites": 4,
+        "capital_sites_with_coordinates": 2,
+        "regions": {
+          "경기": 4,
+          "기타": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "veolia-dh-yongin"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            }
+          ]
+        }
+      },
+      {
+        "material": "ps",
+        "form": "scrap",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 5,
+        "capital_sites": 4,
+        "capital_sites_with_coordinates": 2,
+        "regions": {
+          "경기": 4,
+          "기타": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju",
+          "hcr-paju",
+          "ilshin-anseong",
+          "veolia-dh-yongin"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 59.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 32.2
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 85.2
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 13.1
+            },
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            },
+            {
+              "facility_key": "ilshin-anseong",
+              "distance_km": 65.6
+            }
+          ]
+        }
+      },
+      {
+        "material": "ps",
+        "form": "shredded",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 5,
+        "capital_sites": 2,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "경기": 2,
+          "기타": 3
+        },
+        "sites": [
+          "changmaec-seongju",
+          "cntk-hwaseong",
+          "cntk-jinju",
+          "hcr-paju",
+          "pne-eumseong"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 25.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 63.4
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 6.1
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 92.9
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "hcr-paju",
+              "distance_km": 35.6
+            }
+          ]
+        }
+      },
+      {
+        "material": "pvc",
+        "form": "rigid",
+        "code": "51-03-03",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "경기": 1
+        },
+        "sites": [
+          "pureum-yangju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "pureum-yangju",
+              "distance_km": 33.8
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "pureum-yangju",
+              "distance_km": 75.8
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "pureum-yangju",
+              "distance_km": 21.8
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "pureum-yangju",
+              "distance_km": 99.3
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "pureum-yangju",
+              "distance_km": 33.0
+            }
+          ]
+        }
+      },
+      {
+        "material": "pvc",
+        "form": "wallpaper",
+        "code": "51-03-03",
+        "status": "candidates",
+        "national_sites": 1,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 1,
+        "regions": {
+          "경기": 1
+        },
+        "sites": [
+          "sungji-hwaseong"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [
+            {
+              "facility_key": "sungji-hwaseong",
+              "distance_km": 50.3
+            }
+          ],
+          "hwaseong": [
+            {
+              "facility_key": "sungji-hwaseong",
+              "distance_km": 16.2
+            }
+          ],
+          "paju": [
+            {
+              "facility_key": "sungji-hwaseong",
+              "distance_km": 73.9
+            }
+          ],
+          "anseong": [
+            {
+              "facility_key": "sungji-hwaseong",
+              "distance_km": 29.2
+            }
+          ],
+          "namyangju": [
+            {
+              "facility_key": "sungji-hwaseong",
+              "distance_km": 61.7
+            }
+          ]
+        }
+      },
+      {
+        "material": "san",
+        "form": "flake",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1,
+          "경기": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "san",
+        "form": "rigid",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "경기": 1,
+          "기타": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "san",
+        "form": "scrap",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "경기": 1,
+          "기타": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      },
+      {
+        "material": "san",
+        "form": "shredded",
+        "code": "51-03-01",
+        "status": "candidates",
+        "national_sites": 2,
+        "capital_sites": 1,
+        "capital_sites_with_coordinates": 0,
+        "regions": {
+          "기타": 1,
+          "경기": 1
+        },
+        "sites": [
+          "cntk-hwaseong",
+          "cntk-jinju"
+        ],
+        "top5_by_straight_line": {
+          "seoul": [],
+          "hwaseong": [],
+          "paju": [],
+          "anseong": [],
+          "namyangju": []
+        }
+      }
+    ]
+  }
+}

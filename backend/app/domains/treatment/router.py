@@ -52,6 +52,8 @@ def translate(error):
 
 
 async def with_classification(request):
+    # This legacy endpoint accepts search context, not authenticated law provenance.
+    request = request.model_copy(update={"recycling_basis": None})
     if request.classification_session_id is None or request.completed_transitions:
         return request
     types = await verified_recycling_types(

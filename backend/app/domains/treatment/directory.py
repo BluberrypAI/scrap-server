@@ -328,7 +328,7 @@ def load_codebook():
                 or not 1 <= r["page"] <= 14
                 or r["section"] not in {"business_non_designated", "household", "designated"}
                 or not isinstance(r["query_materials"], list)
-                or not set(r["query_materials"]) <= {"pe", "pp", "pet", "paper", "aluminium"}
+                or not set(r["query_materials"]) <= graph.MATERIAL_ALIASES.keys()
                 or r["match_kind"] not in {None, "code_category_only", "named_material_code_only"}
                 or bool(r["query_materials"]) != bool(r["match_kind"])
                 for r in rows

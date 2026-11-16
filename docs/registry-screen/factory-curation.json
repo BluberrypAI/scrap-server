@@ -1,0 +1,125 @@
+{
+  "source_url": "https://www.data.go.kr/data/15105482/fileData.do",
+  "source_sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+  "source_date": "2025-12-31",
+  "total_rows": 220705,
+  "rows": [
+    {
+      "facility_key": "hcr-paju",
+      "factory_record": {
+        "순번": "110263",
+        "회사명": "HCR Korea",
+        "단지명": " ",
+        "생산품": "PE,PP,PS,폐스트로폼원료를 이용한 펠렛",
+        "공장주소": "경기도 파주시 광탄면 수레길 415"
+      },
+      "registry_source_row": 2387,
+      "decision": "connected_research_candidate",
+      "reason": "재질별 등록 생산품과 공정 범위 수동 검토. 외부 반입·허가·현행 가동은 미확인"
+    },
+    {
+      "facility_key": "ilshin-anseong",
+      "factory_record": {
+        "순번": "114100",
+        "회사명": "(주)일신케미칼",
+        "단지명": " ",
+        "생산품": "PE.PP.PS 재생재료",
+        "공장주소": "경기도 안성시 원곡면 지문로 120-60 (총 2 필지) 외 1필지"
+      },
+      "registry_source_row": 9042,
+      "decision": "connected_research_candidate",
+      "reason": "재질별 등록 생산품과 공정 범위 수동 검토. 외부 반입·허가·현행 가동은 미확인"
+    },
+    {
+      "facility_key": "ecoplus-yeongju",
+      "factory_record": {
+        "순번": "177557",
+        "회사명": "주식회사 에코플러스",
+        "단지명": "영주장수농공단지",
+        "생산품": "PE,PP 분쇄품",
+        "공장주소": "경상북도 영주시 장수면 장수로220번길 47"
+      },
+      "registry_source_row": 8817,
+      "decision": "connected_research_candidate",
+      "reason": "재질별 등록 생산품과 공정 범위 수동 검토. 외부 반입·허가·현행 가동은 미확인"
+    },
+    {
+      "facility_key": "afrochem-asan",
+      "factory_record": {
+        "순번": "162997",
+        "회사명": "(주)아프로켐",
+        "단지명": " ",
+        "생산품": "분쇄 PE, PP",
+        "공장주소": "충청남도 아산시 음봉면 월암로 308"
+      },
+      "registry_source_row": null,
+      "decision": "connected_research_candidate",
+      "reason": "재질별 등록 생산품과 공정 범위 수동 검토. 외부 반입·허가·현행 가동은 미확인"
+    },
+    {
+      "facility_key": "daejo-sangju",
+      "factory_record": {
+        "순번": "179029",
+        "회사명": "대조산업",
+        "단지명": " ",
+        "생산품": "폴리에틸렌분쇄품,폴리프로필렌분쇄품",
+        "공장주소": "경상북도 상주시 함창읍 새잼이길 16 (총 6 필지) 외 5필지"
+      },
+      "registry_source_row": null,
+      "decision": "connected_research_candidate",
+      "reason": "재질별 등록 생산품과 공정 범위 수동 검토. 외부 반입·허가·현행 가동은 미확인"
+    },
+    {
+      "facility_key": "samsungchem-miryang",
+      "factory_record": {
+        "순번": "200542",
+        "회사명": "삼성케미칼",
+        "단지명": "밀양하남농공단지",
+        "생산품": "합성수지 분쇄품(PE관)",
+        "공장주소": "경상남도 밀양시 하남읍 양동농공단지길 65-10"
+      },
+      "registry_source_row": null,
+      "decision": "connected_research_candidate",
+      "reason": "재질별 등록 생산품과 공정 범위 수동 검토. 외부 반입·허가·현행 가동은 미확인"
+    },
+    {
+      "facility_key": "guil-hapcheon",
+      "factory_record": {
+        "순번": "207413",
+        "회사명": "주식회사 구일알앤씨",
+        "단지명": "합천율곡농공단지",
+        "생산품": "PE펠릿",
+        "공장주소": "경상남도 합천군 율곡면 임북길 175"
+      },
+      "registry_source_row": 1436,
+      "decision": "connected_research_candidate",
+      "reason": "재질별 등록 생산품과 공정 범위 수동 검토. 외부 반입·허가·현행 가동은 미확인"
+    },
+    {
+      "facility_key": "daesan-naju",
+      "factory_record": {
+        "순번": "13761",
+        "회사명": "(주)대산이엔지",
+        "단지명": "나주혁신일반산업단지",
+        "생산품": "재생pp월료 펠렛제품생산",
+        "공장주소": "전라남도 나주시 왕곡면 혁신산단6길 14"
+      },
+      "registry_source_row": null,
+      "decision": "connected_research_candidate",
+      "reason": "재질별 등록 생산품과 공정 범위 수동 검토. 외부 반입·허가·현행 가동은 미확인"
+    },
+    {
+      "facility_key": "yongseong-gyeongsan",
+      "factory_record": {
+        "순번": "181807",
+        "회사명": "용성케미칼",
+        "단지명": " ",
+        "생산품": "재생플라스틱원료(재생pe, pp펠렛)",
+        "공장주소": "경상북도 경산시 압량읍 가일리 482번지"
+      },
+      "registry_source_row": null,
+      "decision": "connected_research_candidate",
+      "reason": "재질별 등록 생산품과 공정 범위 수동 검토. 외부 반입·허가·현행 가동은 미확인"
+    }
+  ]
+}

@@ -269,7 +269,7 @@ async def test_directory_all_pages_remain_leads_and_are_stage_scoped(setup_flow,
     assert (await req("A", path, inquiry)).status_code == 409
 
 
-def test_broad_metal_can_requires_explicit_aluminium_form_and_pet_mismatch_stays_blocked():
+def test_broad_metal_can_requires_explicit_aluminium_and_pet_accepts_confirmed_resin_code():
     from app.domains.diagnosis.schemas import TreatmentSelectionIn
     from app.domains.diagnosis.treatment import context_from_handoff
     from tests.test_diagnosis_treatment import COMPANY
@@ -287,7 +287,7 @@ def test_broad_metal_can_requires_explicit_aluminium_form_and_pet_mismatch_stays
     d["handoff"]["waste_code"] = "51-03-01"
     assert (
         context_from_handoff(d, "C1", TreatmentSelectionIn(input_form="bottle"), COMPANY).status
-        == "unsupported"
+        == "ready"
     )
 
 

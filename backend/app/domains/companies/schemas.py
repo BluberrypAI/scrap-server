@@ -51,7 +51,19 @@ class CompanyFields(BaseModel):
     site_facilities: list[Name] = Field(min_length=1, examples=[["혼합시설", "세척시설"]])
 
 
-class CompanyCreate(CompanyFields):
+class SiteCoordinates(BaseModel):
+    site_latitude: float | None = Field(default=None, ge=-90, le=90, allow_inf_nan=False)
+    site_longitude: float | None = Field(default=None, ge=-180, le=180, allow_inf_nan=False)
+
+    @model_validator(mode="after")
+    def paired_coordinates(self):
+        supplied = self.model_fields_set & {"site_latitude", "site_longitude"}
+        if len(supplied) == 1 or (self.site_latitude is None) != (self.site_longitude is None):
+            raise ValueError("사업장 위도와 경도는 함께 지정하거나 함께 비워야 합니다")
+        return self
+
+
+class CompanyCreate(CompanyFields, SiteCoordinates):
     # 선택 항목. 보내지 않으면 빈 목록
     main_products: list[Name] = Field(default=[], examples=[["산업용 윤활유"]])
     main_waste_types: list[WasteTypeCreate] = []
@@ -64,7 +76,7 @@ class CompanyRead(BaseModel):
     industry: str
     site_name: str
     site_address: str
-    # 반경 검색 기준점. 지오코딩 전에는 null (입력받지 않음)
+    # 사용자가 확인한 사업장 위치. 미확인 시 null.
     site_latitude: float | None = None
     site_longitude: float | None = None
     site_facilities: list[str]
@@ -91,10 +103,16 @@ class CompanyRead(BaseModel):
 
 
 # Field names a PATCH may change. Also used as changed_fields values.
-EDITABLE_FIELDS = (*CompanyFields.model_fields, "main_products", "main_waste_types")
+EDITABLE_FIELDS = (
+    *CompanyFields.model_fields,
+    "main_products",
+    "main_waste_types",
+    "site_latitude",
+    "site_longitude",
+)
 
 
-class CompanyUpdate(BaseModel):
+class CompanyUpdate(SiteCoordinates):
     """Only the fields that are sent are changed. Unknown fields are rejected."""
 
     model_config = ConfigDict(extra="forbid")
@@ -114,7 +132,11 @@ class CompanyUpdate(BaseModel):
     @classmethod
     def _reject_null(cls, data: Any) -> Any:
         if isinstance(data, dict):
-            nulls = [f for f in EDITABLE_FIELDS if f in data and data[f] is None]
+            nulls = [
+                f
+                for f in EDITABLE_FIELDS
+                if f not in SiteCoordinates.model_fields and f in data and data[f] is None
+            ]
             if nulls:
                 raise ValueError(f"null로 바꿀 수 없음: {', '.join(nulls)}")
         return data

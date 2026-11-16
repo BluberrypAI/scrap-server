@@ -36,6 +36,8 @@ def test_runtime_import_resolves_every_foreign_key_without_test_model_imports():
         ],
         capture_output=True,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         check=False,
     )
     assert result.returncode == 0, result.stderr
@@ -73,7 +75,8 @@ async def test_model_failure_cannot_offer_and_can_retry(setup_flow, monkeypatch)
     available = True
     lot = (await req("A", f"/lots/{lot['id']}/candidates", body)).json()
     assert all(r["status"] == "needs_evidence" for r in lot["review"]["results"].values())
-    assert calls == [3, 3]
+    assert calls == [len(lot["review"]["results"])] * 2
+    assert calls[0] >= 6
 
 
 @pytest.fixture
@@ -222,7 +225,13 @@ async def save_output(req, lot, role, state, mass):
 @pytest.mark.parametrize("chain", [False, True])
 async def test_complete_direct_and_two_hops(setup_flow, chain, db):
     req, create, actors, packets = setup_flow
+    from tests.test_recycling_handoff import with_recycling
+
+    fake = FakeEngine()
+    fake.reply = httpx.Response(200, json=with_recycling())
+    app.dependency_overrides[get_engine_client] = fake.client
     lot = await create("scrap" if chain else "shredded")
+    assert lot["data"]["recycling"]["types"]["analysis"] == ["R-8-1", "R-10"]
     if chain:
         lot = await choose(req, lot, "A", "sarom-hwaseong-2")
         assert len(lot["offers"]) == 1  # C does not exist before B's observed output
@@ -263,6 +272,14 @@ async def test_complete_direct_and_two_hops(setup_flow, chain, db):
     assert waste.quantity_value == 1000  # original registration stays distinct from yield
     assert len(result["data"]["completed"]) == (2 if chain else 1)
     assert result["data"]["current"]["purity_percent"] is None
+    for packet in packets[0]["packets"]:
+        assert packet["recycling_types"]["analysis"] == ["R-8-1", "R-10"]
+        assert packet["recycling_basis"]["source_url"].startswith("https://www.law.go.kr/")
+    if chain:
+        for packet in packets[-1]["packets"]:
+            assert packet["recycling_types"] == {} and packet["waste_code"] is None
+            assert "recycling_basis" not in packet
+
     assert (await req("A", f"/lots/{lot['id']}", method="GET")).json()["status"] == "completed"
     assert (await req("D", f"/lots/{lot['id']}", method="GET")).status_code == 404
     assert len(packets) == (2 if chain else 1)
@@ -356,7 +373,8 @@ async def test_missing_lot_review_blocks_offer_despite_public_evidence(setup_flo
     ).status_code == 409
 
 
-async def test_legacy_visual_review_is_not_reused_or_offered(setup_flow, db):
+@pytest.mark.parametrize("missing", ["analysis_version", "recycling_checksum"])
+async def test_legacy_visual_review_is_not_reused_or_offered(setup_flow, db, missing):
     from app.domains.transport.models import WorkflowLot
 
     req, create, _, calls = setup_flow
@@ -367,7 +385,7 @@ async def test_legacy_visual_review_is_not_reused_or_offered(setup_flow, db):
     key = next(iter(lot["review"]["results"]))
     saved = await db.get(WorkflowLot, uuid.UUID(lot["id"]))
     legacy = dict(saved.review)
-    legacy.pop("analysis_version")
+    legacy.pop(missing)
     saved.review = legacy
     await db.commit()
     assert (await req("A", path + "/offers", {**body, "capability_key": key})).status_code == 409
@@ -560,12 +578,12 @@ async def test_pe_film_shredded_output_is_not_final(setup_flow, db):
     ).status_code == 409
     lot = (await req("B", f"/lots/{lot['id']}/candidates", {"revision": lot["revision"]})).json()
     options = {o["transition_key"] for o in lot["review"]["next_step"]["options"]}
-    assert options == {"pe-clean"}
+    assert options == {"pe-clean", "pe-shredded-to-pellet", "pe-flake-repelletise"}
 
 
 @pytest.mark.parametrize(
     "material, code, form",
-    [("pet", "51-03-01", "bottle"), ("pp", "51-03-01", "film"), ("pe", "51-03-01", "scrap")],
+    [("pvc", "51-03-01", "wallpaper"), ("eps", "51-03-01", "ingot"), ("pa66", "51-03-08", "net")],
 )
 async def test_unsupported_material_form_is_rejected(setup_flow, db, material, code, form):
     req, _, actors, _ = setup_flow

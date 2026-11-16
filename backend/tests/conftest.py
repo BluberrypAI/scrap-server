@@ -8,6 +8,13 @@ os.environ.update(
     GOOGLE_CLIENT_ID="test-google-client",
     MICROSOFT_CLIENT_ID="test-microsoft-client",
     FRONTEND_URL="http://frontend.test",
+    # Unit tests must not inherit real engine endpoints/tokens from Docker Compose.
+    # Live integration probes run separately against explicitly configured services.
+    AI_BASE_URL="",
+    CLASSIFICATION_BASE_URL="",
+    DIAGNOSIS_ENGINE_URL="",
+    ENGINE_SERVICE_TOKEN="",
+    SCRAP_INTAKE_SERVICE_TOKEN="",
 )
 
 from collections.abc import AsyncIterator  # noqa: E402

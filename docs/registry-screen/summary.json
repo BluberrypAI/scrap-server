@@ -1,0 +1,19 @@
+{
+  "source_url": "https://www.data.go.kr/data/15114147/standard.do",
+  "source_sha256": "b083ea497c37bb11bd9374fc0a5b0850b989d290dbdba9d4a713fef353e79c08",
+  "registry_rows": 9604,
+  "plastic_rows": 4359,
+  "exact_name_address_clusters": 3839,
+  "business_roles": {
+    "transport_only": 2119,
+    "recycling": 2084,
+    "disposal": 156
+  },
+  "recycler_clusters": 1935,
+  "priorities": {
+    "3_not_recycler": 2275,
+    "2_process_source_needed": 1622,
+    "1_equipment_review": 462
+  },
+  "policy": "Every selected row is unverified. Codes/equipment do not establish resin, intake form, current permits or acceptance. No automatic capability import."
+}

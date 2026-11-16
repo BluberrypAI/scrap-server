@@ -20,6 +20,7 @@ from app.core.errors import AppError, ErrorCode
 from app.db.session import DbSession
 from app.domains.companies.models import Company
 from app.domains.diagnosis.client import Engine
+from app.domains.diagnosis.recycling import recycling_for_handoff, route_recycling
 from app.domains.diagnosis.router import CompanyId
 from app.domains.diagnosis.schemas import TreatmentSelectionIn
 from app.domains.diagnosis.treatment import treatment_context
@@ -32,6 +33,7 @@ from app.domains.transport.models import (
 from app.domains.treatment.conditions import attach_answers, published_conditions, questionnaire
 from app.domains.treatment.directory import project
 from app.domains.treatment.intake import IntakeSelection, build_intake_batch, review_intakes
+from app.domains.treatment.material_scope import FINISH_STATES, LOT_STARTS
 from app.domains.treatment.process import next_step
 from app.domains.treatment.reference import digest
 from app.domains.treatment.repository import read_reference, read_registry
@@ -47,23 +49,9 @@ from app.domains.wastes.models import (
 
 router = APIRouter(prefix="/workflow", tags=["transport"])
 
-# 문진(scrap-diagnosis)과 처리경로(scrap-route)가 함께 지원하는 재질·형태만 인계한다.
-# (재질, 형태) → 참조 자료의 시작 상태
-LOT_STARTS = {
-    ("pp", "scrap"): "pp-scrap",
-    ("pp", "shredded"): "pp-shredded",
-    ("pe", "film"): "pe-scrap",
-    ("aluminium", "can"): "al-used-can",
-    ("pet", "bottle"): "pet-bottle",  # Only a compatible confirmed code passes treatment_context.
-}
-# 완료로 인정하는 실제 산출물. 파쇄품은 카탈로그 종료 표시가 있어도 완료로 보지 않는다.
-FINISH_STATES = {
-    "pp": {"pp-pellet", "pp-compound"},
-    "pe": {"pe-pellet", "pe-compound"},
-    "aluminium": {"al-sheet", "al-sheet-ingot"},
-    "pet": {"pet-flake", "pet-pellet"},
-}
-MATERIAL_LABELS = {"pp": "PP", "pe": "PE", "aluminium": "알루미늄", "pet": "PET"}
+MATERIAL_LABELS = {material: material.upper() for material in FINISH_STATES}
+MATERIAL_LABELS["aluminium"] = "알루미늄"
+MATERIAL_LABELS["ferrous"] = "철계 자원"
 
 
 class Body(BaseModel):
@@ -72,9 +60,28 @@ class Body(BaseModel):
 
 class CreateLot(Body):
     diagnosis_id: str = Field(pattern=r"^[A-Za-z0-9_-]{1,64}$")
-    input_form: Literal["scrap", "shredded", "film", "bottle", "can"]
+    input_form: Literal[
+        "scrap",
+        "rigid",
+        "shredded",
+        "flake",
+        "pellet",
+        "bale",
+        "film",
+        "bottle",
+        "can",
+        "wallpaper",
+        "ingot",
+        "net",
+        "foam",
+        "buoy",
+        "drum",
+        "film-bale",
+    ]
     mass_kg: float = Field(gt=0, le=1e9, allow_inf_nan=False)
     condition: str = Field(min_length=3, max_length=1500)
+    solid_confirmed: bool = Field(default=False, strict=True)
+    material_detail: str | None = Field(default=None, max_length=40)
 
 
 class Version(Body):
@@ -269,15 +276,20 @@ async def create_lot(body: CreateLot, company_id: CompanyId, db: DbSession, engi
     if existing:
         return await view(db, existing, cid)
     ctx = await treatment_context(
-        engine, db, company_id, body.diagnosis_id, TreatmentSelectionIn(input_form=body.input_form)
+        engine,
+        db,
+        company_id,
+        body.diagnosis_id,
+        TreatmentSelectionIn(
+            input_form=body.input_form,
+            solid_confirmed=body.solid_confirmed,
+            material_detail=body.material_detail,
+        ),
     )
     material = (ctx.route_input or {}).get("material")
     start = LOT_STARTS.get((material, (ctx.route_input or {}).get("input_form")))
     if ctx.status != "ready" or start is None:
-        fail(
-            "기업 인계는 확정된 일반 문진 중 PP 사출 잔재·파쇄품, PE 필름, "
-            "알루미늄 음료캔, 분류번호가 공정 자료와 일치하는 PET병만 지원합니다."
-        )
+        fail("확정 분류번호·세부 재질·현재 형태가 공정 자료와 일치해야 물량을 등록할 수 있습니다.")
     waste = Waste(
         company_id=cid,
         name=f"{MATERIAL_LABELS[material]} 자원순환",
@@ -299,8 +311,13 @@ async def create_lot(body: CreateLot, company_id: CompanyId, db: DbSession, engi
         status="ready",
         data={
             "handoff": ctx.handoff,
+            "recycling": ctx.recycling,
             "warnings": ctx.warnings,
             "initial": ctx.route_input,
+            "sender_confirmations": {
+                "solid_confirmed": body.solid_confirmed,
+                "material_detail": body.material_detail,
+            },
             "completed": [],
             "current": {
                 "state_key": start,
@@ -405,6 +422,7 @@ def process_request(lot):
         waste_code=initial["waste_code"],
         material=initial["material"],
         input_form=initial["input_form"],
+        **(route_recycling(lot.data.get("recycling")) if not lot.data["completed"] else {}),
         completed_transitions=[s["transition_key"] for s in lot.data["completed"]],
         observed_output={
             k: lot.data["current"].get(k) for k in ("state_key", "mass_kg", "purity_percent")
@@ -415,20 +433,48 @@ def process_request(lot):
 
 
 @router.post("/lots/{key}/candidates")
-async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: DbSession):
+async def candidates(
+    key: uuid.UUID, body: Version, company_id: CompanyId, db: DbSession, engine: Engine
+):
     cid = uuid.UUID(company_id)
     lot = await lot_for(db, key, cid)
     active(lot, cid, {"ready", "processed"})
     version(lot, body.revision)
+    if not lot.data["completed"]:
+        # Re-read the authenticated engine supplement. Never edit the original verdict.
+        diagnosis_id = lot.diagnosis_id
+        original_handoff = deepcopy(lot.data["handoff"])
+        await db.rollback()
+        detail = (await engine.request("GET", f"/cases/{diagnosis_id}", company_id)).body
+        lot = await lot_for(db, key, cid)
+        active(lot, cid, {"ready", "processed"})
+        version(lot, body.revision)
+        if (
+            detail.get("case", {}).get("status") != "CODE_CONFIRMED"
+            or detail.get("handoff") != original_handoff
+        ):
+            fail("문진 결과가 바뀌었습니다. 새 분류 결과로 물량을 등록해 주세요.")
+        data = deepcopy(lot.data)
+        data["recycling"] = recycling_for_handoff(detail)
+        data["initial"].update(route_recycling(data["recycling"]))
+        lot.data = data
+    recycling_value = deepcopy(lot.data.get("recycling"))
+    recycling_checksum = digest(None if lot.data["completed"] else recycling_value)
     ref, reference_checksum = await read_reference(db)
     conditions_checksum = digest(published_conditions())
+    current_company = await db.get(Company, cid)
+    origin_version = current_company.profile_version
+    origin_label = current_company.site_name
     if (
         lot.review
         and lot.review.get("version") == "lot-vision-v1"
         and lot.review.get("analysis_version") == "isolated-vision-v2"
         and lot.review.get("conditions_version") == "intake-questions-v1"
+        and lot.review.get("recycling_checksum") == recycling_checksum
         and lot.review.get("reference_checksum") == reference_checksum
         and lot.review.get("conditions_checksum") == conditions_checksum
+        and lot.review.get("origin_company_id") == str(cid)
+        and lot.review.get("origin_profile_version") == origin_version
         and all(
             r.get("status") in {"reviewed", "needs_evidence"}
             and (r.get("lot_review") or {}).get("status") == "reviewed"
@@ -439,7 +485,6 @@ async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: D
     ):
         return await view(db, lot, cid)
     request = process_request(lot)
-    current_company = await db.get(Company, cid)
     if current_company.site_latitude is not None and current_company.site_longitude is not None:
         from app.domains.treatment.schemas import Coordinates
 
@@ -485,9 +530,26 @@ async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: D
             }
     await db.rollback()
     reviewed = await review_intakes(packets, get_settings(), lot_context=lot_context)
+    if not request.completed_transitions:
+        latest = (await engine.request("GET", f"/cases/{diagnosis_id}", company_id)).body
+        if (
+            latest.get("case", {}).get("status") != "CODE_CONFIRMED"
+            or latest.get("handoff") != original_handoff
+            or digest(recycling_for_handoff(latest)) != recycling_checksum
+        ):
+            fail("AI 검토 중 분류 또는 R유형 자료가 바뀌었습니다. 다시 검토해 주세요.")
+
+    current_company = await db.get(Company, cid, populate_existing=True)
+    if current_company.profile_version != origin_version:
+        fail("사업장 정보가 바뀌었습니다. 업체를 다시 검토해 주세요.")
     lot = await lot_for(db, key, cid, lock=True)
     active(lot, cid, {"ready", "processed"})
     version(lot, body.revision)
+    if not lot.data["completed"]:
+        data = deepcopy(lot.data)
+        data["recycling"] = recycling_value
+        data["initial"].update(route_recycling(recycling_value))
+        lot.data = data
     output = result.model_dump(mode="json")
     bindings = {b.facility_key: b for b in await db.scalars(select(WorkflowFacilityAccount))}
     for option in output["options"]:
@@ -516,7 +578,12 @@ async def candidates(key: uuid.UUID, body: Version, company_id: CompanyId, db: D
         "analysis_version": "isolated-vision-v2",
         "conditions_version": "intake-questions-v1",
         "reference_checksum": reference_checksum,
+        "recycling_checksum": recycling_checksum,
         "conditions_checksum": conditions_checksum,
+        "origin_company_id": str(cid),
+        "origin_profile_version": origin_version,
+        "origin_label": origin_label,
+        "origin": request.origin.model_dump() if request.origin else None,
         "next_step": output,
         "results": reviewed.model_dump()["results"],
         "at": datetime.now(UTC).isoformat(),
@@ -691,6 +758,10 @@ async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSess
         "conditions_checksum"
     ) != digest(published_conditions()):
         fail("공정·반입조건 자료가 바뀌었거나 구버전 검토입니다. 업체 검토를 다시 실행해 주세요.")
+    if review.get("recycling_checksum") != digest(
+        None if lot.data["completed"] else lot.data.get("recycling")
+    ):
+        fail("재활용 유형 전달 전의 검토입니다. 업체 검토를 다시 실행해 주세요.")
     found = [
         (o, f)
         for o in review.get("next_step", {}).get("options", [])

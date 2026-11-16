@@ -62,7 +62,7 @@ def _apply_changes(company: Company, data: CompanyUpdate) -> list[str]:
 
     for field in EDITABLE_FIELDS:
         value = getattr(data, field)
-        if field not in sent or value is None:
+        if field not in sent:
             continue
         if field == "main_waste_types":
             new = _waste_types(value)
@@ -75,6 +75,12 @@ def _apply_changes(company: Company, data: CompanyUpdate) -> list[str]:
         setattr(company, field, value)
         changed.append(field)
 
+    # An old point must not follow a newly entered address.
+    if "site_address" in changed and "site_latitude" not in sent:
+        for field in ("site_latitude", "site_longitude"):
+            if getattr(company, field) is not None:
+                setattr(company, field, None)
+                changed.append(field)
     return changed
 
 

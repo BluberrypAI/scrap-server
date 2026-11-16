@@ -64,18 +64,24 @@ class ReopenIn(_Body):
 
 
 class TreatmentSelectionIn(BaseModel):
-    """Only a missing physical form is supplied by the browser."""
+    """Missing form and constrained submaterial confirmations, never a verdict."""
 
     model_config = ConfigDict(extra="forbid")
     input_form: str | None = Field(default=None, max_length=80)
+    solid_confirmed: bool = Field(default=False, strict=True)
+    material_detail: str | None = Field(default=None, max_length=40)
 
 
 class TreatmentContextRead(BaseModel):
+    recycling: dict[str, Any] | None = None
     status: Literal["needs_input", "review_required", "unsupported", "ready"]
     message: str
     case_id: str
     handoff: dict[str, Any] | None = None
     available_forms: list[dict[str, str]] = Field(default_factory=list)
+    available_materials: list[dict[str, str]] = Field(default_factory=list)
+    selected_material: str | None = None
+    requires_solid_confirmation: bool = False
     origin: dict[str, float] | None = None
     origin_label: str | None = None
     warnings: list[str] = Field(default_factory=list)

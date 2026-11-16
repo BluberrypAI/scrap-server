@@ -45,9 +45,9 @@ async def test_profile_starts_team_classifier_with_known_facts_only(
 @pytest.mark.parametrize(
     ("code", "material", "form"),
     [
-        ("51-03-01", "PP", "film"),
-        ("51-03-07", "PP", "scrap"),
-        ("51-03-07", "PET", "bale"),
+        ("51-03-01", "PVC", "wallpaper"),
+        ("51-03-01", "EPS", "ingot"),
+        ("51-03-08", "PA66", "net"),
         ("51-29-03", "aluminium", "scrap"),
     ],
 )
