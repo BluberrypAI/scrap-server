@@ -89,6 +89,7 @@
 | T-158 | 추가 근거 12개·PE/PS 베일 재조사 및 수도권 후보 후속 검증 | 완료 | api-developer | intake-evidence-followup | 화성 LDPE 필름 1사업장·1연결, 원문5개 추가. 기존12중1개 근거 확인·11개 보류. 18문진·59웹·212HTTP, Azure142응답/124고유 연결. 일반 PE·PS 베일 반입 근거 확보는 T-149에서 계속. [결과·한계](intake-evidence-followup-validation-20261116.md) |
 | T-159 | 최신 UI 로그인부터 PP A→B / A→B→C 완료 재검사 | 진행 | test-engineer | e2e-release-20261117 | 개발용 별도 기업 계정으로 문진·사진·전체 후보 Azure 검토·조건부 수락·자료 제출·QR 2회·완료·A 이력까지 웹 통과. UI 상태 갱신·문진 초기 성능·서버 대기 설정 수정. Google/Microsoft OAuth는 인증정보 미설정으로 미검증. [검증 범위와 남은 조건](full-login-e2e-20261117.md) |
 | T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |
+| T-160 | 최신 통합 PP 재시험·부분 AI 재시도·선택적 도로거리 | 진행 | api-developer / test-engineer | road-distance | 새 PP 직접/두 단계 웹 완료. Azure 14/14·9/9, 기존 12개 결과 보존 후 2개 시간초과 복구. 서버 504·웹 66·재시작 공유 15검사 통과. 도로 API 모의 검증 완료, 활성 키로 실제 값 확인은 남음. [최신 결과](final-integrated-e2e-20261117.md) |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |
 | T-502 | 배포 대상 결정 (App Service 기본안) 및 배포 | 대기 | 사람 | - | T-008 이후 |
 

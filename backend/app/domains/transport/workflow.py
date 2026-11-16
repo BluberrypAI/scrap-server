@@ -1,5 +1,6 @@
 """Company-owned material handoffs. Recorded observations, never browser-built history."""
 
+import asyncio
 import base64
 import hashlib
 import io
@@ -32,11 +33,18 @@ from app.domains.transport.models import (
 )
 from app.domains.treatment.conditions import attach_answers, published_conditions, questionnaire
 from app.domains.treatment.directory import project
-from app.domains.treatment.intake import IntakeSelection, build_intake_batch, review_intakes
+from app.domains.treatment.intake import (
+    IntakeBatchResult,
+    IntakeResult,
+    IntakeSelection,
+    build_intake_batch,
+    review_intakes,
+)
 from app.domains.treatment.material_scope import FINISH_STATES, LOT_STARTS
 from app.domains.treatment.process import next_step
 from app.domains.treatment.reference import digest
 from app.domains.treatment.repository import read_reference, read_registry
+from app.domains.treatment.road_distance import distance_version, enrich_road_distances
 from app.domains.treatment.schemas import FacilitySearchRequest, NextStepRequest
 from app.domains.wastes.models import (
     CheckRole,
@@ -48,6 +56,7 @@ from app.domains.wastes.models import (
 )
 
 router = APIRouter(prefix="/workflow", tags=["transport"])
+PARTIAL_RETRY_TIMEOUT = 175
 
 MATERIAL_LABELS = {material: material.upper() for material in FINISH_STATES}
 MATERIAL_LABELS["aluminium"] = "알루미늄"
@@ -465,6 +474,7 @@ async def candidates(
     current_company = await db.get(Company, cid)
     origin_version = current_company.profile_version
     origin_label = current_company.site_name
+    reusable = {}
     if (
         lot.review
         and lot.review.get("version") == "lot-vision-v1"
@@ -475,15 +485,23 @@ async def candidates(
         and lot.review.get("conditions_checksum") == conditions_checksum
         and lot.review.get("origin_company_id") == str(cid)
         and lot.review.get("origin_profile_version") == origin_version
-        and all(
-            r.get("status") in {"reviewed", "needs_evidence"}
+        and lot.review.get("distance_version") == distance_version()
+    ):
+        reusable = {
+            k: IntakeResult.model_validate(r)
+            for k, r in lot.review.get("results", {}).items()
+            if r.get("status") in {"reviewed", "needs_evidence"}
             and (r.get("lot_review") or {}).get("status") == "reviewed"
             and (r.get("lot_review") or {}).get("observation_method")
             in {"isolated_vision", "no_photo"}
-            for r in lot.review.get("results", {}).values()
-        )
-    ):
-        return await view(db, lot, cid)
+        }
+        expected = {
+            f["capability_key"]
+            for o in lot.review.get("next_step", {}).get("options", [])
+            for f in o.get("facilities", [])
+        }
+        if expected and expected == set(reusable):
+            return await view(db, lot, cid)
     request = process_request(lot)
     if current_company.site_latitude is not None and current_company.site_longitude is not None:
         from app.domains.treatment.schemas import Coordinates
@@ -529,7 +547,48 @@ async def candidates(
                 for k, v in answers.items()
             }
     await db.rollback()
-    reviewed = await review_intakes(packets, get_settings(), lot_context=lot_context)
+    pending = [p for p in packets if p["capability_key"] not in reusable]
+    if reusable and pending:
+        # A repeated two-candidate timeout must not keep both candidates coupled.
+        # Retry individual candidates, with bounded concurrency and a shared budget.
+        recovered = {}
+        semaphore = asyncio.Semaphore(3)
+
+        async def retry_one(packet):
+            async with semaphore:
+                response = await review_intakes([packet], get_settings(), lot_context=lot_context)
+                recovered.update(response.results)
+
+        tasks = [asyncio.create_task(retry_one(p)) for p in pending]
+        try:
+            await asyncio.wait_for(asyncio.gather(*tasks), timeout=PARTIAL_RETRY_TIMEOUT)
+        except TimeoutError:
+            pass
+        finally:
+            for task in tasks:
+                if not task.done():
+                    task.cancel()
+            await asyncio.gather(*tasks, return_exceptions=True)
+        reviewed = IntakeBatchResult(
+            results={
+                p["capability_key"]: recovered.get(
+                    p["capability_key"],
+                    IntakeResult(status="model_unavailable", next_check=p["next_check"]),
+                )
+                for p in pending
+            }
+        )
+    else:
+        reviewed = await review_intakes(pending, get_settings(), lot_context=lot_context)
+    reviewed.results = {
+        **{
+            p["capability_key"]: reusable[p["capability_key"]]
+            for p in packets
+            if p["capability_key"] in reusable
+        },
+        **reviewed.results,
+    }
+    await enrich_road_distances(result, request.origin)
     if not request.completed_transitions:
         latest = (await engine.request("GET", f"/cases/{diagnosis_id}", company_id)).body
         if (
@@ -581,6 +640,7 @@ async def candidates(
         "recycling_checksum": recycling_checksum,
         "conditions_checksum": conditions_checksum,
         "origin_company_id": str(cid),
+        "distance_version": distance_version(),
         "origin_profile_version": origin_version,
         "origin_label": origin_label,
         "origin": request.origin.model_dump() if request.origin else None,

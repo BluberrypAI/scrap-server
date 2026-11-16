@@ -79,6 +79,57 @@ async def test_model_failure_cannot_offer_and_can_retry(setup_flow, monkeypatch)
     assert calls[0] >= 6
 
 
+@pytest.mark.parametrize("timeout_retry", [False, True])
+async def test_partial_review_retries_only_failed_candidates(
+    setup_flow, monkeypatch, timeout_retry
+):
+    req, create, _, _ = setup_flow
+    lot = await create()
+    calls = []
+
+    async def review(packets, settings, *, lot_context=None):
+        keys = [p["capability_key"] for p in packets]
+        calls.append(keys)
+        if timeout_retry and len(calls) == 3:
+            import asyncio
+
+            await asyncio.sleep(1)
+        failed = set(keys[-2:]) if len(calls) == 1 else set()
+        return IntakeBatchResult(
+            results={
+                key: IntakeResult(
+                    status="model_unavailable" if key in failed else "needs_evidence",
+                    next_check="수신 기업 확인 필요",
+                    lot_review=LotReview(
+                        status="model_unavailable" if key in failed else "reviewed",
+                        observation_method="no_photo",
+                    ),
+                )
+                for key in keys
+            }
+        )
+
+    monkeypatch.setattr("app.domains.transport.workflow.review_intakes", review)
+    if timeout_retry:
+        monkeypatch.setattr("app.domains.transport.workflow.PARTIAL_RETRY_TIMEOUT", 0.05)
+    body = {"revision": lot["revision"]}
+    first = (await req("A", f"/lots/{lot['id']}/candidates", body)).json()
+    second = (await req("A", f"/lots/{lot['id']}/candidates", body)).json()
+    assert calls[1:] == [[key] for key in calls[0][-2:]]
+    assert set(second["review"]["results"]) == set(calls[0])
+    for key in calls[0][:-2]:
+        assert first["review"]["results"][key] == second["review"]["results"][key]
+    if timeout_retry:
+        assert second["review"]["results"][calls[0][-1]]["status"] == "model_unavailable"
+        assert second["review"]["results"][calls[0][-2]]["lot_review"]["status"] == "reviewed"
+        return
+    assert all(
+        r["lot_review"]["status"] == "reviewed" for r in second["review"]["results"].values()
+    )
+    await req("A", f"/lots/{lot['id']}/candidates", body)
+    assert len(calls) == 3
+
+
 @pytest.fixture
 async def setup_flow(client, db, monkeypatch):
     actors = {}
@@ -223,10 +274,25 @@ async def save_output(req, lot, role, state, mass):
 
 
 @pytest.mark.parametrize("chain", [False, True])
-async def test_complete_direct_and_two_hops(setup_flow, chain, db):
+async def test_complete_direct_and_two_hops(setup_flow, chain, db, monkeypatch):
     req, create, actors, packets = setup_flow
+    from app.domains.companies.models import Company
+    from app.domains.treatment.road_distance import enrich_road_distances
     from tests.test_recycling_handoff import with_recycling
 
+    origins = []
+    for role, lat, lon in [("A", 37.16, 126.9), ("B", 37.22, 126.97)]:
+        company = await db.get(Company, uuid.UUID(actors[role][1]))
+        company.site_latitude, company.site_longitude = lat, lon
+    await db.commit()
+
+    async def capture_distance_origin(result, origin):
+        origins.append((origin.latitude, origin.longitude))
+        return await enrich_road_distances(result, origin)
+
+    monkeypatch.setattr(
+        "app.domains.transport.workflow.enrich_road_distances", capture_distance_origin
+    )
     fake = FakeEngine()
     fake.reply = httpx.Response(200, json=with_recycling())
     app.dependency_overrides[get_engine_client] = fake.client
@@ -283,6 +349,7 @@ async def test_complete_direct_and_two_hops(setup_flow, chain, db):
     assert (await req("A", f"/lots/{lot['id']}", method="GET")).json()["status"] == "completed"
     assert (await req("D", f"/lots/{lot['id']}", method="GET")).status_code == 404
     assert len(packets) == (2 if chain else 1)
+    assert origins == ([(37.16, 126.9), (37.22, 126.97)] if chain else [(37.16, 126.9)])
     assert packets[0]["lot_context"]["mass_kg"] == 1000
     if chain:
         assert packets[1]["lot_context"]["mass_kg"] == 950

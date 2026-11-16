@@ -97,6 +97,13 @@ class NextFacility(BaseModel):
     location: Coordinates | None = None
     location_source_url: str | None = None
     straight_line_distance_km: float | None = None
+    road_distance_km: float | None = None
+    road_duration_seconds: float | None = None
+    road_distance_status: Literal[
+        "not_requested", "not_configured", "missing_location", "available", "unavailable"
+    ] = "not_requested"
+    road_distance_provider: Literal["kakao"] | None = None
+    road_distance_checked_at: str | None = None
     distance_rank: int | None = None
     intake_review: IntakeReview | None = None
     handoff_verification: HandoffVerification | None = None
