@@ -1,0 +1,80 @@
+[
+  {
+    "material": "pp-pe",
+    "provider": "public-web-review",
+    "leads": [
+      {
+        "site": "DS PCR 함안공장",
+        "address": "경상남도 함안군 군북면 월촌공단로 100",
+        "process": "재생 PP 원료 생산이 공개돼 있습니다. 외부 폐PP 반입 형태와 현장 처리 범위를 확인해야 합니다.",
+        "url": "https://www.dsdansuk.com/company/status/"
+      },
+      {
+        "site": "DS PCR 영천공장",
+        "address": "경상북도 영천시 금호읍 오계공단길 43",
+        "process": "PCR 플라스틱 및 컴파운드 생산 거점입니다. PP 투입 규격과 미가공 폐수지 반입 여부를 확인해야 합니다.",
+        "url": "https://www.dsdansuk.com/company/status/"
+      },
+      {
+        "site": "지이케미칼 재활용 사업장",
+        "address": null,
+        "process": "시설 건설 사례에 PE·PP 베일 선별·분쇄·세척이 나옵니다. 반입 사업장 주소와 현재 운영 조건 확인이 필요합니다.",
+        "url": "https://www.hanmiglobal.com/sustainability/2024/assets/downloads/2023%20%EC%A7%80%EC%86%8D%EA%B0%80%EB%8A%A5%EA%B2%BD%EC%98%81%20%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf"
+      },
+      {
+        "site": "디와이 리사이클링 원주",
+        "address": "강원특별자치도 원주시",
+        "process": "과거 자료에서 폐기물 선별·고형연료 시설이 확인됩니다. PP·PE 물질재활용 라인의 가동 여부와 실제 운영 주체는 확인이 필요합니다.",
+        "url": "https://www.veolia.kr/ko/diwai-lisaikeulling"
+      }
+    ]
+  },
+  {
+    "material": "pet",
+    "provider": "public-web-review",
+    "leads": [
+      {
+        "site": "수퍼빈 아이엠팩토리 순창",
+        "address": "전북특별자치도 순창군 금과면 서암로 201",
+        "process": "화성에서 생산한 PET 플레이크를 펠릿으로 가공합니다. 외부 플레이크 인수 여부 확인이 필요합니다.",
+        "url": "https://superbin.co.kr/news/266"
+      },
+      {
+        "site": "디와이폴리머 고령",
+        "address": "경상북도 고령군",
+        "process": "공공 계획 자료가 PET에서 재생 식품용기 원료로 이어지는 사업 사례로 소개합니다. 정확한 설비와 반입 조건은 확인이 필요합니다.",
+        "url": "https://www.pcccr.go.kr/storage/board/base/2024/07/10/BOARD_ATTACH_1720569838185.pdf"
+      },
+      {
+        "site": "알엠 오산공장",
+        "address": "경기도 오산시 동부대로 291-12",
+        "process": "오산에서 PET를 압축하고 화성으로 넘겨 후속 가공하는 공개 사례가 있습니다. 현재 외부 물량 인수 여부 확인이 필요합니다.",
+        "url": "https://news.nate.com/view/20250704n16665"
+      },
+      {
+        "site": "지이케미칼 재활용 사업장",
+        "address": null,
+        "process": "시설 건설 사례에 압축 PET 선별·분쇄·세척 및 플레이크 생산이 나옵니다. 반입 사업장 주소와 현재 운영 조건 확인이 필요합니다.",
+        "url": "https://www.hanmiglobal.com/sustainability/2024/assets/downloads/2023%20%EC%A7%80%EC%86%8D%EA%B0%80%EB%8A%A5%EA%B2%BD%EC%98%81%20%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf"
+      }
+    ]
+  },
+  {
+    "material": "al-can",
+    "provider": "public-web-review",
+    "leads": [
+      {
+        "site": "포스코엠텍 알루미늄공장",
+        "address": "경상북도 포항시 남구 철강로 431",
+        "process": "협업 사례에 선별된 알루미늄 캔을 탈산제로 재활용하는 경로가 나옵니다. 실제 반입 사업장과 일반 물량 접수 여부 확인이 필요합니다.",
+        "url": "https://cjnews.cj.net/?p=52011"
+      },
+      {
+        "site": "현대자원산업 화성",
+        "address": "경기도 화성시 남양읍 신남로 104-17",
+        "process": "사업장 공고에 폐알루미늄 음료캔 선별·가공이 나옵니다. 후속 용해 시설과 반입 규격은 확인이 필요합니다.",
+        "url": "https://www.theteams.kr/recruit/wanted/3824352"
+      }
+    ]
+  }
+]

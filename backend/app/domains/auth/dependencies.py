@@ -1,8 +1,9 @@
 from typing import Annotated
 
-from fastapi import Cookie, Depends, HTTPException, status
+from fastapi import Cookie, Depends
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
+from app.core.errors import AuthRequiredError
 from app.core.security import InvalidTokenError, decode_token
 from app.db.session import DbSession
 from app.domains.auth.cookies import ACCESS_COOKIE
@@ -18,18 +19,16 @@ async def get_current_user(
     access_cookie: str | None = Cookie(default=None, alias=ACCESS_COOKIE),
 ) -> User:
     token = credentials.credentials if credentials else access_cookie
-    unauthorized = HTTPException(
-        status.HTTP_401_UNAUTHORIZED, "Not authenticated", headers={"WWW-Authenticate": "Bearer"}
-    )
     if not token:
-        raise unauthorized
+        raise AuthRequiredError
     try:
         user_id = decode_token(token, "access")
     except InvalidTokenError:
-        raise unauthorized from None
+        raise AuthRequiredError from None
     user = await user_repo.get_user(db, user_id)
-    if user is None:
-        raise unauthorized
+    # Withdrawn users are cut off at once, even with an unexpired access token.
+    if user is None or user.is_withdrawn:
+        raise AuthRequiredError
     return user
 
 

@@ -39,3 +39,8 @@ async def get_db() -> AsyncIterator[AsyncSession]:
 
 
 DbSession = Annotated[AsyncSession, Depends(get_db)]
+
+
+def get_session_factory() -> async_sessionmaker[AsyncSession]:
+    """요청이 끝난 뒤 도는 작업(검토 실행 워커)이 자기 세션을 열 때 씀. 테스트에서 교체함."""
+    return SessionLocal

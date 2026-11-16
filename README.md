@@ -1,19 +1,58 @@
-# Re:Source AI
+# SCRAP
 
-중소 제조기업 폐기물 담당자를 위한 **폐기물 처리 의사결정 AI 에이전트**의 **server 레포**.
-폐기물 정보를 자연어·문서로 입력하면 리스크를 반영한 경제성·환경성 기준으로 처리 방식을 비교하고, 근거가 담긴 보고서를 만듦.
+**2026-11-16 현재:** 실제 문진 → 세부 재질·형태 확인 → 공정·업체 후보 → 후보별 AI 근거 검토 → 수신 기업 수락·QR 흐름입니다.
 
-- 제품 목적과 범위: [docs/product-plan.md](docs/product-plan.md)
-- **팀 공통 규칙 (레포 역할, 브랜치, CI/CD, 배포): [docs/team-conventions.md](docs/team-conventions.md)**
+- 공정 참조: **62개 사업장·69개 공정·129개 연결**. 실제 공정 연결 사업장은 61곳이며, 그중 경기 23곳·인천 5곳입니다. 전국 명부 9,604행과 다른 숫자입니다.
+- 일반 PET `51-03-01`과 포장재 PET `51-03-07`을 원래 번호 그대로 연결합니다.
+- 일반 플라스틱·금속 14개 번호의 R유형·분석 조건·법령 출처를 문진 → 화면 → 물량 → 후보별 AI에 전달합니다. [전달 구조·팀 적용 순서](docs/r-code-handoff.md)
+- 실제 문진 18선택지 중 15개에 후보가 있고, 그 안의 형태 조합 56개 중 53개가 연결됩니다. 미지원·근거 부족은 승인으로 바꾸지 않습니다.
+- 기업 위치를 지도에서 저장하고 현재 보유 기업 기준으로 가까운 후보를 표시합니다. **직선거리**이며 도로 운송거리는 아닙니다.
+- 이번 재검사는 문진·후보·AI·위치 저장 범위입니다. 이전 PP/PET/PE·캔의 7개 합성 QR 완료 시나리오와 구분합니다.
+- 추가 근거가 필요했던 12개 연결을 다시 조사하고 **화성 성원산업의 LDPE 필름 → 이중 압출 → 펠릿**을 추가했습니다. PE 경질·베일로 확대하지 않았습니다. [원문 대조·남은 자료](docs/registry-screen/intake-evidence-followup-20261116.md)
+- 최신 검사는 문진 18선택지·브라우저 59검사·HTTP 212조회입니다. AI는 첫 공정과 후속 공정의 모든 지원 연결을 포함하는 대표 입력으로 실제 Azure에서 다시 검토했습니다. [최신 검증 결과](docs/intake-evidence-followup-validation-20261116.md)
+- 기존 보류 12연결 중 한국철강 1연결의 근거를 보강했고 11연결은 자료 부족이 남았습니다. 일반 PE·PS 베일도 국내 반입 사업장 근거가 부족해 보류합니다. 압축 필름·EPS 인고트와는 다른 입력입니다.
+- 앞선 수도권 보강의 Azure 67후보 검토는 공개 근거 확인 21회·부족 46회였습니다. 신규 19연결 중 부족했던 12개가 이번 재조사 대상입니다. [앞선 검사 범위](docs/capital-region-coverage-20261116.md)
+- 앞선 전체 53형태·294후보 검사는 공개 근거 확인 56회·부족 238회였습니다. 서로 다른 범위의 검사이므로 두 수치를 정확도처럼 비교하지 않습니다.
+
+[최신 R코드·화면·AI 연결 검사와 적용 방법](docs/r-code-flow-audit-20261116.md) · [앞선 252회 부족 사유·업체별 표](docs/registry-screen/intake-evidence-gaps-20261116.md) · [공개 근거 보강·남은 소재](docs/registry-screen/remaining-material-evidence-20261116.md)
+
+이전 기록: [11/15 세부 재질·252회 근거 부족](docs/material-detail-e2e-20261115.md) · [7개 기업 인계 시험](docs/full-stack-validation-20261115.md) · [전체 조사 목록](docs/registry-screen/README.md)
+
+사업장에서 나오는 폐기물을 **분류부터 처리업체 인계까지** 이어주는 재활용 자원순환 네비게이터 **SCRAP**의 **server 레포**.
+법령 지식이 없는 중소 제조 사업장 담당자도 AI 에이전트 **베리**의 안내를 따라가면 위탁 직전 단계까지 도달할 수 있게 함.
+
+- 팀: 블루베리 파이
+- 팀 공통 규칙 (레포 역할, 브랜치, CI/CD, 배포): [docs/team-conventions.md](docs/team-conventions.md)
+
+## 해결하려는 문제
+
+- **분류가 어려움**: 「폐기물관리법 시행규칙」 별표 4의 분류번호는 8자리 약 250종임. 허용 재활용 유형(R유형)과 사전 분석 필요 여부는 분류번호 × R유형 그룹 단위로 따로 규정됨
+- **책임은 배출자에게 있음**: 미허가 업체에 위탁하면 배출자도 처벌받음. 하지만 현장에서는 허가증만 보고 허가된 분류번호 범위는 대조하지 않음
+- **업체 정보가 흩어져 있음**: 처리업체 3,907곳 중 72%가 단일 분류번호만 허가받음. 중분류가 같아도 세분류가 다르면 처리업체가 거의 겹치지 않음
+
+## 서비스 흐름
+
+| 단계 | 내용 | 서버 상태 |
+| --- | --- | --- |
+| 온보딩 | 로그인·기업 정보·지도 위치 저장 | 구현 |
+| S1·S2 문진 | diagnosis 질문 응답 → 분류 결과 | 연동, 버튼 문진 실제 검사 |
+| S3 유형 조회 | 분류번호·보류사항 전달 / R유형·분석 조건 확인 | 일반 14번호 연결. 기존 확정 건 보충 조회. 업체의 실제 허가·반입 승인은 별도 확인 |
+| S4 업체 조회 | 재질·현재 형태 → 공정·업체 → AI 근거 검토 | 지원 범위 구현, 공개 근거 부족은 별도 표시 |
+| S5 문서 작성 | 문의·위탁 문서 초안 | 예정 |
+| S6 결과 보관 | 문진·검토 결과·기업별 인계 저장 | 구현 |
+| 추적 | 수신 기업 수락 → QR 입고 → 실제 산출물 → 다음 업체/완료 | 구현, 현재 범위는 검증 보고서 참고 |
+
+문진의 분류 판정과 업체의 반입 승인은 다릅니다. server는 diagnosis의 결과를 보존하고, PostgreSQL의 공정·사업장 자료에서 후보를 찾습니다. route의 AI는 후보별 공개 자료·입력 상태를 검토합니다. 현재 허가·실제 수용 여부는 별도 확인해야 하며 수신 기업의 수락을 대체하지 않습니다.
 
 ## 조직 레포 구성
 
 | 레포 | 역할 |
 | --- | --- |
-| **server (이 레포)** | API, 인증·회원, 기업 정보, DB 스키마 |
-| ai | 에이전트, MCP 도구, 지식 기반 |
-| frontend | 화면 |
-| infra | 전체 통합 실행(compose), Azure 리소스 정의 |
+| **scrap-server (이 레포)** | API, 인증·회원, 기업 위치, PostgreSQL 공정·사업장 참조, 물량·인계 저장 |
+| scrap-diagnosis | 문진·분류 판정, 확정 결과 전달 |
+| scrap-route | 후보별 공개 근거·상태·사진 AI 검토 |
+| scrap-web | 화면, 기업 지도 위치 입력, 문진·후보·인계 UI |
+| scrap-infra | 전체 통합 실행(compose), 서비스 연결·실행 설정 |
 | .github | 공통 규칙·템플릿 |
 
 ## 빠른 시작
@@ -44,30 +83,47 @@ uv run uvicorn app.main:app --reload
 | 영역 | 선택 |
 | --- | --- |
 | 언어 / 프레임워크 | Python 3.12 / FastAPI |
-| DB | PostgreSQL 16 (로컬 개발은 SQLite도 가능) |
+| DB | PostgreSQL 17 (로컬 개발은 SQLite도 가능) |
 | ORM / 마이그레이션 | SQLAlchemy 2.0 (async) / Alembic |
 | 인증 | Google·Microsoft 소셜 로그인 (Authlib), JWT httpOnly 쿠키 |
 | 패키지 / 품질 | uv / ruff, pytest |
-| 인프라 (예정) | Azure (App Service, Azure Database for PostgreSQL, Azure OpenAI 등) |
+| 배포 (예정) | Azure Container Apps (리비전 단위 무중단 배포), Azure Database for PostgreSQL (고가용성) |
 
 선정 이유: [docs/adr/0001-backend-stack.md](docs/adr/0001-backend-stack.md)
+
+## 데이터 모델
+
+| 테이블 | 내용 |
+| --- | --- |
+| users | 로그인 정보 (provider, provider_subject, 탈퇴 정보) |
+| refresh_tokens | 로그인 갱신 토큰 (회전·폐기) |
+| companies | 기업·사업장 정보 (회원당 1곳). 회사명·담당자·업종·주소·지도 좌표·배출 정보·변경 버전 |
+| company_profile_history | 기업 정보 변경 이력 |
+| facility_import_rows | 전국폐기물처리업소표준데이터 원본 행 |
+| treatment_snapshots | 처리 카탈로그 원본 데이터 |
+| workflow_lots | 문진 번호·세부 재질·현재 물량 상태·후보 검토·진행 이력 |
+| workflow_offers / workflow_photos | 기업 간 인수 요청·수락·QR 입고 상태와 물량 사진 |
+| workflow_facility_accounts | 서비스 기업 계정과 공개 사업장 연결. 시험용 연결은 synthetic으로 구분 |
+| wastes / route_steps / qr_field_checks / waste_completion_snapshots | 폐기물 카드·인계 단계·입고 확인·완료 시점 기록 |
+
+공정 후보는 `treatment_snapshots`의 공개 참조와 명부를 조회하고, 실제 진행은 기업 소유 물량·인계 기록에 저장합니다. 문진 판정 원본은 diagnosis에서 관리합니다. 과거 간소화 문서는 당시 설계이며 현재 흐름은 [최신 연결 점검](docs/flow-audit-20261116.md)을 참고합니다.
 
 ## 현재 구조
 
 ```
-ReSource/
+scrap-server/
 ├─ AGENTS.md / CLAUDE.md     AI 코딩 에이전트 진입점 (규칙, 문서 지도, 작업 종료 루프)
 ├─ .agents/                  에이전트 역할·스킬 원본 (Claude Code·Codex 공용)
 ├─ .claude/                  Claude Code용 생성물 (scripts/sync_agents.py가 생성)
-├─ .github/                  CI, PR 템플릿 (이슈 템플릿은 조직 .github 레포)
+├─ .github/                  CI, 이슈·PR 템플릿
 ├─ docs/                     제품 정의, spec, ADR, todo, Git 규칙, 운영 절차
 ├─ scripts/                  sync_agents.py
 ├─ backend/                  FastAPI 서비스
 │  ├─ app/
-│  │  ├─ core/               설정, JWT
+│  │  ├─ core/               설정, JWT, 공통 오류 형식
 │  │  ├─ db/                 DB 엔진·세션
 │  │  ├─ api/v1/             라우터 묶음 (/api/v1)
-│  │  └─ domains/            auth, users, companies (도메인 단위)
+│  │  └─ domains/            auth, users, companies, diagnosis, wastes, facilities, transport, treatment
 │  ├─ alembic/               마이그레이션
 │  └─ tests/
 └─ docker-compose.yml        api + PostgreSQL (호스트 포트 5433)
@@ -75,18 +131,61 @@ ReSource/
 
 폴더별 책임과 의존 규칙: [docs/folder-architecture.md](docs/folder-architecture.md)
 
-### 구현된 API
+## 구현된 API
+
+### 인증·회원·기업
 
 | 메서드 | 경로 | 설명 |
 | --- | --- | --- |
 | GET | /api/v1/auth/{google\|microsoft}/login | 소셜 로그인 시작 |
 | GET | /api/v1/auth/{provider}/callback | 로그인 완료, 쿠키 발급 |
-| POST | /api/v1/auth/refresh | access 토큰 재발급 |
-| POST | /api/v1/auth/logout | 로그아웃 |
+| POST | /api/v1/auth/refresh | access·refresh 토큰 재발급 (refresh 회전) |
+| POST | /api/v1/auth/logout | 로그아웃 (refresh 토큰 폐기) |
 | POST | /api/v1/auth/dev-login | 개발용 로그인 (로컬 전용) |
-| GET | /api/v1/users/me | 현재 사용자 |
-| POST | /api/v1/companies | 기업·폐기물 프로필 등록 (온보딩) |
+| GET | /api/v1/users/me | 현재 사용자 (제공자, 기업 ID. 온보딩 전이면 기업 ID null) |
+| POST | /api/v1/users/me/withdraw | 회원 탈퇴 (30일 뒤 삭제) |
+| POST | /api/v1/companies | 기업·사업장 등록 (온보딩) |
 | GET | /api/v1/companies/me | 내 기업 조회 |
+| PATCH | /api/v1/companies/me | 내 기업 수정 (profile_version으로 충돌 감지) |
+| GET | /api/v1/companies/me/history | 기업 정보 변경 이력 (페이지네이션) |
+
+### 문진 (폐기물 분류번호 판정)
+
+로그인한 기업의 요청을 문진 엔진(scrap-diagnosis) `/internal/v1`로 중계함. 응답 본문은 엔진 것 그대로임. spec: [docs/specs/diagnosis-engine-integration.md](docs/specs/diagnosis-engine-integration.md)
+
+| 메서드 | 경로 | 설명 |
+| --- | --- | --- |
+| POST | /api/v1/diagnosis/cases | 문진 건 만들기 + 첫 질문 |
+| GET | /api/v1/diagnosis/cases | 내 기업의 문진 건 목록 (status, page, size) |
+| GET | /api/v1/diagnosis/cases/{id} | 건 상세 (판정, 대화, 서류, 인계 객체) |
+| POST | /api/v1/diagnosis/cases/{id}/messages | 문진 답변 (말 또는 버튼) |
+| POST | /api/v1/diagnosis/cases/{id}/documents | 서류 업로드 (값은 검수 대기) |
+| POST | /api/v1/diagnosis/cases/{id}/documents/{doc}/versions | 서류 파일 교체 |
+| POST | /api/v1/diagnosis/cases/{id}/documents/{doc}/values/apply | 검수한 서류 값 반영 |
+| POST | /api/v1/diagnosis/cases/{id}/documents/{doc}/revoke | 서류 효력 해제 |
+| POST | /api/v1/diagnosis/cases/{id}/confirm | 판정 확정 + 인계 객체(handoff) |
+| POST | /api/v1/diagnosis/cases/{id}/reopen | 확정 건 다시 열기 |
+| POST | /api/v1/diagnosis/cases/{id}/rebase | 바뀐 규칙으로 다시 평가 |
+| GET | /api/v1/diagnosis/cases/{id}/trace | 판정 근거 추적 |
+| GET | /api/v1/diagnosis/catalog/facts | 질문 항목·선택지 목록 |
+
+### 처리 경로 데모
+
+시연용 기능이며 QR 추적·업체 조회 기능을 정식으로 만들면 대체함.
+
+| 메서드 | 경로 | 설명 |
+| --- | --- | --- |
+| GET | /api/classification/profiles | 문진 유형 목록 |
+| POST | /api/classification/sessions | 문진 세션 시작 |
+| POST | /api/classification/sessions/{sessionId}/answer | 문진 답변 |
+| POST | /api/classification/sessions/{sessionId}/undo | 문진 답변 되돌리기 |
+| POST | /api/treatment/next-step | 다음 처리 공정 조회 |
+| POST | /api/treatment/facility-candidates | 처리업체 후보 조회 |
+| POST | /api/treatment/intake-review(s) | 업체 반입 검토 |
+| POST | /api/treatment/facility-web-search | 업체 공개 웹 조사 |
+| GET·PUT·PATCH·POST | /api/v1/transport/** | 현장 인계 기록 |
+
+오류는 모든 API에서 `{"code", "message", "details"}` 형식으로 반환함. 오류 코드 목록: [docs/specs/error-response.md](docs/specs/error-response.md)
 
 ## 문서
 

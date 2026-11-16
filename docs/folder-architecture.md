@@ -8,9 +8,9 @@
 
 | 레포 | 이 레포와의 관계 |
 | --- | --- |
-| `.github` | 공통 규칙(CONTRIBUTING)과 이슈 템플릿의 원본. 이 레포는 이슈 템플릿을 두지 않고 조직 것을 씀. PR 템플릿만 server용으로 덮어씀 |
+| `.github` | 공통 규칙(CONTRIBUTING)과 이슈·PR 템플릿의 원본. 조직 기본 이슈 템플릿이 Private 레포에 적용되지 않아 이 레포에도 같은 이슈 템플릿을 복사해 둠. PR 템플릿은 server용으로 덮어씀 |
 | `infra` | 이 레포를 `../server`로 참조해 전체를 compose로 실행 |
-| `ai` | 에이전트, MCP 도구, 지식 기반 (설계 중). server는 HTTP로 호출함 (호출 시작 시 `AI_BASE_URL` 설정 추가) |
+| `ai` | 에이전트, MCP 도구, 지식 기반 (설계 중). server는 `AI_BASE_URL`로 HTTP 호출함 (`domains/treatment/`) |
 | `frontend` | server API를 호출. CORS·쿠키 설정 대상 |
 
 ## 1. 전체 구조
@@ -43,6 +43,7 @@ ReSource/
 │  └─ sync_agents.py           # .agents → .claude 동기화, --check로 검사
 ├─ .github/
 │  ├─ workflows/ci.yml         # 린트, 동기화 검사, 마이그레이션, PostgreSQL 테스트
+│  ├─ ISSUE_TEMPLATE/          # 기능, 버그, 작업 (조직 .github 레포와 같은 내용)
 │  └─ pull_request_template.md
 │
 ├─ backend/                    # FastAPI 서비스 (실행 방법: backend/README.md)
@@ -66,7 +67,8 @@ backend/
 │  ├─ main.py                  # 앱 생성, 미들웨어, 라우터 등록
 │  ├─ core/
 │  │  ├─ config.py             # 환경변수 (pydantic-settings)
-│  │  └─ security.py           # JWT 발급·검증
+│  │  ├─ security.py           # JWT 발급·검증
+│  │  └─ errors.py             # 공통 오류 응답 형식, 오류 코드, 예외 핸들러
 │  ├─ db/
 │  │  ├─ base.py               # DeclarativeBase, 공통 컬럼
 │  │  ├─ session.py            # 엔진, 세션, get_db
@@ -74,8 +76,13 @@ backend/
 │  ├─ api/v1/router.py         # 도메인 라우터 묶음 (/api/v1)
 │  └─ domains/
 │     ├─ auth/                 # 소셜 로그인, 토큰 쿠키, 현재 사용자 의존성
-│     ├─ users/                # 사용자, 소셜 계정
-│     └─ companies/            # 기업 프로필, 폐기물 프로필 (온보딩)
+│     ├─ users/                # 사용자 (로그인 수단 provider, provider_subject 포함)
+│     ├─ companies/            # 기업·사업장 정보, 변경 이력 (온보딩)
+│     ├─ diagnosis/            # 문진 엔진(scrap-diagnosis) /internal/v1 중계, 엔진 오류 변환 (/api/v1/diagnosis)
+│     ├─ wastes/               # 폐기물 건, 처리 단계, QR 현장 확인, 완료 스냅샷 (테이블만, API는 기능별로 추가)
+│     ├─ facilities/           # 처리·재활용 시설, 허가 분류번호, 시설 R유형 (테이블만)
+│     ├─ transport/            # 현장 인계 기록 (QR 확인 기능으로 옮길 예정)
+│     └─ treatment/            # 처리 경로 데모: 처리 카탈로그, 업체 후보 조회 (/api/treatment, /api/classification)
 └─ tests/
 ```
 

@@ -1,5 +1,7 @@
 """Dev-login criteria from docs/specs/auth-social-login.md (개발용 로그인)."""
 
+from datetime import UTC, datetime
+
 from httpx import AsyncClient
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -43,3 +45,14 @@ def test_prod_app_has_no_dev_login_route():
 
     assert "/api/v1/auth/dev-login" not in paths
     assert "/api/v1/users/me" in paths
+
+
+async def test_withdrawn_dev_user_cannot_log_in(client: AsyncClient, db: AsyncSession):
+    await client.post("/api/v1/auth/dev-login", json={"email": "dev@example.com"})
+    user = await db.scalar(select(User))
+    user.withdrawn_at = datetime.now(UTC)
+    await db.commit()
+
+    res = await client.post("/api/v1/auth/dev-login", json={"email": "dev@example.com"})
+
+    assert res.status_code == 403

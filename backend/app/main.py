@@ -4,7 +4,11 @@ from starlette.middleware.sessions import SessionMiddleware
 
 from app.api.v1.router import api_router
 from app.core.config import Settings, get_settings
+from app.core.errors import ErrorResponse, register_error_handlers
+from app.db import all_models as _all_models  # noqa: F401
 from app.domains.auth.dev_router import router as dev_auth_router
+from app.domains.treatment.router import classification_router
+from app.domains.treatment.router import router as treatment_router
 
 DESCRIPTION = """
 기업 폐기물 처리 의사결정 AI 에이전트 **Re:Source AI**의 백엔드 API.
@@ -32,6 +36,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         docs_url="/docs" if docs else None,
         redoc_url="/redoc" if docs else None,
         openapi_url="/openapi.json" if docs else None,
+        # Replaces FastAPI's default 422 schema in the docs with the common error format.
+        responses={422: {"model": ErrorResponse, "description": "요청 값 검증 실패"}},
     )
 
     # Holds OAuth state/nonce between /login and /callback only.
@@ -51,7 +57,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         allow_headers=["*"],
     )
 
+    register_error_handlers(app)
     app.include_router(api_router, prefix="/api/v1")
+    app.include_router(treatment_router)
+    app.include_router(classification_router)
     if settings.app_env in ("local", "test"):
         app.include_router(dev_auth_router, prefix="/api/v1")
 

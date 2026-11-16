@@ -1,0 +1,1350 @@
+{
+  "version": "intake-conditions-v1",
+  "scope": "업체 공개 투입 예시와 추가 확인 질문. 수치 규격·허가·현재 인수 승인 아님.",
+  "facilities": {
+    "veolia-doksan-hwaseong": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "veolia-hwaseong-pp-process",
+          "kind": "public_example",
+          "text": "독산은 선별된 PP 분쇄품 또는 압축품을 구매해 세척 등을 거쳐 펠렛을 생산한다고 공개한다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "pp_selection",
+          "label": "PP로 선별된 물량인가요?",
+          "choices": [
+            "PP로 선별됨",
+            "미선별",
+            "모름"
+          ],
+          "source_id": "veolia-hwaseong-pp-process",
+          "reason": "공개 투입 예시와 이번 물량을 비교하기 위한 질문. 독점적 허용 규격 아님."
+        }
+      ]
+    },
+    "veolia-dspl-hwaseong": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "veolia-hwaseong-pp-process",
+          "kind": "public_example",
+          "text": "DSPL은 재생 PP 펠렛을 투입하여 컴파운드를 생산한다고 공개한다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "pellet_spec",
+          "label": "펠렛의 재질·첨가제 또는 물성 자료가 있나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "source_id": "veolia-hwaseong-pp-process",
+          "reason": "공개된 펠렛 투입 공정과 맞는지 수신 업체가 확인할 자료"
+        }
+      ]
+    },
+    "jungang-gongju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "jungang-materials",
+          "kind": "explicit_exclusion",
+          "text": "지정폐기물은 취급하지 않는다고 안내한다. PE·PP는 상담 대상이며 지역 밖 운송은 물량별 협의한다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "designated",
+          "label": "현재 물량이 지정폐기물로 확인되었나요?",
+          "choices": [
+            "아니요",
+            "예",
+            "모름"
+          ],
+          "source_id": "jungang-materials",
+          "reason": "공개된 지정폐기물 제외 정책. 예 또는 모름이면 문진·분류를 재확인해야 함."
+        }
+      ]
+    },
+    "superbin-hwaseong": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "superbin-hwaseong-process",
+          "kind": "supply_chain_example",
+          "text": "화성은 수퍼빈이 직접 회수·운반한 고순도 PET병으로 플레이크를 생산한다. 외부 공급자의 반입 가능 여부는 공개 자료만으로 확인되지 않는다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "collection_channel",
+          "label": "수퍼빈 자체 회수망의 물량인가요, 외부 회수 물량인가요?",
+          "choices": [
+            "자체 회수망",
+            "외부 회수 물량",
+            "모름"
+          ],
+          "source_id": "superbin-hwaseong-process",
+          "reason": "공개 사례의 공급망 범위 확인. 외부 물량 수용을 추정하지 않음."
+        }
+      ]
+    },
+    "samyang-sihwa": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "samyang-pet",
+          "kind": "public_example",
+          "text": "시화 공장은 폐PET병 압축, 색상·라벨·마개 선별, 분쇄·세척·건조·금속 분리 공정을 공개한다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "pet_colour",
+          "label": "PET병 색상과 라벨·마개 분리 상태를 알려 주세요.",
+          "source_id": "samyang-pet",
+          "reason": "공개 선별 공정과 현재 상태를 대조하기 위한 질문. 유색병 금지라는 뜻은 아님."
+        }
+      ]
+    },
+    "ulsan-aluminium": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "novelis-ulsan-recycling",
+          "kind": "public_example",
+          "text": "울산 센터는 음료캔·자동차·산업 발생 알루미늄 스크랩을 처리해 시트 잉곳을 생산한다고 공개한다. 합금별 규격은 별도 확인이 필요하다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "scrap_origin",
+          "label": "알루미늄의 발생처와 합금 정보를 알려 주세요.",
+          "source_id": "novelis-ulsan-recycling",
+          "reason": "공개 품목과 로트별 합금·불순물 조건 확인"
+        }
+      ]
+    },
+    "superbin-sunchang": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "superbin-sunchang-process",
+          "kind": "supply_chain_example",
+          "text": "수퍼빈은 순창 아이엠팩토리에서 화성공장 생산 PET 플레이크를 펠릿으로 가공한다고 설명한다. 외부 공급자 물량의 반입 가능 여부·수치 규격·여유 용량은 확인되지 않았다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "collection_channel",
+          "label": "수퍼빈 화성공장에서 생산된 플레이크인가요?",
+          "choices": [
+            "자체 회수망",
+            "외부 회수 물량",
+            "모름"
+          ],
+          "source_id": "superbin-sunchang-process",
+          "reason": "공개된 공장 간 공급망의 범위 확인; 외부 물량 수용 미확인"
+        }
+      ]
+    },
+    "daewoon-naju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "대운프라스틱 나주 사업장은 PP·PE 폐플라스틱 스크랩·경질 제품·폐비닐을 선별·분쇄·세척·건조·용융압출·냉각절단하여 재생 펠릿으로 만드는 공정을 공개한다. PE 파이프·생활용품, PP 보빈·생활용품 원료를 소개한다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "daewoon-production",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "PP/PE가 재질별로 분리되어 있고 발생 제품·색상을 설명할 수 있나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "daewoon-production"
+        }
+      ]
+    },
+    "youngshin-naju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "영신케미칼 나주 사업장은 PP·PE 폐플라스틱 스크랩·폐비닐을 선별·분쇄·세척·건조·용융압출·냉각절단하여 재생 펠릿을 생산하는 공정을 공개한다. PP·PE·PPC 제품이 안내되어 있다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "youngshin-production",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "비닐과 경질 제품의 수지 종류·색상·이물을 구분했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "youngshin-production"
+        }
+      ]
+    },
+    "greenpol-cheonan": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "그린폴 천안 공장은 분쇄품 건조기·분쇄기·자석 및 와류 선별기·압출기·컴파운딩 라인을 공개한다. 자체 시편으로 물성시험을 수행한다. 투입 분쇄품의 수지·첨가제·물성은 사전 확인이 필요하다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "greenpol-production",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "분쇄 원료의 수지 등급·수분·충전재·용융지수 자료가 있나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "greenpol-production"
+        }
+      ]
+    },
+    "yuil-yangsan": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "유일산업은 수거한 PET병을 선별·분쇄·세척·건조해 재생 PET 플레이크로 만드는 공정을 공개한다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "yuil-pet",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "PET병의 색상·라벨·다른 수지 혼입 상태를 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "yuil-pet"
+        }
+      ]
+    },
+    "yuil-busan": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "유일산업은 수거한 PET병을 선별·분쇄·세척·건조해 재생 PET 플레이크로 만드는 공정을 공개한다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "yuil-pet",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "PET병의 색상·라벨·다른 수지 혼입 상태를 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "yuil-pet"
+        }
+      ]
+    },
+    "sungji-hwaseong": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "성지 화성 사업장은 PVC 벽지를 분리하여 PVC 페이스트 원료와 종이 분말을 재생하는 제조상품을 소개한다. 장판 스크랩 원료도 소개하지만 이번 연결은 벽지 잔재만 대상으로 한다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "sungji-pvc",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "PVC 벽지 잔재인지, 접착제·종이·다른 수지가 함께 있는지 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "sungji-pvc"
+        }
+      ]
+    },
+    "ecops-yeongcheon": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "에코피에스 영천 공장은 열압축된 EPS 인고트를 외부에서 받아 검수·분쇄·용융압출·절단·냉각하여 PS 펠릿을 생산한다. 아직 감용되지 않은 스티로폼을 받는다는 근거는 아니다. 공개 펠릿 물성은 반입 원료 허용 기준이 아니다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "ecops-ingot",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "EPS가 이미 감용된 인고트이며 이물·압축 상태를 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "ecops-ingot"
+        }
+      ]
+    },
+    "pne-eumseong": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "피앤이환경 음성 사업장은 일반 폐합성수지 PE·PP·PS를 용융압출하여 재생원료를 생산하는 수지 사업부를 소개한다. 폐광케이블·폐전선과 지정폐기물 사업은 이 일반수지 연결에 포함하지 않는다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "pne-resin",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "일반 PP·PE·PS 수지인지, 기름함유 전선·케이블이 섞이지 않았는지 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "pne-resin"
+        }
+      ]
+    },
+    "netspa-busan": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "넷스파는 PA6 폐어망에서 회수한 재생 나일론 원료를 수지·섬유·산업재에 공급하는 사업을 공개한다. 부산 생곡산단 본사를 안내한다. 어망이 아닌 PA66·혼합 플라스틱 부품으로 확대하지 않는다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "netspa-nylon",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "폐어망이 PA6이며 부착물·염분·다른 어망 재질을 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "netspa-nylon"
+        }
+      ]
+    },
+    "hrm-cheongju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "HRM 청주 자원순환센터는 투명 PET병 수집·운반과 압축 베일 물량 대응을 공개한다. 그 밖의 품목은 사전 협의 대상이다. 펠릿 생산 근거는 아니다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "hrm-pet-collection",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "투명 PET병 여부와 발생량·보관 방식·수거 지역을 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "hrm-pet-collection"
+        }
+      ]
+    },
+    "veolia-dh-yongin": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "베올리아는 경기도 용인의 디에이치 리사이클링에서 가정용 플라스틱 PE·PP·PET·PS를 유형별 선별하여 압축 베일로 전처리한다고 공개한다. 상세 도로명 주소·외부 사업장 물량 반입은 미확인이다. 화성의 동명 명부 업체와 연결하지 않는다.",
+          "source_id": "veolia-dh-sorting",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "가정 회수 포장재인지 사업장 잔재인지, 실제 반입 주소를 확인했나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "veolia-dh-sorting"
+        }
+      ]
+    },
+    "changmaec-seongju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "kind": "public_example",
+          "text": "창맥 성주 공장은 분쇄된 폐플라스틱 원료를 수거하여 건조·1차 압출·컴파운딩·펠릿화하는 과정을 공개한다. 제품에는 ABS·PP·HIPS·PA66·PC/ABS가 있다. 현재 경질 폐제품 자체의 파쇄·세척 수탁이나 각 등급의 혼합 허용은 미확인이다. 이번 외부 물량의 허가·오염·수분 기준·가격·여유 용량·인수 여부는 별도 확인이 필요하다.",
+          "source_id": "changmaec-process",
+          "scope": "site_publication"
+        }
+      ],
+      "questions": [
+        {
+          "key": "source-intake",
+          "label": "분쇄 원료의 수지 등급·난연제·충전재와 요구 물성 자료가 있나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "reason": "공개 공정에 맞는 현재 물량인지 수신 업체에 확인",
+          "source_id": "changmaec-process"
+        }
+      ]
+    },
+    "npc-chemical-hwaseong": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "npc-pe-process-image",
+          "kind": "public_example",
+          "text": "HDPE 폐상자·폐파렛트 수거·분쇄로 재생 원료를 생산한다. LDPE 필름 반입 근거는 아니다."
+        },
+        {
+          "source_id": "npc-pp-process-image",
+          "kind": "public_example",
+          "text": "생활계 폐플라스틱의 분쇄·세척으로 PP 재생 원료를 생산한다. 이번 로트의 품질·인수는 미확인이다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "npc_resin",
+          "label": "PE인 경우 HDPE 상자·파렛트 계열인가요?",
+          "choices": [
+            "HDPE 상자·파렛트",
+            "다른 PE",
+            "PP 물량",
+            "모름"
+          ],
+          "source_id": "npc-pe-process-image",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "npc_origin",
+          "label": "제품 출처·기존 내용물·재질 식별 자료가 있나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "source_id": "npc-pe-process-image",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "saramtech-nonsan": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "saramtech-pe-film",
+          "kind": "public_example",
+          "text": "공개 사례는 농업용 멀칭 PE 필름이며 펠릿 생산은 고객 요청에 따른다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "mulch_origin",
+          "label": "농업용 멀칭 PE 필름인가요?",
+          "choices": [
+            "맞음",
+            "다른 필름",
+            "모름"
+          ],
+          "source_id": "saramtech-pe-film",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "soil_residue",
+          "label": "흙·식물체·농약 용기나 잔류물의 혼입 상태를 설명해 주세요.",
+          "choices": [],
+          "source_id": "saramtech-pe-film",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "requested_output",
+          "label": "세척·압축품과 재생 펠릿 중 어떤 산출물이 필요한가요?",
+          "choices": [
+            "세척·압축품",
+            "재생 펠릿",
+            "협의 필요"
+          ],
+          "source_id": "saramtech-pe-film",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "yangil-incheon": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "yangil-products",
+          "kind": "public_example",
+          "text": "나일론6/66 재생 및 컴파운드 제품과 어망·필름·럼프 처리 설비를 공개한다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "nylon_identity",
+          "label": "PA6와 PA66을 구분할 자료가 있나요?",
+          "choices": [
+            "PA6 확인",
+            "PA66 확인",
+            "혼합",
+            "모름"
+          ],
+          "source_id": "yangil-products",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "nylon_additives",
+          "label": "유리섬유·무기충전제·난연제 함유 자료가 있나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "source_id": "yangil-products",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "jinyoung-hwaseong": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "jinyoung-company-profile",
+          "kind": "public_example",
+          "text": "PP·PE 재생 펠릿 생산이 공개돼 있지만 외부 투입 형태는 미확인이다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "feedstock_contract",
+          "label": "이번 분쇄품의 반입 가능 여부를 업체가 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "jinyoung-company-profile",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "prewashed",
+          "label": "세척·건조가 완료된 분쇄품인가요?",
+          "choices": [
+            "완료",
+            "미완료",
+            "모름"
+          ],
+          "source_id": "jinyoung-company-profile",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "youone-incheon": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "youone-products",
+          "kind": "public_example",
+          "text": "인천의 PP·PE 재생원료 사업과 분쇄 설비를 대조했다. 투입 형태는 공개되지 않았다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "pe_subtype",
+          "label": "PE라면 HDPE·LDPE 구분과 기존 용도가 무엇인가요?",
+          "choices": [],
+          "source_id": "youone-products",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "intake_form",
+          "label": "현물 형태·수분·이물 상태의 반입 허용 여부를 업체에 확인했나요?",
+          "choices": [
+            "확인 전",
+            "확인 자료 있음"
+          ],
+          "source_id": "youone-products",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "dakyeong-busan": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "dakyeong-process",
+          "kind": "public_example",
+          "text": "라벨·금속 제거와 세척·분쇄를 공개한다. 출하 조각 크기를 반입 기준으로 쓰지 않는다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "salt_contamination",
+          "label": "염분·금속·라벨·접착제 혼입이 있나요?",
+          "choices": [
+            "없음",
+            "있음",
+            "모름"
+          ],
+          "source_id": "dakyeong-process",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "colour_separation",
+          "label": "재질과 색상별로 분리되어 있나요?",
+          "choices": [
+            "분리됨",
+            "혼합됨",
+            "모름"
+          ],
+          "source_id": "dakyeong-process",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "nuvotec-munmak": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "nuvotec-recycling-2026",
+          "kind": "public_example",
+          "text": "문막공장의 재활용 사업·PE 원재료·재생 펠릿 생산 공시를 연결했다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "previous_contents",
+          "label": "기존 내용물과 잔류 약품·기름 유무 자료가 있나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "source_id": "nuvotec-recycling-2026",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "nonhazardous_scope",
+          "label": "이번 일반 PE 물량과 해당 공장의 현재 허가 범위를 대조했나요?",
+          "choices": [
+            "대조 전",
+            "업체 자료로 대조함"
+          ],
+          "source_id": "nuvotec-recycling-2026",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "cntk-hwaseong": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "cntk-process-separation",
+          "kind": "public_example",
+          "text": "회사 공정도는 확인했지만 화성·진주별 공정 배정은 미확인이다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "site_line",
+          "label": "이번 공정을 화성·진주 중 어느 사업장에서 수행하는지 확인했나요?",
+          "choices": [
+            "확인 전",
+            "사업장별 자료 있음"
+          ],
+          "source_id": "cntk-process-separation",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "bromine_screening",
+          "label": "폐가전 유래 난연제·브롬 성분 검사 자료가 있나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "source_id": "cntk-process-separation",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "cntk-jinju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "cntk-process-separation",
+          "kind": "public_example",
+          "text": "회사 공정도는 확인했지만 화성·진주별 공정 배정은 미확인이다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "site_line",
+          "label": "이번 공정을 화성·진주 중 어느 사업장에서 수행하는지 확인했나요?",
+          "choices": [
+            "확인 전",
+            "사업장별 자료 있음"
+          ],
+          "source_id": "cntk-process-separation",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "bromine_screening",
+          "label": "폐가전 유래 난연제·브롬 성분 검사 자료가 있나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "source_id": "cntk-process-separation",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "joongil-incheon": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "joongil-pp-recycling",
+          "kind": "public_example",
+          "text": "배터리 케이스 유래 PP의 재생 공정이 공개되어 있다. 시험 물성을 반입 기준으로 사용하지 않는다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "battery_case_origin",
+          "label": "분리된 PP 배터리 케이스인가요?",
+          "choices": [
+            "분리된 PP 케이스",
+            "다른 PP 제품",
+            "모름"
+          ],
+          "source_id": "joongil-pp-recycling",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "battery_residue",
+          "label": "산·납·금속 부품 등 잔류물의 제거·검사 자료가 있나요?",
+          "choices": [
+            "자료 있음",
+            "자료 없음",
+            "모름"
+          ],
+          "source_id": "joongil-pp-recycling",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "pureum-yangju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "pureum-pvc-products",
+          "kind": "public_example",
+          "text": "PVC 창틀 원료를 유납·무납 및 색상별로 구분한다. 이번 물량의 납 함량·허가 적합성은 미확인이다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "pvc_origin",
+          "label": "PVC 창틀 또는 경질 건설 폐자재인가요?",
+          "choices": [
+            "창틀",
+            "기타 경질 건설 폐자재",
+            "다른 PVC",
+            "모름"
+          ],
+          "source_id": "pureum-pvc-products",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "pvc_lead",
+          "label": "납 안정제 또는 유납·무납 구분 자료가 있나요?",
+          "choices": [
+            "유납 자료",
+            "무납 자료",
+            "자료 없음"
+          ],
+          "source_id": "pureum-pvc-products",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "attached_materials",
+          "label": "금속·유리·고무가 부착되어 있나요?",
+          "choices": [
+            "없음",
+            "있음",
+            "모름"
+          ],
+          "source_id": "pureum-pvc-products",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "hcr-paju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "factoryon-20251231-110263",
+          "kind": "public_example",
+          "text": "공식 공장등록 생산품: PE,PP,PS,폐스트로폼원료를 이용한 펠렛; 투입 형태와 현행 반입 규격은 별도 확인."
+        }
+      ],
+      "questions": [
+        {
+          "key": "lot_form",
+          "label": "이번 재질·현재 형태를 이 사업장에서 반입할 수 있는지 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-110263",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "preparation",
+          "label": "세척·건조·분리 등 필요한 전처리와 허용 이물 조건을 업체가 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-110263",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "expected_output",
+          "label": "등록 생산품과 별개로 이번 로트의 실제 산출 형태·품질 조건을 협의했나요?",
+          "choices": [
+            "협의 전",
+            "협의 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-110263",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "ilshin-anseong": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "factoryon-20251231-114100",
+          "kind": "public_example",
+          "text": "공식 공장등록 생산품: PE.PP.PS 재생재료; 투입 형태와 현행 반입 규격은 별도 확인."
+        }
+      ],
+      "questions": [
+        {
+          "key": "lot_form",
+          "label": "이번 재질·현재 형태를 이 사업장에서 반입할 수 있는지 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-114100",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "preparation",
+          "label": "세척·건조·분리 등 필요한 전처리와 허용 이물 조건을 업체가 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-114100",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "expected_output",
+          "label": "등록 생산품과 별개로 이번 로트의 실제 산출 형태·품질 조건을 협의했나요?",
+          "choices": [
+            "협의 전",
+            "협의 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-114100",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "ecoplus-yeongju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "factoryon-20251231-177557",
+          "kind": "public_example",
+          "text": "공식 공장등록 생산품: PE,PP 분쇄품; 투입 형태와 현행 반입 규격은 별도 확인."
+        }
+      ],
+      "questions": [
+        {
+          "key": "lot_form",
+          "label": "이번 재질·현재 형태를 이 사업장에서 반입할 수 있는지 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-177557",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "preparation",
+          "label": "세척·건조·분리 등 필요한 전처리와 허용 이물 조건을 업체가 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-177557",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "expected_output",
+          "label": "등록 생산품과 별개로 이번 로트의 실제 산출 형태·품질 조건을 협의했나요?",
+          "choices": [
+            "협의 전",
+            "협의 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-177557",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "afrochem-asan": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "factoryon-20251231-162997",
+          "kind": "public_example",
+          "text": "공식 공장등록 생산품: 분쇄 PE, PP; 투입 형태와 현행 반입 규격은 별도 확인."
+        }
+      ],
+      "questions": [
+        {
+          "key": "lot_form",
+          "label": "이번 재질·현재 형태를 이 사업장에서 반입할 수 있는지 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-162997",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "preparation",
+          "label": "세척·건조·분리 등 필요한 전처리와 허용 이물 조건을 업체가 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-162997",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "expected_output",
+          "label": "등록 생산품과 별개로 이번 로트의 실제 산출 형태·품질 조건을 협의했나요?",
+          "choices": [
+            "협의 전",
+            "협의 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-162997",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "daejo-sangju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "factoryon-20251231-179029",
+          "kind": "public_example",
+          "text": "공식 공장등록 생산품: 폴리에틸렌분쇄품,폴리프로필렌분쇄품; 투입 형태와 현행 반입 규격은 별도 확인."
+        }
+      ],
+      "questions": [
+        {
+          "key": "lot_form",
+          "label": "이번 재질·현재 형태를 이 사업장에서 반입할 수 있는지 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-179029",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "preparation",
+          "label": "세척·건조·분리 등 필요한 전처리와 허용 이물 조건을 업체가 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-179029",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "expected_output",
+          "label": "등록 생산품과 별개로 이번 로트의 실제 산출 형태·품질 조건을 협의했나요?",
+          "choices": [
+            "협의 전",
+            "협의 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-179029",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "samsungchem-miryang": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "factoryon-20251231-200542",
+          "kind": "public_example",
+          "text": "공식 공장등록 생산품: 합성수지 분쇄품(PE관); 투입 형태와 현행 반입 규격은 별도 확인."
+        }
+      ],
+      "questions": [
+        {
+          "key": "lot_form",
+          "label": "이번 재질·현재 형태를 이 사업장에서 반입할 수 있는지 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-200542",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "preparation",
+          "label": "세척·건조·분리 등 필요한 전처리와 허용 이물 조건을 업체가 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-200542",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "expected_output",
+          "label": "등록 생산품과 별개로 이번 로트의 실제 산출 형태·품질 조건을 협의했나요?",
+          "choices": [
+            "협의 전",
+            "협의 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-200542",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "guil-hapcheon": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "factoryon-20251231-207413",
+          "kind": "public_example",
+          "text": "공식 공장등록 생산품: PE펠릿; 투입 형태와 현행 반입 규격은 별도 확인."
+        }
+      ],
+      "questions": [
+        {
+          "key": "lot_form",
+          "label": "이번 재질·현재 형태를 이 사업장에서 반입할 수 있는지 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-207413",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "preparation",
+          "label": "세척·건조·분리 등 필요한 전처리와 허용 이물 조건을 업체가 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-207413",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "expected_output",
+          "label": "등록 생산품과 별개로 이번 로트의 실제 산출 형태·품질 조건을 협의했나요?",
+          "choices": [
+            "협의 전",
+            "협의 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-207413",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "daesan-naju": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "factoryon-20251231-13761",
+          "kind": "public_example",
+          "text": "공식 공장등록 생산품: 재생pp월료 펠렛제품생산; 투입 형태와 현행 반입 규격은 별도 확인."
+        }
+      ],
+      "questions": [
+        {
+          "key": "lot_form",
+          "label": "이번 재질·현재 형태를 이 사업장에서 반입할 수 있는지 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-13761",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "preparation",
+          "label": "세척·건조·분리 등 필요한 전처리와 허용 이물 조건을 업체가 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-13761",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "expected_output",
+          "label": "등록 생산품과 별개로 이번 로트의 실제 산출 형태·품질 조건을 협의했나요?",
+          "choices": [
+            "협의 전",
+            "협의 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-13761",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "yongseong-gyeongsan": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "factoryon-20251231-181807",
+          "kind": "public_example",
+          "text": "공식 공장등록 생산품: 재생플라스틱원료(재생pe, pp펠렛); 투입 형태와 현행 반입 규격은 별도 확인."
+        }
+      ],
+      "questions": [
+        {
+          "key": "lot_form",
+          "label": "이번 재질·현재 형태를 이 사업장에서 반입할 수 있는지 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-181807",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "preparation",
+          "label": "세척·건조·분리 등 필요한 전처리와 허용 이물 조건을 업체가 확인했나요?",
+          "choices": [
+            "확인 전",
+            "업체 확인 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-181807",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "expected_output",
+          "label": "등록 생산품과 별개로 이번 로트의 실제 산출 형태·품질 조건을 협의했나요?",
+          "choices": [
+            "협의 전",
+            "협의 자료 있음"
+          ],
+          "source_id": "factoryon-20251231-181807",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "dongmin-yeongcheon": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "dongmin-pe-input",
+          "kind": "public_example",
+          "text": "비료포대·곤포사일리지 필름과 LLDPE 재생 공정을 공개한다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "agricultural_film",
+          "label": "곤포사일리지 필름 또는 PE 비료포대인가요?",
+          "choices": [
+            "해당함",
+            "다른 PE 필름",
+            "모름"
+          ],
+          "source_id": "dongmin-pe-input",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "farm_residue",
+          "label": "토사·비료·작물 잔류물과 혼합 수지 상태를 설명해 주세요.",
+          "choices": [],
+          "source_id": "dongmin-pe-input",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "bgf-yesan": {
+      "checked_at": "2026-11-14",
+      "facts": [
+        {
+          "source_id": "bgf-yesan-site-process",
+          "kind": "public_example",
+          "text": "예산 생산공고의 선별·분쇄·세척·압출과 등록 PP·PE·PET 생산품을 대조했다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "site_material",
+          "label": "이번 수지와 형태를 예산 사업장에서 받는지 업체가 확인했나요?",
+          "choices": [
+            "확인 전",
+            "확인 자료 있음"
+          ],
+          "source_id": "bgf-yesan-site-process",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        },
+        {
+          "key": "plant_intake",
+          "label": "세척·압출만 별도로 맡길 수 있는지, 반입 품질과 물량 조건을 확인했나요?",
+          "choices": [
+            "확인 전",
+            "확인 자료 있음"
+          ],
+          "source_id": "bgf-yesan-site-process",
+          "reason": "공개 공정과 이번 로트의 차이를 수신 업체가 확인; 공개 제품 규격을 반입 기준으로 사용하지 않음"
+        }
+      ]
+    },
+    "hanul-ulju": {
+      "checked_at": "2026-11-16",
+      "facts": [
+        {
+          "source_id": "hanul-eps-buoy-process",
+          "kind": "public_example",
+          "text": "EPS 스티로폼 부표를 감용하는 업무를 공개한다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "buoy_material",
+          "label": "부표의 EPS 재질과 염분·부착 이물 상태를 확인했나요?",
+          "choices": [
+            "EPS 확인·상태 자료 있음",
+            "재질 또는 상태 미확인"
+          ],
+          "source_id": "hanul-eps-buoy-process",
+          "reason": "PE·PP 부표와 혼동하지 않고 개별 반입 조건을 업체가 확인하기 위한 질문"
+        }
+      ]
+    },
+    "cheoldang-yangsan": {
+      "checked_at": "2026-11-16",
+      "facts": [
+        {
+          "source_id": "cheoldang-steel-drum-process",
+          "kind": "public_example",
+          "text": "200L 폐철드럼의 내용물 제거·세척·재생 공정을 공개한다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "previous_contents",
+          "label": "드럼에 담겼던 내용물과 잔류물 정보를 알려 주세요. MSDS가 있다면 함께 확인해 주세요.",
+          "source_id": "cheoldang-steel-drum-process",
+          "reason": "일반 폐용기 분류와 현재 물량 반입 가능 여부를 대조하기 위한 확인. 미확인 상태를 무해로 간주하지 않음."
+        },
+        {
+          "key": "drum_spec",
+          "label": "철제 200L 드럼인지, 파손·부식 상태는 어떤지 알려 주세요.",
+          "source_id": "cheoldang-steel-drum-process",
+          "reason": "공개된 재생 공정의 대상 규격과 이번 물량을 비교"
+        }
+      ]
+    },
+    "dh1-seongju": {
+      "checked_at": "2026-11-16",
+      "facts": [
+        {
+          "source_id": "codil-dh1-film-bale",
+          "kind": "public_example",
+          "text": "2023 보고서의 압축 폐비닐 투입 실증이며 현재 상용 인수 조건은 미확인이다."
+        }
+      ],
+      "questions": [
+        {
+          "key": "film_bale_scope",
+          "label": "경질 제품이 아닌 PE 폐비닐 베일인가요? 수분·흙·다른 재질 혼입 상태를 알려 주세요.",
+          "source_id": "codil-dh1-film-bale",
+          "reason": "공개 실증의 비닐 투입 범위 확인. 회사의 실제 허용 규격을 뜻하지 않음."
+        },
+        {
+          "key": "commercial_intake",
+          "label": "현재 운영 라인과 외부 물량 수락 여부를 업체에 확인했나요?",
+          "choices": [
+            "확인 자료 있음",
+            "아직 미확인"
+          ],
+          "source_id": "keco-dh1-film-destination-2026",
+          "reason": "공단 공급 계획과 별개로 이번 기업의 물량을 받을 수 있는지 확인"
+        }
+      ]
+    }
+  }
+}

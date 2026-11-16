@@ -31,13 +31,14 @@ def set_access_cookie(response: Response, user_id: uuid.UUID) -> None:
     )
 
 
-def set_auth_cookies(response: Response, user_id: uuid.UUID) -> None:
+def set_auth_cookies(response: Response, user_id: uuid.UUID, refresh_token: str) -> None:
+    """refresh_token must come from auth.service.start_session/rotate_session (DB-recorded)."""
     s = get_settings()
     set_access_cookie(response, user_id)
     # Scoped to the auth routes so the long-lived token is not sent on every API call.
     response.set_cookie(
         REFRESH_COOKIE,
-        create_token(user_id, "refresh"),
+        refresh_token,
         max_age=s.refresh_token_expire_days * 86400,
         path=REFRESH_PATH,
         **_cookie_kwargs(),

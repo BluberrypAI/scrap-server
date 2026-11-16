@@ -1,0 +1,686 @@
+{
+  "date": "2026-11-16",
+  "scope": "synthetic local UI/server/diagnosis/PostgreSQL/Azure integration",
+  "legal_codes_in_registry": 14,
+  "actual_interviews": 18,
+  "actual_distinct_codes": 12,
+  "forms": 56,
+  "forms_with_candidates": 53,
+  "browser_checks": 59,
+  "browser_passed": 59,
+  "hazards_held": 11,
+  "candidate_occurrences": 294,
+  "unique_capabilities": 98,
+  "final_statuses": {
+    "needs_evidence": 238,
+    "reviewed": 56
+  },
+  "first_pass_statuses": {
+    "model_unavailable": 9,
+    "needs_evidence": 230,
+    "reviewed": 55
+  },
+  "retried_forms": [
+    {
+      "material": "pp",
+      "form": "scrap"
+    },
+    {
+      "material": "pp",
+      "form": "shredded"
+    }
+  ],
+  "source_adjudications": [
+    {
+      "capability": "netspa-busan--pa6-net-recovery",
+      "status": "reviewed",
+      "finding": "form_mentioned"
+    },
+    {
+      "capability": "daehan-noksan--ferrous-eaf-billet",
+      "status": "reviewed",
+      "finding": "form_mentioned"
+    }
+  ],
+  "lot_browser": {
+    "material": "ferrous_scrap",
+    "waste_code": "51-29-01",
+    "all_candidates_reviewed": 2,
+    "statuses": {
+      "reviewed": 1,
+      "needs_evidence": 1
+    },
+    "lot_statuses": {
+      "reviewed": 2
+    },
+    "recycling_persisted_after_reload": true,
+    "review_persisted_after_reload": true,
+    "dispatch_not_approved": true
+  },
+  "tests": {
+    "server_sqlite": 463,
+    "server_postgresql17": 463,
+    "diagnosis_sqlite": 669,
+    "diagnosis_postgresql17": 669,
+    "route_passed": 545,
+    "route_skipped": 72,
+    "route_subtests": 24,
+    "web": 49
+  },
+  "artifact_sha256": {
+    "diagnosis.json": "4a42f5dd9d84a71f640e5e66025c6a62bd1cb74377e1931084b138893525b604",
+    "hazards.json": "e6337459e4657f56bfc0fca9b77a08603df4ccaf076f0e9b65e6e6c044c88dd7",
+    "browser-final.json": "cf3c8ce58b38e24b6e6407601ffc162e31f5e74d05be7fb7feb785272219ffa1",
+    "ai-first-pass.json": "4f5e4655d1d1aceefbf1c3b4e01c027b4af0562ee02399c7dbea9dcd01224527",
+    "ai-all-forms.json": "d35702fca911758790332f546ad061dc14324ad1677f3dc4bf719738f2f4eca8",
+    "two-case-live.json": "85073a9fac0cd44096112d6355d39ce45b962f7b305a5650775d908e44a7c72d",
+    "lot-browser.json": "45a6262c57d812105f38006054ed57e12341caf0daf5d1c1ccd790b4165b0ed8"
+  },
+  "form_results": [
+    {
+      "material": "pp",
+      "detail": null,
+      "form": "rigid",
+      "candidate_occurrences": 14,
+      "statuses": {
+        "needs_evidence": 13,
+        "reviewed": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pp",
+      "detail": null,
+      "form": "film",
+      "candidate_occurrences": 13,
+      "statuses": {
+        "needs_evidence": 11,
+        "reviewed": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pp",
+      "detail": null,
+      "form": "bale",
+      "candidate_occurrences": 1,
+      "statuses": {
+        "reviewed": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pp",
+      "detail": null,
+      "form": "flake",
+      "candidate_occurrences": 9,
+      "statuses": {
+        "needs_evidence": 8,
+        "reviewed": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pp",
+      "detail": null,
+      "form": "pellet",
+      "candidate_occurrences": 2,
+      "statuses": {
+        "reviewed": 1,
+        "needs_evidence": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pe",
+      "detail": null,
+      "form": "film",
+      "candidate_occurrences": 15,
+      "statuses": {
+        "reviewed": 4,
+        "needs_evidence": 11
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pe",
+      "detail": null,
+      "form": "scrap",
+      "candidate_occurrences": 14,
+      "statuses": {
+        "needs_evidence": 12,
+        "reviewed": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pe",
+      "detail": null,
+      "form": "rigid",
+      "candidate_occurrences": 15,
+      "statuses": {
+        "needs_evidence": 13,
+        "reviewed": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pe",
+      "detail": null,
+      "form": "film-bale",
+      "candidate_occurrences": 1,
+      "statuses": {
+        "reviewed": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pe",
+      "detail": null,
+      "form": "shredded",
+      "candidate_occurrences": 7,
+      "statuses": {
+        "needs_evidence": 7
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pe",
+      "detail": null,
+      "form": "flake",
+      "candidate_occurrences": 7,
+      "statuses": {
+        "needs_evidence": 7
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pe",
+      "detail": null,
+      "form": "pellet",
+      "candidate_occurrences": 1,
+      "statuses": {
+        "needs_evidence": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pet",
+      "detail": null,
+      "form": "bottle",
+      "candidate_occurrences": 7,
+      "statuses": {
+        "needs_evidence": 2,
+        "reviewed": 5
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pet",
+      "detail": null,
+      "form": "bale",
+      "candidate_occurrences": 6,
+      "statuses": {
+        "reviewed": 1,
+        "needs_evidence": 5
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pet",
+      "detail": null,
+      "form": "flake",
+      "candidate_occurrences": 2,
+      "statuses": {
+        "needs_evidence": 1,
+        "reviewed": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "ps",
+      "detail": null,
+      "form": "scrap",
+      "candidate_occurrences": 5,
+      "statuses": {
+        "needs_evidence": 5
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "ps",
+      "detail": null,
+      "form": "rigid",
+      "candidate_occurrences": 5,
+      "statuses": {
+        "needs_evidence": 5
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "ps",
+      "detail": null,
+      "form": "flake",
+      "candidate_occurrences": 5,
+      "statuses": {
+        "needs_evidence": 5
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "ps",
+      "detail": null,
+      "form": "shredded",
+      "candidate_occurrences": 5,
+      "statuses": {
+        "needs_evidence": 5
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "abs",
+      "detail": null,
+      "form": "scrap",
+      "candidate_occurrences": 2,
+      "statuses": {
+        "needs_evidence": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "abs",
+      "detail": null,
+      "form": "rigid",
+      "candidate_occurrences": 2,
+      "statuses": {
+        "needs_evidence": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "abs",
+      "detail": null,
+      "form": "flake",
+      "candidate_occurrences": 3,
+      "statuses": {
+        "needs_evidence": 3
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "abs",
+      "detail": null,
+      "form": "shredded",
+      "candidate_occurrences": 3,
+      "statuses": {
+        "needs_evidence": 3
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pvc",
+      "detail": null,
+      "form": "wallpaper",
+      "candidate_occurrences": 1,
+      "statuses": {
+        "reviewed": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pvc",
+      "detail": null,
+      "form": "rigid",
+      "candidate_occurrences": 1,
+      "statuses": {
+        "needs_evidence": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "other_resin",
+      "detail": "san",
+      "form": "scrap",
+      "candidate_occurrences": 2,
+      "statuses": {
+        "needs_evidence": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "other_resin",
+      "detail": "san",
+      "form": "rigid",
+      "candidate_occurrences": 2,
+      "statuses": {
+        "needs_evidence": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "other_resin",
+      "detail": "san",
+      "form": "flake",
+      "candidate_occurrences": 2,
+      "statuses": {
+        "needs_evidence": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "other_resin",
+      "detail": "san",
+      "form": "shredded",
+      "candidate_occurrences": 2,
+      "statuses": {
+        "needs_evidence": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "other_resin",
+      "detail": "pa66",
+      "form": "flake",
+      "candidate_occurrences": 2,
+      "statuses": {
+        "needs_evidence": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "other_resin",
+      "detail": "pa66",
+      "form": "shredded",
+      "candidate_occurrences": 2,
+      "statuses": {
+        "needs_evidence": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "other_resin",
+      "detail": "pcabs",
+      "form": "flake",
+      "candidate_occurrences": 1,
+      "statuses": {
+        "needs_evidence": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "other_resin",
+      "detail": "pcabs",
+      "form": "shredded",
+      "candidate_occurrences": 1,
+      "statuses": {
+        "needs_evidence": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "eps",
+      "detail": null,
+      "form": "foam",
+      "candidate_occurrences": 1,
+      "statuses": {
+        "reviewed": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "eps",
+      "detail": null,
+      "form": "ingot",
+      "candidate_occurrences": 1,
+      "statuses": {
+        "reviewed": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "fishing_net",
+      "detail": "pa6",
+      "form": "net",
+      "candidate_occurrences": 2,
+      "statuses": {
+        "reviewed": 1,
+        "needs_evidence": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "plastic_packaging",
+      "detail": "pp",
+      "form": "scrap",
+      "candidate_occurrences": 14,
+      "statuses": {
+        "needs_evidence": 12,
+        "reviewed": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "plastic_packaging",
+      "detail": "pp",
+      "form": "rigid",
+      "candidate_occurrences": 14,
+      "statuses": {
+        "needs_evidence": 13,
+        "reviewed": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "plastic_packaging",
+      "detail": "pp",
+      "form": "film",
+      "candidate_occurrences": 13,
+      "statuses": {
+        "needs_evidence": 11,
+        "reviewed": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "plastic_packaging",
+      "detail": "pp",
+      "form": "bale",
+      "candidate_occurrences": 1,
+      "statuses": {
+        "reviewed": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "plastic_packaging",
+      "detail": "pe",
+      "form": "film",
+      "candidate_occurrences": 15,
+      "statuses": {
+        "reviewed": 4,
+        "needs_evidence": 11
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "plastic_packaging",
+      "detail": "pe",
+      "form": "scrap",
+      "candidate_occurrences": 14,
+      "statuses": {
+        "needs_evidence": 12,
+        "reviewed": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "plastic_packaging",
+      "detail": "pe",
+      "form": "rigid",
+      "candidate_occurrences": 15,
+      "statuses": {
+        "needs_evidence": 13,
+        "reviewed": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "plastic_packaging",
+      "detail": "pe",
+      "form": "film-bale",
+      "candidate_occurrences": 1,
+      "statuses": {
+        "reviewed": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "plastic_packaging",
+      "detail": "pet",
+      "form": "bottle",
+      "candidate_occurrences": 7,
+      "statuses": {
+        "needs_evidence": 2,
+        "reviewed": 5
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "plastic_packaging",
+      "detail": "pet",
+      "form": "bale",
+      "candidate_occurrences": 6,
+      "statuses": {
+        "reviewed": 1,
+        "needs_evidence": 5
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "aqua_buoy",
+      "detail": "eps",
+      "form": "buoy",
+      "candidate_occurrences": 1,
+      "statuses": {
+        "reviewed": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "ferrous_scrap",
+      "detail": null,
+      "form": "scrap",
+      "candidate_occurrences": 2,
+      "statuses": {
+        "reviewed": 1,
+        "needs_evidence": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "nonferrous_scrap",
+      "detail": "aluminium",
+      "form": "scrap",
+      "candidate_occurrences": 1,
+      "statuses": {
+        "reviewed": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "metal_container",
+      "detail": "ferrous",
+      "form": "drum",
+      "candidate_occurrences": 1,
+      "statuses": {
+        "reviewed": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "metal_can",
+      "detail": null,
+      "form": "can",
+      "candidate_occurrences": 2,
+      "statuses": {
+        "reviewed": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pp",
+      "detail": null,
+      "form": "scrap",
+      "candidate_occurrences": 14,
+      "statuses": {
+        "needs_evidence": 12,
+        "reviewed": 2
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    },
+    {
+      "material": "pp",
+      "detail": null,
+      "form": "shredded",
+      "candidate_occurrences": 9,
+      "statuses": {
+        "needs_evidence": 8,
+        "reviewed": 1
+      },
+      "all_candidate_keys_match": true,
+      "recycling_transferred": true
+    }
+  ]
+}

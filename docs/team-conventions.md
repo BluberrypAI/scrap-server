@@ -31,7 +31,7 @@ frontend ──HTTP──▶ server ──HTTP/MCP──▶ ai
 | --- | --- |
 | 필드·엔드포인트 **추가** | 자유 |
 | 필드 **삭제·이름 변경·타입 변경** | 호출하는 쪽 담당자와 합의 후, 이슈에 기록 |
-| server ↔ ai 형식 변경 | ai 레포의 스키마 폴더는 CODEOWNERS로 server 담당자 승인 필수 |
+| server ↔ ai 형식 변경 | ai 레포의 스키마 폴더(`src/resource_ai/api/schemas/`)를 바꾸는 PR은 server 담당자를 리뷰어로 지정하고 승인 후 병합 |
 
 ## 2. 로컬 개발 환경
 
@@ -103,8 +103,8 @@ git push -u origin feat/T-010-company-update
 
 1. 대상 브랜치는 항상 **develop**
 2. PR 템플릿을 채움 (관련 이슈, 변경 내용, 테스트 결과)
-3. **CI 통과 + 리뷰 승인 1명** 후 병합
-4. 병합 방식은 **Squash and merge**. 병합 후 작업 브랜치는 삭제
+3. **CI 통과 후 작성자가 직접 병합** (리뷰 승인 필수 아님). 단 ai 레포의 API 형식(스키마) 변경은 서버 담당자 리뷰 승인 후 병합
+4. 병합 방식은 **Create a merge commit** 하나만 사용함 (작업 PR, 릴리스 PR 모두). 병합 후 작업 브랜치는 자동 삭제
 5. PR 하나는 한 가지 목적만 담음. 기능과 리팩터링을 섞지 않음
 
 ### 리뷰 기준

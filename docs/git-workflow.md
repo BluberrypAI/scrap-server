@@ -47,58 +47,77 @@ Settings → General → Default branch → **develop**으로 변경
 
 Settings → General → Pull Requests
 
-- [x] Allow merge commits (릴리스용)
-- [x] Allow squash merging (작업 브랜치용)
+- [x] Allow merge commits (작업 PR, 릴리스 PR 모두)
+- [ ] Allow squash merging
 - [ ] Allow rebase merging
 - [x] Automatically delete head branches
 
-### 4.4 브랜치 보호 규칙
+### 4.4 브랜치 보호 룰셋
 
-Settings → Branches → **Add classic branch protection rule**
+Settings → Rules → Rulesets → **New ruleset → New branch ruleset**
 
-> 상태 확인 항목(`backend`)은 CI가 한 번 이상 실행된 뒤에 검색됨. 첫 push 후 PR을 하나 열어 CI를 돌린 다음 설정함.
+> ⚠️ 조직이 무료 플랜이고 레포가 Private이면 룰셋은 저장만 되고 **강제되지 않음** ("won't be enforced ... until you upgrade to GitHub Team"). 지금은 팀 규칙(team-conventions.md 4장)으로 운영하고, 룰셋은 Team 업그레이드나 Public 전환 시 바로 적용되도록 만들어 둠.
+>
+> status check 항목은 CI가 한 번 이상 실행된 뒤에 검색됨. PR을 하나 열어 CI를 돌린 다음 설정함.
 
-**develop**
-
-| 항목 | 설정 |
-| --- | --- |
-| Branch name pattern | `develop` |
-| Require a pull request before merging | ✅ |
-| └ Require approvals | ✅ 1명 (팀원끼리 리뷰. 혼자 작업 중이면 0) |
-| Require status checks to pass before merging | ✅ `backend` |
-| └ Require branches to be up to date before merging | ✅ |
-| Do not allow bypassing the above settings | ✅ (관리자도 PR 필수) |
-| Allow force pushes / Allow deletions | ❌ |
-
-**main**
+**develop-protection**
 
 | 항목 | 설정 |
 | --- | --- |
-| Branch name pattern | `main` |
+| Enforcement status | **Active** |
+| Target branches | Include by pattern → `develop` |
+| Restrict deletions | ✅ |
+| Block force pushes | ✅ |
 | Require a pull request before merging | ✅ |
-| └ Require approvals | ❌ 0명 (본인 PR은 본인이 승인할 수 없으므로) |
-| Require status checks to pass before merging | ✅ `backend` |
-| Restrict who can push to matching branches | ✅ **서버 담당자 계정만 추가** (이 계정만 main에 병합 가능) |
-| Do not allow bypassing the above settings | ✅ |
-| Allow force pushes / Allow deletions | ❌ |
+| └ Required approvals | **0** (PR은 필수, 병합은 작성자가 직접) |
+| Require status checks to pass | ✅ `backend` (레포별 job 이름은 6장) |
 
-### 4.5 라벨
+**main-protection**
 
-Issues → Labels에 `feat`, `fix`, `chore`, `docs` 라벨 생성 (조직 `.github` 레포의 이슈 템플릿이 자동으로 붙임. 라벨이 없는 레포에서는 붙지 않음)
+develop-protection과 같고 다음만 다름.
+
+| 항목 | 설정 |
+| --- | --- |
+| Target branches | Include by pattern → `main` |
+| Restrict updates | ✅ |
+| Bypass list | 서버 담당자 계정 추가 (Restrict updates는 병합까지 막으므로 이 계정만 main에 병합 가능) |
 
 ## 5. AI 에이전트 규칙
 
 1. develop, main에서 직접 커밋하지 않고 위 규칙의 작업 브랜치를 만듦
 2. push, PR 생성, 병합은 사용자가 요청할 때만 함
-3. PR 본문은 `.github/pull_request_template.md`를 채움 (작업 종료 루프 항목 포함)
+3. PR 본문은 `.github/pull_request_template.md`를 채움
 
 ## 6. 다른 레포 초기 설정 (서버 담당자, 1회)
 
-| 레포 | 할 일 |
-| --- | --- |
-| `.github` | 조직에 `.github` 이름의 **공개** 레포 생성 → 로컬 `../.github` 폴더(CONTRIBUTING.md, ISSUE_TEMPLATE/, 기본 PR 템플릿)를 push. 이슈 템플릿은 자기 `ISSUE_TEMPLATE/`이 없는 모든 레포에 적용되므로 각 레포에는 이슈 템플릿을 두지 않음 |
-| `ai` | 4.2~4.5와 같은 설정 + `.github/CODEOWNERS`에 `/schemas/ @<서버담당자 GitHub ID>` (스키마 폴더 이름은 ai 레포 구조에 맞춤), 브랜치 보호에서 **Require review from Code Owners** 체크 |
-| `infra` | develop·main 보호는 같은 방식. 통합 compose는 형제 폴더(`../server/backend`, `../ai`, `../frontend`)를 빌드 경로로 사용 |
-| `frontend` | 프론트 팀과 합의해 적용 (develop을 쓰지 않기로 하면 main 보호만) |
+로컬에서는 모든 레포를 한 폴더 아래에 **나란히** clone함. infra의 통합 compose가 형제 폴더를 빌드 경로로 쓰므로 폴더 이름을 아래와 같이 맞춤.
+
+```bash
+git clone https://github.com/resource-ai-team/.github.git .github
+git clone https://github.com/resource-ai-team/Re_server.git server
+git clone https://github.com/resource-ai-team/Re_AI.git ai
+git clone https://github.com/resource-ai-team/Re_client.git frontend
+git clone https://github.com/resource-ai-team/Re_infra.git infra
+```
+
+| 레포 | 초기화 | CI job | 비고 |
+| --- | --- | --- | --- |
+| `.github` | `CONTRIBUTING.md`(= team-conventions.md), `.github/ISSUE_TEMPLATE/`, `.github/pull_request_template.md` | 없음 | **Public**이어야 함. 이슈·PR 템플릿의 원본 |
+| `server` | 4.1~4.4 | `backend` | PR 템플릿은 server용(pytest, ruff, 마이그레이션) |
+| `ai` | 기존 브랜치가 작업 브랜치 하나뿐이어서 main·develop을 **빈 첫 커밋**에서 만들고, 작업 브랜치는 develop으로 PR | `test` (AI 팀 작성) | CODEOWNERS는 두지 않음 |
+| `frontend` | 빈 레포에 README, .gitignore, 템플릿으로 첫 커밋 → main, develop 생성 | `frontend` | `package.json`이 없으면 검사를 건너뛰고 통과 |
+| `infra` | frontend와 같음 | `infra` | compose·Bicep 파일이 없으면 검사를 건너뛰고 통과 |
+
+각 레포 공통: 4.2 기본 브랜치, 4.3 병합 방식, 4.4 룰셋(status check는 위 job 이름). 라벨은 쓰지 않음.
+
+**템플릿 복사**: 조직 기본 이슈·PR 템플릿이 Private 레포에 적용되지 않으므로 각 레포에 복사함 (레포 루트에서)
+
+```bash
+mkdir -p .github
+cp -r ../.github/.github/ISSUE_TEMPLATE .github/
+cp ../.github/.github/pull_request_template.md .github/   # server 제외
+```
+
+이슈 템플릿의 `name`은 **3글자 이상**이어야 GitHub가 인식함 (예: `기능 (feat)`).
 
 team-conventions.md를 바꾸면 `.github` 레포의 `CONTRIBUTING.md`에도 같은 내용을 반영함.

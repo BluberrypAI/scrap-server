@@ -1,0 +1,1210 @@
+{
+  "date": "2026-11-15",
+  "scope": "실제 문진 18종(일반 조건) → 세부 재질/형태 52개 → 첫 업체 후보 → Azure 검토. 법정 전체 코드/실제 반입 인증 아님.",
+  "cases": [
+    {
+      "material": "pe",
+      "waste_code": "51-03-01",
+      "classification_matches_fixture": true,
+      "status": "needs_input",
+      "forms": [
+        {
+          "material_detail": null,
+          "form": "film",
+          "status": "candidates",
+          "facility_keys": [
+            "afrochem-asan",
+            "daejo-sangju",
+            "daewoon-naju",
+            "dakyeong-busan",
+            "dongmin-yeongcheon",
+            "ecoplus-yeongju",
+            "hcr-paju",
+            "ilshin-anseong",
+            "jungang-gongju",
+            "nuvotec-munmak",
+            "saramtech-nonsan",
+            "sarom-hwaseong-2",
+            "veolia-dh-yongin",
+            "youngshin-naju",
+            "youone-incheon"
+          ],
+          "capability_keys": [
+            "afrochem-asan--pe-registered-grind",
+            "daejo-sangju--pe-registered-grind",
+            "daewoon-naju--pe-scrap-to-pellet",
+            "dakyeong-busan--pe-prepare",
+            "dongmin-yeongcheon--pe-agricultural-film-recovery",
+            "ecoplus-yeongju--pe-registered-grind",
+            "hcr-paju--pe-registered-melt",
+            "ilshin-anseong--pe-registered-grind",
+            "jungang-gongju--pe-prepare",
+            "nuvotec-munmak--pe-scrap-to-pellet",
+            "saramtech-nonsan--pe-mulch-to-pellet",
+            "sarom-hwaseong-2--pe-prepare",
+            "veolia-dh-yongin--pe-sort-bale",
+            "youngshin-naju--pe-scrap-to-pellet",
+            "youone-incheon--pe-prepare"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "scrap",
+          "status": "candidates",
+          "facility_keys": [
+            "afrochem-asan",
+            "daejo-sangju",
+            "daewoon-naju",
+            "dakyeong-busan",
+            "ecoplus-yeongju",
+            "hcr-paju",
+            "ilshin-anseong",
+            "jungang-gongju",
+            "npc-chemical-hwaseong",
+            "nuvotec-munmak",
+            "sarom-hwaseong-2",
+            "veolia-dh-yongin",
+            "youngshin-naju",
+            "youone-incheon"
+          ],
+          "capability_keys": [
+            "afrochem-asan--pe-registered-grind",
+            "daejo-sangju--pe-registered-grind",
+            "daewoon-naju--pe-scrap-to-pellet",
+            "dakyeong-busan--pe-prepare",
+            "ecoplus-yeongju--pe-registered-grind",
+            "hcr-paju--pe-registered-melt",
+            "ilshin-anseong--pe-registered-grind",
+            "jungang-gongju--pe-prepare",
+            "npc-chemical-hwaseong--pe-prepare",
+            "nuvotec-munmak--pe-scrap-to-pellet",
+            "sarom-hwaseong-2--pe-prepare",
+            "veolia-dh-yongin--pe-sort-bale",
+            "youngshin-naju--pe-scrap-to-pellet",
+            "youone-incheon--pe-prepare"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "rigid",
+          "status": "candidates",
+          "facility_keys": [
+            "afrochem-asan",
+            "daejo-sangju",
+            "daewoon-naju",
+            "dakyeong-busan",
+            "ecoplus-yeongju",
+            "hcr-paju",
+            "ilshin-anseong",
+            "jungang-gongju",
+            "npc-chemical-hwaseong",
+            "nuvotec-munmak",
+            "samsungchem-miryang",
+            "sarom-hwaseong-2",
+            "veolia-dh-yongin",
+            "youngshin-naju",
+            "youone-incheon"
+          ],
+          "capability_keys": [
+            "afrochem-asan--pe-registered-grind",
+            "daejo-sangju--pe-registered-grind",
+            "daewoon-naju--pe-scrap-to-pellet",
+            "dakyeong-busan--pe-prepare",
+            "ecoplus-yeongju--pe-registered-grind",
+            "hcr-paju--pe-registered-melt",
+            "ilshin-anseong--pe-registered-grind",
+            "jungang-gongju--pe-prepare",
+            "npc-chemical-hwaseong--pe-prepare",
+            "nuvotec-munmak--pe-scrap-to-pellet",
+            "samsungchem-miryang--pe-registered-grind",
+            "sarom-hwaseong-2--pe-prepare",
+            "veolia-dh-yongin--pe-sort-bale",
+            "youngshin-naju--pe-scrap-to-pellet",
+            "youone-incheon--pe-prepare"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "bale",
+          "status": "no_route",
+          "facility_keys": [],
+          "capability_keys": []
+        },
+        {
+          "material_detail": null,
+          "form": "shredded",
+          "status": "candidates",
+          "facility_keys": [
+            "bgf-yesan",
+            "greenpol-cheonan",
+            "guil-hapcheon",
+            "hcr-paju",
+            "jinyoung-hwaseong",
+            "pne-eumseong",
+            "yongseong-gyeongsan"
+          ],
+          "capability_keys": [
+            "bgf-yesan--pe-clean",
+            "greenpol-cheonan--pe-shredded-to-pellet",
+            "guil-hapcheon--pe-flake-repelletise",
+            "hcr-paju--pe-flake-repelletise",
+            "jinyoung-hwaseong--pe-flake-repelletise",
+            "pne-eumseong--pe-shredded-to-pellet",
+            "yongseong-gyeongsan--pe-flake-repelletise"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "flake",
+          "status": "candidates",
+          "facility_keys": [
+            "bgf-yesan",
+            "greenpol-cheonan",
+            "guil-hapcheon",
+            "hcr-paju",
+            "jinyoung-hwaseong",
+            "pne-eumseong",
+            "yongseong-gyeongsan"
+          ],
+          "capability_keys": [
+            "bgf-yesan--pe-clean",
+            "greenpol-cheonan--pe-shredded-to-pellet",
+            "guil-hapcheon--pe-flake-repelletise",
+            "hcr-paju--pe-flake-repelletise",
+            "jinyoung-hwaseong--pe-flake-repelletise",
+            "pne-eumseong--pe-shredded-to-pellet",
+            "yongseong-gyeongsan--pe-flake-repelletise"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "pellet",
+          "status": "candidates",
+          "facility_keys": [
+            "bgf-hwaseong"
+          ],
+          "capability_keys": [
+            "bgf-hwaseong--pe-compound"
+          ]
+        }
+      ]
+    },
+    {
+      "material": "pp",
+      "waste_code": "51-03-01",
+      "classification_matches_fixture": true,
+      "status": "needs_input",
+      "forms": [
+        {
+          "material_detail": null,
+          "form": "scrap",
+          "status": "candidates",
+          "facility_keys": [
+            "afrochem-asan",
+            "daejo-sangju",
+            "daewoon-naju",
+            "dakyeong-busan",
+            "ecoplus-yeongju",
+            "hcr-paju",
+            "ilshin-anseong",
+            "joongil-incheon",
+            "jungang-gongju",
+            "npc-chemical-hwaseong",
+            "sarom-hwaseong-2",
+            "veolia-dh-yongin",
+            "youngshin-naju",
+            "youone-incheon"
+          ],
+          "capability_keys": [
+            "afrochem-asan--pp-registered-grind",
+            "daejo-sangju--pp-registered-grind",
+            "daewoon-naju--pp-scrap-to-pellet",
+            "dakyeong-busan--pp-prepare",
+            "ecoplus-yeongju--pp-registered-grind",
+            "hcr-paju--pp-registered-melt",
+            "ilshin-anseong--pp-registered-grind",
+            "joongil-incheon--pp-scrap-to-pellet",
+            "jungang-gongju--pp-prepare",
+            "npc-chemical-hwaseong--pp-prepare",
+            "sarom-hwaseong-2--pp-prepare",
+            "veolia-dh-yongin--pp-sort-bale",
+            "youngshin-naju--pp-scrap-to-pellet",
+            "youone-incheon--pp-prepare"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "shredded",
+          "status": "candidates",
+          "facility_keys": [
+            "bgf-yesan",
+            "changmaec-seongju",
+            "daesan-naju",
+            "greenpol-cheonan",
+            "hcr-paju",
+            "jinyoung-hwaseong",
+            "pne-eumseong",
+            "veolia-doksan-hwaseong",
+            "yongseong-gyeongsan"
+          ],
+          "capability_keys": [
+            "bgf-yesan--pp-clean",
+            "changmaec-seongju--pp-shredded-to-pellet",
+            "daesan-naju--pp-flake-repelletise",
+            "greenpol-cheonan--pp-shredded-to-pellet",
+            "hcr-paju--pp-flake-repelletise",
+            "jinyoung-hwaseong--pp-flake-repelletise",
+            "pne-eumseong--pp-shredded-to-pellet",
+            "veolia-doksan-hwaseong--pp-shredded-to-pellet",
+            "yongseong-gyeongsan--pp-flake-repelletise"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "rigid",
+          "status": "candidates",
+          "facility_keys": [
+            "afrochem-asan",
+            "daejo-sangju",
+            "daewoon-naju",
+            "dakyeong-busan",
+            "ecoplus-yeongju",
+            "hcr-paju",
+            "ilshin-anseong",
+            "joongil-incheon",
+            "jungang-gongju",
+            "npc-chemical-hwaseong",
+            "sarom-hwaseong-2",
+            "veolia-dh-yongin",
+            "youngshin-naju",
+            "youone-incheon"
+          ],
+          "capability_keys": [
+            "afrochem-asan--pp-registered-grind",
+            "daejo-sangju--pp-registered-grind",
+            "daewoon-naju--pp-scrap-to-pellet",
+            "dakyeong-busan--pp-prepare",
+            "ecoplus-yeongju--pp-registered-grind",
+            "hcr-paju--pp-registered-melt",
+            "ilshin-anseong--pp-registered-grind",
+            "joongil-incheon--pp-scrap-to-pellet",
+            "jungang-gongju--pp-prepare",
+            "npc-chemical-hwaseong--pp-prepare",
+            "sarom-hwaseong-2--pp-prepare",
+            "veolia-dh-yongin--pp-sort-bale",
+            "youngshin-naju--pp-scrap-to-pellet",
+            "youone-incheon--pp-prepare"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "film",
+          "status": "candidates",
+          "facility_keys": [
+            "afrochem-asan",
+            "daejo-sangju",
+            "daewoon-naju",
+            "dakyeong-busan",
+            "ecoplus-yeongju",
+            "hcr-paju",
+            "ilshin-anseong",
+            "jungang-gongju",
+            "npc-chemical-hwaseong",
+            "sarom-hwaseong-2",
+            "veolia-dh-yongin",
+            "youngshin-naju",
+            "youone-incheon"
+          ],
+          "capability_keys": [
+            "afrochem-asan--pp-registered-grind",
+            "daejo-sangju--pp-registered-grind",
+            "daewoon-naju--pp-scrap-to-pellet",
+            "dakyeong-busan--pp-prepare",
+            "ecoplus-yeongju--pp-registered-grind",
+            "hcr-paju--pp-registered-melt",
+            "ilshin-anseong--pp-registered-grind",
+            "jungang-gongju--pp-prepare",
+            "npc-chemical-hwaseong--pp-prepare",
+            "sarom-hwaseong-2--pp-prepare",
+            "veolia-dh-yongin--pp-sort-bale",
+            "youngshin-naju--pp-scrap-to-pellet",
+            "youone-incheon--pp-prepare"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "bale",
+          "status": "candidates",
+          "facility_keys": [
+            "veolia-doksan-hwaseong"
+          ],
+          "capability_keys": [
+            "veolia-doksan-hwaseong--pp-bale-to-pellet"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "flake",
+          "status": "candidates",
+          "facility_keys": [
+            "bgf-yesan",
+            "changmaec-seongju",
+            "daesan-naju",
+            "greenpol-cheonan",
+            "hcr-paju",
+            "jinyoung-hwaseong",
+            "pne-eumseong",
+            "veolia-doksan-hwaseong",
+            "yongseong-gyeongsan"
+          ],
+          "capability_keys": [
+            "bgf-yesan--pp-clean",
+            "changmaec-seongju--pp-shredded-to-pellet",
+            "daesan-naju--pp-flake-repelletise",
+            "greenpol-cheonan--pp-shredded-to-pellet",
+            "hcr-paju--pp-flake-repelletise",
+            "jinyoung-hwaseong--pp-flake-repelletise",
+            "pne-eumseong--pp-shredded-to-pellet",
+            "veolia-doksan-hwaseong--pp-shredded-to-pellet",
+            "yongseong-gyeongsan--pp-flake-repelletise"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "pellet",
+          "status": "candidates",
+          "facility_keys": [
+            "bgf-hwaseong",
+            "veolia-dspl-hwaseong"
+          ],
+          "capability_keys": [
+            "bgf-hwaseong--pp-compound",
+            "veolia-dspl-hwaseong--pp-compound"
+          ]
+        }
+      ]
+    },
+    {
+      "material": "ps",
+      "waste_code": "51-03-01",
+      "classification_matches_fixture": true,
+      "status": "needs_input",
+      "forms": [
+        {
+          "material_detail": null,
+          "form": "scrap",
+          "status": "candidates",
+          "facility_keys": [
+            "cntk-hwaseong",
+            "cntk-jinju",
+            "hcr-paju",
+            "ilshin-anseong",
+            "veolia-dh-yongin"
+          ],
+          "capability_keys": [
+            "cntk-hwaseong--ps-prepare",
+            "cntk-jinju--ps-prepare",
+            "hcr-paju--ps-registered-melt",
+            "ilshin-anseong--ps-registered-grind",
+            "veolia-dh-yongin--ps-sort-bale"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "rigid",
+          "status": "candidates",
+          "facility_keys": [
+            "cntk-hwaseong",
+            "cntk-jinju",
+            "hcr-paju",
+            "ilshin-anseong",
+            "veolia-dh-yongin"
+          ],
+          "capability_keys": [
+            "cntk-hwaseong--ps-prepare",
+            "cntk-jinju--ps-prepare",
+            "hcr-paju--ps-registered-melt",
+            "ilshin-anseong--ps-registered-grind",
+            "veolia-dh-yongin--ps-sort-bale"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "bale",
+          "status": "no_route",
+          "facility_keys": [],
+          "capability_keys": []
+        },
+        {
+          "material_detail": null,
+          "form": "flake",
+          "status": "candidates",
+          "facility_keys": [
+            "changmaec-seongju",
+            "cntk-hwaseong",
+            "cntk-jinju",
+            "hcr-paju",
+            "pne-eumseong"
+          ],
+          "capability_keys": [
+            "changmaec-seongju--ps-pelletise",
+            "cntk-hwaseong--ps-pelletise",
+            "cntk-jinju--ps-pelletise",
+            "hcr-paju--ps-pelletise",
+            "pne-eumseong--ps-pelletise"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "shredded",
+          "status": "candidates",
+          "facility_keys": [
+            "changmaec-seongju",
+            "cntk-hwaseong",
+            "cntk-jinju",
+            "hcr-paju",
+            "pne-eumseong"
+          ],
+          "capability_keys": [
+            "changmaec-seongju--ps-pelletise",
+            "cntk-hwaseong--ps-pelletise",
+            "cntk-jinju--ps-pelletise",
+            "hcr-paju--ps-pelletise",
+            "pne-eumseong--ps-pelletise"
+          ]
+        }
+      ]
+    },
+    {
+      "material": "pet",
+      "waste_code": "51-03-01",
+      "classification_matches_fixture": true,
+      "status": "needs_input",
+      "forms": [
+        {
+          "material_detail": null,
+          "form": "bottle",
+          "status": "candidates",
+          "facility_keys": [
+            "dakyeong-busan",
+            "hrm-cheongju",
+            "samyang-sihwa",
+            "veolia-dh-yongin",
+            "yuil-busan",
+            "yuil-yangsan"
+          ],
+          "capability_keys": [
+            "dakyeong-busan--pet-bottle-to-flake",
+            "hrm-cheongju--pet-sort-bale",
+            "samyang-sihwa--pet-bottle-to-flake",
+            "samyang-sihwa--pet-prepare",
+            "veolia-dh-yongin--pet-sort-bale",
+            "yuil-busan--pet-bottle-to-flake",
+            "yuil-yangsan--pet-bottle-to-flake"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "bale",
+          "status": "candidates",
+          "facility_keys": [
+            "rm-hwaseong",
+            "samyang-sihwa",
+            "superbin-hwaseong",
+            "yuil-busan",
+            "yuil-yangsan"
+          ],
+          "capability_keys": [
+            "rm-hwaseong--pet-bale-to-flake",
+            "samyang-sihwa--pet-bottle-to-flake",
+            "samyang-sihwa--pet-prepare",
+            "superbin-hwaseong--pet-bale-to-flake",
+            "yuil-busan--pet-bottle-to-flake",
+            "yuil-yangsan--pet-bottle-to-flake"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "flake",
+          "status": "candidates",
+          "facility_keys": [
+            "bgf-yesan",
+            "superbin-sunchang"
+          ],
+          "capability_keys": [
+            "bgf-yesan--pet-pelletise",
+            "superbin-sunchang--pet-pelletise"
+          ]
+        }
+      ]
+    },
+    {
+      "material": "abs",
+      "waste_code": "51-03-01",
+      "classification_matches_fixture": true,
+      "status": "needs_input",
+      "forms": [
+        {
+          "material_detail": null,
+          "form": "scrap",
+          "status": "candidates",
+          "facility_keys": [
+            "cntk-hwaseong",
+            "cntk-jinju"
+          ],
+          "capability_keys": [
+            "cntk-hwaseong--abs-prepare",
+            "cntk-jinju--abs-prepare"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "rigid",
+          "status": "candidates",
+          "facility_keys": [
+            "cntk-hwaseong",
+            "cntk-jinju"
+          ],
+          "capability_keys": [
+            "cntk-hwaseong--abs-prepare",
+            "cntk-jinju--abs-prepare"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "flake",
+          "status": "candidates",
+          "facility_keys": [
+            "changmaec-seongju",
+            "cntk-hwaseong",
+            "cntk-jinju"
+          ],
+          "capability_keys": [
+            "changmaec-seongju--abs-pelletise",
+            "cntk-hwaseong--abs-pelletise",
+            "cntk-jinju--abs-pelletise"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "shredded",
+          "status": "candidates",
+          "facility_keys": [
+            "changmaec-seongju",
+            "cntk-hwaseong",
+            "cntk-jinju"
+          ],
+          "capability_keys": [
+            "changmaec-seongju--abs-pelletise",
+            "cntk-hwaseong--abs-pelletise",
+            "cntk-jinju--abs-pelletise"
+          ]
+        }
+      ]
+    },
+    {
+      "material": "phenol_resin",
+      "waste_code": "51-03-01",
+      "classification_matches_fixture": true,
+      "status": "unsupported",
+      "forms": []
+    },
+    {
+      "material": "other_resin",
+      "waste_code": "51-03-01",
+      "classification_matches_fixture": true,
+      "status": "needs_input",
+      "forms": [
+        {
+          "material_detail": "san",
+          "form": "scrap",
+          "status": "candidates",
+          "facility_keys": [
+            "cntk-hwaseong",
+            "cntk-jinju"
+          ],
+          "capability_keys": [
+            "cntk-hwaseong--san-prepare",
+            "cntk-jinju--san-prepare"
+          ]
+        },
+        {
+          "material_detail": "san",
+          "form": "rigid",
+          "status": "candidates",
+          "facility_keys": [
+            "cntk-hwaseong",
+            "cntk-jinju"
+          ],
+          "capability_keys": [
+            "cntk-hwaseong--san-prepare",
+            "cntk-jinju--san-prepare"
+          ]
+        },
+        {
+          "material_detail": "san",
+          "form": "flake",
+          "status": "candidates",
+          "facility_keys": [
+            "cntk-hwaseong",
+            "cntk-jinju"
+          ],
+          "capability_keys": [
+            "cntk-hwaseong--san-pelletise",
+            "cntk-jinju--san-pelletise"
+          ]
+        },
+        {
+          "material_detail": "san",
+          "form": "shredded",
+          "status": "candidates",
+          "facility_keys": [
+            "cntk-hwaseong",
+            "cntk-jinju"
+          ],
+          "capability_keys": [
+            "cntk-hwaseong--san-pelletise",
+            "cntk-jinju--san-pelletise"
+          ]
+        },
+        {
+          "material_detail": "pa66",
+          "form": "flake",
+          "status": "candidates",
+          "facility_keys": [
+            "changmaec-seongju",
+            "yangil-incheon"
+          ],
+          "capability_keys": [
+            "changmaec-seongju--pa66-compound",
+            "yangil-incheon--pa66-compound"
+          ]
+        },
+        {
+          "material_detail": "pa66",
+          "form": "shredded",
+          "status": "candidates",
+          "facility_keys": [
+            "changmaec-seongju",
+            "yangil-incheon"
+          ],
+          "capability_keys": [
+            "changmaec-seongju--pa66-compound",
+            "yangil-incheon--pa66-compound"
+          ]
+        },
+        {
+          "material_detail": "pcabs",
+          "form": "flake",
+          "status": "candidates",
+          "facility_keys": [
+            "changmaec-seongju"
+          ],
+          "capability_keys": [
+            "changmaec-seongju--pcabs-compound"
+          ]
+        },
+        {
+          "material_detail": "pcabs",
+          "form": "shredded",
+          "status": "candidates",
+          "facility_keys": [
+            "changmaec-seongju"
+          ],
+          "capability_keys": [
+            "changmaec-seongju--pcabs-compound"
+          ]
+        }
+      ]
+    },
+    {
+      "material": "pvc",
+      "waste_code": "51-03-03",
+      "classification_matches_fixture": true,
+      "status": "needs_input",
+      "forms": [
+        {
+          "material_detail": null,
+          "form": "wallpaper",
+          "status": "candidates",
+          "facility_keys": [
+            "sungji-hwaseong"
+          ],
+          "capability_keys": [
+            "sungji-hwaseong--pvc-wallpaper-recovery"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "rigid",
+          "status": "candidates",
+          "facility_keys": [
+            "pureum-yangju"
+          ],
+          "capability_keys": [
+            "pureum-yangju--pvc-rigid-recovery"
+          ]
+        }
+      ]
+    },
+    {
+      "material": "pu_foam",
+      "waste_code": "51-03-04",
+      "classification_matches_fixture": true,
+      "status": "unsupported",
+      "forms": []
+    },
+    {
+      "material": "eps",
+      "waste_code": "51-03-06",
+      "classification_matches_fixture": true,
+      "status": "needs_input",
+      "forms": [
+        {
+          "material_detail": null,
+          "form": "foam",
+          "status": "candidates",
+          "facility_keys": [
+            "hanul-ulju"
+          ],
+          "capability_keys": [
+            "hanul-ulju--eps-foam-volume-reduce"
+          ]
+        },
+        {
+          "material_detail": null,
+          "form": "ingot",
+          "status": "candidates",
+          "facility_keys": [
+            "ecops-yeongcheon"
+          ],
+          "capability_keys": [
+            "ecops-yeongcheon--eps-ingot-pelletise"
+          ]
+        }
+      ]
+    },
+    {
+      "material": "plastic_packaging",
+      "waste_code": "51-03-07",
+      "classification_matches_fixture": true,
+      "status": "needs_input",
+      "forms": [
+        {
+          "material_detail": "pp",
+          "form": "scrap",
+          "status": "candidates",
+          "facility_keys": [
+            "afrochem-asan",
+            "daejo-sangju",
+            "daewoon-naju",
+            "dakyeong-busan",
+            "ecoplus-yeongju",
+            "hcr-paju",
+            "ilshin-anseong",
+            "joongil-incheon",
+            "jungang-gongju",
+            "npc-chemical-hwaseong",
+            "sarom-hwaseong-2",
+            "veolia-dh-yongin",
+            "youngshin-naju",
+            "youone-incheon"
+          ],
+          "capability_keys": [
+            "afrochem-asan--pp-registered-grind",
+            "daejo-sangju--pp-registered-grind",
+            "daewoon-naju--pp-scrap-to-pellet",
+            "dakyeong-busan--pp-prepare",
+            "ecoplus-yeongju--pp-registered-grind",
+            "hcr-paju--pp-registered-melt",
+            "ilshin-anseong--pp-registered-grind",
+            "joongil-incheon--pp-scrap-to-pellet",
+            "jungang-gongju--pp-prepare",
+            "npc-chemical-hwaseong--pp-prepare",
+            "sarom-hwaseong-2--pp-prepare",
+            "veolia-dh-yongin--pp-sort-bale",
+            "youngshin-naju--pp-scrap-to-pellet",
+            "youone-incheon--pp-prepare"
+          ]
+        },
+        {
+          "material_detail": "pp",
+          "form": "rigid",
+          "status": "candidates",
+          "facility_keys": [
+            "afrochem-asan",
+            "daejo-sangju",
+            "daewoon-naju",
+            "dakyeong-busan",
+            "ecoplus-yeongju",
+            "hcr-paju",
+            "ilshin-anseong",
+            "joongil-incheon",
+            "jungang-gongju",
+            "npc-chemical-hwaseong",
+            "sarom-hwaseong-2",
+            "veolia-dh-yongin",
+            "youngshin-naju",
+            "youone-incheon"
+          ],
+          "capability_keys": [
+            "afrochem-asan--pp-registered-grind",
+            "daejo-sangju--pp-registered-grind",
+            "daewoon-naju--pp-scrap-to-pellet",
+            "dakyeong-busan--pp-prepare",
+            "ecoplus-yeongju--pp-registered-grind",
+            "hcr-paju--pp-registered-melt",
+            "ilshin-anseong--pp-registered-grind",
+            "joongil-incheon--pp-scrap-to-pellet",
+            "jungang-gongju--pp-prepare",
+            "npc-chemical-hwaseong--pp-prepare",
+            "sarom-hwaseong-2--pp-prepare",
+            "veolia-dh-yongin--pp-sort-bale",
+            "youngshin-naju--pp-scrap-to-pellet",
+            "youone-incheon--pp-prepare"
+          ]
+        },
+        {
+          "material_detail": "pp",
+          "form": "film",
+          "status": "candidates",
+          "facility_keys": [
+            "afrochem-asan",
+            "daejo-sangju",
+            "daewoon-naju",
+            "dakyeong-busan",
+            "ecoplus-yeongju",
+            "hcr-paju",
+            "ilshin-anseong",
+            "jungang-gongju",
+            "npc-chemical-hwaseong",
+            "sarom-hwaseong-2",
+            "veolia-dh-yongin",
+            "youngshin-naju",
+            "youone-incheon"
+          ],
+          "capability_keys": [
+            "afrochem-asan--pp-registered-grind",
+            "daejo-sangju--pp-registered-grind",
+            "daewoon-naju--pp-scrap-to-pellet",
+            "dakyeong-busan--pp-prepare",
+            "ecoplus-yeongju--pp-registered-grind",
+            "hcr-paju--pp-registered-melt",
+            "ilshin-anseong--pp-registered-grind",
+            "jungang-gongju--pp-prepare",
+            "npc-chemical-hwaseong--pp-prepare",
+            "sarom-hwaseong-2--pp-prepare",
+            "veolia-dh-yongin--pp-sort-bale",
+            "youngshin-naju--pp-scrap-to-pellet",
+            "youone-incheon--pp-prepare"
+          ]
+        },
+        {
+          "material_detail": "pp",
+          "form": "bale",
+          "status": "candidates",
+          "facility_keys": [
+            "veolia-doksan-hwaseong"
+          ],
+          "capability_keys": [
+            "veolia-doksan-hwaseong--pp-bale-to-pellet"
+          ]
+        },
+        {
+          "material_detail": "pe",
+          "form": "film",
+          "status": "candidates",
+          "facility_keys": [
+            "afrochem-asan",
+            "daejo-sangju",
+            "daewoon-naju",
+            "dakyeong-busan",
+            "dongmin-yeongcheon",
+            "ecoplus-yeongju",
+            "hcr-paju",
+            "ilshin-anseong",
+            "jungang-gongju",
+            "nuvotec-munmak",
+            "saramtech-nonsan",
+            "sarom-hwaseong-2",
+            "veolia-dh-yongin",
+            "youngshin-naju",
+            "youone-incheon"
+          ],
+          "capability_keys": [
+            "afrochem-asan--pe-registered-grind",
+            "daejo-sangju--pe-registered-grind",
+            "daewoon-naju--pe-scrap-to-pellet",
+            "dakyeong-busan--pe-prepare",
+            "dongmin-yeongcheon--pe-agricultural-film-recovery",
+            "ecoplus-yeongju--pe-registered-grind",
+            "hcr-paju--pe-registered-melt",
+            "ilshin-anseong--pe-registered-grind",
+            "jungang-gongju--pe-prepare",
+            "nuvotec-munmak--pe-scrap-to-pellet",
+            "saramtech-nonsan--pe-mulch-to-pellet",
+            "sarom-hwaseong-2--pe-prepare",
+            "veolia-dh-yongin--pe-sort-bale",
+            "youngshin-naju--pe-scrap-to-pellet",
+            "youone-incheon--pe-prepare"
+          ]
+        },
+        {
+          "material_detail": "pe",
+          "form": "scrap",
+          "status": "candidates",
+          "facility_keys": [
+            "afrochem-asan",
+            "daejo-sangju",
+            "daewoon-naju",
+            "dakyeong-busan",
+            "ecoplus-yeongju",
+            "hcr-paju",
+            "ilshin-anseong",
+            "jungang-gongju",
+            "npc-chemical-hwaseong",
+            "nuvotec-munmak",
+            "sarom-hwaseong-2",
+            "veolia-dh-yongin",
+            "youngshin-naju",
+            "youone-incheon"
+          ],
+          "capability_keys": [
+            "afrochem-asan--pe-registered-grind",
+            "daejo-sangju--pe-registered-grind",
+            "daewoon-naju--pe-scrap-to-pellet",
+            "dakyeong-busan--pe-prepare",
+            "ecoplus-yeongju--pe-registered-grind",
+            "hcr-paju--pe-registered-melt",
+            "ilshin-anseong--pe-registered-grind",
+            "jungang-gongju--pe-prepare",
+            "npc-chemical-hwaseong--pe-prepare",
+            "nuvotec-munmak--pe-scrap-to-pellet",
+            "sarom-hwaseong-2--pe-prepare",
+            "veolia-dh-yongin--pe-sort-bale",
+            "youngshin-naju--pe-scrap-to-pellet",
+            "youone-incheon--pe-prepare"
+          ]
+        },
+        {
+          "material_detail": "pe",
+          "form": "rigid",
+          "status": "candidates",
+          "facility_keys": [
+            "afrochem-asan",
+            "daejo-sangju",
+            "daewoon-naju",
+            "dakyeong-busan",
+            "ecoplus-yeongju",
+            "hcr-paju",
+            "ilshin-anseong",
+            "jungang-gongju",
+            "npc-chemical-hwaseong",
+            "nuvotec-munmak",
+            "samsungchem-miryang",
+            "sarom-hwaseong-2",
+            "veolia-dh-yongin",
+            "youngshin-naju",
+            "youone-incheon"
+          ],
+          "capability_keys": [
+            "afrochem-asan--pe-registered-grind",
+            "daejo-sangju--pe-registered-grind",
+            "daewoon-naju--pe-scrap-to-pellet",
+            "dakyeong-busan--pe-prepare",
+            "ecoplus-yeongju--pe-registered-grind",
+            "hcr-paju--pe-registered-melt",
+            "ilshin-anseong--pe-registered-grind",
+            "jungang-gongju--pe-prepare",
+            "npc-chemical-hwaseong--pe-prepare",
+            "nuvotec-munmak--pe-scrap-to-pellet",
+            "samsungchem-miryang--pe-registered-grind",
+            "sarom-hwaseong-2--pe-prepare",
+            "veolia-dh-yongin--pe-sort-bale",
+            "youngshin-naju--pe-scrap-to-pellet",
+            "youone-incheon--pe-prepare"
+          ]
+        },
+        {
+          "material_detail": "pe",
+          "form": "bale",
+          "status": "no_route",
+          "facility_keys": [],
+          "capability_keys": []
+        },
+        {
+          "material_detail": "pet",
+          "form": "bottle",
+          "status": "candidates",
+          "facility_keys": [
+            "dakyeong-busan",
+            "hrm-cheongju",
+            "samyang-sihwa",
+            "veolia-dh-yongin",
+            "yuil-busan",
+            "yuil-yangsan"
+          ],
+          "capability_keys": [
+            "dakyeong-busan--pet-bottle-to-flake",
+            "hrm-cheongju--pet-sort-bale",
+            "samyang-sihwa--pet-bottle-to-flake",
+            "samyang-sihwa--pet-prepare",
+            "veolia-dh-yongin--pet-sort-bale",
+            "yuil-busan--pet-bottle-to-flake",
+            "yuil-yangsan--pet-bottle-to-flake"
+          ]
+        },
+        {
+          "material_detail": "pet",
+          "form": "bale",
+          "status": "candidates",
+          "facility_keys": [
+            "rm-hwaseong",
+            "samyang-sihwa",
+            "superbin-hwaseong",
+            "yuil-busan",
+            "yuil-yangsan"
+          ],
+          "capability_keys": [
+            "rm-hwaseong--pet-bale-to-flake",
+            "samyang-sihwa--pet-bottle-to-flake",
+            "samyang-sihwa--pet-prepare",
+            "superbin-hwaseong--pet-bale-to-flake",
+            "yuil-busan--pet-bottle-to-flake",
+            "yuil-yangsan--pet-bottle-to-flake"
+          ]
+        }
+      ]
+    },
+    {
+      "material": "fishing_net",
+      "waste_code": "51-03-08",
+      "classification_matches_fixture": true,
+      "status": "needs_input",
+      "forms": [
+        {
+          "material_detail": "pa6",
+          "form": "net",
+          "status": "candidates",
+          "facility_keys": [
+            "netspa-busan",
+            "yangil-incheon"
+          ],
+          "capability_keys": [
+            "netspa-busan--pa6-net-recovery",
+            "yangil-incheon--pa6-net-recovery"
+          ]
+        }
+      ]
+    },
+    {
+      "material": "aqua_buoy",
+      "waste_code": "51-03-05",
+      "classification_matches_fixture": true,
+      "status": "unsupported",
+      "forms": []
+    },
+    {
+      "material": "rubber",
+      "waste_code": "51-03-02",
+      "classification_matches_fixture": true,
+      "status": "unsupported",
+      "forms": []
+    },
+    {
+      "material": "nonferrous_scrap",
+      "waste_code": "51-29-02",
+      "classification_matches_fixture": true,
+      "status": "needs_input",
+      "forms": [
+        {
+          "material_detail": "aluminium",
+          "form": "scrap",
+          "status": "candidates",
+          "facility_keys": [
+            "ulsan-aluminium"
+          ],
+          "capability_keys": [
+            "ulsan-aluminium--al-scrap-to-slab"
+          ]
+        }
+      ]
+    },
+    {
+      "material": "ferrous_scrap",
+      "waste_code": "51-29-01",
+      "classification_matches_fixture": true,
+      "status": "needs_input",
+      "forms": [
+        {
+          "material_detail": null,
+          "form": "scrap",
+          "status": "candidates",
+          "facility_keys": [
+            "daehan-noksan",
+            "kisco-changwon"
+          ],
+          "capability_keys": [
+            "daehan-noksan--ferrous-eaf-billet",
+            "kisco-changwon--ferrous-eaf-billet"
+          ]
+        }
+      ]
+    },
+    {
+      "material": "metal_container",
+      "waste_code": "51-29-04",
+      "classification_matches_fixture": true,
+      "status": "unsupported",
+      "forms": []
+    },
+    {
+      "material": "metal_can",
+      "waste_code": "51-29-03",
+      "classification_matches_fixture": true,
+      "status": "needs_input",
+      "forms": [
+        {
+          "material_detail": null,
+          "form": "can",
+          "status": "candidates",
+          "facility_keys": [
+            "novelis-yeongju",
+            "ulsan-aluminium"
+          ],
+          "capability_keys": [
+            "novelis-yeongju--al-can-sheet",
+            "ulsan-aluminium--al-can-to-ingot"
+          ]
+        }
+      ]
+    }
+  ],
+  "ai": {
+    "requests": 49,
+    "candidate_reviews": 290,
+    "status_counts": {
+      "needs_evidence": 252,
+      "reviewed": 38
+    },
+    "distinct_capabilities": 95,
+    "missing_or_extra_results": 0,
+    "dispatch_approved": 0,
+    "final_errors": 0,
+    "first_pass_model_unavailable": 74,
+    "retries": "문진 2건 503 후 재생성. AI 첫 실행 미완료 74건을 포함한 요청 재실행. 이후 웹 재빌드 중 철스크랩 요청 연결 종료 1건 재실행."
+  },
+  "tests": {
+    "server_sqlite": 439,
+    "server_postgres": 439,
+    "web": 48,
+    "route": 520,
+    "route_skipped": 72
+  },
+  "catalog": {
+    "facilities": 50,
+    "transitions": 60,
+    "capabilities": 106,
+    "role_hypothesis": 11
+  }
+}
