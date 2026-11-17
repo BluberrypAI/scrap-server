@@ -188,6 +188,9 @@ scrap-server/
 | POST | /api/treatment/intake-review(s) | 업체 반입 검토 |
 | POST | /api/treatment/facility-web-search | 업체 공개 웹 조사 |
 | GET·PUT·PATCH·POST | /api/v1/transport/** | 현장 인계 기록 |
+| POST | /api/v1/workflow/lots/{key}/photo-conflict-resolution | 사진·상태 설명 불일치의 사용자 확인 또는 수정 |
+
+사진과 설명이 다르면 모든 업체 인수 요청을 먼저 막습니다. 사용자는 사유와 기존 문진 내용이 같다는 확인을 남기거나, 설명을 수정한 뒤 AI 검토를 다시 실행할 수 있습니다. 분류번호는 자동 변경하지 않으며 재질·발생 공정·유해성 답변이 달라지면 재문진을 안내합니다. 확인 기록은 수신 업체에 함께 전달되고 최종 수락은 업체가 합니다. [명세](docs/specs/photo-conflict-resolution.md)
 
 오류는 모든 API에서 `{"code", "message", "details"}` 형식으로 반환함. 오류 코드 목록: [docs/specs/error-response.md](docs/specs/error-response.md)
 

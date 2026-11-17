@@ -204,3 +204,10 @@ uv run python -m app.domains.transport.dev_accounts
 - `POST /api/v1/workflow/offers/{id}/messages`: `revision`, `text`로 문의 당사자 간 답변 저장.
 - 기존 조건부 수락·자료 제출·QR API를 그대로 사용합니다. 외부 이메일·문자는 보내지 않습니다.
 - 실제 운영은 확인된 사업장-기업 연결이 필요합니다. 시험용 연결은 local/test에서만 작동합니다.
+
+## 사진·설명 불일치 확인 (2026-11-17)
+
+- `POST /api/v1/workflow/lots/{key}/photo-conflict-resolution`: 현재 보유 기업만 호출. `revision`, `action`(correct/confirm), `note`(10자 이상), 수정 시 `condition`, 확인 시 `classification_unchanged: true`.
+- 설명 수정은 기존 업체 검토를 초기화합니다. 확인은 해당 검토에만 유효하며 새 사진·산출물·검토에 재사용되지 않습니다.
+- 로트 응답의 `photo_conflict_gate`에 확인 사항·차단 여부·유효한 확인 내역이 들어갑니다. 요청 API에서도 차단하므로 다른 업체 선택으로 우회할 수 없습니다.
+- 기존 JSON 필드에 기록하므로 추가 DB 마이그레이션/환경변수는 없습니다. 분류번호·R유형·문진 원본은 변경하지 않습니다.

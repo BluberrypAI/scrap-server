@@ -32,6 +32,11 @@ from app.domains.transport.models import (
     WorkflowOffer,
     WorkflowPhoto,
 )
+from app.domains.transport.photo_conflicts import (
+    PhotoConflictResolution,
+    conflict_gate,
+    resolve_conflict,
+)
 from app.domains.transport.supplier_policy import current_policies
 from app.domains.treatment.conditions import attach_answers, published_conditions, questionnaire
 from app.domains.treatment.directory import project
@@ -253,6 +258,7 @@ async def view(db, lot, cid):
         "can_manage": lot.current_company_id == cid,
         "data": lot.data,
         "review": lot.review,
+        "photo_conflict_gate": conflict_gate(lot),
         "output_states": [
             {"key": s.key, "label": s.label}
             for s in states
@@ -878,6 +884,27 @@ async def prepare_inquiry(
     )
 
 
+@router.post("/lots/{key}/photo-conflict-resolution")
+async def photo_conflict_resolution(
+    key: uuid.UUID, body: PhotoConflictResolution, company_id: CompanyId, db: DbSession
+):
+    cid = uuid.UUID(company_id)
+    lot = await lot_for(db, key, cid, lock=True)
+    active(lot, cid, {"ready", "processed"})
+    version(lot, body.revision)
+    record = resolve_conflict(lot, cid, body)
+    stamp(
+        lot,
+        "사진·설명 수정 후 재검토 필요"
+        if body.action == "correct"
+        else "사진·설명 불일치 사용자 확인",
+        cid,
+        {"resolution": record},
+    )
+    await db.commit()
+    return await view(db, lot, cid)
+
+
 @router.post("/lots/{key}/offers")
 async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSession):
     cid = uuid.UUID(company_id)
@@ -885,6 +912,11 @@ async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSess
     active(lot, cid, {"ready", "processed"})
     version(lot, body.revision)
     _, _, found = await current_review_candidate(db, lot, cid, body.capability_key)
+    if conflict_gate(lot)["blocked"]:
+        fail(
+            "사진과 상태 설명이 다릅니다. 설명을 수정해 재검토하거나 "
+            "확인 사유를 남긴 뒤 인수를 요청해 주세요."
+        )
     review = lot.review or {}
     option, facility = found
     supplier_policy = (facility.get("supplier_policy") or {}).get("policy") or {}
@@ -924,6 +956,7 @@ async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSess
             "option": option,
             "facility": facility,
             "ai_review": check,
+            "photo_conflict_resolution": deepcopy(conflict_gate(lot)["resolution"]),
             "intake_conditions": deepcopy(facility.get("intake_conditions")),
             "synthetic": binding.synthetic,
             "photo_ids": [str(p) for p in photos],

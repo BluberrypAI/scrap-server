@@ -96,6 +96,7 @@
 | T-163 | 운영 업체 계정과 실제 처리 사업장 연결 확인 | 대기 | 사람 | supplier-intake-policy | 실사업장 권한·허가·실제 반입조건 확인 필요. 이번 시험 synthetic 계정과 합성 자료는 운영 승인 근거가 아님 |
 | T-164 | 두 후보 시간초과 격리·B→C 업체조건부터 QR 입고 웹 검증 | 완료 | api-developer / test-engineer | supplier-intake-policy | 업체당 호출·로트 3후보 배치. 미완료2 재검토 완료·원본 보존. C 등록조건→B 산출물→Azure9/9→B/C 문의→조건부→QR 입고·A 조회 웹 통과. 서버531·route566(72생략). [결과·범위](supplier-bc-validation-20261117.md) |
 | T-165 | C 최종 산출물·완료와 A 전체 이력 공유 웹 검증 | 완료 | test-engineer | supplier-intake-policy | 같은 합성 PP 건에서 C 펠렛900kg·완료 근거 기록→완료→A 재로그인. 이력19건·공정2건·완료 목록·근거 조회, A 수정 버튼 없음 확인. 실행 코드 변경 없음. [결과·범위](supplier-bc-validation-20261117.md#후속-c-최종-산출물--완료--a-재로그인) |
+| T-166 | 사진·설명 불일치 사용자 확인·수정 후 인수 요청 | 완료 | api-developer / test-engineer | photo-conflict-resolution | 서버539·웹69 통과. 실제 Azure 수정 전/후 각9건 검토, 웹 차단→확인/수정→재검토→가상 C 인수 요청 성공. 분류번호 유지. [결과·한계](photo-conflict-validation-20261117.md) |
 | T-502 | 배포 대상 결정 (App Service 기본안) 및 배포 | 대기 | 사람 | - | T-008 이후 |
 
 ## 참고: 다른 레포 담당 작업 (기획서 9장)
