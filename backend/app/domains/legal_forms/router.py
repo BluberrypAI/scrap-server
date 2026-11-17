@@ -32,7 +32,13 @@ FileFormat = Literal["hwpx", "pdf"]
 
 
 async def _prepare(
-    kind: FormKind, case_id: str, body: LegalFormIn, user: Any, db: Any, engine: Any
+    kind: FormKind,
+    case_id: str,
+    body: LegalFormIn,
+    user: Any,
+    db: Any,
+    engine: Any,
+    problems: list[str] | None = None,
 ) -> tuple[list[service.Edit], service.Verdict]:
     company = await company_service.get_company_by_user(db, user.id)
     if company is None:
@@ -56,7 +62,7 @@ async def _prepare(
             "문진 결과를 확정한 건만 서식을 만들 수 있음",
         )
     verdict = service.verdict_from(handoff, body.waste)
-    edits = service.form_edits(kind, verdict, form_company, body.waste, body.submit)
+    edits = service.form_edits(kind, verdict, form_company, body.waste, body.submit, problems)
     return edits, verdict
 
 
@@ -94,18 +100,20 @@ async def preview_legal_form(
 ) -> LegalFormPreviewRead:
     response.headers.update(NO_STORE)
     title, filename = service.TITLES[kind]
+    # Field problems (a bad code, a wrong recipient, an unconfirmed signature) block the
+    # download only; the preview keeps every other value. Wrong form for the waste fails whole.
+    problems: list[str] = []
     try:
-        edits, verdict = await _prepare(kind, case_id, body, user, db, engine)
+        edits, verdict = await _prepare(kind, case_id, body, user, db, engine, problems)
     except service.FormInputError as error:
         return LegalFormPreviewRead(
             kind=kind, title=title, filename=filename, edits=[], warnings=[], problem=str(error)
         )
-    # A signature problem blocks the download only; the preview keeps showing the values.
-    problem = None
     try:
         service.signature_bytes(kind, body.submit)
     except service.FormInputError as error:
-        problem = str(error)
+        problems.append(str(error))
+    problem = " / ".join(problems) or None
     return LegalFormPreviewRead(
         problem=problem,
         kind=kind,

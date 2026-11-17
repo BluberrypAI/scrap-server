@@ -13,6 +13,7 @@ import binascii
 import datetime
 import json
 import re
+from contextvars import ContextVar
 from dataclasses import dataclass, field
 from functools import cache
 from pathlib import Path
@@ -66,6 +67,18 @@ _UNTRUSTED_SOURCES = {"DERIVED"}
 
 class FormInputError(Exception):
     """Input does not satisfy the form rules (shown to the user as is)."""
+
+
+# Field-level problems: collected (cell left blank) while previewing, raised when making a file.
+_PROBLEMS: ContextVar[list[str] | None] = ContextVar("legal_form_problems", default=None)
+
+
+def _field_problem(message: str) -> str:
+    found = _PROBLEMS.get()
+    if found is None:
+        raise FormInputError(message)
+    found.append(message)
+    return ""
 
 
 @dataclass
@@ -195,10 +208,10 @@ def _method(code: str | None, treatment: str | None) -> str:
     if not code:
         return ""
     if code not in METHOD_CODES:
-        raise FormInputError(f"처리방법 번호 {code}은(는) 제5호 3쪽 분류표에 없습니다")
+        return _field_problem(f"처리방법 번호 {code}은(는) 제5호 3쪽 분류표에 없습니다")
     want = "1" if treatment == "자가" else "2"
     if treatment and code[0] != want:
-        raise FormInputError(f'처리방법 번호 {code}이(가) 처리구분 "{treatment}"와 맞지 않습니다')
+        return _field_problem(f'처리방법 번호 {code}이(가) 처리구분 "{treatment}"와 맞지 않습니다')
     return f"{_CLASS[code[1]]}\n{code}"
 
 
@@ -251,7 +264,10 @@ def _date(d: datetime.date | None) -> str:
 def _recipient(kind: str, s: FormSubmitIn) -> str:
     r = (s.recipient or "").strip()
     if r and not r.endswith(_RECIPIENT_ENDINGS[kind]):
-        raise FormInputError(f"받는 기관장은 {_RECIPIENT_HINT[kind]} 중 하나로 적어 주세요")
+        return _field_problem(
+            f"받는 기관장은 {_RECIPIENT_HINT[kind]} 중 하나로 적어 주세요. "
+            "사람 이름은 적지 않고 직위만 적어요"
+        )
     return r
 
 
@@ -427,9 +443,16 @@ def form_edits(
     company: Company,
     waste: FormWasteIn,
     submit: FormSubmitIn | None = None,
+    problems: list[str] | None = None,
 ) -> list[Edit]:
+    """problems: when given, field problems are added there and those cells stay blank
+    (preview); otherwise the first problem raises FormInputError (file)."""
     submit = submit or FormSubmitIn()
-    edits = _SPECS[kind](verdict, company, waste, submit)
+    token = _PROBLEMS.set(problems)
+    try:
+        edits = _SPECS[kind](verdict, company, waste, submit)
+    finally:
+        _PROBLEMS.reset(token)
     seen: dict[int, int] = {}
     for e in edits:
         seen[e.cell] = seen.get(e.cell, -1) + 1

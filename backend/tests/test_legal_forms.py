@@ -531,3 +531,19 @@ async def test_unconfirmed_signature_keeps_preview_but_reports_problem(company_c
     data = res.json()
     assert "확인란" in data["problem"]
     assert any(e["slot"] == "17.0" for e in data["edits"]), "다른 칸 미리보기는 그대로"
+
+
+async def test_bad_field_keeps_other_preview_values(company_client, fake_engine):
+    fake_engine.reply = confirmed(GENERAL)
+    body = {
+        **BODY,
+        "waste": {**BODY["waste"], "method": "2203"},
+        "submit": {"recipient": "과천시장 신계용"},
+    }
+    data = (await company_client.post(f"{BASE}/form6/preview", json=body)).json()
+    assert "분류표" in data["problem"] and "직위만" in data["problem"]
+    slots = {e["slot"] for e in data["edits"]}
+    assert "17.0" in slots, "다른 칸은 그대로"
+    assert "55.0" not in slots and "87.0" not in slots, "문제 있는 칸만 비움"
+    res = await company_client.post(f"{BASE}/form6", json=body)
+    assert res.status_code == 422, "파일은 여전히 거절"
