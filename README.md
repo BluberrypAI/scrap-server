@@ -173,6 +173,13 @@ scrap-server/
 | GET | /api/v1/diagnosis/cases/{id}/trace | 판정 근거 추적 |
 | GET | /api/v1/diagnosis/catalog/facts | 질문 항목·선택지 목록 |
 
+법정 서식 작성본: 확정한 문진 건의 판정과 기업 정보로 현행 서식(HWPX) 칸을 채움. 저장·제출하지 않음. spec: [docs/specs/legal-forms.md](docs/specs/legal-forms.md)
+
+| 메서드 | 경로 | 설명 |
+| --- | --- | --- |
+| POST | /api/v1/diagnosis/cases/{id}/legal-forms/{form6\|form12\|form5}/preview | 칸별 값 미리보기, 경고, 입력 문제 |
+| POST | /api/v1/diagnosis/cases/{id}/legal-forms/{form6\|form12\|form5}?format=hwpx\|pdf | 작성본 파일 (한글 또는 PDF) |
+
 ### 처리 경로 데모
 
 시연용 기능이며 QR 추적·업체 조회 기능을 정식으로 만들면 대체함.
