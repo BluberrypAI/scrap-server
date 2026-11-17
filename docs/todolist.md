@@ -91,6 +91,7 @@
 | T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |
 | T-160 | 최신 통합 PP 재시험·부분 AI 재시도·선택적 도로거리 | 진행 | api-developer / test-engineer | road-distance | 새 PP 직접/두 단계 웹 완료. Azure 14/14·9/9, 기존 12개 결과 보존 후 2개 시간초과 복구. 서버 504·웹 66·재시작 공유 15검사 통과. 도로 API 모의 검증 완료, 활성 키로 실제 값 확인은 남음. [최신 결과](final-integrated-e2e-20261117.md) |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |
+| T-161 | 업체별 문의서 준비·검토 후 사업장 변경 차단 | 완료 | api-developer / test-engineer | vendor-inquiry | 현재 기업·산출물·AI 미확인점·질문을 미리보기/복사/저장. 자동 발송 없음. 서버525·웹66 검사 및 실제 웹 다운로드 확인. [검증·남은 판매 준비](vendor-inquiry-validation-20261117.md) |
 | T-502 | 배포 대상 결정 (App Service 기본안) 및 배포 | 대기 | 사람 | - | T-008 이후 |
 
 ## 참고: 다른 레포 담당 작업 (기획서 9장)
