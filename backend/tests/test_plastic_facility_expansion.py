@@ -103,6 +103,12 @@ def test_company_products_do_not_certify_each_of_its_factories(reference):
         if f.key in unresolved:
             # A failed registry join must not borrow a namesake's coordinates.
             # A separately cited, official address marker is independent evidence.
+            if f.location_source_id:
+                source = next(s for s in reference.sources if s.key == f.location_source_id)
+                assert source.supported_records == {"facilities": [f.key]}
+                assert source.acquisition == "public-address-page-exact-building-manual-review"
+                assert f.latitude is not None and f.longitude is not None
+                continue
             location_sources = [
                 s
                 for s in reference.sources

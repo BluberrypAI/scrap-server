@@ -197,4 +197,7 @@ def test_new_address_joins_do_not_invent_coordinates(reference):
         assert row["status"] == "exact_site_match" and row["registry_rows"]
     for key in ["saramtech-nonsan", "jinyoung-hwaseong", "dakyeong-busan", "nuvotec-munmak"]:
         f = next(f for f in reference.facilities if f.key == key)
-        assert f.latitude is f.longitude is None
+        assert f.latitude is not None and f.longitude is not None
+        source = next(s for s in reference.sources if s.key == f.location_source_id)
+        assert source.supported_records == {"facilities": [key]}
+        assert source.acquisition == "public-address-page-exact-building-manual-review"
