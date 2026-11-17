@@ -94,6 +94,7 @@
 | T-161 | 업체별 문의서 준비·검토 후 사업장 변경 차단 | 완료 | api-developer / test-engineer | vendor-inquiry | 현재 기업·산출물·AI 미확인점·질문을 미리보기/복사/저장. 자동 발송 없음. 서버525·웹66 검사 및 실제 웹 다운로드 확인. [검증·남은 판매 준비](vendor-inquiry-validation-20261117.md) |
 | T-162 | 업체 등록 반입조건·문의 답변·조건부 수락·QR 연결 | 완료 | api-developer / test-engineer | supplier-intake-policy | 버전별 DB 저장·자기 사업장 권한·조건 변경 검토 무효화·당사자 답변. 별도 A/B 웹에서 등록→문의→조건부→자료 확인→QR 입고·A 재로그인 통과. 서버529·웹67, 새 migration 포함. [결과·한계](supplier-intake-validation-20261117.md) |
 | T-163 | 운영 업체 계정과 실제 처리 사업장 연결 확인 | 대기 | 사람 | supplier-intake-policy | 실사업장 권한·허가·실제 반입조건 확인 필요. 이번 시험 synthetic 계정과 합성 자료는 운영 승인 근거가 아님 |
+| T-164 | 두 후보 시간초과 격리·B→C 업체조건부터 QR 입고 웹 검증 | 완료 | api-developer / test-engineer | supplier-intake-policy | 업체당 호출·로트 3후보 배치. 미완료2 재검토 완료·원본 보존. C 등록조건→B 산출물→Azure9/9→B/C 문의→조건부→QR 입고·A 조회 웹 통과. 서버531·route566(72생략). [결과·범위](supplier-bc-validation-20261117.md) |
 | T-502 | 배포 대상 결정 (App Service 기본안) 및 배포 | 대기 | 사람 | - | T-008 이후 |
 
 ## 참고: 다른 레포 담당 작업 (기획서 9장)
