@@ -92,6 +92,8 @@
 | T-160 | 최신 통합 PP 재시험·부분 AI 재시도·선택적 도로거리 | 진행 | api-developer / test-engineer | road-distance | 새 PP 직접/두 단계 웹 완료. Azure 14/14·9/9, 기존 12개 결과 보존 후 2개 시간초과 복구. 서버 504·웹 66·재시작 공유 15검사 통과. 도로 API 모의 검증 완료, 활성 키로 실제 값 확인은 남음. [최신 결과](final-integrated-e2e-20261117.md) |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |
 | T-161 | 업체별 문의서 준비·검토 후 사업장 변경 차단 | 완료 | api-developer / test-engineer | vendor-inquiry | 현재 기업·산출물·AI 미확인점·질문을 미리보기/복사/저장. 자동 발송 없음. 서버525·웹66 검사 및 실제 웹 다운로드 확인. [검증·남은 판매 준비](vendor-inquiry-validation-20261117.md) |
+| T-162 | 업체 등록 반입조건·문의 답변·조건부 수락·QR 연결 | 완료 | api-developer / test-engineer | supplier-intake-policy | 버전별 DB 저장·자기 사업장 권한·조건 변경 검토 무효화·당사자 답변. 별도 A/B 웹에서 등록→문의→조건부→자료 확인→QR 입고·A 재로그인 통과. 서버529·웹67, 새 migration 포함. [결과·한계](supplier-intake-validation-20261117.md) |
+| T-163 | 운영 업체 계정과 실제 처리 사업장 연결 확인 | 대기 | 사람 | supplier-intake-policy | 실사업장 권한·허가·실제 반입조건 확인 필요. 이번 시험 synthetic 계정과 합성 자료는 운영 승인 근거가 아님 |
 | T-502 | 배포 대상 결정 (App Service 기본안) 및 배포 | 대기 | 사람 | - | T-008 이후 |
 
 ## 참고: 다른 레포 담당 작업 (기획서 9장)

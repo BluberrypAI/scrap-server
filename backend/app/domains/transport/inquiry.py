@@ -83,6 +83,21 @@ def inquiry_packet(
     for question in lot_review.get("questions", []):
         lines.append(f"- {question}")
     lines += ["", "5. 이번 물량의 답변과 업체 확인 질문"]
+    declared_policy = facility.get("supplier_policy") or {}
+    if declared_policy:
+        p = declared_policy["policy"]
+        lines.append(f"업체 직접 등록한 반입조건 {declared_policy['version']}차 (허가 인증 아님)")
+        for key, label in [
+            ("materials_forms", "재질·형태"),
+            ("contamination", "오염·수분"),
+            ("packaging", "포장·운송"),
+            ("schedule", "일정"),
+        ]:
+            lines.append(f"- {label}: {p[key]}")
+        lines.append(
+            f"- 물량(kg): {p.get('min_mass_kg')} ~ {p.get('max_mass_kg')} (미정 값은 별도 협의)"
+        )
+        lines.extend(f"- 필수 확인: {check}" for check in p["required_checks"])
     form = facility.get("intake_conditions") or {}
     for q in form.get("questions", []):
         answer = (form.get("answers", {}).get(q["key"]) or {}).get("value") or "미응답"

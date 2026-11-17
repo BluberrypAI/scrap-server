@@ -32,6 +32,7 @@ from app.domains.transport.models import (
     WorkflowOffer,
     WorkflowPhoto,
 )
+from app.domains.transport.supplier_policy import current_policies
 from app.domains.treatment.conditions import attach_answers, published_conditions, questionnaire
 from app.domains.treatment.directory import project
 from app.domains.treatment.intake import (
@@ -100,6 +101,10 @@ class Version(Body):
 
 class OfferIn(Version):
     capability_key: str = Field(max_length=100)
+
+
+class InquiryMessage(Version):
+    text: str = Field(min_length=3, max_length=1000)
 
 
 class Decision(Version):
@@ -472,6 +477,8 @@ async def candidates(
     recycling_checksum = digest(None if lot.data["completed"] else recycling_value)
     ref, reference_checksum = await read_reference(db)
     conditions_checksum = digest(published_conditions())
+    supplier_policies = await current_policies(db)
+    supplier_checksum = digest(supplier_policies)
     current_company = await db.get(Company, cid)
     origin_version = current_company.profile_version
     origin_label = current_company.site_name
@@ -484,6 +491,7 @@ async def candidates(
         and lot.review.get("recycling_checksum") == recycling_checksum
         and lot.review.get("reference_checksum") == reference_checksum
         and lot.review.get("conditions_checksum") == conditions_checksum
+        and lot.review.get("supplier_checksum", digest({})) == supplier_checksum
         and lot.review.get("origin_company_id") == str(cid)
         and lot.review.get("origin_profile_version") == origin_version
         and lot.review.get("distance_version") == distance_version()
@@ -610,10 +618,13 @@ async def candidates(
         data["recycling"] = recycling_value
         data["initial"].update(route_recycling(recycling_value))
         lot.data = data
+    if digest(await current_policies(db)) != supplier_checksum:
+        fail("업체 반입조건이 변경됐습니다. 다시 검토해 주세요.")
     output = result.model_dump(mode="json")
     bindings = {b.facility_key: b for b in await db.scalars(select(WorkflowFacilityAccount))}
     for option in output["options"]:
         for f in option["facilities"]:
+            f["supplier_policy"] = supplier_policies.get(f["facility_key"])
             binding = bindings.get(f["facility_key"])
             enabled = binding and (
                 not binding.synthetic or get_settings().app_env in {"local", "test"}
@@ -640,6 +651,7 @@ async def candidates(
         "reference_checksum": reference_checksum,
         "recycling_checksum": recycling_checksum,
         "conditions_checksum": conditions_checksum,
+        "supplier_checksum": supplier_checksum,
         "origin_company_id": str(cid),
         "distance_version": distance_version(),
         "origin_profile_version": origin_version,
@@ -809,6 +821,8 @@ async def save_directory_inquiry(
 
 async def current_review_candidate(db, lot, cid, capability_key):
     review = lot.review or {}
+    if review.get("supplier_checksum", digest({})) != digest(await current_policies(db)):
+        fail("업체가 반입조건을 변경했습니다. 업체 검토를 다시 실행해 주세요.")
     ref, reference_checksum = await read_reference(db)
     if review.get("reference_checksum") != reference_checksum or review.get(
         "conditions_checksum"
@@ -873,6 +887,9 @@ async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSess
     _, _, found = await current_review_candidate(db, lot, cid, body.capability_key)
     review = lot.review or {}
     option, facility = found
+    supplier_policy = (facility.get("supplier_policy") or {}).get("policy") or {}
+    if supplier_policy.get("accepting_inquiries") is False:
+        fail("업체가 현재 새 문의 접수를 중단했습니다.")
     check = review["results"].get(body.capability_key, {})
     if (
         check.get("status") not in {"reviewed", "needs_evidence"}
@@ -928,6 +945,29 @@ async def offer_and_lot(db, key, cid):
     return row, lot
 
 
+@router.post("/offers/{key}/messages")
+async def inquiry_message(
+    key: uuid.UUID, body: InquiryMessage, company_id: CompanyId, db: DbSession
+):
+    cid = uuid.UUID(company_id)
+    row, lot = await offer_and_lot(db, key, cid)
+    if cid not in {row.sender_id, row.recipient_id}:
+        fail("이 문의의 발송·수신 기업만 답변할 수 있습니다.", 403)
+    version(lot, body.revision)
+    if row.status not in {"pending", "conditional"}:
+        fail("진행 중인 문의에만 답변할 수 있습니다.")
+    messages = list(row.data.get("messages", []))
+    if len(messages) >= 100:
+        fail("문의별 답변은 최대 100개입니다.")
+    messages.append(
+        {"text": body.text, "company_id": str(cid), "at": datetime.now(UTC).isoformat()}
+    )
+    row.data = {**row.data, "messages": messages}
+    stamp(lot, "문의 답변", cid)
+    await db.commit()
+    return await view(db, lot, cid)
+
+
 @router.post("/offers/{key}/decision")
 async def decision(key: uuid.UUID, body: Decision, company_id: CompanyId, db: DbSession):
     cid = uuid.UUID(company_id)
@@ -938,6 +978,9 @@ async def decision(key: uuid.UUID, body: Decision, company_id: CompanyId, db: Db
     if row.status not in {"pending", "conditional"} or lot.status not in {"offered", "conditional"}:
         fail("이미 응답한 요청입니다.")
     conditions = row.data.get("conditions", [])
+    policy = ((row.data.get("facility") or {}).get("supplier_policy") or {}).get("policy") or {}
+    if body.accept and policy.get("required_checks") and not conditions:
+        fail("등록한 필수 확인 조건을 먼저 조건부 수락으로 제시해 주세요.")
     if body.accept and conditions:
         expected = {c["id"] for c in conditions}
         responses = row.data.get("condition_responses", {})
@@ -985,6 +1028,10 @@ async def set_conditions(key: uuid.UUID, body: ConditionsIn, company_id: Company
         fail("응답 대기 중인 요청에 조건을 제시해 주세요.")
     if any(not isinstance(c, str) or not 3 <= len(c.strip()) <= 600 for c in body.conditions):
         fail("각 조건을 3~600자로 작성해 주세요.", 422)
+    policy = ((row.data.get("facility") or {}).get("supplier_policy") or {}).get("policy") or {}
+    checks = list(dict.fromkeys(policy.get("required_checks", []) + body.conditions))
+    if len(checks) > 12:
+        fail("등록 조건을 포함해 최대 12개까지 제시할 수 있습니다.", 422)
     row.data = {
         **row.data,
         "conditions": [
@@ -994,7 +1041,7 @@ async def set_conditions(key: uuid.UUID, body: ConditionsIn, company_id: Company
                 "proposed_by": str(cid),
                 "at": datetime.now(UTC).isoformat(),
             }
-            for c in body.conditions
+            for c in checks
         ],
         "condition_responses": {},
         "conditional_note": body.note,
