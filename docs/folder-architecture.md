@@ -40,7 +40,8 @@ ReSource/
 │  ├─ skills/                  # scripts/sync_agents.py가 생성
 │  └─ settings.json            # Claude Code 권한 설정 (직접 수정 가능)
 ├─ scripts/
-│  └─ sync_agents.py           # .agents → .claude 동기화, --check로 검사
+│  ├─ sync_agents.py           # .agents → .claude 동기화, --check로 검사
+│  └─ legal_forms_layout.py    # 법정 서식 칸 위치·빈 서식 PDF 측정 (개발용, Windows+한컴오피스)
 ├─ .github/
 │  ├─ workflows/ci.yml         # 린트, 동기화 검사, 마이그레이션, PostgreSQL 테스트
 │  ├─ ISSUE_TEMPLATE/          # 기능, 버그, 작업 (조직 .github 레포와 같은 내용)
@@ -79,6 +80,7 @@ backend/
 │     ├─ users/                # 사용자 (로그인 수단 provider, provider_subject 포함)
 │     ├─ companies/            # 기업·사업장 정보, 변경 이력 (온보딩)
 │     ├─ diagnosis/            # 문진 엔진(scrap-diagnosis) /internal/v1 중계, 엔진 오류 변환 (/api/v1/diagnosis)
+│     ├─ legal_forms/          # 확정 판정으로 법정 서식(제6·12·5호) HWPX 작성본. resources/에 현행 원본 서식 (/api/v1/diagnosis/cases/{id}/legal-forms)
 │     ├─ wastes/               # 폐기물 건, 처리 단계, QR 현장 확인, 완료 스냅샷 (테이블만, API는 기능별로 추가)
 │     ├─ facilities/           # 처리·재활용 시설, 허가 분류번호, 시설 R유형 (테이블만)
 │     ├─ transport/            # 현장 인계 기록 (QR 확인 기능으로 옮길 예정)
