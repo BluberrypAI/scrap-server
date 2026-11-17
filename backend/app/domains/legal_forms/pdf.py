@@ -7,7 +7,6 @@ line group (a line with inline blanks is redrawn with the values substituted).
 """
 
 import io
-import json
 import re
 from functools import cache
 
@@ -19,7 +18,9 @@ from reportlab.pdfbase.cidfonts import UnicodeCIDFont
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen.canvas import Canvas
 
-from app.domains.legal_forms.service import RESOURCES, Edit
+from app.domains.legal_forms.service import RESOURCES, Edit, mark_box_cm, read_layout
+
+PT_PER_CM = 72 / 2.54
 
 # A bundled open-licence TTF (resources/fonts/*.ttf) is embedded when present.
 # Otherwise the standard Adobe Korean font is referenced and the viewer supplies it
@@ -39,9 +40,8 @@ class LayoutMissingError(Exception):
     """An edit has no measured position (layout data is older than the template rules)."""
 
 
-@cache
 def _layout(kind: str) -> dict:
-    return json.loads((RESOURCES / f"{kind}-layout.json").read_text(encoding="utf-8"))
+    return read_layout(kind)
 
 
 @cache
@@ -150,18 +150,19 @@ def _draw_line(p: _Page, group: dict, edits: list[Edit]) -> None:
         p.text(x + w + _w("  ", tail_size), ty0, tail, tail_size)
 
 
-def _draw_signature(p: _Page, slot: dict, png: bytes) -> None:
-    """Place the signature over "(서명 또는 인)", about three text lines tall, keeping its ratio."""
+def _draw_signature(p: _Page, slot: dict, png: bytes, mark_type: str) -> None:
+    """Place the signature/seal centred over "(서명 또는 인)", same size as in the HWPX file."""
     x0, y0, x1, y1 = slot["box"]
     img = ImageReader(io.BytesIO(png))
-    iw, ih = img.getSize()
-    h = max(y1 - y0, slot["size"]) * 3
-    w = h * iw / ih
+    w_cm, h_cm = mark_box_cm(png, mark_type)
+    w, h = w_cm * PT_PER_CM, h_cm * PT_PER_CM
     cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
     p.c.drawImage(img, cx - w / 2, p.h - cy - h / 2, w, h, mask="auto")
 
 
-def form_pdf(kind: str, edits: list[Edit], signature: bytes | None = None) -> bytes:
+def form_pdf(
+    kind: str, edits: list[Edit], signature: bytes | None = None, mark_type: str = "signature"
+) -> bytes:
     layout = _layout(kind)
     slots, groups = layout["slots"], layout.get("groups", {})
     width, height = layout["page"]
@@ -196,7 +197,7 @@ def form_pdf(kind: str, edits: list[Edit], signature: bytes | None = None) -> by
     for g, es in lines.items():
         _draw_line(page, groups[g], es)
     for slot in signs:  # last, so the signature sits on top of redrawn lines
-        _draw_signature(page, slot, signature or b"")
+        _draw_signature(page, slot, signature or b"", mark_type)
     c.save()
 
     overlay = PdfReader(io.BytesIO(buf.getvalue())).pages[0]

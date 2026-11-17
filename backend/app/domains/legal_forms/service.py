@@ -1,7 +1,8 @@
 """Fill current statutory waste forms with known values only.
 
-Unknown cells stay blank for the user. Birth date is never filled. The signature image
-(PDF only) is drawn only when the filer confirms they sign it themselves; it is never stored.
+Unknown cells stay blank for the user. Birth date is never filled. The signature or seal
+image goes over "(서명 또는 인)" in both HWPX and PDF, only when the filer confirms they sign it
+themselves; it is never stored.
 Classification values come from the confirmed engine handoff unless the filer enters their own
 (code, physical state); those are used as the filer's declaration and flagged in warnings.
 Field map: docs/specs/legal-forms.md.
@@ -10,6 +11,7 @@ Field map: docs/specs/legal-forms.md.
 import base64
 import binascii
 import datetime
+import json
 import re
 from dataclasses import dataclass, field
 from functools import cache
@@ -440,8 +442,40 @@ def read_template(kind: str) -> bytes:
     return (RESOURCES / TEMPLATES[kind]).read_bytes()
 
 
+_HU_PER_CM = 2835  # HWPUNIT: 1/7200 inch
+
+
+@cache
+def read_layout(kind: str) -> dict:
+    """Measured positions (pt, page top-left) shared by the PDF and the signature picture."""
+    return json.loads((RESOURCES / f"{kind}-layout.json").read_text(encoding="utf-8"))
+
+
+def png_size(png: bytes) -> tuple[int, int]:
+    return int.from_bytes(png[16:20], "big"), int.from_bytes(png[20:24], "big")
+
+
+def mark_box_cm(png: bytes, mark_type: str, compact: bool = False) -> tuple[float, float]:
+    """Printed size of the signature/seal: signature about 1 cm tall, seal about 1.6 cm.
+
+    compact (HWPX): a little smaller, since the picture hangs below the line top there.
+    """
+    w, h = png_size(png)
+    ratio = w / h if h else 1
+    height, max_width = (1.6, 2.0) if mark_type == "seal" else (1.0, 4.0)
+    if compact:
+        height, max_width = height * 0.75, max_width * 0.75
+    width = min(height * ratio, max_width)
+    return width, width / ratio if ratio else height
+
+
 def form_hwpx(
-    kind: FormKind, edits: list[Edit], template: bytes | None = None, mark: Any = None
+    kind: FormKind,
+    edits: list[Edit],
+    template: bytes | None = None,
+    mark: Any = None,
+    signature: bytes | None = None,
+    mark_type: str = "signature",
 ) -> bytes:
     """mark(edit) -> str | None: probe text instead of the value (layout measuring only)."""
 
@@ -457,8 +491,23 @@ def form_hwpx(
             value(e),
             e.pattern,
         )
-        # The signature image goes into the PDF only; HWPX keeps "(서명 또는 인)" for ink/stamp.
         for e in edits
         if e.op != "sign" or (mark and mark(e))
     ]
+    if signature and not mark:
+        # Hung from the "(서명 또는 인)" line, right-aligned like the text itself.
+        w_cm, h_cm = mark_box_cm(signature, mark_type, compact=True)
+        cells += [
+            CellEdit(
+                e.cell,
+                e.expect,
+                "image",
+                "",
+                e.pattern,
+                image=signature,
+                image_size=(round(w_cm * _HU_PER_CM), round(h_cm * _HU_PER_CM)),
+            )
+            for e in edits
+            if e.op == "sign"
+        ]
     return fill_hwpx(template or read_template(kind), cells)

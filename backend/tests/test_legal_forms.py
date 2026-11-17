@@ -390,12 +390,45 @@ def _edits(kind, handoff, waste, submit):
     return service.form_edits(kind, verdict, service.company_from(None, COMPANY), waste, submit)
 
 
-def test_form6_submit_cells_and_signature_stays_out_of_hwpx():
+def test_form6_submit_cells():
     c = hwpx_cells(service.form_hwpx("form6", _edits("form6", GENERAL, WASTE6, SIGNED)))
     assert c[84] == "2026년 11월 17일"
     assert c[85].split() == ["신고인", "홍길동"], "신고인 이름은 대표자 성명"
-    assert c[86].strip() == "(서명 또는 인)", "서명 이미지는 PDF에만 넣는다"
+    assert c[86].strip() == "(서명 또는 인)", "글자는 그대로 두고 그림을 그 위에 얹는다"
     assert c[87].split() == ["화성시장", "귀하"]
+
+
+@pytest.mark.parametrize(
+    ("kind", "handoff", "waste"), [("form6", GENERAL, WASTE6), ("form12", DESIGNATED, WASTE12)]
+)
+@pytest.mark.parametrize("mark_type", ["signature", "seal"])
+def test_hwpx_carries_signature_or_seal_picture(kind, handoff, waste, mark_type):
+    submit = SIGNED.model_copy(update={"mark_type": mark_type})
+    edits = _edits(kind, handoff, waste, submit)
+    sign = service.signature_bytes(kind, submit)
+    data = service.form_hwpx(kind, edits, signature=sign, mark_type=mark_type)
+    z = zipfile.ZipFile(io.BytesIO(data))
+    pics = [n for n in z.namelist() if n.startswith("BinData/")]
+    assert len(pics) == 1 and z.read(pics[0]) == sign
+    assert z.getinfo(pics[0]).compress_type == zipfile.ZIP_STORED
+    item = pics[0].removeprefix("BinData/").removesuffix(".png")
+    assert f'id="{item}"' in z.read("Contents/content.hpf").decode()
+    section = z.read("Contents/section0.xml").decode()
+    assert section.count("<hp:pic") == 1 and f'binaryItemIDRef="{item}"' in section
+    assert z.infolist()[0].filename == "mimetype" and z.testzip() is None
+
+
+def test_hwpx_without_signature_has_no_picture():
+    data = service.form_hwpx("form6", _edits("form6", GENERAL, WASTE6, FormSubmitIn()))
+    z = zipfile.ZipFile(io.BytesIO(data))
+    assert not [n for n in z.namelist() if n.startswith("BinData/")]
+    assert "<hp:pic" not in z.read("Contents/section0.xml").decode()
+
+
+def test_seal_is_bigger_and_squarer_than_signature():
+    wide = service.mark_box_cm(_png(), "signature")
+    seal = service.mark_box_cm(_png(), "seal")
+    assert seal[1] > wide[1]
 
 
 def test_form12_submit_cells():
@@ -478,7 +511,7 @@ async def test_preview_lists_sign_slot_and_notes(company_client, fake_engine):
     assert data["problem"] is None
     ops = {e["slot"]: e["op"] for e in data["edits"]}
     assert ops["86.0"] == "sign"
-    assert any("PDF에만" in w for w in data["warnings"])
+    assert any("한글 파일과 PDF" in w for w in data["warnings"])
 
 
 async def test_download_pdf_with_signature(company_client, fake_engine):

@@ -52,13 +52,17 @@ class FormWasteIn(_In):
 
 
 class FormSubmitIn(_In):
-    """제출 칸: 작성일, 받는 기관장, 신고인(제출인) 이름, 서명 이미지(PDF에만)."""
+    """제출 칸: 작성일, 받는 기관장, 신고인(제출인) 이름, 서명·날인 이미지."""
 
     date: datetime.date | None = None
     recipient: str | None = Field(None, max_length=60, description="예: 화성시장, 경기도지사")
     signer_name: str | None = Field(None, max_length=60, description="비우면 대표자 성명")
-    # data:image/png;base64,... drawn by the signer in the browser. Never stored.
+    # data:image/png;base64,... drawn signature or a stamp image chosen by the signer.
+    # Never stored.
     signature_png: str | None = Field(None, max_length=400_000)
+    mark_type: Literal["signature", "seal"] = Field(
+        "signature", description="signature: 그린 서명, seal: 도장(인) 이미지"
+    )
     signer_confirmed: bool = Field(
         False, description="신고인 본인(또는 위임받은 사람)이 직접 서명함"
     )

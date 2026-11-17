@@ -66,7 +66,8 @@ def _submit_notes(kind: FormKind, body: LegalFormIn) -> list[str]:
         return [*notes, "제5호의 날짜·서명은 처리 업체(수탁자)가 적습니다."]
     if body.submit.signature_png:
         notes.append(
-            "서명 이미지는 PDF에만 들어갑니다. 한글 파일은 인쇄해 서명하거나 도장을 찍어 주세요."
+            "서명·날인 이미지가 한글 파일과 PDF에 들어갑니다. 기관에 따라 직접 서명·날인을 "
+            "요구할 수 있으니 제출 전에 확인해 주세요."
         )
     else:
         notes.append("서명이 없으면 받은 파일을 인쇄해 서명하거나 도장을 찍어 주세요.")
@@ -139,10 +140,12 @@ async def download_legal_form(
 ) -> Response:
     try:
         edits, _ = await _prepare(kind, case_id, body, user, db, engine)
+        sign = service.signature_bytes(kind, body.submit)
+        mark_type = body.submit.mark_type
         content = (
-            pdf.form_pdf(kind, edits, service.signature_bytes(kind, body.submit))
+            pdf.form_pdf(kind, edits, sign, mark_type)
             if file_format == "pdf"
-            else service.form_hwpx(kind, edits)
+            else service.form_hwpx(kind, edits, signature=sign, mark_type=mark_type)
         )
     except service.FormInputError as error:
         raise _invalid(error) from None
