@@ -100,7 +100,14 @@ async def preview_legal_form(
         return LegalFormPreviewRead(
             kind=kind, title=title, filename=filename, edits=[], warnings=[], problem=str(error)
         )
+    # A signature problem blocks the download only; the preview keeps showing the values.
+    problem = None
+    try:
+        service.signature_bytes(kind, body.submit)
+    except service.FormInputError as error:
+        problem = str(error)
     return LegalFormPreviewRead(
+        problem=problem,
         kind=kind,
         title=title,
         filename=filename,

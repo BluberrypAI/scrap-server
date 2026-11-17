@@ -263,7 +263,8 @@ def signature_bytes(kind: str, s: FormSubmitIn) -> bytes | None:
         raise FormInputError("제5호의 서명란은 처리 업체(수탁자)가 서명합니다")
     if not s.signer_confirmed:
         raise FormInputError(
-            "서명은 신고인 본인(또는 위임받은 사람)이 직접 해야 합니다. 확인란을 체크해 주세요"
+            "서명·날인은 신고인 본인(또는 위임받은 사람)이 직접 해야 합니다. "
+            "'서명·날인' 칸 아래 확인란을 체크해 주세요"
         )
     head, _, data = s.signature_png.partition(",")
     try:
@@ -428,7 +429,6 @@ def form_edits(
     submit: FormSubmitIn | None = None,
 ) -> list[Edit]:
     submit = submit or FormSubmitIn()
-    signature_bytes(kind, submit)  # check the signature rules early (preview too)
     edits = _SPECS[kind](verdict, company, waste, submit)
     seen: dict[int, int] = {}
     for e in edits:

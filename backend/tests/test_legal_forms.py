@@ -451,15 +451,15 @@ def test_recipient_must_be_one_of_printed_heads(kind, handoff, waste, recipient)
 def test_signature_needs_signer_confirmation():
     unconfirmed = SIGNED.model_copy(update={"signer_confirmed": False})
     with pytest.raises(service.FormInputError, match="본인"):
-        _edits("form6", GENERAL, WASTE6, unconfirmed)
+        service.signature_bytes("form6", unconfirmed)
 
 
 def test_signature_must_be_png_and_not_on_form5():
     bad = SIGNED.model_copy(update={"signature_png": "data:image/png;base64,aGVsbG8="})
     with pytest.raises(service.FormInputError, match="PNG"):
-        _edits("form6", GENERAL, WASTE6, bad)
+        service.signature_bytes("form6", bad)
     with pytest.raises(service.FormInputError, match="수탁자"):
-        _edits("form5", GENERAL, WASTE6, SIGNED)
+        service.signature_bytes("form5", SIGNED)
 
 
 def test_pdf_draws_signature_image_only_when_given():
@@ -522,3 +522,12 @@ async def test_download_pdf_with_signature(company_client, fake_engine):
     unconfirmed = {**body, "submit": {**body["submit"], "signer_confirmed": False}}
     res = await company_client.post(f"{BASE}/form6?format=pdf", json=unconfirmed)
     assert res.status_code == 422
+
+
+async def test_unconfirmed_signature_keeps_preview_but_reports_problem(company_client, fake_engine):
+    fake_engine.reply = confirmed(GENERAL)
+    unconfirmed = {**SIGNED.model_dump(mode="json"), "signer_confirmed": False}
+    res = await company_client.post(f"{BASE}/form6/preview", json={**BODY, "submit": unconfirmed})
+    data = res.json()
+    assert "확인란" in data["problem"]
+    assert any(e["slot"] == "17.0" for e in data["edits"]), "다른 칸 미리보기는 그대로"
