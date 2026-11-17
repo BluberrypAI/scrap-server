@@ -100,3 +100,15 @@ class WorkflowPhoto(Base, TimestampMixin):
     stage: Mapped[int] = mapped_column(Integer)
     mime: Mapped[str] = mapped_column(String(30))
     content: Mapped[bytes] = mapped_column(LargeBinary)
+
+
+class SupplierIntakePolicy(Base, TimestampMixin):
+    __tablename__ = "supplier_intake_policies"
+    __table_args__ = (UniqueConstraint("facility_key", "version"),)
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    facility_key: Mapped[str] = mapped_column(
+        ForeignKey("workflow_facility_accounts.facility_key"), index=True
+    )
+    company_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("companies.id"), index=True)
+    version: Mapped[int] = mapped_column(Integer)
+    data: Mapped[dict] = mapped_column(JSON)

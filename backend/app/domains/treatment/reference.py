@@ -161,6 +161,7 @@ class Facility(SourcedRecord):
     current_price_krw_per_kg: None
     latitude: float | None = Field(ge=-90, le=90, allow_inf_nan=False)
     longitude: float | None = Field(ge=-180, le=180, allow_inf_nan=False)
+    location_source_id: str | None = None
 
 
 class FacilityInputProfile(BaseModel):
@@ -255,6 +256,10 @@ class PlanningReference(BaseModel):
                 raise ValueError("Unlinked reported metric")
             if (facility.latitude is None) != (facility.longitude is None):
                 raise ValueError("Incomplete location point")
+            if facility.location_source_id is not None and (
+                facility.location_source_id not in facility.source_ids or facility.latitude is None
+            ):
+                raise ValueError("Unlinked location source or missing location point")
         for capability in self.capabilities:
             if (
                 capability.facility not in mappings["facilities"]

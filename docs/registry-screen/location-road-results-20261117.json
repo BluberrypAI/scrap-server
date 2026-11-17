@@ -1,0 +1,3313 @@
+{
+  "checked_at": "2026-11-17",
+  "scope": "Actual PostgreSQL reference + OSRM; synthetic A/B origins; not browser QR E2E",
+  "reference_checksum": "055fd04cdb7615a5c80f6f749a3d67d9621e88fb335c11b2a2a9efe9ff5f9e4c",
+  "provider": "osrm-demo-v1",
+  "synthetic_origins": {
+    "A": {
+      "latitude": 37.19250222760364,
+      "longitude": 126.91132895231306
+    },
+    "B": {
+      "latitude": 37.15,
+      "longitude": 126.88
+    }
+  },
+  "summary": {
+    "cases": 94,
+    "missing_coordinates": 0,
+    "road_failed": 0
+  },
+  "map_adapter_checks": [
+    {
+      "case": 0,
+      "material": "pp",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 1,
+      "material": "pp",
+      "phase": "B",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 2,
+      "material": "pp",
+      "phase": "B",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 3,
+      "material": "pp",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 4,
+      "material": "pp",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 5,
+      "material": "pp",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 6,
+      "material": "pp",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 7,
+      "material": "pp",
+      "phase": "B",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 8,
+      "material": "pp",
+      "phase": "B",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 9,
+      "material": "pp",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 10,
+      "material": "pp",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 11,
+      "material": "pp",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 12,
+      "material": "pp",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 13,
+      "material": "pp",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 14,
+      "material": "pp",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 15,
+      "material": "pp",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 16,
+      "material": "pp",
+      "phase": "A",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 17,
+      "material": "pp",
+      "phase": "B",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 18,
+      "material": "pp",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 19,
+      "material": "pp",
+      "phase": "A",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 20,
+      "material": "pp",
+      "phase": "B",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 21,
+      "material": "pp",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 22,
+      "material": "pp",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 23,
+      "material": "pp",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 24,
+      "material": "pp",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 25,
+      "material": "pp",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 26,
+      "material": "pp",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 27,
+      "material": "pp",
+      "phase": "A",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 28,
+      "material": "pp",
+      "phase": "B",
+      "markers": 0,
+      "basis": "straight_line"
+    },
+    {
+      "case": 29,
+      "material": "pe",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 30,
+      "material": "pe",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 31,
+      "material": "pe",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 32,
+      "material": "pe",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 33,
+      "material": "pe",
+      "phase": "B",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 34,
+      "material": "pe",
+      "phase": "B",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 35,
+      "material": "pe",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 36,
+      "material": "pe",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 37,
+      "material": "pe",
+      "phase": "B",
+      "markers": 0,
+      "basis": "straight_line"
+    },
+    {
+      "case": 38,
+      "material": "pe",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 39,
+      "material": "pe",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 40,
+      "material": "pe",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 41,
+      "material": "pe",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 42,
+      "material": "pe",
+      "phase": "B",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 43,
+      "material": "pe",
+      "phase": "B",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 44,
+      "material": "pe",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 45,
+      "material": "pe",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 46,
+      "material": "pe",
+      "phase": "B",
+      "markers": 0,
+      "basis": "straight_line"
+    },
+    {
+      "case": 47,
+      "material": "pe",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 48,
+      "material": "pe",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 49,
+      "material": "pe",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 50,
+      "material": "pe",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 51,
+      "material": "pe",
+      "phase": "A",
+      "markers": 0,
+      "basis": "straight_line"
+    },
+    {
+      "case": 52,
+      "material": "pe",
+      "phase": "B",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 53,
+      "material": "pe",
+      "phase": "A",
+      "markers": 0,
+      "basis": "straight_line"
+    },
+    {
+      "case": 54,
+      "material": "pe",
+      "phase": "B",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 55,
+      "material": "pe",
+      "phase": "A",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 56,
+      "material": "pe",
+      "phase": "B",
+      "markers": 0,
+      "basis": "straight_line"
+    },
+    {
+      "case": 57,
+      "material": "pe",
+      "phase": "A",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 58,
+      "material": "pe",
+      "phase": "B",
+      "markers": 0,
+      "basis": "straight_line"
+    },
+    {
+      "case": 59,
+      "material": "pe",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 60,
+      "material": "pe",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 61,
+      "material": "pe",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 62,
+      "material": "pe",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 63,
+      "material": "pe",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 64,
+      "material": "pe",
+      "phase": "A",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 65,
+      "material": "pe",
+      "phase": "B",
+      "markers": 0,
+      "basis": "straight_line"
+    },
+    {
+      "case": 66,
+      "material": "pet",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 67,
+      "material": "pet",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 68,
+      "material": "pet",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 69,
+      "material": "pet",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 70,
+      "material": "pet",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 71,
+      "material": "pet",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 72,
+      "material": "pet",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 73,
+      "material": "pet",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 74,
+      "material": "pet",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 75,
+      "material": "pet",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 76,
+      "material": "pet",
+      "phase": "B",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 77,
+      "material": "pet",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 78,
+      "material": "pet",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 79,
+      "material": "pet",
+      "phase": "A",
+      "markers": 5,
+      "basis": "road"
+    },
+    {
+      "case": 80,
+      "material": "pet",
+      "phase": "A",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 81,
+      "material": "pet",
+      "phase": "B",
+      "markers": 0,
+      "basis": "straight_line"
+    },
+    {
+      "case": 82,
+      "material": "ferrous",
+      "phase": "A",
+      "markers": 4,
+      "basis": "road"
+    },
+    {
+      "case": 83,
+      "material": "ferrous",
+      "phase": "B",
+      "markers": 0,
+      "basis": "straight_line"
+    },
+    {
+      "case": 84,
+      "material": "ferrous",
+      "phase": "B",
+      "markers": 3,
+      "basis": "road"
+    },
+    {
+      "case": 85,
+      "material": "ferrous",
+      "phase": "A",
+      "markers": 1,
+      "basis": "road"
+    },
+    {
+      "case": 86,
+      "material": "ferrous",
+      "phase": "B",
+      "markers": 0,
+      "basis": "straight_line"
+    },
+    {
+      "case": 87,
+      "material": "aluminium",
+      "phase": "A",
+      "markers": 3,
+      "basis": "road"
+    },
+    {
+      "case": 88,
+      "material": "aluminium",
+      "phase": "B",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 89,
+      "material": "aluminium",
+      "phase": "B",
+      "markers": 0,
+      "basis": "straight_line"
+    },
+    {
+      "case": 90,
+      "material": "aluminium",
+      "phase": "B",
+      "markers": 0,
+      "basis": "straight_line"
+    },
+    {
+      "case": 91,
+      "material": "aluminium",
+      "phase": "A",
+      "markers": 2,
+      "basis": "road"
+    },
+    {
+      "case": 92,
+      "material": "aluminium",
+      "phase": "B",
+      "markers": 0,
+      "basis": "straight_line"
+    },
+    {
+      "case": 93,
+      "material": "aluminium",
+      "phase": "B",
+      "markers": 0,
+      "basis": "straight_line"
+    }
+  ],
+  "rows": [
+    {
+      "role": "A",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "scrap",
+      "via": null,
+      "state": "pp-scrap",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 5,
+      "facilities": 14,
+      "roads": 14,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "km": 16.256
+        },
+        {
+          "key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "km": 18.879
+        },
+        {
+          "key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "km": 26.041
+        },
+        {
+          "key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "km": 43.854
+        },
+        {
+          "key": "youone-incheon",
+          "label": "유원포리머 인천",
+          "km": 43.928
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "scrap",
+      "via": "pp-prepare",
+      "state": "pp-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 9,
+      "roads": 9,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "km": 17.737
+        },
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 19.711
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 81.876
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 91.498
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "scrap",
+      "via": "pp-registered-grind",
+      "state": "pp-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 9,
+      "roads": 9,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "km": 17.737
+        },
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 19.711
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 81.876
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 91.498
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "scrap",
+      "via": "pp-registered-melt",
+      "state": "pp-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-dspl-hwaseong",
+          "label": "DSPL 화성",
+          "km": 18.225
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "scrap",
+      "via": "pp-scrap-to-pellet",
+      "state": "pp-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-dspl-hwaseong",
+          "label": "DSPL 화성",
+          "km": 18.225
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "scrap",
+      "via": "pp-sort-bale",
+      "state": "pp-bale",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 2,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "km": 17.737
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pp",
+      "code": "51-03-07",
+      "form": "scrap",
+      "via": null,
+      "state": "pp-scrap",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 5,
+      "facilities": 14,
+      "roads": 14,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "km": 16.256
+        },
+        {
+          "key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "km": 18.879
+        },
+        {
+          "key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "km": 26.041
+        },
+        {
+          "key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "km": 43.854
+        },
+        {
+          "key": "youone-incheon",
+          "label": "유원포리머 인천",
+          "km": 43.928
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-07",
+      "form": "scrap",
+      "via": "pp-prepare",
+      "state": "pp-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 9,
+      "roads": 9,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "km": 17.737
+        },
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 19.711
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 81.876
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 91.498
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-07",
+      "form": "scrap",
+      "via": "pp-registered-grind",
+      "state": "pp-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 9,
+      "roads": 9,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "km": 17.737
+        },
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 19.711
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 81.876
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 91.498
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-07",
+      "form": "scrap",
+      "via": "pp-registered-melt",
+      "state": "pp-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-dspl-hwaseong",
+          "label": "DSPL 화성",
+          "km": 18.225
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-07",
+      "form": "scrap",
+      "via": "pp-scrap-to-pellet",
+      "state": "pp-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-dspl-hwaseong",
+          "label": "DSPL 화성",
+          "km": 18.225
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-07",
+      "form": "scrap",
+      "via": "pp-sort-bale",
+      "state": "pp-bale",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 2,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "km": 17.737
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "rigid",
+      "via": null,
+      "state": "pp-scrap",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 5,
+      "facilities": 16,
+      "roads": 16,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "km": 16.256
+        },
+        {
+          "key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "km": 18.879
+        },
+        {
+          "key": "kers-hwaseong",
+          "label": "기은알에스 화성 선별장",
+          "km": 19.406
+        },
+        {
+          "key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "km": 26.041
+        },
+        {
+          "key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "km": 43.854
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pp",
+      "code": "51-03-07",
+      "form": "rigid",
+      "via": null,
+      "state": "pp-scrap",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 5,
+      "facilities": 16,
+      "roads": 16,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "km": 16.256
+        },
+        {
+          "key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "km": 18.879
+        },
+        {
+          "key": "kers-hwaseong",
+          "label": "기은알에스 화성 선별장",
+          "km": 19.406
+        },
+        {
+          "key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "km": 26.041
+        },
+        {
+          "key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "km": 43.854
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "film",
+      "via": null,
+      "state": "pp-scrap",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 5,
+      "facilities": 13,
+      "roads": 13,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "km": 16.256
+        },
+        {
+          "key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "km": 18.879
+        },
+        {
+          "key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "km": 26.041
+        },
+        {
+          "key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "km": 43.854
+        },
+        {
+          "key": "youone-incheon",
+          "label": "유원포리머 인천",
+          "km": 43.928
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pp",
+      "code": "51-03-07",
+      "form": "film",
+      "via": null,
+      "state": "pp-scrap",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 5,
+      "facilities": 13,
+      "roads": 13,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "km": 16.256
+        },
+        {
+          "key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "km": 18.879
+        },
+        {
+          "key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "km": 26.041
+        },
+        {
+          "key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "km": 43.854
+        },
+        {
+          "key": "youone-incheon",
+          "label": "유원포리머 인천",
+          "km": 43.928
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "bale",
+      "via": null,
+      "state": "pp-bale",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 2,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "km": 12.913
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "bale",
+      "via": "pp-bale-prepare",
+      "state": "pp-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 9,
+      "roads": 9,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "km": 17.737
+        },
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 19.711
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 81.876
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 91.498
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "bale",
+      "via": "pp-bale-to-pellet",
+      "state": "pp-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-dspl-hwaseong",
+          "label": "DSPL 화성",
+          "km": 18.225
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pp",
+      "code": "51-03-07",
+      "form": "bale",
+      "via": null,
+      "state": "pp-bale",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 2,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "km": 12.913
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-07",
+      "form": "bale",
+      "via": "pp-bale-prepare",
+      "state": "pp-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 9,
+      "roads": 9,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "km": 17.737
+        },
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 19.711
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 81.876
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 91.498
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-07",
+      "form": "bale",
+      "via": "pp-bale-to-pellet",
+      "state": "pp-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-dspl-hwaseong",
+          "label": "DSPL 화성",
+          "km": 18.225
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "shredded",
+      "via": null,
+      "state": "pp-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 9,
+      "roads": 9,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "km": 12.913
+        },
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 22.947
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 62.332
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 82.751
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 86.543
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "shredded",
+      "via": "pp-clean",
+      "state": "pp-washed",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "shredded",
+      "via": "pp-flake-repelletise",
+      "state": "pp-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-dspl-hwaseong",
+          "label": "DSPL 화성",
+          "km": 18.225
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "shredded",
+      "via": "pp-shredded-to-pellet",
+      "state": "pp-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-dspl-hwaseong",
+          "label": "DSPL 화성",
+          "km": 18.225
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "flake",
+      "via": null,
+      "state": "pp-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 9,
+      "roads": 9,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-doksan-hwaseong",
+          "label": "독산 화성",
+          "km": 12.913
+        },
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 22.947
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 62.332
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 82.751
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 86.543
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "pellet",
+      "via": null,
+      "state": "pp-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "veolia-dspl-hwaseong",
+          "label": "DSPL 화성",
+          "km": 13.025
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pp",
+      "code": "51-03-01",
+      "form": "pellet",
+      "via": "pp-compound",
+      "state": "pp-compound",
+      "status": "end_of_route",
+      "can_finish": true,
+      "processes": 0,
+      "facilities": 0,
+      "roads": 0,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "A",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "scrap",
+      "via": null,
+      "state": "pe-scrap",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 8,
+      "facilities": 15,
+      "roads": 15,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "km": 16.256
+        },
+        {
+          "key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "km": 18.879
+        },
+        {
+          "key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "km": 26.041
+        },
+        {
+          "key": "hwangyeong-anseong",
+          "label": "환경수지 안성",
+          "km": 41.178
+        },
+        {
+          "key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "km": 43.854
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "scrap",
+      "via": "pe-agricultural-film-recovery",
+      "state": "pe-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "scrap",
+      "via": "pe-film-double-extrude",
+      "state": "pe-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "scrap",
+      "via": "pe-mulch-to-pellet",
+      "state": "pe-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "scrap",
+      "via": "pe-prepare",
+      "state": "pe-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 7,
+      "roads": 7,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 19.711
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 81.876
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 91.498
+        },
+        {
+          "key": "pne-eumseong",
+          "label": "피앤이환경 음성 사업장",
+          "km": 100.843
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "scrap",
+      "via": "pe-registered-grind",
+      "state": "pe-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 7,
+      "roads": 7,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 19.711
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 81.876
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 91.498
+        },
+        {
+          "key": "pne-eumseong",
+          "label": "피앤이환경 음성 사업장",
+          "km": 100.843
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "scrap",
+      "via": "pe-registered-melt",
+      "state": "pe-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "scrap",
+      "via": "pe-scrap-to-pellet",
+      "state": "pe-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "scrap",
+      "via": "pe-sort-bale",
+      "state": "pe-bale",
+      "status": "no_route",
+      "can_finish": false,
+      "processes": 1,
+      "facilities": 0,
+      "roads": 0,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "A",
+      "material": "pe",
+      "code": "51-03-07",
+      "form": "scrap",
+      "via": null,
+      "state": "pe-scrap",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 8,
+      "facilities": 15,
+      "roads": 15,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "km": 16.256
+        },
+        {
+          "key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "km": 18.879
+        },
+        {
+          "key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "km": 26.041
+        },
+        {
+          "key": "hwangyeong-anseong",
+          "label": "환경수지 안성",
+          "km": 41.178
+        },
+        {
+          "key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "km": 43.854
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-07",
+      "form": "scrap",
+      "via": "pe-agricultural-film-recovery",
+      "state": "pe-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-07",
+      "form": "scrap",
+      "via": "pe-film-double-extrude",
+      "state": "pe-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-07",
+      "form": "scrap",
+      "via": "pe-mulch-to-pellet",
+      "state": "pe-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-07",
+      "form": "scrap",
+      "via": "pe-prepare",
+      "state": "pe-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 7,
+      "roads": 7,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 19.711
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 81.876
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 91.498
+        },
+        {
+          "key": "pne-eumseong",
+          "label": "피앤이환경 음성 사업장",
+          "km": 100.843
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-07",
+      "form": "scrap",
+      "via": "pe-registered-grind",
+      "state": "pe-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 7,
+      "roads": 7,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 19.711
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 81.876
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 91.498
+        },
+        {
+          "key": "pne-eumseong",
+          "label": "피앤이환경 음성 사업장",
+          "km": 100.843
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-07",
+      "form": "scrap",
+      "via": "pe-registered-melt",
+      "state": "pe-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-07",
+      "form": "scrap",
+      "via": "pe-scrap-to-pellet",
+      "state": "pe-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-07",
+      "form": "scrap",
+      "via": "pe-sort-bale",
+      "state": "pe-bale",
+      "status": "no_route",
+      "can_finish": false,
+      "processes": 1,
+      "facilities": 0,
+      "roads": 0,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "A",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "rigid",
+      "via": null,
+      "state": "pe-scrap",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 8,
+      "facilities": 19,
+      "roads": 19,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "km": 16.256
+        },
+        {
+          "key": "cwrs-hwaseong",
+          "label": "창우RS 화성지점",
+          "km": 18.364
+        },
+        {
+          "key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "km": 18.879
+        },
+        {
+          "key": "kers-hwaseong",
+          "label": "기은알에스 화성 선별장",
+          "km": 19.406
+        },
+        {
+          "key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "km": 26.041
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pe",
+      "code": "51-03-07",
+      "form": "rigid",
+      "via": null,
+      "state": "pe-scrap",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 8,
+      "facilities": 19,
+      "roads": 19,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "km": 16.256
+        },
+        {
+          "key": "cwrs-hwaseong",
+          "label": "창우RS 화성지점",
+          "km": 18.364
+        },
+        {
+          "key": "npc-chemical-hwaseong",
+          "label": "엔피씨케미칼 화성",
+          "km": 18.879
+        },
+        {
+          "key": "kers-hwaseong",
+          "label": "기은알에스 화성 선별장",
+          "km": 19.406
+        },
+        {
+          "key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "km": 26.041
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "film",
+      "via": null,
+      "state": "pe-scrap",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 8,
+      "facilities": 17,
+      "roads": 17,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "km": 16.256
+        },
+        {
+          "key": "sungwon-hwaseong",
+          "label": "성원산업 화성 양감 공장",
+          "km": 18.263
+        },
+        {
+          "key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "km": 26.041
+        },
+        {
+          "key": "hwangyeong-anseong",
+          "label": "환경수지 안성",
+          "km": 41.178
+        },
+        {
+          "key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "km": 43.854
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pe",
+      "code": "51-03-07",
+      "form": "film",
+      "via": null,
+      "state": "pe-scrap",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 8,
+      "facilities": 17,
+      "roads": 17,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "sarom-hwaseong-2",
+          "label": "새롬이엔지 화성 제2공장",
+          "km": 16.256
+        },
+        {
+          "key": "sungwon-hwaseong",
+          "label": "성원산업 화성 양감 공장",
+          "km": 18.263
+        },
+        {
+          "key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "km": 26.041
+        },
+        {
+          "key": "hwangyeong-anseong",
+          "label": "환경수지 안성",
+          "km": 41.178
+        },
+        {
+          "key": "ilshin-anseong",
+          "label": "일신케미칼 안성",
+          "km": 43.854
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "bale",
+      "via": null,
+      "state": "pe-bale",
+      "status": "no_route",
+      "can_finish": false,
+      "processes": 1,
+      "facilities": 0,
+      "roads": 0,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "bale",
+      "via": "pe-bale-prepare",
+      "state": "pe-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 7,
+      "roads": 7,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 19.711
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 81.876
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 91.498
+        },
+        {
+          "key": "pne-eumseong",
+          "label": "피앤이환경 음성 사업장",
+          "km": 100.843
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pe",
+      "code": "51-03-07",
+      "form": "bale",
+      "via": null,
+      "state": "pe-bale",
+      "status": "no_route",
+      "can_finish": false,
+      "processes": 1,
+      "facilities": 0,
+      "roads": 0,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-07",
+      "form": "bale",
+      "via": "pe-bale-prepare",
+      "state": "pe-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 7,
+      "roads": 7,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 19.711
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 81.876
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 91.498
+        },
+        {
+          "key": "pne-eumseong",
+          "label": "피앤이환경 음성 사업장",
+          "km": 100.843
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "film-bale",
+      "via": null,
+      "state": "pe-film-bale",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "dh1-seongju",
+          "label": "디에이치원 성주지점",
+          "km": 247.289
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "film-bale",
+      "via": "pe-film-bale-recovery",
+      "state": "pe-film-recovered-product",
+      "status": "no_route",
+      "can_finish": false,
+      "processes": 0,
+      "facilities": 0,
+      "roads": 0,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "A",
+      "material": "pe",
+      "code": "51-03-07",
+      "form": "film-bale",
+      "via": null,
+      "state": "pe-film-bale",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "dh1-seongju",
+          "label": "디에이치원 성주지점",
+          "km": 247.289
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-07",
+      "form": "film-bale",
+      "via": "pe-film-bale-recovery",
+      "state": "pe-film-recovered-product",
+      "status": "no_route",
+      "can_finish": false,
+      "processes": 0,
+      "facilities": 0,
+      "roads": 0,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "A",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "shredded",
+      "via": null,
+      "state": "pe-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 7,
+      "roads": 7,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 22.947
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 62.332
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 82.751
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 86.543
+        },
+        {
+          "key": "pne-eumseong",
+          "label": "피앤이환경 음성 사업장",
+          "km": 95.089
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "shredded",
+      "via": "pe-clean",
+      "state": "pe-washed",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "shredded",
+      "via": "pe-flake-repelletise",
+      "state": "pe-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "shredded",
+      "via": "pe-shredded-to-pellet",
+      "state": "pe-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "A",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "flake",
+      "via": null,
+      "state": "pe-shredded",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 7,
+      "roads": 7,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "jinyoung-hwaseong",
+          "label": "진영프라스틱 화성",
+          "km": 22.947
+        },
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 62.332
+        },
+        {
+          "key": "hcr-paju",
+          "label": "HCR Korea 파주",
+          "km": 82.751
+        },
+        {
+          "key": "greenpol-cheonan",
+          "label": "그린폴 천안 공장",
+          "km": 86.543
+        },
+        {
+          "key": "pne-eumseong",
+          "label": "피앤이환경 음성 사업장",
+          "km": 95.089
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "pellet",
+      "via": null,
+      "state": "pe-pellet",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "pe",
+      "code": "51-03-01",
+      "form": "pellet",
+      "via": "pe-compound",
+      "state": "pe-compound",
+      "status": "end_of_route",
+      "can_finish": true,
+      "processes": 0,
+      "facilities": 0,
+      "roads": 0,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "A",
+      "material": "pet",
+      "code": "51-03-01",
+      "form": "bottle",
+      "via": null,
+      "state": "pet-bottle",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 5,
+      "facilities": 10,
+      "roads": 10,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "saerom-hwaseong-one",
+          "label": "새롬이엔지 화성 제1공장",
+          "km": 16.267
+        },
+        {
+          "key": "cwrs-hwaseong",
+          "label": "창우RS 화성지점",
+          "km": 18.364
+        },
+        {
+          "key": "kers-hwaseong",
+          "label": "기은알에스 화성 선별장",
+          "km": 19.406
+        },
+        {
+          "key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "km": 26.041
+        },
+        {
+          "key": "samyang-sihwa",
+          "label": "삼양에코테크 시화공장",
+          "km": 32.84
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pet",
+      "code": "51-03-01",
+      "form": "bottle",
+      "via": "pet-bale-to-flake",
+      "state": "pet-flake",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "superbin-sunchang",
+          "label": "수퍼빈 아이엠팩토리 순창",
+          "km": 257.427
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pet",
+      "code": "51-03-01",
+      "form": "bottle",
+      "via": "pet-bottle-to-flake",
+      "state": "pet-flake",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "superbin-sunchang",
+          "label": "수퍼빈 아이엠팩토리 순창",
+          "km": 257.427
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pet",
+      "code": "51-03-01",
+      "form": "bottle",
+      "via": "pet-bottle-wash-grind",
+      "state": "pet-flake",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "superbin-sunchang",
+          "label": "수퍼빈 아이엠팩토리 순창",
+          "km": 257.427
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pet",
+      "code": "51-03-01",
+      "form": "bottle",
+      "via": "pet-prepare",
+      "state": "pet-sorted",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "samyang-sihwa",
+          "label": "삼양에코테크 시화공장",
+          "km": 33.778
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pet",
+      "code": "51-03-01",
+      "form": "bottle",
+      "via": "pet-sort-bale",
+      "state": "pet-bale",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "yuil-yangsan",
+          "label": "유일산업 양산 본사",
+          "km": 363.437
+        },
+        {
+          "key": "yuil-busan",
+          "label": "유일산업 부산지사",
+          "km": 372.686
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pet",
+      "code": "51-03-07",
+      "form": "bottle",
+      "via": null,
+      "state": "pet-bottle",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 5,
+      "facilities": 10,
+      "roads": 10,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "saerom-hwaseong-one",
+          "label": "새롬이엔지 화성 제1공장",
+          "km": 16.267
+        },
+        {
+          "key": "cwrs-hwaseong",
+          "label": "창우RS 화성지점",
+          "km": 18.364
+        },
+        {
+          "key": "kers-hwaseong",
+          "label": "기은알에스 화성 선별장",
+          "km": 19.406
+        },
+        {
+          "key": "veolia-dh-yongin",
+          "label": "디에이치 리사이클링 용인 사업장",
+          "km": 26.041
+        },
+        {
+          "key": "samyang-sihwa",
+          "label": "삼양에코테크 시화공장",
+          "km": 32.84
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pet",
+      "code": "51-03-07",
+      "form": "bottle",
+      "via": "pet-bale-to-flake",
+      "state": "pet-flake",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "superbin-sunchang",
+          "label": "수퍼빈 아이엠팩토리 순창",
+          "km": 257.427
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pet",
+      "code": "51-03-07",
+      "form": "bottle",
+      "via": "pet-bottle-to-flake",
+      "state": "pet-flake",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "superbin-sunchang",
+          "label": "수퍼빈 아이엠팩토리 순창",
+          "km": 257.427
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pet",
+      "code": "51-03-07",
+      "form": "bottle",
+      "via": "pet-bottle-wash-grind",
+      "state": "pet-flake",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 64.19
+        },
+        {
+          "key": "superbin-sunchang",
+          "label": "수퍼빈 아이엠팩토리 순창",
+          "km": 257.427
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pet",
+      "code": "51-03-07",
+      "form": "bottle",
+      "via": "pet-prepare",
+      "state": "pet-sorted",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "samyang-sihwa",
+          "label": "삼양에코테크 시화공장",
+          "km": 33.778
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pet",
+      "code": "51-03-07",
+      "form": "bottle",
+      "via": "pet-sort-bale",
+      "state": "pet-bale",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "yuil-yangsan",
+          "label": "유일산업 양산 본사",
+          "km": 363.437
+        },
+        {
+          "key": "yuil-busan",
+          "label": "유일산업 부산지사",
+          "km": 372.686
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pet",
+      "code": "51-03-01",
+      "form": "bale",
+      "via": null,
+      "state": "pet-bottle",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 5,
+      "facilities": 5,
+      "roads": 5,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "rm-hwaseong",
+          "label": "알엠 화성공장",
+          "km": 20.147
+        },
+        {
+          "key": "superbin-hwaseong",
+          "label": "수퍼빈 아이엠팩토리 화성",
+          "km": 22.658
+        },
+        {
+          "key": "samyang-sihwa",
+          "label": "삼양에코테크 시화공장",
+          "km": 32.84
+        },
+        {
+          "key": "yuil-yangsan",
+          "label": "유일산업 양산 본사",
+          "km": 358.481
+        },
+        {
+          "key": "yuil-busan",
+          "label": "유일산업 부산지사",
+          "km": 367.731
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pet",
+      "code": "51-03-07",
+      "form": "bale",
+      "via": null,
+      "state": "pet-bottle",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 5,
+      "facilities": 5,
+      "roads": 5,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "rm-hwaseong",
+          "label": "알엠 화성공장",
+          "km": 20.147
+        },
+        {
+          "key": "superbin-hwaseong",
+          "label": "수퍼빈 아이엠팩토리 화성",
+          "km": 22.658
+        },
+        {
+          "key": "samyang-sihwa",
+          "label": "삼양에코테크 시화공장",
+          "km": 32.84
+        },
+        {
+          "key": "yuil-yangsan",
+          "label": "유일산업 양산 본사",
+          "km": 358.481
+        },
+        {
+          "key": "yuil-busan",
+          "label": "유일산업 부산지사",
+          "km": 367.731
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "pet",
+      "code": "51-03-01",
+      "form": "flake",
+      "via": null,
+      "state": "pet-flake",
+      "status": "candidates",
+      "can_finish": true,
+      "processes": 1,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "bgf-yesan",
+          "label": "BGF에코사이클 재생원료사업장",
+          "km": 62.332
+        },
+        {
+          "key": "superbin-sunchang",
+          "label": "수퍼빈 아이엠팩토리 순창",
+          "km": 253.831
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "pet",
+      "code": "51-03-01",
+      "form": "flake",
+      "via": "pet-pelletise",
+      "state": "pet-pellet",
+      "status": "end_of_route",
+      "can_finish": true,
+      "processes": 0,
+      "facilities": 0,
+      "roads": 0,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "A",
+      "material": "ferrous",
+      "code": "51-29-01",
+      "form": "scrap",
+      "via": null,
+      "state": "ferrous-scrap",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 2,
+      "facilities": 4,
+      "roads": 4,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "hyundai-incheon",
+          "label": "현대제철 인천공장",
+          "km": 54.914
+        },
+        {
+          "key": "dongyang-gwangju",
+          "label": "동양산업자원 광주",
+          "km": 60.292
+        },
+        {
+          "key": "kisco-changwon",
+          "label": "한국철강 창원사업장",
+          "km": 339.642
+        },
+        {
+          "key": "daehan-noksan",
+          "label": "대한제강 녹산공장",
+          "km": 366.036
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "ferrous",
+      "code": "51-29-01",
+      "form": "scrap",
+      "via": "ferrous-eaf-billet",
+      "state": "ferrous-billet",
+      "status": "end_of_route",
+      "can_finish": true,
+      "processes": 0,
+      "facilities": 0,
+      "roads": 0,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "ferrous",
+      "code": "51-29-01",
+      "form": "scrap",
+      "via": "ferrous-shear",
+      "state": "ferrous-prepared",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 1,
+      "facilities": 3,
+      "roads": 3,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "hyundai-incheon",
+          "label": "현대제철 인천공장",
+          "km": 54.038
+        },
+        {
+          "key": "kisco-changwon",
+          "label": "한국철강 창원사업장",
+          "km": 344.597
+        },
+        {
+          "key": "daehan-noksan",
+          "label": "대한제강 녹산공장",
+          "km": 370.992
+        }
+      ]
+    },
+    {
+      "role": "A",
+      "material": "ferrous",
+      "code": "51-29-04",
+      "form": "drum",
+      "via": null,
+      "state": "steel-used-drum",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 1,
+      "facilities": 1,
+      "roads": 1,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "cheoldang-yangsan",
+          "label": "철당 양산사업장",
+          "km": 356.2
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "ferrous",
+      "code": "51-29-04",
+      "form": "drum",
+      "via": "steel-drum-recondition",
+      "state": "steel-reconditioned-drum",
+      "status": "end_of_route",
+      "can_finish": true,
+      "processes": 0,
+      "facilities": 0,
+      "roads": 0,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "A",
+      "material": "aluminium",
+      "code": "51-29-03",
+      "form": "can",
+      "via": null,
+      "state": "al-used-can",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 3,
+      "facilities": 3,
+      "roads": 3,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "hyundai-resource-hwaseong",
+          "label": "현대자원산업 화성",
+          "km": 16.299
+        },
+        {
+          "key": "novelis-yeongju",
+          "label": "노벨리스 영주공장",
+          "km": 202.896
+        },
+        {
+          "key": "ulsan-aluminium",
+          "label": "울산알루미늄 리사이클 센터",
+          "km": 345.375
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "aluminium",
+      "code": "51-29-03",
+      "form": "can",
+      "via": "al-can-prepare",
+      "state": "al-scrap",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 2,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "jmtech-gimpo",
+          "label": "제이엠테크 김포",
+          "km": 83.883
+        },
+        {
+          "key": "ulsan-aluminium",
+          "label": "울산알루미늄 리사이클 센터",
+          "km": 350.33
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "aluminium",
+      "code": "51-29-03",
+      "form": "can",
+      "via": "al-can-sheet",
+      "state": "al-sheet",
+      "status": "end_of_route",
+      "can_finish": true,
+      "processes": 0,
+      "facilities": 0,
+      "roads": 0,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "aluminium",
+      "code": "51-29-03",
+      "form": "can",
+      "via": "al-can-to-ingot",
+      "state": "al-sheet-ingot",
+      "status": "end_of_route",
+      "can_finish": true,
+      "processes": 0,
+      "facilities": 0,
+      "roads": 0,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "A",
+      "material": "aluminium",
+      "code": "51-29-02",
+      "form": "scrap",
+      "via": null,
+      "state": "al-scrap",
+      "status": "candidates",
+      "can_finish": false,
+      "processes": 2,
+      "facilities": 2,
+      "roads": 2,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": [
+        {
+          "key": "jmtech-gimpo",
+          "label": "제이엠테크 김포",
+          "km": 84.758
+        },
+        {
+          "key": "ulsan-aluminium",
+          "label": "울산알루미늄 리사이클 센터",
+          "km": 345.375
+        }
+      ]
+    },
+    {
+      "role": "B",
+      "material": "aluminium",
+      "code": "51-29-02",
+      "form": "scrap",
+      "via": "al-scrap-to-granule",
+      "state": "al-granule",
+      "status": "end_of_route",
+      "can_finish": true,
+      "processes": 0,
+      "facilities": 0,
+      "roads": 0,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    },
+    {
+      "role": "B",
+      "material": "aluminium",
+      "code": "51-29-02",
+      "form": "scrap",
+      "via": "al-scrap-to-slab",
+      "state": "al-sheet-ingot",
+      "status": "end_of_route",
+      "can_finish": true,
+      "processes": 0,
+      "facilities": 0,
+      "roads": 0,
+      "missing_coordinates": 0,
+      "road_failed": 0,
+      "top5": []
+    }
+  ]
+}

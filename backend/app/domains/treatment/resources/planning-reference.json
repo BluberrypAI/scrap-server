@@ -3345,6 +3345,614 @@
           "kers-hwaseong--pet-sort-bale"
         ]
       }
+    },
+    {
+      "key": "location-afrochem-asan-20261117",
+      "url": "https://dorojuso.kr/4420035032104620003077475",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "충청남도 아산시 음봉면 월암로 308 / 건물번호 4420035032104620003077475 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "아프로켐 아산의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "b84edaa1fa356eb3141aea27596ca5c40c3fa664ba1f612feab9d973544b4ec7",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "afrochem-asan"
+        ]
+      }
+    },
+    {
+      "key": "location-bgf-hwaseong-20261117",
+      "url": "https://dorojuso.kr/4159010300107720011001245",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경기도 화성시 만세구 남양읍 매바위로 540 / 건물번호 4159010300107720011001245 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "BGF에코사이클 컴파운드사업장의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "768b5bc492b2e8a958596b1f15440684226f643e7458c2f61f30a2a661b68c25",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "bgf-hwaseong"
+        ]
+      }
+    },
+    {
+      "key": "location-changmaec-seongju-20261117",
+      "url": "https://dorojuso.kr/4784031038108620001000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경상북도 성주군 선남면 선노로 55-36 / 건물번호 4784031038108620001000001 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "창맥 성주 공장의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "c23dea8fe69a286ed80985e241130d14e6af285a2df935841d3d147dfed2b164",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "changmaec-seongju"
+        ]
+      }
+    },
+    {
+      "key": "location-cheoldang-yangsan-20261117",
+      "url": "https://dorojuso.kr/4833010800103140005060301",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경상남도 양산시 산막공단북2길 22 (산막동) / 건물번호 4833010800103140005060301 / UTMK(EPSG:5179) easting/northing → WGS84(EPSG:4326), pyproj always_xy",
+      "summary": "철당 양산사업장의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "d8529b049b3d4a055aa508ed5f1b04186ae654ef7b87d37f549cc1cf8c9e3476",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "cheoldang-yangsan"
+        ]
+      }
+    },
+    {
+      "key": "location-cwrs-hwaseong-20261117",
+      "url": "https://dorojuso.kr/4159010300107860033000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경기도 화성시 만세구 남양읍 매바위로 569 / 건물번호 4159010300107860033000001 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "창우RS 화성지점의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "fcd3648ef480fded009ac496b5822ac32653a736af65d889a4848f48b199bc0c",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "cwrs-hwaseong"
+        ]
+      }
+    },
+    {
+      "key": "location-daehan-noksan-20261117",
+      "url": "https://dorojuso.kr/2644010900116380001000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "부산광역시 강서구 녹산산업북로 333 (송정동) / 건물번호 2644010900116380001000001 / UTMK(EPSG:5179) easting/northing → WGS84(EPSG:4326), pyproj always_xy",
+      "summary": "대한제강 녹산공장의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "4e496637e54d9ac164a4a9ae3157013bf6ece8566668f0e380ee5f59cc587347",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "daehan-noksan"
+        ]
+      }
+    },
+    {
+      "key": "location-daejo-sangju-20261117",
+      "url": "https://dorojuso.kr/4725025027107070006047504",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경상북도 상주시 함창읍 새잼이길 16 / 건물번호 4725025027107070006047504 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "대조산업 상주의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "588ca85bee2a2942bbc500ac5b729db3bab7d49d204f58a8d0598462fe4ca93f",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "daejo-sangju"
+        ]
+      }
+    },
+    {
+      "key": "location-daesan-naju-20261117",
+      "url": "https://dorojuso.kr/4617032021108040001000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "전남광주통합특별시 나주시 왕곡면 혁신산단6길 14 / 건물번호 4617032021108040001000001 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "대산이엔지 나주의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "acdb35da5de15269dcf34a32bb39e07281da7ee01f1bea1dd5fd73de58ae854e",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "daesan-naju"
+        ]
+      }
+    },
+    {
+      "key": "location-daewoon-naju-20261117",
+      "url": "https://dorojuso.kr/4617013000101750021019091",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "전남광주통합특별시 나주시 동수농공단지길 100-23 (운곡동) / 건물번호 4617013000101750021019091 / UTMK(EPSG:5179) easting/northing → WGS84(EPSG:4326), pyproj always_xy",
+      "summary": "대운프라스틱 나주 사업장의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "bee63cd7e3d1fea9e03f14b5b782f828a499595a6026e8eb195ac05d34922636",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "daewoon-naju"
+        ]
+      }
+    },
+    {
+      "key": "location-dakyeong-busan-20261117",
+      "url": "https://dorojuso.kr/2644011200101450002000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "부산광역시 강서구 생곡산단1로24번길 34 (생곡동) / 건물번호 2644011200101450002000001 / UTMK(EPSG:5179) easting/northing → WGS84(EPSG:4326), pyproj always_xy",
+      "summary": "다경산업 부산의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "629231033730e57d8e73b93e92a716cc0d9ec27789003889fa6a7bc32f47088d",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "dakyeong-busan"
+        ]
+      }
+    },
+    {
+      "key": "location-dh1-seongju-20261117",
+      "url": "https://dorojuso.kr/4784037038101690002000642",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경상북도 성주군 벽진면 문덕로 112 / 건물번호 4784037038101690002000642 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "디에이치원 성주지점의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "772a677b8e8ae8b220d957fff2b3bac710b2f4ae2c0470be23320583226b6244",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "dh1-seongju"
+        ]
+      }
+    },
+    {
+      "key": "location-greenpol-cheonan-20261117",
+      "url": "https://dorojuso.kr/4413135024103260001030701",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "충청남도 천안시 동남구 수신면 백자1길 29 / 건물번호 4413135024103260001030701 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "그린폴 천안 공장의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "57e02827e0cb6e4139dcb3edb4d44f300aee093bbdd4dfc9e92cc04165e523d9",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "greenpol-cheonan"
+        ]
+      }
+    },
+    {
+      "key": "location-hrm-cheongju-20261117",
+      "url": "https://dorojuso.kr/4311431039105060003000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "충청북도 청주시 청원구 북이면 장양길 88-18 / 건물번호 4311431039105060003000001 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "HRM 청주 자원순환센터의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "68c6003a4d0ca19563cfd45f7638a291ca9143d35a2c1cbe8d78192d569633a1",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "hrm-cheongju"
+        ]
+      }
+    },
+    {
+      "key": "location-hyundai-incheon-20261117",
+      "url": "https://dorojuso.kr/2814010300100010621178366",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "인천광역시 제물포구 중봉대로 63 (송현동) / 건물번호 2814010300100010621178366 / UTMK(EPSG:5179) easting/northing → WGS84(EPSG:4326), pyproj always_xy",
+      "summary": "현대제철 인천공장의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "f6cd2ba36ac63ddd14f34b9700e0d77cf9160b63e90677ccf3eeae26fbb57523",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "hyundai-incheon"
+        ]
+      }
+    },
+    {
+      "key": "location-hyundai-resource-hwaseong-20261117",
+      "url": "https://dorojuso.kr/4159026222109060038000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경기도 화성시 만세구 남양읍 신남로 104-17 / 건물번호 4159026222109060038000001 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "현대자원산업 화성의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "d77008356778fc05491a67b528e3d8f2391b5820cb01a4953c71b8abb82af9d0",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "hyundai-resource-hwaseong"
+        ]
+      }
+    },
+    {
+      "key": "location-jinyoung-hwaseong-20261117",
+      "url": "https://dorojuso.kr/4159035027102500119000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경기도 화성시 만세구 서신면 해운로458번길 94-17 / 건물번호 4159035027102500119000001 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "진영프라스틱 화성의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "4abd94bd71046e814567e94f9d943cc3e92f27e74c001f08ccdcbfb0dd85a9c3",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "jinyoung-hwaseong"
+        ]
+      }
+    },
+    {
+      "key": "location-kers-hwaseong-20261117",
+      "url": "https://dorojuso.kr/4159040025109060003020446",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경기도 화성시 만세구 양감면 용소금각로 2 / 건물번호 4159040025109060003020446 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "기은알에스 화성 선별장의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "ca6a12b2df93cb92c0e51da18f2a9e40245a27c1381c7fd9b2ca05065b8899be",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "kers-hwaseong"
+        ]
+      }
+    },
+    {
+      "key": "location-kisco-changwon-20261117",
+      "url": "https://dorojuso.kr/4812312300100700000023115",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경상남도 창원시 성산구 공단로103번길 12 (신촌동) / 건물번호 4812312300100700000023115 / UTMK(EPSG:5179) easting/northing → WGS84(EPSG:4326), pyproj always_xy",
+      "summary": "한국철강 창원사업장의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "611f16a8d25638e5fb3852f4f24583acbdf67a49917556cb67137f2a30eb798d",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "kisco-changwon"
+        ]
+      }
+    },
+    {
+      "key": "location-nuvotec-munmak-20261117",
+      "url": "https://dorojuso.kr/4213025022101400004000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "강원특별자치도 원주시 문막읍 동화큰골길 12-1 / 건물번호 4213025022101400004000001 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "뉴보텍 문막공장의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "43c744ec5fe0036f5e98ab3615e9589c054e81dbb0371028e03e40bf8096ddec",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "nuvotec-munmak"
+        ]
+      }
+    },
+    {
+      "key": "location-pne-eumseong-20261117",
+      "url": "https://dorojuso.kr/4377036032106860004000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "충청북도 음성군 생극면 오신로 398 / 건물번호 4377036032106860004000001 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "피앤이환경 음성 사업장의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "da6d0c847f72e7e33310094fec5cdc1ca80c8000075652404f05c7dcee86fdef",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "pne-eumseong"
+        ]
+      }
+    },
+    {
+      "key": "location-saerom-hwaseong-one-20261117",
+      "url": "https://dorojuso.kr/4159037023109890004000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경기도 화성시 만세구 장안면 3.1만세로322번길 49-9 / 건물번호 4159037023109890004000001 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "새롬이엔지 화성 제1공장의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "cb4493d43c4f6d214eb9e4899423c20904e6f718a8a4a95cbb427f1f92d548ed",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "saerom-hwaseong-one"
+        ]
+      }
+    },
+    {
+      "key": "location-samsungchem-miryang-20261117",
+      "url": "https://dorojuso.kr/4827025327101470001028508",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경상남도 밀양시 하남읍 양동농공단지길 65-10 / 건물번호 4827025327101470001028508 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "삼성케미칼 밀양의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "03e8dd1878a822268c87751fc04e598787efcff818a2d75daffacb9b8071ed35",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "samsungchem-miryang"
+        ]
+      }
+    },
+    {
+      "key": "location-saramtech-nonsan-20261117",
+      "url": "https://dorojuso.kr/4423032031100710002035552",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "충청남도 논산시 광석면 사월길 360 / 건물번호 4423032031100710002035552 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "사람과 기술 논산의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "4cd9d820dad1592bc92ef707bcbc7cbb255891e3e3cf651eb5a0e1d82cea06e9",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "saramtech-nonsan"
+        ]
+      }
+    },
+    {
+      "key": "location-sungwon-hwaseong-20261117",
+      "url": "https://dorojuso.kr/4159040026100190013021843",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경기도 화성시 만세구 양감면 은행나무로170번길 60 / 건물번호 4159040026100190013021843 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "성원산업 화성 양감 공장의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "31deaa4e8615070d11130e1210012eaf7c9d4dc2b383937371e2364b1146ecf2",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "sungwon-hwaseong"
+        ]
+      }
+    },
+    {
+      "key": "location-superbin-sunchang-20261117",
+      "url": "https://dorojuso.kr/4577034034103730003000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "전북특별자치도 순창군 금과면 서암로 201 / 건물번호 4577034034103730003000001 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "수퍼빈 아이엠팩토리 순창의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "3b0e9b39b0cba6509997c70671abeea32a8c6dc8770e107e7ffe1eeeb9bdc516",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "superbin-sunchang"
+        ]
+      }
+    },
+    {
+      "key": "location-veolia-dh-yongin-20261117",
+      "url": "https://dorojuso.kr/4146310100105670000023351",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경기도 용인시 기흥구 신정로237번길 46 (신갈동) / 건물번호 4146310100105670000023351 / UTMK(EPSG:5179) easting/northing → WGS84(EPSG:4326), pyproj always_xy",
+      "summary": "디에이치 리사이클링 용인 사업장의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "41808803bdce0d4e460d7c045175a365573167d2f9b19d71b6b9c33989a9b16f",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "veolia-dh-yongin"
+        ]
+      }
+    },
+    {
+      "key": "location-veolia-dspl-hwaseong-20261117",
+      "url": "https://dorojuso.kr/4159037022107180138000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경기도 화성시 만세구 장안면 매바위로366번길 27 / 건물번호 4159037022107180138000001 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "DSPL 화성의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "8efba6d75a4f66e6aa6651761aac4ff6a1ec229aca78b051c6c1d0905badd0d1",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "veolia-dspl-hwaseong"
+        ]
+      }
+    },
+    {
+      "key": "address-veolia-dspl-hwaseong-20261117",
+      "url": "https://bizno.net/article/8788801924",
+      "publisher": "공개 사업자 정보·공공 명부 대조",
+      "locator": "경기도 화성시 장안면 매바위로366번길 27",
+      "summary": "디에스피엘, 매바위로366번길 27. 기존 전국 명부 source_row 3829의 석포리 718-134와 대조. 독산의 25번 건물과 구별. 현재 허가·출입구 확인 아님.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "a20dc1ed0c868b04f7822bc4ed24e815f84731a3806357c629941bdebd8a54eb",
+      "acquisition": "public-address-crosscheck-curator-summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "veolia-dspl-hwaseong"
+        ]
+      }
+    },
+    {
+      "key": "location-yongseong-gyeongsan-20261117",
+      "url": "https://dorojuso.kr/4729036031104820001000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경상북도 경산시 압량읍 가일길 46-11 / 건물번호 4729036031104820001000001 / 공개 주소 상세 지도에 표시된 WGS84 건물 대표점",
+      "summary": "용성케미칼 경산의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "0719f6a87bb9e19d4e572f6f3d29a38ab9fbda0e3b8d0b856c3f38b383c1f9cc",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "yongseong-gyeongsan"
+        ]
+      }
+    },
+    {
+      "key": "address-yongseong-gyeongsan-20261117",
+      "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?infoTypeCd=VALIDATION&infoTypeGroup=tb_workinfoworknet&wantedAuthNo=KJRB002611040001",
+      "publisher": "고용24·경산시취업지원센터",
+      "locator": "경상북도 경산시 압량읍 가일길 46-11",
+      "summary": "용성케미칼 현장 근무지: 경상북도 경산시 압량읍 가일길 46-11. 가일리 482의 도로명 확인.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "6a260b2f3bd8f68d768694be2f3bceea452ee0e5b3c65de290a9c860658a9baa",
+      "acquisition": "public-address-crosscheck-curator-summary",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "yongseong-gyeongsan"
+        ]
+      }
+    },
+    {
+      "key": "location-yuil-busan-20261117",
+      "url": "https://dorojuso.kr/2644011200115200002000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "부산광역시 강서구 생곡산단1로 19 (생곡동) / 건물번호 2644011200115200002000001 / UTMK(EPSG:5179) easting/northing → WGS84(EPSG:4326), pyproj always_xy",
+      "summary": "유일산업 부산지사의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "f0525257807030341f8b99b8b71061d9dbb6aefdea38fc393760569a2e8dce33",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "yuil-busan"
+        ]
+      }
+    },
+    {
+      "key": "location-yuil-yangsan-20261117",
+      "url": "https://dorojuso.kr/4833011000110140001000001",
+      "publisher": "도로명주소(dorojuso.kr) — 업체/공공 사업장 주소와 대조",
+      "locator": "경상남도 양산시 유산공단4길 94 (교동) / 건물번호 4833011000110140001000001 / UTMK(EPSG:5179) easting/northing → WGS84(EPSG:4326), pyproj always_xy",
+      "summary": "유일산업 양산 본사의 공개 사업장 주소와 정확한 도로명·건물번호를 대조한 위치. 차량 출입구 실측·허가·수용능력·인수 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-17",
+      "source_date": null,
+      "sha256": "7d4ab8e57e7e1156e4fb9796079daca0319db94b98f1a2db95207fce7d4d197f",
+      "acquisition": "public-address-page-exact-building-manual-review",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": false,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "yuil-yangsan"
+        ]
+      }
     }
   ],
   "states": [
@@ -6036,15 +6644,17 @@
       "address": "경기 화성시 남양읍 매바위로 540",
       "source_ids": [
         "bgf-recycling",
-        "factoryon-20251231-126529"
+        "factoryon-20251231-126529",
+        "location-bgf-hwaseong-20261117"
       ],
       "reported_metrics": [],
       "current_permit_scope": null,
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 37.1534522,
+      "longitude": 126.8051036,
+      "location_source_id": "location-bgf-hwaseong-20261117"
     },
     {
       "key": "jungang-gongju",
@@ -6184,18 +6794,21 @@
       "organisation": "veolia-korea",
       "country": "KR",
       "region": "경기도 화성시",
-      "address": "경기도 화성시 장안면 독산/DSPL 사업장",
+      "address": "경기도 화성시 장안면 매바위로366번길 27",
       "reported_metrics": [],
       "current_permit_scope": null,
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null,
+      "latitude": 37.1458214,
+      "longitude": 126.8155873,
       "source_ids": [
         "veolia-hwaseong-pp-process",
-        "veolia-hwaseong-pp-address"
-      ]
+        "veolia-hwaseong-pp-address",
+        "location-veolia-dspl-hwaseong-20261117",
+        "address-veolia-dspl-hwaseong-20261117"
+      ],
+      "location_source_id": "location-veolia-dspl-hwaseong-20261117"
     },
     {
       "key": "ulsan-aluminium",
@@ -6242,23 +6855,26 @@
       "organisation": "superbin",
       "country": "KR",
       "region": "전북특별자치도 순창군",
-      "address": null,
-      "latitude": null,
-      "longitude": null,
+      "address": "전북특별자치도 순창군 금과면 서암로 201",
+      "latitude": 35.3309925,
+      "longitude": 127.0549774,
       "reported_metrics": [],
       "current_permit_scope": null,
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
       "source_ids": [
-        "superbin-sunchang-process"
-      ]
+        "superbin-sunchang-process",
+        "location-superbin-sunchang-20261117"
+      ],
+      "location_source_id": "location-superbin-sunchang-20261117"
     },
     {
       "key": "daewoon-naju",
       "label": "대운프라스틱 나주 사업장",
       "source_ids": [
-        "daewoon-production"
+        "daewoon-production",
+        "location-daewoon-naju-20261117"
       ],
       "organisation": "daewoon-naju-org",
       "country": "KR",
@@ -6269,8 +6885,9 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 34.9868735,
+      "longitude": 126.6818033,
+      "location_source_id": "location-daewoon-naju-20261117"
     },
     {
       "key": "youngshin-naju",
@@ -6296,7 +6913,8 @@
       "label": "그린폴 천안 공장",
       "source_ids": [
         "greenpol-production",
-        "greenpol-products"
+        "greenpol-products",
+        "location-greenpol-cheonan-20261117"
       ],
       "organisation": "greenpol-cheonan-org",
       "country": "KR",
@@ -6307,8 +6925,9 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 36.7036089,
+      "longitude": 127.2781149,
+      "location_source_id": "location-greenpol-cheonan-20261117"
     },
     {
       "key": "cntk-hwaseong",
@@ -6375,7 +6994,8 @@
       "source_ids": [
         "yuil-pet",
         "yuil-locations",
-        "yuil-sites-process"
+        "yuil-sites-process",
+        "location-yuil-yangsan-20261117"
       ],
       "organisation": "yuil-org",
       "country": "KR",
@@ -6386,8 +7006,9 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 35.3577745,
+      "longitude": 129.0273068,
+      "location_source_id": "location-yuil-yangsan-20261117"
     },
     {
       "key": "yuil-busan",
@@ -6395,7 +7016,8 @@
       "source_ids": [
         "yuil-pet",
         "yuil-locations",
-        "yuil-sites-process"
+        "yuil-sites-process",
+        "location-yuil-busan-20261117"
       ],
       "organisation": "yuil-org",
       "country": "KR",
@@ -6406,8 +7028,9 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 35.1356866,
+      "longitude": 128.8872086,
+      "location_source_id": "location-yuil-busan-20261117"
     },
     {
       "key": "ecops-yeongcheon",
@@ -6432,7 +7055,8 @@
       "key": "pne-eumseong",
       "label": "피앤이환경 음성 사업장",
       "source_ids": [
-        "pne-resin"
+        "pne-resin",
+        "location-pne-eumseong-20261117"
       ],
       "organisation": "pne-eumseong-org",
       "country": "KR",
@@ -6443,8 +7067,9 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 37.0275255,
+      "longitude": 127.6242207,
+      "location_source_id": "location-pne-eumseong-20261117"
     },
     {
       "key": "netspa-busan",
@@ -6470,7 +7095,8 @@
       "label": "HRM 청주 자원순환센터",
       "source_ids": [
         "hrm-pet-collection",
-        "hrm-mrf"
+        "hrm-mrf",
+        "location-hrm-cheongju-20261117"
       ],
       "organisation": "hrm-cheongju-org",
       "country": "KR",
@@ -6481,32 +7107,36 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 36.7539037,
+      "longitude": 127.5294976,
+      "location_source_id": "location-hrm-cheongju-20261117"
     },
     {
       "key": "veolia-dh-yongin",
       "label": "디에이치 리사이클링 용인 사업장",
       "source_ids": [
-        "veolia-dh-sorting"
+        "veolia-dh-sorting",
+        "location-veolia-dh-yongin-20261117"
       ],
       "organisation": "veolia-dh-yongin-org",
       "country": "KR",
       "region": "경기도 용인시",
-      "address": null,
+      "address": "경기도 용인시 기흥구 신정로237번길 46",
       "reported_metrics": [],
       "current_permit_scope": null,
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 37.2906631,
+      "longitude": 127.0928842,
+      "location_source_id": "location-veolia-dh-yongin-20261117"
     },
     {
       "key": "changmaec-seongju",
       "label": "창맥 성주 공장",
       "source_ids": [
-        "changmaec-process"
+        "changmaec-process",
+        "location-changmaec-seongju-20261117"
       ],
       "organisation": "changmaec-seongju-org",
       "country": "KR",
@@ -6517,14 +7147,16 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 35.8884341,
+      "longitude": 128.3728725,
+      "location_source_id": "location-changmaec-seongju-20261117"
     },
     {
       "key": "saramtech-nonsan",
       "label": "사람과 기술 논산",
       "source_ids": [
-        "saramtech-pe-film"
+        "saramtech-pe-film",
+        "location-saramtech-nonsan-20261117"
       ],
       "organisation": "saramtech-nonsan-org",
       "country": "KR",
@@ -6535,8 +7167,9 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 36.2592629,
+      "longitude": 127.1078193,
+      "location_source_id": "location-saramtech-nonsan-20261117"
     },
     {
       "key": "yangil-incheon",
@@ -6562,7 +7195,8 @@
       "key": "jinyoung-hwaseong",
       "label": "진영프라스틱 화성",
       "source_ids": [
-        "jinyoung-company-profile"
+        "jinyoung-company-profile",
+        "location-jinyoung-hwaseong-20261117"
       ],
       "organisation": "jinyoung-hwaseong-org",
       "country": "KR",
@@ -6573,8 +7207,9 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 37.1616301,
+      "longitude": 126.7454512,
+      "location_source_id": "location-jinyoung-hwaseong-20261117"
     },
     {
       "key": "youone-incheon",
@@ -6601,7 +7236,8 @@
       "label": "다경산업 부산",
       "source_ids": [
         "dakyeong-process",
-        "dakyeong-products"
+        "dakyeong-products",
+        "location-dakyeong-busan-20261117"
       ],
       "organisation": "dakyeong-busan-org",
       "country": "KR",
@@ -6612,15 +7248,17 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 35.1341489,
+      "longitude": 128.8845499,
+      "location_source_id": "location-dakyeong-busan-20261117"
     },
     {
       "key": "nuvotec-munmak",
       "label": "뉴보텍 문막공장",
       "source_ids": [
         "nuvotec-recycling-2026",
-        "nuvotec-munmak-address"
+        "nuvotec-munmak-address",
+        "location-nuvotec-munmak-20261117"
       ],
       "organisation": "nuvotec-munmak-org",
       "country": "KR",
@@ -6631,8 +7269,9 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 37.3299257,
+      "longitude": 127.8540498,
+      "location_source_id": "location-nuvotec-munmak-20261117"
     },
     {
       "key": "joongil-incheon",
@@ -6734,7 +7373,8 @@
       "key": "afrochem-asan",
       "label": "아프로켐 아산",
       "source_ids": [
-        "factoryon-20251231-162997"
+        "factoryon-20251231-162997",
+        "location-afrochem-asan-20261117"
       ],
       "organisation": "afrochem-asan-org",
       "country": "KR",
@@ -6745,32 +7385,36 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 36.8637808,
+      "longitude": 127.0807837,
+      "location_source_id": "location-afrochem-asan-20261117"
     },
     {
       "key": "daejo-sangju",
       "label": "대조산업 상주",
       "source_ids": [
-        "factoryon-20251231-179029"
+        "factoryon-20251231-179029",
+        "location-daejo-sangju-20261117"
       ],
       "organisation": "daejo-sangju-org",
       "country": "KR",
       "region": "경북",
-      "address": "경상북도 상주시 함창읍 새잼이길 16 (총 6 필지) 외 5필지",
+      "address": "경상북도 상주시 함창읍 새잼이길 16",
       "reported_metrics": [],
       "current_permit_scope": null,
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 36.5768702,
+      "longitude": 128.1671578,
+      "location_source_id": "location-daejo-sangju-20261117"
     },
     {
       "key": "samsungchem-miryang",
       "label": "삼성케미칼 밀양",
       "source_ids": [
-        "factoryon-20251231-200542"
+        "factoryon-20251231-200542",
+        "location-samsungchem-miryang-20261117"
       ],
       "organisation": "samsungchem-miryang-org",
       "country": "KR",
@@ -6781,8 +7425,9 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 35.3914136,
+      "longitude": 128.7235531,
+      "location_source_id": "location-samsungchem-miryang-20261117"
     },
     {
       "key": "guil-hapcheon",
@@ -6807,7 +7452,8 @@
       "key": "daesan-naju",
       "label": "대산이엔지 나주",
       "source_ids": [
-        "factoryon-20251231-13761"
+        "factoryon-20251231-13761",
+        "location-daesan-naju-20261117"
       ],
       "organisation": "daesan-naju-org",
       "country": "KR",
@@ -6818,26 +7464,30 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 34.9686567,
+      "longitude": 126.6927001,
+      "location_source_id": "location-daesan-naju-20261117"
     },
     {
       "key": "yongseong-gyeongsan",
       "label": "용성케미칼 경산",
       "source_ids": [
-        "factoryon-20251231-181807"
+        "factoryon-20251231-181807",
+        "location-yongseong-gyeongsan-20261117",
+        "address-yongseong-gyeongsan-20261117"
       ],
       "organisation": "yongseong-gyeongsan-org",
       "country": "KR",
       "region": "경북",
-      "address": "경상북도 경산시 압량읍 가일리 482번지",
+      "address": "경상북도 경산시 압량읍 가일길 46-11",
       "reported_metrics": [],
       "current_permit_scope": null,
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 35.8369365,
+      "longitude": 128.7772497,
+      "location_source_id": "location-yongseong-gyeongsan-20261117"
     },
     {
       "key": "dongmin-yeongcheon",
@@ -6865,17 +7515,19 @@
       "organisation": "daehan-steel",
       "country": "KR",
       "region": "부산 강서구",
-      "address": null,
-      "latitude": null,
-      "longitude": null,
+      "address": "부산광역시 강서구 녹산산업북로 333",
+      "latitude": 35.0981695,
+      "longitude": 128.8615408,
       "reported_metrics": [],
       "current_permit_scope": null,
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
       "source_ids": [
-        "daehan-2025-site-production"
-      ]
+        "daehan-2025-site-production",
+        "location-daehan-noksan-20261117"
+      ],
+      "location_source_id": "location-daehan-noksan-20261117"
     },
     {
       "key": "kisco-changwon",
@@ -6884,8 +7536,8 @@
       "country": "KR",
       "region": "경남 창원시",
       "address": "경상남도 창원시 성산구 공단로103번길 12",
-      "latitude": null,
-      "longitude": null,
+      "latitude": 35.2139265,
+      "longitude": 128.6365301,
       "reported_metrics": [],
       "current_permit_scope": null,
       "current_available_capacity_kg": null,
@@ -6894,8 +7546,10 @@
       "source_ids": [
         "kisco-changwon-production",
         "kisco-2026-half-scrap-input",
-        "kisco-billet-refining"
-      ]
+        "kisco-billet-refining",
+        "location-kisco-changwon-20261117"
+      ],
+      "location_source_id": "location-kisco-changwon-20261117"
     },
     {
       "key": "hanul-ulju",
@@ -6922,16 +7576,18 @@
       "country": "KR",
       "region": "경남 양산시",
       "address": "경상남도 양산시 산막공단북2길 22",
-      "latitude": null,
-      "longitude": null,
+      "latitude": 35.3707229,
+      "longitude": 129.0532471,
       "reported_metrics": [],
       "current_permit_scope": null,
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
       "source_ids": [
-        "cheoldang-steel-drum-process"
-      ]
+        "cheoldang-steel-drum-process",
+        "location-cheoldang-yangsan-20261117"
+      ],
+      "location_source_id": "location-cheoldang-yangsan-20261117"
     },
     {
       "key": "dh1-seongju",
@@ -6940,16 +7596,18 @@
       "country": "KR",
       "region": "경북 성주군",
       "address": "경상북도 성주군 벽진면 문덕로 112",
-      "latitude": null,
-      "longitude": null,
+      "latitude": 35.9496032,
+      "longitude": 128.2439884,
       "reported_metrics": [],
       "current_permit_scope": null,
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
       "source_ids": [
-        "keco-dh1-film-destination-2026"
-      ]
+        "keco-dh1-film-destination-2026",
+        "location-dh1-seongju-20261117"
+      ],
+      "location_source_id": "location-dh1-seongju-20261117"
     },
     {
       "key": "kers-hwaseong",
@@ -6957,7 +7615,8 @@
       "organisation": "kers-hwaseong-org",
       "source_ids": [
         "kers-hwaseong-sorting",
-        "kers-2025-ministry-visit"
+        "kers-2025-ministry-visit",
+        "location-kers-hwaseong-20261117"
       ],
       "country": "KR",
       "region": "경기도",
@@ -6967,8 +7626,9 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 37.0758403,
+      "longitude": 126.971157,
+      "location_source_id": "location-kers-hwaseong-20261117"
     },
     {
       "key": "incheon-recycling-gojan",
@@ -6995,18 +7655,20 @@
       "label": "창우RS 화성지점",
       "organisation": "cwrs-hwaseong-org",
       "source_ids": [
-        "cwrs-hwaseong-sorting"
+        "cwrs-hwaseong-sorting",
+        "location-cwrs-hwaseong-20261117"
       ],
       "country": "KR",
       "region": "경기도",
-      "address": "경기도 화성시 남양읍 매바위로569",
+      "address": "경기도 화성시 남양읍 매바위로 569",
       "reported_metrics": [],
       "current_permit_scope": null,
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 37.1553386,
+      "longitude": 126.8019844,
+      "location_source_id": "location-cwrs-hwaseong-20261117"
     },
     {
       "key": "dongyang-gwangju",
@@ -7034,7 +7696,8 @@
       "source_ids": [
         "hyundai-incheon-eaf",
         "hyundai-incheon-address",
-        "hyundai-steel-eaf-casting"
+        "hyundai-steel-eaf-casting",
+        "location-hyundai-incheon-20261117"
       ],
       "country": "KR",
       "region": "인천광역시",
@@ -7044,8 +7707,9 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 37.4858328,
+      "longitude": 126.6440383,
+      "location_source_id": "location-hyundai-incheon-20261117"
     },
     {
       "key": "jmtech-gimpo",
@@ -7071,18 +7735,20 @@
       "label": "현대자원산업 화성",
       "organisation": "hyundai-resource-hwaseong-org",
       "source_ids": [
-        "hyundai-resource-can-prepare"
+        "hyundai-resource-can-prepare",
+        "location-hyundai-resource-hwaseong-20261117"
       ],
       "country": "KR",
       "region": "경기도",
-      "address": "경기도 화성시 만세구 남양읍 신남로 104-17",
+      "address": "경기도 화성시 남양읍 신남로 104-17",
       "reported_metrics": [],
       "current_permit_scope": null,
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 37.1837648,
+      "longitude": 126.7980815,
+      "location_source_id": "location-hyundai-resource-hwaseong-20261117"
     },
     {
       "key": "hwangyeong-anseong",
@@ -7108,7 +7774,8 @@
       "label": "새롬이엔지 화성 제1공장",
       "organisation": "saerom-hwaseong-one-org",
       "source_ids": [
-        "saerom-hwaseong-one-pet"
+        "saerom-hwaseong-one-pet",
+        "location-saerom-hwaseong-one-20261117"
       ],
       "country": "KR",
       "region": "경기도",
@@ -7118,26 +7785,29 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 37.0991811,
+      "longitude": 126.8438834,
+      "location_source_id": "location-saerom-hwaseong-one-20261117"
     },
     {
       "key": "sungwon-hwaseong",
       "label": "성원산업 화성 양감 공장",
       "organisation": "sungwon-industry",
       "source_ids": [
-        "sungwon-hwaseong-ldpe"
+        "sungwon-hwaseong-ldpe",
+        "location-sungwon-hwaseong-20261117"
       ],
       "country": "KR",
       "region": "경기도",
       "address": "경기도 화성시 양감면 은행나무로170번길 60",
-      "latitude": null,
-      "longitude": null,
+      "latitude": 37.0706846,
+      "longitude": 126.9415819,
       "reported_metrics": [],
       "current_permit_scope": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "current_available_capacity_kg": null
+      "current_available_capacity_kg": null,
+      "location_source_id": "location-sungwon-hwaseong-20261117"
     }
   ],
   "capabilities": [

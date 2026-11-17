@@ -175,4 +175,8 @@ def test_minimal_grinding_does_not_claim_washing_or_pelletising(reference):
         "yongseong-gyeongsan",
     ):
         f = next(f for f in reference.facilities if f.key == key)
-        assert f.latitude is f.longitude is None
+        # Factory registry alone has no coordinates; independently reviewed building
+        # evidence now supplies location without expanding the registered process.
+        assert f.latitude is not None and f.longitude is not None
+        source = next(s for s in reference.sources if s.key == f.location_source_id)
+        assert source.supported_records == {"facilities": [key]}

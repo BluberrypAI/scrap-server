@@ -196,3 +196,11 @@ uv run python -m app.domains.transport.dev_accounts
 - 확정 문진의 경로 조회·AI 검토와 `/api/v1/workflow/lots` 등록은 선택 boolean `solid_confirmed`(기본 false)를 받습니다. 문진에 고체 여부가 없는 경우에만 사용자 확인을 보완하며, 액체·슬러지 응답을 덮어쓰지 않습니다.
 - 경로 응답의 `requires_solid_confirmation`이 true이면 화면에서 고체 상태를 확인받습니다. 좌표로 비교하는 거리는 직선거리입니다.
 - 실행 구성, 7개 합성 기업 인계 시험과 소재별 한계: [통합 검증 결과](../docs/full-stack-validation-20261115.md).
+# 업체 반입조건 API 추가 (2026-11-17)
+
+- 적용: `uv run alembic upgrade head` (새 테이블 `supplier_intake_policies`, revision `a87485f30805`).
+- `GET /api/v1/workflow/supplier-policies`: 로그인 기업에 연결된 처리 사업장과 현재 반입조건.
+- `POST /api/v1/workflow/supplier-policies`: `facility_key`, `expected_version`, `policy`로 새 버전 저장.
+- `POST /api/v1/workflow/offers/{id}/messages`: `revision`, `text`로 문의 당사자 간 답변 저장.
+- 기존 조건부 수락·자료 제출·QR API를 그대로 사용합니다. 외부 이메일·문자는 보내지 않습니다.
+- 실제 운영은 확인된 사업장-기업 연결이 필요합니다. 시험용 연결은 local/test에서만 작동합니다.

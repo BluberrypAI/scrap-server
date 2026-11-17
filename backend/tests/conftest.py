@@ -15,6 +15,8 @@ os.environ.update(
     DIAGNOSIS_ENGINE_URL="",
     ENGINE_SERVICE_TOKEN="",
     SCRAP_INTAKE_SERVICE_TOKEN="",
+    KAKAO_MOBILITY_REST_API_KEY="",
+    OSRM_DEMO_ENABLED="false",
 )
 
 from collections.abc import AsyncIterator  # noqa: E402

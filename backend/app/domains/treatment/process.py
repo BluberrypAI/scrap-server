@@ -539,6 +539,10 @@ def project_next_step(
         if capability and capability.key not in option["facilities"]:
             facility = facilities[capability.facility]
             location, location_url = facility_location(facility)
+            if facility.location_source_id:
+                location_url = next(
+                    s.url for s in value.sources if s.key == facility.location_source_id
+                )
             review_form = initial_form
             if observed_state and transition.input_state == observed_state.key:
                 forms = observed_state.input_forms
