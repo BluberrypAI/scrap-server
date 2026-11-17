@@ -102,7 +102,7 @@ class NextFacility(BaseModel):
     road_distance_status: Literal[
         "not_requested", "not_configured", "missing_location", "available", "unavailable"
     ] = "not_requested"
-    road_distance_provider: Literal["kakao"] | None = None
+    road_distance_provider: Literal["kakao", "osrm"] | None = None
     road_distance_checked_at: str | None = None
     distance_rank: int | None = None
     intake_review: IntakeReview | None = None

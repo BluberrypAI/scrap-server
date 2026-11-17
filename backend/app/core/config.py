@@ -56,6 +56,7 @@ class Settings(BaseSettings):
     scrap_intake_service_token: SecretStr = SecretStr("")
     transport_demo_facilities: dict[str, str] = {}
     # Optional road-distance lookup. Never exposed to the frontend bundle.
+    osrm_demo_enabled: bool = False
     kakao_mobility_rest_api_key: SecretStr = SecretStr("")
 
     # 문진 엔진(scrap-diagnosis) /internal/v1. 비워 두면 문진 API는 503 ENGINE_UNAVAILABLE
