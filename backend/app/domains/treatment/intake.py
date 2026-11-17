@@ -172,8 +172,11 @@ async def review_intakes(packets, settings, *, lot_context=None):
         return IntakeBatchResult(results=results)
 
     async with httpx.AsyncClient(timeout=175 if lot_context is not None else 95) as client:
-        for start in range(0, len(packets), 5):
-            batch = packets[start : start + 5]
+        # Route compares each lot candidate independently, with three workers.
+        # Keep observation + one comparison wave within the 175s HTTP budget.
+        batch_size = 3 if lot_context is not None else 5
+        for start in range(0, len(packets), batch_size):
+            batch = packets[start : start + batch_size]
             try:
                 response = await client.post(
                     f"{settings.ai_base_url.rstrip('/')}/treatment/intake-reviews",

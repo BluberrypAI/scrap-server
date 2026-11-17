@@ -88,6 +88,11 @@ backend/
 
 ### 도메인 폴더 내부 규칙
 
+업체 반입조건도 기존 `transport/` 도메인에 둔다. `policy_router.py`는 HTTP·인증,
+`supplier_policy.py`는 업체 연결·버전 저장·스냅샷 조회, `schemas.py`는 입력·응답 형식,
+`models.py`의 `SupplierIntakePolicy`는 변경 이력을 담당한다. 문의 메시지는 기존
+`WorkflowOffer.data.messages`에 인계별로 저장하며 별도 외부 메신저를 사용하지 않는다.
+
 | 파일 | 책임 | 의존 가능 대상 |
 | --- | --- | --- |
 | router.py | HTTP 입출력, 상태 코드, 의존성 주입 | service, schemas, dependencies |

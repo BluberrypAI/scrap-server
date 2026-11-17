@@ -131,7 +131,9 @@ def test_same_company_different_site_does_not_supply_wrong_coordinates(reference
     assert gojan.longitude == 126.7112538
     anseong = by_key["hwangyeong-anseong"]
     assert anseong.latitude == 37.04174375  # Not Hwaseong's same-name company.
-    assert by_key["hyundai-resource-hwaseong"].latitude is None
+    hyundai = by_key["hyundai-resource-hwaseong"]
+    assert hyundai.latitude == 37.1837648  # Verified Sinnam-ro building, not a namesake.
+    assert hyundai.location_source_id in hyundai.source_ids
     # Official embedded place markers, not the surrounding map viewport centre.
     assert by_key["dongyang-gwangju"].longitude == 127.3111563
     assert by_key["dongyang-gwangju"].latitude == 37.4202135

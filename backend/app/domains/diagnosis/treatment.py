@@ -16,6 +16,7 @@ from app.domains.treatment.material_scope import FORM_LABELS
 from app.domains.treatment.process import next_step, normalize_form
 from app.domains.treatment.reference import resolve_material
 from app.domains.treatment.repository import read_reference
+from app.domains.treatment.road_distance import enrich_road_distances
 from app.domains.treatment.schemas import HandoffVerification, NextStepRequest
 
 # Confirmations narrow an upstream family; they never change its legal code.
@@ -182,6 +183,8 @@ async def treatment_context(
     reference, _ = await read_reference(db)
     request = NextStepRequest.model_validate(context.route_input)
     result = next_step(request, reference)
+    await db.rollback()
+    await enrich_road_distances(result, request.origin)
     for option in result.options:
         for facility in option.facilities:
             review = facility.intake_review

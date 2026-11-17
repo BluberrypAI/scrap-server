@@ -87,8 +87,15 @@
 | T-156 | 공개 근거 검토의 과도한 보류·잘못된 통과를 독립 정답셋으로 평가 | 진행 | test-engineer | recycling-handoff | 넷스파 PA6 어망·대한제강 녹산 철스크랩 원문을 추가 대조하고 실제 Azure에서 공개 근거 확인 응답. 다른 재질·사업장·반입 제한 음성 테스트 추가. 독립 전문가 정답셋 및 반복 판정 편차 평가는 미완료이며 실제 반입 허가 확인과 별개 |
 | T-157 | 수도권 공정·업체 근거 보강 및 문진·후속 산출물 연결 검사 | 완료 | api-developer | capital-region-coverage | 9사업장·19연결 추가, 경기22/인천5 연결 사업장. 18문진·59웹·212HTTP, 신규19연결 포함 Azure67검토. 신규 근거 확인7/부족12, 일반 PE·PS 베일·PU/고무/페놀 미지원 유지. [범위·남은 일](capital-region-coverage-20261116.md) |
 | T-158 | 추가 근거 12개·PE/PS 베일 재조사 및 수도권 후보 후속 검증 | 완료 | api-developer | intake-evidence-followup | 화성 LDPE 필름 1사업장·1연결, 원문5개 추가. 기존12중1개 근거 확인·11개 보류. 18문진·59웹·212HTTP, Azure142응답/124고유 연결. 일반 PE·PS 베일 반입 근거 확보는 T-149에서 계속. [결과·한계](intake-evidence-followup-validation-20261116.md) |
+| T-159 | 최신 UI 로그인부터 PP A→B / A→B→C 완료 재검사 | 진행 | test-engineer | e2e-release-20261117 | 개발용 별도 기업 계정으로 문진·사진·전체 후보 Azure 검토·조건부 수락·자료 제출·QR 2회·완료·A 이력까지 웹 통과. UI 상태 갱신·문진 초기 성능·서버 대기 설정 수정. Google/Microsoft OAuth는 인증정보 미설정으로 미검증. [검증 범위와 남은 조건](full-login-e2e-20261117.md) |
 | T-119 | server ↔ ai 서비스 간 인증 (Entra ID) | 대기 | auth-specialist | review-runs | 요구사항 NFR-1, ai 팀 합의 필요 |
+| T-160 | 최신 통합 PP 재시험·부분 AI 재시도·선택적 도로거리 | 진행 | api-developer / test-engineer | road-distance | 새 PP 직접/두 단계 웹 완료. Azure 14/14·9/9, 기존 12개 결과 보존 후 2개 시간초과 복구. 서버 504·웹 66·재시작 공유 15검사 통과. 도로 API 모의 검증 완료, 활성 키로 실제 값 확인은 남음. [최신 결과](final-integrated-e2e-20261117.md) |
 | T-117 | 문서 값 추출 방식 결정 (Azure Document Intelligence / 다른 벤더 / 수동 입력) | 대기 | 사람 | review-documents | 엔진 연동 INT-008 |
+| T-161 | 업체별 문의서 준비·검토 후 사업장 변경 차단 | 완료 | api-developer / test-engineer | vendor-inquiry | 현재 기업·산출물·AI 미확인점·질문을 미리보기/복사/저장. 자동 발송 없음. 서버525·웹66 검사 및 실제 웹 다운로드 확인. [검증·남은 판매 준비](vendor-inquiry-validation-20261117.md) |
+| T-162 | 업체 등록 반입조건·문의 답변·조건부 수락·QR 연결 | 완료 | api-developer / test-engineer | supplier-intake-policy | 버전별 DB 저장·자기 사업장 권한·조건 변경 검토 무효화·당사자 답변. 별도 A/B 웹에서 등록→문의→조건부→자료 확인→QR 입고·A 재로그인 통과. 서버529·웹67, 새 migration 포함. [결과·한계](supplier-intake-validation-20261117.md) |
+| T-163 | 운영 업체 계정과 실제 처리 사업장 연결 확인 | 대기 | 사람 | supplier-intake-policy | 실사업장 권한·허가·실제 반입조건 확인 필요. 이번 시험 synthetic 계정과 합성 자료는 운영 승인 근거가 아님 |
+| T-164 | 두 후보 시간초과 격리·B→C 업체조건부터 QR 입고 웹 검증 | 완료 | api-developer / test-engineer | supplier-intake-policy | 업체당 호출·로트 3후보 배치. 미완료2 재검토 완료·원본 보존. C 등록조건→B 산출물→Azure9/9→B/C 문의→조건부→QR 입고·A 조회 웹 통과. 서버531·route566(72생략). [결과·범위](supplier-bc-validation-20261117.md) |
+| T-165 | C 최종 산출물·완료와 A 전체 이력 공유 웹 검증 | 완료 | test-engineer | supplier-intake-policy | 같은 합성 PP 건에서 C 펠렛900kg·완료 근거 기록→완료→A 재로그인. 이력19건·공정2건·완료 목록·근거 조회, A 수정 버튼 없음 확인. 실행 코드 변경 없음. [결과·범위](supplier-bc-validation-20261117.md#후속-c-최종-산출물--완료--a-재로그인) |
 | T-502 | 배포 대상 결정 (App Service 기본안) 및 배포 | 대기 | 사람 | - | T-008 이후 |
 
 ## 참고: 다른 레포 담당 작업 (기획서 9장)
@@ -103,3 +110,7 @@
 | ai | 5주 | draft_report, 정확도 평가 |
 | frontend | 5주 | 단계별 3D 시각화, 결과 문서화 화면 |
 | 전체 | 6주 | 시연 시나리오, 비교 시연, 발표 준비 |
+- T-160 후속: 키 없는 OSRM 실거리·전체 좌표 후보 조회·상위5 구현 및 서버509 검사 완료. 공개서버 단일 워커 로컬 시연 한정.
+- T-160 재질별 후속 검사: A 33조합+B 산출물 61조합의 DB·실도로 조회와 웹 지도 함수 94검사 통과. 5재질 인증 API A→B→C 자동 회귀 추가, 서버514 통과. B 실호출 Azure23응답(근거확인6/추가근거17), 도로 출발지 B 확인. [결과와 한계](material-road-validation-20261117.md).
+- T-160 위치 보강 완료: 누락30사업장의 실제 주소와 건물 대표점을 대조·적재. A33/B61 실도로·웹 지도 함수94검사, 서버518검사 통과. 철 B→C 지도3곳과 B 출발지 확인. [위치 근거와 최신 결과](facility-location-validation-20261117.md).
+- 후속 데이터 보강 대기: PE 일반 베일 반입 근거 미확보(T-149). 철 등 실제 수신 계정 연결과 현재 반입 조건 확인이 필요. 임의 처리능력이나 다른 형태 업체로 지도 5개를 채우지 않음.

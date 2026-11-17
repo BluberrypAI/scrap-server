@@ -1,5 +1,6 @@
 """Company-owned material handoffs. Recorded observations, never browser-built history."""
 
+import asyncio
 import base64
 import hashlib
 import io
@@ -24,19 +25,28 @@ from app.domains.diagnosis.recycling import recycling_for_handoff, route_recycli
 from app.domains.diagnosis.router import CompanyId
 from app.domains.diagnosis.schemas import TreatmentSelectionIn
 from app.domains.diagnosis.treatment import treatment_context
+from app.domains.transport.inquiry import InquiryPacketRead, inquiry_packet
 from app.domains.transport.models import (
     WorkflowFacilityAccount,
     WorkflowLot,
     WorkflowOffer,
     WorkflowPhoto,
 )
+from app.domains.transport.supplier_policy import current_policies
 from app.domains.treatment.conditions import attach_answers, published_conditions, questionnaire
 from app.domains.treatment.directory import project
-from app.domains.treatment.intake import IntakeSelection, build_intake_batch, review_intakes
+from app.domains.treatment.intake import (
+    IntakeBatchResult,
+    IntakeResult,
+    IntakeSelection,
+    build_intake_batch,
+    review_intakes,
+)
 from app.domains.treatment.material_scope import FINISH_STATES, LOT_STARTS
 from app.domains.treatment.process import next_step
 from app.domains.treatment.reference import digest
 from app.domains.treatment.repository import read_reference, read_registry
+from app.domains.treatment.road_distance import distance_version, enrich_road_distances
 from app.domains.treatment.schemas import FacilitySearchRequest, NextStepRequest
 from app.domains.wastes.models import (
     CheckRole,
@@ -48,6 +58,7 @@ from app.domains.wastes.models import (
 )
 
 router = APIRouter(prefix="/workflow", tags=["transport"])
+PARTIAL_RETRY_TIMEOUT = 175
 
 MATERIAL_LABELS = {material: material.upper() for material in FINISH_STATES}
 MATERIAL_LABELS["aluminium"] = "알루미늄"
@@ -90,6 +101,10 @@ class Version(Body):
 
 class OfferIn(Version):
     capability_key: str = Field(max_length=100)
+
+
+class InquiryMessage(Version):
+    text: str = Field(min_length=3, max_length=1000)
 
 
 class Decision(Version):
@@ -462,9 +477,12 @@ async def candidates(
     recycling_checksum = digest(None if lot.data["completed"] else recycling_value)
     ref, reference_checksum = await read_reference(db)
     conditions_checksum = digest(published_conditions())
+    supplier_policies = await current_policies(db)
+    supplier_checksum = digest(supplier_policies)
     current_company = await db.get(Company, cid)
     origin_version = current_company.profile_version
     origin_label = current_company.site_name
+    reusable = {}
     if (
         lot.review
         and lot.review.get("version") == "lot-vision-v1"
@@ -473,17 +491,26 @@ async def candidates(
         and lot.review.get("recycling_checksum") == recycling_checksum
         and lot.review.get("reference_checksum") == reference_checksum
         and lot.review.get("conditions_checksum") == conditions_checksum
+        and lot.review.get("supplier_checksum", digest({})) == supplier_checksum
         and lot.review.get("origin_company_id") == str(cid)
         and lot.review.get("origin_profile_version") == origin_version
-        and all(
-            r.get("status") in {"reviewed", "needs_evidence"}
+        and lot.review.get("distance_version") == distance_version()
+    ):
+        reusable = {
+            k: IntakeResult.model_validate(r)
+            for k, r in lot.review.get("results", {}).items()
+            if r.get("status") in {"reviewed", "needs_evidence"}
             and (r.get("lot_review") or {}).get("status") == "reviewed"
             and (r.get("lot_review") or {}).get("observation_method")
             in {"isolated_vision", "no_photo"}
-            for r in lot.review.get("results", {}).values()
-        )
-    ):
-        return await view(db, lot, cid)
+        }
+        expected = {
+            f["capability_key"]
+            for o in lot.review.get("next_step", {}).get("options", [])
+            for f in o.get("facilities", [])
+        }
+        if expected and expected == set(reusable):
+            return await view(db, lot, cid)
     request = process_request(lot)
     if current_company.site_latitude is not None and current_company.site_longitude is not None:
         from app.domains.treatment.schemas import Coordinates
@@ -529,7 +556,48 @@ async def candidates(
                 for k, v in answers.items()
             }
     await db.rollback()
-    reviewed = await review_intakes(packets, get_settings(), lot_context=lot_context)
+    pending = [p for p in packets if p["capability_key"] not in reusable]
+    if reusable and pending:
+        # A repeated two-candidate timeout must not keep both candidates coupled.
+        # Retry individual candidates, with bounded concurrency and a shared budget.
+        recovered = {}
+        semaphore = asyncio.Semaphore(3)
+
+        async def retry_one(packet):
+            async with semaphore:
+                response = await review_intakes([packet], get_settings(), lot_context=lot_context)
+                recovered.update(response.results)
+
+        tasks = [asyncio.create_task(retry_one(p)) for p in pending]
+        try:
+            await asyncio.wait_for(asyncio.gather(*tasks), timeout=PARTIAL_RETRY_TIMEOUT)
+        except TimeoutError:
+            pass
+        finally:
+            for task in tasks:
+                if not task.done():
+                    task.cancel()
+            await asyncio.gather(*tasks, return_exceptions=True)
+        reviewed = IntakeBatchResult(
+            results={
+                p["capability_key"]: recovered.get(
+                    p["capability_key"],
+                    IntakeResult(status="model_unavailable", next_check=p["next_check"]),
+                )
+                for p in pending
+            }
+        )
+    else:
+        reviewed = await review_intakes(pending, get_settings(), lot_context=lot_context)
+    reviewed.results = {
+        **{
+            p["capability_key"]: reusable[p["capability_key"]]
+            for p in packets
+            if p["capability_key"] in reusable
+        },
+        **reviewed.results,
+    }
+    await enrich_road_distances(result, request.origin)
     if not request.completed_transitions:
         latest = (await engine.request("GET", f"/cases/{diagnosis_id}", company_id)).body
         if (
@@ -550,10 +618,13 @@ async def candidates(
         data["recycling"] = recycling_value
         data["initial"].update(route_recycling(recycling_value))
         lot.data = data
+    if digest(await current_policies(db)) != supplier_checksum:
+        fail("업체 반입조건이 변경됐습니다. 다시 검토해 주세요.")
     output = result.model_dump(mode="json")
     bindings = {b.facility_key: b for b in await db.scalars(select(WorkflowFacilityAccount))}
     for option in output["options"]:
         for f in option["facilities"]:
+            f["supplier_policy"] = supplier_policies.get(f["facility_key"])
             binding = bindings.get(f["facility_key"])
             enabled = binding and (
                 not binding.synthetic or get_settings().app_env in {"local", "test"}
@@ -580,7 +651,9 @@ async def candidates(
         "reference_checksum": reference_checksum,
         "recycling_checksum": recycling_checksum,
         "conditions_checksum": conditions_checksum,
+        "supplier_checksum": supplier_checksum,
         "origin_company_id": str(cid),
+        "distance_version": distance_version(),
         "origin_profile_version": origin_version,
         "origin_label": origin_label,
         "origin": request.origin.model_dump() if request.origin else None,
@@ -746,14 +819,11 @@ async def save_directory_inquiry(
     return await view(db, lot, cid)
 
 
-@router.post("/lots/{key}/offers")
-async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSession):
-    cid = uuid.UUID(company_id)
-    lot = await lot_for(db, key, cid, lock=True)
-    active(lot, cid, {"ready", "processed"})
-    version(lot, body.revision)
+async def current_review_candidate(db, lot, cid, capability_key):
     review = lot.review or {}
-    _, reference_checksum = await read_reference(db)
+    if review.get("supplier_checksum", digest({})) != digest(await current_policies(db)):
+        fail("업체가 반입조건을 변경했습니다. 업체 검토를 다시 실행해 주세요.")
+    ref, reference_checksum = await read_reference(db)
     if review.get("reference_checksum") != reference_checksum or review.get(
         "conditions_checksum"
     ) != digest(published_conditions()):
@@ -762,15 +832,64 @@ async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSess
         None if lot.data["completed"] else lot.data.get("recycling")
     ):
         fail("재활용 유형 전달 전의 검토입니다. 업체 검토를 다시 실행해 주세요.")
+    company = await db.get(Company, cid, populate_existing=True)
+    if (
+        review.get("origin_company_id") != str(cid)
+        or review.get("origin_profile_version") != company.profile_version
+        or review.get("distance_version") != distance_version()
+        or review.get("conditions_version") != "intake-questions-v1"
+    ):
+        fail("사업장 정보 또는 검토 기준이 바뀌었습니다. 업체 검토를 다시 실행해 주세요.")
     found = [
         (o, f)
         for o in review.get("next_step", {}).get("options", [])
         for f in o["facilities"]
-        if f["capability_key"] == body.capability_key
+        if f["capability_key"] == capability_key
     ]
     if len(found) != 1:
         fail("현재 물량의 업체 검토를 먼저 실행해 주세요.")
-    option, facility = found[0]
+    return company, ref, found[0]
+
+
+@router.post("/lots/{key}/inquiry-packet", response_model=InquiryPacketRead)
+async def prepare_inquiry(
+    key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSession, response: Response
+):
+    response.headers["Cache-Control"] = "private, no-store"
+    cid = uuid.UUID(company_id)
+    lot = await lot_for(db, key, cid, lock=True)
+    active(lot, cid, {"ready", "processed"})
+    version(lot, body.revision)
+    company, ref, (option, facility) = await current_review_candidate(
+        db, lot, cid, body.capability_key
+    )
+    state = next(s for s in ref.states if s.key == lot.data["current"]["state_key"])
+    return inquiry_packet(
+        lot=lot,
+        company=company,
+        option=option,
+        facility=facility,
+        result=lot.review.get("results", {}).get(body.capability_key, {}),
+        state_label=state.label,
+        material_label=MATERIAL_LABELS.get(
+            lot.data["initial"]["material"], lot.data["initial"]["material"]
+        ),
+        source_dates={s.url: s.checked_date for s in ref.sources},
+    )
+
+
+@router.post("/lots/{key}/offers")
+async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSession):
+    cid = uuid.UUID(company_id)
+    lot = await lot_for(db, key, cid, lock=True)
+    active(lot, cid, {"ready", "processed"})
+    version(lot, body.revision)
+    _, _, found = await current_review_candidate(db, lot, cid, body.capability_key)
+    review = lot.review or {}
+    option, facility = found
+    supplier_policy = (facility.get("supplier_policy") or {}).get("policy") or {}
+    if supplier_policy.get("accepting_inquiries") is False:
+        fail("업체가 현재 새 문의 접수를 중단했습니다.")
     check = review["results"].get(body.capability_key, {})
     if (
         check.get("status") not in {"reviewed", "needs_evidence"}
@@ -826,6 +945,29 @@ async def offer_and_lot(db, key, cid):
     return row, lot
 
 
+@router.post("/offers/{key}/messages")
+async def inquiry_message(
+    key: uuid.UUID, body: InquiryMessage, company_id: CompanyId, db: DbSession
+):
+    cid = uuid.UUID(company_id)
+    row, lot = await offer_and_lot(db, key, cid)
+    if cid not in {row.sender_id, row.recipient_id}:
+        fail("이 문의의 발송·수신 기업만 답변할 수 있습니다.", 403)
+    version(lot, body.revision)
+    if row.status not in {"pending", "conditional"}:
+        fail("진행 중인 문의에만 답변할 수 있습니다.")
+    messages = list(row.data.get("messages", []))
+    if len(messages) >= 100:
+        fail("문의별 답변은 최대 100개입니다.")
+    messages.append(
+        {"text": body.text, "company_id": str(cid), "at": datetime.now(UTC).isoformat()}
+    )
+    row.data = {**row.data, "messages": messages}
+    stamp(lot, "문의 답변", cid)
+    await db.commit()
+    return await view(db, lot, cid)
+
+
 @router.post("/offers/{key}/decision")
 async def decision(key: uuid.UUID, body: Decision, company_id: CompanyId, db: DbSession):
     cid = uuid.UUID(company_id)
@@ -836,6 +978,9 @@ async def decision(key: uuid.UUID, body: Decision, company_id: CompanyId, db: Db
     if row.status not in {"pending", "conditional"} or lot.status not in {"offered", "conditional"}:
         fail("이미 응답한 요청입니다.")
     conditions = row.data.get("conditions", [])
+    policy = ((row.data.get("facility") or {}).get("supplier_policy") or {}).get("policy") or {}
+    if body.accept and policy.get("required_checks") and not conditions:
+        fail("등록한 필수 확인 조건을 먼저 조건부 수락으로 제시해 주세요.")
     if body.accept and conditions:
         expected = {c["id"] for c in conditions}
         responses = row.data.get("condition_responses", {})
@@ -883,6 +1028,10 @@ async def set_conditions(key: uuid.UUID, body: ConditionsIn, company_id: Company
         fail("응답 대기 중인 요청에 조건을 제시해 주세요.")
     if any(not isinstance(c, str) or not 3 <= len(c.strip()) <= 600 for c in body.conditions):
         fail("각 조건을 3~600자로 작성해 주세요.", 422)
+    policy = ((row.data.get("facility") or {}).get("supplier_policy") or {}).get("policy") or {}
+    checks = list(dict.fromkeys(policy.get("required_checks", []) + body.conditions))
+    if len(checks) > 12:
+        fail("등록 조건을 포함해 최대 12개까지 제시할 수 있습니다.", 422)
     row.data = {
         **row.data,
         "conditions": [
@@ -892,7 +1041,7 @@ async def set_conditions(key: uuid.UUID, body: ConditionsIn, company_id: Company
                 "proposed_by": str(cid),
                 "at": datetime.now(UTC).isoformat(),
             }
-            for c in body.conditions
+            for c in checks
         ],
         "condition_responses": {},
         "conditional_note": body.note,
