@@ -584,6 +584,169 @@ async def use_handoff(db, actors, material, code, bindings=()):
     app.dependency_overrides[get_engine_client] = fake.client
 
 
+@pytest.mark.parametrize(
+    "material,code,form,first_site,first_transition,output,second_site,second_transition,final",
+    [
+        (
+            "pp",
+            "51-03-01",
+            "scrap",
+            "sarom-hwaseong-2",
+            "pp-prepare",
+            "pp-shredded",
+            "hcr-paju",
+            "pp-flake-repelletise",
+            "pp-pellet",
+        ),
+        (
+            "pe",
+            "51-03-01",
+            "film",
+            "sarom-hwaseong-2",
+            "pe-prepare",
+            "pe-shredded",
+            "hcr-paju",
+            "pe-flake-repelletise",
+            "pe-pellet",
+        ),
+        (
+            "pet",
+            "51-03-07",
+            "bottle",
+            "samyang-sihwa",
+            "pet-bottle-to-flake",
+            "pet-flake",
+            "bgf-yesan",
+            "pet-pelletise",
+            "pet-pellet",
+        ),
+        (
+            "ferrous",
+            "51-29-01",
+            "scrap",
+            "dongyang-gwangju",
+            "ferrous-shear",
+            "ferrous-prepared",
+            "hyundai-incheon",
+            "ferrous-prepared-eaf-billet",
+            "ferrous-billet",
+        ),
+        (
+            "aluminium",
+            "51-29-03",
+            "can",
+            "hyundai-resource-hwaseong",
+            "al-can-prepare",
+            "al-scrap",
+            "jmtech-gimpo",
+            "al-scrap-to-granule",
+            "al-granule",
+        ),
+    ],
+)
+async def test_each_material_followup_uses_current_owner_road_origin(
+    setup_flow,
+    db,
+    monkeypatch,
+    material,
+    code,
+    form,
+    first_site,
+    first_transition,
+    output,
+    second_site,
+    second_transition,
+    final,
+):
+    """Authenticated A→B→C, synthetic AI/road service; live road matrix is separate."""
+    from app.core.config import get_settings
+    from app.domains.companies.models import Company
+    from app.domains.treatment.road_distance import enrich_road_distances
+
+    req, create, actors, packets = setup_flow
+    bindings = [(second_site, "C")]
+    if first_site != "sarom-hwaseong-2":
+        bindings.append((first_site, "B"))
+    await use_handoff(db, actors, material, code, bindings)
+    origins = []
+    for role, lat, lon in [("A", 37.16, 126.9), ("B", 37.22, 126.97)]:
+        company = await db.get(Company, uuid.UUID(actors[role][1]))
+        company.site_latitude, company.site_longitude = lat, lon
+    await db.commit()
+    monkeypatch.setattr(get_settings(), "osrm_demo_enabled", True)
+
+    async def roads(origin, sites, client=None):
+        # Deliberately opposite ordering for B: stale A ranking cannot satisfy this test.
+        keys = sorted(sites, reverse=origin.latitude > 37.2)
+        return {key: (10.0 + i, 600.0 + i) for i, key in enumerate(keys)}
+
+    monkeypatch.setattr("app.domains.treatment.osrm_distance.lookup", roads)
+
+    async def capture(result, origin):
+        origins.append((origin.latitude, origin.longitude))
+        return await enrich_road_distances(result, origin)
+
+    monkeypatch.setattr("app.domains.transport.workflow.enrich_road_distances", capture)
+
+    async def review_offer(lot, role, site, transition):
+        r = await req(role, f"/lots/{lot['id']}/candidates", {"revision": lot["revision"]})
+        assert r.status_code == 200, r.text
+        lot = r.json()
+        review = lot["review"]
+        assert review["origin_company_id"] == actors[role][1]
+        assert review["origin"]["latitude"] == (37.16 if role == "A" else 37.22)
+        facilities = [f for o in review["next_step"]["options"] for f in o["facilities"]]
+        assert set(review["results"]) == {f["capability_key"] for f in facilities}
+        unique = {f["facility_key"]: f for f in facilities}
+        ranked = sorted(
+            (f for f in unique.values() if f["distance_rank"] is not None),
+            key=lambda f: f["distance_rank"],
+        )
+        assert len(ranked) <= 5
+        assert all(f["road_distance_status"] == "available" for f in ranked)
+        assert [f["road_distance_km"] for f in ranked] == sorted(
+            f["road_distance_km"] for f in ranked
+        )
+        if role == "B":
+            assert review["next_step"]["basis"] == "observed_output"
+            assert review["next_step"]["current_state"]["key"] == output
+        option = next(
+            o for o in review["next_step"]["options"] if o["transition_key"] == transition
+        )
+        key = next(f["capability_key"] for f in option["facilities"] if f["facility_key"] == site)
+        r = await req(
+            role, f"/lots/{lot['id']}/offers", {"revision": lot["revision"], "capability_key": key}
+        )
+        assert r.status_code == 200, r.text
+        return r.json()
+
+    lot = await create(form)
+    lot = await review_offer(lot, "A", first_site, first_transition)
+    lot = await accept_receive(req, lot, "A", "B")
+    assert (
+        await req("B", f"/lots/{lot['id']}/candidates", {"revision": lot["revision"]})
+    ).status_code == 409
+    lot = await save_output(req, lot, "B", output, 950)
+    lot = await review_offer(lot, "B", second_site, second_transition)
+    lot = await accept_receive(req, lot, "B", "C")
+    lot = await save_output(req, lot, "C", final, 900)
+    r = await req(
+        "C",
+        f"/lots/{lot['id']}/finish",
+        {
+            "revision": lot["revision"],
+            "reference": "SYNTHETIC-ROAD-TEST",
+            "intended_use": "합성 시험용 재생 원료",
+            "confirmed": True,
+        },
+    )
+    assert r.status_code == 200, r.text
+    assert r.json()["status"] == "completed"
+    assert origins == [(37.16, 126.9), (37.22, 126.97)]
+    assert packets[-1]["lot_context"]["mass_kg"] == 950
+    assert packets[-1]["lot_context"]["state_key"] == output
+
+
 async def test_aluminium_can_handoff_completes_with_sheet(setup_flow, db):
     req, create, actors, _ = setup_flow
     await use_handoff(db, actors, "aluminium", "51-29-03", [("novelis-yeongju", "B")])
