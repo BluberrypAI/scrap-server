@@ -65,8 +65,11 @@ class Settings(BaseSettings):
     diagnosis_engine_url: str = ""
     # 엔진과 같은 값 (엔진 ENGINE_SERVICE_TOKEN)
     engine_service_token: SecretStr = SecretStr("")
-    # 엔진 권장값 30초 (턴 최대 지연 8.2초 측정)
-    diagnosis_engine_timeout_seconds: float = 30.0
+    # 엔진 모델 대기(LLM_TIMEOUT_SECONDS) × 추출·응답 각 최대 2회 + 규칙·DB 여유보다 길게 둠.
+    # 기본 200초 = 운영 모델 대기 40초 × 4회(160초) + 여유.
+    # App Service 요청 상한(약 230초)보다 짧아야 함.
+    # 로컬 compose는 모델 60초 기준 300초를 넘김 (scrap-infra)
+    diagnosis_engine_timeout_seconds: float = 200.0
 
     # 모델 검증 및 유틸리티
     @model_validator(mode="after")
