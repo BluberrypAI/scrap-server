@@ -55,6 +55,8 @@ class Settings(BaseSettings):
     classification_base_url: str = ""
     scrap_intake_service_token: SecretStr = SecretStr("")
     transport_demo_facilities: dict[str, str] = {}
+    # 시연용(synthetic) 업체 연결을 운영에서도 쓸지 여부. 발표 시연 동안만 켜고 끝나면 끔
+    demo_facility_bindings: bool = False
     # Optional road-distance lookup. Never exposed to the frontend bundle.
     osrm_demo_enabled: bool = False
     kakao_mobility_rest_api_key: SecretStr = SecretStr("")
@@ -63,8 +65,11 @@ class Settings(BaseSettings):
     diagnosis_engine_url: str = ""
     # 엔진과 같은 값 (엔진 ENGINE_SERVICE_TOKEN)
     engine_service_token: SecretStr = SecretStr("")
-    # 엔진 권장값 30초 (턴 최대 지연 8.2초 측정)
-    diagnosis_engine_timeout_seconds: float = 30.0
+    # 엔진 모델 대기(LLM_TIMEOUT_SECONDS) × 추출·응답 각 최대 2회 + 규칙·DB 여유보다 길게 둠.
+    # 기본 200초 = 운영 모델 대기 40초 × 4회(160초) + 여유.
+    # App Service 요청 상한(약 230초)보다 짧아야 함.
+    # 로컬 compose는 모델 60초 기준 300초를 넘김 (scrap-infra)
+    diagnosis_engine_timeout_seconds: float = 200.0
 
     # 모델 검증 및 유틸리티
     @model_validator(mode="after")
@@ -84,6 +89,11 @@ class Settings(BaseSettings):
         if not self.cookie_domain:  # 쿠키 도메인이 설정되지 않은 경우 None으로 둠
             self.cookie_domain = None
         return self
+
+    # 시연용(synthetic) 업체 연결 허용 여부. local·test는 항상, prod는 DEMO_FACILITY_BINDINGS일 때만
+    @property
+    def synthetic_bindings_allowed(self) -> bool:
+        return self.app_env in {"local", "test"} or self.demo_facility_bindings
 
     # PostgreSQL 사용 여부 확인
     @property
