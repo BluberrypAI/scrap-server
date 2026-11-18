@@ -569,3 +569,40 @@ async def test_bad_field_keeps_other_preview_values(company_client, fake_engine)
     assert "55.0" not in slots and "87.0" not in slots, "문제 있는 칸만 비움"
     res = await company_client.post(f"{BASE}/form6", json=body)
     assert res.status_code == 422, "파일은 여전히 거절"
+
+
+CODE_NEEDED = {
+    **GENERAL,
+    "result_type": "NO_CODE",
+    "waste_code": None,
+    "waste_name": None,
+    "category": "DESIGNATED",
+    "outcome": "DESIGNATED_CODE_NEEDED",
+    "route_guidance": {"action": "MANUAL_CLASSIFICATION"},
+    "review": "UNVERIFIED",
+    "facts": {"physical_state": {"value": "solid", "source_type": "UTTERANCE"}},
+}
+
+
+def test_designated_without_code_makes_a_draft_with_blank_code():
+    verdict = service.verdict_from(CODE_NEEDED)
+    assert verdict.category == "DESIGNATED" and verdict.code == ""
+    assert any("제출 전 초안" in w for w in verdict.warnings)
+    company = service.company_from(None, COMPANY)
+    edits = service.form_edits("form12", verdict, company, FormWasteIn())
+    assert service.form_hwpx("form12", edits)  # 제12호를 만들 수 있다
+    with pytest.raises(service.FormInputError):
+        service.form_edits("form6", verdict, company, WASTE6)
+
+
+def test_designated_without_code_uses_code_the_user_typed():
+    verdict = service.verdict_from(CODE_NEEDED, FormWasteIn(waste_code="06-01-99"))
+    assert verdict.code == "06-01-99"
+    assert any("직접 입력한 분류번호" in w for w in verdict.warnings)
+
+
+def test_other_no_code_results_still_rejected():
+    with pytest.raises(service.FormInputError):
+        service.verdict_from({**CODE_NEEDED, "outcome": "INTERPRETATION_NEEDED"})
+    with pytest.raises(service.FormInputError):
+        service.verdict_from({**CODE_NEEDED, "category": "GENERAL"})
