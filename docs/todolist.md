@@ -108,8 +108,8 @@
 
 | ID | 작업 | 상태 | 담당 | spec | 비고 |
 | --- | --- | --- | --- | --- | --- |
-| T-171 | 수락·운송 시작·QR 입고 단계 분리 | 완료 | api-developer / test-engineer | pp-company-workflow | 신규 A/B 가입·PP 문진·사진·Azure 검토·수락·운송·QR 입고 웹 확인. B 산출물이 A에 자동 반영됨. 최종 산출물 뒤 사진/후속 검토 반복 제거. 로컬만 반영 |
-| T-172 | 카카오 지도·주소 검색·인계 도로 경로 | 완료 | api-developer / test-engineer | pp-company-workflow, company-onboarding | 서버621·웹89·Ruff·Docker 빌드 통과. A→B 실호출 6.495km·164좌표와 기업 주소 검색/핀 웹 확인. [검증 범위](kakao-map-validation-20261118.md). 운영 미배포 |
+| T-173 | 수락·운송 시작·QR 입고 단계 분리 | 완료 | api-developer / test-engineer | pp-company-workflow | 신규 A/B 가입·PP 문진·사진·Azure 검토·수락·운송·QR 입고 웹 확인. B 산출물이 A에 자동 반영됨. 최종 산출물 뒤 사진/후속 검토 반복 제거. 로컬만 반영 |
+| T-174 | 카카오 지도·주소 검색·인계 도로 경로 | 완료 | api-developer / test-engineer | pp-company-workflow, company-onboarding | 서버621·웹89·Ruff·Docker 빌드 통과. A→B 실호출 6.495km·164좌표와 기업 주소 검색/핀 웹 확인. [검증 범위](kakao-map-validation-20261118.md). 운영 미배포 |
 
 이 레포에서 구현하지 않음. 일정 파악과 연동 시점 확인용.
 
