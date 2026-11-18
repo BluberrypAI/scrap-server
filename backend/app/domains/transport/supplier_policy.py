@@ -14,7 +14,7 @@ from app.domains.treatment.repository import read_reference
 
 
 def enabled(binding):
-    return not binding.synthetic or get_settings().app_env in {"local", "test"}
+    return not binding.synthetic or get_settings().synthetic_bindings_allowed
 
 
 def snapshot(row):
