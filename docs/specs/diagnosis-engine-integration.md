@@ -40,7 +40,7 @@
    - 엔진 인증 실패(401·`COMPANY_REQUIRED`·`ENDPOINT_DISABLED`), 엔진 5xx, 연결 실패·시간 초과, 주소 미설정은 모두 503 `ENGINE_UNAVAILABLE`. 원인은 server 로그에만 남김
    - 표에 없는 엔진 코드는 HTTP 상태로 처리함 (404 → `NOT_FOUND`, 400·422 → `VALIDATION_ERROR`, 그 외 → 503 `ENGINE_UNAVAILABLE`)
 5. 응답 본문은 엔진 것을 가공하지 않고 돌려줌. 엔진이 필드를 추가해도 server를 고치지 않음 (예: 엔진 `feat/interview-assist`의 턴 응답 `assist`, `ui.question.guide`, 사실의 `hedged`)
-6. 엔진 호출 제한 시간은 30초 (엔진 규약 권장값, 턴 최대 지연 8.2초 측정)
+6. 엔진 호출 제한 시간은 `DIAGNOSIS_ENGINE_TIMEOUT_SECONDS` (기본 200초). 엔진 모델 대기 × 추출·응답 각 최대 2회 + 규칙·DB 여유보다 길어야 함. 운영은 모델 40초(4회 160초)에 200초, 로컬 compose는 모델 60초(240초)에 300초. 운영 값은 App Service 요청 상한(약 230초)과 Front Door 출처 응답 대기(240초)보다 짧게 둠. 이전 값 30초는 2026-11-17 동시 문진 시험에서 시간 초과(503)가 나서 바꿈
 7. 서류 업로드는 multipart를 그대로 넘김 (`file`, 선택 `facts`). 크기 제한은 엔진이 검사함. server는 메모리 보호용으로 20MB를 넘으면 먼저 413 `FILE_TOO_LARGE`
 8. 경로의 건·서류 ID는 `^[A-Za-z0-9_-]{1,64}$`만 받음 (다른 값은 422, 엔진을 부르지 않음)
 9. 탈퇴 purge: 기업을 지우기 전에 엔진 `DELETE /internal/v1/companies/{company_id}/data`를 부름. 실패하면 그 사용자는 이번에 지우지 않고 다음 purge에서 다시 시도함. 엔진 주소가 설정되지 않았으면 엔진 삭제를 건너뛰고 경고 로그를 남김
