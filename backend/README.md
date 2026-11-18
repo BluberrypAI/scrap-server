@@ -199,6 +199,8 @@ uv run python -m app.domains.transport.dev_accounts
 # 업체 반입조건 API 추가 (2026-11-17)
 
 - 적용: `uv run alembic upgrade head` (새 테이블 `supplier_intake_policies`, revision `a87485f30805`).
+- `POST /api/v1/workflow/offers/{id}/dispatch`: 발송 기업이 수락된 인계의 실제 출발을 기록합니다(`revision` 필요). 수락·QR 발급과 구분하며 `offer.data.dispatch`에 출발 시각·기업을 저장합니다. 입고 전 현재 담당은 바뀌지 않습니다.
+- `GET /api/v1/workflow/lots/{id}/road-route`: 참여 기업의 인계 도로 경로. `segments`에 제공자·상태·경위도 좌표·거리·시간을 반환하며 외부 실패 시 직선으로 대체하지 않습니다. 카카오 응답은 DB에 저장하지 않습니다. B→C는 B 사업장에서 출발합니다.
 - `GET /api/v1/workflow/supplier-policies`: 로그인 기업에 연결된 처리 사업장과 현재 반입조건.
 - `POST /api/v1/workflow/supplier-policies`: `facility_key`, `expected_version`, `policy`로 새 버전 저장.
 - `POST /api/v1/workflow/offers/{id}/messages`: `revision`, `text`로 문의 당사자 간 답변 저장.
@@ -211,3 +213,6 @@ uv run python -m app.domains.transport.dev_accounts
 - 설명 수정은 기존 업체 검토를 초기화합니다. 확인은 해당 검토에만 유효하며 새 사진·산출물·검토에 재사용되지 않습니다.
 - 로트 응답의 `photo_conflict_gate`에 확인 사항·차단 여부·유효한 확인 내역이 들어갑니다. 요청 API에서도 차단하므로 다른 업체 선택으로 우회할 수 없습니다.
 - 기존 JSON 필드에 기록하므로 추가 DB 마이그레이션/환경변수는 없습니다. 분류번호·R유형·문진 원본은 변경하지 않습니다.
+
+## 사업장 주소 검색
+기업 등록과 수정에서 `POST /api/v1/companies/location-search`로 주소·장소를 검색하고, 선택한 좌표를 기존 기업 정보 API로 저장합니다. 로그인 후 기업 등록 전에도 사용합니다. `COMPANY_GEOCODING_ENABLED=false`로 외부 검색을 끌 수 있고 `COMPANY_GEOCODING_URL`로 자체 Photon을 지정할 수 있습니다. 기본 공개 Photon은 소규모·단일 워커용(초당1회·캐시24시간)이며 국내 주소 누락과 서비스 장애가 가능합니다. 여러 서버로 운영할 때는 자체 서비스와 공유 호출 제한이 필요합니다. 검색 결과는 사용자가 지도에서 확인하며 정확한 건물/출입구를 보장하지 않습니다. [명세](../docs/specs/company-onboarding.md).

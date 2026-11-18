@@ -1,11 +1,12 @@
 import math
 
-from fastapi import APIRouter, Query, status
+from fastapi import APIRouter, Query, Response, status
 
-from app.core.errors import ConflictError, ErrorCode, NotFoundError
+from app.core.config import get_settings
+from app.core.errors import AppError, ConflictError, ErrorCode, NotFoundError
 from app.db.session import DbSession
 from app.domains.auth.dependencies import CurrentUser
-from app.domains.companies import service
+from app.domains.companies import geocoding, service
 from app.domains.companies.models import Company
 from app.domains.companies.schemas import (
     CompanyCreate,
@@ -14,6 +15,8 @@ from app.domains.companies.schemas import (
     CompanyRead,
     CompanyUpdate,
     CompanyUpdateResult,
+    LocationSearch,
+    LocationSearchResult,
     PagingInfo,
 )
 from app.domains.users.models import User
@@ -91,3 +94,23 @@ async def read_my_company_history(
             is_empty=not rows,
         ),
     )
+
+
+@router.post("/location-search", response_model=LocationSearchResult)
+async def search_site_location(data: LocationSearch, user: CurrentUser, response: Response):
+    response.headers["Cache-Control"] = "private, no-store"
+    try:
+        return await geocoding.search_location(data.query, get_settings())
+    except geocoding.GeocodingBusy:
+        raise AppError(
+            429,
+            ErrorCode.PROVIDER_UNAVAILABLE,
+            "검색 요청이 많아요. 잠시 후 다시 검색해 주세요.",
+            headers={"Retry-After": "2"},
+        ) from None
+    except geocoding.GeocodingUnavailable:
+        raise AppError(
+            503,
+            ErrorCode.PROVIDER_UNAVAILABLE,
+            "주소 검색에 연결하지 못했어요. 잠시 후 재시도하거나 지도에서 위치를 지정해 주세요.",
+        ) from None

@@ -154,3 +154,90 @@ async def test_other_company_stale_revision_and_missing_review_denied(setup_flow
     path = f"/lots/{lot['id']}/photo-conflict-resolution"
     assert (await req("B", path, body)).status_code in {403, 404}
     assert (await req("A", path, {**body, "revision": lot["revision"] + 1})).status_code == 409
+
+
+async def test_not_waste_blocks_all_offers_and_cannot_be_acknowledged(setup_flow, db):
+    req, create, _, _ = setup_flow
+    lot, key = await conflicted(req, create, db)
+    row = await db.get(WorkflowLot, uuid.UUID(lot["id"]))
+    review = deepcopy(row.review)
+    first = next(iter(review["results"].values()))
+    first["lot_review"]["concerns"] = []  # no description-conflict flag is needed
+    first["lot_review"]["photo_observations"] = [
+        {"photo_id": "unrelated", "description": "합성 캐릭터 그림", "visibility": "not_waste"}
+    ]
+    row.review = review
+    await db.commit()
+    lot = (await req("A", f"/lots/{lot['id']}", method="GET")).json()
+    assert lot["photo_conflict_gate"]["blocked"]
+    assert len(lot["photo_conflict_gate"]["invalid_photos"]) == 1
+    for action in ("confirm", "correct"):
+        body = {"action": action, "classification_unchanged": True}
+        if action == "correct":
+            body["condition"] = "실물이라고 설명만 바꿔도 무관 사진은 남습니다"
+        assert (await resolve(req, lot, **body)).status_code == 409
+    assert (
+        await req(
+            "A", f"/lots/{lot['id']}/offers", {"revision": lot["revision"], "capability_key": key}
+        )
+    ).status_code == 409
+    # A limited photo is uncertainty, not automatically an unrelated picture.
+    review = deepcopy(row.review)
+    next(iter(review["results"].values()))["lot_review"]["photo_observations"][0]["visibility"] = (
+        "limited"
+    )
+    row.review = review
+    assert not conflict_gate(row)["invalid_photos"]
+
+
+async def test_photo_replacement_is_versioned_preserves_history_and_rechecks(setup_flow):
+    req, create, _, packets = setup_flow
+    lot = await create()
+    original_handoff = deepcopy(lot["data"]["handoff"])
+    stream = io.BytesIO()
+    Image.new("RGB", (16, 16), "blue").save(stream, format="PNG")
+    photo_file = {"file": ("test.png", stream.getvalue(), "image/png")}
+    path = f"/lots/{lot['id']}/photos"
+    for _ in range(4):
+        res = await req("A", path, files=photo_file)
+        assert res.status_code == 200, res.text
+        lot = res.json()
+    old_id = lot["photos"][0]["id"]
+    assert (await req("A", path, files=photo_file)).status_code == 409
+    body = {"replace_photo_id": old_id, "revision": str(lot["revision"])}
+    assert (await req("B", path, files=photo_file, data=body)).status_code in {403, 404}
+    assert (
+        await req("A", path, files=photo_file, data={**body, "revision": "9999"})
+    ).status_code == 409
+    assert (
+        await req("A", path, files=photo_file, data={"replace_photo_id": old_id})
+    ).status_code == 422
+    res = await req("A", path, files=photo_file, data=body)
+    assert res.status_code == 200, res.text
+    replaced = res.json()
+    assert replaced["review"] is None
+    assert replaced["data"]["handoff"] == original_handoff
+    assert len(replaced["photos"]) == 5
+    assert sum(p["active"] for p in replaced["photos"]) == 4
+    assert next(p for p in replaced["photos"] if p["id"] == old_id)["active"] is False
+    assert (await req("A", f"/photos/{old_id}", method="GET")).status_code == 200
+    assert (await req("A", path, files=photo_file, data=body)).status_code == 409
+    body["revision"] = str(replaced["revision"])
+    assert (await req("A", path, files=photo_file, data=body)).status_code == 404
+
+    packets.clear()
+    fresh = await reviewed(req, replaced)
+    sent_ids = {p["photo_id"] for call in packets for p in call["lot_context"]["photos"]}
+    assert old_id not in sent_ids
+    assert sent_ids == {p["id"] for p in replaced["photos"] if p["active"]}
+    key = next(
+        f["capability_key"]
+        for o in fresh["review"]["next_step"]["options"]
+        for f in o["facilities"]
+        if f["facility_key"] == "sarom-hwaseong-2"
+    )
+    offered = await req(
+        "A", f"/lots/{lot['id']}/offers", {"revision": fresh["revision"], "capability_key": key}
+    )
+    assert offered.status_code == 200, offered.text
+    assert set(offered.json()["offers"][-1]["data"]["photo_ids"]) == sent_ids
