@@ -134,16 +134,46 @@ def company_from(profile: Any, override: FormCompanyIn) -> Company:
     return base
 
 
+# 엔진 결론: 지정폐기물은 확실하지만 세부 분류번호는 확인이 필요한 경우(분류번호 없음)
+CODE_NEEDED = "DESIGNATED_CODE_NEEDED"
+
+
+def is_code_needed(handoff: dict[str, Any]) -> bool:
+    return (
+        handoff.get("result_type") == "NO_CODE"
+        and handoff.get("outcome") == CODE_NEEDED
+        and handoff.get("category") == "DESIGNATED"
+    )
+
+
 def verdict_from(handoff: dict[str, Any], waste: FormWasteIn | None = None) -> Verdict:
-    if handoff.get("result_type") != "WASTE_CODE" or not handoff.get("waste_code"):
-        raise FormInputError("분류번호가 정해진 판정만 서식을 채울 수 있습니다")
-    # web의 서식 버튼 조건과 같다. API를 직접 불러도 시험 필요·해석 필요 판정으로는 만들지 않는다.
-    if (handoff.get("route_guidance") or {}).get("action") != "RECOMMEND_ROUTE":
-        raise FormInputError("처리 경로를 안내하는 판정만 서식을 채울 수 있습니다")
+    code_needed = is_code_needed(handoff)
+    if not code_needed:
+        if handoff.get("result_type") != "WASTE_CODE" or not handoff.get("waste_code"):
+            raise FormInputError("분류번호가 정해진 판정만 서식을 채울 수 있습니다")
+        # web의 서식 버튼 조건과 같다.
+        # API를 직접 불러도 시험 필요·해석 필요 판정으로는 만들지 않는다.
+        if (handoff.get("route_guidance") or {}).get("action") != "RECOMMEND_ROUTE":
+            raise FormInputError("처리 경로를 안내하는 판정만 서식을 채울 수 있습니다")
     if handoff.get("category") not in _FORM_CATEGORIES:
         raise FormInputError("사업장일반폐기물·지정폐기물로 판정된 건만 서식을 채울 수 있습니다")
     waste = waste or FormWasteIn()
     warnings: list[str] = []
+    if code_needed:
+        # 지정폐기물인 것은 확실하므로 번호 칸만 비운 초안을 만든다(번호를 알면 직접 입력).
+        code = waste.waste_code or ""
+        warnings.append(
+            "지정폐기물이지만 세부 분류번호가 정해지지 않았습니다. "
+            + ("직접 입력한 분류번호를 썼습니다. " if code else "분류번호 칸을 비웠습니다. ")
+            + "번호를 관할 기관이나 이전 신고서·인계서로 확인하기 전까지는 제출 전 초안입니다."
+        )
+        return Verdict(
+            code=code,
+            name="",
+            category="DESIGNATED",
+            state=_state_of(handoff, waste, warnings),
+            warnings=warnings,
+        )
     engine_code = handoff["waste_code"]
     verified = handoff.get("review") == "VERIFIED"
     code = engine_code if verified else ""
@@ -163,15 +193,7 @@ def verdict_from(handoff: dict[str, Any], waste: FormWasteIn | None = None) -> V
             f"검토 전 규칙에 따른 판정({engine_code})이라 분류번호 칸을 비웠습니다. "
             "업체·관할 기관에 확인한 뒤 분류번호 칸에 입력해 주세요."
         )
-    state_fact = (handoff.get("facts") or {}).get("physical_state") or {}
-    state = state_fact.get("value")
-    if waste.physical_state:
-        state = waste.physical_state
-    elif state is not None and state_fact.get("source_type") in _UNTRUSTED_SOURCES:
-        warnings.append("배출 시 상태가 추정값이라 성질·상태 칸을 비웠습니다. 직접 골라 주세요.")
-        state = None
-    elif not isinstance(state, str):
-        state = None
+    state = _state_of(handoff, waste, warnings)
     # The narrow "종류" cell takes the name without the trailing parenthetical note.
     name = re.sub(r"\s*\(.*\)\s*$", "", handoff.get("waste_name") or "")
     return Verdict(
@@ -181,6 +203,17 @@ def verdict_from(handoff: dict[str, Any], waste: FormWasteIn | None = None) -> V
         state=state,
         warnings=warnings,
     )
+
+
+def _state_of(handoff: dict[str, Any], waste: FormWasteIn, warnings: list[str]) -> str | None:
+    state_fact = (handoff.get("facts") or {}).get("physical_state") or {}
+    state = state_fact.get("value")
+    if waste.physical_state:
+        return waste.physical_state
+    if state is not None and state_fact.get("source_type") in _UNTRUSTED_SOURCES:
+        warnings.append("배출 시 상태가 추정값이라 성질·상태 칸을 비웠습니다. 직접 골라 주세요.")
+        return None
+    return state if isinstance(state, str) else None
 
 
 def _num(v: float | int | None) -> str:
