@@ -1,8 +1,10 @@
-"""로컬 시험용: 개발 로그인 계정의 기업을 처리 업체에 연결함 (synthetic).
+"""시험·시연용: 로그인 계정의 기업을 처리 업체에 연결함 (synthetic).
 
 기업 간 인계(/workflow)는 업체(facility_key)에 연결된 수신 기업 계정이 있어야
 인수 요청을 보낼 수 있음.
 운영에서는 실제 시설 증빙으로 연결해야 하므로 이 스크립트는 APP_ENV=local·test에서만 실행됨.
+발표 시연처럼 운영에서 써야 하면 DEMO_FACILITY_BINDINGS=true로 켜고 --email·--facility를 직접 지정함
+(기본 시험 계정 example.com은 운영에 없음). 연결은 synthetic으로 저장돼 화면에 시연용으로 표시됨.
 
 사용 순서
 1. 웹에서 개발용 로그인으로 각 이메일에 로그인하고 기업 등록(온보딩)까지 마침
@@ -39,7 +41,7 @@ DEFAULT_BINDINGS = {
     ],
     "al-can@example.com": ["novelis-yeongju", "ulsan-aluminium"],
 }
-REFERENCE = "local synthetic binding (dev_accounts), not a real company link"
+REFERENCE = "synthetic demo binding (dev_accounts), not a real company link"
 
 
 async def bind(bindings: dict[str, list[str]]) -> int:
@@ -75,10 +77,13 @@ def main() -> None:
         "--facility", action="append", default=[], help="업체 키 (여러 번 지정 가능)"
     )
     args = parser.parse_args()
-    if get_settings().app_env not in {"local", "test"}:
-        sys.exit("APP_ENV=local 또는 test에서만 실행할 수 있음")
+    settings = get_settings()
+    if not settings.synthetic_bindings_allowed:
+        sys.exit("APP_ENV=local·test이거나 DEMO_FACILITY_BINDINGS=true일 때만 실행할 수 있음")
     if bool(args.email) != bool(args.facility):
         parser.error("--email과 --facility는 함께 지정해야 함")
+    if settings.app_env == "prod" and not args.email:
+        parser.error("운영에서는 --email과 --facility를 직접 지정해야 함")
     bindings = {args.email: args.facility} if args.email else DEFAULT_BINDINGS
     sys.exit(1 if asyncio.run(bind(bindings)) else 0)
 

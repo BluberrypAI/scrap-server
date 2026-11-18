@@ -55,6 +55,8 @@ class Settings(BaseSettings):
     classification_base_url: str = ""
     scrap_intake_service_token: SecretStr = SecretStr("")
     transport_demo_facilities: dict[str, str] = {}
+    # 시연용(synthetic) 업체 연결을 운영에서도 쓸지 여부. 발표 시연 동안만 켜고 끝나면 끔
+    demo_facility_bindings: bool = False
     # Optional road-distance lookup. Never exposed to the frontend bundle.
     osrm_demo_enabled: bool = False
     kakao_mobility_rest_api_key: SecretStr = SecretStr("")
@@ -84,6 +86,11 @@ class Settings(BaseSettings):
         if not self.cookie_domain:  # 쿠키 도메인이 설정되지 않은 경우 None으로 둠
             self.cookie_domain = None
         return self
+
+    # 시연용(synthetic) 업체 연결 허용 여부. local·test는 항상, prod는 DEMO_FACILITY_BINDINGS일 때만
+    @property
+    def synthetic_bindings_allowed(self) -> bool:
+        return self.app_env in {"local", "test"} or self.demo_facility_bindings
 
     # PostgreSQL 사용 여부 확인
     @property
