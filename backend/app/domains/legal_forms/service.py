@@ -63,6 +63,8 @@ METHOD_CODES = frozenset(
 _CLASS = {"0": "재활용", "1": "중간처분", "2": "매립", "3": "해역배출", "5": "수출"}
 # Facts guessed by the engine are not written into a legal form.
 _UNTRUSTED_SOURCES = {"DERIVED"}
+# 서식 대상 분류. 제6호는 GENERAL, 제12호는 DESIGNATED, 제5호는 둘 다
+_FORM_CATEGORIES = {"GENERAL", "DESIGNATED"}
 
 
 class FormInputError(Exception):
@@ -135,6 +137,11 @@ def company_from(profile: Any, override: FormCompanyIn) -> Company:
 def verdict_from(handoff: dict[str, Any], waste: FormWasteIn | None = None) -> Verdict:
     if handoff.get("result_type") != "WASTE_CODE" or not handoff.get("waste_code"):
         raise FormInputError("분류번호가 정해진 판정만 서식을 채울 수 있습니다")
+    # web의 서식 버튼 조건과 같다. API를 직접 불러도 시험 필요·해석 필요 판정으로는 만들지 않는다.
+    if (handoff.get("route_guidance") or {}).get("action") != "RECOMMEND_ROUTE":
+        raise FormInputError("처리 경로를 안내하는 판정만 서식을 채울 수 있습니다")
+    if handoff.get("category") not in _FORM_CATEGORIES:
+        raise FormInputError("사업장일반폐기물·지정폐기물로 판정된 건만 서식을 채울 수 있습니다")
     waste = waste or FormWasteIn()
     warnings: list[str] = []
     engine_code = handoff["waste_code"]
