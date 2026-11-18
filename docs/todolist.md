@@ -96,6 +96,7 @@
 | T-163 | 운영 업체 계정과 실제 처리 사업장 연결 확인 | 대기 | 사람 | supplier-intake-policy | 실사업장 권한·허가·실제 반입조건 확인 필요. 이번 시험 synthetic 계정과 합성 자료는 운영 승인 근거가 아님 |
 | T-164 | 두 후보 시간초과 격리·B→C 업체조건부터 QR 입고 웹 검증 | 완료 | api-developer / test-engineer | supplier-intake-policy | 업체당 호출·로트 3후보 배치. 미완료2 재검토 완료·원본 보존. C 등록조건→B 산출물→Azure9/9→B/C 문의→조건부→QR 입고·A 조회 웹 통과. 서버531·route566(72생략). [결과·범위](supplier-bc-validation-20261117.md) |
 | T-165 | C 최종 산출물·완료와 A 전체 이력 공유 웹 검증 | 완료 | test-engineer | supplier-intake-policy | 같은 합성 PP 건에서 C 펠렛900kg·완료 근거 기록→완료→A 재로그인. 이력19건·공정2건·완료 목록·근거 조회, A 수정 버튼 없음 확인. 실행 코드 변경 없음. [결과·범위](supplier-bc-validation-20261117.md#후속-c-최종-산출물--완료--a-재로그인) |
+| T-166 | 확정 판정으로 법정 서식(제6·12·5호) HWPX·PDF 작성본 API | 완료 | api-developer | legal-forms | 미리보기·파일 API(hwpx·pdf), 작성일·받는 기관장·신고인·서명·날인(한글·PDF, 본인 확인 필수)·사용자 입력 분류번호·성질상태, 검토 전 분류번호·추정 사실 비움, 처리방법 코드 검사. 웹 화면 연결, 검토 전 분류번호 정책, PDF 글꼴 파일, Word 지원은 남음 |
 | T-167 | 운영 시연용 업체 연결 설정 (DEMO_FACILITY_BINDINGS) | 진행 | api-developer | supplier-intake-policy | prod는 기본 차단 유지, 설정을 켜면 synthetic 연결을 인계 수신 계정으로 허용. dev_accounts는 운영에서 --email·--facility 직접 지정. 실제 반입 승인 근거 아님(T-163과 별개). 발표 후 끔 |
 | T-168 | 운영 문진 엔진 대기 시간 정렬 (30초 → 200초) | 진행 | api-developer | diagnosis-engine-integration | prod는 bicep에 값이 없어 코드 기본값 30초로 동시 문진 503 재발 가능. 기본값 200초(모델 40초×4회+여유, App Service 상한 약 230초 미만). bicep 값 명시는 scrap-infra 같은 이름 브랜치. 429 백오프는 diagnosis 후속 |
 | T-502 | 배포 대상 결정 (App Service 기본안) 및 배포 | 대기 | 사람 | - | T-008 이후 |
