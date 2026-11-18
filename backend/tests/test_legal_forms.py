@@ -176,6 +176,28 @@ def test_category_must_match_form():
         make("form12", GENERAL, WASTE12)
 
 
+@pytest.mark.parametrize(
+    ("over", "message"),
+    [
+        ({"route_guidance": {"action": "NEEDS_TEST"}}, "처리 경로"),
+        ({"route_guidance": None}, "처리 경로"),
+        ({"category": "NEEDS_INTERPRETATION"}, "사업장일반폐기물"),
+        ({"category": None}, "사업장일반폐기물"),
+    ],
+)
+@pytest.mark.parametrize("kind", ["form6", "form5"])
+def test_only_route_verdicts_of_form_categories_fill_forms(kind, over, message):
+    with pytest.raises(service.FormInputError, match=message):
+        make(kind, with_(GENERAL, **over), WASTE6)
+
+
+async def test_download_rejects_verdict_without_route(company_client, fake_engine):
+    fake_engine.reply = confirmed(with_(GENERAL, route_guidance={"action": "NEEDS_TEST"}))
+    res = await company_client.post(f"{BASE}/form5", json=BODY)
+    assert res.status_code == 422
+    assert "처리 경로" in res.json()["message"]
+
+
 def test_profile_values_are_defaults_and_overrides_win():
     profile = type(
         "P",

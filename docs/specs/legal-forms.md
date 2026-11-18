@@ -30,7 +30,7 @@
 
 ## 3. 요구사항
 
-1. 로그인한 기업의 엔진 건을 매번 다시 조회한다. 확정(`CODE_CONFIRMED`)되고 `diagnosis-handoff-v1`인 handoff만 쓴다. 미확정·재개·다른 기업 건은 거절한다.
+1. 로그인한 기업의 엔진 건을 매번 다시 조회한다. 확정(`CODE_CONFIRMED`)되고 `diagnosis-handoff-v1`인 handoff만 쓴다. 미확정·재개·다른 기업 건은 거절한다. 판정은 `result_type = WASTE_CODE`, `route_guidance.action = RECOMMEND_ROUTE`, `category`가 `GENERAL`·`DESIGNATED`일 때만 쓴다(web 서식 버튼 조건과 같음).
 2. 폐기물 이름·구분은 handoff에서만 가져온다. 분류번호·성질/상태는 handoff 값이 기본이고, 사용자가 `waste.waste_code`·`waste.physical_state`로 직접 입력하면 그 값을 신고인의 기재로 쓴다. 다른 위치(최상위·company)에 보낸 분류번호는 무시한다.
 3. 사용자 입력이 없으면 분류번호는 `review == "VERIFIED"`일 때만 넣고, 그 밖에는 칸을 비우고 `warnings`에 판정 번호와 입력 안내를 적는다. 사용자 입력이 판정과 다르면 `warnings`에 둘 다 적는다.
 4. 사실(`facts`)은 `UTTERANCE`·`DOCUMENT` 등 확인된 출처만 쓴다. `DERIVED`(추정)이거나 값이 애매하면 칸을 비운다(사용자가 고르면 그 값).

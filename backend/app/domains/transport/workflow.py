@@ -633,7 +633,7 @@ async def candidates(
             f["supplier_policy"] = supplier_policies.get(f["facility_key"])
             binding = bindings.get(f["facility_key"])
             enabled = binding and (
-                not binding.synthetic or get_settings().app_env in {"local", "test"}
+                not binding.synthetic or get_settings().synthetic_bindings_allowed
             )
             target = await db.get(Company, binding.company_id) if enabled else None
             f["recipient"] = (
@@ -937,7 +937,7 @@ async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSess
     if (
         not binding
         or binding.company_id == cid
-        or (binding.synthetic and get_settings().app_env not in {"local", "test"})
+        or (binding.synthetic and not get_settings().synthetic_bindings_allowed)
     ):
         fail("이 업체의 확인된 수신 계정이 연결되지 않았습니다.")
     photos = list(
