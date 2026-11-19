@@ -4163,6 +4163,424 @@
           "daeyoung-nonsan"
         ]
       }
+    },
+    {
+      "key": "factoryon-industry-2021-jeongdo-okcheon",
+      "url": "https://www.data.go.kr/data/15088923/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "locator": "2021-07말 팩토리온 업종관리 시트 행 135784, D/K/L열; 충청북도 옥천군 (주)정도하이텍",
+      "summary": "충청북도 옥천군 (주)정도하이텍의 2021 등록 생산품은 재생 합성수지(PE, PP펠렛)이고 등록 원자재는 미기재이다. 재생 공정 관련성의 과거 공개 기록이며, 원자재 형상·외부 수탁·현재 설비의 보증이 아니다. 동일 시군의 동명 단일 행과 2025 동일 생산품을 대조했다.",
+      "checked_date": "2026-11-20",
+      "source_date": "2021-07-31",
+      "sha256": "c281d2a32e656d646ca6ee4c86a9e49b5ef23722cebcebe805df3c769514e22e",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "jeongdo-okcheon"
+        ],
+        "facilities": [
+          "jeongdo-okcheon"
+        ],
+        "transitions": [
+          "pe-public-pellet-manufacture"
+        ],
+        "capabilities": [
+          "jeongdo-okcheon--pe-public-pellet-manufacture"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-152310",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "locator": "2025-12-31 전국등록공장 CSV 순번 152310 / (주)정도하이텍",
+      "summary": "2025-12-31 등록공장 자료에서 (주)정도하이텍의 생산품은 재생 합성수지(PE, PP펠렛)이며 공장 주소는 충청북도 옥천군 옥천읍 서대구일로 253 (공장)이다. 해당 생산품 제조 공정의 관련성 근거다. 현재 허가·반입 가능 여부·투입 형상·가용 용량은 공개하지 않는다.",
+      "checked_date": "2026-11-20",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "jeongdo-okcheon"
+        ],
+        "facilities": [
+          "jeongdo-okcheon"
+        ],
+        "transitions": [
+          "pe-public-pellet-manufacture"
+        ],
+        "capabilities": [
+          "jeongdo-okcheon--pe-public-pellet-manufacture"
+        ]
+      }
+    },
+    {
+      "key": "jeongdo-okcheon-kakao-location",
+      "url": "https://map.kakao.com/link/map/36.2919838112617,127.598779750911",
+      "publisher": "Kakao Local 주소 검색",
+      "locator": "공개 사업장 도로명 주소 exact 검색 / 주소 대표점",
+      "summary": "공개 사업장 주소를 카카오 Local 실호출로 확인한 주소 대표점이다. 충북 옥천군 옥천읍 서대구일로 253 정문·화물차 출입구는 미확인.",
+      "checked_date": "2026-11-20",
+      "source_date": null,
+      "sha256": "0052ab0a173cae17bdfcbce40d699f92a004f6702d03ba445785eb7dd4d684a3",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "jeongdo-okcheon"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-industry-2021-boguk-iksan",
+      "url": "https://www.data.go.kr/data/15088923/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "locator": "2021-07말 팩토리온 업종관리 시트 행 155408, D/K/L열; 전라북도 익산시 주식회사 보국",
+      "summary": "전라북도 익산시 주식회사 보국의 2021 등록 생산품은 재생플라스틱원료(펠렛)이고 등록 원자재는 PE,PP,PET 등이다. 재생 공정 관련성의 과거 공개 기록이며, 원자재 형상·외부 수탁·현재 설비의 보증이 아니다. 동일 시군의 동명 단일 행과 2025 동일 생산품을 대조했다.",
+      "checked_date": "2026-11-20",
+      "source_date": "2021-07-31",
+      "sha256": "c281d2a32e656d646ca6ee4c86a9e49b5ef23722cebcebe805df3c769514e22e",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "boguk-iksan"
+        ],
+        "facilities": [
+          "boguk-iksan"
+        ],
+        "transitions": [
+          "pe-public-pellet-manufacture"
+        ],
+        "capabilities": [
+          "boguk-iksan--pe-public-pellet-manufacture",
+          "boguk-iksan--pet-flake-to-chip"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-216851",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "locator": "2025-12-31 전국등록공장 CSV 순번 216851 / 주식회사 보국",
+      "summary": "2025-12-31 등록공장 자료에서 주식회사 보국의 생산품은 재생플라스틱원료(펠렛)이며 공장 주소는 전북특별자치도 익산시 왕궁면 왕궁로 259이다. 해당 생산품 제조 공정의 관련성 근거다. 현재 허가·반입 가능 여부·투입 형상·가용 용량은 공개하지 않는다.",
+      "checked_date": "2026-11-20",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "boguk-iksan"
+        ],
+        "facilities": [
+          "boguk-iksan"
+        ],
+        "transitions": [
+          "pe-public-pellet-manufacture"
+        ],
+        "capabilities": [
+          "boguk-iksan--pe-public-pellet-manufacture",
+          "boguk-iksan--pet-flake-to-chip"
+        ]
+      }
+    },
+    {
+      "key": "boguk-iksan-kakao-location",
+      "url": "https://map.kakao.com/link/map/35.9424334413143,127.08157881958",
+      "publisher": "Kakao Local 주소 검색",
+      "locator": "공개 사업장 도로명 주소 exact 검색 / 주소 대표점",
+      "summary": "공개 사업장 주소를 카카오 Local 실호출로 확인한 주소 대표점이다. 전북특별자치도 익산시 왕궁면 왕궁로 259 정문·화물차 출입구는 미확인.",
+      "checked_date": "2026-11-20",
+      "source_date": null,
+      "sha256": "e1f0e23b9237f80d3fe523c7c3c8657b21cc5c2cc7e0299c0df31dfb66611018",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "boguk-iksan"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-industry-2021-changshin-gimcheon",
+      "url": "https://www.data.go.kr/data/15088923/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "locator": "2021-07말 팩토리온 업종관리 시트 행 169910, D/K/L열; 경상북도 김천시 (주)창신이앤이",
+      "summary": "경상북도 김천시 (주)창신이앤이의 2021 등록 생산품은 PET 재활용 플레이크 및 칩이고 등록 원자재는 폐합성 수지 공병이다. 재생 공정 관련성의 과거 공개 기록이며, 원자재 형상·외부 수탁·현재 설비의 보증이 아니다. 동일 시군의 동명 단일 행과 2025 동일 생산품을 대조했다.",
+      "checked_date": "2026-11-20",
+      "source_date": "2021-07-31",
+      "sha256": "c281d2a32e656d646ca6ee4c86a9e49b5ef23722cebcebe805df3c769514e22e",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "changshin-gimcheon"
+        ],
+        "facilities": [
+          "changshin-gimcheon"
+        ],
+        "transitions": [
+          "pet-public-bottle-flake"
+        ],
+        "capabilities": [
+          "changshin-gimcheon--pet-public-bottle-flake"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-173367",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "locator": "2025-12-31 전국등록공장 CSV 순번 173367 / (주)창신이앤이",
+      "summary": "2025-12-31 등록공장 자료에서 (주)창신이앤이의 생산품은 PET 재활용 플레이크 및 칩이며 공장 주소는 경상북도 김천시 농공단지1길 30 (신음동)이다. 해당 생산품 제조 공정의 관련성 근거다. 현재 허가·반입 가능 여부·투입 형상·가용 용량은 공개하지 않는다.",
+      "checked_date": "2026-11-20",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "changshin-gimcheon"
+        ],
+        "facilities": [
+          "changshin-gimcheon"
+        ],
+        "transitions": [
+          "pet-public-bottle-flake"
+        ],
+        "capabilities": [
+          "changshin-gimcheon--pet-public-bottle-flake"
+        ]
+      }
+    },
+    {
+      "key": "changshin-gimcheon-kakao-location",
+      "url": "https://map.kakao.com/link/map/36.1305818377172,128.134122580161",
+      "publisher": "Kakao Local 주소 검색",
+      "locator": "공개 사업장 도로명 주소 exact 검색 / 주소 대표점",
+      "summary": "공개 사업장 주소를 카카오 Local 실호출로 확인한 주소 대표점이다. 경북 김천시 농공단지1길 30 정문·화물차 출입구는 미확인.",
+      "checked_date": "2026-11-20",
+      "source_date": null,
+      "sha256": "f1bdb924795e1cb56e2a45b38c779a5aba4a8c6833697650ccb2967c07acad14",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "changshin-gimcheon"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-industry-2021-haedong-gyeongsan",
+      "url": "https://www.data.go.kr/data/15088923/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "locator": "2021-07말 팩토리온 업종관리 시트 행 177241, D/K/L열; 경상북도 경산시 (주)해동자원",
+      "summary": "경상북도 경산시 (주)해동자원의 2021 등록 생산품은 유리펀,PET칩이고 등록 원자재는 폐유리병,폐PET병이다. 재생 공정 관련성의 과거 공개 기록이며, 원자재 형상·외부 수탁·현재 설비의 보증이 아니다. 동일 시군의 동명 단일 행과 2025 동일 생산품을 대조했다.",
+      "checked_date": "2026-11-20",
+      "source_date": "2021-07-31",
+      "sha256": "c281d2a32e656d646ca6ee4c86a9e49b5ef23722cebcebe805df3c769514e22e",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "haedong-gyeongsan"
+        ],
+        "facilities": [
+          "haedong-gyeongsan"
+        ],
+        "transitions": [
+          "pet-public-bottle-flake"
+        ],
+        "capabilities": [
+          "haedong-gyeongsan--pet-public-bottle-flake"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-181463",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "locator": "2025-12-31 전국등록공장 CSV 순번 181463 / (주)해동자원",
+      "summary": "2025-12-31 등록공장 자료에서 (주)해동자원의 생산품은 페트플레이크이며 공장 주소는 경상북도 경산시 남산면 대왕로 64이다. 해당 생산품 제조 공정의 관련성 근거다. 현재 허가·반입 가능 여부·투입 형상·가용 용량은 공개하지 않는다.",
+      "checked_date": "2026-11-20",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "haedong-gyeongsan"
+        ],
+        "facilities": [
+          "haedong-gyeongsan"
+        ],
+        "transitions": [
+          "pet-public-bottle-flake"
+        ],
+        "capabilities": [
+          "haedong-gyeongsan--pet-public-bottle-flake"
+        ]
+      }
+    },
+    {
+      "key": "haedong-gyeongsan-kakao-location",
+      "url": "https://map.kakao.com/link/map/35.786846413724,128.837953250301",
+      "publisher": "Kakao Local 주소 검색",
+      "locator": "공개 사업장 도로명 주소 exact 검색 / 주소 대표점",
+      "summary": "공개 사업장 주소를 카카오 Local 실호출로 확인한 주소 대표점이다. 경북 경산시 남산면 대왕로 64 정문·화물차 출입구는 미확인.",
+      "checked_date": "2026-11-20",
+      "source_date": null,
+      "sha256": "17bc1ded468d14e343d85f78882dc1a904da8ef637ea8b6ba35bdda8e908e4e4",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "haedong-gyeongsan"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-212876",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "locator": "2025-12-31 전국등록공장 CSV 순번 212876 / 유한회사 그린리사이클링",
+      "summary": "2025-12-31 등록공장 자료에서 유한회사 그린리사이클링의 생산품은 PE재생원료, PE필름, PE펠릿, 합성수지관, 보강토이며 공장 주소는 전북특별자치도 전주시 완산구 정여립로 655-17 (상림동)이다. 해당 생산품 제조 공정의 관련성 근거다. 현재 허가·반입 가능 여부·투입 형상·가용 용량은 공개하지 않는다.",
+      "checked_date": "2026-11-20",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "green-recycling-jeonju"
+        ],
+        "facilities": [
+          "green-recycling-jeonju"
+        ],
+        "transitions": [
+          "pe-public-pellet-manufacture"
+        ],
+        "capabilities": [
+          "green-recycling-jeonju--pe-public-pellet-manufacture"
+        ]
+      }
+    },
+    {
+      "key": "green-recycling-jeonju-kakao-location",
+      "url": "https://map.kakao.com/link/map/35.8095379704027,127.070892454708",
+      "publisher": "Kakao Local 주소 검색",
+      "locator": "공개 사업장 도로명 주소 exact 검색 / 주소 대표점",
+      "summary": "공개 사업장 주소를 카카오 Local 실호출로 확인한 주소 대표점이다. 전북특별자치도 전주시 완산구 정여립로 655-17 정문·화물차 출입구는 미확인.",
+      "checked_date": "2026-11-20",
+      "source_date": null,
+      "sha256": "a6f26b9868c643d63a49ddd62bc3849aa543b6e5a69ce274653076ca13d576ef",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "green-recycling-jeonju"
+        ]
+      }
+    },
+    {
+      "key": "dy-pyeongtaek-process-2026",
+      "url": "https://www.saramin.co.kr/api/jobs/job/content?rec_idx=53816743",
+      "publisher": "디와이폴리머 직접 게시 / 사람인",
+      "locator": "생산직 공고 rec_idx=53816743 / 주요업무·근무지·2026 이전 안내",
+      "summary": "디와이폴리머는 2026 평택 공장 이전·설비 증설과 재생 PET 칩 제조공정 운영을 직접 공고했다. 명시 공정은 분쇄·세척·건조·압출·펠릿화·포장이며 근무지는 경기 평택시 팽성읍 추팔산단로 121이다. 채용기간은 2026-05-07~06-06인 과거 게시물로 현재 가동·외부 수탁·이번 로트 수락을 보증하지 않는다.",
+      "checked_date": "2026-11-20",
+      "source_date": "2026-05-07",
+      "sha256": "73c35396c8698f3629edefe9af2eea11daca44ccd00cdc7461e77c689bddaeac",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "dy-pyeongtaek"
+        ],
+        "facilities": [
+          "dy-pyeongtaek"
+        ],
+        "capabilities": [
+          "dy-pyeongtaek--pet-flake-to-chip"
+        ]
+      }
+    },
+    {
+      "key": "dy-flake-pellet-partner",
+      "url": "https://www.tkchemi.co.kr/kr/pr/newsroom/view.do?board_id=74",
+      "publisher": "SM티케이케미칼",
+      "locator": "2023-12-05 뉴스룸 / 자원순환형 재생 플라스틱 생태계 구축",
+      "summary": "협력사 SM티케이케미칼은 DY 폴리머가 재생 PET 플레이크를 재생 PET 펠릿으로 제조하는 역할을 공개했다. 이 자료 자체는 평택 주소를 제시하지 않아 2026 디와이폴리머 직접 공고의 재생 PET 칩 공정·평택 주소와 함께 대조한다. 모든 외부 플레이크 수탁이나 현재 식품용 인증을 뜻하지 않는다.",
+      "checked_date": "2026-11-20",
+      "source_date": "2023-12-05",
+      "sha256": "76cb03e05d61f570daceca60c96e9b7bbd36bc83a331084b50f6adb837a2e0a3",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "dy-pyeongtaek"
+        ],
+        "facilities": [
+          "dy-pyeongtaek"
+        ],
+        "capabilities": [
+          "dy-pyeongtaek--pet-flake-to-chip"
+        ]
+      }
+    },
+    {
+      "key": "dy-pyeongtaek-kakao-location",
+      "url": "https://map.kakao.com/link/map/36.9558532056142,127.077867589913",
+      "publisher": "Kakao Local 주소 검색",
+      "locator": "공개 사업장 도로명 주소 exact 검색 / 주소 대표점",
+      "summary": "공개 사업장 주소를 카카오 Local 실호출로 확인한 주소 대표점이다. 경기 평택시 팽성읍 추팔산단로 121 정문·화물차 출입구는 미확인.",
+      "checked_date": "2026-11-20",
+      "source_date": null,
+      "sha256": "87c0fb546018e50c41af4b93e25bb95345af847924c432e77560e3cbec81f22f",
+      "acquisition": "공개 원문 원자재·생산품·사업장 직접 대조; 사실 요약만 전달",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "dy-pyeongtaek"
+        ]
+      }
     }
   ],
   "states": [
@@ -6421,6 +6839,53 @@
         "원자재 근거는 2021년 기록이므로 현행 설비·수락을 단정하지 않음",
         "산출물 형태가 미확인인 재생수지는 자동 완료·후속 펠릿 경로로 전환하지 않음"
       ]
+    },
+    {
+      "key": "pe-public-pellet-manufacture",
+      "label": "PE 재생 펠릿 제조 공정 검토",
+      "input_state": "pe-shredded",
+      "output_state": "pe-pellet",
+      "operation_steps": [
+        "투입 PE 원료의 형상·규격 대조",
+        "공개 등록된 PE 재생 펠릿 제조 공정 검토",
+        "실제 산출물 기록"
+      ],
+      "source_ids": [
+        "factoryon-industry-2021-jeongdo-okcheon",
+        "factoryon-20251231-152310",
+        "factoryon-industry-2021-boguk-iksan",
+        "factoryon-20251231-216851",
+        "factoryon-20251231-212876"
+      ],
+      "conditions": [
+        "공공 등록 원자재·생산품으로 확인한 공정 관련성; 외부 물량 수탁은 B가 확인"
+      ],
+      "risk_checks": [
+        "공개되지 않은 세척·건조·혼입 허용치·식품접촉 등급을 단정하지 않음"
+      ]
+    },
+    {
+      "key": "pet-public-bottle-flake",
+      "label": "PET병 재생 플레이크 제조 공정 검토",
+      "input_state": "pet-bottle",
+      "output_state": "pet-flake",
+      "operation_steps": [
+        "폐PET병 원료 대조",
+        "공개 등록된 재생 플레이크 제조 공정 검토",
+        "실제 산출물과 세척·건조 상태 기록"
+      ],
+      "source_ids": [
+        "factoryon-industry-2021-changshin-gimcheon",
+        "factoryon-20251231-173367",
+        "factoryon-industry-2021-haedong-gyeongsan",
+        "factoryon-20251231-181463"
+      ],
+      "conditions": [
+        "공공 등록 원자재·생산품으로 확인한 공정 관련성; 외부 물량 수탁은 B가 확인"
+      ],
+      "risk_checks": [
+        "공개되지 않은 세척·건조·혼입 허용치·식품접촉 등급을 단정하지 않음"
+      ]
     }
   ],
   "organisations": [
@@ -6848,6 +7313,53 @@
       "source_ids": [
         "factoryon-industry-2021-daeyoung",
         "factoryon-20251231-165551"
+      ]
+    },
+    {
+      "key": "jeongdo-okcheon",
+      "label": "(주)정도하이텍",
+      "source_ids": [
+        "factoryon-industry-2021-jeongdo-okcheon",
+        "factoryon-20251231-152310"
+      ]
+    },
+    {
+      "key": "boguk-iksan",
+      "label": "주식회사 보국",
+      "source_ids": [
+        "factoryon-industry-2021-boguk-iksan",
+        "factoryon-20251231-216851"
+      ]
+    },
+    {
+      "key": "changshin-gimcheon",
+      "label": "(주)창신이앤이",
+      "source_ids": [
+        "factoryon-industry-2021-changshin-gimcheon",
+        "factoryon-20251231-173367"
+      ]
+    },
+    {
+      "key": "haedong-gyeongsan",
+      "label": "(주)해동자원",
+      "source_ids": [
+        "factoryon-industry-2021-haedong-gyeongsan",
+        "factoryon-20251231-181463"
+      ]
+    },
+    {
+      "key": "green-recycling-jeonju",
+      "label": "유한회사 그린리사이클링",
+      "source_ids": [
+        "factoryon-20251231-212876"
+      ]
+    },
+    {
+      "key": "dy-pyeongtaek",
+      "label": "주식회사 디와이폴리머",
+      "source_ids": [
+        "dy-pyeongtaek-process-2026",
+        "dy-flake-pellet-partner"
       ]
     }
   ],
@@ -8133,6 +8645,131 @@
       "latitude": 36.2943964184508,
       "longitude": 127.161963798069,
       "location_source_id": "daeyoung-nonsan-kakao-location"
+    },
+    {
+      "key": "jeongdo-okcheon",
+      "organisation": "jeongdo-okcheon",
+      "label": "(주)정도하이텍 옥천",
+      "country": "KR",
+      "region": "충청북도 옥천군",
+      "address": "충청북도 옥천군 옥천읍 서대구일로 253 (공장)",
+      "source_ids": [
+        "factoryon-industry-2021-jeongdo-okcheon",
+        "factoryon-20251231-152310",
+        "jeongdo-okcheon-kakao-location"
+      ],
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 36.2919838112617,
+      "longitude": 127.598779750911,
+      "location_source_id": "jeongdo-okcheon-kakao-location"
+    },
+    {
+      "key": "boguk-iksan",
+      "organisation": "boguk-iksan",
+      "label": "주식회사 보국 익산",
+      "country": "KR",
+      "region": "전북특별자치도 익산시",
+      "address": "전북특별자치도 익산시 왕궁면 왕궁로 259",
+      "source_ids": [
+        "factoryon-industry-2021-boguk-iksan",
+        "factoryon-20251231-216851",
+        "boguk-iksan-kakao-location"
+      ],
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 35.9424334413143,
+      "longitude": 127.08157881958,
+      "location_source_id": "boguk-iksan-kakao-location"
+    },
+    {
+      "key": "changshin-gimcheon",
+      "organisation": "changshin-gimcheon",
+      "label": "(주)창신이앤이 김천",
+      "country": "KR",
+      "region": "경상북도 김천시",
+      "address": "경상북도 김천시 농공단지1길 30 (신음동)",
+      "source_ids": [
+        "factoryon-industry-2021-changshin-gimcheon",
+        "factoryon-20251231-173367",
+        "changshin-gimcheon-kakao-location"
+      ],
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 36.1305818377172,
+      "longitude": 128.134122580161,
+      "location_source_id": "changshin-gimcheon-kakao-location"
+    },
+    {
+      "key": "haedong-gyeongsan",
+      "organisation": "haedong-gyeongsan",
+      "label": "(주)해동자원 경산",
+      "country": "KR",
+      "region": "경상북도 경산시",
+      "address": "경상북도 경산시 남산면 대왕로 64",
+      "source_ids": [
+        "factoryon-industry-2021-haedong-gyeongsan",
+        "factoryon-20251231-181463",
+        "haedong-gyeongsan-kakao-location"
+      ],
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 35.786846413724,
+      "longitude": 128.837953250301,
+      "location_source_id": "haedong-gyeongsan-kakao-location"
+    },
+    {
+      "key": "green-recycling-jeonju",
+      "organisation": "green-recycling-jeonju",
+      "label": "유한회사 그린리사이클링 전주",
+      "country": "KR",
+      "region": "전북특별자치도 전주시",
+      "address": "전북특별자치도 전주시 완산구 정여립로 655-17 (상림동)",
+      "source_ids": [
+        "factoryon-20251231-212876",
+        "green-recycling-jeonju-kakao-location"
+      ],
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 35.8095379704027,
+      "longitude": 127.070892454708,
+      "location_source_id": "green-recycling-jeonju-kakao-location"
+    },
+    {
+      "key": "dy-pyeongtaek",
+      "organisation": "dy-pyeongtaek",
+      "label": "주식회사 디와이폴리머 평택",
+      "country": "KR",
+      "region": "경기도 평택시",
+      "address": "경기도 평택시 팽성읍 추팔산단로 121",
+      "source_ids": [
+        "dy-pyeongtaek-process-2026",
+        "dy-flake-pellet-partner",
+        "dy-pyeongtaek-kakao-location"
+      ],
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 36.9558532056142,
+      "longitude": 127.077867589913,
+      "location_source_id": "dy-pyeongtaek-kakao-location"
     }
   ],
   "capabilities": [
@@ -12226,6 +12863,210 @@
           "nonsan-public-treatment-daeyoung"
         ],
         "locator": "팩토리온 2021 행 147702 원자재·생산품 / 2025 순번 165551 / 논산시 2026 처리업체 18번",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "jeongdo-okcheon--pe-public-pellet-manufacture",
+      "facility": "jeongdo-okcheon",
+      "transition": "pe-public-pellet-manufacture",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-industry-2021-jeongdo-okcheon",
+        "factoryon-20251231-152310"
+      ],
+      "conditions": [
+        "공개 원자재·생산품 또는 기업 공정 자료의 관련성 후보이며 현재 외부 수탁·허가·규격·이번 물량 수락은 B가 확인"
+      ],
+      "initial_input_forms": null,
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "재생 PE 펠릿·칩; 실제 등급·규격 확인 필요",
+        "source_ids": [
+          "factoryon-industry-2021-jeongdo-okcheon",
+          "factoryon-20251231-152310"
+        ],
+        "locator": "2021-07말 팩토리온 업종관리 시트 행 135784, D/K/L열; 충청북도 옥천군 (주)정도하이텍 / 2025-12-31 전국등록공장 CSV 순번 152310 / (주)정도하이텍",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "boguk-iksan--pe-public-pellet-manufacture",
+      "facility": "boguk-iksan",
+      "transition": "pe-public-pellet-manufacture",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-industry-2021-boguk-iksan",
+        "factoryon-20251231-216851"
+      ],
+      "conditions": [
+        "공개 원자재·생산품 또는 기업 공정 자료의 관련성 후보이며 현재 외부 수탁·허가·규격·이번 물량 수락은 B가 확인"
+      ],
+      "initial_input_forms": null,
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "재생 PE 펠릿·칩; 실제 등급·규격 확인 필요",
+        "source_ids": [
+          "factoryon-industry-2021-boguk-iksan",
+          "factoryon-20251231-216851"
+        ],
+        "locator": "2021-07말 팩토리온 업종관리 시트 행 155408, D/K/L열; 전라북도 익산시 주식회사 보국 / 2025-12-31 전국등록공장 CSV 순번 216851 / 주식회사 보국",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "boguk-iksan--pet-flake-to-chip",
+      "facility": "boguk-iksan",
+      "transition": "pet-flake-to-chip",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-industry-2021-boguk-iksan",
+        "factoryon-20251231-216851"
+      ],
+      "conditions": [
+        "공개 원자재·생산품 또는 기업 공정 자료의 관련성 후보이며 현재 외부 수탁·허가·규격·이번 물량 수락은 B가 확인"
+      ],
+      "initial_input_forms": null,
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [],
+        "output_description": "재생 PET 펠릿·칩; 실제 등급·규격 확인 필요",
+        "source_ids": [
+          "factoryon-industry-2021-boguk-iksan",
+          "factoryon-20251231-216851"
+        ],
+        "locator": "2021-07말 팩토리온 업종관리 시트 행 155408, D/K/L열; 전라북도 익산시 주식회사 보국 / 2025-12-31 전국등록공장 CSV 순번 216851 / 주식회사 보국",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "changshin-gimcheon--pet-public-bottle-flake",
+      "facility": "changshin-gimcheon",
+      "transition": "pet-public-bottle-flake",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-industry-2021-changshin-gimcheon",
+        "factoryon-20251231-173367"
+      ],
+      "conditions": [
+        "공개 원자재·생산품 또는 기업 공정 자료의 관련성 후보이며 현재 외부 수탁·허가·규격·이번 물량 수락은 B가 확인"
+      ],
+      "initial_input_forms": [
+        "bottle"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [
+          "bottle"
+        ],
+        "output_description": "재생 PET 플레이크; 세척·건조 상태 미확인",
+        "source_ids": [
+          "factoryon-industry-2021-changshin-gimcheon",
+          "factoryon-20251231-173367"
+        ],
+        "locator": "2021-07말 팩토리온 업종관리 시트 행 169910, D/K/L열; 경상북도 김천시 (주)창신이앤이 / 2025-12-31 전국등록공장 CSV 순번 173367 / (주)창신이앤이",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "haedong-gyeongsan--pet-public-bottle-flake",
+      "facility": "haedong-gyeongsan",
+      "transition": "pet-public-bottle-flake",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-industry-2021-haedong-gyeongsan",
+        "factoryon-20251231-181463"
+      ],
+      "conditions": [
+        "공개 원자재·생산품 또는 기업 공정 자료의 관련성 후보이며 현재 외부 수탁·허가·규격·이번 물량 수락은 B가 확인"
+      ],
+      "initial_input_forms": [
+        "bottle"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [
+          "bottle"
+        ],
+        "output_description": "재생 PET 플레이크; 세척·건조 상태 미확인",
+        "source_ids": [
+          "factoryon-industry-2021-haedong-gyeongsan",
+          "factoryon-20251231-181463"
+        ],
+        "locator": "2021-07말 팩토리온 업종관리 시트 행 177241, D/K/L열; 경상북도 경산시 (주)해동자원 / 2025-12-31 전국등록공장 CSV 순번 181463 / (주)해동자원",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "green-recycling-jeonju--pe-public-pellet-manufacture",
+      "facility": "green-recycling-jeonju",
+      "transition": "pe-public-pellet-manufacture",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-20251231-212876"
+      ],
+      "conditions": [
+        "공개 원자재·생산품 또는 기업 공정 자료의 관련성 후보이며 현재 외부 수탁·허가·규격·이번 물량 수락은 B가 확인"
+      ],
+      "initial_input_forms": null,
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [],
+        "output_description": "재생 PE 펠릿·칩; 실제 등급·규격 확인 필요",
+        "source_ids": [
+          "factoryon-20251231-212876"
+        ],
+        "locator": "2025-12-31 전국등록공장 CSV 순번 212876 / 유한회사 그린리사이클링",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "dy-pyeongtaek--pet-flake-to-chip",
+      "facility": "dy-pyeongtaek",
+      "transition": "pet-flake-to-chip",
+      "basis": "published_site_process",
+      "source_ids": [
+        "dy-pyeongtaek-process-2026",
+        "dy-flake-pellet-partner"
+      ],
+      "conditions": [
+        "공개 원자재·생산품 또는 기업 공정 자료의 관련성 후보이며 현재 외부 수탁·허가·규격·이번 물량 수락은 B가 확인"
+      ],
+      "initial_input_forms": null,
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [
+          "flake"
+        ],
+        "output_description": "재생 PET 펠릿·칩; 실제 등급·규격 확인 필요",
+        "source_ids": [
+          "dy-pyeongtaek-process-2026",
+          "dy-flake-pellet-partner"
+        ],
+        "locator": "생산직 공고 rec_idx=53816743 / 주요업무·근무지·2026 이전 안내 / 2023-12-05 뉴스룸 / 자원순환형 재생 플라스틱 생태계 구축",
         "verified_intake_limits_available": false
       }
     }

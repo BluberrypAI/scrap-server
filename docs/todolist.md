@@ -118,6 +118,7 @@
 | T-179 | 확정 후 형태 선택 제거·팀원 업체 UI 통합·PE/PET/알루미늄캔 연결 점검 | 완료 | api-developer / test-engineer | diagnosis-form-handoff | server679·web104, 19코드/형태·카카오 및 실제 Astra PE5/PET5/캔3 확인. [결과](material-coverage-20261119.md) |
 | T-180 | 문진 엔진의 구조화 형태·분류 경우의 수 갱신 후 인계 재검사 | 대기 | 문진 담당자 / api-developer | diagnosis-form-handoff | 현재 develop에 세부 형태 출력 없음. 수신은 handoff.facts.input_form 우선, 누락 기본값 없음 |
 | T-181 | PE 베일·PET 플레이크·수도권 캔 근거 보강 및 상태별 공정·캐시 재검사 | 완료 | api-developer / test-engineer | material-evidence-state-review | 64시설·132연결, PE 베일1·PET 플레이크3·캔4. 실Azure·카카오·PET 문진→웹·캐시0호출 확인. PE 산출물 형태·현행 수락은 미확인, PS 베일 공백 유지 |
+| T-182 | PE·PET 전체 공정표·전국 명부 연결 차이 조사와 추가 제조업체 연결 | 완료 | api-developer / test-engineer | pe-pet-process-catalog-audit | 70시설·139연결. PE34곳·PET18곳, 새 6사업장·7연결 실Azure matched/카카오 거리 확인. 일반 PE베일1 유지. 조사224행·형태별 전체 목록·684검사·Ruff 통과. PET5곳 반복46.72→1.73초/0모델 호출 |
 
 이 레포에서 구현하지 않음. 일정 파악과 연동 시점 확인용.
 

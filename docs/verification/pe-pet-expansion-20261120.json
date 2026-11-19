@@ -1,0 +1,315 @@
+{
+  "checksum": "c6ca695c8ccc16b56be01ad9fe0e10cf520939a9a4d0c636aed1095ecd7172a2",
+  "sites": 70,
+  "capabilities": 139,
+  "new_sites": 6,
+  "new_capabilities": 7,
+  "all_new_public_reviews_matched": true,
+  "all_new_kakao_routes_available": true,
+  "registry_rows_preserved": 9604,
+  "road_origin": {
+    "scope": "synthetic Hwaseong QA point, not an authenticated company",
+    "latitude": 37.1710677,
+    "longitude": 126.8016128
+  },
+  "public_only_runs": [
+    {
+      "material": "pe",
+      "form": "flake",
+      "seconds": 9.44,
+      "rows": [
+        {
+          "site": "jeongdo-okcheon",
+          "key": "jeongdo-okcheon--pe-public-pellet-manufacture",
+          "process": "PE 재생 펠릿 제조 공정 검토",
+          "road_distance_km": 147.986,
+          "road_status": "available",
+          "road_provider": "kakao",
+          "review": {
+            "status": "reviewed",
+            "finding": "insufficient",
+            "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+            "source": null,
+            "quote": null,
+            "evidence_gaps": [
+              "unspecified"
+            ],
+            "dispatch_approved": false,
+            "lot_review": null,
+            "process_match": "matched",
+            "process_source": {
+              "publisher": "한국산업단지공단 / 공공데이터포털",
+              "url": "https://www.data.go.kr/data/15105482/fileData.do",
+              "locator": "2025-12-31 전국등록공장 CSV 순번 152310 / (주)정도하이텍"
+            },
+            "process_quote": "2025-12-31 등록공장 자료에서 (주)정도하이텍의 생산품은 재생 합성수지(PE, PP펠렛)이며 공장 주소는 충청북도 옥천군 옥천읍 서대구일로 253 (공장)이다."
+          }
+        },
+        {
+          "site": "boguk-iksan",
+          "key": "boguk-iksan--pe-public-pellet-manufacture",
+          "process": "PE 재생 펠릿 제조 공정 검토",
+          "road_distance_km": 166.244,
+          "road_status": "available",
+          "road_provider": "kakao",
+          "review": {
+            "status": "reviewed",
+            "finding": "insufficient",
+            "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+            "source": null,
+            "quote": null,
+            "evidence_gaps": [
+              "unspecified"
+            ],
+            "dispatch_approved": false,
+            "lot_review": null,
+            "process_match": "matched",
+            "process_source": {
+              "publisher": "한국산업단지공단 / 공공데이터포털",
+              "url": "https://www.data.go.kr/data/15088923/fileData.do",
+              "locator": "2021-07말 팩토리온 업종관리 시트 행 155408, D/K/L열; 전라북도 익산시 주식회사 보국"
+            },
+            "process_quote": "전라북도 익산시 주식회사 보국의 2021 등록 생산품은 재생플라스틱원료(펠렛)이고 등록 원자재는 PE,PP,PET 등이다."
+          }
+        },
+        {
+          "site": "green-recycling-jeonju",
+          "key": "green-recycling-jeonju--pe-public-pellet-manufacture",
+          "process": "PE 재생 펠릿 제조 공정 검토",
+          "road_distance_km": 182.359,
+          "road_status": "available",
+          "road_provider": "kakao",
+          "review": {
+            "status": "reviewed",
+            "finding": "insufficient",
+            "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+            "source": null,
+            "quote": null,
+            "evidence_gaps": [
+              "unspecified"
+            ],
+            "dispatch_approved": false,
+            "lot_review": null,
+            "process_match": "matched",
+            "process_source": {
+              "publisher": "한국산업단지공단 / 공공데이터포털",
+              "url": "https://www.data.go.kr/data/15105482/fileData.do",
+              "locator": "2025-12-31 전국등록공장 CSV 순번 212876 / 유한회사 그린리사이클링"
+            },
+            "process_quote": "2025-12-31 등록공장 자료에서 유한회사 그린리사이클링의 생산품은 PE재생원료, PE필름, PE펠릿, 합성수지관, 보강토이며 공장 주소는 전북특별자치도 전주시 완산구 정여립로 655-17 (상림동)이다."
+          }
+        }
+      ]
+    },
+    {
+      "material": "pet",
+      "form": "flake",
+      "seconds": 21.14,
+      "rows": [
+        {
+          "site": "dy-pyeongtaek",
+          "key": "dy-pyeongtaek--pet-flake-to-chip",
+          "process": "PET 플레이크 재생 칩 가공",
+          "road_distance_km": 47.536,
+          "road_status": "available",
+          "road_provider": "kakao",
+          "review": {
+            "status": "reviewed",
+            "finding": "form_mentioned",
+            "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요.",
+            "source": {
+              "publisher": "SM티케이케미칼",
+              "url": "https://www.tkchemi.co.kr/kr/pr/newsroom/view.do?board_id=74",
+              "locator": "2023-12-05 뉴스룸 / 자원순환형 재생 플라스틱 생태계 구축"
+            },
+            "quote": "협력사 SM티케이케미칼은 DY 폴리머가 재생 PET 플레이크를 재생 PET 펠릿으로 제조하는 역할을 공개했다.",
+            "evidence_gaps": [],
+            "dispatch_approved": false,
+            "lot_review": null,
+            "process_match": "matched",
+            "process_source": {
+              "publisher": "디와이폴리머 직접 게시 / 사람인",
+              "url": "https://www.saramin.co.kr/api/jobs/job/content?rec_idx=53816743",
+              "locator": "생산직 공고 rec_idx=53816743 / 주요업무·근무지·2026 이전 안내"
+            },
+            "process_quote": "디와이폴리머는 2026 평택 공장 이전·설비 증설과 재생 PET 칩 제조공정 운영을 직접 공고했다. 명시 공정은 분쇄·세척·건조·압출·펠릿화·포장이며 근무지는 경기 평택시 팽성읍 추팔산단로 121이다."
+          }
+        },
+        {
+          "site": "boguk-iksan",
+          "key": "boguk-iksan--pet-flake-to-chip",
+          "process": "PET 플레이크 재생 칩 가공",
+          "road_distance_km": 166.244,
+          "road_status": "available",
+          "road_provider": "kakao",
+          "review": {
+            "status": "reviewed",
+            "finding": "insufficient",
+            "next_check": "현재 형태를 반입할 수 있는지와 필요한 전처리를 먼저 확인하세요.",
+            "source": null,
+            "quote": null,
+            "evidence_gaps": [
+              "unspecified"
+            ],
+            "dispatch_approved": false,
+            "lot_review": null,
+            "process_match": "matched",
+            "process_source": {
+              "publisher": "한국산업단지공단 / 공공데이터포털",
+              "url": "https://www.data.go.kr/data/15088923/fileData.do",
+              "locator": "2021-07말 팩토리온 업종관리 시트 행 155408, D/K/L열; 전라북도 익산시 주식회사 보국"
+            },
+            "process_quote": "전라북도 익산시 주식회사 보국의 2021 등록 생산품은 재생플라스틱원료(펠렛)이고 등록 원자재는 PE,PP,PET 등이다."
+          }
+        }
+      ]
+    },
+    {
+      "material": "pet",
+      "form": "bottle",
+      "seconds": 8.91,
+      "rows": [
+        {
+          "site": "changshin-gimcheon",
+          "key": "changshin-gimcheon--pet-public-bottle-flake",
+          "process": "PET병 재생 플레이크 제조 공정 검토",
+          "road_distance_km": 205.058,
+          "road_status": "available",
+          "road_provider": "kakao",
+          "review": {
+            "status": "reviewed",
+            "finding": "insufficient",
+            "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요.",
+            "source": null,
+            "quote": null,
+            "evidence_gaps": [
+              "unspecified"
+            ],
+            "dispatch_approved": false,
+            "lot_review": null,
+            "process_match": "matched",
+            "process_source": {
+              "publisher": "한국산업단지공단 / 공공데이터포털",
+              "url": "https://www.data.go.kr/data/15105482/fileData.do",
+              "locator": "2025-12-31 전국등록공장 CSV 순번 173367 / (주)창신이앤이"
+            },
+            "process_quote": "2025-12-31 등록공장 자료에서 (주)창신이앤이의 생산품은 PET 재활용 플레이크 및 칩이며 공장 주소는 경상북도 김천시 농공단지1길 30 (신음동)이다."
+          }
+        },
+        {
+          "site": "haedong-gyeongsan",
+          "key": "haedong-gyeongsan--pet-public-bottle-flake",
+          "process": "PET병 재생 플레이크 제조 공정 검토",
+          "road_distance_km": 287.257,
+          "road_status": "available",
+          "road_provider": "kakao",
+          "review": {
+            "status": "reviewed",
+            "finding": "insufficient",
+            "next_check": "이번 물량의 허용 이물·수분 기준과 인수 가능 여부를 확인하세요.",
+            "source": null,
+            "quote": null,
+            "evidence_gaps": [
+              "unspecified"
+            ],
+            "dispatch_approved": false,
+            "lot_review": null,
+            "process_match": "matched",
+            "process_source": {
+              "publisher": "한국산업단지공단 / 공공데이터포털",
+              "url": "https://www.data.go.kr/data/15105482/fileData.do",
+              "locator": "2025-12-31 전국등록공장 CSV 순번 181463 / (주)해동자원"
+            },
+            "process_quote": "2025-12-31 등록공장 자료에서 (주)해동자원의 생산품은 페트플레이크이며 공장 주소는 경상북도 경산시 남산면 대왕로 64이다."
+          }
+        }
+      ]
+    }
+  ],
+  "cache": [
+    {
+      "seconds": 46.72,
+      "model_calls": 7,
+      "public_cache_hits": 3,
+      "selected": [
+        {
+          "site": "samyang-sihwa",
+          "road_km": 26.998,
+          "provider": "kakao",
+          "match": "matched"
+        },
+        {
+          "site": "dy-pyeongtaek",
+          "road_km": 47.536,
+          "provider": "kakao",
+          "match": "matched"
+        },
+        {
+          "site": "boguk-iksan",
+          "road_km": 166.244,
+          "provider": "kakao",
+          "match": "matched"
+        },
+        {
+          "site": "bgf-yesan",
+          "road_km": 66.086,
+          "provider": "kakao",
+          "match": "matched"
+        },
+        {
+          "site": "superbin-sunchang",
+          "road_km": 244.25,
+          "provider": "kakao",
+          "match": "matched"
+        }
+      ]
+    },
+    {
+      "seconds": 1.73,
+      "model_calls": 0,
+      "public_cache_hits": 5,
+      "selected": [
+        {
+          "site": "samyang-sihwa",
+          "road_km": 26.998,
+          "provider": "kakao",
+          "match": "matched"
+        },
+        {
+          "site": "dy-pyeongtaek",
+          "road_km": 47.536,
+          "provider": "kakao",
+          "match": "matched"
+        },
+        {
+          "site": "boguk-iksan",
+          "road_km": 166.244,
+          "provider": "kakao",
+          "match": "matched"
+        },
+        {
+          "site": "bgf-yesan",
+          "road_km": 66.086,
+          "provider": "kakao",
+          "match": "matched"
+        },
+        {
+          "site": "superbin-sunchang",
+          "road_km": 244.25,
+          "provider": "kakao",
+          "match": "matched"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "server_pytest": {
+      "passed": 684,
+      "failed": 0
+    },
+    "focused_tests": 88,
+    "ruff_check": "passed",
+    "ruff_format_check": "149 files already formatted",
+    "web_new_supplier_qr_e2e": "not performed in this data expansion"
+  }
+}
