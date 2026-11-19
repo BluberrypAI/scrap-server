@@ -216,3 +216,9 @@ uv run python -m app.domains.transport.dev_accounts
 
 ## 사업장 주소 검색
 기업 등록과 수정에서 `POST /api/v1/companies/location-search`로 주소·장소를 검색하고, 선택한 좌표를 기존 기업 정보 API로 저장합니다. 로그인 후 기업 등록 전에도 사용합니다. `COMPANY_GEOCODING_ENABLED=false`로 외부 검색을 끌 수 있고 `COMPANY_GEOCODING_URL`로 자체 Photon을 지정할 수 있습니다. 기본 공개 Photon은 소규모·단일 워커용(초당1회·캐시24시간)이며 국내 주소 누락과 서비스 장애가 가능합니다. 여러 서버로 운영할 때는 자체 서비스와 공유 호출 제한이 필요합니다. 검색 결과는 사용자가 지도에서 확인하며 정확한 건물/출입구를 보장하지 않습니다. [명세](../docs/specs/company-onboarding.md).
+
+## 업체 검토 작업
+
+`POST /api/v1/workflow/lots/{id}/review-jobs`에 현재 revision을 보내면 202와 처리 건을 반환합니다. `review_progress`는 queued/running/completed/failed/interrupted 상태와 서버의 실제 단계·검토 수를 포함합니다. 기업별 권한 검사는 기존 처리 건과 같습니다.
+
+앱 lifespan의 워커가 DB에 저장된 작업을 처리합니다. 별도 큐 서비스나 DB 마이그레이션은 없습니다. 실행 중 중복 요청은 같은 작업을 반환하고, 오래된 물량 결과는 저장하지 않습니다. 재시작으로 lease가 만료된 작업은 interrupted로 남겨 사용자 재시도 시 완료 캐시를 재사용합니다. 새 웹 기능은 새 scrap-route와 함께 적용합니다.

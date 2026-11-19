@@ -1,3 +1,6 @@
+import asyncio
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
@@ -28,11 +31,25 @@ TAGS = [
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or get_settings()
     docs = settings.docs_enabled
+
+    @asynccontextmanager
+    async def lifespan(app):
+        from app.domains.transport.review_jobs import worker
+
+        task = asyncio.create_task(worker()) if settings.app_env != "test" else None
+        try:
+            yield
+        finally:
+            if task:
+                task.cancel()
+                await asyncio.gather(task, return_exceptions=True)
+
     app = FastAPI(
         title="Re:Source AI API",
         version="0.1.0",
         description=DESCRIPTION,
         openapi_tags=TAGS,
+        lifespan=lifespan,
         docs_url="/docs" if docs else None,
         redoc_url="/redoc" if docs else None,
         openapi_url="/openapi.json" if docs else None,

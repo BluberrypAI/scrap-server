@@ -227,3 +227,9 @@ scrap-server/
 
 ## 사업장 주소 검색
 기업 등록과 수정에서 `POST /api/v1/companies/location-search`로 주소·장소를 검색하고, 선택한 좌표를 기존 기업 정보 API로 저장합니다. 로그인 후 기업 등록 전에도 사용합니다. `COMPANY_GEOCODING_ENABLED=false`로 외부 검색을 끌 수 있고 `COMPANY_GEOCODING_URL`로 자체 Photon을 지정할 수 있습니다. 기본 공개 Photon은 소규모·단일 워커용(초당1회·캐시24시간)이며 국내 주소 누락과 서비스 장애가 가능합니다. 여러 서버로 운영할 때는 자체 서비스와 공유 호출 제한이 필요합니다. 검색 결과는 사용자가 지도에서 확인하며 정확한 건물/출입구를 보장하지 않습니다. [명세](docs/specs/company-onboarding.md).
+
+## 거리순 업체 검토와 진행 상태
+
+새 웹은 `POST /api/v1/workflow/lots/{id}/review-jobs`로 검토를 시작하고 `GET /api/v1/workflow/lots/{id}`의 `review_progress`로 실제 진행 단계를 읽습니다. 서버가 카카오 도로거리로 정렬한 가까운 5곳부터 검토하며, 반입 제한·근거 부족·AI 미완료 후보가 있으면 다음 사업장을 검토합니다. 5곳 미만이면 확인된 수만 반환합니다.
+
+사진 관찰과 후보별 검토는 입력·모델 버전별로 재사용합니다. 인수 요청부터 예정 도로 경로를 표시하며 운송 중·입고와 구분합니다. 기존 동기 `candidates` API는 호환용으로 유지합니다. [명세](docs/specs/progressive-candidate-review.md)

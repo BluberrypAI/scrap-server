@@ -249,6 +249,7 @@ async def view(db, lot, cid):
         for c in await db.scalars(select(Company).where(Company.id.in_(companies)))
     }
     photos = list(await db.scalars(select(WorkflowPhoto).where(WorkflowPhoto.lot_id == lot.id)))
+    public_data = {k: v for k, v in lot.data.items() if k not in {"_review_cache", "review_job"}}
     return {
         "id": str(lot.id),
         "revision": lot.revision,
@@ -257,8 +258,9 @@ async def view(db, lot, cid):
         "current_company_id": str(lot.current_company_id),
         "companies": names,
         "can_manage": lot.current_company_id == cid,
-        "data": lot.data,
+        "data": public_data,
         "review": lot.review,
+        "review_progress": lot.data.get("review_job"),
         "photo_conflict_gate": conflict_gate(lot),
         "output_states": [
             {"key": s.key, "label": s.label}
@@ -397,8 +399,21 @@ async def road_route(key: uuid.UUID, company_id: CompanyId, db: DbSession, respo
         )
     )
     legs = handoff_legs(lot, offers)
+    phases = {
+        str(offer.id): (
+            "received"
+            if offer.status in {"received", "processed"}
+            else "in_transit"
+            if offer.data.get("dispatch")
+            else "planned"
+        )
+        for offer in offers
+    }
     await db.rollback()
-    return RoadRouteRead(segments=[await driving_segment(*leg) for leg in legs])
+    segments = list(await asyncio.gather(*(driving_segment(*leg) for leg in legs)))
+    for segment in segments:
+        segment.phase = phases[segment.offer_id]
+    return RoadRouteRead(segments=segments)
 
 
 @router.get("/lots/{key}")
@@ -505,6 +520,32 @@ def process_request(lot):
 async def candidates(
     key: uuid.UUID, body: Version, company_id: CompanyId, db: DbSession, engine: Engine
 ):
+    return await run_candidate_review(key, body, company_id, db, engine)
+
+
+@router.post("/lots/{key}/review-jobs", status_code=202)
+async def candidate_review_job(key: uuid.UUID, body: Version, company_id: CompanyId, db: DbSession):
+    from app.domains.transport.review_jobs import enqueue
+
+    cid = uuid.UUID(company_id)
+    lot = await lot_for(db, key, cid, lock=True)
+    active(lot, cid, {"ready", "processed"})
+    version(lot, body.revision)
+    enqueue(lot)
+    await db.commit()
+    return await view(db, lot, cid)
+
+
+async def run_candidate_review(
+    key, body, company_id, db, engine, *, progressive=False, report=None
+):
+    from app.domains.treatment.progressive import review_nearby
+
+    async def notify(phase, **values):
+        if report:
+            await report(phase, **values)
+
+    await notify("candidate_search")
     cid = uuid.UUID(company_id)
     lot = await lot_for(db, key, cid)
     active(lot, cid, {"ready", "processed"})
@@ -538,7 +579,8 @@ async def candidates(
     origin_label = current_company.site_name
     reusable = {}
     if (
-        lot.review
+        not progressive
+        and lot.review
         and lot.review.get("version") == "lot-vision-v1"
         and lot.review.get("analysis_version") == "isolated-vision-v2"
         and lot.review.get("conditions_version") == "intake-questions-v1"
@@ -610,9 +652,15 @@ async def candidates(
                 f"{k}: {v['question']}" if v.get("question") else k: v["value"]
                 for k, v in answers.items()
             }
+    cache = deepcopy(lot.data.get("_review_cache", {}))
     await db.rollback()
     pending = [p for p in packets if p["capability_key"] not in reusable]
-    if reusable and pending:
+    selection = None
+    if progressive:
+        reviewed, selection, cache = await review_nearby(
+            packets, result, request.origin, get_settings(), lot_context, cache, notify
+        )
+    elif reusable and pending:
         # A repeated two-candidate timeout must not keep both candidates coupled.
         # Retry individual candidates, with bounded concurrency and a shared budget.
         recovered = {}
@@ -652,7 +700,9 @@ async def candidates(
         },
         **reviewed.results,
     }
-    await enrich_road_distances(result, request.origin)
+    if not progressive:
+        await enrich_road_distances(result, request.origin)
+    await notify("saving")
     if not request.completed_transitions:
         latest = (await engine.request("GET", f"/cases/{diagnosis_id}", company_id)).body
         if (
@@ -668,6 +718,8 @@ async def candidates(
     lot = await lot_for(db, key, cid, lock=True)
     active(lot, cid, {"ready", "processed"})
     version(lot, body.revision)
+    if progressive:
+        lot.data = {**lot.data, "_review_cache": cache}
     if not lot.data["completed"]:
         data = deepcopy(lot.data)
         data["recycling"] = recycling_value
@@ -700,6 +752,7 @@ async def candidates(
                 stage_answers.get(f["capability_key"], {}),
             )
     lot.review = {
+        **({"selection": selection} if selection is not None else {}),
         "version": "lot-vision-v1",
         "analysis_version": "isolated-vision-v2",
         "conditions_version": "intake-questions-v1",
