@@ -216,3 +216,17 @@ uv run python -m app.domains.transport.dev_accounts
 
 ## 사업장 주소 검색
 기업 등록과 수정에서 `POST /api/v1/companies/location-search`로 주소·장소를 검색하고, 선택한 좌표를 기존 기업 정보 API로 저장합니다. 로그인 후 기업 등록 전에도 사용합니다. `COMPANY_GEOCODING_ENABLED=false`로 외부 검색을 끌 수 있고 `COMPANY_GEOCODING_URL`로 자체 Photon을 지정할 수 있습니다. 기본 공개 Photon은 소규모·단일 워커용(초당1회·캐시24시간)이며 국내 주소 누락과 서비스 장애가 가능합니다. 여러 서버로 운영할 때는 자체 서비스와 공유 호출 제한이 필요합니다. 검색 결과는 사용자가 지도에서 확인하며 정확한 건물/출입구를 보장하지 않습니다. [명세](../docs/specs/company-onboarding.md).
+
+## 업체 검토 작업
+
+문진 연결 응답에는 selected_form/selected_form_label과 form_source/form_quote/form_turn_id를 추가했습니다. 기존 엔진의 대화에서 명확한 현재 형태만 받아 표시하고, 불명·복수·예정·부정 진술은 선택을 요구합니다. 기존 물량 등록 요청의 필수 input_form 형식은 유지하며 sender_confirmations에 형태 출처를 보존합니다. 문진 엔진·분류·새 DB 모델 변경은 없습니다.
+
+`POST /api/v1/workflow/lots/{id}/review-jobs`에 현재 revision을 보내면 202와 처리 건을 반환합니다. `review_progress`는 queued/running/completed/failed/interrupted 상태와 서버의 실제 단계·검토 수를 포함합니다. 기업별 권한 검사는 기존 처리 건과 같습니다.
+
+앱 lifespan의 워커가 DB에 저장된 작업을 처리합니다. 별도 큐 서비스나 DB 마이그레이션은 없습니다. 실행 중 중복 요청은 같은 작업을 반환하고, 오래된 물량 결과는 저장하지 않습니다. 재시작으로 lease가 만료된 작업은 interrupted로 남겨 사용자 재시도 시 완료 캐시를 재사용합니다. 새 웹 기능은 새 scrap-route와 함께 적용합니다.
+
+## 공개 업체 검토 캐시
+
+후보 탐색은 공정 관련성을 확인하는 용도입니다. 응답의 선택 필드 `process_match=matched|unverified|mismatch`와 `process_source`, `process_quote`를 사용합니다. 새 후보의 `intake_conditions.purpose=recipient_conversation`이며 자동 질문은 빈 배열입니다. 기존 답변 저장 API는 호환용으로 유지합니다. 세부 반입조건은 수신 기업이 대화와 최종 수락에서 확인합니다.
+
+새 웹의 `review-jobs`는 공개 업체 근거와 현재 물량 검토를 분리합니다. `treatment_snapshots.kind=public-intake-cache-v1`에 공개 입력·출처·검토 버전의 해시와 공개 결과만 저장하며 7일 만료·최대1024건입니다. 사진·중량·상태·기업별 답변은 이 저장소에 들어가지 않습니다. 별도 migration·Redis 설정은 없습니다. 신규 route의 `public_signature`/`public_findings` 지원 버전을 먼저 반영해야 합니다. 공개 캐시 재사용 횟수와 이번 물량 호출 수는 `review.selection`에 각각 기록됩니다.
