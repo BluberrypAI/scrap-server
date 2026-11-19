@@ -3953,6 +3953,216 @@
           "yuil-yangsan"
         ]
       }
+    },
+    {
+      "key": "samyang-chip-2024",
+      "url": "https://www.samyangpackaging.co.kr/resources/en/local/file/esg/report/SamyangPackaging_2024_KR.pdf",
+      "publisher": "삼양그룹 / 삼양패키징",
+      "locator": "2024 지속가능경영보고서 PDF 86쪽, 삼양에코테크 시화공장",
+      "summary": "삼양에코테크는 시화공장(경기도 시흥시 공단2대로 81)에 재생 PET chip 생산설비를 도입했고 2023년 상반기부터 R-Flake와 고순도 R-PET chip을 생산한다고 보고한다. 재생 플레이크의 후속 칩 생산 공정 관련성 근거이며, 외부 플레이크의 수탁·이번 물량 수락·식품접촉 등급은 확인하지 않았다.",
+      "checked_date": "2026-11-20",
+      "source_date": null,
+      "sha256": "30fa1fcff72f1b46854c1714dd4f98f4dc6d158ff19e3319fa80b25f92a48ddf",
+      "acquisition": "공개 원문 직접 열람·대조; 팀 작성 사실 요약만 제공",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "transitions": [
+          "pet-flake-to-chip"
+        ],
+        "facilities": [
+          "samyang-sihwa"
+        ],
+        "capabilities": [
+          "samyang-sihwa--pet-flake-to-chip"
+        ]
+      }
+    },
+    {
+      "key": "shinsung-can-case",
+      "url": "https://www.re.or.kr/info/viewRecyclableResourcesPage.do?SN=533",
+      "publisher": "한국환경공단 자원순환마루",
+      "locator": "순환자원 인정현황 SN=533 / 2024 순환자원 인정 사례집 인쇄 236쪽",
+      "summary": "신성리사이클링 주식회사, 경기 고양시 일산동구 장진천길 154-2. 사용 후 금속캔을 선별·압축하여 알루미늄캔 압축품을 생산한 공개 기록이다. 기록의 인정기간은 2023-02-03~2026-02-02로 만료되었으므로 현행 인증·현재 허가나 반입 승인의 근거로 사용하지 않는다. R-4-1은 압축품 사용 용도이며 이 사업장의 처리 허가 코드로 전용하지 않는다.",
+      "checked_date": "2026-11-20",
+      "source_date": null,
+      "sha256": "f50c354a81907514d7f7d07b3fc149d942763a87b2ea0dc939caf3e6b146309f",
+      "acquisition": "공개 원문 직접 열람·대조; 팀 작성 사실 요약만 제공",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "shinsung-recycling"
+        ],
+        "facilities": [
+          "shinsung-goyang"
+        ],
+        "capabilities": [
+          "shinsung-goyang--al-can-prepare"
+        ]
+      }
+    },
+    {
+      "key": "shinsung-public-profile",
+      "url": "https://job.gg.go.kr/empmn/desEntDtl.do?bizrno=1288659142",
+      "publisher": "경기도일자리재단 잡아바 / 기업 제공 정보",
+      "locator": "기업 기본정보·주요제품·기업 위치",
+      "summary": "신성리사이클링(주)은 경기 고양시 일산동구 장진천길 154-2에서 알루미늄 압축·가공 등을 주요 제품으로 공개한다. 같은 사업장의 캔 선별·압축 공정 기록과 대조했다. 현재 물량 수락과 가용 용량은 공개되지 않았다.",
+      "checked_date": "2026-11-20",
+      "source_date": null,
+      "sha256": "98e669c295f23b2f58776a767a00baf401e103b4c76abbcdf8410ec4c078caa3",
+      "acquisition": "공개 원문 직접 열람·대조; 팀 작성 사실 요약만 제공",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "shinsung-recycling"
+        ],
+        "facilities": [
+          "shinsung-goyang"
+        ],
+        "capabilities": [
+          "shinsung-goyang--al-can-prepare"
+        ]
+      }
+    },
+    {
+      "key": "samyang-sihwa-kakao-location",
+      "url": "https://map.kakao.com/link/map/37.3342301860598,126.703910570929",
+      "publisher": "Kakao Local 주소 검색",
+      "locator": "도로명 주소 exact 검색 결과 / 주소 단위 좌표",
+      "summary": "공개 사업장 주소를 카카오 주소 검색으로 대조한 좌표이며 정문·운송차량 출입구 좌표는 미확인. 경기 시흥시 공단2대로 81",
+      "checked_date": "2026-11-20",
+      "source_date": null,
+      "sha256": "8d66882ee408e96a875f9e48d92aac6b1883073471c8865475a9db0fbb4f5f16",
+      "acquisition": "서버의 카카오 Local 주소 검색 실호출; API 키·원문 응답 제외",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "samyang-sihwa"
+        ]
+      }
+    },
+    {
+      "key": "shinsung-goyang-kakao-location",
+      "url": "https://map.kakao.com/link/map/37.7218296306645,126.81159277625",
+      "publisher": "Kakao Local 주소 검색",
+      "locator": "도로명 주소 exact 검색 결과 / 주소 단위 좌표",
+      "summary": "공개 사업장 주소를 카카오 주소 검색으로 대조한 좌표이며 정문·운송차량 출입구 좌표는 미확인. 경기 고양시 일산동구 장진천길 154-2",
+      "checked_date": "2026-11-20",
+      "source_date": null,
+      "sha256": "290148a14641881211f36fae738837714a050164f068ad41573b56058f883c26",
+      "acquisition": "서버의 카카오 Local 주소 검색 실호출; API 키·원문 응답 제외",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "shinsung-goyang"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-industry-2021-daeyoung",
+      "url": "https://www.data.go.kr/data/15088923/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "locator": "2021-07말 팩토리온 업종관리, 시트 행 147702, D/K/L열; 충남 논산시 ㈜대영",
+      "summary": "충남 논산시 ㈜대영의 등록 원자재는 압축품·폐플라스틱·폐비닐이고 생산품은 재생수지(PP, PE)이다. 압축 폐플라스틱에서 PE 재생수지를 제조하는 공정 관련성의 과거 공개 근거다. 해체·선별·분쇄 등 개별 설비, PE 전용 베일 규격, 산출물이 펠릿인지와 현행 수락은 확인하지 않았다. 2025 등록공장 자료의 동명 업체 중 논산시·동일 생산품을 대조하고 2026 논산시 처리업체 목록의 주소와 맞췄다.",
+      "checked_date": "2026-11-20",
+      "source_date": "2021-07-31",
+      "sha256": "c281d2a32e656d646ca6ee4c86a9e49b5ef23722cebcebe805df3c769514e22e",
+      "acquisition": "공공 원문 직접 대조; 요약만 전송, 원문·개인 연락처 제외",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "daeyoung-nonsan"
+        ],
+        "facilities": [
+          "daeyoung-nonsan"
+        ],
+        "states": [
+          "pe-recycled-resin"
+        ],
+        "transitions": [
+          "pe-compressed-to-resin"
+        ],
+        "capabilities": [
+          "daeyoung-nonsan--pe-compressed-to-resin"
+        ]
+      }
+    },
+    {
+      "key": "factoryon-20251231-165551",
+      "url": "https://www.data.go.kr/data/15105482/fileData.do",
+      "publisher": "한국산업단지공단 / 공공데이터포털",
+      "locator": "2025-12-31 전국등록공장 CSV 순번 165551 / ㈜대영 / 논산 상월로 216-20",
+      "summary": "2025-12-31 등록공장 공개 자료의 순번 165551에서 업체명은 ㈜대영, 생산품은 재생수지(PP, PE), 공장 주소는 충청남도 논산시 상월면 상월로 216-20이다. 동명 타 지역 업체를 제외해 사업장과 생산품을 대조한 근거이며 베일 투입 자체는 2021 원자재 표를 따로 인용한다. 현재 가용 용량이나 반입 승인을 뜻하지 않는다.",
+      "checked_date": "2026-11-20",
+      "source_date": "2025-12-31",
+      "sha256": "5f5699a909601edb3adac4f63c3d2daa2a0d0c26135b0f58f6cdd52673745792",
+      "acquisition": "공공 원문 직접 대조; 요약만 전송, 원문·개인 연락처 제외",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "organisations": [
+          "daeyoung-nonsan"
+        ],
+        "facilities": [
+          "daeyoung-nonsan"
+        ],
+        "capabilities": [
+          "daeyoung-nonsan--pe-compressed-to-resin"
+        ]
+      }
+    },
+    {
+      "key": "nonsan-public-treatment-daeyoung",
+      "url": "https://yeonmu.nonsan.go.kr/kor/html/sub05/05080308.html",
+      "publisher": "논산시청 자원순환과",
+      "locator": "폐기물처리업 현황, 처리시설 표 18번 / 페이지 최종수정 2026-06-15",
+      "summary": "논산시청 처리업체 현황의 18번은 ㈜대영, 상월면 상월로 216-20이다. 2025 공장등록 자료와 주소가 일치한다. 공개 표의 75톤/일은 여유 처리용량으로 사용하지 않으며, 이 표만으로 소재·베일 허가 범위나 이번 물량 수락을 추정하지 않는다.",
+      "checked_date": "2026-11-20",
+      "source_date": "2026-06-15",
+      "sha256": "f73815a7be363e0e2cf6a1095f95cbbb7a8b3af124691e27dd51e6cc4f0cc535",
+      "acquisition": "공공 원문 직접 대조; 요약만 전송, 원문·개인 연락처 제외",
+      "digest_basis": "downloaded-original-bytes",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "daeyoung-nonsan"
+        ],
+        "capabilities": [
+          "daeyoung-nonsan--pe-compressed-to-resin"
+        ]
+      }
+    },
+    {
+      "key": "daeyoung-nonsan-kakao-location",
+      "url": "https://map.kakao.com/link/map/36.2943964184508,127.161963798069",
+      "publisher": "Kakao Local 주소 검색",
+      "locator": "도로명 주소 exact 검색 결과 / 주소 단위 좌표",
+      "summary": "논산시 공개 사업장 주소를 카카오 Local로 대조한 좌표. 정문·대형차 출입구는 미확인. 충남 논산시 상월면 상월로 216-20",
+      "checked_date": "2026-11-20",
+      "source_date": null,
+      "sha256": "97ee495467df2bc640e2bdbb70ed05539b056d26da489a393eaac419e429d0ec",
+      "acquisition": "카카오 Local 실호출; 키·원문 제외",
+      "digest_basis": "curator-record-not-original-page",
+      "model_transfer_allowed": true,
+      "export_scope": "team-authored-factual-summary-only; raw-page-and-assets-excluded",
+      "supported_records": {
+        "facilities": [
+          "daeyoung-nonsan"
+        ]
+      }
     }
   ],
   "states": [
@@ -4715,6 +4925,17 @@
       "is_output": true,
       "source_ids": [
         "jmtech-gimpo-al-granule"
+      ]
+    },
+    {
+      "key": "pe-recycled-resin",
+      "material": "pe",
+      "label": "재생 PE 수지(실제 형태·등급 확인 필요)",
+      "input_forms": [],
+      "is_entry": false,
+      "is_output": true,
+      "source_ids": [
+        "factoryon-industry-2021-daeyoung"
       ]
     }
   ],
@@ -6158,6 +6379,48 @@
       "risk_checks": [
         "원문에 없는 세척 공정·정량 오염 허용치·현행 반입 승인을 추정하지 않음"
       ]
+    },
+    {
+      "key": "pet-flake-to-chip",
+      "label": "PET 플레이크 재생 칩 가공",
+      "input_state": "pet-flake",
+      "output_state": "pet-pellet",
+      "operation_steps": [
+        "PET 플레이크의 투입 규격 확인",
+        "재생 PET 칩 생산",
+        "실제 산출물 중량·형태 기록"
+      ],
+      "source_ids": [
+        "samyang-chip-2024"
+      ],
+      "conditions": [
+        "외부 플레이크 수탁 여부와 이번 물량의 규격은 수신 기업이 확인"
+      ],
+      "risk_checks": [
+        "설비·공정 공개 자료는 현재 반입 승인이나 식품접촉 등급의 보증이 아님"
+      ]
+    },
+    {
+      "key": "pe-compressed-to-resin",
+      "label": "PE 압축품 재생수지 가공 검토",
+      "input_state": "pe-bale",
+      "output_state": "pe-recycled-resin",
+      "operation_steps": [
+        "압축 폐플라스틱 원료의 재질·규격 대조",
+        "PE 재생수지 제조 공정 검토",
+        "실제 산출물 형태·중량 기록"
+      ],
+      "source_ids": [
+        "factoryon-industry-2021-daeyoung"
+      ],
+      "conditions": [
+        "압축품 원자재와 PE 재생수지 생산의 공정 묶음 근거이며 개별 해체·분쇄·세척 설비는 미확인",
+        "베일 수지·규격과 현재 수탁 여부는 B가 확인"
+      ],
+      "risk_checks": [
+        "원자재 근거는 2021년 기록이므로 현행 설비·수락을 단정하지 않음",
+        "산출물 형태가 미확인인 재생수지는 자동 완료·후속 펠릿 경로로 전환하지 않음"
+      ]
     }
   ],
   "organisations": [
@@ -6570,6 +6833,22 @@
       "source_ids": [
         "sungwon-hwaseong-ldpe"
       ]
+    },
+    {
+      "key": "shinsung-recycling",
+      "label": "신성리사이클링 주식회사",
+      "source_ids": [
+        "shinsung-can-case",
+        "shinsung-public-profile"
+      ]
+    },
+    {
+      "key": "daeyoung-nonsan",
+      "label": "㈜대영 (논산)",
+      "source_ids": [
+        "factoryon-industry-2021-daeyoung",
+        "factoryon-20251231-165551"
+      ]
     }
   ],
   "facilities": [
@@ -6579,9 +6858,11 @@
       "label": "삼양에코테크 시화공장",
       "country": "KR",
       "region": "경기도 시흥시 시화공단",
-      "address": null,
+      "address": "경기도 시흥시 공단2대로 81",
       "source_ids": [
-        "samyang-pet"
+        "samyang-pet",
+        "samyang-chip-2024",
+        "samyang-sihwa-kakao-location"
       ],
       "reported_metrics": [
         {
@@ -6596,8 +6877,9 @@
       "current_available_capacity_kg": null,
       "current_acceptance": null,
       "current_price_krw_per_kg": null,
-      "latitude": null,
-      "longitude": null
+      "latitude": 37.3342301860598,
+      "longitude": 126.703910570929,
+      "location_source_id": "samyang-sihwa-kakao-location"
     },
     {
       "key": "bgf-incheon",
@@ -7808,6 +8090,49 @@
       "current_price_krw_per_kg": null,
       "current_available_capacity_kg": null,
       "location_source_id": "location-sungwon-hwaseong-20261117"
+    },
+    {
+      "key": "shinsung-goyang",
+      "organisation": "shinsung-recycling",
+      "label": "신성리사이클링 고양",
+      "country": "KR",
+      "region": "경기도 고양시",
+      "address": "경기도 고양시 일산동구 장진천길 154-2",
+      "source_ids": [
+        "shinsung-can-case",
+        "shinsung-public-profile",
+        "shinsung-goyang-kakao-location"
+      ],
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 37.7218296306645,
+      "longitude": 126.81159277625,
+      "location_source_id": "shinsung-goyang-kakao-location"
+    },
+    {
+      "key": "daeyoung-nonsan",
+      "organisation": "daeyoung-nonsan",
+      "label": "대영 논산 재생수지 사업장",
+      "country": "KR",
+      "region": "충청남도 논산시",
+      "address": "충청남도 논산시 상월면 상월로 216-20",
+      "source_ids": [
+        "factoryon-industry-2021-daeyoung",
+        "factoryon-20251231-165551",
+        "nonsan-public-treatment-daeyoung",
+        "daeyoung-nonsan-kakao-location"
+      ],
+      "reported_metrics": [],
+      "current_permit_scope": null,
+      "current_available_capacity_kg": null,
+      "current_acceptance": null,
+      "current_price_krw_per_kg": null,
+      "latitude": 36.2943964184508,
+      "longitude": 127.161963798069,
+      "location_source_id": "daeyoung-nonsan-kakao-location"
     }
   ],
   "capabilities": [
@@ -11810,6 +12135,97 @@
           "sungwon-hwaseong-ldpe"
         ],
         "locator": "LDPE 필름 매입 FAQ와 화성 공장 이중 압출 공정",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "samyang-sihwa--pet-flake-to-chip",
+      "facility": "samyang-sihwa",
+      "transition": "pet-flake-to-chip",
+      "basis": "published_site_process",
+      "source_ids": [
+        "samyang-chip-2024"
+      ],
+      "conditions": [
+        "시화공장 내 후속 칩 생산라인 근거이며 외부 플레이크 수탁은 확인되지 않음"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pet"
+        ],
+        "form_examples": [
+          "flake"
+        ],
+        "output_description": "재생 PET 칩; 실제 등급·투입 규격은 수신 기업 확인",
+        "source_ids": [
+          "samyang-chip-2024"
+        ],
+        "locator": "2024 보고서 86쪽 / 시화공장 재생 PET chip 설비와 R-Flake·R-PET chip 생산",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "shinsung-goyang--al-can-prepare",
+      "facility": "shinsung-goyang",
+      "transition": "al-can-prepare",
+      "basis": "published_site_process",
+      "source_ids": [
+        "shinsung-can-case",
+        "shinsung-public-profile"
+      ],
+      "conditions": [
+        "순환자원 인정기간은 2026-02-02 만료; 현재 인증·허가·수락은 미확인",
+        "세부 반입 조건은 업체와 대화로 확인"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "aluminium"
+        ],
+        "form_examples": [
+          "can"
+        ],
+        "output_description": "선별·압축된 알루미늄캔 압축품",
+        "source_ids": [
+          "shinsung-can-case",
+          "shinsung-public-profile"
+        ],
+        "locator": "SN=533 알루미늄캔 선별·압축 / 잡아바 동일 사업장 알루미늄 압축·가공",
+        "verified_intake_limits_available": false
+      }
+    },
+    {
+      "key": "daeyoung-nonsan--pe-compressed-to-resin",
+      "facility": "daeyoung-nonsan",
+      "transition": "pe-compressed-to-resin",
+      "basis": "published_site_process",
+      "source_ids": [
+        "factoryon-industry-2021-daeyoung",
+        "factoryon-20251231-165551",
+        "nonsan-public-treatment-daeyoung"
+      ],
+      "conditions": [
+        "2021 원자재 표와 2025 생산품·2026 주소 자료를 대조한 공정 관련성 후보; 현재 베일 수탁·개별 설비·산출물 형태는 미확인"
+      ],
+      "initial_input_forms": [
+        "bale"
+      ],
+      "input_profile": {
+        "evidence_scope": "site_publication",
+        "material_examples": [
+          "pe"
+        ],
+        "form_examples": [
+          "bale"
+        ],
+        "output_description": "재생 PE 수지; 산출물 형태·등급과 개별 공정 설비는 공개 자료에서 미확인",
+        "source_ids": [
+          "factoryon-industry-2021-daeyoung",
+          "factoryon-20251231-165551",
+          "nonsan-public-treatment-daeyoung"
+        ],
+        "locator": "팩토리온 2021 행 147702 원자재·생산품 / 2025 순번 165551 / 논산시 2026 처리업체 18번",
         "verified_intake_limits_available": false
       }
     }

@@ -124,7 +124,7 @@ async def test_plastic_handoff_preserves_code_and_queries_actual_reference(
     assert context["route_input"]["recycling_types"] is None
     next_step = context["next_step"]
     assert next_step["current_state"]
-    held = material in {"pe", "ps"} and form == "bale"
+    held = material == "ps" and form == "bale"
     expected_status = "no_route" if held else "candidates"
     assert next_step["status"] == expected_status
     assert bool([f for p in next_step["options"] for f in p["facilities"]]) == (

@@ -108,8 +108,18 @@ def test_bales_remain_honest_gaps_not_flakes_or_eps_ingots(reference, material, 
     result = next_step(
         NextStepRequest(waste_code=code, material=material, input_form="bale"), reference
     )
-    # A literature-backed process can be shown, but has no documented Korean site.
-    assert result.status == "no_route" and not result.can_finish
+    assert not result.can_finish and not result.dispatch_approved
+    if material == "pe":
+        assert result.status == "candidates"
+        assert {f.facility_key for option in result.options for f in option.facilities} == {
+            "daeyoung-nonsan"
+        }
+        documented = next(o for o in result.options if o.facilities)
+        assert documented.output_state.key == "pe-recycled-resin"
+        assert any("data.go.kr" in s.url for s in documented.sources)
+        return
+    # PS remains a literature-backed gap, with no documented Korean site.
+    assert result.status == "no_route"
     assert result.options and not any(option.facilities for option in result.options)
     assert all(
         "plasticsrecyclers.eu" in source.url
@@ -182,10 +192,15 @@ def test_bale_output_from_b_cannot_jump_to_a_flake_receiver(reference, material)
         observed_output={"state_key": material + "-bale", "mass_kg": 100},
     )
     result = next_step(NextStepRequest(**selection), reference)
-    assert result.status == "no_route" and not result.can_finish
-    assert not any(o.facilities for o in result.options)
-    assert "반입 확인 자료" in result.message
-    assert not build_intake_batch(IntakeSelection(**selection), reference)
+    assert not result.can_finish
+    found = {f.facility_key for o in result.options for f in o.facilities}
+    if material == "pe":
+        assert result.status == "candidates" and found == {"daeyoung-nonsan"}
+        assert build_intake_batch(IntakeSelection(**selection), reference)
+    else:
+        assert result.status == "no_route" and not found
+        assert "반입 확인 자료" in result.message
+        assert not build_intake_batch(IntakeSelection(**selection), reference)
     selection["observed_output"]["mass_kg"] = 0
     assert "0 kg" in next_step(NextStepRequest(**selection), reference).message
 
