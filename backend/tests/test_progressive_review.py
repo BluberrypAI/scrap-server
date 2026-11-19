@@ -90,6 +90,13 @@ def pipeline(monkeypatch):
                     else None,
                     "quote": "합성 공개 PP 투입 근거" if finding != "insufficient" else None,
                 }
+                process_match = state.get("process_matches", {}).get(key)
+                if process_match is not None:
+                    rows[key].update(
+                        status="reviewed",
+                        process_match=process_match,
+                        process_quote="공개 공정: PP 재생 펠렛 생산",
+                    )
             return httpx.Response(200, json={"results": rows})
         assert not body["lot_context"]["photos"]  # Do not retransmit raw images for comparisons.
         keys = [p["capability_key"] for p in body["candidates"]]
@@ -108,6 +115,8 @@ def pipeline(monkeypatch):
                     "photo_observations": body["photo_observations"],
                 },
             }
+            if key in state.get("process_matches", {}):
+                rows[key].update(status="reviewed", process_match=state["process_matches"][key])
         return httpx.Response(200, json={"results": rows})
 
     real_client = httpx.AsyncClient
@@ -291,3 +300,27 @@ async def test_public_cache_changes_only_for_public_inputs(pipeline, session_fac
     state["public_signature"] = "public-v2"
     _, new_model, _ = await run(public_store=store)
     assert new_model["public_model_calls"] == 2 and new_model["public_cache_hits"] == 0
+
+
+async def test_process_match_is_sufficient_without_exact_feedstock_intake_quote(
+    pipeline, session_factory
+):
+    from app.domains.treatment.public_cache import PublicReviewStore
+
+    state, _, keys, run = pipeline
+    state["public_outcomes"] = state["outcomes"] = dict.fromkeys(keys, "insufficient")
+    state["process_matches"] = dict.fromkeys(keys, "matched")
+    reviewed, selection, _ = await run(public_store=PublicReviewStore(session_factory))
+    assert selection["selected_keys"] == keys[:5]
+    assert all(reviewed.results[k].finding == "insufficient" for k in keys[:5])
+
+
+async def test_unknown_or_mismatched_process_is_not_inquiry_candidate(pipeline, session_factory):
+    from app.domains.treatment.public_cache import PublicReviewStore
+
+    state, _, keys, run = pipeline
+    state["process_matches"] = dict.fromkeys(keys, "matched")
+    state["process_matches"].update({keys[0]: "unverified", keys[1]: "mismatch"})
+    _, selection, _ = await run(public_store=PublicReviewStore(session_factory))
+    assert selection["selected_keys"] == keys[2:7]
+    assert keys[1] in selection["mismatch_keys"]

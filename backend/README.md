@@ -225,4 +225,6 @@ uv run python -m app.domains.transport.dev_accounts
 
 ## 공개 업체 검토 캐시
 
+후보 탐색은 공정 관련성을 확인하는 용도입니다. 응답의 선택 필드 `process_match=matched|unverified|mismatch`와 `process_source`, `process_quote`를 사용합니다. 새 후보의 `intake_conditions.purpose=recipient_conversation`이며 자동 질문은 빈 배열입니다. 기존 답변 저장 API는 호환용으로 유지합니다. 세부 반입조건은 수신 기업이 대화와 최종 수락에서 확인합니다.
+
 새 웹의 `review-jobs`는 공개 업체 근거와 현재 물량 검토를 분리합니다. `treatment_snapshots.kind=public-intake-cache-v1`에 공개 입력·출처·검토 버전의 해시와 공개 결과만 저장하며 7일 만료·최대1024건입니다. 사진·중량·상태·기업별 답변은 이 저장소에 들어가지 않습니다. 별도 migration·Redis 설정은 없습니다. 신규 route의 `public_signature`/`public_findings` 지원 버전을 먼저 반영해야 합니다. 공개 캐시 재사용 횟수와 이번 물량 호출 수는 `review.selection`에 각각 기록됩니다.

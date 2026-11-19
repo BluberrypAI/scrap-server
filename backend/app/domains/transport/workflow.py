@@ -756,6 +756,7 @@ async def run_candidate_review(
                     f["facility_key"],
                     request.material,
                     ai_review=reviewed.results[f["capability_key"]].model_dump(),
+                    purpose="process_discovery",
                 ),
                 stage_answers.get(f["capability_key"], {}),
             )
@@ -798,6 +799,17 @@ async def intake_answers(key: uuid.UUID, body: IntakeAnswers, company_id: Compan
         fail("현재 업체 후보를 먼저 검토해 주세요.")
     form = fs[0]["intake_conditions"]
     questions = {q["key"]: q for q in form["questions"]}
+    if form.get("purpose") == "recipient_conversation":
+        # Older clients may still submit known legacy answers. New screens do
+        # not request them, but preserve their validation and historical meaning.
+        ref, _ = await read_reference(db)
+        legacy = questionnaire(
+            ref,
+            fs[0]["facility_key"],
+            lot.data["initial"]["material"],
+            ai_review=review.get("results", {}).get(body.capability_key),
+        )
+        questions = {q["key"]: q for q in legacy["questions"]}
     if any(
         k not in questions
         or not isinstance(v, str)
@@ -1038,6 +1050,7 @@ async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSess
     if (
         check.get("status") not in {"reviewed", "needs_evidence"}
         or check.get("finding") == "restriction_mentioned"
+        or check.get("process_match") in {"unverified", "mismatch"}
         or review.get("version") != "lot-vision-v1"
         or review.get("analysis_version") != "isolated-vision-v2"
         or (check.get("lot_review") or {}).get("status") != "reviewed"

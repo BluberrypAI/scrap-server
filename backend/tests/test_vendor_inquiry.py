@@ -32,8 +32,10 @@ async def test_unregistered_vendor_packet_is_private_and_does_not_change_lot(set
     assert response.status_code == 200, response.text
     assert response.headers["cache-control"] == "private, no-store"
     text = response.json()["text"]
-    assert "1000 kg" in text and "추가 근거 필요" in text and "미응답" in text
-    assert "최소/최대 반입량" in text and "미확인" in text and "확인일:" in text
+    assert "1000 kg" in text and "추가 근거 필요" in text and "미확인" in text
+    assert "반입조건과 일정을 메시지로" in text and "확인일:" in text
+    assert "미응답" not in text and "시험성적서는 별도로" not in text
+    assert "필요한 샘플·검사 항목" not in text
     assert "@example.com" not in text and "/photos/" not in text and "?t=" not in text
     assert lot["id"] not in text and lot["current_company_id"] not in text
     after = (await req("A", f"/lots/{lot['id']}", method="GET")).json()

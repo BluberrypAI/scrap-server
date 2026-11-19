@@ -10,13 +10,14 @@ from app.domains.treatment.intake import (
     IntakeResult,
     LotReview,
     PhotoObservation,
+    process_related,
 )
 from app.domains.treatment.public_cache import public_finding, public_packet
 from app.domains.treatment.reference import digest
 from app.domains.treatment.road_distance import enrich_road_distances
 
 TARGET = 5
-POLICY = "road-top-five-v1"
+POLICY = "process-discovery-top-five-v1"
 
 
 class ReviewUnavailable(RuntimeError):
@@ -207,7 +208,7 @@ async def review_nearby(
                                     next_check=packet_map[key]["next_check"],
                                 ),
                             )
-                            if value.status == "reviewed" and value.finding == "form_mentioned":
+                            if process_related(value):
                                 usable.append(key)
                             else:
                                 results[key] = value
@@ -265,8 +266,7 @@ async def review_nearby(
                     for key in keys:
                         value = results[key]
                         if (
-                            value.status == "reviewed"
-                            and value.finding == "form_mentioned"
+                            process_related(value)
                             and value.lot_review
                             and value.lot_review.status == "reviewed"
                         ):
@@ -301,6 +301,7 @@ async def review_nearby(
         "needs_evidence_keys": [k for k, r in results.items() if r.status == "needs_evidence"],
         "unavailable_keys": [k for k, r in results.items() if r.status == "model_unavailable"],
         "restricted_keys": [k for k, r in results.items() if r.finding == "restriction_mentioned"],
+        "mismatch_keys": [k for k, r in results.items() if r.process_match == "mismatch"],
     }
     # Retain examined alternatives separately; they are never presented as approved sites.
     selection["other_options"] = [

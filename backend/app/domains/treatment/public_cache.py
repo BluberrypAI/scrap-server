@@ -45,11 +45,25 @@ def public_finding(packet, result):
         ),
         None,
     )
+    process_source = next(
+        (
+            s
+            for s in packet["sources"]
+            if result.process_source
+            and all(
+                s[k] == getattr(result.process_source, k) for k in ("publisher", "url", "locator")
+            )
+        ),
+        None,
+    )
     return {
         "kind": result.finding,
         "source_id": source["source_id"] if source else None,
         "quote": result.quote,
         "evidence_gaps": result.evidence_gaps,
+        "process_match": result.process_match,
+        "process_source_id": process_source["source_id"] if process_source else None,
+        "process_quote": result.process_quote,
     }
 
 

@@ -113,6 +113,7 @@
 
 | T-175 | 도로거리순 5곳 우선 AI 검토·진행 orb·인수 요청 예정 경로 | 완료 | api-developer / test-engineer | progressive-candidate-review | 637개 통과, 실제 Azure/웹 A→B 예정 카카오 경로·Orb·캐시 확인. 기존 전체 후보 동기 API 호환 유지 |
 | T-176 | 업체 공개 근거 공용 캐시와 물량 검토 분리 | 완료 | api-developer / test-engineer | progressive-candidate-review | 642개 통과. 실제 Azure 새 물량35.6초/웹39.75초, 공개 근거9건 재사용·공개 추가호출0회. 사진·물량 판단 격리·만료·버전 검증 |
+| T-177 | 공정 관련 업체 Top5·불필요 증빙 질문 제거·B 문의 수락 | 완료 | api-developer / test-engineer | progressive-candidate-review | 서버644개 통과. 실제 Azure PP Top5·질문0개, 별도 A/B 웹 문의→답변→수락→운송·QR 입고→95kg 산출물·완료. 상세: process-discovery-validation-20261119.md |
 
 이 레포에서 구현하지 않음. 일정 파악과 연동 시점 확인용.
 
