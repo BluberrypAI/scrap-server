@@ -4205,7 +4205,7 @@
     {
       "key": "pet-flake",
       "material": "pet",
-      "label": "건조·금속 분리 후 PET 플레이크",
+      "label": "PET 플레이크(세척·건조 상태 확인 필요)",
       "input_forms": [
         "flake"
       ],

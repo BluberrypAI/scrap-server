@@ -465,7 +465,7 @@
     },
     "material": "pet",
     "input_form": "bottle→B flake",
-    "seconds": 9.07,
+    "seconds": 25.69,
     "selection": {
       "policy": "process-discovery-top-five-v1",
       "target": 5,
@@ -476,10 +476,10 @@
       ],
       "examined_count": 3,
       "eligible_count": 3,
-      "model_calls": 3,
-      "cache_hits": 3,
-      "public_cache_hits": 3,
-      "public_model_calls": 0,
+      "model_calls": 4,
+      "cache_hits": 0,
+      "public_cache_hits": 0,
+      "public_model_calls": 1,
       "lot_model_calls": 3,
       "deferred_keys": [],
       "distance_unknown_keys": [],
@@ -524,7 +524,7 @@
         "concern_categories": []
       }
     ],
-    "reference_checksum": "6b80703c2bd91f17a58539f71fb370596e45d4773f23e9376e1a768e15781d1e"
+    "reference_checksum": "dae37d5d1fb6a2763d672521e0da05f9dd4659d1026088abcb37c5b423b9d183"
   },
   "actual_web_repeat": {
     "model_calls": 0,
@@ -532,5 +532,13 @@
     "public_cache_hits": 3,
     "public_model_calls": 0,
     "lot_model_calls": 0
+  },
+  "final_label_check": {
+    "reference_checksum": "dae37d5d1fb6a2763d672521e0da05f9dd4659d1026088abcb37c5b423b9d183",
+    "review_reference_checksum": "dae37d5d1fb6a2763d672521e0da05f9dd4659d1026088abcb37c5b423b9d183",
+    "model_calls": 0,
+    "current_label": "PET 플레이크(세척·건조 상태 확인 필요)",
+    "targeted_tests_passed": 58,
+    "change": "PET flake label no longer asserts completed washing/drying; process keys and capabilities unchanged"
   }
 }
