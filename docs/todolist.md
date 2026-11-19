@@ -112,6 +112,7 @@
 | T-174 | 카카오 지도·주소 검색·인계 도로 경로 | 완료 | api-developer / test-engineer | pp-company-workflow, company-onboarding | 서버621·웹89·Ruff·Docker 빌드 통과. A→B 실호출 6.495km·164좌표와 기업 주소 검색/핀 웹 확인. [검증 범위](kakao-map-validation-20261118.md). 운영 미배포 |
 
 | T-175 | 도로거리순 5곳 우선 AI 검토·진행 orb·인수 요청 예정 경로 | 완료 | api-developer / test-engineer | progressive-candidate-review | 637개 통과, 실제 Azure/웹 A→B 예정 카카오 경로·Orb·캐시 확인. 기존 전체 후보 동기 API 호환 유지 |
+| T-176 | 업체 공개 근거 공용 캐시와 물량 검토 분리 | 진행 | api-developer / test-engineer | progressive-candidate-review | 새 물량에서 공개 자료를 재검토하지 않도록 PostgreSQL 저장·버전/만료 검증. 사진·물량 판단은 건별 격리 |
 
 이 레포에서 구현하지 않음. 일정 파악과 연동 시점 확인용.
 

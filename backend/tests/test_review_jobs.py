@@ -106,7 +106,7 @@ async def test_worker_runs_real_workflow_and_saves_selected_sites(
     async def engine_request(*args, **kwargs):
         return EngineResponse(200, detail())
 
-    async def nearby(packets, result, origin, settings, context, cache, report):
+    async def nearby(packets, result, origin, settings, context, cache, report, **kwargs):
         keys = [p["capability_key"] for p in packets[:5]]
         for option in result.options:
             option.facilities = [f for f in option.facilities if f.capability_key in keys]

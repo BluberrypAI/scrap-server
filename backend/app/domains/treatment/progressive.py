@@ -11,6 +11,7 @@ from app.domains.treatment.intake import (
     LotReview,
     PhotoObservation,
 )
+from app.domains.treatment.public_cache import public_finding, public_packet
 from app.domains.treatment.reference import digest
 from app.domains.treatment.road_distance import enrich_road_distances
 
@@ -22,7 +23,9 @@ class ReviewUnavailable(RuntimeError):
     pass
 
 
-async def review_nearby(packets, result, origin, settings, lot_context, cache, report):
+async def review_nearby(
+    packets, result, origin, settings, lot_context, cache, report, *, public_store=None
+):
     """All candidates remain accounted for; only selected nearby sites need AI work."""
     cache = deepcopy(cache)
     entries = cache.setdefault("candidates", {})
@@ -36,6 +39,9 @@ async def review_nearby(packets, result, origin, settings, lot_context, cache, r
         "target": TARGET,
         "model_calls": 0,
         "cache_hits": 0,
+        "public_cache_hits": 0,
+        "public_model_calls": 0,
+        "lot_model_calls": 0,
     }
 
     async def progress(phase):
@@ -76,6 +82,8 @@ async def review_nearby(packets, result, origin, settings, lot_context, cache, r
         if not settings.ai_base_url or not settings.scrap_intake_service_token.get_secret_value():
             raise ReviewUnavailable("AI 검토 연결 설정을 확인해 주세요.")
         config = await request("GET", "/review-config")
+        if public_store is not None and not config.get("public_signature"):
+            raise ReviewUnavailable("처리경로 AI의 공개 근거 캐시 버전을 업데이트해 주세요.")
         if config.get("version") != "progressive-review-v1":
             raise ReviewUnavailable("처리경로 AI를 새 버전으로 업데이트해 주세요.")
         await progress("photo_observation")
@@ -139,6 +147,15 @@ async def review_nearby(packets, result, origin, settings, lot_context, cache, r
                     break
                 for start in range(0, len(wave), 3):
                     keys = wave[start : start + 3]
+                    shared_public = {}
+                    if public_store is not None:
+                        await progress("public_evidence")
+                        shared_public = await public_store.get_many(
+                            [public_packet(packet_map[key]) for key in keys],
+                            config["public_signature"],
+                        )
+                        counters["public_cache_hits"] += len(shared_public)
+                        counters["cache_hits"] += len(shared_public)
                     pending = []
                     fingerprints = {}
                     for key in keys:
@@ -152,11 +169,50 @@ async def review_nearby(packets, result, origin, settings, lot_context, cache, r
                             }
                         )
                         previous = entries.get(key, {})
-                        if previous.get("key") == fingerprints[key]:
+                        public_current = public_store is None or (
+                            key in shared_public
+                            and previous.get("public_key")
+                            == digest(shared_public[key].model_dump())
+                        )
+                        if previous.get("key") == fingerprints[key] and public_current:
                             results[key] = IntakeResult.model_validate(previous["result"])
                             counters["cache_hits"] += 1
                         else:
                             pending.append(key)
+                    await progress("facility_review")
+                    public_results = None
+                    if pending and public_store is not None:
+                        await progress("public_evidence")
+                        public_packets = [public_packet(packet_map[key]) for key in pending]
+                        signature = config["public_signature"]
+                        public_results = {
+                            key: shared_public[key] for key in pending if key in shared_public
+                        }
+                        missing = [
+                            p for p in public_packets if p["capability_key"] not in public_results
+                        ]
+                        if missing:
+                            data = await request("POST", "/intake-reviews", {"candidates": missing})
+                            fresh = IntakeBatchResult.model_validate(data).results
+                            counters["public_model_calls"] += 1
+                            counters["model_calls"] += 1
+                            await public_store.put_many(missing, signature, fresh)
+                            public_results.update(fresh)
+                        usable = []
+                        for key in pending:
+                            value = public_results.get(
+                                key,
+                                IntakeResult(
+                                    status="model_unavailable",
+                                    next_check=packet_map[key]["next_check"],
+                                ),
+                            )
+                            if value.status == "reviewed" and value.finding == "form_mentioned":
+                                usable.append(key)
+                            else:
+                                results[key] = value
+                        pending = usable
+                        await progress("public_evidence")
                     await progress("facility_review")
                     if pending:
                         data = await request(
@@ -167,10 +223,24 @@ async def review_nearby(packets, result, origin, settings, lot_context, cache, r
                                 "lot_context": text_context,
                                 "photo_observations": observations,
                                 "observation_signature": config["photo_signature"],
+                                **(
+                                    {
+                                        "public_signature": config["public_signature"],
+                                        "public_findings": {
+                                            key: public_finding(
+                                                packet_map[key], public_results[key]
+                                            )
+                                            for key in pending
+                                        },
+                                    }
+                                    if public_results is not None
+                                    else {}
+                                ),
                             },
                         )
                         batch = IntakeBatchResult.model_validate(data)
                         counters["model_calls"] += len(pending)
+                        counters["lot_model_calls"] += len(pending)
                         for key in pending:
                             value = batch.results.get(
                                 key,
@@ -186,6 +256,11 @@ async def review_nearby(packets, result, origin, settings, lot_context, cache, r
                                 entries[key] = {
                                     "key": fingerprints[key],
                                     "result": value.model_dump(),
+                                    **(
+                                        {"public_key": digest(public_results[key].model_dump())}
+                                        if public_results is not None
+                                        else {}
+                                    ),
                                 }
                     for key in keys:
                         value = results[key]
@@ -218,6 +293,9 @@ async def review_nearby(packets, result, origin, settings, lot_context, cache, r
         "eligible_count": len(packets),
         "model_calls": counters["model_calls"],
         "cache_hits": counters["cache_hits"],
+        "public_cache_hits": counters["public_cache_hits"],
+        "public_model_calls": counters["public_model_calls"],
+        "lot_model_calls": counters["lot_model_calls"],
         "deferred_keys": [k for k in ordered if k not in results],
         "distance_unknown_keys": distance_unknown,
         "needs_evidence_keys": [k for k, r in results.items() if r.status == "needs_evidence"],

@@ -18,7 +18,7 @@ from sqlalchemy.exc import IntegrityError
 
 from app.core.config import get_settings
 from app.core.errors import AppError, ErrorCode
-from app.db.session import DbSession
+from app.db.session import DbSession, get_session_factory
 from app.domains.companies.models import Company
 from app.domains.diagnosis.client import Engine
 from app.domains.diagnosis.recycling import recycling_for_handoff, route_recycling
@@ -50,6 +50,7 @@ from app.domains.treatment.intake import (
 )
 from app.domains.treatment.material_scope import FINISH_STATES, LOT_STARTS
 from app.domains.treatment.process import next_step
+from app.domains.treatment.public_cache import PublicReviewStore
 from app.domains.treatment.reference import digest
 from app.domains.treatment.repository import read_reference, read_registry
 from app.domains.treatment.road_distance import distance_version, enrich_road_distances
@@ -658,7 +659,14 @@ async def run_candidate_review(
     selection = None
     if progressive:
         reviewed, selection, cache = await review_nearby(
-            packets, result, request.origin, get_settings(), lot_context, cache, notify
+            packets,
+            result,
+            request.origin,
+            get_settings(),
+            lot_context,
+            cache,
+            notify,
+            public_store=PublicReviewStore(get_session_factory()),
         )
     elif reusable and pending:
         # A repeated two-candidate timeout must not keep both candidates coupled.

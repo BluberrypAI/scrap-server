@@ -23,6 +23,7 @@ def pipeline(monkeypatch):
         "photos": 0,
         "keys": [],
         "batches": [],
+        "public_batches": [],
         "progress": [],
         "outcomes": {},
         "photo_signature": "photo-v1",
@@ -53,6 +54,7 @@ def pipeline(monkeypatch):
                     "version": "progressive-review-v1",
                     "photo_signature": state["photo_signature"],
                     "comparison_signature": state["comparison_signature"],
+                    "public_signature": state.get("public_signature", "public-v1"),
                 },
             )
         body = json.loads(request.content)
@@ -73,6 +75,22 @@ def pipeline(monkeypatch):
                     ],
                 },
             )
+        if "lot_context" not in body:
+            state["public_batches"].append(body["candidates"])
+            rows = {}
+            for p in body["candidates"]:
+                key = p["capability_key"]
+                finding = state.get("public_outcomes", {}).get(key, "form_mentioned")
+                rows[key] = {
+                    "status": "needs_evidence" if finding == "insufficient" else "reviewed",
+                    "finding": finding,
+                    "next_check": "공개 투입 근거",
+                    "source": {k: p["sources"][0][k] for k in ("publisher", "url", "locator")}
+                    if p["sources"] and finding != "insufficient"
+                    else None,
+                    "quote": "합성 공개 PP 투입 근거" if finding != "insufficient" else None,
+                }
+            return httpx.Response(200, json={"results": rows})
         assert not body["lot_context"]["photos"]  # Do not retransmit raw images for comparisons.
         keys = [p["capability_key"] for p in body["candidates"]]
         state["keys"].extend(keys)
@@ -115,7 +133,9 @@ def pipeline(monkeypatch):
         ],
     }
 
-    async def run(cache=None, values=None):
+    state["context"] = context
+
+    async def run(cache=None, values=None, public_store=None):
         async def report(phase, **data):
             state["progress"].append({"phase": phase, **data})
 
@@ -127,6 +147,7 @@ def pipeline(monkeypatch):
             context,
             cache or {},
             report,
+            public_store=public_store,
         )
 
     return state, packets, ordered_keys, run
@@ -214,3 +235,59 @@ async def test_unrouted_candidate_is_preserved_but_never_ranked_by_straight_line
     assert state["keys"] == keys[2:7]
     assert selection["distance_unknown_keys"] == keys[:2]
     assert selection["selected_keys"] == keys[2:7]
+
+
+async def test_new_lot_reuses_public_negatives_but_reviews_its_own_state(pipeline, session_factory):
+    from app.domains.treatment.public_cache import PublicReviewStore
+
+    state, packets, keys, run = pipeline
+    state["public_outcomes"] = {key: "insufficient" for key in keys[1:]}
+    store = PublicReviewStore(session_factory)
+    _, first, _ = await run(public_store=store)
+    assert first["lot_model_calls"] == 1 and first["public_model_calls"] > 0
+    assert first["selected_keys"] == keys[:1]
+    assert all("intake_answers" not in p for batch in state["public_batches"] for p in batch)
+    public_calls = len(state["public_batches"])
+    state["keys"].clear()
+    state["context"]["condition"] = "다른 기업의 새 물량이며 상태 설명도 다릅니다."
+    _, second, cache = await run(public_store=store)
+    assert len(state["public_batches"]) == public_calls
+    assert second["public_cache_hits"] == len(packets)
+    assert second["public_model_calls"] == 0 and second["lot_model_calls"] == 1
+    assert state["keys"] == keys[:1] and state["photos"] == 2
+    _, third, _ = await run(cache, public_store=store)
+    assert third["lot_model_calls"] == third["public_model_calls"] == third["model_calls"] == 0
+    # An expired public record must invalidate a still-matching private lot result too.
+    from app.domains.treatment.models import TreatmentSnapshot
+    from app.domains.treatment.public_cache import KIND
+
+    async with session_factory() as db:
+        row = await db.get(TreatmentSnapshot, KIND)
+        values = deepcopy(row.payload)
+        for value in values.values():
+            value["expires_at"] = "2000-01-01T00:00:00+00:00"
+        row.payload = values
+        await db.commit()
+    _, expired, _ = await run(cache, public_store=store)
+    assert expired["public_model_calls"] > 0 and expired["lot_model_calls"] == 1
+
+
+async def test_public_cache_changes_only_for_public_inputs(pipeline, session_factory):
+    from app.domains.treatment.public_cache import PublicReviewStore
+
+    state, packets, keys, run = pipeline
+    store = PublicReviewStore(session_factory)
+    await run(public_store=store)
+    updated = deepcopy(packets)
+    next(p for p in updated if p["capability_key"] == keys[0])["intake_answers"] = {
+        "private": "secret-answer"
+    }
+    _, reused, _ = await run(values=updated, public_store=store)
+    assert reused["public_model_calls"] == 0 and reused["public_cache_hits"] == 5
+    changed = next(p for p in updated if p["capability_key"] == keys[0])
+    changed["sources"][0]["summary"] += " 자료 개정."
+    _, refreshed, _ = await run(values=updated, public_store=store)
+    assert refreshed["public_model_calls"] == 1 and refreshed["public_cache_hits"] == 4
+    state["public_signature"] = "public-v2"
+    _, new_model, _ = await run(public_store=store)
+    assert new_model["public_model_calls"] == 2 and new_model["public_cache_hits"] == 0
