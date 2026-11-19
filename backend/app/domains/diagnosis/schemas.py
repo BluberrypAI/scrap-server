@@ -24,7 +24,8 @@ class CaseCreateIn(_Body):
 
 class QuickReplyIn(_Body):
     key: str = Field(examples=["material"])
-    kind: Literal["value", "unknown", "none_all", "expand", "retract"] = "value"
+    # some: 묶음 체크 방식(value = 고른 항목 키 목록). 엔진 docs/ui/ui-contract.md 4절
+    kind: Literal["value", "unknown", "none_all", "expand", "some", "retract"] = "value"
     value: Any = None
 
 
