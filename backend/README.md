@@ -219,6 +219,8 @@ uv run python -m app.domains.transport.dev_accounts
 
 ## 업체 검토 작업
 
+문진 연결 응답에는 selected_form/selected_form_label과 form_source/form_quote/form_turn_id를 추가했습니다. 기존 엔진의 대화에서 명확한 현재 형태만 받아 표시하고, 불명·복수·예정·부정 진술은 선택을 요구합니다. 기존 물량 등록 요청의 필수 input_form 형식은 유지하며 sender_confirmations에 형태 출처를 보존합니다. 문진 엔진·분류·새 DB 모델 변경은 없습니다.
+
 `POST /api/v1/workflow/lots/{id}/review-jobs`에 현재 revision을 보내면 202와 처리 건을 반환합니다. `review_progress`는 queued/running/completed/failed/interrupted 상태와 서버의 실제 단계·검토 수를 포함합니다. 기업별 권한 검사는 기존 처리 건과 같습니다.
 
 앱 lifespan의 워커가 DB에 저장된 작업을 처리합니다. 별도 큐 서비스나 DB 마이그레이션은 없습니다. 실행 중 중복 요청은 같은 작업을 반환하고, 오래된 물량 결과는 저장하지 않습니다. 재시작으로 lease가 만료된 작업은 interrupted로 남겨 사용자 재시도 시 완료 캐시를 재사용합니다. 새 웹 기능은 새 scrap-route와 함께 적용합니다.

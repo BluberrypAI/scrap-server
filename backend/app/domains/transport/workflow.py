@@ -350,6 +350,9 @@ async def create_lot(body: CreateLot, company_id: CompanyId, db: DbSession, engi
             "sender_confirmations": {
                 "solid_confirmed": body.solid_confirmed,
                 "material_detail": body.material_detail,
+                "input_form_source": ctx.form_source,
+                "input_form_quote": ctx.form_quote,
+                "input_form_turn_id": ctx.form_turn_id,
             },
             "completed": [],
             "current": {
