@@ -115,6 +115,8 @@
 | T-176 | 업체 공개 근거 공용 캐시와 물량 검토 분리 | 완료 | api-developer / test-engineer | progressive-candidate-review | 642개 통과. 실제 Azure 새 물량35.6초/웹39.75초, 공개 근거9건 재사용·공개 추가호출0회. 사진·물량 판단 격리·만료·버전 검증 |
 | T-177 | 공정 관련 업체 Top5·불필요 증빙 질문 제거·B 문의 수락 | 완료 | api-developer / test-engineer | progressive-candidate-review | 서버644개 통과. 실제 Azure PP Top5·질문0개, 별도 A/B 웹 문의→답변→수락→운송·QR 입고→95kg 산출물·완료. 상세: process-discovery-validation-20261119.md |
 | T-178 | 문진에서 말한 현재 형태 이어받기·중복 선택 제거 | 완료 | api-developer / test-engineer | diagnosis-form-handoff | server679·관련35 / web104. 실제 새 PP 문진→형태 자동 적용·수정→100kg 등록·사진 단계. 문진 엔진 변경 없음 |
+| T-179 | 확정 후 형태 선택 제거·팀원 업체 UI 통합·PE/PET/알루미늄캔 연결 점검 | 완료 | api-developer / test-engineer | diagnosis-form-handoff | server679·web104, 19코드/형태·카카오 및 실제 Astra PE5/PET5/캔3 확인. [결과](material-coverage-20261119.md) |
+| T-180 | 문진 엔진의 구조화 형태·분류 경우의 수 갱신 후 인계 재검사 | 대기 | 문진 담당자 / api-developer | diagnosis-form-handoff | 현재 develop에 세부 형태 출력 없음. 수신은 handoff.facts.input_form 우선, 누락 기본값 없음 |
 
 이 레포에서 구현하지 않음. 일정 파악과 연동 시점 확인용.
 
