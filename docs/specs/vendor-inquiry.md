@@ -12,3 +12,12 @@
 - 웹에서 미리보기·텍스트 복사·UTF-8 텍스트 저장. 자동 외부 전송 없음. 저장된 파일은 사용자가 관리한다. 서버에 추가 파일/DB 기록은 생성하지 않으며 응답은 no-store.
 
 검증: 타 기업 접근 차단, 과거 보유자 차단, 후보 바꿔치기·오래된 revision 차단, 사업장 변경 후 문의/인수요청 차단, AI 실패/제한 표시, B 산출물·최초 코드 구분, 사진/토큰 노출 없음, 문의 생성 후 로트·인계 불변, 실제 웹 미리보기와 저장 확인.
+
+## 메일 제목과 업체 답장 등록 (2026-11-20)
+
+메일 자동 발송·수신은 없다. 고객이 문의서를 자기 메일 앱으로 보내고, 받은 답장 내용·첨부파일을 해당 문의(물량 + 후보 capability_key)에 직접 등록한다.
+
+- inquiry-packet 응답에 `subject`(메일 제목, 120자 이내, 한 줄) 추가.
+- GET/POST /api/v1/workflow/lots/{id}/inquiries/{capability_key}/replies. POST는 multipart(text 5000자 이하, received_on YYYY-MM-DD 미래 불가, file). text·file 중 하나 필수, 문의당 50건. 현재 업체 검토 결과에 있는 후보만, 진행 중(ready/processed) 물량에서만 등록. 조회는 등록한 기업 본인 것만.
+- 파일: 10MB 이하, PDF·JPEG·PNG·WebP·XLSX·DOCX·HWP·HWPX, 확장자와 앞부분 서명이 맞아야 하며 mime은 서버가 정함.
+- GET /api/v1/workflow/inquiry-replies/{id}/file (attachment, nosniff, no-store), DELETE /api/v1/workflow/inquiry-replies/{id} (204). 등록한 기업만.

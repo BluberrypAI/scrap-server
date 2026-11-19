@@ -1,6 +1,6 @@
 import json
 import uuid
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from typing import Literal
 
 from pydantic import (
@@ -108,3 +108,17 @@ class SupplierSiteRead(BaseModel):
     label: str
     synthetic: bool
     current: SupplierPolicyRead | None
+
+
+class InquiryReplyFile(BaseModel):
+    name: str
+    mime: str
+    size: int
+
+
+class InquiryReplyRead(BaseModel):
+    id: uuid.UUID
+    text: str | None
+    received_on: date | None
+    file: InquiryReplyFile | None
+    created_at: datetime

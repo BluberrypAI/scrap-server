@@ -1,5 +1,6 @@
 """Prepare a human-readable inquiry; never send it or imply intake approval."""
 
+import re
 from datetime import UTC, datetime
 
 from pydantic import BaseModel
@@ -9,6 +10,7 @@ class InquiryPacketRead(BaseModel):
     version: str = "vendor-inquiry-v1"
     generated_at: str
     filename: str
+    subject: str
     text: str
 
 
@@ -133,6 +135,14 @@ def inquiry_packet(
         "현재 허가·잔여 용량·가격·반입 승인을 보장하지 않습니다.",
         "SCRAP 내 인계 진행은 업체의 수신 계정 연결과 최종 수락 이후에 가능합니다.",
     ]
+    subject = re.sub(
+        r"\s+",
+        " ",
+        f"[반입조건 문의] {company.company_name} - {material_label} {current['mass_kg']:g}kg",
+    ).strip()
     return InquiryPacketRead(
-        generated_at=now, filename="SCRAP-vendor-inquiry.txt", text="\n".join(lines)
+        generated_at=now,
+        filename="SCRAP-vendor-inquiry.txt",
+        subject=subject[:120],
+        text="\n".join(lines),
     )

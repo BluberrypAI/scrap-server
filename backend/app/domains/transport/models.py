@@ -1,14 +1,16 @@
 import uuid
-from datetime import datetime
+from datetime import date, datetime
 
 from sqlalchemy import (
     JSON,
     Boolean,
+    Date,
     DateTime,
     ForeignKey,
     Integer,
     LargeBinary,
     String,
+    Text,
     UniqueConstraint,
 )
 from sqlalchemy.orm import Mapped, mapped_column
@@ -100,6 +102,22 @@ class WorkflowPhoto(Base, TimestampMixin):
     stage: Mapped[int] = mapped_column(Integer)
     mime: Mapped[str] = mapped_column(String(30))
     content: Mapped[bytes] = mapped_column(LargeBinary)
+
+
+class WorkflowInquiryReply(Base, TimestampMixin):
+    __tablename__ = "workflow_inquiry_replies"
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    lot_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("workflow_lots.id", ondelete="CASCADE"), index=True
+    )
+    company_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("companies.id"))
+    capability_key: Mapped[str] = mapped_column(String(100), index=True)
+    text: Mapped[str | None] = mapped_column(Text)
+    received_on: Mapped[date | None] = mapped_column(Date)
+    file_name: Mapped[str | None] = mapped_column(String(200))
+    mime: Mapped[str | None] = mapped_column(String(100))
+    size: Mapped[int | None] = mapped_column(Integer)
+    content: Mapped[bytes | None] = mapped_column(LargeBinary)
 
 
 class SupplierIntakePolicy(Base, TimestampMixin):

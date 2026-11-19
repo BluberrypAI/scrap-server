@@ -13,7 +13,7 @@ from typing import Literal
 from fastapi import APIRouter, File, Form, Response, UploadFile
 from PIL import Image, UnidentifiedImageError
 from pydantic import BaseModel, ConfigDict, Field
-from sqlalchemy import or_, select
+from sqlalchemy import func, or_, select
 from sqlalchemy.exc import IntegrityError
 
 from app.core.config import get_settings
@@ -25,9 +25,11 @@ from app.domains.diagnosis.recycling import recycling_for_handoff, route_recycli
 from app.domains.diagnosis.router import CompanyId
 from app.domains.diagnosis.schemas import TreatmentSelectionIn
 from app.domains.diagnosis.treatment import treatment_context
+from app.domains.transport import inquiry_replies as replies
 from app.domains.transport.inquiry import InquiryPacketRead, inquiry_packet
 from app.domains.transport.models import (
     WorkflowFacilityAccount,
+    WorkflowInquiryReply,
     WorkflowLot,
     WorkflowOffer,
     WorkflowPhoto,
@@ -40,6 +42,7 @@ from app.domains.transport.photo_conflicts import (
 )
 from app.domains.transport.recipient_accounts import with_current_recipients
 from app.domains.transport.road_route import RoadRouteRead, driving_segment, handoff_legs
+from app.domains.transport.schemas import InquiryReplyRead
 from app.domains.transport.supplier_policy import current_policies
 from app.domains.treatment.conditions import attach_answers, published_conditions, questionnaire
 from app.domains.treatment.directory import project
@@ -1057,6 +1060,144 @@ async def prepare_inquiry(
         ),
         source_dates={s.url: s.checked_date for s in ref.sources},
     )
+
+
+def reply_view(row):
+    return InquiryReplyRead(
+        id=row.id,
+        text=row.text,
+        received_on=row.received_on,
+        file={"name": row.file_name, "mime": row.mime, "size": row.size} if row.file_name else None,
+        created_at=row.created_at,
+    )
+
+
+def reply_key(capability_key):
+    if not replies.KEY_PATTERN.match(capability_key):
+        fail("업체 후보 키 형식이 올바르지 않습니다.", 422)
+
+
+async def reply_list(db, lot_id, cid, capability_key):
+    rows = await db.scalars(
+        select(WorkflowInquiryReply)
+        .where(
+            WorkflowInquiryReply.lot_id == lot_id,
+            WorkflowInquiryReply.company_id == cid,
+            WorkflowInquiryReply.capability_key == capability_key,
+        )
+        .order_by(WorkflowInquiryReply.created_at.desc(), WorkflowInquiryReply.id)
+    )
+    return [reply_view(r) for r in rows]
+
+
+@router.get("/lots/{key}/inquiries/{capability_key}/replies", response_model=list[InquiryReplyRead])
+async def list_inquiry_replies(
+    key: uuid.UUID, capability_key: str, company_id: CompanyId, db: DbSession, response: Response
+):
+    response.headers["Cache-Control"] = "private, no-store"
+    cid = uuid.UUID(company_id)
+    reply_key(capability_key)
+    await lot_for(db, key, cid)
+    return await reply_list(db, key, cid, capability_key)
+
+
+@router.post(
+    "/lots/{key}/inquiries/{capability_key}/replies", response_model=list[InquiryReplyRead]
+)
+async def add_inquiry_reply(
+    key: uuid.UUID,
+    capability_key: str,
+    company_id: CompanyId,
+    db: DbSession,
+    response: Response,
+    text: str | None = Form(None),
+    received_on: str | None = Form(None),
+    file: UploadFile | None = File(None),
+):
+    response.headers["Cache-Control"] = "private, no-store"
+    cid = uuid.UUID(company_id)
+    reply_key(capability_key)
+    text = (text or "").strip() or None
+    if text and len(text) > replies.MAX_TEXT:
+        fail(f"답장 내용은 {replies.MAX_TEXT}자 이하로 적어 주세요.", 422)
+    try:
+        day = replies.parse_received_on(received_on)
+    except ValueError as exc:
+        fail(str(exc), 422)
+    raw = name = mime = None
+    if file is not None and (file.filename or ""):
+        raw = await file.read(replies.MAX_FILE_BYTES + 1)
+        if len(raw) > replies.MAX_FILE_BYTES:
+            fail("첨부파일은 10MB 이하로 올려 주세요.", 413)
+        try:
+            name, mime = replies.check_file(file.filename, raw)
+        except ValueError as exc:
+            fail(str(exc), 422)
+    if text is None and raw is None:
+        fail("답장 내용이나 첨부파일 중 하나는 있어야 합니다.", 422)
+    lot = await lot_for(db, key, cid, lock=True)
+    active(lot, cid, {"ready", "processed"})
+    if capability_key not in (lot.review or {}).get("results", {}):
+        fail("현재 물량의 업체 검토 결과에 없는 후보입니다.", 404)
+    count = await db.scalar(
+        select(func.count())
+        .select_from(WorkflowInquiryReply)
+        .where(
+            WorkflowInquiryReply.lot_id == key,
+            WorkflowInquiryReply.company_id == cid,
+            WorkflowInquiryReply.capability_key == capability_key,
+        )
+    )
+    if count >= replies.MAX_REPLIES:
+        fail(f"한 문의에는 답장을 {replies.MAX_REPLIES}건까지 등록할 수 있습니다.")
+    db.add(
+        WorkflowInquiryReply(
+            lot_id=key,
+            company_id=cid,
+            capability_key=capability_key,
+            text=text,
+            received_on=day,
+            file_name=name,
+            mime=mime,
+            size=len(raw) if raw is not None else None,
+            content=raw,
+            created_at=datetime.now(UTC),
+        )
+    )
+    await db.commit()
+    return await reply_list(db, key, cid, capability_key)
+
+
+async def own_reply(db, reply_id, cid):
+    row = await db.get(WorkflowInquiryReply, reply_id)
+    if not row or row.company_id != cid:
+        fail("등록한 답장을 찾을 수 없습니다.", 404)
+    await lot_for(db, row.lot_id, cid)
+    return row
+
+
+@router.get("/inquiry-replies/{reply_id}/file")
+async def inquiry_reply_file(reply_id: uuid.UUID, company_id: CompanyId, db: DbSession):
+    row = await own_reply(db, reply_id, uuid.UUID(company_id))
+    if row.content is None:
+        fail("첨부파일이 없습니다.", 404)
+    return Response(
+        row.content,
+        media_type=row.mime,
+        headers={
+            "Content-Disposition": replies.attachment_disposition(row.file_name),
+            "Cache-Control": "private, no-store",
+            "X-Content-Type-Options": "nosniff",
+        },
+    )
+
+
+@router.delete("/inquiry-replies/{reply_id}", status_code=204)
+async def delete_inquiry_reply(reply_id: uuid.UUID, company_id: CompanyId, db: DbSession):
+    row = await own_reply(db, reply_id, uuid.UUID(company_id))
+    await db.delete(row)
+    await db.commit()
+    return Response(status_code=204)
 
 
 @router.post("/lots/{key}/photo-conflict-resolution")
