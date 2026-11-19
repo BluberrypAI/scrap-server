@@ -97,11 +97,19 @@
 | T-164 | 두 후보 시간초과 격리·B→C 업체조건부터 QR 입고 웹 검증 | 완료 | api-developer / test-engineer | supplier-intake-policy | 업체당 호출·로트 3후보 배치. 미완료2 재검토 완료·원본 보존. C 등록조건→B 산출물→Azure9/9→B/C 문의→조건부→QR 입고·A 조회 웹 통과. 서버531·route566(72생략). [결과·범위](supplier-bc-validation-20261117.md) |
 | T-165 | C 최종 산출물·완료와 A 전체 이력 공유 웹 검증 | 완료 | test-engineer | supplier-intake-policy | 같은 합성 PP 건에서 C 펠렛900kg·완료 근거 기록→완료→A 재로그인. 이력19건·공정2건·완료 목록·근거 조회, A 수정 버튼 없음 확인. 실행 코드 변경 없음. [결과·범위](supplier-bc-validation-20261117.md#후속-c-최종-산출물--완료--a-재로그인) |
 | T-166 | 확정 판정으로 법정 서식(제6·12·5호) HWPX·PDF 작성본 API | 완료 | api-developer | legal-forms | 미리보기·파일 API(hwpx·pdf), 작성일·받는 기관장·신고인·서명·날인(한글·PDF, 본인 확인 필수)·사용자 입력 분류번호·성질상태, 검토 전 분류번호·추정 사실 비움, 처리방법 코드 검사. 웹 화면 연결, 검토 전 분류번호 정책, PDF 글꼴 파일, Word 지원은 남음 |
+| T-170 | 사진·설명 불일치 사용자 확인·수정 후 인수 요청 | 완료 | api-developer / test-engineer | photo-conflict-resolution | 서버539·웹69 통과. 실제 Azure 수정 전/후 각9건 검토, 웹 차단→확인/수정→재검토→가상 C 인수 요청 성공. 분류번호 유지. [결과·한계](photo-conflict-validation-20261117.md) |
 | T-167 | 운영 시연용 업체 연결 설정 (DEMO_FACILITY_BINDINGS) | 진행 | api-developer | supplier-intake-policy | prod는 기본 차단 유지, 설정을 켜면 synthetic 연결을 인계 수신 계정으로 허용. dev_accounts는 운영에서 --email·--facility 직접 지정. 실제 반입 승인 근거 아님(T-163과 별개). 발표 후 끔 |
 | T-168 | 운영 문진 엔진 대기 시간 정렬 (30초 → 200초) | 진행 | api-developer | diagnosis-engine-integration | prod는 bicep에 값이 없어 코드 기본값 30초로 동시 문진 503 재발 가능. 기본값 200초(모델 40초×4회+여유, App Service 상한 약 230초 미만). bicep 값 명시는 scrap-infra 같은 이름 브랜치. 429 백오프는 diagnosis 후속 |
 | T-502 | 배포 대상 결정 (App Service 기본안) 및 배포 | 대기 | 사람 | - | T-008 이후 |
 
 ## 참고: 다른 레포 담당 작업 (기획서 9장)
+
+### 로컬 신규 계정 시연 보완 (2026-11-18)
+
+| ID | 작업 | 상태 | 담당 | spec | 비고 |
+| --- | --- | --- | --- | --- | --- |
+| T-173 | 수락·운송 시작·QR 입고 단계 분리 | 완료 | api-developer / test-engineer | pp-company-workflow | 신규 A/B 가입·PP 문진·사진·Azure 검토·수락·운송·QR 입고 웹 확인. B 산출물이 A에 자동 반영됨. 최종 산출물 뒤 사진/후속 검토 반복 제거. 로컬만 반영 |
+| T-174 | 카카오 지도·주소 검색·인계 도로 경로 | 완료 | api-developer / test-engineer | pp-company-workflow, company-onboarding | 서버621·웹89·Ruff·Docker 빌드 통과. A→B 실호출 6.495km·164좌표와 기업 주소 검색/핀 웹 확인. [검증 범위](kakao-map-validation-20261118.md). 운영 미배포 |
 
 이 레포에서 구현하지 않음. 일정 파악과 연동 시점 확인용.
 
@@ -117,3 +125,7 @@
 - T-160 재질별 후속 검사: A 33조합+B 산출물 61조합의 DB·실도로 조회와 웹 지도 함수 94검사 통과. 5재질 인증 API A→B→C 자동 회귀 추가, 서버514 통과. B 실호출 Azure23응답(근거확인6/추가근거17), 도로 출발지 B 확인. [결과와 한계](material-road-validation-20261117.md).
 - T-160 위치 보강 완료: 누락30사업장의 실제 주소와 건물 대표점을 대조·적재. A33/B61 실도로·웹 지도 함수94검사, 서버518검사 통과. 철 B→C 지도3곳과 B 출발지 확인. [위치 근거와 최신 결과](facility-location-validation-20261117.md).
 - 후속 데이터 보강 대기: PE 일반 베일 반입 근거 미확보(T-149). 철 등 실제 수신 계정 연결과 현재 반입 조건 확인이 필요. 임의 처리능력이나 다른 형태 업체로 지도 5개를 채우지 않음.
+
+- T-170 후속 (2026-11-18, 로컬): Azure가 `not_waste`로 판별한 사진은 모든 업체 인수 요청과 확인/설명 수정 우회를 차단. 사진 교체(현재 단계·기업·revision 검사), 과거 사진 이력 보존, 교체 후 재검토 연결. 웹 실호출 캐릭터 사진 차단 확인. [검증 기록](wrong-photo-validation-20261118.md). 운영 미배포.
+
+- T-146 후속 (2026-11-18, 완료): 기업 가입·정보 수정의 주소/장소명 검색→지도 핀→기존 좌표 저장 연결. Photon 키 없이 실제 도로명 검색·미검색 안내·가입·좌표 수정·재조회 웹 확인. 서버612·웹86·Ruff 통과. 공개 서비스의 국내 상세 주소 누락·운영 다중 워커 호출제한은 전용 서비스로 보강 필요. 운영 미배포.

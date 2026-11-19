@@ -83,6 +83,17 @@ def existing_files() -> set[Path]:
     return {p for target in TARGETS for p in (DST / target).rglob("*") if p.is_file()}
 
 
+def file_matches(path: Path, expected: bytes) -> bool:
+    if not path.exists():
+        return False
+    actual = path.read_bytes()
+    # Git autocrlf changes Markdown line endings on Windows, not its content.
+    if path.suffix == ".md":
+        actual = actual.replace(b"\r\n", b"\n")
+        expected = expected.replace(b"\r\n", b"\n")
+    return actual == expected
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--check", action="store_true", help="수정하지 않고 동기화 여부만 검사")
@@ -94,7 +105,7 @@ def main() -> int:
         return 1
 
     stale = existing_files() - files.keys()
-    changed = [p for p, content in files.items() if not p.exists() or p.read_bytes() != content]
+    changed = [p for p, content in files.items() if not file_matches(p, content)]
 
     if args.check:
         if stale or changed:

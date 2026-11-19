@@ -10,7 +10,7 @@ from copy import deepcopy
 from datetime import UTC, datetime, timedelta
 from typing import Literal
 
-from fastapi import APIRouter, File, Response, UploadFile
+from fastapi import APIRouter, File, Form, Response, UploadFile
 from PIL import Image, UnidentifiedImageError
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import or_, select
@@ -32,6 +32,12 @@ from app.domains.transport.models import (
     WorkflowOffer,
     WorkflowPhoto,
 )
+from app.domains.transport.photo_conflicts import (
+    PhotoConflictResolution,
+    conflict_gate,
+    resolve_conflict,
+)
+from app.domains.transport.road_route import RoadRouteRead, driving_segment, handoff_legs
 from app.domains.transport.supplier_policy import current_policies
 from app.domains.treatment.conditions import attach_answers, published_conditions, questionnaire
 from app.domains.treatment.directory import project
@@ -253,6 +259,7 @@ async def view(db, lot, cid):
         "can_manage": lot.current_company_id == cid,
         "data": lot.data,
         "review": lot.review,
+        "photo_conflict_gate": conflict_gate(lot),
         "output_states": [
             {"key": s.key, "label": s.label}
             for s in states
@@ -260,7 +267,12 @@ async def view(db, lot, cid):
         ],
         "terminal_states": [s.key for s in states if s.key in FINISH_STATES.get(material, set())],
         "photos": [
-            {"id": str(p.id), "stage": p.stage, "url": f"/api/v1/workflow/photos/{p.id}"}
+            {
+                "id": str(p.id),
+                "stage": p.stage,
+                "url": f"/api/v1/workflow/photos/{p.id}",
+                "active": str(p.id) not in lot.data.get("excluded_photo_ids", []),
+            }
             for p in photos
         ],
         "offers": [
@@ -274,6 +286,9 @@ async def view(db, lot, cid):
                 "can_respond_conditions": cid == o.sender_id and o.status == "conditional",
                 "can_receive": cid == o.recipient_id and o.status == "accepted",
                 "can_issue_qr": cid == o.sender_id and o.status == "accepted",
+                "can_dispatch": cid == o.sender_id
+                and o.status == "accepted"
+                and not o.data.get("dispatch"),
             }
             for o in offers
         ],
@@ -370,6 +385,22 @@ async def list_lots(company_id: CompanyId, db: DbSession):
     return [await view(db, lot, cid) for lot in lots]
 
 
+@router.get("/lots/{key}/road-route", response_model=RoadRouteRead)
+async def road_route(key: uuid.UUID, company_id: CompanyId, db: DbSession, response: Response):
+    response.headers["Cache-Control"] = "private, no-store"
+    lot = await lot_for(db, key, uuid.UUID(company_id))
+    offers = list(
+        await db.scalars(
+            select(WorkflowOffer)
+            .where(WorkflowOffer.lot_id == key)
+            .order_by(WorkflowOffer.created_at)
+        )
+    )
+    legs = handoff_legs(lot, offers)
+    await db.rollback()
+    return RoadRouteRead(segments=[await driving_segment(*leg) for leg in legs])
+
+
 @router.get("/lots/{key}")
 async def get_lot(key: uuid.UUID, company_id: CompanyId, db: DbSession, response: Response):
     response.headers["Cache-Control"] = "no-store"
@@ -379,7 +410,12 @@ async def get_lot(key: uuid.UUID, company_id: CompanyId, db: DbSession, response
 
 @router.post("/lots/{key}/photos")
 async def add_photo(
-    key: uuid.UUID, company_id: CompanyId, db: DbSession, file: UploadFile = File(...)
+    key: uuid.UUID,
+    company_id: CompanyId,
+    db: DbSession,
+    file: UploadFile = File(...),
+    replace_photo_id: uuid.UUID | None = Form(None),
+    revision: int | None = Form(None),
 ):
     cid = uuid.UUID(company_id)
     raw = await file.read(3 * 1024 * 1024 + 1)
@@ -405,15 +441,33 @@ async def add_photo(
             )
         )
     )
-    if len(count) >= 4:
+    excluded = list(lot.data.get("excluded_photo_ids", []))
+    if replace_photo_id is not None:
+        if revision is None:
+            fail("사진 교체에는 현재 버전이 필요합니다.", 422)
+        version(lot, revision)
+        target = await db.get(WorkflowPhoto, replace_photo_id)
+        if (
+            not target
+            or target.lot_id != key
+            or target.stage != stage
+            or target.company_id != cid
+            or str(target.id) in excluded
+        ):
+            fail("교체할 현재 단계 사진을 찾을 수 없습니다.", 404)
+        excluded.append(str(target.id))
+    if sum(str(photo_id) not in excluded for photo_id in count) >= 4:
         fail("단계당 사진은 4장까지 올릴 수 있습니다.")
+    if replace_photo_id is not None:
+        lot.data = {**lot.data, "excluded_photo_ids": excluded}
+
     db.add(
         WorkflowPhoto(
             lot_id=key, company_id=cid, stage=stage, mime="image/jpeg", content=encoded.getvalue()
         )
     )
     lot.review = None
-    stamp(lot, "사진 첨부", cid)
+    stamp(lot, "사진 교체" if replace_photo_id else "사진 첨부", cid)
     await db.commit()
     return await view(db, lot, cid)
 
@@ -545,6 +599,7 @@ async def candidates(
             "data_url": "data:image/jpeg;base64," + base64.b64encode(p.content).decode("ascii"),
         }
         for p in photos
+        if str(p.id) not in lot.data.get("excluded_photo_ids", [])
     ]
     # Candidate-specific sender answers are untrusted observations, not facility rules.
     stage_answers = lot.data.get("intake_answers", {}).get(str(len(lot.data["completed"])), {})
@@ -878,6 +933,27 @@ async def prepare_inquiry(
     )
 
 
+@router.post("/lots/{key}/photo-conflict-resolution")
+async def photo_conflict_resolution(
+    key: uuid.UUID, body: PhotoConflictResolution, company_id: CompanyId, db: DbSession
+):
+    cid = uuid.UUID(company_id)
+    lot = await lot_for(db, key, cid, lock=True)
+    active(lot, cid, {"ready", "processed"})
+    version(lot, body.revision)
+    record = resolve_conflict(lot, cid, body)
+    stamp(
+        lot,
+        "사진·설명 수정 후 재검토 필요"
+        if body.action == "correct"
+        else "사진·설명 불일치 사용자 확인",
+        cid,
+        {"resolution": record},
+    )
+    await db.commit()
+    return await view(db, lot, cid)
+
+
 @router.post("/lots/{key}/offers")
 async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSession):
     cid = uuid.UUID(company_id)
@@ -885,6 +961,13 @@ async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSess
     active(lot, cid, {"ready", "processed"})
     version(lot, body.revision)
     _, _, found = await current_review_candidate(db, lot, cid, body.capability_key)
+    if conflict_gate(lot)["invalid_photos"]:
+        fail("폐기물과 무관한 사진을 실제 물량 사진으로 교체하고 다시 검토해 주세요.")
+    if conflict_gate(lot)["blocked"]:
+        fail(
+            "사진과 상태 설명이 다릅니다. 설명을 수정해 재검토하거나 "
+            "확인 사유를 남긴 뒤 인수를 요청해 주세요."
+        )
     review = lot.review or {}
     option, facility = found
     supplier_policy = (facility.get("supplier_policy") or {}).get("policy") or {}
@@ -921,12 +1004,16 @@ async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSess
         recipient_id=binding.company_id,
         data={
             "current": deepcopy(lot.data["current"]),
+            "origin": deepcopy(review.get("origin")),
             "option": option,
             "facility": facility,
             "ai_review": check,
+            "photo_conflict_resolution": deepcopy(conflict_gate(lot)["resolution"]),
             "intake_conditions": deepcopy(facility.get("intake_conditions")),
             "synthetic": binding.synthetic,
-            "photo_ids": [str(p) for p in photos],
+            "photo_ids": [
+                str(p) for p in photos if str(p) not in lot.data.get("excluded_photo_ids", [])
+            ],
         },
     )
     db.add(row)
@@ -1079,6 +1166,25 @@ async def condition_responses(
         }
     row.data = data
     stamp(lot, "조건 확인 자료 제출 · 수신기업 최종 확인 대기", cid)
+    await db.commit()
+    return await view(db, lot, cid)
+
+
+@router.post("/offers/{key}/dispatch")
+async def dispatch(key: uuid.UUID, body: Version, company_id: CompanyId, db: DbSession):
+    cid = uuid.UUID(company_id)
+    row, lot = await offer_and_lot(db, key, cid)
+    version(lot, body.revision)
+    if row.sender_id != cid:
+        fail("발송 기업만 운송 시작을 기록할 수 있습니다.", 403)
+    if row.status != "accepted" or lot.status != "accepted" or row.data.get("dispatch"):
+        fail("수락 후 아직 출발하지 않은 요청만 운송을 시작할 수 있습니다.")
+    data = deepcopy(row.data)
+    data["dispatch"] = {"at": datetime.now(UTC).isoformat(), "company_id": str(cid)}
+    row.data = data
+    step = await db.get(RouteStep, row.route_step_id)
+    step.status = "운송 중"
+    stamp(lot, "운송 시작", cid, {"offer_id": str(row.id)})
     await db.commit()
     return await view(db, lot, cid)
 

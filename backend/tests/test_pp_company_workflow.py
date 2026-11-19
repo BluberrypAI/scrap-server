@@ -273,6 +273,48 @@ async def save_output(req, lot, role, state, mass):
     return res.json()
 
 
+async def test_dispatch_requires_sender_acceptance_and_preserves_qr_receipt(setup_flow):
+    req, create, actors, _ = setup_flow
+    lot = await choose(req, await create("shredded"), "A", "veolia-doksan-hwaseong")
+    oid = lot["offers"][-1]["id"]
+    path = f"/offers/{oid}/dispatch"
+    assert (await req("A", path, {"revision": lot["revision"]})).status_code == 409
+    lot = (
+        await req(
+            "C",
+            f"/offers/{oid}/decision",
+            {
+                "revision": lot["revision"],
+                "accept": True,
+                "note": "합성 시연 수락",
+                "scope_checked": True,
+                "intake_checked": True,
+            },
+        )
+    ).json()
+    assert (await req("C", path, {"revision": lot["revision"]})).status_code == 403
+    assert (await req("A", path, {"revision": lot["revision"] - 1})).status_code == 409
+    result = await req("A", path, {"revision": lot["revision"]})
+    assert result.status_code == 200, result.text
+    lot = result.json()
+    assert lot["current_company_id"] == actors["A"][1]
+    assert lot["offers"][-1]["data"]["dispatch"]["company_id"] == actors["A"][1]
+    assert not lot["offers"][-1]["can_dispatch"]
+    assert (await req("A", path, {"revision": lot["revision"]})).status_code == 409
+    qr = (await req("A", f"/offers/{oid}/qr", {"revision": lot["revision"]})).json()
+    receipt = await req(
+        "C",
+        f"/offers/{oid}/receive",
+        {
+            "revision": qr["revision"],
+            "token": qr["token"],
+        },
+    )
+    assert receipt.status_code == 200, receipt.text
+    assert receipt.json()["current_company_id"] == actors["C"][1]
+    assert receipt.json()["status"] == "processing"
+
+
 @pytest.mark.parametrize("chain", [False, True])
 async def test_complete_direct_and_two_hops(setup_flow, chain, db, monkeypatch):
     req, create, actors, packets = setup_flow
