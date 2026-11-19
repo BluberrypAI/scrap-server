@@ -1,6 +1,6 @@
 import uuid
 from datetime import UTC, datetime
-from typing import Annotated, Any
+from typing import Annotated, Any, Literal
 
 from pydantic import (
     AliasChoices,
@@ -180,3 +180,22 @@ class CompanyHistoryPage(BaseModel):
 
     items: list[CompanyHistoryItem]
     paging_info: PagingInfo = Field(alias="pagingInfo")
+
+
+class LocationSearch(BaseModel):
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+    query: str = Field(min_length=3, max_length=200, pattern=r"^[^\x00-\x1f\x7f]+$")
+
+
+class LocationResult(BaseModel):
+    label: str
+    address: str
+    latitude: float = Field(ge=33, le=39.4, allow_inf_nan=False)
+    longitude: float = Field(ge=124.5, le=132.35, allow_inf_nan=False)
+    precision: Literal["address", "place", "area"]
+
+
+class LocationSearchResult(BaseModel):
+    provider: str = "Photon / OpenStreetMap"
+    attribution: str = "© OpenStreetMap contributors"
+    items: list[LocationResult]

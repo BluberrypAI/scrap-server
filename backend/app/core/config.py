@@ -61,6 +61,10 @@ class Settings(BaseSettings):
     osrm_demo_enabled: bool = False
     kakao_mobility_rest_api_key: SecretStr = SecretStr("")
 
+    # 사업장 주소 검색. 공개 Photon은 소규모·단일 워커용, 운영은 자체 제공자 URL 권장.
+    company_geocoding_enabled: bool = True
+    company_geocoding_url: str = "https://photon.komoot.io/api/"
+
     # 문진 엔진(scrap-diagnosis) /internal/v1. 비워 두면 문진 API는 503 ENGINE_UNAVAILABLE
     diagnosis_engine_url: str = ""
     # 엔진과 같은 값 (엔진 ENGINE_SERVICE_TOKEN)

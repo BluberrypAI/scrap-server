@@ -1,5 +1,7 @@
 # SCRAP
 
+**11/18 로컬 지도 전환:** 카카오 지도 SDK·주소 검색·자동차 길찾기를 연결했습니다. 인계 지도에는 직선 대신 길찾기 도로선을 표시합니다. 기업 위치 선택과 업체 지도도 같은 지도 연결을 사용하며, REST 키는 서버에만 둡니다. 실제 차량 GPS 추적을 뜻하지 않습니다.
+
 **업체 반입조건·문의 응답:** 연결된 업체 계정이 자기 사업장의 반입조건을 등록하고, 배출기업과 문의·답변 → 조건부 수락 → 자료 제출·확인 → 최종 수락 → QR 입고로 이어집니다. 업체가 직접 입력한 안내이며 허가 인증이 아닙니다. 적용 전 DB 마이그레이션이 필요합니다. [사용법·검증 범위](docs/supplier-intake-validation-20261117.md)
 
 **11/17 최신 보강:** 사업장 좌표 누락 30곳을 채우고 B 사업장 기준 실제 도로거리·지도 상위 5곳을 연결했습니다. 미가입 업체에는 **업체에 보낼 문의서**를 준비할 수 있습니다. 물량·AI 확인사항·업체별 질문을 복사/저장하며 자동 발송은 하지 않습니다. [사용 흐름·검증·남은 판매 준비](docs/vendor-inquiry-validation-20261117.md)
@@ -195,6 +197,9 @@ scrap-server/
 | POST | /api/treatment/intake-review(s) | 업체 반입 검토 |
 | POST | /api/treatment/facility-web-search | 업체 공개 웹 조사 |
 | GET·PUT·PATCH·POST | /api/v1/transport/** | 현장 인계 기록 |
+| POST | /api/v1/workflow/lots/{key}/photo-conflict-resolution | 사진·상태 설명 불일치의 사용자 확인 또는 수정 |
+
+사진과 설명이 다르면 모든 업체 인수 요청을 먼저 막습니다. 사용자는 사유와 기존 문진 내용이 같다는 확인을 남기거나, 설명을 수정한 뒤 AI 검토를 다시 실행할 수 있습니다. 분류번호는 자동 변경하지 않으며 재질·발생 공정·유해성 답변이 달라지면 재문진을 안내합니다. 확인 기록은 수신 업체에 함께 전달되고 최종 수락은 업체가 합니다. [명세](docs/specs/photo-conflict-resolution.md)
 
 오류는 모든 API에서 `{"code", "message", "details"}` 형식으로 반환함. 오류 코드 목록: [docs/specs/error-response.md](docs/specs/error-response.md)
 
@@ -219,3 +224,6 @@ scrap-server/
 3. AI 에이전트를 쓰면 [AGENTS.md](AGENTS.md)의 규칙과 작업 종료 루프를 따름
 
 자세한 규칙: [docs/team-conventions.md](docs/team-conventions.md)
+
+## 사업장 주소 검색
+기업 등록과 수정에서 `POST /api/v1/companies/location-search`로 주소·장소를 검색하고, 선택한 좌표를 기존 기업 정보 API로 저장합니다. 로그인 후 기업 등록 전에도 사용합니다. `COMPANY_GEOCODING_ENABLED=false`로 외부 검색을 끌 수 있고 `COMPANY_GEOCODING_URL`로 자체 Photon을 지정할 수 있습니다. 기본 공개 Photon은 소규모·단일 워커용(초당1회·캐시24시간)이며 국내 주소 누락과 서비스 장애가 가능합니다. 여러 서버로 운영할 때는 자체 서비스와 공유 호출 제한이 필요합니다. 검색 결과는 사용자가 지도에서 확인하며 정확한 건물/출입구를 보장하지 않습니다. [명세](docs/specs/company-onboarding.md).
