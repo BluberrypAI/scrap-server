@@ -38,6 +38,7 @@ from app.domains.transport.photo_conflicts import (
     conflict_gate,
     resolve_conflict,
 )
+from app.domains.transport.recipient_accounts import with_current_recipients
 from app.domains.transport.road_route import RoadRouteRead, driving_segment, handoff_legs
 from app.domains.transport.supplier_policy import current_policies
 from app.domains.treatment.conditions import attach_answers, published_conditions, questionnaire
@@ -271,7 +272,7 @@ async def view(db, lot, cid):
         "companies": names,
         "can_manage": lot.current_company_id == cid,
         "data": public_data,
-        "review": lot.review,
+        "review": await with_current_recipients(db, lot.review),
         "review_progress": lot.data.get("review_job"),
         "photo_conflict_gate": conflict_gate(lot),
         "output_states": [

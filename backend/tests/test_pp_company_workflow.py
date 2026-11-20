@@ -309,13 +309,28 @@ def combined_output(lot, state="pet-flake", action="hold", **changes):
 @pytest.mark.parametrize(
     "action,status", [("complete", "completed"), ("forward", "processed"), ("hold", "stored")]
 )
-async def test_output_and_disposition_are_saved_together(setup_flow, db, action, status):
+@pytest.mark.parametrize(
+    "material,code,form,site,state",
+    [
+        ("pp", "51-03-01", "shredded", "hcr-paju", "pp-pellet"),
+        ("pe", "51-03-01", "shredded", "hcr-paju", "pe-pellet"),
+        ("pet", "51-03-01", "bottle", "saerom-hwaseong-one", "pet-flake"),
+        ("aluminium", "51-29-03", "can", "novelis-yeongju", "al-sheet"),
+    ],
+)
+async def test_output_and_disposition_are_saved_together(
+    setup_flow, db, action, status, material, code, form, site, state
+):
     from sqlalchemy import func, select
 
     from app.domains.wastes.models import WasteCompletionSnapshot
 
-    req, lot = await pet_processing(setup_flow, db)
-    response = await req("B", f"/lots/{lot['id']}/output", combined_output(lot, action=action))
+    req, create, actors, _ = setup_flow
+    await use_handoff(db, actors, material, code, [(site, "B")])
+    lot = await accept_receive(req, await choose(req, await create(form), "A", site), "A", "B")
+    response = await req(
+        "B", f"/lots/{lot['id']}/output", combined_output(lot, state=state, action=action)
+    )
     assert response.status_code == 200, response.text
     saved = response.json()
     assert saved["status"] == status
@@ -405,6 +420,59 @@ async def test_nonterminal_output_cannot_complete_and_hold_can_resume(setup_flow
     assert resumed.status_code == 200, resumed.text
     assert resumed.json()["status"] == "processed"
     assert len(resumed.json()["data"]["completed"]) == 1
+
+
+async def test_late_recipient_binding_updates_cached_candidates_without_ai_rerun(
+    setup_flow, db, monkeypatch
+):
+    from app.core.config import get_settings
+    from app.domains.companies.models import Company
+    from app.domains.transport.models import WorkflowLot
+
+    req, create, actors, packets = setup_flow
+    lot = await create("shredded")
+    lot = (await req("A", f"/lots/{lot['id']}/candidates", {"revision": lot["revision"]})).json()
+
+    def target(value):
+        return next(
+            f
+            for o in value["review"]["next_step"]["options"]
+            for f in o["facilities"]
+            if f["facility_key"] == "hcr-paju"
+        )
+
+    assert target(lot)["recipient"] is None
+    binding = WorkflowFacilityAccount(
+        facility_key="hcr-paju",
+        company_id=uuid.UUID(actors["D"][1]),
+        synthetic=True,
+        verification_reference="synthetic account linked after AI review",
+    )
+    db.add(binding)
+    await db.commit()
+    fresh = (await req("A", f"/lots/{lot['id']}", method="GET")).json()
+    assert target(fresh)["recipient"] == {"id": actors["D"][1], "name": "D", "synthetic": True}
+    assert fresh["revision"] == lot["revision"] and len(packets) == 1
+    stored = await db.get(WorkflowLot, uuid.UUID(lot["id"]))
+    assert target({"review": stored.review})["recipient"] is None
+    company = await db.get(Company, uuid.UUID(actors["D"][1]))
+    company.company_name = "새 수신 기업명"
+    await db.commit()
+    fresh = (await req("A", f"/lots/{lot['id']}", method="GET")).json()
+    assert target(fresh)["recipient"]["name"] == "새 수신 기업명"
+    binding.company_id = uuid.UUID(actors["A"][1])
+    await db.commit()
+    assert target((await req("A", f"/lots/{lot['id']}", method="GET")).json())["recipient"] is None
+    binding.company_id = uuid.UUID(actors["D"][1])
+    await db.commit()
+    monkeypatch.setattr(get_settings(), "app_env", "prod")
+    monkeypatch.setattr(get_settings(), "demo_facility_bindings", False)
+    assert target((await req("A", f"/lots/{lot['id']}", method="GET")).json())["recipient"] is None
+    monkeypatch.setattr(get_settings(), "app_env", "test")
+    await db.delete(binding)
+    await db.commit()
+    assert target((await req("A", f"/lots/{lot['id']}", method="GET")).json())["recipient"] is None
+    assert len(packets) == 1
 
 
 @pytest.mark.parametrize("finish_at_b", [False, True])
