@@ -54,12 +54,11 @@ FORM_STATES = {
 FORM_CODES = {
     (material, form): ("51-03-01",) for material, forms in FORM_STATES.items() for form in forms
 }
-for _material in ("pp", "pe"):
-    for _form in ("scrap", "rigid", "film", "bale"):
+# Diagnosis v2 distinguishes packaging by use. The confirmed waste code is
+# carried through while the physical form selects the existing process.
+for _material in ("pp", "pe", "pet"):
+    for _form in FORM_STATES[_material]:
         FORM_CODES[_material, _form] = ("51-03-01", "51-03-07")
-for _form in ("bottle", "bale"):
-    FORM_CODES["pet", _form] = ("51-03-01", "51-03-07")
-FORM_CODES["pe", "film-bale"] = ("51-03-01", "51-03-07")
 FORM_CODES.update(
     {
         ("pvc", "wallpaper"): ("51-03-03",),
