@@ -1,0 +1,119 @@
+{
+  "date": "2026-11-20",
+  "scope": "Synthetic B processed PE pellet fixture; actual Azure public/lot review and Kakao road API. No new diagnosis/receipt E2E.",
+  "lot": "57b23c23-4fea-4859-921f-cb042e60b0cf",
+  "progress": {
+    "id": "efe658c3-f220-4d51-8d2d-211ba43771d5",
+    "status": "completed",
+    "phase": "completed",
+    "revision": 1,
+    "company_id": "9de5a4ff-ed84-4404-b6b1-9ea4c1b0cbd9",
+    "completed": 1,
+    "total": 1,
+    "selected": 1,
+    "target": 5,
+    "model_calls": 2,
+    "cache_hits": 0,
+    "started_at": "2026-11-20T06:01:32.972778+00:00",
+    "lease_until": "2026-11-20T06:04:28.227136+00:00",
+    "public_cache_hits": 0,
+    "public_model_calls": 1,
+    "lot_model_calls": 1,
+    "phase_history": [
+      {
+        "phase": "road_distance",
+        "at": "2026-11-20T06:01:33.854333+00:00"
+      },
+      {
+        "phase": "photo_observation",
+        "at": "2026-11-20T06:01:33.977863+00:00"
+      },
+      {
+        "phase": "public_evidence",
+        "at": "2026-11-20T06:01:33.981171+00:00"
+      },
+      {
+        "phase": "facility_review",
+        "at": "2026-11-20T06:01:33.986929+00:00"
+      },
+      {
+        "phase": "public_evidence",
+        "at": "2026-11-20T06:01:33.990642+00:00"
+      },
+      {
+        "phase": "facility_review",
+        "at": "2026-11-20T06:01:40.333387+00:00"
+      },
+      {
+        "phase": "saving",
+        "at": "2026-11-20T06:01:58.122571+00:00"
+      },
+      {
+        "phase": "completed",
+        "at": "2026-11-20T06:01:58.227150+00:00"
+      }
+    ]
+  },
+  "selection": {
+    "policy": "process-discovery-top-five-v1",
+    "target": 5,
+    "selected_keys": [
+      "bgf-hwaseong--pe-compound"
+    ],
+    "examined_count": 1,
+    "eligible_count": 1,
+    "model_calls": 2,
+    "cache_hits": 0,
+    "public_cache_hits": 0,
+    "public_model_calls": 1,
+    "lot_model_calls": 1,
+    "deferred_keys": [],
+    "distance_unknown_keys": [],
+    "needs_evidence_keys": [],
+    "unavailable_keys": [],
+    "restricted_keys": [],
+    "mismatch_keys": [],
+    "other_options": []
+  },
+  "candidates": [
+    {
+      "facility_key": "bgf-hwaseong",
+      "label": "BGF에코사이클 컴파운드사업장",
+      "evidence_basis": "site_role_hypothesis",
+      "road_distance_km": 14.112,
+      "distance_rank": 1,
+      "ai": {
+        "status": "reviewed",
+        "finding": "insufficient",
+        "next_check": "이 사업장에서 해당 재질과 형태를 처리하는지 먼저 확인하세요.",
+        "source": null,
+        "quote": null,
+        "evidence_gaps": [
+          "site_scope_unverified"
+        ],
+        "dispatch_approved": false,
+        "lot_review": {
+          "status": "reviewed",
+          "photo_observations": [],
+          "concerns": [],
+          "questions": [],
+          "unknowns": [
+            "정확한 재질·화학 성분·유해성·순도·수분율은 사진으로 확정할 수 없습니다.",
+            "중량·형태·상태 설명·입력된 순도는 사용자 기록이며 AI가 측정·인증한 값이 아닙니다.",
+            "사진이 전체 물량을 대표하는지, 업체의 현재 허가·반입 규격·처리 여력은 별도 확인이 필요합니다.",
+            "사진이 없어 외관 상태는 확인하지 못했습니다."
+          ],
+          "recipient_confirmation_required": true,
+          "observation_method": "no_photo"
+        },
+        "process_match": "matched",
+        "process_source": {
+          "publisher": "BGF에코머티리얼즈",
+          "url": "https://www.bgfecomaterials.com/kr/company/business/recycle",
+          "locator": "사업영역 / 제품 / 계열사·사업소"
+        },
+        "process_quote": "선별·세척·압출 재생·컴파운딩과 r-PP·r-PE·r-PET 제품, 인천·예산·화성 사업장 역할을 소개한다."
+      }
+    }
+  ]
+}

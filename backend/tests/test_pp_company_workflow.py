@@ -273,6 +273,260 @@ async def save_output(req, lot, role, state, mass):
     return res.json()
 
 
+async def pet_processing(setup_flow, db):
+    req, create, actors, _ = setup_flow
+    await use_handoff(
+        db,
+        actors,
+        "pet",
+        "51-03-01",
+        [
+            ("saerom-hwaseong-one", "B"),
+            ("dy-pyeongtaek", "C"),
+        ],
+    )
+    lot = await choose(req, await create("bottle"), "A", "saerom-hwaseong-one")
+    return req, await accept_receive(req, lot, "A", "B")
+
+
+def combined_output(lot, state="pet-flake", action="hold", **changes):
+    return {
+        "revision": lot["revision"],
+        "state_key": state,
+        "mass_kg": 90,
+        "condition": "합성 PET 처리 결과",
+        "evidence": "TEST-OUTPUT-DISPOSITION",
+        "next_action": action,
+        **(
+            {"intended_use": "시험 재생 원료", "completion_confirmed": True}
+            if action == "complete"
+            else {}
+        ),
+        **changes,
+    }
+
+
+@pytest.mark.parametrize(
+    "action,status", [("complete", "completed"), ("forward", "processed"), ("hold", "stored")]
+)
+@pytest.mark.parametrize(
+    "material,code,form,site,state",
+    [
+        ("pp", "51-03-01", "shredded", "hcr-paju", "pp-pellet"),
+        ("pe", "51-03-01", "shredded", "hcr-paju", "pe-pellet"),
+        ("pet", "51-03-01", "bottle", "saerom-hwaseong-one", "pet-flake"),
+        ("aluminium", "51-29-03", "can", "novelis-yeongju", "al-sheet"),
+    ],
+)
+async def test_output_and_disposition_are_saved_together(
+    setup_flow, db, action, status, material, code, form, site, state
+):
+    from sqlalchemy import func, select
+
+    from app.domains.wastes.models import WasteCompletionSnapshot
+
+    req, create, actors, _ = setup_flow
+    await use_handoff(db, actors, material, code, [(site, "B")])
+    lot = await accept_receive(req, await choose(req, await create(form), "A", site), "A", "B")
+    response = await req(
+        "B", f"/lots/{lot['id']}/output", combined_output(lot, state=state, action=action)
+    )
+    assert response.status_code == 200, response.text
+    saved = response.json()
+    assert saved["status"] == status
+    assert saved["data"]["current"]["next_action"] == action
+    assert len(saved["data"]["completed"]) == 1
+    assert saved["data"]["current"]["purity_percent"] is None
+    assert await db.scalar(select(func.count()).select_from(WasteCompletionSnapshot)) == int(
+        action == "complete"
+    )
+    if action == "hold":
+        assert (
+            await req("B", f"/lots/{lot['id']}/candidates", {"revision": saved["revision"]})
+        ).status_code == 409
+        assert (
+            await req("B", f"/lots/{lot['id']}/review-jobs", {"revision": saved["revision"]})
+        ).status_code == 409
+
+
+@pytest.mark.parametrize(
+    "changes",
+    [{"state_key": "pet-pellet"}, {"completion_confirmed": False}, {"intended_use": None}],
+)
+async def test_invalid_combined_completion_does_not_partially_record_output(
+    setup_flow, db, changes
+):
+    req, lot = await pet_processing(setup_flow, db)
+    response = await req(
+        "B", f"/lots/{lot['id']}/output", combined_output(lot, action="complete", **changes)
+    )
+    assert response.status_code == 409
+    saved = (await req("B", f"/lots/{lot['id']}", method="GET")).json()
+    assert saved["status"] == "processing"
+    assert saved["revision"] == lot["revision"]
+    assert saved["data"]["completed"] == []
+    assert saved["data"]["current"]["state_key"] == "pet-bottle"
+
+
+async def test_nonterminal_output_cannot_complete_and_hold_can_resume(setup_flow, db):
+    req, create, _, _ = setup_flow
+    lot = await accept_receive(
+        req, await choose(req, await create(), "A", "sarom-hwaseong-2"), "A", "B"
+    )
+    response = await req(
+        "B",
+        f"/lots/{lot['id']}/output",
+        combined_output(lot, state="pp-shredded", action="complete"),
+    )
+    assert response.status_code == 409
+    response = await req(
+        "B", f"/lots/{lot['id']}/output", combined_output(lot, state="pp-shredded")
+    )
+    assert response.status_code == 200, response.text
+    stored = response.json()
+    assert stored["status"] == "stored"
+    denied = await req(
+        "B",
+        f"/lots/{lot['id']}/output-action",
+        {
+            "revision": stored["revision"],
+            "next_action": "complete",
+            "intended_use": "시험 재생 원료",
+            "completion_confirmed": True,
+        },
+    )
+    assert denied.status_code == 409
+    unchanged = (await req("B", f"/lots/{lot['id']}", method="GET")).json()
+    assert unchanged["status"] == "stored"
+    assert unchanged["revision"] == stored["revision"]
+    assert unchanged["data"]["current"]["next_action"] == "hold"
+    denied = await req(
+        "A",
+        f"/lots/{lot['id']}/output-action",
+        {"revision": stored["revision"], "next_action": "forward"},
+    )
+    assert denied.status_code == 403
+    denied = await req(
+        "B",
+        f"/lots/{lot['id']}/output-action",
+        {"revision": stored["revision"] - 1, "next_action": "forward"},
+    )
+    assert denied.status_code == 409
+    resumed = await req(
+        "B",
+        f"/lots/{lot['id']}/output-action",
+        {"revision": stored["revision"], "next_action": "forward"},
+    )
+    assert resumed.status_code == 200, resumed.text
+    assert resumed.json()["status"] == "processed"
+    assert len(resumed.json()["data"]["completed"]) == 1
+
+
+async def test_late_recipient_binding_updates_cached_candidates_without_ai_rerun(
+    setup_flow, db, monkeypatch
+):
+    from app.core.config import get_settings
+    from app.domains.companies.models import Company
+    from app.domains.transport.models import WorkflowLot
+
+    req, create, actors, packets = setup_flow
+    lot = await create("shredded")
+    lot = (await req("A", f"/lots/{lot['id']}/candidates", {"revision": lot["revision"]})).json()
+
+    def target(value):
+        return next(
+            f
+            for o in value["review"]["next_step"]["options"]
+            for f in o["facilities"]
+            if f["facility_key"] == "hcr-paju"
+        )
+
+    assert target(lot)["recipient"] is None
+    binding = WorkflowFacilityAccount(
+        facility_key="hcr-paju",
+        company_id=uuid.UUID(actors["D"][1]),
+        synthetic=True,
+        verification_reference="synthetic account linked after AI review",
+    )
+    db.add(binding)
+    await db.commit()
+    fresh = (await req("A", f"/lots/{lot['id']}", method="GET")).json()
+    assert target(fresh)["recipient"] == {"id": actors["D"][1], "name": "D", "synthetic": True}
+    assert fresh["revision"] == lot["revision"] and len(packets) == 1
+    stored = await db.get(WorkflowLot, uuid.UUID(lot["id"]))
+    assert target({"review": stored.review})["recipient"] is None
+    company = await db.get(Company, uuid.UUID(actors["D"][1]))
+    company.company_name = "새 수신 기업명"
+    await db.commit()
+    fresh = (await req("A", f"/lots/{lot['id']}", method="GET")).json()
+    assert target(fresh)["recipient"]["name"] == "새 수신 기업명"
+    binding.company_id = uuid.UUID(actors["A"][1])
+    await db.commit()
+    assert target((await req("A", f"/lots/{lot['id']}", method="GET")).json())["recipient"] is None
+    binding.company_id = uuid.UUID(actors["D"][1])
+    await db.commit()
+    monkeypatch.setattr(get_settings(), "app_env", "prod")
+    monkeypatch.setattr(get_settings(), "demo_facility_bindings", False)
+    assert target((await req("A", f"/lots/{lot['id']}", method="GET")).json())["recipient"] is None
+    monkeypatch.setattr(get_settings(), "app_env", "test")
+    await db.delete(binding)
+    await db.commit()
+    assert target((await req("A", f"/lots/{lot['id']}", method="GET")).json())["recipient"] is None
+    assert len(packets) == 1
+
+
+@pytest.mark.parametrize("finish_at_b", [False, True])
+async def test_stored_pet_can_continue_to_c_or_complete_without_new_output_step(
+    setup_flow, db, finish_at_b
+):
+    from sqlalchemy import func, select
+
+    from app.domains.wastes.models import WasteCompletionSnapshot
+
+    req, lot = await pet_processing(setup_flow, db)
+    stored = (await req("B", f"/lots/{lot['id']}/output", combined_output(lot))).json()
+    if finish_at_b:
+        response = await req(
+            "B",
+            f"/lots/{lot['id']}/output-action",
+            {
+                "revision": stored["revision"],
+                "next_action": "complete",
+                "intended_use": "시험 재생 원료",
+                "completion_confirmed": True,
+            },
+        )
+        assert response.status_code == 200, response.text
+        saved = response.json()
+        assert saved["status"] == "completed" and len(saved["data"]["completed"]) == 1
+        assert await db.scalar(select(func.count()).select_from(WasteCompletionSnapshot)) == 1
+        return
+    resumed = await req(
+        "B",
+        f"/lots/{lot['id']}/output-action",
+        {"revision": stored["revision"], "next_action": "forward"},
+    )
+    lot = await accept_receive(
+        req, await choose(req, resumed.json(), "B", "dy-pyeongtaek"), "B", "C"
+    )
+    response = await req(
+        "C",
+        f"/lots/{lot['id']}/output",
+        combined_output(lot, state="pet-pellet", action="complete", mass_kg=85),
+    )
+    assert response.status_code == 200, response.text
+    saved = response.json()
+    assert saved["status"] == "completed" and len(saved["data"]["completed"]) == 2
+    assert await db.scalar(select(func.count()).select_from(WasteCompletionSnapshot)) == 1
+    assert (
+        await req(
+            "C",
+            f"/lots/{lot['id']}/output-action",
+            {"revision": saved["revision"], "next_action": "hold"},
+        )
+    ).status_code == 409
+
+
 async def test_dispatch_requires_sender_acceptance_and_preserves_qr_receipt(setup_flow):
     req, create, actors, _ = setup_flow
     lot = await choose(req, await create("shredded"), "A", "veolia-doksan-hwaseong")
@@ -850,7 +1104,12 @@ async def test_pe_film_shredded_output_is_not_final(setup_flow, db):
     ).status_code == 409
     lot = (await req("B", f"/lots/{lot['id']}/candidates", {"revision": lot["revision"]})).json()
     options = {o["transition_key"] for o in lot["review"]["next_step"]["options"]}
-    assert options == {"pe-clean", "pe-shredded-to-pellet", "pe-flake-repelletise"}
+    assert options == {
+        "pe-clean",
+        "pe-shredded-to-pellet",
+        "pe-flake-repelletise",
+        "pe-public-pellet-manufacture",
+    }
 
 
 @pytest.mark.parametrize(

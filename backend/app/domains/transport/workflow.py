@@ -32,11 +32,13 @@ from app.domains.transport.models import (
     WorkflowOffer,
     WorkflowPhoto,
 )
+from app.domains.transport.output_actions import complete_lot, completion_error
 from app.domains.transport.photo_conflicts import (
     PhotoConflictResolution,
     conflict_gate,
     resolve_conflict,
 )
+from app.domains.transport.recipient_accounts import with_current_recipients
 from app.domains.transport.road_route import RoadRouteRead, driving_segment, handoff_legs
 from app.domains.transport.supplier_policy import current_policies
 from app.domains.treatment.conditions import attach_answers, published_conditions, questionnaire
@@ -60,7 +62,6 @@ from app.domains.wastes.models import (
     QrFieldCheck,
     RouteStep,
     Waste,
-    WasteCompletionSnapshot,
     WasteStatus,
 )
 
@@ -151,7 +152,18 @@ class Receipt(Version):
     token: str = Field(min_length=20, max_length=160)
 
 
-class Output(Version):
+class OutputDecision(Body):
+    next_action: Literal["complete", "forward", "hold"] | None = None
+    completion_reference: str | None = Field(default=None, min_length=3, max_length=300)
+    intended_use: str | None = Field(default=None, min_length=3, max_length=500)
+    completion_confirmed: bool = Field(default=False, strict=True)
+
+
+class OutputAction(Version, OutputDecision):
+    next_action: Literal["complete", "forward", "hold"]
+
+
+class Output(Version, OutputDecision):
     # 로트 재질의 등록 상태인지는 참조 자료로 따로 확인한다
     state_key: str = Field(pattern=r"^[a-z0-9-]{1,64}$")
     mass_kg: float = Field(gt=0, le=1e9, allow_inf_nan=False)
@@ -260,7 +272,7 @@ async def view(db, lot, cid):
         "companies": names,
         "can_manage": lot.current_company_id == cid,
         "data": public_data,
-        "review": lot.review,
+        "review": await with_current_recipients(db, lot.review),
         "review_progress": lot.data.get("review_job"),
         "photo_conflict_gate": conflict_gate(lot),
         "output_states": [
@@ -1348,7 +1360,25 @@ async def output(key: uuid.UUID, body: Output, company_id: CompanyId, db: DbSess
     if not row or body.mass_kg > row.data["current"]["mass_kg"]:
         fail("입고 중량을 초과한 산출물은 별도 물질수지 확인이 필요합니다.")
     expected = row.data["option"]["output_state"]["key"]
-    record = body.model_dump(exclude={"revision"})
+    if body.next_action == "complete":
+        if expected != body.state_key:
+            fail(
+                "예정 산출물과 실제 기록이 달라 완료할 수 없습니다. 처리 결과를 먼저 확인해 주세요."
+            )
+        error = completion_error(
+            lot.data["initial"]["material"],
+            body.state_key,
+            body.completion_reference or body.evidence,
+            body.intended_use,
+            body.completion_confirmed,
+        )
+        if error:
+            fail(error)
+    record = body.model_dump(
+        exclude={"revision", "completion_reference", "intended_use", "completion_confirmed"}
+    )
+    if body.next_action is None:
+        record.pop("next_action")
     data = deepcopy(lot.data)
     data["current"] = record
     data["completed"].append(
@@ -1370,6 +1400,47 @@ async def output(key: uuid.UUID, body: Output, company_id: CompanyId, db: DbSess
     step.output = body.state_key
     step.actual_date = datetime.now(UTC).date()
     stamp(lot, "실제 산출물 기록", cid)
+    if lot.status == "processed" and body.next_action is not None:
+        await apply_output_action(db, lot, cid, body)
+    await db.commit()
+    return await view(db, lot, cid)
+
+
+async def apply_output_action(db, lot, cid, decision):
+    if decision.next_action == "complete":
+        reference = decision.completion_reference or lot.data["current"]["evidence"]
+        error = completion_error(
+            lot.data["initial"]["material"],
+            lot.data["current"]["state_key"],
+            reference,
+            decision.intended_use,
+            decision.completion_confirmed,
+        )
+        if error:
+            fail(error)
+    data = deepcopy(lot.data)
+    data["current"]["next_action"] = decision.next_action
+    lot.data = data
+    if decision.next_action == "complete":
+        stamp(
+            lot,
+            "처리 완료 확인",
+            cid,
+            {"reference": reference, "intended_use": decision.intended_use},
+        )
+        await complete_lot(db, lot)
+    else:
+        lot.status = "stored" if decision.next_action == "hold" else "processed"
+        stamp(lot, "보관 중으로 기록" if decision.next_action == "hold" else "추가 가공 선택", cid)
+
+
+@router.post("/lots/{key}/output-action")
+async def output_action(key: uuid.UUID, body: OutputAction, company_id: CompanyId, db: DbSession):
+    cid = uuid.UUID(company_id)
+    lot = await lot_for(db, key, cid, lock=True)
+    active(lot, cid, {"processed", "stored"})
+    version(lot, body.revision)
+    await apply_output_action(db, lot, cid, body)
     await db.commit()
     return await view(db, lot, cid)
 
@@ -1380,34 +1451,18 @@ async def finish(key: uuid.UUID, body: Finish, company_id: CompanyId, db: DbSess
     lot = await lot_for(db, key, cid, lock=True)
     active(lot, cid, {"processed"})
     version(lot, body.revision)
-    finish_states = FINISH_STATES.get(lot.data["initial"]["material"], set())
-    if not body.confirmed or lot.data["current"]["state_key"] not in finish_states:
-        fail(
-            "실제 최종 산출물(PP·PE 펠렛·컴파운드, PET 플레이크·펠렛, "
-            "알루미늄 판재·잉곳)과 완료 확인이 필요합니다. "
-            "파쇄품만으로 종료하지 않습니다."
-        )
-    lot.status = "completed"
+    error = completion_error(
+        lot.data["initial"]["material"],
+        lot.data["current"]["state_key"],
+        body.reference,
+        body.intended_use,
+        body.confirmed,
+    )
+    if error:
+        fail(error)
     stamp(
         lot, "처리 완료 확인", cid, {"reference": body.reference, "intended_use": body.intended_use}
     )
-    now = datetime.now(UTC)
-    waste = await db.get(Waste, lot.id)
-    waste.status = WasteStatus.COMPLETED
-    waste.completed_at = now
-    # Waste.quantity_value is the originally registered mass, not the final yield.
-    owner = await db.get(Company, lot.owner_company_id)
-    db.add(
-        WasteCompletionSnapshot(
-            waste_id=lot.id,
-            company_name=owner.company_name,
-            site_name=owner.site_name,
-            site_address=owner.site_address,
-            completed_at=now,
-        )
-    )
-    steps = await db.scalars(select(RouteStep).where(RouteStep.waste_id == lot.id))
-    for step in steps:
-        step.status = "완료"
+    await complete_lot(db, lot)
     await db.commit()
     return await view(db, lot, cid)

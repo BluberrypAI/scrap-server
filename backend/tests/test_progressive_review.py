@@ -324,3 +324,19 @@ async def test_unknown_or_mismatched_process_is_not_inquiry_candidate(pipeline, 
     _, selection, _ = await run(public_store=PublicReviewStore(session_factory))
     assert selection["selected_keys"] == keys[2:7]
     assert keys[1] in selection["mismatch_keys"]
+
+
+async def test_current_state_change_invalidates_lot_judgment_but_keeps_public_cache(
+    pipeline, session_factory
+):
+    from app.domains.treatment.public_cache import PublicReviewStore
+
+    state, _, keys, run = pipeline
+    store = PublicReviewStore(session_factory)
+    _, _, cache = await run(public_store=store)
+    state["keys"].clear()
+    state["context"].update(state_key="pp-shredded", condition="세척 전 파쇄물", mass_kg=900)
+    _, changed, _ = await run(cache, public_store=store)
+    assert changed["public_model_calls"] == 0 and changed["public_cache_hits"] == 5
+    assert changed["lot_model_calls"] == 5 and state["keys"] == keys[:5]
+    assert state["photos"] == 1

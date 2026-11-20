@@ -1,5 +1,11 @@
 # Re:Source AI Backend
 
+2026-11-20 업체 탐색 기준: 회사 자료에 해당 소재 취급·제품이 있으면 문의 후보로 포함하고 도로거리순으로 표시합니다. 사업장별 설비 입증까지 요구하지 않으며 실제 공정·반입조건은 업체가 대화 후 수락합니다. 기존 `evidence_basis`는 보존합니다. [기준·실호출](../docs/company-material-discovery-20261120.md).
+
+처리 결과 통합 등록: `/api/v1/workflow/lots/{id}/output`에서 `next_action`을 complete/forward/hold로 함께 보내면 완료/추가 가공/보관 중을 한 번에 기록합니다. complete는 `intended_use`와 `completion_confirmed=true`가 필요하며 `completion_reference` 생략 시 같은 산출물의 `evidence`를 사용합니다. `stored`는 보관 중이며 `/lots/{id}/output-action`으로 같은 산출물의 진행 방향을 변경합니다. 기존 `/output` 필드만 보내는 요청과 `/finish`는 호환 유지합니다. [명세](../docs/specs/output-disposition-card-sync.md).
+
+후보의 `review.next_step.options[].facilities[].recipient`는 조회 시 현재 계정 연결·기업명을 반영합니다. 검토 후 새 업체 계정을 연결해도 AI 재검토 없이 요청 버튼이 갱신됩니다. 연결 삭제·운영 synthetic 제한은 유지하며 AI/공정 캐시와 revision은 바꾸지 않습니다. [네 소재 웹 검증과 데이터 공백](../docs/material-disposition-validation-20261120.md).
+
 FastAPI 기반 백엔드 API. **팀 표준은 A(Docker)** 이며, B는 Docker 없이 빠르게 확인할 때의 보조 방법임.
 
 업체별 반입 확인을 추가했습니다. 후보별 질문·답변 → AI 재검토 → 수신 업체 조건 제시 → 발송 업체 자료 제출 → 수신 업체 최종 확인 → QR 입고 순서입니다. 전국 명부의 다른 업체도 조회·확인 목록 저장이 가능합니다. [API 명세](../docs/specs/intake-conditions-local.md)와 [검증 결과·남은 데이터](../docs/verification/intake-conditions-20261114.md)를 참고하세요. AI의 `intake_answers` 지원 버전을 먼저 적용해야 합니다. 기존 JSON 업무 기록에 저장하므로 새 마이그레이션은 없습니다.

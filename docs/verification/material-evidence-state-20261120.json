@@ -1,0 +1,544 @@
+{
+  "checked_date": "2026-11-20",
+  "environment": "local Docker scrap-full-review; actual Astra/Kakao; synthetic mass/condition; no external transfers",
+  "reference_checksum": "6b80703c2bd91f17a58539f71fb370596e45d4773f23e9376e1a768e15781d1e",
+  "sites": 64,
+  "capabilities": 132,
+  "runs": [
+    {
+      "material": "pe",
+      "input_form": "bale",
+      "seconds": 9.9,
+      "selection": {
+        "policy": "process-discovery-top-five-v1",
+        "target": 5,
+        "selected_keys": [
+          "daeyoung-nonsan--pe-compressed-to-resin"
+        ],
+        "examined_count": 1,
+        "eligible_count": 1,
+        "model_calls": 1,
+        "cache_hits": 1,
+        "public_cache_hits": 1,
+        "public_model_calls": 0,
+        "lot_model_calls": 1,
+        "deferred_keys": [],
+        "distance_unknown_keys": [],
+        "needs_evidence_keys": [],
+        "unavailable_keys": [],
+        "restricted_keys": [],
+        "mismatch_keys": []
+      },
+      "processes": [
+        "pe-compressed-to-resin"
+      ],
+      "selected": [
+        {
+          "site": "daeyoung-nonsan",
+          "name": "대영 논산 재생수지 사업장",
+          "process": "pe-compressed-to-resin",
+          "road_km": 119.344,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        }
+      ]
+    },
+    {
+      "material": "pe",
+      "input_form": "film-bale",
+      "seconds": 5.17,
+      "selection": {
+        "policy": "process-discovery-top-five-v1",
+        "target": 5,
+        "selected_keys": [
+          "dh1-seongju--pe-film-bale-recovery"
+        ],
+        "examined_count": 1,
+        "eligible_count": 1,
+        "model_calls": 1,
+        "cache_hits": 1,
+        "public_cache_hits": 1,
+        "public_model_calls": 0,
+        "lot_model_calls": 1,
+        "deferred_keys": [],
+        "distance_unknown_keys": [],
+        "needs_evidence_keys": [],
+        "unavailable_keys": [],
+        "restricted_keys": [],
+        "mismatch_keys": []
+      },
+      "processes": [
+        "pe-film-bale-recovery"
+      ],
+      "selected": [
+        {
+          "site": "dh1-seongju",
+          "name": "디에이치원 성주지점",
+          "process": "pe-film-bale-recovery",
+          "road_km": 226.968,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        }
+      ]
+    },
+    {
+      "material": "pet",
+      "input_form": "flake",
+      "seconds": 6.84,
+      "selection": {
+        "policy": "process-discovery-top-five-v1",
+        "target": 5,
+        "selected_keys": [
+          "samyang-sihwa--pet-flake-to-chip",
+          "bgf-yesan--pet-pelletise",
+          "superbin-sunchang--pet-pelletise"
+        ],
+        "examined_count": 3,
+        "eligible_count": 3,
+        "model_calls": 3,
+        "cache_hits": 3,
+        "public_cache_hits": 3,
+        "public_model_calls": 0,
+        "lot_model_calls": 3,
+        "deferred_keys": [],
+        "distance_unknown_keys": [],
+        "needs_evidence_keys": [],
+        "unavailable_keys": [],
+        "restricted_keys": [],
+        "mismatch_keys": []
+      },
+      "processes": [
+        "pet-flake-to-chip",
+        "pet-pelletise"
+      ],
+      "selected": [
+        {
+          "site": "samyang-sihwa",
+          "name": "삼양에코테크 시화공장",
+          "process": "pet-flake-to-chip",
+          "road_km": 26.73,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        },
+        {
+          "site": "bgf-yesan",
+          "name": "BGF에코사이클 재생원료사업장",
+          "process": "pet-pelletise",
+          "road_km": 62.323,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        },
+        {
+          "site": "superbin-sunchang",
+          "name": "수퍼빈 아이엠팩토리 순창",
+          "process": "pet-pelletise",
+          "road_km": 239.071,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        }
+      ]
+    },
+    {
+      "material": "pet",
+      "input_form": "flake",
+      "seconds": 1.28,
+      "selection": {
+        "policy": "process-discovery-top-five-v1",
+        "target": 5,
+        "selected_keys": [
+          "samyang-sihwa--pet-flake-to-chip",
+          "bgf-yesan--pet-pelletise",
+          "superbin-sunchang--pet-pelletise"
+        ],
+        "examined_count": 3,
+        "eligible_count": 3,
+        "model_calls": 0,
+        "cache_hits": 6,
+        "public_cache_hits": 3,
+        "public_model_calls": 0,
+        "lot_model_calls": 0,
+        "deferred_keys": [],
+        "distance_unknown_keys": [],
+        "needs_evidence_keys": [],
+        "unavailable_keys": [],
+        "restricted_keys": [],
+        "mismatch_keys": []
+      },
+      "processes": [
+        "pet-flake-to-chip",
+        "pet-pelletise"
+      ],
+      "selected": [
+        {
+          "site": "samyang-sihwa",
+          "name": "삼양에코테크 시화공장",
+          "process": "pet-flake-to-chip",
+          "road_km": 26.73,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        },
+        {
+          "site": "bgf-yesan",
+          "name": "BGF에코사이클 재생원료사업장",
+          "process": "pet-pelletise",
+          "road_km": 62.323,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        },
+        {
+          "site": "superbin-sunchang",
+          "name": "수퍼빈 아이엠팩토리 순창",
+          "process": "pet-pelletise",
+          "road_km": 239.071,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        }
+      ]
+    },
+    {
+      "material": "pet",
+      "input_form": "flake",
+      "seconds": 13.77,
+      "selection": {
+        "policy": "process-discovery-top-five-v1",
+        "target": 5,
+        "selected_keys": [
+          "samyang-sihwa--pet-flake-to-chip",
+          "bgf-yesan--pet-pelletise",
+          "superbin-sunchang--pet-pelletise"
+        ],
+        "examined_count": 3,
+        "eligible_count": 3,
+        "model_calls": 3,
+        "cache_hits": 3,
+        "public_cache_hits": 3,
+        "public_model_calls": 0,
+        "lot_model_calls": 3,
+        "deferred_keys": [],
+        "distance_unknown_keys": [],
+        "needs_evidence_keys": [],
+        "unavailable_keys": [],
+        "restricted_keys": [],
+        "mismatch_keys": []
+      },
+      "processes": [
+        "pet-flake-to-chip",
+        "pet-pelletise"
+      ],
+      "selected": [
+        {
+          "site": "samyang-sihwa",
+          "name": "삼양에코테크 시화공장",
+          "process": "pet-flake-to-chip",
+          "road_km": 26.73,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": [
+            "cleaning",
+            "drying"
+          ]
+        },
+        {
+          "site": "bgf-yesan",
+          "name": "BGF에코사이클 재생원료사업장",
+          "process": "pet-pelletise",
+          "road_km": 62.323,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": [
+            "cleaning",
+            "drying"
+          ]
+        },
+        {
+          "site": "superbin-sunchang",
+          "name": "수퍼빈 아이엠팩토리 순창",
+          "process": "pet-pelletise",
+          "road_km": 239.071,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": [
+            "cleaning",
+            "drying"
+          ]
+        }
+      ]
+    },
+    {
+      "material": "aluminium",
+      "input_form": "can",
+      "seconds": 12.21,
+      "selection": {
+        "policy": "process-discovery-top-five-v1",
+        "target": 5,
+        "selected_keys": [
+          "hyundai-resource-hwaseong--al-can-prepare",
+          "shinsung-goyang--al-can-prepare",
+          "novelis-yeongju--al-can-sheet",
+          "ulsan-aluminium--al-can-to-ingot"
+        ],
+        "examined_count": 4,
+        "eligible_count": 4,
+        "model_calls": 4,
+        "cache_hits": 4,
+        "public_cache_hits": 4,
+        "public_model_calls": 0,
+        "lot_model_calls": 4,
+        "deferred_keys": [],
+        "distance_unknown_keys": [],
+        "needs_evidence_keys": [],
+        "unavailable_keys": [],
+        "restricted_keys": [],
+        "mismatch_keys": []
+      },
+      "processes": [
+        "al-can-prepare",
+        "al-can-sheet",
+        "al-can-to-ingot"
+      ],
+      "selected": [
+        {
+          "site": "hyundai-resource-hwaseong",
+          "name": "현대자원산업 화성",
+          "process": "al-can-prepare",
+          "road_km": 9.283,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        },
+        {
+          "site": "shinsung-goyang",
+          "name": "신성리사이클링 고양",
+          "process": "al-can-prepare",
+          "road_km": 70.682,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        },
+        {
+          "site": "novelis-yeongju",
+          "name": "노벨리스 영주공장",
+          "process": "al-can-sheet",
+          "road_km": 200.028,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        },
+        {
+          "site": "ulsan-aluminium",
+          "name": "울산알루미늄 리사이클 센터",
+          "process": "al-can-to-ingot",
+          "road_km": 338.144,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        }
+      ]
+    },
+    {
+      "material": "pet",
+      "input_form": "bottle",
+      "seconds": 12.91,
+      "selection": {
+        "policy": "process-discovery-top-five-v1",
+        "target": 5,
+        "selected_keys": [
+          "cwrs-hwaseong--pet-sort-bale",
+          "saerom-hwaseong-one--pet-bottle-wash-grind",
+          "kers-hwaseong--pet-sort-bale",
+          "samyang-sihwa--pet-bottle-to-flake",
+          "veolia-dh-yongin--pet-sort-bale"
+        ],
+        "examined_count": 5,
+        "eligible_count": 11,
+        "model_calls": 5,
+        "cache_hits": 5,
+        "public_cache_hits": 5,
+        "public_model_calls": 0,
+        "lot_model_calls": 5,
+        "deferred_keys": [
+          "samyang-sihwa--pet-prepare",
+          "incheon-recycling-gojan--pet-sort-bale",
+          "hrm-cheongju--pet-sort-bale",
+          "yuil-busan--pet-bottle-to-flake",
+          "dakyeong-busan--pet-bottle-to-flake",
+          "yuil-yangsan--pet-bottle-to-flake"
+        ],
+        "distance_unknown_keys": [],
+        "needs_evidence_keys": [],
+        "unavailable_keys": [],
+        "restricted_keys": [],
+        "mismatch_keys": []
+      },
+      "processes": [
+        "pet-bottle-to-flake",
+        "pet-bottle-wash-grind",
+        "pet-sort-bale"
+      ],
+      "selected": [
+        {
+          "site": "samyang-sihwa",
+          "name": "삼양에코테크 시화공장",
+          "process": "pet-bottle-to-flake",
+          "road_km": 26.73,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        },
+        {
+          "site": "saerom-hwaseong-one",
+          "name": "새롬이엔지 화성 제1공장",
+          "process": "pet-bottle-wash-grind",
+          "road_km": 11.229,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        },
+        {
+          "site": "cwrs-hwaseong",
+          "name": "창우RS 화성지점",
+          "process": "pet-sort-bale",
+          "road_km": 5.717,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        },
+        {
+          "site": "kers-hwaseong",
+          "name": "기은알에스 화성 선별장",
+          "process": "pet-sort-bale",
+          "road_km": 20.857,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        },
+        {
+          "site": "veolia-dh-yongin",
+          "name": "디에이치 리사이클링 용인 사업장",
+          "process": "pet-sort-bale",
+          "road_km": 33.471,
+          "provider": "kakao",
+          "process_match": "matched",
+          "lot_status": "reviewed",
+          "concern_categories": []
+        }
+      ]
+    }
+  ],
+  "b_followup": {
+    "origin_site": "saerom-hwaseong-one",
+    "performed_transition": [
+      "pet-bottle-wash-grind"
+    ],
+    "observed_output": {
+      "state_key": "pet-flake",
+      "mass_kg": 90.0,
+      "purity_percent": null,
+      "review_reference": null
+    },
+    "material": "pet",
+    "input_form": "bottle→B flake",
+    "seconds": 25.69,
+    "selection": {
+      "policy": "process-discovery-top-five-v1",
+      "target": 5,
+      "selected_keys": [
+        "samyang-sihwa--pet-flake-to-chip",
+        "bgf-yesan--pet-pelletise",
+        "superbin-sunchang--pet-pelletise"
+      ],
+      "examined_count": 3,
+      "eligible_count": 3,
+      "model_calls": 4,
+      "cache_hits": 0,
+      "public_cache_hits": 0,
+      "public_model_calls": 1,
+      "lot_model_calls": 3,
+      "deferred_keys": [],
+      "distance_unknown_keys": [],
+      "needs_evidence_keys": [],
+      "unavailable_keys": [],
+      "restricted_keys": [],
+      "mismatch_keys": []
+    },
+    "processes": [
+      "pet-flake-to-chip",
+      "pet-pelletise"
+    ],
+    "selected": [
+      {
+        "site": "samyang-sihwa",
+        "name": "삼양에코테크 시화공장",
+        "process": "pet-flake-to-chip",
+        "road_km": 34.411,
+        "provider": "kakao",
+        "process_match": "matched",
+        "lot_status": "reviewed",
+        "concern_categories": []
+      },
+      {
+        "site": "bgf-yesan",
+        "name": "BGF에코사이클 재생원료사업장",
+        "process": "pet-pelletise",
+        "road_km": 54.297,
+        "provider": "kakao",
+        "process_match": "matched",
+        "lot_status": "reviewed",
+        "concern_categories": []
+      },
+      {
+        "site": "superbin-sunchang",
+        "name": "수퍼빈 아이엠팩토리 순창",
+        "process": "pet-pelletise",
+        "road_km": 231.845,
+        "provider": "kakao",
+        "process_match": "matched",
+        "lot_status": "reviewed",
+        "concern_categories": []
+      }
+    ],
+    "reference_checksum": "dae37d5d1fb6a2763d672521e0da05f9dd4659d1026088abcb37c5b423b9d183"
+  },
+  "actual_web_repeat": {
+    "model_calls": 0,
+    "cache_hits": 6,
+    "public_cache_hits": 3,
+    "public_model_calls": 0,
+    "lot_model_calls": 0
+  },
+  "final_label_check": {
+    "reference_checksum": "dae37d5d1fb6a2763d672521e0da05f9dd4659d1026088abcb37c5b423b9d183",
+    "review_reference_checksum": "dae37d5d1fb6a2763d672521e0da05f9dd4659d1026088abcb37c5b423b9d183",
+    "model_calls": 0,
+    "current_label": "PET 플레이크(세척·건조 상태 확인 필요)",
+    "targeted_tests_passed": 58,
+    "change": "PET flake label no longer asserts completed washing/drying; process keys and capabilities unchanged"
+  }
+}

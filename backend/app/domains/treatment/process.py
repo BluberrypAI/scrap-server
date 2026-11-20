@@ -632,13 +632,9 @@ def review_intake(capability, form, links):
 def rank_facilities(options, *, first_handoff=False):
     """Rank distinct physical sites across all immediate transitions."""
 
-    def needs_site_review(facility):
-        return first_handoff and facility["evidence_basis"] != "published_site_process"
-
     def order(facility):
         distance = facility["straight_line_distance_km"]
         return (
-            needs_site_review(facility),
             facility["distance_rank"] or 6,
             distance if first_handoff and distance is not None else float("inf"),
             facility["capability_key"],
@@ -648,13 +644,11 @@ def rank_facilities(options, *, first_handoff=False):
         facility["facility_key"]: facility["straight_line_distance_km"]
         for option in options
         for facility in option["facilities"]
-        if facility["straight_line_distance_km"] is not None and not needs_site_review(facility)
+        if facility["straight_line_distance_km"] is not None
     }
     keys = sorted(distances, key=lambda key: (distances[key], key))[:5]
     ranks = {key: i for i, key in enumerate(keys, 1)}
     for option in options:
         for facility in option["facilities"]:
-            facility["distance_rank"] = (
-                None if needs_site_review(facility) else ranks.get(facility["facility_key"])
-            )
+            facility["distance_rank"] = ranks.get(facility["facility_key"])
         option["facilities"].sort(key=order)
