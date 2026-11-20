@@ -121,6 +121,7 @@
 | T-182 | PE·PET 전체 공정표·전국 명부 연결 차이 조사와 추가 제조업체 연결 | 완료 | api-developer / test-engineer | pe-pet-process-catalog-audit | 70시설·139연결. PE34곳·PET18곳, 새 6사업장·7연결 실Azure matched/카카오 거리 확인. 일반 PE베일1 유지. 조사224행·형태별 전체 목록·684검사·Ruff 통과. PET5곳 반복46.72→1.73초/0모델 호출 |
 | T-183 | 처리 결과+완료·추가 가공·보관 통합 등록과 A 카드 경로 자동 갱신 | 완료 | api-developer / test-engineer | output-disposition-card-sync | 기존 API 호환·완료 원자 저장·stored 재개. 서버693/웹108 통과. B 플레이크90kg 완료·보관→C 펠릿85kg 완료·A 카드 C 자동 갱신 확인. [시험 범위](output-disposition-validation-20261120.md) |
 | T-184 | PP·PE·PET·알루미늄 진행 상태와 B 종료/C QR 인계 웹 회귀 | 완료 | test-engineer / api-developer | output-disposition-card-sync | 서버703·웹108. B 종료4/C 완료4 웹 검증, 추가 PE 경계1건. 검토 뒤 계정 연결 시 요청 버튼 누락 수정·AI 재호출 없음. [결과·PE 공백](material-disposition-validation-20261120.md) |
+| T-185 | 회사 취급 소재 기준 후보 선정·과도한 사업장 공정 입증 제거 | 완료 | api-developer / test-engineer | progressive-candidate-review | 서버704·route602(72생략)·웹108. BGF PE 실제 Azure 후보 포함·14.112km·질문0/웹 확인. 개별 설비 입증·증빙 문진 불요. [검증/범위](company-material-discovery-20261120.md) |
 
 이 레포에서 구현하지 않음. 일정 파악과 연동 시점 확인용.
 

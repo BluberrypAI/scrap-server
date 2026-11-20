@@ -1,5 +1,7 @@
 # 네 소재 완료·보관·후속 QR 인계 회귀
 
+> 이 문서의 PE 펠릿→컴파운드 제외는 이전 사업장 입증 기준의 결과다. 후속 T-185에서 회사 소재 기준으로 낮춘 뒤 BGF PE 후보가 실제 검토에 포함됐다. [현재 기준](company-material-discovery-20261120.md).
+
 2026-11-20, T-184. 기존 T-183 기능을 PP·PE·PET·알루미늄까지 실제 로컬 웹에서 확인했다. [정리된 API 검증](verification/material-disposition-20261120.json).
 
 ## 최신 코드
