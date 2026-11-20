@@ -18,7 +18,7 @@ from sqlalchemy.exc import IntegrityError
 
 from app.core.config import get_settings
 from app.core.errors import AppError, ErrorCode
-from app.db.session import DbSession
+from app.db.session import DbSession, get_session_factory
 from app.domains.companies.models import Company
 from app.domains.diagnosis.client import Engine
 from app.domains.diagnosis.recycling import recycling_for_handoff, route_recycling
@@ -32,11 +32,13 @@ from app.domains.transport.models import (
     WorkflowOffer,
     WorkflowPhoto,
 )
+from app.domains.transport.output_actions import complete_lot, completion_error
 from app.domains.transport.photo_conflicts import (
     PhotoConflictResolution,
     conflict_gate,
     resolve_conflict,
 )
+from app.domains.transport.recipient_accounts import with_current_recipients
 from app.domains.transport.road_route import RoadRouteRead, driving_segment, handoff_legs
 from app.domains.transport.supplier_policy import current_policies
 from app.domains.treatment.conditions import attach_answers, published_conditions, questionnaire
@@ -50,6 +52,7 @@ from app.domains.treatment.intake import (
 )
 from app.domains.treatment.material_scope import FINISH_STATES, LOT_STARTS
 from app.domains.treatment.process import next_step
+from app.domains.treatment.public_cache import PublicReviewStore
 from app.domains.treatment.reference import digest
 from app.domains.treatment.repository import read_reference, read_registry
 from app.domains.treatment.road_distance import distance_version, enrich_road_distances
@@ -59,7 +62,6 @@ from app.domains.wastes.models import (
     QrFieldCheck,
     RouteStep,
     Waste,
-    WasteCompletionSnapshot,
     WasteStatus,
 )
 
@@ -150,7 +152,18 @@ class Receipt(Version):
     token: str = Field(min_length=20, max_length=160)
 
 
-class Output(Version):
+class OutputDecision(Body):
+    next_action: Literal["complete", "forward", "hold"] | None = None
+    completion_reference: str | None = Field(default=None, min_length=3, max_length=300)
+    intended_use: str | None = Field(default=None, min_length=3, max_length=500)
+    completion_confirmed: bool = Field(default=False, strict=True)
+
+
+class OutputAction(Version, OutputDecision):
+    next_action: Literal["complete", "forward", "hold"]
+
+
+class Output(Version, OutputDecision):
     # 로트 재질의 등록 상태인지는 참조 자료로 따로 확인한다
     state_key: str = Field(pattern=r"^[a-z0-9-]{1,64}$")
     mass_kg: float = Field(gt=0, le=1e9, allow_inf_nan=False)
@@ -249,6 +262,7 @@ async def view(db, lot, cid):
         for c in await db.scalars(select(Company).where(Company.id.in_(companies)))
     }
     photos = list(await db.scalars(select(WorkflowPhoto).where(WorkflowPhoto.lot_id == lot.id)))
+    public_data = {k: v for k, v in lot.data.items() if k not in {"_review_cache", "review_job"}}
     return {
         "id": str(lot.id),
         "revision": lot.revision,
@@ -257,8 +271,9 @@ async def view(db, lot, cid):
         "current_company_id": str(lot.current_company_id),
         "companies": names,
         "can_manage": lot.current_company_id == cid,
-        "data": lot.data,
-        "review": lot.review,
+        "data": public_data,
+        "review": await with_current_recipients(db, lot.review),
+        "review_progress": lot.data.get("review_job"),
         "photo_conflict_gate": conflict_gate(lot),
         "output_states": [
             {"key": s.key, "label": s.label}
@@ -347,6 +362,9 @@ async def create_lot(body: CreateLot, company_id: CompanyId, db: DbSession, engi
             "sender_confirmations": {
                 "solid_confirmed": body.solid_confirmed,
                 "material_detail": body.material_detail,
+                "input_form_source": ctx.form_source,
+                "input_form_quote": ctx.form_quote,
+                "input_form_turn_id": ctx.form_turn_id,
             },
             "completed": [],
             "current": {
@@ -397,8 +415,21 @@ async def road_route(key: uuid.UUID, company_id: CompanyId, db: DbSession, respo
         )
     )
     legs = handoff_legs(lot, offers)
+    phases = {
+        str(offer.id): (
+            "received"
+            if offer.status in {"received", "processed"}
+            else "in_transit"
+            if offer.data.get("dispatch")
+            else "planned"
+        )
+        for offer in offers
+    }
     await db.rollback()
-    return RoadRouteRead(segments=[await driving_segment(*leg) for leg in legs])
+    segments = list(await asyncio.gather(*(driving_segment(*leg) for leg in legs)))
+    for segment in segments:
+        segment.phase = phases[segment.offer_id]
+    return RoadRouteRead(segments=segments)
 
 
 @router.get("/lots/{key}")
@@ -505,6 +536,32 @@ def process_request(lot):
 async def candidates(
     key: uuid.UUID, body: Version, company_id: CompanyId, db: DbSession, engine: Engine
 ):
+    return await run_candidate_review(key, body, company_id, db, engine)
+
+
+@router.post("/lots/{key}/review-jobs", status_code=202)
+async def candidate_review_job(key: uuid.UUID, body: Version, company_id: CompanyId, db: DbSession):
+    from app.domains.transport.review_jobs import enqueue
+
+    cid = uuid.UUID(company_id)
+    lot = await lot_for(db, key, cid, lock=True)
+    active(lot, cid, {"ready", "processed"})
+    version(lot, body.revision)
+    enqueue(lot)
+    await db.commit()
+    return await view(db, lot, cid)
+
+
+async def run_candidate_review(
+    key, body, company_id, db, engine, *, progressive=False, report=None
+):
+    from app.domains.treatment.progressive import review_nearby
+
+    async def notify(phase, **values):
+        if report:
+            await report(phase, **values)
+
+    await notify("candidate_search")
     cid = uuid.UUID(company_id)
     lot = await lot_for(db, key, cid)
     active(lot, cid, {"ready", "processed"})
@@ -538,7 +595,8 @@ async def candidates(
     origin_label = current_company.site_name
     reusable = {}
     if (
-        lot.review
+        not progressive
+        and lot.review
         and lot.review.get("version") == "lot-vision-v1"
         and lot.review.get("analysis_version") == "isolated-vision-v2"
         and lot.review.get("conditions_version") == "intake-questions-v1"
@@ -610,9 +668,22 @@ async def candidates(
                 f"{k}: {v['question']}" if v.get("question") else k: v["value"]
                 for k, v in answers.items()
             }
+    cache = deepcopy(lot.data.get("_review_cache", {}))
     await db.rollback()
     pending = [p for p in packets if p["capability_key"] not in reusable]
-    if reusable and pending:
+    selection = None
+    if progressive:
+        reviewed, selection, cache = await review_nearby(
+            packets,
+            result,
+            request.origin,
+            get_settings(),
+            lot_context,
+            cache,
+            notify,
+            public_store=PublicReviewStore(get_session_factory()),
+        )
+    elif reusable and pending:
         # A repeated two-candidate timeout must not keep both candidates coupled.
         # Retry individual candidates, with bounded concurrency and a shared budget.
         recovered = {}
@@ -652,7 +723,9 @@ async def candidates(
         },
         **reviewed.results,
     }
-    await enrich_road_distances(result, request.origin)
+    if not progressive:
+        await enrich_road_distances(result, request.origin)
+    await notify("saving")
     if not request.completed_transitions:
         latest = (await engine.request("GET", f"/cases/{diagnosis_id}", company_id)).body
         if (
@@ -668,6 +741,8 @@ async def candidates(
     lot = await lot_for(db, key, cid, lock=True)
     active(lot, cid, {"ready", "processed"})
     version(lot, body.revision)
+    if progressive:
+        lot.data = {**lot.data, "_review_cache": cache}
     if not lot.data["completed"]:
         data = deepcopy(lot.data)
         data["recycling"] = recycling_value
@@ -696,10 +771,12 @@ async def candidates(
                     f["facility_key"],
                     request.material,
                     ai_review=reviewed.results[f["capability_key"]].model_dump(),
+                    purpose="process_discovery",
                 ),
                 stage_answers.get(f["capability_key"], {}),
             )
     lot.review = {
+        **({"selection": selection} if selection is not None else {}),
         "version": "lot-vision-v1",
         "analysis_version": "isolated-vision-v2",
         "conditions_version": "intake-questions-v1",
@@ -737,6 +814,17 @@ async def intake_answers(key: uuid.UUID, body: IntakeAnswers, company_id: Compan
         fail("현재 업체 후보를 먼저 검토해 주세요.")
     form = fs[0]["intake_conditions"]
     questions = {q["key"]: q for q in form["questions"]}
+    if form.get("purpose") == "recipient_conversation":
+        # Older clients may still submit known legacy answers. New screens do
+        # not request them, but preserve their validation and historical meaning.
+        ref, _ = await read_reference(db)
+        legacy = questionnaire(
+            ref,
+            fs[0]["facility_key"],
+            lot.data["initial"]["material"],
+            ai_review=review.get("results", {}).get(body.capability_key),
+        )
+        questions = {q["key"]: q for q in legacy["questions"]}
     if any(
         k not in questions
         or not isinstance(v, str)
@@ -977,6 +1065,7 @@ async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSess
     if (
         check.get("status") not in {"reviewed", "needs_evidence"}
         or check.get("finding") == "restriction_mentioned"
+        or check.get("process_match") in {"unverified", "mismatch"}
         or review.get("version") != "lot-vision-v1"
         or review.get("analysis_version") != "isolated-vision-v2"
         or (check.get("lot_review") or {}).get("status") != "reviewed"
@@ -1271,7 +1360,25 @@ async def output(key: uuid.UUID, body: Output, company_id: CompanyId, db: DbSess
     if not row or body.mass_kg > row.data["current"]["mass_kg"]:
         fail("입고 중량을 초과한 산출물은 별도 물질수지 확인이 필요합니다.")
     expected = row.data["option"]["output_state"]["key"]
-    record = body.model_dump(exclude={"revision"})
+    if body.next_action == "complete":
+        if expected != body.state_key:
+            fail(
+                "예정 산출물과 실제 기록이 달라 완료할 수 없습니다. 처리 결과를 먼저 확인해 주세요."
+            )
+        error = completion_error(
+            lot.data["initial"]["material"],
+            body.state_key,
+            body.completion_reference or body.evidence,
+            body.intended_use,
+            body.completion_confirmed,
+        )
+        if error:
+            fail(error)
+    record = body.model_dump(
+        exclude={"revision", "completion_reference", "intended_use", "completion_confirmed"}
+    )
+    if body.next_action is None:
+        record.pop("next_action")
     data = deepcopy(lot.data)
     data["current"] = record
     data["completed"].append(
@@ -1293,6 +1400,47 @@ async def output(key: uuid.UUID, body: Output, company_id: CompanyId, db: DbSess
     step.output = body.state_key
     step.actual_date = datetime.now(UTC).date()
     stamp(lot, "실제 산출물 기록", cid)
+    if lot.status == "processed" and body.next_action is not None:
+        await apply_output_action(db, lot, cid, body)
+    await db.commit()
+    return await view(db, lot, cid)
+
+
+async def apply_output_action(db, lot, cid, decision):
+    if decision.next_action == "complete":
+        reference = decision.completion_reference or lot.data["current"]["evidence"]
+        error = completion_error(
+            lot.data["initial"]["material"],
+            lot.data["current"]["state_key"],
+            reference,
+            decision.intended_use,
+            decision.completion_confirmed,
+        )
+        if error:
+            fail(error)
+    data = deepcopy(lot.data)
+    data["current"]["next_action"] = decision.next_action
+    lot.data = data
+    if decision.next_action == "complete":
+        stamp(
+            lot,
+            "처리 완료 확인",
+            cid,
+            {"reference": reference, "intended_use": decision.intended_use},
+        )
+        await complete_lot(db, lot)
+    else:
+        lot.status = "stored" if decision.next_action == "hold" else "processed"
+        stamp(lot, "보관 중으로 기록" if decision.next_action == "hold" else "추가 가공 선택", cid)
+
+
+@router.post("/lots/{key}/output-action")
+async def output_action(key: uuid.UUID, body: OutputAction, company_id: CompanyId, db: DbSession):
+    cid = uuid.UUID(company_id)
+    lot = await lot_for(db, key, cid, lock=True)
+    active(lot, cid, {"processed", "stored"})
+    version(lot, body.revision)
+    await apply_output_action(db, lot, cid, body)
     await db.commit()
     return await view(db, lot, cid)
 
@@ -1303,34 +1451,18 @@ async def finish(key: uuid.UUID, body: Finish, company_id: CompanyId, db: DbSess
     lot = await lot_for(db, key, cid, lock=True)
     active(lot, cid, {"processed"})
     version(lot, body.revision)
-    finish_states = FINISH_STATES.get(lot.data["initial"]["material"], set())
-    if not body.confirmed or lot.data["current"]["state_key"] not in finish_states:
-        fail(
-            "실제 최종 산출물(PP·PE 펠렛·컴파운드, PET 플레이크·펠렛, "
-            "알루미늄 판재·잉곳)과 완료 확인이 필요합니다. "
-            "파쇄품만으로 종료하지 않습니다."
-        )
-    lot.status = "completed"
+    error = completion_error(
+        lot.data["initial"]["material"],
+        lot.data["current"]["state_key"],
+        body.reference,
+        body.intended_use,
+        body.confirmed,
+    )
+    if error:
+        fail(error)
     stamp(
         lot, "처리 완료 확인", cid, {"reference": body.reference, "intended_use": body.intended_use}
     )
-    now = datetime.now(UTC)
-    waste = await db.get(Waste, lot.id)
-    waste.status = WasteStatus.COMPLETED
-    waste.completed_at = now
-    # Waste.quantity_value is the originally registered mass, not the final yield.
-    owner = await db.get(Company, lot.owner_company_id)
-    db.add(
-        WasteCompletionSnapshot(
-            waste_id=lot.id,
-            company_name=owner.company_name,
-            site_name=owner.site_name,
-            site_address=owner.site_address,
-            completed_at=now,
-        )
-    )
-    steps = await db.scalars(select(RouteStep).where(RouteStep.waste_id == lot.id))
-    for step in steps:
-        step.status = "완료"
+    await complete_lot(db, lot)
     await db.commit()
     return await view(db, lot, cid)

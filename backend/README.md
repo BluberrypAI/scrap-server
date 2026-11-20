@@ -1,5 +1,11 @@
 # Re:Source AI Backend
 
+2026-11-20 업체 탐색 기준: 회사 자료에 해당 소재 취급·제품이 있으면 문의 후보로 포함하고 도로거리순으로 표시합니다. 사업장별 설비 입증까지 요구하지 않으며 실제 공정·반입조건은 업체가 대화 후 수락합니다. 기존 `evidence_basis`는 보존합니다. [기준·실호출](../docs/company-material-discovery-20261120.md).
+
+처리 결과 통합 등록: `/api/v1/workflow/lots/{id}/output`에서 `next_action`을 complete/forward/hold로 함께 보내면 완료/추가 가공/보관 중을 한 번에 기록합니다. complete는 `intended_use`와 `completion_confirmed=true`가 필요하며 `completion_reference` 생략 시 같은 산출물의 `evidence`를 사용합니다. `stored`는 보관 중이며 `/lots/{id}/output-action`으로 같은 산출물의 진행 방향을 변경합니다. 기존 `/output` 필드만 보내는 요청과 `/finish`는 호환 유지합니다. [명세](../docs/specs/output-disposition-card-sync.md).
+
+후보의 `review.next_step.options[].facilities[].recipient`는 조회 시 현재 계정 연결·기업명을 반영합니다. 검토 후 새 업체 계정을 연결해도 AI 재검토 없이 요청 버튼이 갱신됩니다. 연결 삭제·운영 synthetic 제한은 유지하며 AI/공정 캐시와 revision은 바꾸지 않습니다. [네 소재 웹 검증과 데이터 공백](../docs/material-disposition-validation-20261120.md).
+
 FastAPI 기반 백엔드 API. **팀 표준은 A(Docker)** 이며, B는 Docker 없이 빠르게 확인할 때의 보조 방법임.
 
 업체별 반입 확인을 추가했습니다. 후보별 질문·답변 → AI 재검토 → 수신 업체 조건 제시 → 발송 업체 자료 제출 → 수신 업체 최종 확인 → QR 입고 순서입니다. 전국 명부의 다른 업체도 조회·확인 목록 저장이 가능합니다. [API 명세](../docs/specs/intake-conditions-local.md)와 [검증 결과·남은 데이터](../docs/verification/intake-conditions-20261114.md)를 참고하세요. AI의 `intake_answers` 지원 버전을 먼저 적용해야 합니다. 기존 JSON 업무 기록에 저장하므로 새 마이그레이션은 없습니다.
@@ -216,3 +222,17 @@ uv run python -m app.domains.transport.dev_accounts
 
 ## 사업장 주소 검색
 기업 등록과 수정에서 `POST /api/v1/companies/location-search`로 주소·장소를 검색하고, 선택한 좌표를 기존 기업 정보 API로 저장합니다. 로그인 후 기업 등록 전에도 사용합니다. `COMPANY_GEOCODING_ENABLED=false`로 외부 검색을 끌 수 있고 `COMPANY_GEOCODING_URL`로 자체 Photon을 지정할 수 있습니다. 기본 공개 Photon은 소규모·단일 워커용(초당1회·캐시24시간)이며 국내 주소 누락과 서비스 장애가 가능합니다. 여러 서버로 운영할 때는 자체 서비스와 공유 호출 제한이 필요합니다. 검색 결과는 사용자가 지도에서 확인하며 정확한 건물/출입구를 보장하지 않습니다. [명세](../docs/specs/company-onboarding.md).
+
+## 업체 검토 작업
+
+문진 연결 응답에는 selected_form/selected_form_label과 form_source/form_quote/form_turn_id를 추가했습니다. 기존 엔진의 대화에서 명확한 현재 형태만 받아 표시하고, 불명·복수·예정·부정 진술은 선택을 요구합니다. 기존 물량 등록 요청의 필수 input_form 형식은 유지하며 sender_confirmations에 형태 출처를 보존합니다. 문진 엔진·분류·새 DB 모델 변경은 없습니다.
+
+`POST /api/v1/workflow/lots/{id}/review-jobs`에 현재 revision을 보내면 202와 처리 건을 반환합니다. `review_progress`는 queued/running/completed/failed/interrupted 상태와 서버의 실제 단계·검토 수를 포함합니다. 기업별 권한 검사는 기존 처리 건과 같습니다.
+
+앱 lifespan의 워커가 DB에 저장된 작업을 처리합니다. 별도 큐 서비스나 DB 마이그레이션은 없습니다. 실행 중 중복 요청은 같은 작업을 반환하고, 오래된 물량 결과는 저장하지 않습니다. 재시작으로 lease가 만료된 작업은 interrupted로 남겨 사용자 재시도 시 완료 캐시를 재사용합니다. 새 웹 기능은 새 scrap-route와 함께 적용합니다.
+
+## 공개 업체 검토 캐시
+
+후보 탐색은 공정 관련성을 확인하는 용도입니다. 응답의 선택 필드 `process_match=matched|unverified|mismatch`와 `process_source`, `process_quote`를 사용합니다. 새 후보의 `intake_conditions.purpose=recipient_conversation`이며 자동 질문은 빈 배열입니다. 기존 답변 저장 API는 호환용으로 유지합니다. 세부 반입조건은 수신 기업이 대화와 최종 수락에서 확인합니다.
+
+새 웹의 `review-jobs`는 공개 업체 근거와 현재 물량 검토를 분리합니다. `treatment_snapshots.kind=public-intake-cache-v1`에 공개 입력·출처·검토 버전의 해시와 공개 결과만 저장하며 7일 만료·최대1024건입니다. 사진·중량·상태·기업별 답변은 이 저장소에 들어가지 않습니다. 별도 migration·Redis 설정은 없습니다. 신규 route의 `public_signature`/`public_findings` 지원 버전을 먼저 반영해야 합니다. 공개 캐시 재사용 횟수와 이번 물량 호출 수는 `review.selection`에 각각 기록됩니다.

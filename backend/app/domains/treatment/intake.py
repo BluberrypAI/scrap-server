@@ -92,6 +92,19 @@ class IntakeResult(BaseModel):
     ] = Field(default_factory=list, max_length=9)
     dispatch_approved: Literal[False] = False
     lot_review: LotReview | None = None
+    process_match: Literal["matched", "unverified", "mismatch"] | None = None
+    process_source: SourceLink | None = None
+    process_quote: str | None = None
+
+
+def process_related(value):
+    if value.process_match is not None:
+        return (
+            value.status == "reviewed"
+            and value.process_match == "matched"
+            and value.finding != "restriction_mentioned"
+        )
+    return value.status == "reviewed" and value.finding == "form_mentioned"
 
 
 class IntakeBatchResult(BaseModel):

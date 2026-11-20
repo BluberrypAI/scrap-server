@@ -17,6 +17,7 @@ class RoadSegmentRead(BaseModel):
     coordinates: list[tuple[float, float]] = Field(default_factory=list)
     distance_km: float | None = None
     duration_seconds: float | None = None
+    phase: Literal["planned", "in_transit", "received"] = "planned"
 
 
 class RoadRouteRead(BaseModel):
@@ -40,9 +41,7 @@ def handoff_legs(lot, offers):
     previous = lot.data.get("initial", {}).get("origin")
     legs = []
     for offer in offers:
-        if offer.status not in {"received", "processed"} and not (
-            offer.status == "accepted" and offer.data.get("dispatch")
-        ):
+        if offer.status not in {"pending", "conditional", "accepted", "received", "processed"}:
             continue
         destination = (offer.data.get("facility") or {}).get("location")
         origin = offer.data.get("origin") or previous

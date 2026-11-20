@@ -127,7 +127,7 @@ async def enrich_road_distances(result, origin, *, client=None):
     if distances:
         # Unknown road distances must not compete with known road distances as straight lines.
         ranked = sorted(
-            (k for k in distances if sites[k].evidence_basis == "published_site_process"),
+            distances,
             key=lambda k: (distances[k][0], k),
         )[:5]
         ranks = {k: index + 1 for index, k in enumerate(ranked)}
@@ -136,7 +136,6 @@ async def enrich_road_distances(result, origin, *, client=None):
                 f.distance_rank = ranks.get(f.facility_key)
             option.facilities.sort(
                 key=lambda f: (
-                    f.evidence_basis != "published_site_process",
                     f.road_distance_km if f.road_distance_status == "available" else math.inf,
                     f.facility_key,
                 )

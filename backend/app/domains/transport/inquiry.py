@@ -21,6 +21,9 @@ def inquiry_packet(
     purity = current.get("purity_percent")
     purity_label = f"{purity}%" if purity is not None else "미확인"
     code_label = "최초 배출 시" if follow_up else "문진 참고"
+    process_discovery = (facility.get("intake_conditions") or {}).get(
+        "purpose"
+    ) == "recipient_conversation"
     statuses = {
         "reviewed": "공개 근거 확인",
         "needs_evidence": "추가 근거 필요",
@@ -50,7 +53,7 @@ def inquiry_packet(
             if follow_up
             else "문진 분류는 참고 결과입니다. 현재 허가 범위와 반입 가능 여부를 확인해 주세요."
         ),
-        "사진은 이 문서에 포함하지 않았습니다. 필요한 사진·시험성적서는 별도로 협의해 주세요.",
+        "사진은 이 문서에 포함하지 않았습니다. SCRAP 인수 요청에서 함께 확인해 주세요.",
         "",
         "3. 검토 중인 공정",
         option["label"],
@@ -73,16 +76,18 @@ def inquiry_packet(
         lines.append(
             "반입 제한 근거가 확인되어 인수 요청이 보류된 후보입니다. 제한 해소 전 운송하지 마세요."
         )
+    if result.get("process_match") == "matched":
+        lines.append("공정 관련 업체입니다. 이번 물량의 세부 반입조건은 수신 기업이 확인합니다.")
     if (result.get("lot_review") or {}).get("status") != "reviewed":
         lines.append("현재 물량·사진에 대한 AI 검토가 완료되지 않았습니다.")
-    if result.get("next_check"):
+    if result.get("next_check") and not process_discovery:
         lines.append(f"추가 확인: {result['next_check']}")
     lot_review = result.get("lot_review") or {}
     for concern in lot_review.get("concerns", []):
         lines.append(f"- {concern['concern']} / 확인: {concern['next_check']}")
-    for question in lot_review.get("questions", []):
+    for question in [] if process_discovery else lot_review.get("questions", []):
         lines.append(f"- {question}")
-    lines += ["", "5. 이번 물량의 답변과 업체 확인 질문"]
+    lines += ["", "5. 업체와 협의할 내용"]
     declared_policy = facility.get("supplier_policy") or {}
     if declared_policy:
         p = declared_policy["policy"]
@@ -102,16 +107,20 @@ def inquiry_packet(
     for q in form.get("questions", []):
         answer = (form.get("answers", {}).get(q["key"]) or {}).get("value") or "미응답"
         lines.append(f"- {q['label']} / 발송기업 답변: {answer}")
-    lines += [
-        "- 귀 사업장이 이번 재질·형태·분류를 허가 범위 내에서 처리할 수 있는지 확인해 주세요.",
-        "- 허용 오염·수분·혼합재질 조건과 필요한 샘플·검사 항목은 무엇인가요?",
-        "- 최소/최대 반입량, 포장·하역 조건, 가능한 반입 일정은 어떻게 되나요?",
-        "- 처리비 또는 매입가, 운송비 포함 여부, 견적 유효기간을 알려 주세요.",
-        "- 처리 후 예상 산출물과 후속 처리 필요 여부를 알려 주세요. "
-        "실제 결과는 처리 후 기록합니다.",
-        "",
-        "6. 참고 공개 자료",
-    ]
+    if process_discovery:
+        lines.append(
+            "이번 사진·상태·물량을 확인한 뒤 가능한 반입조건과 일정을 메시지로 알려 주세요."
+        )
+    else:
+        lines += [
+            "- 귀 사업장이 이번 재질·형태·분류를 허가 범위 내에서 처리할 수 있는지 확인해 주세요.",
+            "- 허용 오염·수분·혼합재질 조건과 필요한 샘플·검사 항목은 무엇인가요?",
+            "- 최소/최대 반입량, 포장·하역 조건, 가능한 반입 일정은 어떻게 되나요?",
+            "- 처리비 또는 매입가, 운송비 포함 여부, 견적 유효기간을 알려 주세요.",
+            "- 처리 후 예상 산출물과 후속 처리 필요 여부를 알려 주세요. "
+            "실제 결과는 처리 후 기록합니다.",
+        ]
+    lines += ["", "6. 참고 공개 자료"]
     for source in facility.get("sources", []):
         lines.append(
             f"- {source.get('publisher', '')} / {source.get('locator', '')} / "

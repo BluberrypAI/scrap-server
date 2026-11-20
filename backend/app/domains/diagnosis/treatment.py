@@ -9,6 +9,7 @@ from app.core.config import get_settings
 from app.domains.companies.models import Company
 from app.domains.diagnosis.client import EngineUnavailableError
 from app.domains.diagnosis.recycling import recycling_for_handoff, route_recycling
+from app.domains.diagnosis.route_observation import inherited_form
 from app.domains.diagnosis.schemas import TreatmentContextRead, TreatmentSelectionIn
 from app.domains.treatment.classification import INITIAL_PROFILES
 from app.domains.treatment.intake import IntakeSelection, build_intake_batch, review_intakes
@@ -147,12 +148,25 @@ def context_from_handoff(detail, case_id, selection, company):
         context.origin = {"latitude": company.site_latitude, "longitude": company.site_longitude}
     else:
         context.warnings.append("사업장 좌표가 없어 거리 순위는 표시하지 않습니다.")
-    form = normalize_form(selection.input_form)
+    observation = inherited_form(detail)
+    received = observation["value"] if observation else None
+    allowed_forms = {p.input_form for p in profiles}
+    if received == "shredded" and received not in allowed_forms and "flake" in allowed_forms:
+        received = "flake"
+    form = normalize_form(selection.input_form) if selection.input_form else received
+    context.selected_form = form
+    context.selected_form_label = FORM_LABELS.get(form, form)
+    if observation and form == received:
+        context.form_source = observation["source"]
+        context.form_quote = observation["quote"]
+        context.form_turn_id = observation["turn_id"]
+    elif form:
+        context.form_source = "user_input"
     if not form:
         context.status = "needs_input"
         context.message = "분류는 확인됐어요. 문진에 없던 현재 물량의 형태만 확인해 주세요."
         return context
-    if form not in {p.input_form for p in profiles}:
+    if form not in allowed_forms:
         context.status = "unsupported"
         context.message = "이 분류 결과와 현재 형태를 함께 지원하는 공정 자료가 없습니다."
         return context

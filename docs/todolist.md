@@ -111,6 +111,18 @@
 | T-173 | 수락·운송 시작·QR 입고 단계 분리 | 완료 | api-developer / test-engineer | pp-company-workflow | 신규 A/B 가입·PP 문진·사진·Azure 검토·수락·운송·QR 입고 웹 확인. B 산출물이 A에 자동 반영됨. 최종 산출물 뒤 사진/후속 검토 반복 제거. 로컬만 반영 |
 | T-174 | 카카오 지도·주소 검색·인계 도로 경로 | 완료 | api-developer / test-engineer | pp-company-workflow, company-onboarding | 서버621·웹89·Ruff·Docker 빌드 통과. A→B 실호출 6.495km·164좌표와 기업 주소 검색/핀 웹 확인. [검증 범위](kakao-map-validation-20261118.md). 운영 미배포 |
 
+| T-175 | 도로거리순 5곳 우선 AI 검토·진행 orb·인수 요청 예정 경로 | 완료 | api-developer / test-engineer | progressive-candidate-review | 637개 통과, 실제 Azure/웹 A→B 예정 카카오 경로·Orb·캐시 확인. 기존 전체 후보 동기 API 호환 유지 |
+| T-176 | 업체 공개 근거 공용 캐시와 물량 검토 분리 | 완료 | api-developer / test-engineer | progressive-candidate-review | 642개 통과. 실제 Azure 새 물량35.6초/웹39.75초, 공개 근거9건 재사용·공개 추가호출0회. 사진·물량 판단 격리·만료·버전 검증 |
+| T-177 | 공정 관련 업체 Top5·불필요 증빙 질문 제거·B 문의 수락 | 완료 | api-developer / test-engineer | progressive-candidate-review | 서버644개 통과. 실제 Azure PP Top5·질문0개, 별도 A/B 웹 문의→답변→수락→운송·QR 입고→95kg 산출물·완료. 상세: process-discovery-validation-20261119.md |
+| T-178 | 문진에서 말한 현재 형태 이어받기·중복 선택 제거 | 완료 | api-developer / test-engineer | diagnosis-form-handoff | server679·관련35 / web104. 실제 새 PP 문진→형태 자동 적용·수정→100kg 등록·사진 단계. 문진 엔진 변경 없음 |
+| T-179 | 확정 후 형태 선택 제거·팀원 업체 UI 통합·PE/PET/알루미늄캔 연결 점검 | 완료 | api-developer / test-engineer | diagnosis-form-handoff | server679·web104, 19코드/형태·카카오 및 실제 Astra PE5/PET5/캔3 확인. [결과](material-coverage-20261119.md) |
+| T-180 | 문진 엔진의 구조화 형태·분류 경우의 수 갱신 후 인계 재검사 | 대기 | 문진 담당자 / api-developer | diagnosis-form-handoff | 현재 develop에 세부 형태 출력 없음. 수신은 handoff.facts.input_form 우선, 누락 기본값 없음 |
+| T-181 | PE 베일·PET 플레이크·수도권 캔 근거 보강 및 상태별 공정·캐시 재검사 | 완료 | api-developer / test-engineer | material-evidence-state-review | 64시설·132연결, PE 베일1·PET 플레이크3·캔4. 실Azure·카카오·PET 문진→웹·캐시0호출 확인. PE 산출물 형태·현행 수락은 미확인, PS 베일 공백 유지 |
+| T-182 | PE·PET 전체 공정표·전국 명부 연결 차이 조사와 추가 제조업체 연결 | 완료 | api-developer / test-engineer | pe-pet-process-catalog-audit | 70시설·139연결. PE34곳·PET18곳, 새 6사업장·7연결 실Azure matched/카카오 거리 확인. 일반 PE베일1 유지. 조사224행·형태별 전체 목록·684검사·Ruff 통과. PET5곳 반복46.72→1.73초/0모델 호출 |
+| T-183 | 처리 결과+완료·추가 가공·보관 통합 등록과 A 카드 경로 자동 갱신 | 완료 | api-developer / test-engineer | output-disposition-card-sync | 기존 API 호환·완료 원자 저장·stored 재개. 서버693/웹108 통과. B 플레이크90kg 완료·보관→C 펠릿85kg 완료·A 카드 C 자동 갱신 확인. [시험 범위](output-disposition-validation-20261120.md) |
+| T-184 | PP·PE·PET·알루미늄 진행 상태와 B 종료/C QR 인계 웹 회귀 | 완료 | test-engineer / api-developer | output-disposition-card-sync | 서버703·웹108. B 종료4/C 완료4 웹 검증, 추가 PE 경계1건. 검토 뒤 계정 연결 시 요청 버튼 누락 수정·AI 재호출 없음. [결과·PE 공백](material-disposition-validation-20261120.md) |
+| T-185 | 회사 취급 소재 기준 후보 선정·과도한 사업장 공정 입증 제거 | 완료 | api-developer / test-engineer | progressive-candidate-review | 서버704·route602(72생략)·웹108. BGF PE 실제 Azure 후보 포함·14.112km·질문0/웹 확인. 개별 설비 입증·증빙 문진 불요. [검증/범위](company-material-discovery-20261120.md) |
+
 이 레포에서 구현하지 않음. 일정 파악과 연동 시점 확인용.
 
 | 레포 | 주차 | 작업 |

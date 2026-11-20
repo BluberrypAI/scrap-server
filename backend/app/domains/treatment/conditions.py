@@ -26,7 +26,15 @@ def question(
     }
 
 
-def questionnaire(reference, facility_key, material, *, ai_review=None, directory_record=None):
+def questionnaire(
+    reference,
+    facility_key,
+    material,
+    *,
+    ai_review=None,
+    directory_record=None,
+    purpose="legacy_intake",
+):
     profile = published_conditions()["facilities"].get(facility_key, {})
     sources = {s.key: s for s in reference.sources}
     facts = []
@@ -62,6 +70,16 @@ def questionnaire(reference, facility_key, material, *, ai_review=None, director
                     "scope": p.evidence_scope,
                 }
             )
+    if purpose == "process_discovery":
+        return {
+            "version": "intake-questions-v1",
+            "purpose": "recipient_conversation",
+            "facts": facts,
+            "questions": [],
+            "unknown_limits": [],
+            "recipient_confirmation_required": True,
+            "dispatch_approved": False,
+        }
     qs = [
         question("contamination", "기름·약품·내용물 등의 오염이 있나요?", ["없음", "있음", "모름"]),
         question("separation", "다른 재질과 분리되어 있나요?", ["분리됨", "혼합됨", "모름"]),

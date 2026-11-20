@@ -24,7 +24,8 @@ class CaseCreateIn(_Body):
 
 class QuickReplyIn(_Body):
     key: str = Field(examples=["material"])
-    kind: Literal["value", "unknown", "none_all", "expand", "retract"] = "value"
+    # some: 묶음 체크 방식(value = 고른 항목 키 목록). 엔진 docs/ui/ui-contract.md 4절
+    kind: Literal["value", "unknown", "none_all", "expand", "some", "retract"] = "value"
     value: Any = None
 
 
@@ -81,6 +82,11 @@ class TreatmentContextRead(BaseModel):
     available_forms: list[dict[str, str]] = Field(default_factory=list)
     available_materials: list[dict[str, str]] = Field(default_factory=list)
     selected_material: str | None = None
+    selected_form: str | None = None
+    selected_form_label: str | None = None
+    form_source: Literal["handoff", "conversation", "user_input"] | None = None
+    form_quote: str | None = None
+    form_turn_id: str | None = None
     requires_solid_confirmation: bool = False
     origin: dict[str, float] | None = None
     origin_label: str | None = None

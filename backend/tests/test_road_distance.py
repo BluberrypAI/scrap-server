@@ -84,6 +84,29 @@ async def test_every_site_queried_once_and_road_rank_differs_from_straight_line(
         assert sum(f.distance_rank is not None for f in option.facilities) == 5
 
 
+async def test_company_material_candidate_is_not_penalized_for_unconfirmed_site_scope(route):
+    route.options[0].facilities[0].evidence_basis = "site_role_hypothesis"
+
+    def handler(request):
+        is_near = request.url.params["destination"] == "127.0,37.0"
+        return httpx.Response(
+            200,
+            json={
+                "routes": [
+                    {
+                        "result_code": 0,
+                        "summary": {"distance": 1000 if is_near else 5000, "duration": 60},
+                    }
+                ]
+            },
+        )
+
+    await apply(route, handler)
+    nearest = route.options[0].facilities[0]
+    assert nearest.facility_key == "site-0" and nearest.distance_rank == 1
+    assert nearest.evidence_basis == "site_role_hypothesis"
+
+
 @pytest.mark.parametrize(
     "payload",
     [
