@@ -241,3 +241,28 @@ async def test_photo_replacement_is_versioned_preserves_history_and_rechecks(set
     )
     assert offered.status_code == 200, offered.text
     assert set(offered.json()["offers"][-1]["data"]["photo_ids"]) == sent_ids
+
+
+async def test_photo_removal_hides_current_photo_and_requires_new_review(setup_flow):
+    req, create, _, _ = setup_flow
+    lot = await create()
+    stream = io.BytesIO()
+    Image.new("RGB", (16, 16), "blue").save(stream, format="PNG")
+    photo_file = {"file": ("test.png", stream.getvalue(), "image/png")}
+    uploaded = await req("A", f"/lots/{lot['id']}/photos", files=photo_file)
+    assert uploaded.status_code == 200, uploaded.text
+    lot = await reviewed(req, uploaded.json())
+    photo_id = lot["photos"][0]["id"]
+    path = f"/lots/{lot['id']}/photos/{photo_id}"
+    assert (await req("B", path, {"revision": lot["revision"]}, method="DELETE")).status_code in {403, 404}
+    assert (await req("A", path, {"revision": lot["revision"] + 1}, method="DELETE")).status_code == 409
+    removed = await req("A", path, {"revision": lot["revision"]}, method="DELETE")
+    assert removed.status_code == 200, removed.text
+    current = removed.json()
+    assert current["review"] is None
+    assert current["photos"][0]["active"] is False
+    assert (await req("A", path, {"revision": current["revision"]}, method="DELETE")).status_code == 404
+    assert (await req("A", f"/photos/{photo_id}", method="GET")).status_code == 200
+    new_photo = await req("A", f"/lots/{lot['id']}/photos", files=photo_file)
+    assert new_photo.status_code == 200, new_photo.text
+    assert sum(photo["active"] for photo in new_photo.json()["photos"]) == 1

@@ -503,6 +503,31 @@ async def add_photo(
     return await view(db, lot, cid)
 
 
+@router.delete("/lots/{key}/photos/{photo_id}")
+async def remove_photo(
+    key: uuid.UUID, photo_id: uuid.UUID, body: Version, company_id: CompanyId, db: DbSession
+):
+    cid = uuid.UUID(company_id)
+    lot = await lot_for(db, key, cid, lock=True)
+    active(lot, cid, {"ready", "processed"})
+    version(lot, body.revision)
+    target = await db.get(WorkflowPhoto, photo_id)
+    excluded = list(lot.data.get("excluded_photo_ids", []))
+    if (
+        not target
+        or target.lot_id != key
+        or target.stage != len(lot.data["completed"])
+        or target.company_id != cid
+        or str(photo_id) in excluded
+    ):
+        fail("삭제할 현재 단계 사진을 찾을 수 없습니다.", 404)
+    lot.data = {**lot.data, "excluded_photo_ids": [*excluded, str(photo_id)]}
+    lot.review = None
+    stamp(lot, "사진 삭제", cid)
+    await db.commit()
+    return await view(db, lot, cid)
+
+
 @router.get("/photos/{key}")
 async def photo(key: uuid.UUID, company_id: CompanyId, db: DbSession):
     row = await db.get(WorkflowPhoto, key)
