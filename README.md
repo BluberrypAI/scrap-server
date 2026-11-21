@@ -77,7 +77,7 @@ uv run uvicorn app.main:app --reload
 | 언어 / 프레임워크 | Python 3.12 / FastAPI |
 | DB | PostgreSQL 17 (로컬 개발은 SQLite도 가능) |
 | ORM / 마이그레이션 | SQLAlchemy 2.0 (async) / Alembic |
-| 인증 | Google·Microsoft 소셜 로그인 (Authlib), JWT httpOnly 쿠키 |
+| 인증 | Google·Microsoft 소셜 로그인 (Authlib), 처리업체 아이디·비밀번호 로그인 (scrypt), JWT httpOnly 쿠키 |
 | 외부 연동 | 카카오모빌리티 길찾기(도로거리·경로), Photon(주소 검색), OSRM(키 없는 시연용 도로거리, 기본 꺼짐) |
 | 패키지 / 품질 | uv / ruff, pytest |
 | 배포 | Azure App Service(컨테이너, Korea Central). main 병합 → ACR `:main` push → ACR 웹훅으로 재시작 ([.github/workflows/deploy-azure.yml](.github/workflows/deploy-azure.yml)) |
@@ -124,6 +124,7 @@ scrap-server/
 | GET | /api/v1/auth/{provider}/callback | 로그인 완료, 쿠키 발급 |
 | POST | /api/v1/auth/refresh | access·refresh 토큰 재발급 (refresh 회전) |
 | POST | /api/v1/auth/logout | 로그아웃 (refresh 토큰 폐기) |
+| POST | /api/v1/auth/password-login | 처리업체 아이디·비밀번호 로그인 (팀이 발급한 계정 전용, 운영 포함) |
 | POST | /api/v1/auth/dev-login | 개발용 로그인 (`APP_ENV=local`·`test`에서만 존재) |
 | GET | /api/v1/users/me | 현재 사용자 (온보딩 전이면 기업 ID null) |
 | POST | /api/v1/users/me/withdraw | 회원 탈퇴 (유예 기간 뒤 삭제) |

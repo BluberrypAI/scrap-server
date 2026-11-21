@@ -139,6 +139,13 @@ TEST_DATABASE_URL=postgresql+asyncpg://resource:resource@localhost:5433/resource
 
 소셜 로그인은 브라우저가 Google·Microsoft로 이동했다가 돌아오는 방식이라 Swagger 안에서는 실행할 수 없음. 대신 **개발용 로그인**을 사용함 (OAuth 키 불필요).
 
+**처리업체 계정 (B·C)**: 회원가입 없이 팀이 명령으로 발급하고 로그인 화면의 아이디·비밀번호 폼으로 로그인함. 업체 정보는 DB의 처리 공정표 스냅샷에서 가져옴 ([docs/specs/facility-password-login.md](../docs/specs/facility-password-login.md)). 배포 DB에 만들려면 `DATABASE_URL`을 운영 DB로 두고 실행함
+
+```bash
+uv run python -m app.domains.auth.facility_accounts --list   # 업체 키 목록
+uv run python -m app.domains.auth.facility_accounts --login-id sarom-hwaseong   --facility sarom-hwaseong-2 --contact-email manager@example.com   # 비밀번호는 프롬프트 입력
+```
+
 1. http://localhost:8000/docs 에서 `POST /api/v1/auth/dev-login` → **Try it out** → **Execute**
    - 본문을 비우면 기본 사용자(`dev@example.com`)로 로그인. 다른 사용자가 필요하면 `{"email": "other@example.com"}`
 2. 쿠키가 브라우저에 저장되어 같은 Swagger 화면에서 다른 API가 바로 인증됨

@@ -3,7 +3,9 @@ import logging
 from authlib.integrations.base_client.errors import OAuthError
 from fastapi import APIRouter, Cookie, Request, Response, status
 from fastapi.responses import RedirectResponse
+from pydantic import BaseModel, Field
 
+from app.core import passwords
 from app.core.config import get_settings
 from app.core.errors import AppError, AuthRequiredError, ErrorCode
 from app.db.session import DbSession
@@ -66,6 +68,31 @@ async def callback(provider: str, request: Request, db: DbSession) -> Response:
     )
     set_auth_cookies(response, user.id, await service.start_session(db, user.id))
     return response
+
+
+class PasswordLoginRequest(BaseModel):
+    login_id: str = Field(min_length=1, max_length=255)
+    password: str = Field(min_length=1, max_length=passwords.MAX_LENGTH)
+
+
+@router.post(
+    "/password-login",
+    status_code=status.HTTP_204_NO_CONTENT,
+    summary="아이디·비밀번호 로그인 (운영자가 발급한 처리업체 계정)",
+    responses={
+        401: {"description": "아이디 또는 비밀번호 불일치"},
+        403: {"description": "탈퇴 처리 중"},
+    },
+)
+async def password_login(data: PasswordLoginRequest, response: Response, db: DbSession) -> None:
+    user = await service.authenticate_password(db, data.login_id, data.password)
+    if user is None:
+        raise AuthRequiredError("아이디 또는 비밀번호가 맞지 않음")
+    if user.is_withdrawn:
+        raise AppError(
+            status.HTTP_403_FORBIDDEN, ErrorCode.ACCOUNT_WITHDRAWN, "탈퇴 처리 중인 계정"
+        )
+    set_auth_cookies(response, user.id, await service.start_session(db, user.id))
 
 
 @router.post("/refresh", status_code=status.HTTP_204_NO_CONTENT)

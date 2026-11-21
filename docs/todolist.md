@@ -126,6 +126,7 @@
 | T-187 | 회원가입에서 사업장 판정 고정값 4개 받고 문진 건 생성 시 confirmed_facts로 전달 | 완료 | db-engineer / api-developer | company-onboarding, diagnosis-engine-integration | 서버718·Ruff 통과. 공사 5톤 이상은 건별 문진 유지. 운영 미배포 |
 | T-188 | 보류된 처리 결과 정정과 현재 위치·상태 표시 | 완료 | api-developer / test-engineer | pp-company-workflow | 서버 정정 API와 오래된 좌표 경고 제거, 웹 처리 건 현황 수정 버튼·STEP 03 현재 업체/운송 상태. 서버 714·웹 112 검사 통과 |
 | T-189 | 문진 v2 알루미늄·철 스크랩(D18) 인계를 공정표에 연결 | 완료 | api-developer / test-engineer | diagnosis-form-handoff | 엔진 `steel`→`ferrous` 이름 연결. 서버725·Ruff 통과. 로컬 E2E: 알루미늄 51-29-02 후보2·물량 등록, 철 51-29-01 후보4·AI 검토4·물량 등록, 기름 묻은 철 지정 가능성, 철캔 미지원 유지 |
+| T-190 | 처리업체(B·C) 아이디·비밀번호 로그인과 계정 발급 명령 | 완료 | auth-specialist / test-engineer | facility-password-login | users.password_hash 추가, 운영 포함 /auth/password-login, 배포 DB 공정표 업체 정보로 계정·기업·업체 연결 발급(synthetic=false라 운영 화면에 보임). 웹 로그인 탭 폼. 운영 미배포 |
 
 이 레포에서 구현하지 않음. 일정 파악과 연동 시점 확인용.
 
