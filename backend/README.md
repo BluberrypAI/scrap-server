@@ -4,6 +4,8 @@
 
 처리 결과 통합 등록: `/api/v1/workflow/lots/{id}/output`에서 `next_action`을 complete/forward/hold로 함께 보내면 완료/추가 가공/보관 중을 한 번에 기록합니다. complete는 `intended_use`와 `completion_confirmed=true`가 필요하며 `completion_reference` 생략 시 같은 산출물의 `evidence`를 사용합니다. `stored`는 보관 중이며 `/lots/{id}/output-action`으로 같은 산출물의 진행 방향을 변경합니다. 기존 `/output` 필드만 보내는 요청과 `/finish`는 호환 유지합니다. [명세](../docs/specs/output-disposition-card-sync.md).
 
+산출물 불일치로 보류된 마지막 단계는 현재 업체가 `/api/v1/workflow/lots/{id}/output-correction`으로 정정할 수 있습니다. 정정 사유와 이전 값은 이력에 남으며, 실제 산출물이 예정 산출물과 계속 다르면 보류 상태를 유지합니다. [명세](../docs/specs/pp-company-workflow.md).
+
 후보의 `review.next_step.options[].facilities[].recipient`는 조회 시 현재 계정 연결·기업명을 반영합니다. 검토 후 새 업체 계정을 연결해도 AI 재검토 없이 요청 버튼이 갱신됩니다. 연결 삭제·운영 synthetic 제한은 유지하며 AI/공정 캐시와 revision은 바꾸지 않습니다. [네 소재 웹 검증과 데이터 공백](../docs/material-disposition-validation-20261120.md).
 
 FastAPI 기반 백엔드 API. **팀 표준은 A(Docker)** 이며, B는 Docker 없이 빠르게 확인할 때의 보조 방법임.
