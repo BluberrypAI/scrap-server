@@ -127,6 +127,7 @@
 | T-188 | 보류된 처리 결과 정정과 현재 위치·상태 표시 | 완료 | api-developer / test-engineer | pp-company-workflow | 서버 정정 API와 오래된 좌표 경고 제거, 웹 처리 건 현황 수정 버튼·STEP 03 현재 업체/운송 상태. 서버 714·웹 112 검사 통과 |
 | T-190 | 미가입 업체 답장 링크 발급·조회·중지 및 공개 답장 접수 | 완료 | api-developer / test-engineer | vendor-inquiry | 전체 테스트 747개·Ruff·SQLite 마이그레이션 통과. |
 | T-191 | 업체에 보낼 짧은 메일 본문과 공개 문의 요약 추가 | 완료 | api-developer / test-engineer | vendor-inquiry | 전체 테스트 753개·Ruff·SQLite 마이그레이션 통과. |
+| T-192 | 답장 링크 임시 계정과 기존 인수·QR 입고 흐름 연결 | 완료 | api-developer / test-engineer | vendor-inquiry | 전체 761개·Ruff·SQLite 마이그레이션 통과. PostgreSQL 실DB와 웹 연동은 미검증. |
 
 이 레포에서 구현하지 않음. 일정 파악과 연동 시점 확인용.
 

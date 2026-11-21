@@ -77,10 +77,10 @@ async def refresh(
     if not refresh_token:
         raise AuthRequiredError("refresh 토큰이 없음")
     try:
-        user_id, new_refresh_token = await service.rotate_session(db, refresh_token)
+        user, new_refresh_token = await service.rotate_session(db, refresh_token)
     except service.InvalidRefreshTokenError:
         raise AuthRequiredError("refresh 토큰이 유효하지 않음") from None
-    set_auth_cookies(response, user_id, new_refresh_token)
+    set_auth_cookies(response, user.id, new_refresh_token, guest=user.is_guest)
 
 
 @router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)

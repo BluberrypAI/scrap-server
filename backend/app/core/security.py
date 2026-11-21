@@ -63,3 +63,13 @@ def decode_refresh_token(token: str) -> tuple[uuid.UUID, uuid.UUID]:
         return uuid.UUID(payload["sub"]), uuid.UUID(payload["jti"])
     except (KeyError, ValueError) as exc:
         raise InvalidTokenError(str(exc)) from exc
+
+
+def decode_access_token(token: str) -> tuple[uuid.UUID, uuid.UUID | None]:
+    """Return the user and the issuing session, when the access token is session-bound."""
+    payload = _decode(token, "access")
+    try:
+        session_id = uuid.UUID(payload["jti"]) if "jti" in payload else None
+        return uuid.UUID(payload["sub"]), session_id
+    except (KeyError, ValueError) as exc:
+        raise InvalidTokenError(str(exc)) from exc

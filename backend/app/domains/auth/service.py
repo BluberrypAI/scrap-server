@@ -3,7 +3,7 @@ from collections.abc import Mapping, Sequence
 from datetime import UTC, datetime
 from typing import Any
 
-from sqlalchemy import delete, update
+from sqlalchemy import delete, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.security import (
@@ -93,8 +93,29 @@ async def delete_sessions_of_users(db: AsyncSession, user_ids: Sequence[uuid.UUI
     )
 
 
-async def rotate_session(db: AsyncSession, refresh_token: str) -> tuple[uuid.UUID, str]:
-    """Exchange a valid refresh token for a new one. Returns (user_id, new refresh token)."""
+async def lock_guest_sessions(db: AsyncSession, user_id: uuid.UUID) -> None:
+    """Serialize rotation with link revocation on PostgreSQL. SQLite serializes writes."""
+    await db.scalar(select(User.id).where(User.id == user_id).with_for_update())
+
+
+async def guest_session_active(
+    db: AsyncSession, user_id: uuid.UUID, session_id: uuid.UUID | None
+) -> bool:
+    if session_id is None:
+        return False
+    active_id = await db.scalar(
+        select(RefreshToken.id).where(
+            RefreshToken.id == session_id,
+            RefreshToken.user_id == user_id,
+            RefreshToken.revoked_at.is_(None),
+            RefreshToken.expires_at > datetime.now(UTC),
+        )
+    )
+    return active_id is not None
+
+
+async def rotate_session(db: AsyncSession, refresh_token: str) -> tuple[User, str]:
+    """Exchange a valid refresh token for a new one."""
     try:
         user_id, token_id = decode_refresh_token(refresh_token)
     except InvalidTokenError:
@@ -103,6 +124,8 @@ async def rotate_session(db: AsyncSession, refresh_token: str) -> tuple[uuid.UUI
     user = await user_repo.get_user(db, user_id)
     if user is None or user.is_withdrawn:
         raise InvalidRefreshTokenError
+    if user.is_guest:
+        await lock_guest_sessions(db, user_id)
 
     if not await _revoke(db, user_id, token_id):
         known = await db.get(RefreshToken, token_id)
@@ -112,7 +135,7 @@ async def rotate_session(db: AsyncSession, refresh_token: str) -> tuple[uuid.UUI
             await db.commit()
         raise InvalidRefreshTokenError
 
-    return user_id, await start_session(db, user_id)
+    return user, await start_session(db, user_id)
 
 
 async def end_session(db: AsyncSession, refresh_token: str | None) -> None:

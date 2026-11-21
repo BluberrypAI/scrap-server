@@ -156,6 +156,7 @@ async def test_me_with_token(auth_client: AsyncClient, user: User):
         "name": user.name,
         "provider": "google",
         "company_id": None,
+        "guest": False,
     }
 
 

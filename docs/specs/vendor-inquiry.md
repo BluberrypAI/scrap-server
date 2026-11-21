@@ -29,3 +29,13 @@
 - 공개 POST는 multipart로 `availability`(필수, `available|conditional|unavailable`), `text`(2,000자), `contact_name`(100자), `contact_info`(200자), `file`(1단계 파일 규칙)을 받고 201과 `id`, `created_at`을 반환한다. 미등록·만료·중지·진행 상태 변경 또는 후보 제외 시 같은 404를 반환한다. 입력 오류는 422, 토큰·IP별 분당 10회 또는 링크당 누적 10건 초과는 429(`RATE_LIMITED`)다. 공개 응답에는 `Cache-Control: no-store`, `X-Robots-Tag: noindex`를 설정한다.
 - 답장 목록에 `source`(`sender|vendor_link`), `availability`, `contact_name`, `contact_info`를 추가한다. 기존 행은 `sender`다. 업체 답장은 고객이 기존 API에서 내려받거나 삭제할 수 있다. 업체가 추가 답장으로 정정할 수 있으며 삭제한 답장도 링크의 누적 건수에 포함한다. 메일 자동 전송과 인수 수락 처리는 없다.
 - (v2, 2026-11-21) inquiry-packet 응답에 업체에 보낼 짧은 메일 본문 `mail_body`(링크 미포함, 900자 이내)를 추가한다. 인사·물량 정보(품목, 중량, 상태, 참고 분류번호, 시·군·구까지의 출발지와 도로거리, 희망 처리)·여쭙는 내용 3가지·서명으로 구성하고 AI 검토, UTC 시각, URL, 내부 ID는 넣지 않는다. 공개 GET 응답에는 링크 발급 시점의 `summary`(item, weight_kg, condition, waste_code, origin_region, road_distance_km, process, questions)를 더하며, summary가 없던 이전 링크는 `summary: null`이다. 기존 `inquiry_text`는 상세 문의서로 유지한다.
+
+## 링크 참여 임시 계정 (v3, 2026-11-21 확정)
+
+- 공개 `POST /api/v1/public/inquiry-replies/{token}/join`은 유효한 링크의 임시 계정으로 로그인 쿠키를 발급하고 `200 {"company_name": string, "lot_visible": boolean}`을 반환한다. `lot_visible`은 해당 계정에 인수 요청이 있어 처리 건을 볼 수 있다는 뜻이다. 미등록·만료·중지 링크는 기존 공통 404, 업체에 정식·시연 계정이 연결돼 있으면 409 `ALREADY_CONNECTED`다. GET·공개 답장·join은 IP와 토큰별 제한을 공유한다.
+- 공개 GET의 `joinable`은 해당 링크로 로그인할 수 있는지, `joined`는 임시 계정이 생성됐는지를 나타낸다. 해당 임시 계정에 인수 요청이 생기면 진행 상태가 바뀌어도 유효 기간 안에 공개 GET과 join을 사용할 수 있다. 공개 답장은 기존 접수 조건을 따른다. 발급자는 임시 계정에 이미 인수 요청을 보냈으면 이전 문의 내용으로 링크를 재발급하거나 중지할 수 있다.
+- 사용자(provider `reply-link`, subject는 링크 행 ID)와 기업은 `lot_id`·`capability_key`당 하나이며 재발급 때 재사용한다. 기업 이름은 `{업체명} (링크 참여)`이고 주소·좌표는 공개 후보 자료에서 가져온다. 사용자의 이메일은 null, 회사의 연락 이메일과 미확인 주소는 빈 문자열이다. 업체 전체에 적용되는 수신 계정 연결은 생성하지 않는다.
+- `/api/v1/users/me`와 `/api/v1/companies/me`에 `guest`를 추가한다. 임시 계정은 회사 정보 수정과 회원 탈퇴에 403을 받는다. 링크 중지는 임시 계정의 모든 refresh 세션과 해당 세션의 access 쿠키를 무효화한다. 링크 만료는 새 링크 로그인을 차단하며 이미 발급된 세션은 기존 세션 만료 규칙을 따른다. 인수 요청과 입고 기록은 보존한다.
+- 현재 후보의 `recipient`는 기존 연결을 우선하며 `guest: false`를 추가한다. 기존 연결이 없으면 현재 물량·후보에 대응하는 유효한 링크로 참여한 회사만 `synthetic: false, guest: true`로 표시한다. 기존 인수·대화·QR·입고·결과 API의 권한과 입력을 적용하며, 입고 뒤 공개 사업장 좌표로 다음 공정의 도로거리 조회를 할 수 있다. 링크 참여는 업체 확인이나 허가 확인을 의미하지 않는다.
+
+완료 조건은 쿠키 로그인, 재참여·재발급 시 계정 유지, 만료·중지·기존 연결 차단, 후보·물량별 권한 격리, 회사 수정·탈퇴 차단, 인수 요청부터 QR 입고·결과 기록·다음 후보까지의 연속 검증이다.

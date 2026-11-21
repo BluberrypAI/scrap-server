@@ -4,7 +4,7 @@ import logging
 from time import monotonic
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, File, Form, Request, UploadFile
+from fastapi import APIRouter, Depends, File, Form, Request, Response, UploadFile
 from fastapi.responses import JSONResponse
 from fastapi.routing import APIRoute
 from starlette.datastructures import MutableHeaders
@@ -13,9 +13,11 @@ from starlette.types import ASGIApp, Receive, Scope, Send
 
 from app.core.errors import AppError, ErrorCode, ErrorResponse
 from app.db.session import DbSession
+from app.domains.auth.cookies import set_auth_cookies
 from app.domains.transport import inquiry_replies, inquiry_reply_links
 from app.domains.transport.models import WorkflowInquiryReplyLink
 from app.domains.transport.schemas import (
+    PublicInquiryJoin,
     PublicInquiryRead,
     PublicInquiryReplyCreated,
     ReplyAvailability,
@@ -103,7 +105,7 @@ class ProtectPublicInquiryReplies:
             and scope["app"].state.inquiry_reply_rate_limit_enabled
             and not self.allow(
                 scope["client"][0] if scope.get("client") else "",
-                scope["path"].removeprefix(API_PATH_PREFIX),
+                scope["path"].removeprefix(API_PATH_PREFIX).partition("/")[0],
             )
         ):
             error = ErrorResponse(
@@ -124,8 +126,23 @@ ActiveLink = Annotated[WorkflowInquiryReplyLink, Depends(get_active_link)]
 
 
 @router.get("/{token}", response_model=PublicInquiryRead)
-async def get_inquiry(link: ActiveLink):
-    return inquiry_reply_links.public_inquiry(link)
+async def get_inquiry(token: str, db: DbSession):
+    return await inquiry_reply_links.public_inquiry(db, token)
+
+
+@router.post(
+    "/{token}/join",
+    response_model=PublicInquiryJoin,
+    responses={
+        404: {"model": ErrorResponse, "description": "사용할 수 없는 링크"},
+        409: {"model": ErrorResponse, "description": "이미 수신 계정이 연결된 업체"},
+        429: {"model": ErrorResponse, "description": "공개 경로 요청 횟수 초과"},
+    },
+)
+async def join_inquiry(token: str, db: DbSession, response: Response):
+    user_id, refresh_token, joined = await inquiry_reply_links.join(db, token)
+    set_auth_cookies(response, user_id, refresh_token, guest=True)
+    return joined
 
 
 def optional_text(value: str | None):

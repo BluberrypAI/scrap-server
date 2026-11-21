@@ -132,6 +132,9 @@ class WorkflowInquiryReplyLink(Base, TimestampMixin):
     lot_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("workflow_lots.id", ondelete="CASCADE"))
     capability_key: Mapped[str] = mapped_column(String(100))
     company_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("companies.id"))
+    guest_company_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("companies.id"), unique=True
+    )
     stage: Mapped[int] = mapped_column(Integer)
     token_hash: Mapped[str] = mapped_column(String(64), unique=True)
     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))

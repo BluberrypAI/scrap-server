@@ -11,6 +11,7 @@ class UserRead(BaseModel):
     name: str | None
     provider: str = Field(examples=["microsoft"])
     company_id: uuid.UUID | None
+    guest: bool = False
 
 
 class WithdrawRequest(BaseModel):

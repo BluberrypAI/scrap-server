@@ -5,7 +5,7 @@ from fastapi import APIRouter, Query, Response, status
 from app.core.config import get_settings
 from app.core.errors import AppError, ConflictError, ErrorCode, NotFoundError
 from app.db.session import DbSession
-from app.domains.auth.dependencies import CurrentUser
+from app.domains.auth.dependencies import CurrentUser, RegularUser
 from app.domains.companies import geocoding, service
 from app.domains.companies.models import Company
 from app.domains.companies.schemas import (
@@ -56,7 +56,7 @@ async def read_my_company(user: CurrentUser, db: DbSession) -> CompanyRead:
     responses={409: {"description": "다른 곳에서 먼저 수정됨 (profile_version 불일치)"}},
 )
 async def update_my_company(
-    data: CompanyUpdate, user: CurrentUser, db: DbSession
+    data: CompanyUpdate, user: RegularUser, db: DbSession
 ) -> CompanyUpdateResult:
     company = await _my_company(user, db)
     try:

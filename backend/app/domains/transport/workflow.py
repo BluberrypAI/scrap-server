@@ -41,7 +41,7 @@ from app.domains.transport.photo_conflicts import (
     conflict_gate,
     resolve_conflict,
 )
-from app.domains.transport.recipient_accounts import with_current_recipients
+from app.domains.transport.recipient_accounts import current_recipients, with_current_recipients
 from app.domains.transport.road_route import RoadRouteRead, driving_segment, handoff_legs
 from app.domains.transport.schemas import (
     InquiryReplyLinkStatus,
@@ -294,7 +294,7 @@ async def view(db, lot, cid):
         "companies": names,
         "can_manage": lot.current_company_id == cid,
         "data": public_data,
-        "review": await with_current_recipients(db, lot.review),
+        "review": await with_current_recipients(db, lot),
         "review_progress": lot.data.get("review_job"),
         "photo_conflict_gate": conflict_gate(lot),
         "output_states": [
@@ -808,7 +808,12 @@ async def run_candidate_review(
             )
             target = await db.get(Company, binding.company_id) if enabled else None
             f["recipient"] = (
-                {"id": str(target.id), "name": target.company_name, "synthetic": binding.synthetic}
+                {
+                    "id": str(target.id),
+                    "name": target.company_name,
+                    "synthetic": binding.synthetic,
+                    "guest": target.guest,
+                }
                 if target and target.id != cid
                 else None
             )
@@ -1090,9 +1095,11 @@ async def lot_for_reply_link(db, lot_id, company_id, capability_key, *, lock=Fal
     cid = uuid.UUID(company_id)
     reply_key(capability_key)
     lot = await lot_for(db, lot_id, cid, lock=lock)
-    if cid != lot.current_company_id:
+    link = await reply_links.issued_link(db, lot, capability_key, cid)
+    sent_offer = await reply_links.guest_offer(db, link)
+    if cid != lot.current_company_id and sent_offer is None:
         fail("현재 물량을 담당하는 기업만 처리할 수 있습니다.", 403)
-    return lot
+    return lot, link, sent_offer
 
 
 @router.post(
@@ -1103,7 +1110,18 @@ async def lot_for_reply_link(db, lot_id, company_id, capability_key, *, lock=Fal
 async def issue_inquiry_reply_link(
     lot_id: uuid.UUID, capability_key: str, company_id: CompanyId, db: DbSession, response: Response
 ):
-    lot = await lot_for_reply_link(db, lot_id, company_id, capability_key, lock=True)
+    lot, link, sent_offer = await lot_for_reply_link(
+        db, lot_id, company_id, capability_key, lock=True
+    )
+    response.headers["Cache-Control"] = "private, no-store"
+    if sent_offer and (
+        lot.current_company_id != link.company_id
+        or lot.status not in reply_links.REPLYABLE_STATES
+        or not reply_links.candidate_in_review(lot, capability_key)
+    ):
+        return await reply_links.issue_link(
+            db, lot, capability_key, reply_links.inquiry_snapshot(link), previous=link
+        )
     active(lot, lot.current_company_id, reply_links.REPLYABLE_STATES)
     if not reply_links.candidate_in_review(lot, capability_key):
         fail("현재 물량의 업체 검토 결과에 없는 후보입니다.", 404)
@@ -1111,7 +1129,6 @@ async def issue_inquiry_reply_link(
         db, lot, lot.current_company_id, capability_key
     )
     packet, summary = packet_for_candidate(lot, capability_key, company, ref, option, facility)
-    response.headers["Cache-Control"] = "private, no-store"
     return await reply_links.issue_link(
         db,
         lot,
@@ -1132,17 +1149,17 @@ async def issue_inquiry_reply_link(
 async def get_inquiry_reply_link(
     lot_id: uuid.UUID, capability_key: str, company_id: CompanyId, db: DbSession, response: Response
 ):
-    lot = await lot_for_reply_link(db, lot_id, company_id, capability_key)
+    lot, link, sent_offer = await lot_for_reply_link(db, lot_id, company_id, capability_key)
     response.headers["Cache-Control"] = "private, no-store"
-    return await reply_links.link_status(db, lot, capability_key)
+    return reply_links.link_status(lot, link, sent_offer)
 
 
 @router.delete("/lots/{lot_id}/inquiries/{capability_key}/reply-link", status_code=204)
 async def delete_inquiry_reply_link(
     lot_id: uuid.UUID, capability_key: str, company_id: CompanyId, db: DbSession
 ):
-    lot = await lot_for_reply_link(db, lot_id, company_id, capability_key, lock=True)
-    await reply_links.revoke_link(db, lot, capability_key)
+    _, link, _ = await lot_for_reply_link(db, lot_id, company_id, capability_key, lock=True)
+    await reply_links.revoke_link(db, link)
     return Response(status_code=204)
 
 
@@ -1321,13 +1338,10 @@ async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSess
         not in {"isolated_vision", "no_photo"}
     ):
         fail("상태·사진 AI 검토 미완료 또는 제한 근거가 있어 요청을 보류합니다.")
-    binding = await db.get(WorkflowFacilityAccount, facility["facility_key"])
-    if (
-        not binding
-        or binding.company_id == cid
-        or (binding.synthetic and not get_settings().synthetic_bindings_allowed)
-    ):
-        fail("이 업체의 확인된 수신 계정이 연결되지 않았습니다.")
+    recipients = await current_recipients(db, lot, [facility])
+    recipient = recipients.get(body.capability_key)
+    if recipient is None:
+        fail("이 업체의 수신 계정이 연결되지 않았습니다.")
     photos = list(
         await db.scalars(
             select(WorkflowPhoto.id).where(
@@ -1338,16 +1352,16 @@ async def offer(key: uuid.UUID, body: OfferIn, company_id: CompanyId, db: DbSess
     row = WorkflowOffer(
         lot_id=key,
         sender_id=cid,
-        recipient_id=binding.company_id,
+        recipient_id=uuid.UUID(recipient["id"]),
         data={
             "current": deepcopy(lot.data["current"]),
             "origin": deepcopy(review.get("origin")),
             "option": option,
-            "facility": facility,
+            "facility": {**facility, "recipient": recipient},
             "ai_review": check,
             "photo_conflict_resolution": deepcopy(conflict_gate(lot)["resolution"]),
             "intake_conditions": deepcopy(facility.get("intake_conditions")),
-            "synthetic": binding.synthetic,
+            "synthetic": recipient["synthetic"],
             "photo_ids": [
                 str(p) for p in photos if str(p) not in lot.data.get("excluded_photo_ids", [])
             ],

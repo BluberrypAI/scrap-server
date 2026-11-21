@@ -129,6 +129,8 @@ async def test_unusable_links_share_one_public_404(inquiry, public_client, db, r
     responses = (
         await public_client.get(MISSING),
         await public_client.get(url),
+        await public_client.post(MISSING + "/join"),
+        await public_client.post(url + "/join"),
         await post_reply(public_client, url, {"availability": "available"}),
         await post_reply(public_client, url),
     )
@@ -167,12 +169,15 @@ async def test_public_inquiry_reuses_packet_and_omits_private_fields(inquiry, pu
         "expires_at",
         "reply_count",
         "max_replies",
+        "joinable",
+        "joined",
     }
     assert payload["sender_company_name"] == "A"
     assert payload["facility_label"] == facility["label"]
     assert payload["subject"] == packet["subject"]
     assert payload["expires_at"] == issued["expires_at"]
     assert payload["reply_count"] == 0 and payload["max_replies"] == 10
+    assert payload["joinable"] is True and payload["joined"] is False
     expected_summary = {
         # The state label already starts with the material, so it is not repeated.
         "item": option["input_state"]["label"],
@@ -355,6 +360,9 @@ async def test_memory_rate_limit_per_token_and_ip(inquiry, public_client, monkey
         response = await post_reply(other_ip, url, {"availability": "available"})
         # Same token, different IP.
         assert response.status_code == 429 and response.json()["code"] == "RATE_LIMITED"
+        assert_protected(response)
+        response = await other_ip.post(url + "/join")
+        assert response.status_code == 429
         assert_protected(response)
         now += 60
         assert (await other_ip.get(url)).status_code == 200

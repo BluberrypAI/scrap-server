@@ -102,6 +102,7 @@ class CompanyCreate(CompanyFields, SiteCoordinates, SiteConditions):
 class CompanyRead(BaseModel):
     id: uuid.UUID
     company_name: str
+    guest: bool = False
     contact_email: str
     industry: str
     site_name: str
@@ -123,6 +124,7 @@ class CompanyRead(BaseModel):
         return cls(
             id=company.id,
             company_name=company.company_name,
+            guest=company.guest,
             contact_email=company.contact_email,
             industry=company.industry,
             site_name=company.site_name,

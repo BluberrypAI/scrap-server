@@ -6,6 +6,8 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base, TimestampMixin
 
+REPLY_LINK_PROVIDER = "reply-link"
+
 
 class User(Base, TimestampMixin):
     __tablename__ = "users"
@@ -27,3 +29,7 @@ class User(Base, TimestampMixin):
     @property
     def is_withdrawn(self) -> bool:
         return self.withdrawn_at is not None
+
+    @property
+    def is_guest(self) -> bool:
+        return self.provider == REPLY_LINK_PROVIDER

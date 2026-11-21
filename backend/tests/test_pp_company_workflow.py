@@ -182,9 +182,9 @@ async def setup_flow(client, db, monkeypatch):
         client.cookies.set(ACCESS_COOKIE, actors[role][0])
         return await client.request(method, BASE + path, json=body, **kwargs)
 
-    async def create(form="scrap"):
+    async def create(form="scrap", *, role="A"):
         res = await req(
-            "A",
+            role,
             "/lots",
             {
                 "diagnosis_id": "C1",
@@ -451,7 +451,12 @@ async def test_late_recipient_binding_updates_cached_candidates_without_ai_rerun
     db.add(binding)
     await db.commit()
     fresh = (await req("A", f"/lots/{lot['id']}", method="GET")).json()
-    assert target(fresh)["recipient"] == {"id": actors["D"][1], "name": "D", "synthetic": True}
+    assert target(fresh)["recipient"] == {
+        "id": actors["D"][1],
+        "name": "D",
+        "synthetic": True,
+        "guest": False,
+    }
     assert fresh["revision"] == lot["revision"] and len(packets) == 1
     stored = await db.get(WorkflowLot, uuid.UUID(lot["id"]))
     assert target({"review": stored.review})["recipient"] is None

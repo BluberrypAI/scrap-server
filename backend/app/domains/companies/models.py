@@ -1,7 +1,7 @@
 import uuid
 from typing import Any
 
-from sqlalchemy import JSON, Float, ForeignKey, Integer, String, UniqueConstraint
+from sqlalchemy import JSON, Float, ForeignKey, Integer, String, UniqueConstraint, false
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base, TimestampMixin
@@ -18,6 +18,7 @@ class Company(Base, TimestampMixin):
         ForeignKey("users.id", ondelete="CASCADE"), unique=True
     )
     company_name: Mapped[str] = mapped_column(String(200))
+    guest: Mapped[bool] = mapped_column(default=False, server_default=false())
     contact_email: Mapped[str] = mapped_column(String(320))
     industry: Mapped[str] = mapped_column(String(100))
     # 주생산품 이름 목록. 선택 항목이라 빈 목록일 수 있음 (NULL은 저장하지 않음)

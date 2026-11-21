@@ -166,6 +166,13 @@ class PublicInquiryRead(PublicInquiry):
     expires_at: datetime
     reply_count: int
     max_replies: Literal[10] = 10
+    joinable: bool
+    joined: bool
+
+
+class PublicInquiryJoin(BaseModel):
+    company_name: str
+    lot_visible: bool
 
 
 class PublicInquiryReplyCreated(BaseModel):
