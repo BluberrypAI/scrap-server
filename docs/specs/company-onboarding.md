@@ -27,12 +27,13 @@
 6. 예상 물량은 월 kg 단위이며, 모르면 비워 둠 (값을 추정해 채우지 않음)
 7. 정의되지 않은 필드(예: 예전 `business_registration_no`, `contact`)를 보내면 422
 8. 등록 시 `profile_version`은 1이며, 등록은 변경 이력에 남기지 않음
+8-1. (2026-11-21) 사업장 판정 고정값은 선택 항목임: 배출시설 여부(`emission_facility`), 사업장 전체 폐기물 1일 평균 배출량 kg(`daily_avg_kg`, 0 이상), 공공처리시설·폐기물처리시설 운영 여부(`public_facility`), 다른 공정의 지정폐기물 발생 여부(`site_emits_designated`). 예/아니요 값은 `yes`·`no`이고 null은 모름·미입력임. 이름과 값은 문진 엔진 사실 카탈로그와 같음. 값이 있으면 문진 건을 만들 때 엔진에 `confirmed_facts`로 넘겨 다시 묻지 않고, null은 넘기지 않아 문진에서 물음. 공사 5톤 이상(`construction_5t`)은 작업 단위 사실이라 받지 않고 문진에서 물음
 
 ### 수정
 
-9. 2번의 필수 항목과 `main_products`, `main_waste_types`, 좌표 쌍(`site_latitude`, `site_longitude`)을 수정할 수 있음. `main_products`는 빈 배열로 비울 수 있음. 그 외 필드를 보내면 422
+9. 2번의 필수 항목과 `main_products`, `main_waste_types`, 좌표 쌍(`site_latitude`, `site_longitude`), 8-1의 사업장 판정 고정값을 수정할 수 있음. `main_products`는 빈 배열로 비울 수 있음. 그 외 필드를 보내면 422
 10. 요청에는 화면이 불러온 `profile_version`이 반드시 있어야 함. 현재 버전과 다르면 409 (다른 곳에서 먼저 수정됨)
-11. 보내지 않은 필드는 바꾸지 않음. 좌표 이외의 수정 가능 필드에 `null`을 보내면 422. 좌표는 두 필드에 함께 null을 보내 해제할 수 있음. 주소만 바꾸면 이전 좌표를 지움
+11. 보내지 않은 필드는 바꾸지 않음. 좌표와 사업장 판정 고정값 이외의 수정 가능 필드에 `null`을 보내면 422. 사업장 판정 고정값은 null로 모름으로 되돌릴 수 있음. 좌표는 두 필드에 함께 null을 보내 해제할 수 있음. 주소만 바꾸면 이전 좌표를 지움
 12. 목록 필드(`site_facilities`, `main_products`, `main_waste_types`)는 통째로 교체함 (부분 수정 없음). `main_waste_types`는 종류·물량과 순서가 같으면 바뀌지 않은 것으로 봄. 바뀌면 항목 id를 새로 붙임
 13. 실제로 값이 바뀐 필드가 있으면 `profile_version`을 1 올리고, 바뀐 필드 이름을 `changed_fields`로 반환하며 변경 이력을 1건 남김
 14. 바뀐 값이 없으면 버전을 올리지 않고 이력도 남기지 않으며, `changed_fields`는 빈 배열임
@@ -102,7 +103,7 @@
 
 | 테이블 | 필드 | 제약 |
 | --- | --- | --- |
-| companies | id, user_id, company_name, contact_email, industry, site_name, site_address, site_latitude, site_longitude, site_facilities(JSON), main_products(JSON), main_waste_types(JSON), profile_version, created_at, updated_at | user_id unique, FK users (cascade 삭제). profile_version 기본 1. main_products NOT NULL DEFAULT '[]'. 좌표는 지오코딩 전까지 null |
+| companies | id, user_id, company_name, contact_email, industry, site_name, site_address, site_latitude, site_longitude, site_facilities(JSON), main_products(JSON), main_waste_types(JSON), emission_facility, daily_avg_kg, public_facility, site_emits_designated, profile_version, created_at, updated_at | user_id unique, FK users (cascade 삭제). profile_version 기본 1. main_products NOT NULL DEFAULT '[]'. 좌표는 지오코딩 전까지 null |
 | company_profile_history | id, company_id, profile_version, changed_fields(JSON 배열), created_at(= changed_at), updated_at | FK companies (cascade 삭제), (company_id, profile_version) unique |
 
 `main_waste_types` 항목: `{id, category, expected_monthly_volume_kg}`. 예전 `waste_profiles` 테이블에서 옮겼고 id를 유지함 ([db-schema-simplify.md](db-schema-simplify.md)). 예전에 저장된 `generation_cycle` 키는 마이그레이션 `a7c3e91f5b28`에서 지움.

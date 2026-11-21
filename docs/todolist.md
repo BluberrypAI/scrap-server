@@ -123,6 +123,7 @@
 | T-184 | PP·PE·PET·알루미늄 진행 상태와 B 종료/C QR 인계 웹 회귀 | 완료 | test-engineer / api-developer | output-disposition-card-sync | 서버703·웹108. B 종료4/C 완료4 웹 검증, 추가 PE 경계1건. 검토 뒤 계정 연결 시 요청 버튼 누락 수정·AI 재호출 없음. [결과·PE 공백](material-disposition-validation-20261120.md) |
 | T-185 | 회사 취급 소재 기준 후보 선정·과도한 사업장 공정 입증 제거 | 완료 | api-developer / test-engineer | progressive-candidate-review | 서버704·route602(72생략)·웹108. BGF PE 실제 Azure 후보 포함·14.112km·질문0/웹 확인. 개별 설비 입증·증빙 문진 불요. [검증/범위](company-material-discovery-20261120.md) |
 | T-186 | 문진 v2에서 확정된 폐포장재의 현재 형태를 공정표에 연결 | 완료 | api-developer / test-engineer | diagnosis-form-handoff | 누락 7개 조합 모두 확정 문진에서 후보·도로거리 조회 및 물량 등록, 지원 범위 37/37 후보 확인 |
+| T-187 | 회원가입에서 사업장 판정 고정값 4개 받고 문진 건 생성 시 confirmed_facts로 전달 | 완료 | db-engineer / api-developer | company-onboarding, diagnosis-engine-integration | 서버718·Ruff 통과. 공사 5톤 이상은 건별 문진 유지. 운영 미배포 |
 | T-188 | 보류된 처리 결과 정정과 현재 위치·상태 표시 | 완료 | api-developer / test-engineer | pp-company-workflow | 서버 정정 API와 오래된 좌표 경고 제거, 웹 처리 건 현황 수정 버튼·STEP 03 현재 업체/운송 상태. 서버 714·웹 112 검사 통과 |
 
 이 레포에서 구현하지 않음. 일정 파악과 연동 시점 확인용.

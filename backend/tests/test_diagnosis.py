@@ -104,6 +104,24 @@ async def test_create_case_sends_auth_and_strips_server_fields(
     assert json.loads(sent.content) == {"memo": "PP 필름 자투리", "quantity": 1.5, "unit": "t"}
 
 
+async def test_create_case_sends_site_conditions_as_confirmed_facts(
+    company_client: AsyncClient, fake_engine: FakeEngine
+):
+    """회원가입에서 받은 사업장 고정값만 confirmed_facts로 넘김 (모름은 보내지 않음)."""
+    res = await company_client.patch(
+        "/api/v1/companies/me",
+        json={"profile_version": 1, "emission_facility": "no", "daily_avg_kg": 350},
+    )
+    assert res.status_code == 200
+    res = await company_client.post("/api/v1/diagnosis/cases", json={"memo": "PP"})
+    assert res.status_code == 201
+    assert json.loads(fake_engine.last.content) == {
+        "memo": "PP",
+        "confirmed_facts": {"emission_facility": "no", "daily_avg_kg": 350},
+        "company_profile_version": "2",
+    }
+
+
 async def test_list_cases_passes_query_and_paging(
     company_client: AsyncClient, fake_engine: FakeEngine
 ):
