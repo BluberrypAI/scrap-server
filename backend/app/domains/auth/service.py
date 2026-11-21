@@ -6,6 +6,7 @@ from typing import Any
 from sqlalchemy import delete, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core import passwords
 from app.core.security import (
     InvalidTokenError,
     create_token,
@@ -24,6 +25,22 @@ class MissingSubjectError(Exception):
 
 class InvalidRefreshTokenError(Exception):
     pass
+
+
+PASSWORD_PROVIDER = "password"
+
+
+def normalize_login_id(login_id: str) -> str:
+    return login_id.strip().lower()
+
+
+async def authenticate_password(db: AsyncSession, login_id: str, password: str) -> User | None:
+    """아이디·비밀번호가 맞으면 사용자, 아니면 None. 탈퇴 여부는 호출자가 확인함."""
+    user = await user_repo.get_user_by_identity(db, PASSWORD_PROVIDER, normalize_login_id(login_id))
+    stored = user.password_hash if user else None
+    # 없는 아이디도 해시 계산을 해서 응답 시간 차이를 줄임
+    ok = passwords.verify_password(password, stored or passwords.DUMMY_HASH)
+    return user if ok and stored else None
 
 
 async def login_or_register(db: AsyncSession, provider: str, userinfo: Mapping[str, Any]) -> User:

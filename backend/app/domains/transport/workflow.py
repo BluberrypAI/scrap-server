@@ -172,6 +172,10 @@ class Output(Version, OutputDecision):
     evidence: str = Field(min_length=3, max_length=300)
 
 
+class CorrectOutput(Output):
+    reason: str = Field(min_length=3, max_length=500)
+
+
 class Finish(Version):
     reference: str = Field(min_length=3, max_length=300)
     intended_use: str = Field(min_length=3, max_length=500)
@@ -257,12 +261,21 @@ async def view(db, lot, cid):
     companies = {lot.owner_company_id, lot.current_company_id}
     companies.update(o.recipient_id for o in offers)
     companies.update(o.sender_id for o in offers)
-    names = {
-        str(c.id): c.company_name
-        for c in await db.scalars(select(Company).where(Company.id.in_(companies)))
-    }
+    company_rows = list(await db.scalars(select(Company).where(Company.id.in_(companies))))
+    names = {str(c.id): c.company_name for c in company_rows}
     photos = list(await db.scalars(select(WorkflowPhoto).where(WorkflowPhoto.lot_id == lot.id)))
     public_data = {k: v for k, v in lot.data.items() if k not in {"_review_cache", "review_job"}}
+    current_site = next((c for c in company_rows if c.id == lot.current_company_id), None)
+    if (
+        current_site
+        and current_site.site_latitude is not None
+        and current_site.site_longitude is not None
+    ):
+        public_data["warnings"] = [
+            warning
+            for warning in public_data.get("warnings", [])
+            if warning != "사업장 좌표가 없어 거리 순위는 표시하지 않습니다."
+        ]
     return {
         "id": str(lot.id),
         "revision": lot.revision,
@@ -499,6 +512,31 @@ async def add_photo(
     )
     lot.review = None
     stamp(lot, "사진 교체" if replace_photo_id else "사진 첨부", cid)
+    await db.commit()
+    return await view(db, lot, cid)
+
+
+@router.delete("/lots/{key}/photos/{photo_id}")
+async def remove_photo(
+    key: uuid.UUID, photo_id: uuid.UUID, body: Version, company_id: CompanyId, db: DbSession
+):
+    cid = uuid.UUID(company_id)
+    lot = await lot_for(db, key, cid, lock=True)
+    active(lot, cid, {"ready", "processed"})
+    version(lot, body.revision)
+    target = await db.get(WorkflowPhoto, photo_id)
+    excluded = list(lot.data.get("excluded_photo_ids", []))
+    if (
+        not target
+        or target.lot_id != key
+        or target.stage != len(lot.data["completed"])
+        or target.company_id != cid
+        or str(photo_id) in excluded
+    ):
+        fail("삭제할 현재 단계 사진을 찾을 수 없습니다.", 404)
+    lot.data = {**lot.data, "excluded_photo_ids": [*excluded, str(photo_id)]}
+    lot.review = None
+    stamp(lot, "사진 삭제", cid)
     await db.commit()
     return await view(db, lot, cid)
 
@@ -1400,6 +1438,82 @@ async def output(key: uuid.UUID, body: Output, company_id: CompanyId, db: DbSess
     step.output = body.state_key
     step.actual_date = datetime.now(UTC).date()
     stamp(lot, "실제 산출물 기록", cid)
+    if lot.status == "processed" and body.next_action is not None:
+        await apply_output_action(db, lot, cid, body)
+    await db.commit()
+    return await view(db, lot, cid)
+
+
+@router.post("/lots/{key}/output-correction")
+async def correct_output(key: uuid.UUID, body: CorrectOutput, company_id: CompanyId, db: DbSession):
+    cid = uuid.UUID(company_id)
+    lot = await lot_for(db, key, cid, lock=True)
+    active(lot, cid, {"review_required"})
+    version(lot, body.revision)
+    completed = lot.data.get("completed", [])
+    if not completed or completed[-1].get("company_id") != str(cid):
+        fail("현재 업체가 기록한 마지막 처리 결과만 정정할 수 있습니다.")
+    last = completed[-1]
+    row = await db.get(WorkflowOffer, uuid.UUID(last["offer_id"]))
+    if not row or row.lot_id != key or row.recipient_id != cid or row.status != "processed":
+        fail("정정할 인계 기록을 확인하지 못했습니다.")
+    ref, _ = await read_reference(db)
+    if body.state_key not in {
+        s.key
+        for s in ref.states
+        if s.material == lot.data["initial"]["material"]
+        and s.key in {t.output_state for t in ref.transitions}
+    }:
+        fail("현재 소재에 대응하는 산출물 상태를 선택해 주세요.", 422)
+    if body.mass_kg > row.data["current"]["mass_kg"]:
+        fail("입고 중량을 초과한 산출물은 별도 물질수지 확인이 필요합니다.")
+    expected = last["expected_state"]
+    if body.next_action == "complete":
+        if body.state_key != expected:
+            fail("예정 산출물과 실제 기록이 달라 완료할 수 없습니다.")
+        error = completion_error(
+            lot.data["initial"]["material"],
+            body.state_key,
+            body.completion_reference or body.evidence,
+            body.intended_use,
+            body.completion_confirmed,
+        )
+        if error:
+            fail(error)
+    record = body.model_dump(
+        exclude={
+            "revision",
+            "reason",
+            "completion_reference",
+            "intended_use",
+            "completion_confirmed",
+        }
+    )
+    if body.next_action is None:
+        record.pop("next_action")
+    previous = deepcopy(last["output"])
+    data = deepcopy(lot.data)
+    data["current"] = record
+    data["completed"][-1]["output"] = record
+    lot.data = data
+    lot.status = "processed" if body.state_key == expected else "review_required"
+    lot.review = None
+    route_step = await db.get(RouteStep, row.route_step_id)
+    if not route_step:
+        fail("정정할 처리 단계를 확인하지 못했습니다.")
+    route_step.status = "처리 확인" if lot.status == "processed" else "산출물 불일치 보류"
+    route_step.output = body.state_key
+    stamp(
+        lot,
+        "처리 결과 정정",
+        cid,
+        {
+            "reason": body.reason,
+            "before": previous,
+            "after": record,
+            "offer_id": str(row.id),
+        },
+    )
     if lot.status == "processed" and body.next_action is not None:
         await apply_output_action(db, lot, cid, body)
     await db.commit()

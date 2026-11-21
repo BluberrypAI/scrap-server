@@ -18,6 +18,8 @@ class User(Base, TimestampMixin):
     # 표시·연락용. 식별에는 쓰지 않음
     email: Mapped[str | None] = mapped_column(String(320))
     name: Mapped[str | None] = mapped_column(String(200))
+    # 비밀번호 로그인(provider="password") 계정만 값이 있음. scrypt 해시 (app.core.passwords)
+    password_hash: Mapped[str | None] = mapped_column(String(255))
     # Withdrawn users are blocked at once and purged after deletion_scheduled_at.
     withdrawn_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     deletion_scheduled_at: Mapped[datetime | None] = mapped_column(

@@ -9,6 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.domains.companies.models import Company, CompanyProfileHistory
 from app.domains.companies.schemas import (
     EDITABLE_FIELDS,
+    SITE_CONDITION_FIELDS,
     CompanyCreate,
     CompanyUpdate,
     WasteTypeCreate,
@@ -26,6 +27,13 @@ class VersionConflictError(Exception):
 
 async def get_company_by_user(db: AsyncSession, user_id: uuid.UUID) -> Company | None:
     return await db.scalar(select(Company).where(Company.user_id == user_id))
+
+
+def site_condition_facts(company: Company) -> dict[str, Any]:
+    """문진 엔진 confirmed_facts로 넘길 사업장 고정값. 값이 있는 것만 담음."""
+    return {
+        f: getattr(company, f) for f in SITE_CONDITION_FIELDS if getattr(company, f) is not None
+    }
 
 
 def _waste_types(items: Sequence[WasteTypeCreate]) -> list[dict[str, Any]]:

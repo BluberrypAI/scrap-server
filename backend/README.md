@@ -1,21 +1,15 @@
-# Re:Source AI Backend
+# scrap-server backend
 
-2026-11-20 업체 탐색 기준: 회사 자료에 해당 소재 취급·제품이 있으면 문의 후보로 포함하고 도로거리순으로 표시합니다. 사업장별 설비 입증까지 요구하지 않으며 실제 공정·반입조건은 업체가 대화 후 수락합니다. 기존 `evidence_basis`는 보존합니다. [기준·실호출](../docs/company-material-discovery-20261120.md).
-
-처리 결과 통합 등록: `/api/v1/workflow/lots/{id}/output`에서 `next_action`을 complete/forward/hold로 함께 보내면 완료/추가 가공/보관 중을 한 번에 기록합니다. complete는 `intended_use`와 `completion_confirmed=true`가 필요하며 `completion_reference` 생략 시 같은 산출물의 `evidence`를 사용합니다. `stored`는 보관 중이며 `/lots/{id}/output-action`으로 같은 산출물의 진행 방향을 변경합니다. 기존 `/output` 필드만 보내는 요청과 `/finish`는 호환 유지합니다. [명세](../docs/specs/output-disposition-card-sync.md).
-
-후보의 `review.next_step.options[].facilities[].recipient`는 조회 시 현재 계정 연결·기업명을 반영합니다. 검토 후 새 업체 계정을 연결해도 AI 재검토 없이 요청 버튼이 갱신됩니다. 연결 삭제·운영 synthetic 제한은 유지하며 AI/공정 캐시와 revision은 바꾸지 않습니다. [네 소재 웹 검증과 데이터 공백](../docs/material-disposition-validation-20261120.md).
+[← scrap-server](../README.md)
 
 FastAPI 기반 백엔드 API. **팀 표준은 A(Docker)** 이며, B는 Docker 없이 빠르게 확인할 때의 보조 방법임.
-
-업체별 반입 확인을 추가했습니다. 후보별 질문·답변 → AI 재검토 → 수신 업체 조건 제시 → 발송 업체 자료 제출 → 수신 업체 최종 확인 → QR 입고 순서입니다. 전국 명부의 다른 업체도 조회·확인 목록 저장이 가능합니다. [API 명세](../docs/specs/intake-conditions-local.md)와 [검증 결과·남은 데이터](../docs/verification/intake-conditions-20261114.md)를 참고하세요. AI의 `intake_answers` 지원 버전을 먼저 적용해야 합니다. 기존 JSON 업무 기록에 저장하므로 새 마이그레이션은 없습니다.
 
 | 방식 | 필요한 것 | DB | 용도 |
 | --- | --- | --- | --- |
 | [A. Docker](#a-docker로-실행) **(표준)** | Docker Desktop | PostgreSQL (컨테이너) | 평소 개발. 운영과 같은 DB |
 | [B. 로컬](#b-로컬에서-실행) | Python 3.12, uv | SQLite 또는 직접 설치한 PostgreSQL | Docker 없이 코드만 빠르게 확인 |
 
-이 문서는 **server 단독 실행** 방법임. ai·frontend까지 함께 띄우려면 infra 레포의 통합 실행을 사용함 ([docs/team-conventions.md](../docs/team-conventions.md) 2장).
+이 문서는 **server 단독 실행** 방법임. web·diagnosis·route까지 함께 띄우려면 scrap-infra의 통합 실행을 사용함 ([docs/team-conventions.md](../docs/team-conventions.md) 2장).
 
 실행 후 공통 주소:
 
@@ -41,6 +35,8 @@ docker compose up -d --build      # API + DB 실행, 시작 시 마이그레이�
 
 - `backend/app/` 코드를 고치면 서버가 자동으로 재시작됨
 - `pyproject.toml`(의존성)을 바꾸면 `docker compose up -d --build`로 다시 빌드
+- 문진 엔진까지 띄우려면 `ENGINE_REPO_DIR=../scrap-diagnosis docker compose --profile engine up -d --build` (기본 경로 `../resource_engine`은 옛 폴더 이름). 엔진 없이 띄우면 문진 API는 503 `ENGINE_UNAVAILABLE`
+- `--profile storage`는 Blob Storage 에뮬레이터(azurite)
 
 ### 3. 자주 쓰는 명령
 
@@ -92,7 +88,34 @@ uv run uvicorn app.main:app --reload      # 서버 실행
 | 직접 설치한 PostgreSQL | `postgresql+asyncpg://<user>:<password>@localhost:5432/<db>` |
 | Docker DB만 사용 (`docker compose up -d db`) | `postgresql+asyncpg://resource:resource@localhost:5433/resource` |
 
-SQLite 주의: 운영 DB는 PostgreSQL임. PostgreSQL 전용 기능(JSONB, pgvector 등)을 쓰는 기능은 SQLite에서 동작하지 않음. SQLite에서는 외래키 제약이 검사되지 않는 등 동작이 조금 다르므로, DB 관련 작업은 PR의 CI(PostgreSQL)에서 최종 확인함. SQLite를 초기화하려면 `local.db`를 지우고 `uv run alembic upgrade head`를 다시 실행함.
+SQLite 주의: 운영 DB는 PostgreSQL임. SQLite에서는 외래키 제약이 검사되지 않는 등 동작이 조금 다르므로, DB 관련 작업은 PR의 CI(PostgreSQL)에서 최종 확인함. SQLite를 초기화하려면 `local.db`를 지우고 `uv run alembic upgrade head`를 다시 실행함.
+
+---
+
+## 처리 경로 데이터 적재
+
+공정·업체 후보는 DB의 공정 참조 데이터에서 찾으므로, 마이그레이션 후 한 번 적재함. 실행할 때마다 참조 데이터를 갈아끼움.
+
+```bash
+uv run python -m app.domains.treatment.import_catalog
+```
+
+전국 명부까지 넣으려면 [공공데이터포털 전국폐기물처리업소표준데이터](https://www.data.go.kr/data/15114147/standard.do)의 JSON 배열과 그 파일의 SHA-256을 지정함. 기록된 스냅샷은 2026-10-21 수집본임.
+
+```bash
+uv run python -m app.domains.treatment.import_catalog --registry /path/to/national-facility-registry.json --sha256 b083ea497c37bb11bd9374fc0a5b0850b989d290dbdba9d4a713fef353e79c08
+```
+
+### 기업 간 인계 시험용 업체 연결
+
+인수 요청은 업체(사업장)에 연결된 수신 기업 계정이 있어야 보낼 수 있음. 웹의 개발용 로그인으로 `pp-sort@example.com`(PP·PE 선별·파쇄), `pp-pellet@example.com`(PP·PE 펠렛·컴파운드), `al-can@example.com`(알루미늄캔)에 각각 로그인해 기업 등록까지 마친 뒤 실행함.
+
+```bash
+uv run python -m app.domains.transport.dev_accounts
+uv run python -m app.domains.transport.dev_accounts --email b@example.com --facility sarom-hwaseong-2   # 다른 계정·업체
+```
+
+`APP_ENV=local`·`test`에서만 동작하고 연결은 시험용(synthetic)으로 표시됨. 운영 시연에서만 `DEMO_FACILITY_BINDINGS=true`로 켬.
 
 ---
 
@@ -116,42 +139,57 @@ TEST_DATABASE_URL=postgresql+asyncpg://resource:resource@localhost:5433/resource
 
 소셜 로그인은 브라우저가 Google·Microsoft로 이동했다가 돌아오는 방식이라 Swagger 안에서는 실행할 수 없음. 대신 **개발용 로그인**을 사용함 (OAuth 키 불필요).
 
+**처리업체 계정 (B·C)**: 회원가입 없이 팀이 명령으로 발급하고 로그인 화면의 아이디·비밀번호 폼으로 로그인함. 업체 정보는 DB의 처리 공정표 스냅샷에서 가져옴 ([docs/specs/facility-password-login.md](../docs/specs/facility-password-login.md)). 배포 DB에 만들려면 `DATABASE_URL`을 운영 DB로 두고 실행함
+
+```bash
+uv run python -m app.domains.auth.facility_accounts --list   # 업체 키 목록
+uv run python -m app.domains.auth.facility_accounts --login-id sarom-hwaseong   --facility sarom-hwaseong-2 --contact-email manager@example.com   # 비밀번호는 프롬프트 입력
+```
+
 1. http://localhost:8000/docs 에서 `POST /api/v1/auth/dev-login` → **Try it out** → **Execute**
    - 본문을 비우면 기본 사용자(`dev@example.com`)로 로그인. 다른 사용자가 필요하면 `{"email": "other@example.com"}`
-2. 끝. 쿠키가 브라우저에 저장되어 같은 Swagger 화면에서 다른 API가 바로 인증됨
+2. 쿠키가 브라우저에 저장되어 같은 Swagger 화면에서 다른 API가 바로 인증됨
    - Postman·curl에서는 응답의 `access_token`을 `Authorization: Bearer <토큰>` 헤더로 사용
 
-개발용 로그인은 `APP_ENV`가 `local`일 때만 존재하고, 운영(`prod`)에서는 경로 자체가 없음.
+개발용 로그인은 `APP_ENV`가 `local`·`test`일 때만 존재하고, 운영(`prod`)에서는 경로 자체가 없음.
 
 실제 소셜 로그인을 확인하려면 `backend/.env`에 Google·Microsoft 키를 설정하고 ([docs/specs/auth-social-login.md](../docs/specs/auth-social-login.md) 4장) 브라우저에서 http://localhost:8000/api/v1/auth/google/login 에 접속함.
 
 ## 설정 (환경변수)
 
-전체 목록과 설명은 [.env.example](../.env.example) 참고. 주요 항목:
+전체 목록과 설명은 [.env.example](../.env.example) 참고.
 
 | 변수 | 설명 |
 | --- | --- |
-| `DATABASE_URL` | DB 주소. SQLite / PostgreSQL / Azure PostgreSQL |
-| `DB_SSL` | Azure PostgreSQL은 `require` |
+| `APP_ENV` | `local` · `test` · `prod`. `local`·`test`에서만 개발용 로그인과 시험용 업체 연결이 열림 |
+| `DATABASE_URL`, `DB_SSL` | DB 주소. SQLite / PostgreSQL. SSL이 필요한 DB는 `DB_SSL=require` |
 | `DOCS_ENABLED` | Swagger 노출 여부 |
 | `JWT_SECRET`, `SESSION_SECRET` | 운영(`APP_ENV=prod`)에서는 기본값이면 실행되지 않음 |
 | `GOOGLE_*`, `MICROSOFT_*` | 소셜 로그인 키 |
+| `BACKEND_URL` | 소셜 로그인 콜백 주소의 기준 (`{BACKEND_URL}/api/v1/auth/{provider}/callback`). 콘솔에 등록한 리디렉션 URI와 같아야 함 |
+| `FRONTEND_URL`, `CORS_ORIGINS` | 로그인 뒤 돌려보낼 화면 주소, 허용 출처 |
+| `COOKIE_DOMAIN`, `COOKIE_SECURE`, `COOKIE_SAMESITE` | 프론트가 다른 도메인이면 `COOKIE_SAMESITE=none`, `COOKIE_SECURE=true` |
 | `WITHDRAWAL_GRACE_DAYS` | 탈퇴 후 실제 삭제까지 유예 일수 (기본 30) |
-| `BACKEND_URL` | 소셜 로그인 콜백 주소의 기준 (`{BACKEND_URL}/api/v1/auth/{provider}/callback`). Google·Microsoft 콘솔에 등록한 리디렉션 URI와 똑같아야 함 |
-| `FRONTEND_URL` | 로그인 뒤 돌려보낼 화면 주소 (`/onboarding`, `/login?error=...`) |
-| `DIAGNOSIS_ENGINE_URL` | 문진 엔진 주소 (예: `http://localhost:8030`). 비우면 `/api/v1/diagnosis/*`는 503, 탈퇴 purge는 엔진 삭제를 건너뜀 |
+| `DIAGNOSIS_ENGINE_URL` | 문진 엔진(scrap-diagnosis) 주소 (예: `http://localhost:8030`). 비우면 `/api/v1/diagnosis/*`는 503, 탈퇴 purge는 엔진 삭제를 건너뜀 |
 | `ENGINE_SERVICE_TOKEN` | 엔진 `/internal/v1` Bearer 토큰. 엔진과 같은 값. 운영에서 URL만 있고 토큰이 없으면 시작하지 않음 |
-| `AI_BASE_URL` | AI 서버(ai 레포) 주소. 처리 경로 데모(`/api/treatment/*`)가 업체 검토·웹 조사에 씀. Docker에서 PC의 서버를 부르면 `http://host.docker.internal:<포트>` |
+| `DIAGNOSIS_ENGINE_TIMEOUT_SECONDS` | 엔진 응답 대기 (코드 기본 200초). 엔진의 모델 대기 × 4보다 커야 함 |
+| `AI_BASE_URL` | scrap-route 주소. 업체 AI 검토·공개 웹 조사에 씀. Docker에서 PC의 route를 부르면 `http://host.docker.internal:<포트>` |
+| `SCRAP_INTAKE_SERVICE_TOKEN` | scrap-route 호출 토큰. route와 같은 값 |
+| `KAKAO_MOBILITY_REST_API_KEY` | 카카오모빌리티 자동차 길찾기 REST 키 (서버 전용). 없으면 도로거리 미확인·직선거리로 명시 |
+| `OSRM_DEMO_ENABLED` | 카카오 키 없이 공개 OSRM으로 도로거리 조회 (시연용, 기본 false). 카카오 키가 있으면 카카오 우선 |
+| `COMPANY_GEOCODING_ENABLED`, `COMPANY_GEOCODING_URL` | 사업장 주소 검색. 기본 공개 Photon은 소규모·단일 워커용이며 운영은 자체 제공자 권장 |
+| `DEMO_FACILITY_BINDINGS` | 시연용(synthetic) 업체 연결을 운영에서도 허용 (기본 false) |
+| `CLASSIFICATION_BASE_URL` | 이전 문진 엔진 주소. `/api/classification/*` 호환 경로용, 현재 웹은 쓰지 않음 |
 
 ## 프론트엔드와 함께 실행
 
-프론트(scrap-web)는 `/api/v1`을 **같은 출처**로 호출함. 로그인 쿠키(httpOnly)가 프론트 주소에 저장되어야 하기 때문임. 개발 중에는 Vite가, 운영에서는 nginx가 `/api/` 요청을 이 서버로 넘김.
+프론트(scrap-web)는 `/api/v1`과 `/api/treatment`를 **같은 출처**로 호출함. 로그인 쿠키(httpOnly)가 프론트 주소에 저장되어야 하기 때문임. 개발 중에는 Vite가, 운영에서는 nginx가 `/api/` 요청을 이 서버로 넘김.
 
 1. 이 서버를 8000 포트로 실행 (위 A 또는 B). `BACKEND_URL`, `FRONTEND_URL`은 `.env.example` 기본값 그대로 둠
-2. 프론트에서 `npm run dev` (Vite가 `/api/v1`을 `http://127.0.0.1:8000`으로 전달. 바꾸려면 프론트 `.env`의 `SCRAP_SERVER_URL`)
+2. 프론트에서 `npm run dev` (Vite가 `/api`를 `http://127.0.0.1:8000`으로 전달. 바꾸려면 프론트 `.env`의 `SCRAP_SERVER_URL`)
 3. 브라우저에서 **`http://localhost:5173`**을 엶. `127.0.0.1:5173`이나 서버 주소(8000)로 열지 않음
 
-**개발용 로그인**: OAuth 키 없이 로그인 화면의 "개발용 로그인" 버튼(프론트 dev 모드에서만 보임)을 누르거나, `POST /api/v1/auth/dev-login`을 프론트 주소로 호출하면 됨 (`APP_ENV=local`에서만 있음).
+**개발용 로그인**: OAuth 키 없이 로그인 화면의 "개발용 로그인" 버튼(프론트 dev 모드에서만 보임)을 누르면 됨.
 
 **실제 소셜 로그인**: 기본값이면 콜백 주소가 `http://localhost:8000/api/v1/auth/{google|microsoft}/callback`이 됨. Google·Microsoft 콘솔에 이 주소를 리디렉션 URI로 등록함 (Microsoft는 앱 등록 > 인증 > 웹).
 
@@ -160,9 +198,16 @@ BACKEND_URL=http://localhost:8000
 FRONTEND_URL=http://localhost:5173
 ```
 
-로그인 시작은 프론트(5173)를 거치고 콜백은 서버(8000)로 바로 오지만, 쿠키는 포트를 구분하지 않으므로 호스트(`localhost`)만 같으면 OAuth 상태 쿠키와 로그인 쿠키가 둘 다 프론트에서 보임. 반대로 `localhost`와 `127.0.0.1`은 쿠키가 따로 저장되므로 브라우저 주소, `BACKEND_URL`, `FRONTEND_URL`의 호스트를 모두 `localhost`로 맞춤. 서버는 로그인 뒤 `/onboarding` 같은 일반 경로로 보내고, 프론트가 이를 해시 주소(`/#/onboarding`)로 바꿈.
+쿠키는 포트를 구분하지 않으므로 호스트(`localhost`)만 같으면 OAuth 상태 쿠키와 로그인 쿠키가 둘 다 프론트에서 보임. 반대로 `localhost`와 `127.0.0.1`은 쿠키가 따로 저장되므로 브라우저 주소, `BACKEND_URL`, `FRONTEND_URL`의 호스트를 모두 `localhost`로 맞춤. 서버는 로그인 뒤 `/onboarding` 같은 일반 경로로 보내고, 프론트가 이를 해시 주소(`/#/onboarding`)로 바꿈.
 
 운영처럼 nginx 한 주소로 서비스할 때는 `BACKEND_URL`과 `FRONTEND_URL`을 둘 다 그 주소로 두고, 콘솔에도 `{그 주소}/api/v1/auth/{provider}/callback`을 등록함.
+
+## 동작 메모
+
+- **업체 검토 작업**: `POST /api/v1/workflow/lots/{id}/review-jobs`는 202와 작업을 반환하고, 앱 lifespan의 워커가 DB에 저장된 작업을 처리함 (별도 큐 서비스 없음). 진행은 `GET /lots/{id}`의 `review_progress`(queued·running·completed·failed·interrupted). 재시작으로 lease가 만료된 작업은 interrupted로 남고 재시도 때 완료된 캐시를 재사용함
+- **5곳 선정**: 현재 보유 기업 사업장에서 도로거리순으로 가까운 후보부터 공정 관련성을 검토하고, 명시적 제한·공정 연결 불명·AI 미완료 후보가 있으면 다음 사업장으로 채움. 5곳 미만이면 확인된 수만 반환 ([spec](../docs/specs/progressive-candidate-review.md))
+- **공개 근거 캐시**: 업체 공개 근거 검토는 `treatment_snapshots.kind=public-intake-cache-v1`에 7일·최대 1024건 저장해 다른 물량에서도 재사용함. 사진·중량·상태 설명·기업별 답변은 저장하지 않음
+- **도로거리**: 카카오 키가 있으면 카카오, `OSRM_DEMO_ENABLED=true`면 공개 OSRM. 외부 조회가 실패해도 직선거리를 도로거리로 바꿔 표시하지 않으며, 카카오 응답은 DB에 저장하지 않음 ([spec](../docs/specs/road-distance.md))
 
 ## 문제 해결
 
@@ -171,68 +216,10 @@ FRONTEND_URL=http://localhost:5173
 | `port is already allocated` (5433 또는 8000) | 다른 프로그램이 포트 사용 중. 루트 `.env`에 `POSTGRES_HOST_PORT` 변경, 또는 8000을 쓰는 프로그램 종료 |
 | `connection was closed in the middle of operation` | 다른 PostgreSQL에 접속 중일 가능성. 포트(Docker는 5433) 확인 |
 | `/api/v1/auth/google/login`이 503 | `.env`에 `GOOGLE_CLIENT_ID`가 비어 있음 |
+| `/api/v1/diagnosis/*`가 503 `ENGINE_UNAVAILABLE` | `DIAGNOSIS_ENGINE_URL`이 비었거나 엔진이 꺼져 있음 |
 | `no such table` | 마이그레이션 미적용. `uv run alembic upgrade head` |
-| Microsoft·Google 화면에 `redirect_uri is not valid` | 콘솔에 등록한 리디렉션 URI와 `{BACKEND_URL}/api/v1/auth/{provider}/callback`이 다름. 기본값이면 `http://localhost:8000/...`을 등록 |
+| 처리 경로 후보가 비어 있음 | 공정 참조 미적재. `uv run python -m app.domains.treatment.import_catalog` |
+| 추천 업체가 0곳 | 기업 좌표가 없거나 도로거리를 못 구함. 기업 정보의 지도 위치와 `KAKAO_MOBILITY_REST_API_KEY` 또는 `OSRM_DEMO_ENABLED` 확인 |
+| Microsoft·Google 화면에 `redirect_uri is not valid` | 콘솔에 등록한 리디렉션 URI와 `{BACKEND_URL}/api/v1/auth/{provider}/callback`이 다름 |
 | 소셜 로그인 뒤 `/login?error=oauth_failed` | 로그인 시작과 콜백의 호스트가 다름. 브라우저를 `http://localhost:5173`으로 열고 `BACKEND_URL`도 `localhost`로 둠 |
 | 로그인했는데 프론트에서 계속 401 | 브라우저 주소와 `FRONTEND_URL`의 호스트가 다름 (`localhost` ↔ `127.0.0.1`) |
-## SCRAP 처리경로와 전국 명부
-
-2026-11-14 참조는 29개 사업장·68개 공정 연결입니다. 공개 사업장 공정에 근거한 연결 47개와 역할 확인이 필요한 21개를 구분합니다. 소재·형태별 조회와 합성 기업 인계 검증은 [확장 기록](../docs/plastic-facility-expansion.md)을 참고하세요. 문진 엔진의 신규 소재 분류 지원을 뜻하지 않습니다.
-
-마이그레이션 후 `backend/`에서 `uv run python -m app.domains.treatment.import_catalog`를 실행해 공정 참조 데이터를 적재합니다.
-
-전국 명부는 [공공데이터포털 원본](https://www.data.go.kr/data/15114147/standard.do)의 JSON 배열을 사용합니다. 기록된 스냅샷은 2026-10-21 수집본 9,604행입니다. 새 스냅샷에는 해당 파일의 확인된 SHA-256을 지정합니다.
-
-```bash
-uv run python -m app.domains.treatment.import_catalog --registry /path/to/national-facility-registry.json --sha256 b083ea497c37bb11bd9374fc0a5b0850b989d290dbdba9d4a713fef353e79c08
-```
-
-`/api/treatment/next-step`과 `/api/treatment/facility-candidates`는 서버 DB를 조회합니다. `CLASSIFICATION_BASE_URL`은 별도 팀 문진 엔진 주소입니다. 신규 로트 문진 유형은 GET /api/classification/profiles에서 조회합니다. 문진을 마친 뒤 첫 공정 조회에 classification_session_id를 보내면 서버가 분류 기록을 대조합니다. 다음 공정의 전체 업체 검토(`/api/treatment/intake-reviews`)와 지원 소재 공정의 추가 공개 웹 조사(`/api/treatment/facility-web-search`)는 `AI_BASE_URL`과 두 서비스의 같은 `SCRAP_INTAKE_SERVICE_TOKEN`을 사용합니다.
-
-웹 조사에는 `transition_key`, `input_form`, `region`을 보냅니다. 서버가 등록 공정의 재질·공정명·단계를 붙여 AI에 전달하며, 기업 정보·사진·좌표는 이 호출에 포함하지 않습니다. 검색 결과는 조사 단서이며 업체 연결이나 인수 승인으로 자동 저장하지 않습니다. 다음 공정 응답의 `process_previews_truncated`는 후속 미리보기 생략 여부입니다. 현재 상태의 직접 공정 후보는 미리보기 한도 때문에 빠지지 않습니다.
-
-기업 간 인계(`/api/v1/workflow/*`)를 로컬에서 시험하려면 업체에 수신 기업 계정이 연결돼 있어야 인수 요청을 보낼 수 있습니다. 웹의 개발용 로그인으로 `pp-sort@example.com`(PP·PE 선별·파쇄), `pp-pellet@example.com`(PP·PE 펠렛·컴파운드), `al-can@example.com`(알루미늄캔 판재·잉곳)에 각각 로그인해 기업을 등록한 뒤 아래를 실행합니다. `APP_ENV=local`·`test`에서만 동작하며, 연결은 실제 업체 확인이 아닌 시험용(synthetic)으로 표시됩니다.
-
-```bash
-uv run python -m app.domains.transport.dev_accounts
-```
-# 2026-11-15 로컬 통합 변경
-
-- 기업 생성·수정은 선택 필드 `site_latitude`, `site_longitude`를 함께 받습니다. 함께 null로 보내면 해제되며, 주소만 바꾸면 이전 좌표는 지워집니다.
-- 확정 문진의 경로 조회·AI 검토와 `/api/v1/workflow/lots` 등록은 선택 boolean `solid_confirmed`(기본 false)를 받습니다. 문진에 고체 여부가 없는 경우에만 사용자 확인을 보완하며, 액체·슬러지 응답을 덮어쓰지 않습니다.
-- 경로 응답의 `requires_solid_confirmation`이 true이면 화면에서 고체 상태를 확인받습니다. 좌표로 비교하는 거리는 직선거리입니다.
-- 실행 구성, 7개 합성 기업 인계 시험과 소재별 한계: [통합 검증 결과](../docs/full-stack-validation-20261115.md).
-# 업체 반입조건 API 추가 (2026-11-17)
-
-- 적용: `uv run alembic upgrade head` (새 테이블 `supplier_intake_policies`, revision `a87485f30805`).
-- `POST /api/v1/workflow/offers/{id}/dispatch`: 발송 기업이 수락된 인계의 실제 출발을 기록합니다(`revision` 필요). 수락·QR 발급과 구분하며 `offer.data.dispatch`에 출발 시각·기업을 저장합니다. 입고 전 현재 담당은 바뀌지 않습니다.
-- `GET /api/v1/workflow/lots/{id}/road-route`: 참여 기업의 인계 도로 경로. `segments`에 제공자·상태·경위도 좌표·거리·시간을 반환하며 외부 실패 시 직선으로 대체하지 않습니다. 카카오 응답은 DB에 저장하지 않습니다. B→C는 B 사업장에서 출발합니다.
-- `GET /api/v1/workflow/supplier-policies`: 로그인 기업에 연결된 처리 사업장과 현재 반입조건.
-- `POST /api/v1/workflow/supplier-policies`: `facility_key`, `expected_version`, `policy`로 새 버전 저장.
-- `POST /api/v1/workflow/offers/{id}/messages`: `revision`, `text`로 문의 당사자 간 답변 저장.
-- 기존 조건부 수락·자료 제출·QR API를 그대로 사용합니다. 외부 이메일·문자는 보내지 않습니다.
-- 실제 운영은 확인된 사업장-기업 연결이 필요합니다. 시험용 연결은 local/test에서만 작동합니다.
-
-## 사진·설명 불일치 확인 (2026-11-17)
-
-- `POST /api/v1/workflow/lots/{key}/photo-conflict-resolution`: 현재 보유 기업만 호출. `revision`, `action`(correct/confirm), `note`(10자 이상), 수정 시 `condition`, 확인 시 `classification_unchanged: true`.
-- 설명 수정은 기존 업체 검토를 초기화합니다. 확인은 해당 검토에만 유효하며 새 사진·산출물·검토에 재사용되지 않습니다.
-- 로트 응답의 `photo_conflict_gate`에 확인 사항·차단 여부·유효한 확인 내역이 들어갑니다. 요청 API에서도 차단하므로 다른 업체 선택으로 우회할 수 없습니다.
-- 기존 JSON 필드에 기록하므로 추가 DB 마이그레이션/환경변수는 없습니다. 분류번호·R유형·문진 원본은 변경하지 않습니다.
-
-## 사업장 주소 검색
-기업 등록과 수정에서 `POST /api/v1/companies/location-search`로 주소·장소를 검색하고, 선택한 좌표를 기존 기업 정보 API로 저장합니다. 로그인 후 기업 등록 전에도 사용합니다. `COMPANY_GEOCODING_ENABLED=false`로 외부 검색을 끌 수 있고 `COMPANY_GEOCODING_URL`로 자체 Photon을 지정할 수 있습니다. 기본 공개 Photon은 소규모·단일 워커용(초당1회·캐시24시간)이며 국내 주소 누락과 서비스 장애가 가능합니다. 여러 서버로 운영할 때는 자체 서비스와 공유 호출 제한이 필요합니다. 검색 결과는 사용자가 지도에서 확인하며 정확한 건물/출입구를 보장하지 않습니다. [명세](../docs/specs/company-onboarding.md).
-
-## 업체 검토 작업
-
-문진 연결 응답에는 selected_form/selected_form_label과 form_source/form_quote/form_turn_id를 추가했습니다. 기존 엔진의 대화에서 명확한 현재 형태만 받아 표시하고, 불명·복수·예정·부정 진술은 선택을 요구합니다. 기존 물량 등록 요청의 필수 input_form 형식은 유지하며 sender_confirmations에 형태 출처를 보존합니다. 문진 엔진·분류·새 DB 모델 변경은 없습니다.
-
-`POST /api/v1/workflow/lots/{id}/review-jobs`에 현재 revision을 보내면 202와 처리 건을 반환합니다. `review_progress`는 queued/running/completed/failed/interrupted 상태와 서버의 실제 단계·검토 수를 포함합니다. 기업별 권한 검사는 기존 처리 건과 같습니다.
-
-앱 lifespan의 워커가 DB에 저장된 작업을 처리합니다. 별도 큐 서비스나 DB 마이그레이션은 없습니다. 실행 중 중복 요청은 같은 작업을 반환하고, 오래된 물량 결과는 저장하지 않습니다. 재시작으로 lease가 만료된 작업은 interrupted로 남겨 사용자 재시도 시 완료 캐시를 재사용합니다. 새 웹 기능은 새 scrap-route와 함께 적용합니다.
-
-## 공개 업체 검토 캐시
-
-후보 탐색은 공정 관련성을 확인하는 용도입니다. 응답의 선택 필드 `process_match=matched|unverified|mismatch`와 `process_source`, `process_quote`를 사용합니다. 새 후보의 `intake_conditions.purpose=recipient_conversation`이며 자동 질문은 빈 배열입니다. 기존 답변 저장 API는 호환용으로 유지합니다. 세부 반입조건은 수신 기업이 대화와 최종 수락에서 확인합니다.
-
-새 웹의 `review-jobs`는 공개 업체 근거와 현재 물량 검토를 분리합니다. `treatment_snapshots.kind=public-intake-cache-v1`에 공개 입력·출처·검토 버전의 해시와 공개 결과만 저장하며 7일 만료·최대1024건입니다. 사진·중량·상태·기업별 답변은 이 저장소에 들어가지 않습니다. 별도 migration·Redis 설정은 없습니다. 신규 route의 `public_signature`/`public_findings` 지원 버전을 먼저 반영해야 합니다. 공개 캐시 재사용 횟수와 이번 물량 호출 수는 `review.selection`에 각각 기록됩니다.
