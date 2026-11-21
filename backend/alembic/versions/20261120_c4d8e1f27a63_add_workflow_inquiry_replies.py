@@ -1,7 +1,7 @@
 """add workflow inquiry replies
 
 Revision ID: c4d8e1f27a63
-Revises: a87485f30805
+Revises: ab770188e3f0
 Create Date: 2026-11-20 10:00:00.000000
 """
 
@@ -11,7 +11,7 @@ import sqlalchemy as sa
 from alembic import op
 
 revision: str = "c4d8e1f27a63"
-down_revision: str | None = "a87485f30805"
+down_revision: str | None = "ab770188e3f0"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
