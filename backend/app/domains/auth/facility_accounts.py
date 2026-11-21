@@ -11,6 +11,8 @@
         --login-id sarom-hwaseong --facility sarom-hwaseong-2 \\
         --contact-email manager@example.com
     # 비밀번호는 입력 프롬프트로 받음. 자동화할 때는 --password-stdin
+    # 스냅샷의 모든 업체에 한 번에 발급 (아이디 = 업체 키, 비밀번호 공통)
+    uv run python -m app.domains.auth.facility_accounts --all --password-stdin
 
 연결은 synthetic=false로 저장해서 운영(DEMO_FACILITY_BINDINGS 없이)에서도 수신 업체로 보임.
 확인 근거 칸에는 명령으로 발급한 계정임을 기록함(--verification-reference로 바꿀 수 있음).
@@ -39,6 +41,8 @@ from app.domains.users import repository as user_repo
 
 DEFAULT_INDUSTRY = "폐기물 처리·재활용업"
 DEFAULT_SITE_FACILITIES = ["폐기물 처리시설"]
+# --all에서 담당 이메일이 없을 때 쓰는 자리 표시값. .invalid는 메일이 가지 않는 예약 도메인
+BULK_EMAIL_DOMAIN = "facility.scrap.invalid"
 PROVISIONED_REFERENCE = "facility login account provisioned by the SCRAP team (facility_accounts)"
 
 
@@ -56,9 +60,17 @@ class ProvisionResult:
     synthetic: bool
 
 
+async def _read_reference(db: AsyncSession):
+    try:
+        reference, _ = await read_reference(db)
+    except TreatmentError as exc:
+        raise ProvisionError(f"처리 공정표 스냅샷을 읽을 수 없음: {exc}") from exc
+    return reference
+
+
 async def list_facilities(db: AsyncSession) -> list[tuple[str, str, str]]:
     """(업체 키, 사업장명, 기업명) 목록."""
-    reference, _ = await read_reference(db)
+    reference = await _read_reference(db)
     organisations = {o.key: o.label for o in reference.organisations}
     return [(f.key, f.label, organisations.get(f.organisation, "")) for f in reference.facilities]
 
@@ -75,6 +87,7 @@ async def provision(
     verification_reference: str | None = None,
     synthetic: bool = False,
     force: bool = False,
+    reference=None,
 ) -> ProvisionResult:
     """계정·기업·업체 연결을 한 트랜잭션으로 만들거나 갱신함. 실패하면 아무것도 쓰지 않음."""
     login_id = normalize_login_id(login_id)
@@ -88,10 +101,8 @@ async def provision(
     if not keys:
         raise ProvisionError("--facility를 하나 이상 지정해야 함")
 
-    try:
-        reference, _ = await read_reference(db)
-    except TreatmentError as exc:
-        raise ProvisionError(f"처리 공정표 스냅샷을 읽을 수 없음: {exc}") from exc
+    if reference is None:
+        reference = await _read_reference(db)
     facilities = {f.key: f for f in reference.facilities}
     unknown = [k for k in keys if k not in facilities]
     if unknown:
@@ -166,6 +177,33 @@ async def provision(
     )
 
 
+async def provision_all(
+    db: AsyncSession, *, password: str, synthetic: bool = False, force: bool = False
+) -> tuple[list[ProvisionResult], dict[str, str]]:
+    """스냅샷의 업체마다 아이디 = 업체 키인 계정을 발급함. 실패한 업체는 건너뛰고 이유를 돌려줌."""
+    reference = await _read_reference(db)
+    results: list[ProvisionResult] = []
+    skipped: dict[str, str] = {}
+    for key in [f.key for f in reference.facilities]:
+        try:
+            results.append(
+                await provision(
+                    db,
+                    login_id=key,
+                    password=password,
+                    facility_keys=[key],
+                    contact_email=f"{key}@{BULK_EMAIL_DOMAIN}",
+                    synthetic=synthetic,
+                    force=force,
+                    reference=reference,
+                )
+            )
+        except ProvisionError as exc:
+            await db.rollback()
+            skipped[key] = str(exc)
+    return results, skipped
+
+
 def _read_password(from_stdin: bool) -> str:
     if from_stdin:
         return sys.stdin.readline().rstrip("\r\n")
@@ -182,12 +220,28 @@ async def _run(args: argparse.Namespace) -> int:
         if args.list:
             try:
                 rows = await list_facilities(db)
-            except TreatmentError as exc:
-                print(f"처리 공정표 스냅샷을 읽을 수 없음: {exc}", file=sys.stderr)
+            except ProvisionError as exc:
+                print(f"실패: {exc}", file=sys.stderr)
                 return 1
             for key, label, org in rows:
                 print(f"{key}\t{label}\t{org}")
             return 0
+        if args.all:
+            try:
+                results, skipped = await provision_all(
+                    db,
+                    password=_read_password(args.password_stdin),
+                    synthetic=args.synthetic,
+                    force=args.force,
+                )
+            except ProvisionError as exc:
+                print(f"실패: {exc}", file=sys.stderr)
+                return 1
+            created = sum(r.created_user for r in results)
+            print(f"발급 {len(results)}곳 (새 계정 {created}, 갱신 {len(results) - created})")
+            for key, reason in skipped.items():
+                print(f"건너뜀 {key}: {reason}")
+            return 1 if skipped else 0
         try:
             result = await provision(
                 db,
@@ -219,6 +273,9 @@ def main() -> None:
         description=__doc__, formatter_class=argparse.RawTextHelpFormatter
     )
     parser.add_argument("--list", action="store_true", help="연결할 수 있는 업체 키 목록 출력")
+    parser.add_argument(
+        "--all", action="store_true", help="스냅샷의 모든 업체에 발급 (아이디 = 업체 키)"
+    )
     parser.add_argument("--login-id", help="로그인 아이디 (소문자로 저장)")
     parser.add_argument(
         "--facility", action="append", default=[], help="업체 키 (여러 번 지정 가능)"
@@ -239,8 +296,8 @@ def main() -> None:
         "--password-stdin", action="store_true", help="비밀번호를 표준 입력 첫 줄에서 읽음"
     )
     args = parser.parse_args()
-    if not args.list and not (args.login_id and args.facility):
-        parser.error("--login-id와 --facility를 지정해야 함 (목록은 --list)")
+    if not (args.list or args.all) and not (args.login_id and args.facility):
+        parser.error("--login-id와 --facility를 지정해야 함 (목록은 --list, 전체는 --all)")
     sys.exit(asyncio.run(_run(args)))
 
 
