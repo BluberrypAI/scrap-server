@@ -171,3 +171,31 @@ async def test_provisioned_facility_is_recipient_without_demo_flag(db: AsyncSess
     recipient = result["next_step"]["options"][0]["facilities"][0]["recipient"]
     company = await db.scalar(select(Company))
     assert recipient == {"id": str(company.id), "name": company.company_name, "synthetic": False}
+
+
+async def test_provision_all_issues_one_account_per_facility(
+    client: AsyncClient, db: AsyncSession, monkeypatch
+):
+    from app.core import passwords
+    from app.domains.auth.facility_accounts import list_facilities, provision_all
+
+    # 70여 곳을 두 번 발급하므로 해시 강도만 낮춤 (저장 형식에 n이 남아 검증은 그대로 됨)
+    monkeypatch.setattr(passwords, "_N", 2**4)
+
+    await _provision(db)  # sarom-hwaseong-2는 이미 다른 아이디의 기업에 연결됨
+    total = len(await list_facilities(db))
+
+    results, skipped = await provision_all(db, password=PASSWORD)
+
+    assert list(skipped) == [FACILITY]
+    assert len(results) == total - 1
+    assert await db.scalar(select(func.count()).select_from(User)) == total
+    login = await _login(client, OTHER_FACILITY, PASSWORD)
+    assert login.status_code == 204
+    me = (await client.get("/api/v1/users/me")).json()
+    binding = await db.get(WorkflowFacilityAccount, OTHER_FACILITY)
+    assert me["company_id"] == str(binding.company_id) and not binding.synthetic
+
+    again, skipped_again = await provision_all(db, password="second-password")
+    assert list(skipped_again) == [FACILITY]
+    assert not any(r.created_user for r in again)

@@ -28,6 +28,7 @@
 7. 연결은 `synthetic=false`로 저장해서 운영에서 `DEMO_FACILITY_BINDINGS` 설정 없이도 수신 업체로 보임. `verification_reference`에는 팀이 명령으로 발급한 계정임을 기록함(`--verification-reference`로 문구 변경). 운영 화면에서 숨길 시험 계정은 `--synthetic`으로 만듦
 8. 같은 아이디로 다시 실행하면 새 사용자를 만들지 않고 비밀번호·연결만 갱신함. 기존 기업 정보는 덮어쓰지 않음
 9. 비밀번호는 명령 인자로 받지 않음(셸 기록에 남음). 대화형 입력이나 `--password-stdin`으로 받음. 8자 이상 128자 이하
+10. `--all`은 스냅샷의 모든 업체에 아이디 = 업체 키, 공통 비밀번호로 발급함. 스냅샷에 담당 이메일이 없으므로 `<업체키>@facility.scrap.invalid`(메일이 가지 않는 예약 도메인)를 넣음. 다른 기업에 연결된 업체 등 실패한 업체는 건너뛰고 이유를 출력함
 
 ## 4. API
 
@@ -39,6 +40,7 @@
 
 ```bash
 uv run python -m app.domains.auth.facility_accounts --list                # 업체 키 목록
+uv run python -m app.domains.auth.facility_accounts --all --password-stdin  # 전체 업체 일괄 발급
 uv run python -m app.domains.auth.facility_accounts \
   --login-id sarom-hwaseong --facility sarom-hwaseong-2 \
   --contact-email manager@example.com                                     # 비밀번호는 입력 프롬프트
@@ -64,6 +66,7 @@ uv run python -m app.domains.auth.facility_accounts \
 - [x] 스냅샷에 없는 업체 키는 아무것도 만들지 않고 실패함
 - [x] 다른 기업에 연결된 업체 키는 `--force` 없이 바꾸지 않음
 - [x] 같은 아이디로 다시 발급하면 사용자는 1명이고 새 비밀번호로만 로그인됨
+- [x] `--all`은 업체마다 계정 1개를 발급하고, 다른 기업에 연결된 업체는 건너뛰며, 다시 실행해도 새 사용자를 만들지 않음
 - [x] 발급한 업체 연결은 운영 설정(DEMO_FACILITY_BINDINGS 꺼짐)에서도 수신 업체로 보임
 
 ## 7. 미정 사항
