@@ -147,6 +147,7 @@ scrap-server/
 | GET | /api/v1/auth/{provider}/callback | 로그인 완료, 쿠키 발급 |
 | POST | /api/v1/auth/refresh | access·refresh 토큰 재발급 (refresh 회전) |
 | POST | /api/v1/auth/logout | 로그아웃 (refresh 토큰 폐기) |
+| POST | /api/v1/auth/password-login | 처리업체 아이디·비밀번호 로그인 (발급 계정 전용, 운영 포함) |
 | POST | /api/v1/auth/dev-login | 개발용 로그인 (로컬 전용) |
 | GET | /api/v1/users/me | 현재 사용자 (제공자, 기업 ID. 온보딩 전이면 기업 ID null) |
 | POST | /api/v1/users/me/withdraw | 회원 탈퇴 (30일 뒤 삭제) |
