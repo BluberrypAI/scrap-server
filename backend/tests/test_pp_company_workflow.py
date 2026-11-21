@@ -828,6 +828,67 @@ async def test_rejection_revision_and_mismatched_output_hold(setup_flow):
     ).status_code == 409
 
 
+async def test_current_company_can_correct_mismatched_last_output(setup_flow):
+    req, create, _, _ = setup_flow
+    lot = await accept_receive(
+        req, await choose(req, await create(), "A", "sarom-hwaseong-2"), "A", "B"
+    )
+    mismatched = await save_output(req, lot, "B", "pp-pellet", 900)
+    assert mismatched["status"] == "review_required"
+    expected = mismatched["data"]["completed"][-1]["expected_state"]
+    path = f"/lots/{lot['id']}/output-correction"
+    body = {
+        "revision": mismatched["revision"],
+        "state_key": expected,
+        "mass_kg": 880,
+        "condition": "실제 작업 기록을 다시 확인한 산출물",
+        "evidence": "TEST-CORRECTED-001",
+        "next_action": "hold",
+        "reason": "산출물 형태를 잘못 선택해 정정합니다.",
+    }
+    assert (await req("A", path, body)).status_code == 403
+    assert (await req("B", path, {**body, "revision": body["revision"] - 1})).status_code == 409
+    still_mismatched = await req("B", path, {**body, "state_key": "pp-pellet"})
+    assert still_mismatched.status_code == 200, still_mismatched.text
+    assert still_mismatched.json()["status"] == "review_required"
+    body["revision"] = still_mismatched.json()["revision"]
+    corrected = await req("B", path, body)
+    assert corrected.status_code == 200, corrected.text
+    saved = corrected.json()
+    assert saved["status"] == "stored"
+    assert saved["review"] is None
+    assert len(saved["data"]["completed"]) == 1
+    assert saved["data"]["current"]["state_key"] == expected
+    assert saved["data"]["completed"][-1]["output"]["mass_kg"] == 880
+    correction = [
+        event for event in saved["data"]["events"] if event["action"] == "처리 결과 정정"
+    ][-1]
+    assert correction["before"]["state_key"] == "pp-pellet"
+    assert correction["after"]["state_key"] == expected
+    assert correction["reason"] == body["reason"]
+    assert (await req("B", path, {**body, "revision": saved["revision"]})).status_code == 409
+
+
+async def test_current_site_location_hides_old_missing_coordinate_warning(setup_flow, db):
+    from app.domains.companies.models import Company
+    from app.domains.transport.models import WorkflowLot
+
+    req, create, actors, _ = setup_flow
+    lot = await create()
+    row = await db.get(WorkflowLot, uuid.UUID(lot["id"]))
+    warning = "사업장 좌표가 없어 거리 순위는 표시하지 않습니다."
+    row.data = {**row.data, "warnings": [warning, "인계 전 물량 확인 필요"]}
+    await db.commit()
+    before = await req("A", f"/lots/{lot['id']}", method="GET")
+    assert warning in before.json()["data"]["warnings"]
+    company = await db.get(Company, uuid.UUID(actors["A"][1]))
+    company.site_latitude = 37.452798
+    company.site_longitude = 127.1337775
+    await db.commit()
+    warnings = (await req("A", f"/lots/{lot['id']}", method="GET")).json()["data"]["warnings"]
+    assert warnings == ["인계 전 물량 확인 필요"]
+
+
 async def test_qr_expiry_and_reissue(setup_flow, db):
     req, create, _, _ = setup_flow
     lot = await choose(req, await create(), "A", "sarom-hwaseong-2")
