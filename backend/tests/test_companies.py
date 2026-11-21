@@ -314,3 +314,43 @@ async def test_history_invalid_paging_returns_422(onboarded: AsyncClient, params
 async def test_history_without_company_returns_404(auth_client: AsyncClient):
     res = await auth_client.get(HISTORY)
     assert res.status_code == 404
+
+
+# --- 사업장 판정 고정값 (회원가입에서 받고 문진에 넘김) ---
+
+SITE = {
+    "emission_facility": "yes",
+    "daily_avg_kg": 120.5,
+    "public_facility": "no",
+    "site_emits_designated": "no",
+}
+
+
+async def test_site_conditions_default_to_null(onboarded: AsyncClient):
+    body = (await onboarded.get(ME)).json()
+    assert {k: body[k] for k in SITE} == dict.fromkeys(SITE)
+
+
+async def test_site_conditions_saved_on_create(auth_client: AsyncClient):
+    res = await auth_client.post(COMPANIES, json={**COMPANY, **SITE})
+    assert res.status_code == 201
+    assert {k: res.json()[k] for k in SITE} == SITE
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [("emission_facility", "unknown"), ("public_facility", True), ("daily_avg_kg", -1)],
+)
+async def test_invalid_site_condition_returns_422(auth_client: AsyncClient, field, value):
+    res = await auth_client.post(COMPANIES, json={**COMPANY, field: value})
+    assert res.status_code == 422
+
+
+async def test_update_site_conditions_and_clear_to_unknown(onboarded: AsyncClient):
+    res = await onboarded.patch(ME, json={"profile_version": 1, "emission_facility": "no"})
+    assert res.json() == {"profile_version": 2, "changed_fields": ["emission_facility"]}
+    # null은 모름으로 되돌림 (다음 문진에서 다시 물음)
+    res = await onboarded.patch(ME, json={"profile_version": 2, "emission_facility": None})
+    assert res.status_code == 200
+    assert res.json()["changed_fields"] == ["emission_facility"]
+    assert (await onboarded.get(ME)).json()["emission_facility"] is None

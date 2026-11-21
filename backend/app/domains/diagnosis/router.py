@@ -14,6 +14,7 @@ from app.core.errors import AppError, ErrorCode, NotFoundError
 from app.db.session import DbSession
 from app.domains.auth.dependencies import CurrentUser
 from app.domains.companies import service as company_service
+from app.domains.companies.service import site_condition_facts
 from app.domains.diagnosis.client import Engine, EngineClient
 from app.domains.diagnosis.schemas import (
     ApplyIn,
@@ -81,8 +82,19 @@ async def _file_part(file: UploadFile, facts: str | None) -> dict[str, Any]:
 
 
 @router.post("/cases", status_code=status.HTTP_201_CREATED, summary="문진 건 만들기 + 첫 질문")
-async def create_case(body: CaseCreateIn, company_id: CompanyId, engine: Engine) -> JSONResponse:
-    return await _forward(engine, company_id, "POST", "/cases", json=_body(body))
+async def create_case(
+    body: CaseCreateIn, user: CurrentUser, db: DbSession, engine: Engine
+) -> JSONResponse:
+    company = await company_service.get_company_by_user(db, user.id)
+    if company is None:
+        raise NotFoundError("등록된 기업이 없음")
+    payload = _body(body)
+    # 회원가입(온보딩)에서 받은 사업장 고정값. 모름(null)은 보내지 않아 엔진이 문진에서 물음
+    facts = site_condition_facts(company)
+    if facts:
+        payload["confirmed_facts"] = facts
+        payload["company_profile_version"] = str(company.profile_version)
+    return await _forward(engine, str(company.id), "POST", "/cases", json=payload)
 
 
 @router.get("/cases", summary="내 기업의 문진 건 목록")

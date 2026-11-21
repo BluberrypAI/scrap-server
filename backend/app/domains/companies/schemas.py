@@ -63,7 +63,37 @@ class SiteCoordinates(BaseModel):
         return self
 
 
-class CompanyCreate(CompanyFields, SiteCoordinates):
+YesNo = Literal["yes", "no"]
+
+
+class SiteConditions(BaseModel):
+    """사업장폐기물 판정에 쓰는 회사 고정값 (선택). null = 모름·미입력이면 문진에서 물음.
+
+    이름과 값은 문진 엔진 사실 카탈로그와 같음 (scrap-diagnosis knowledge/flow/facts.yaml).
+    """
+
+    emission_facility: YesNo | None = Field(
+        default=None, description="대기·물·소음진동 배출시설을 설치·운영하나"
+    )
+    daily_avg_kg: float | None = Field(
+        default=None,
+        ge=0,
+        allow_inf_nan=False,
+        description="사업장 전체 폐기물 1일 평균 배출량(kg)",
+    )
+    public_facility: YesNo | None = Field(
+        default=None,
+        description="공공폐수·공공하수·분뇨·가축분뇨 공공처리시설이나 폐기물처리시설을 운영하나",
+    )
+    site_emits_designated: YesNo | None = Field(
+        default=None, description="이 사업장 다른 공정에서 지정폐기물이 나오나"
+    )
+
+
+SITE_CONDITION_FIELDS = tuple(SiteConditions.model_fields)
+
+
+class CompanyCreate(CompanyFields, SiteCoordinates, SiteConditions):
     # 선택 항목. 보내지 않으면 빈 목록
     main_products: list[Name] = Field(default=[], examples=[["산업용 윤활유"]])
     main_waste_types: list[WasteTypeCreate] = []
@@ -82,6 +112,10 @@ class CompanyRead(BaseModel):
     site_facilities: list[str]
     main_products: list[str]
     main_waste_types: list[WasteTypeRead]
+    emission_facility: str | None = None
+    daily_avg_kg: float | None = None
+    public_facility: str | None = None
+    site_emits_designated: str | None = None
     profile_version: int
 
     @classmethod
@@ -98,6 +132,7 @@ class CompanyRead(BaseModel):
             site_facilities=company.site_facilities,
             main_products=company.main_products,
             main_waste_types=[WasteTypeRead.model_validate(w) for w in company.main_waste_types],
+            **{f: getattr(company, f) for f in SITE_CONDITION_FIELDS},
             profile_version=company.profile_version,
         )
 
@@ -109,10 +144,11 @@ EDITABLE_FIELDS = (
     "main_waste_types",
     "site_latitude",
     "site_longitude",
+    *SITE_CONDITION_FIELDS,
 )
 
 
-class CompanyUpdate(SiteCoordinates):
+class CompanyUpdate(SiteCoordinates, SiteConditions):
     """Only the fields that are sent are changed. Unknown fields are rejected."""
 
     model_config = ConfigDict(extra="forbid")
@@ -135,7 +171,10 @@ class CompanyUpdate(SiteCoordinates):
             nulls = [
                 f
                 for f in EDITABLE_FIELDS
-                if f not in SiteCoordinates.model_fields and f in data and data[f] is None
+                if f not in SiteCoordinates.model_fields
+                and f not in SITE_CONDITION_FIELDS  # null = 모름으로 되돌림
+                and f in data
+                and data[f] is None
             ]
             if nulls:
                 raise ValueError(f"null로 바꿀 수 없음: {', '.join(nulls)}")

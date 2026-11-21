@@ -34,6 +34,7 @@
 2. server는 엔진에 `X-Company-Id = companies.id`(UUID 문자열)를 보냄. 브라우저가 보낸 기업 ID는 쓰지 않음. 엔진은 처음 보는 ID면 기업 행을 자동으로 만듦
 3. 요청·응답 본문은 엔진 규약을 그대로 따름. 단, 아래는 server가 정함
    - 건 생성·문진 답변에서 `confirmed_facts`, `company_profile_version`은 받지 않음 (엔진이 "server가 확인한 값"으로 믿는 필드라 브라우저 입력을 그대로 넘기면 안 됨)
+   - (2026-11-21) 건 생성 시 server가 기업의 사업장 판정 고정값(company-onboarding 8-1) 중 값이 있는 것을 `confirmed_facts`로, 기업 `profile_version`을 `company_profile_version`(문자열)으로 채워 보냄. 판정 보드 고치기는 그 건의 판정만 바꾸고 기업 정보는 바꾸지 않음
    - 서류 값 적용(`values/apply`)의 `reviewer`는 현재 사용자 ID, `reviewed_at`은 server 시각으로 채움. 브라우저가 보낸 값은 무시함
 4. 엔진 오류는 같은 HTTP 상태와 엔진의 오류 코드로 돌려줌 (`{code, message, details}`). 엔진 코드 중 프론트가 분기할 것은 오류 코드 목록에 추가함 (4장 표)
    - 서류 값 형식 오류(`details.problems[{key, reason}]`)는 `details[{field: key, message: reason}]`으로 바꿈. 다른 `details`는 버림
