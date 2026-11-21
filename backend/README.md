@@ -143,6 +143,7 @@ TEST_DATABASE_URL=postgresql+asyncpg://resource:resource@localhost:5433/resource
 
 ```bash
 uv run python -m app.domains.auth.facility_accounts --list   # 업체 키 목록
+uv run python -m app.domains.auth.facility_accounts --all --password-stdin   # 전체 업체 (아이디 = 업체 키, 비밀번호 공통)
 uv run python -m app.domains.auth.facility_accounts --login-id sarom-hwaseong   --facility sarom-hwaseong-2 --contact-email manager@example.com   # 비밀번호는 프롬프트 입력
 ```
 
