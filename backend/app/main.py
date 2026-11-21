@@ -10,6 +10,7 @@ from app.core.config import Settings, get_settings
 from app.core.errors import ErrorResponse, register_error_handlers
 from app.db import all_models as _all_models  # noqa: F401
 from app.domains.auth.dev_router import router as dev_auth_router
+from app.domains.transport.public_inquiry_replies import ProtectPublicInquiryReplies
 from app.domains.treatment.router import classification_router
 from app.domains.treatment.router import router as treatment_router
 
@@ -66,6 +67,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         same_site="lax",
         https_only=settings.cookie_secure,
     )
+    app.state.inquiry_reply_rate_limit_enabled = settings.app_env != "test"
+    app.add_middleware(ProtectPublicInquiryReplies)
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.cors_origins,

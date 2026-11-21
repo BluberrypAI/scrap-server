@@ -112,12 +112,32 @@ class WorkflowInquiryReply(Base, TimestampMixin):
     )
     company_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("companies.id"))
     capability_key: Mapped[str] = mapped_column(String(100), index=True)
+    source: Mapped[str] = mapped_column(String(16), server_default="sender")
+    availability: Mapped[str | None] = mapped_column(String(16))
+    contact_name: Mapped[str | None] = mapped_column(String(100))
+    contact_info: Mapped[str | None] = mapped_column(String(200))
     text: Mapped[str | None] = mapped_column(Text)
     received_on: Mapped[date | None] = mapped_column(Date)
     file_name: Mapped[str | None] = mapped_column(String(200))
     mime: Mapped[str | None] = mapped_column(String(100))
     size: Mapped[int | None] = mapped_column(Integer)
     content: Mapped[bytes | None] = mapped_column(LargeBinary)
+
+
+class WorkflowInquiryReplyLink(Base, TimestampMixin):
+    __tablename__ = "workflow_inquiry_reply_links"
+    __table_args__ = (UniqueConstraint("lot_id", "capability_key"),)
+
+    id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
+    lot_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("workflow_lots.id", ondelete="CASCADE"))
+    capability_key: Mapped[str] = mapped_column(String(100))
+    company_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("companies.id"))
+    stage: Mapped[int] = mapped_column(Integer)
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    reply_count: Mapped[int] = mapped_column(Integer, server_default="0")
+    inquiry: Mapped[dict] = mapped_column(JSON)
 
 
 class SupplierIntakePolicy(Base, TimestampMixin):

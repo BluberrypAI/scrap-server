@@ -26,7 +26,8 @@ from app.domains.diagnosis.router import CompanyId
 from app.domains.diagnosis.schemas import TreatmentSelectionIn
 from app.domains.diagnosis.treatment import treatment_context
 from app.domains.transport import inquiry_replies as replies
-from app.domains.transport.inquiry import InquiryPacketRead, inquiry_packet
+from app.domains.transport import inquiry_reply_links as reply_links
+from app.domains.transport.inquiry import InquiryPacketRead, inquiry_packet, review_candidates
 from app.domains.transport.models import (
     WorkflowFacilityAccount,
     WorkflowInquiryReply,
@@ -42,7 +43,12 @@ from app.domains.transport.photo_conflicts import (
 )
 from app.domains.transport.recipient_accounts import with_current_recipients
 from app.domains.transport.road_route import RoadRouteRead, driving_segment, handoff_legs
-from app.domains.transport.schemas import InquiryReplyRead
+from app.domains.transport.schemas import (
+    InquiryReplyLinkStatus,
+    InquiryReplyRead,
+    IssuedInquiryReplyLink,
+    PublicInquiry,
+)
 from app.domains.transport.supplier_policy import current_policies
 from app.domains.treatment.conditions import attach_answers, published_conditions, questionnaire
 from app.domains.treatment.directory import project
@@ -1024,15 +1030,25 @@ async def current_review_candidate(db, lot, cid, capability_key):
         or review.get("conditions_version") != "intake-questions-v1"
     ):
         fail("사업장 정보 또는 검토 기준이 바뀌었습니다. 업체 검토를 다시 실행해 주세요.")
-    found = [
-        (o, f)
-        for o in review.get("next_step", {}).get("options", [])
-        for f in o["facilities"]
-        if f["capability_key"] == capability_key
-    ]
+    found = review_candidates(lot, capability_key)
     if len(found) != 1:
         fail("현재 물량의 업체 검토를 먼저 실행해 주세요.")
     return company, ref, found[0]
+
+
+def packet_for_candidate(lot, capability_key, company, ref, option, facility):
+    state = next(s for s in ref.states if s.key == lot.data["current"]["state_key"])
+    material = lot.data["initial"]["material"]
+    return inquiry_packet(
+        lot=lot,
+        company=company,
+        option=option,
+        facility=facility,
+        result=lot.review.get("results", {}).get(capability_key, {}),
+        state_label=state.label,
+        material_label=MATERIAL_LABELS.get(material, material),
+        source_dates={s.url: s.checked_date for s in ref.sources},
+    )
 
 
 @router.post("/lots/{key}/inquiry-packet", response_model=InquiryPacketRead)
@@ -1047,19 +1063,8 @@ async def prepare_inquiry(
     company, ref, (option, facility) = await current_review_candidate(
         db, lot, cid, body.capability_key
     )
-    state = next(s for s in ref.states if s.key == lot.data["current"]["state_key"])
-    return inquiry_packet(
-        lot=lot,
-        company=company,
-        option=option,
-        facility=facility,
-        result=lot.review.get("results", {}).get(body.capability_key, {}),
-        state_label=state.label,
-        material_label=MATERIAL_LABELS.get(
-            lot.data["initial"]["material"], lot.data["initial"]["material"]
-        ),
-        source_dates={s.url: s.checked_date for s in ref.sources},
-    )
+    packet, _ = packet_for_candidate(lot, body.capability_key, company, ref, option, facility)
+    return packet
 
 
 def reply_view(row):
@@ -1069,12 +1074,76 @@ def reply_view(row):
         received_on=row.received_on,
         file={"name": row.file_name, "mime": row.mime, "size": row.size} if row.file_name else None,
         created_at=row.created_at,
+        source=row.source,
+        availability=row.availability,
+        contact_name=row.contact_name,
+        contact_info=row.contact_info,
     )
 
 
 def reply_key(capability_key):
-    if not replies.KEY_PATTERN.match(capability_key):
+    if not replies.KEY_PATTERN.fullmatch(capability_key):
         fail("업체 후보 키 형식이 올바르지 않습니다.", 422)
+
+
+async def lot_for_reply_link(db, lot_id, company_id, capability_key, *, lock=False):
+    cid = uuid.UUID(company_id)
+    reply_key(capability_key)
+    lot = await lot_for(db, lot_id, cid, lock=lock)
+    if cid != lot.current_company_id:
+        fail("현재 물량을 담당하는 기업만 처리할 수 있습니다.", 403)
+    return lot
+
+
+@router.post(
+    "/lots/{lot_id}/inquiries/{capability_key}/reply-link",
+    response_model=IssuedInquiryReplyLink,
+    status_code=201,
+)
+async def issue_inquiry_reply_link(
+    lot_id: uuid.UUID, capability_key: str, company_id: CompanyId, db: DbSession, response: Response
+):
+    lot = await lot_for_reply_link(db, lot_id, company_id, capability_key, lock=True)
+    active(lot, lot.current_company_id, reply_links.REPLYABLE_STATES)
+    if not reply_links.candidate_in_review(lot, capability_key):
+        fail("현재 물량의 업체 검토 결과에 없는 후보입니다.", 404)
+    company, ref, (option, facility) = await current_review_candidate(
+        db, lot, lot.current_company_id, capability_key
+    )
+    packet, summary = packet_for_candidate(lot, capability_key, company, ref, option, facility)
+    response.headers["Cache-Control"] = "private, no-store"
+    return await reply_links.issue_link(
+        db,
+        lot,
+        capability_key,
+        PublicInquiry(
+            sender_company_name=company.company_name,
+            facility_label=facility["label"],
+            subject=packet.subject,
+            inquiry_text=packet.text,
+            summary=summary,
+        ),
+    )
+
+
+@router.get(
+    "/lots/{lot_id}/inquiries/{capability_key}/reply-link", response_model=InquiryReplyLinkStatus
+)
+async def get_inquiry_reply_link(
+    lot_id: uuid.UUID, capability_key: str, company_id: CompanyId, db: DbSession, response: Response
+):
+    lot = await lot_for_reply_link(db, lot_id, company_id, capability_key)
+    response.headers["Cache-Control"] = "private, no-store"
+    return await reply_links.link_status(db, lot, capability_key)
+
+
+@router.delete("/lots/{lot_id}/inquiries/{capability_key}/reply-link", status_code=204)
+async def delete_inquiry_reply_link(
+    lot_id: uuid.UUID, capability_key: str, company_id: CompanyId, db: DbSession
+):
+    lot = await lot_for_reply_link(db, lot_id, company_id, capability_key, lock=True)
+    await reply_links.revoke_link(db, lot, capability_key)
+    return Response(status_code=204)
 
 
 async def reply_list(db, lot_id, cid, capability_key):

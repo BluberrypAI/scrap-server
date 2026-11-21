@@ -43,7 +43,19 @@ async def test_reply_register_list_download_delete(setup_flow):
     item = items[1]
     assert item["received_on"] == "2026-11-01" and items[0]["file"] is None
     assert item["file"] == {"name": "회신 견적.pdf", "mime": "application/pdf", "size": len(PDF)}
-    assert set(item) == {"id", "text", "received_on", "file", "created_at"}
+    assert set(item) == {
+        "id",
+        "text",
+        "received_on",
+        "file",
+        "created_at",
+        "source",
+        "availability",
+        "contact_name",
+        "contact_info",
+    }
+    assert item["source"] == "sender"
+    assert item["availability"] is item["contact_name"] is item["contact_info"] is None
     file_path = f"/inquiry-replies/{item['id']}/file"
     got = await req("A", file_path, method="GET")
     assert got.content == PDF and got.headers["content-type"] == "application/pdf"

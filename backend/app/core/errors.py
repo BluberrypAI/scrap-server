@@ -24,6 +24,7 @@ class ErrorCode(StrEnum):
     COMPANY_ALREADY_EXISTS = "COMPANY_ALREADY_EXISTS"
     VERSION_CONFLICT = "VERSION_CONFLICT"
     VALIDATION_ERROR = "VALIDATION_ERROR"
+    RATE_LIMITED = "RATE_LIMITED"
     INTERNAL_ERROR = "INTERNAL_ERROR"
     PROVIDER_UNAVAILABLE = "PROVIDER_UNAVAILABLE"
     PROVIDER_NOT_CONFIGURED = "PROVIDER_NOT_CONFIGURED"
@@ -153,7 +154,10 @@ async def _http_error(request: Request, exc: StarletteHTTPException) -> JSONResp
 
 
 async def _unhandled_error(request: Request, exc: Exception) -> JSONResponse:
-    logger.exception("Unhandled error on %s %s", request.method, request.url.path)
+    path = request.url.path
+    if "token" in request.path_params:
+        path = request.scope["route"].path
+    logger.exception("Unhandled error on %s %s", request.method, path)
     return _response(
         status.HTTP_500_INTERNAL_SERVER_ERROR, ErrorCode.INTERNAL_ERROR, "서버 오류가 발생함"
     )

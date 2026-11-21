@@ -3,7 +3,27 @@
 import re
 from datetime import UTC, datetime
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+
+from app.domains.transport.schemas import InquirySummary
+
+MAIL_BODY_MAX_LENGTH = 900
+INQUIRY_QUESTIONS = (
+    "이 물량의 반입 가능 여부",
+    "반입 조건 (선별·세척 상태, 포장, 최소 수량 등)",
+    "처리 단가와 가능한 일정",
+)
+PROVINCE_OR_CITY = re.compile(
+    r"(?:서울(?:특별시)?|세종(?:특별자치시)?|(?:부산|대구|인천|광주|대전|울산)(?:광역시)?|"
+    r"경기(?:도)?|강원(?:도|특별자치도)?|충[북남]|충청[북남]도|"
+    r"전[북남]|전라[북남]도|전북특별자치도|경[북남]|경상[북남]도|제주(?:도|특별자치도)?)"
+)
+DISTRICT = re.compile(r"[가-힣]{1,12}[시군구]")
+INTERNAL_MAIL_TEXT = re.compile(
+    r"(?i:\b(?:https?://|www\.)\S+)|SCRAP\s+검토|"
+    r"(?<![A-Za-z0-9])(?:AI|UTC)(?![A-Za-z0-9])|"
+    r"(?i:\b[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\b)"
+)
 
 
 class InquiryPacketRead(BaseModel):
@@ -12,6 +32,113 @@ class InquiryPacketRead(BaseModel):
     filename: str
     subject: str
     text: str
+    mail_body: str = Field(max_length=MAIL_BODY_MAX_LENGTH)
+
+
+def _origin_region(address: str) -> str | None:
+    parts = re.sub(r"\([^)]*\)", " ", address).replace(",", " ").split(maxsplit=2)
+    if not parts:
+        return None
+    if not PROVINCE_OR_CITY.fullmatch(parts[0]):
+        # 시·도 없이 "과천시 ..."처럼 시·군·구로 시작하는 주소는 그 단어만 쓴다.
+        return parts[0] if DISTRICT.fullmatch(parts[0]) else None
+    if len(parts) >= 2 and DISTRICT.fullmatch(parts[1]):
+        return " ".join(parts[:2])
+    if parts[0] in {"세종", "세종특별자치시"}:
+        return parts[0]
+    return None
+
+
+def _inquiry_summary(lot, company, option, facility, material_label, state_label) -> InquirySummary:
+    current = lot.data["current"]
+    input_label = option["input_state"]["label"]
+    output_label = option["output_state"]["label"]
+    # "PE" + "PE 잔재..."처럼 형태 이름이 재질로 시작하면 재질을 다시 붙이지 않는다.
+    item = (
+        state_label
+        if state_label and material_label and state_label.startswith(material_label)
+        else " ".join(filter(None, [material_label, state_label]))
+    )
+    return InquirySummary(
+        item=item,
+        weight_kg=current["mass_kg"],
+        condition=(current.get("condition") or "").strip() or None,
+        # The initial waste code is only a reference for the first shipment.
+        waste_code=None if lot.data["completed"] else lot.data["initial"].get("waste_code"),
+        origin_region=_origin_region(company.site_address),
+        road_distance_km=(
+            facility.get("road_distance_km")
+            if facility.get("road_distance_status") == "available"
+            else None
+        ),
+        process=f"{input_label} → {output_label}" if input_label and output_label else None,
+        questions=list(INQUIRY_QUESTIONS),
+    )
+
+
+def _mail_value(value: str | None, limit: int) -> str:
+    cleaned = " ".join(INTERNAL_MAIL_TEXT.sub(" ", value or "").split())
+    if len(cleaned) > limit:
+        return cleaned[: limit - 1].rstrip() + "…"
+    return cleaned
+
+
+def _mail_body(company, facility_label: str, summary: InquirySummary) -> str:
+    # Bound variable labels to leave room for the questions and the complete reply address.
+    vendor = _mail_value(facility_label, 40)
+    sender = _mail_value(company.company_name, 40) or "발송 기업"
+    site = _mail_value(company.site_name, 35)
+    origin = summary.origin_region
+    if summary.road_distance_km is not None:
+        distance = f"도로 약 {summary.road_distance_km:.1f} km"
+        origin = f"{origin} ({distance})" if origin else f"귀사까지 {distance}"
+    heading = "\n".join(
+        [
+            f"안녕하세요, {vendor} 담당자님." if vendor else "안녕하세요, 담당자님.",
+            f"{' '.join(filter(None, [sender, site]))}입니다. "
+            "아래 물량을 귀사에서 받아 주실 수 있는지 여쭙고자 연락드립니다.",
+            "",
+            "■ 물량 정보",
+            f"- 품목: {_mail_value(summary.item, 50)}",
+            f"- 중량: {summary.weight_kg:g} kg",
+        ]
+    )
+    footer = f"{sender} 드림"
+    if company.contact_email:
+        footer += f" ({company.contact_email})"
+    remainder = "\n".join(
+        [
+            *(
+                f"- {label}: {value}"
+                for label, value in (
+                    ("폐기물 분류번호(참고)", _mail_value(summary.waste_code, 16)),
+                    ("출발지", origin),
+                    ("희망 처리", _mail_value(summary.process, 55)),
+                )
+                if value
+            ),
+            "",
+            "■ 여쭙고 싶은 내용",
+            *(f"{n}. {question}" for n, question in enumerate(summary.questions, 1)),
+            "",
+            "번거로우시겠지만 회신 부탁드립니다. 감사합니다.",
+            footer,
+        ]
+    )
+    condition_prefix = "\n- 상태: "
+    budget = MAIL_BODY_MAX_LENGTH - len(heading) - len(remainder) - len(condition_prefix) - 1
+    condition = _mail_value(summary.condition, budget) if budget > 1 else ""
+    condition_line = condition_prefix + condition if condition else ""
+    return f"{heading}{condition_line}\n{remainder}"
+
+
+def review_candidates(lot, capability_key):
+    return [
+        (option, facility)
+        for option in (lot.review or {}).get("next_step", {}).get("options", [])
+        for facility in option["facilities"]
+        if facility["capability_key"] == capability_key
+    ]
 
 
 def inquiry_packet(
@@ -140,9 +267,14 @@ def inquiry_packet(
         " ",
         f"[반입조건 문의] {company.company_name} - {material_label} {current['mass_kg']:g}kg",
     ).strip()
-    return InquiryPacketRead(
-        generated_at=now,
-        filename="SCRAP-vendor-inquiry.txt",
-        subject=subject[:120],
-        text="\n".join(lines),
+    summary = _inquiry_summary(lot, company, option, facility, material_label, state_label)
+    return (
+        InquiryPacketRead(
+            generated_at=now,
+            filename="SCRAP-vendor-inquiry.txt",
+            subject=subject[:120],
+            text="\n".join(lines),
+            mail_body=_mail_body(company, facility["label"], summary),
+        ),
+        summary,
     )

@@ -44,6 +44,7 @@
 | 400 | `VALIDATION_ERROR` | 요청 본문을 JSON으로 읽을 수 없음 (예: UTF-8이 아닌 본문) |
 | 422 | `VALIDATION_ERROR` | 요청 본문·쿼리·경로 값 검증 실패 |
 | 422 | `INVALID_FILTER` | 지원하지 않는 문진 유형이거나 유형과 답변이 맞지 않음 (처리 경로 데모) |
+| 429 | `RATE_LIMITED` | 공개 업체 답장 링크의 요청 횟수 또는 누적 제출 수 초과 |
 | 500 | `INTERNAL_ERROR` | 처리되지 않은 서버 오류 |
 | 503 | `PROVIDER_NOT_CONFIGURED` | 클라이언트 ID가 설정되지 않은 소셜 로그인 제공자 |
 | 503 | `ENGINE_UNAVAILABLE` | 문진 엔진 주소(CLASSIFICATION_BASE_URL, DIAGNOSIS_ENGINE_URL)가 없거나 연결하지 못함, 엔진 인증 실패·5xx·시간 초과 |

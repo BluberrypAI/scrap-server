@@ -116,9 +116,58 @@ class InquiryReplyFile(BaseModel):
     size: int
 
 
+ReplyAvailability = Literal["available", "conditional", "unavailable"]
+
+
 class InquiryReplyRead(BaseModel):
     id: uuid.UUID
     text: str | None
     received_on: date | None
     file: InquiryReplyFile | None
+    created_at: datetime
+    source: Literal["sender", "vendor_link"]
+    availability: ReplyAvailability | None
+    contact_name: str | None
+    contact_info: str | None
+
+
+class InquiryReplyLinkStatus(BaseModel):
+    status: Literal["none", "active", "expired", "revoked"]
+    expires_at: datetime | None
+
+
+class IssuedInquiryReplyLink(BaseModel):
+    status: Literal["active"] = "active"
+    token: str
+    path: str
+    expires_at: datetime
+
+
+class InquirySummary(BaseModel):
+    item: str
+    weight_kg: float
+    condition: str | None
+    waste_code: str | None
+    origin_region: str | None
+    road_distance_km: float | None
+    process: str | None
+    questions: list[str]
+
+
+class PublicInquiry(BaseModel):
+    sender_company_name: str
+    facility_label: str
+    subject: str
+    inquiry_text: str
+    summary: InquirySummary | None
+
+
+class PublicInquiryRead(PublicInquiry):
+    expires_at: datetime
+    reply_count: int
+    max_replies: Literal[10] = 10
+
+
+class PublicInquiryReplyCreated(BaseModel):
+    id: uuid.UUID
     created_at: datetime
