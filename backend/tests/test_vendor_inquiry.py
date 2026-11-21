@@ -203,5 +203,7 @@ def test_summary_item_does_not_repeat_material_prefix():
     option = {"input_state": {"label": "A"}, "output_state": {"label": "B"}}
     summary = _inquiry_summary(lot, company, option, {}, "PE", "PE 잔재·로트 규격 미확인")
     assert summary.item == "PE 잔재·로트 규격 미확인"
+    summary = _inquiry_summary(lot, company, option, {}, "알루미늄", "사용 후 알루미늄 음료캔")
+    assert summary.item == "사용 후 알루미늄 음료캔"
     summary = _inquiry_summary(lot, company, option, {}, "PP", "파쇄품")
     assert summary.item == "PP 파쇄품"

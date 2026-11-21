@@ -53,10 +53,11 @@ def _inquiry_summary(lot, company, option, facility, material_label, state_label
     current = lot.data["current"]
     input_label = option["input_state"]["label"]
     output_label = option["output_state"]["label"]
-    # "PE" + "PE 잔재..."처럼 형태 이름이 재질로 시작하면 재질을 다시 붙이지 않는다.
+    # "PE" + "PE 잔재...", "알루미늄" + "사용 후 알루미늄 음료캔"처럼
+    # 형태 이름에 이미 재질이 들어 있으면 재질을 다시 붙이지 않는다.
     item = (
         state_label
-        if state_label and material_label and state_label.startswith(material_label)
+        if state_label and material_label and material_label in state_label
         else " ".join(filter(None, [material_label, state_label]))
     )
     return InquirySummary(
