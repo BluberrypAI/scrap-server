@@ -24,7 +24,8 @@ MATERIAL_ALIASES = {
     "pa6": ["pa6", "pa 6", "nylon 6", "나일론6"],
     "pa66": ["pa66", "pa 66", "nylon 66", "나일론66"],
     "pcabs": ["pc/abs", "pc-abs", "pc abs", "pcabs"],
-    "ferrous": ["ferrous", "ferrous_scrap", "철스크랩", "철 스크랩", "고철"],
+    # 문진 v2는 철을 steel로 낸다(D18 철 스크랩 51-29-01)
+    "ferrous": ["ferrous", "ferrous_scrap", "steel", "철", "철스크랩", "철 스크랩", "고철"],
 }
 
 
