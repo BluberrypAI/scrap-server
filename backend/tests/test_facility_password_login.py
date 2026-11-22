@@ -73,6 +73,58 @@ async def test_wrong_password_and_unknown_id_both_401(client: AsyncClient, db: A
     assert wrong.json()["code"] == unknown.json()["code"] == "AUTH_REQUIRED"
 
 
+async def test_repeated_failures_lock_the_login_id_even_for_the_right_password(
+    client: AsyncClient, db: AsyncSession
+):
+    from app.domains.auth import throttle
+
+    await _provision(db)
+    for _ in range(throttle.MAX_FAILURES_PER_LOGIN):
+        assert (await _login(client, "sarom-hwaseong", "wrong-password")).status_code == 401
+
+    locked = await _login(client, "SAROM-hwaseong", PASSWORD)
+
+    assert locked.status_code == 429
+    assert locked.json()["code"] == "TOO_MANY_ATTEMPTS"
+    assert int(locked.headers["Retry-After"]) > 0
+    assert "access_token" not in locked.cookies
+
+
+async def test_success_clears_the_login_id_failures(client: AsyncClient, db: AsyncSession):
+    from app.domains.auth import throttle
+
+    await _provision(db)
+    for _ in range(throttle.MAX_FAILURES_PER_LOGIN - 1):
+        await _login(client, "sarom-hwaseong", "wrong-password")
+    assert (await _login(client, "sarom-hwaseong", PASSWORD)).status_code == 204
+
+    assert (await _login(client, "sarom-hwaseong", "wrong-password")).status_code == 401
+
+
+async def test_spraying_many_ids_from_one_ip_is_blocked(client: AsyncClient, db: AsyncSession):
+    from app.domains.auth import throttle
+
+    for i in range(throttle.MAX_FAILURES_PER_IP):
+        assert (await _login(client, f"guess-{i}", PASSWORD)).status_code == 401
+
+    assert (await _login(client, "another-id", PASSWORD)).status_code == 429
+    other_ip = await client.post(
+        "/api/v1/auth/password-login",
+        json={"login_id": "another-id", "password": PASSWORD},
+        headers={"X-Azure-ClientIP": "203.0.113.9"},
+    )
+    assert other_ip.status_code == 401
+
+
+def test_failures_expire_after_the_window():
+    from app.domains.auth import throttle
+
+    for _ in range(throttle.MAX_FAILURES_PER_LOGIN):
+        throttle.record_failure("id", "ip", now=0.0)
+    assert throttle.retry_after("id", "ip", now=1.0) == throttle.WINDOW_SECONDS - 1
+    assert throttle.retry_after("id", "ip", now=float(throttle.WINDOW_SECONDS)) is None
+
+
 async def test_user_without_password_hash_cannot_log_in(client: AsyncClient, db: AsyncSession):
     db.add(User(provider="password", provider_subject="nohash"))
     await db.commit()

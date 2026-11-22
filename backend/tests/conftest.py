@@ -57,6 +57,16 @@ async def engine() -> AsyncIterator[AsyncEngine]:
     await engine.dispose()
 
 
+@pytest.fixture(autouse=True)
+def _reset_login_throttle():
+    # 로그인 실패 기록은 프로세스 메모리에 남으므로 테스트마다 비움
+    from app.domains.auth import throttle
+
+    throttle.reset()
+    yield
+    throttle.reset()
+
+
 @pytest.fixture
 def session_factory(engine: AsyncEngine) -> async_sessionmaker[AsyncSession]:
     return async_sessionmaker(engine, expire_on_commit=False)

@@ -3,6 +3,7 @@ from hashlib import sha256
 from types import SimpleNamespace
 
 import httpx
+import pytest
 from pydantic import SecretStr
 from sqlalchemy import func, select
 
@@ -24,7 +25,8 @@ def registry_row(name, code, business, latitude):
     }
 
 
-async def test_registry_ingests_every_row_and_filters_by_exact_code(db, client, tmp_path):
+async def test_registry_ingests_every_row_and_filters_by_exact_code(db, auth_client, tmp_path):
+    client = auth_client
     rows = [
         registry_row("near steel", "51-29-01", "폐기물중간재활용업", "37.17"),
         registry_row("far steel", "51-29-01", "폐기물종합재활용업", "37.70"),
@@ -65,7 +67,8 @@ async def test_registry_ingests_every_row_and_filters_by_exact_code(db, client, 
     assert oil.json()["registry_candidates"][0]["research_packet"]["name"] == "oil treatment"
 
 
-async def test_next_step_uses_seeded_reference_without_ai(db, client):
+async def test_next_step_uses_seeded_reference_without_ai(db, auth_client):
+    client = auth_client
     await replace_snapshots(db)
     types = {"free": ["R-10", "R-3-3"], "analysis": ["R-10-1", "R-8-2"]}
     response = await client.post(
@@ -283,3 +286,20 @@ async def test_follow_up_reviews_actual_output_without_original_classification(d
         assert "PP 파쇄품" in packet["form"]
         assert packet["waste_code"] is None and packet["recycling_types"] == {}
         assert "observed_output" not in packet and "completed_transitions" not in packet
+
+
+@pytest.mark.parametrize(
+    ("method", "path"),
+    [
+        ("POST", "/api/treatment/next-step"),
+        ("POST", "/api/treatment/facility-candidates"),
+        ("GET", "/api/classification/profiles"),
+        ("POST", "/api/classification/sessions"),
+        ("POST", f"/api/classification/sessions/{'0' * 32}/answer"),
+        ("POST", f"/api/classification/sessions/{'0' * 32}/undo"),
+    ],
+)
+async def test_legacy_treatment_and_classification_routes_require_login(client, method, path):
+    response = await client.request(method, path, json={})
+    assert response.status_code == 401
+    assert response.json()["code"] == "AUTH_REQUIRED"
