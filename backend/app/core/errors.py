@@ -17,6 +17,8 @@ logger = logging.getLogger(__name__)
 
 class ErrorCode(StrEnum):
     AUTH_REQUIRED = "AUTH_REQUIRED"
+    # 비밀번호 로그인 실패가 한도를 넘어 잠시 막힘 (Retry-After 헤더에 남은 초)
+    TOO_MANY_ATTEMPTS = "TOO_MANY_ATTEMPTS"
     ACCOUNT_WITHDRAWN = "ACCOUNT_WITHDRAWN"
     NOT_FOUND = "NOT_FOUND"
     UNSUPPORTED_PROVIDER = "UNSUPPORTED_PROVIDER"

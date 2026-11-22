@@ -9,7 +9,7 @@ from app.core import passwords
 from app.core.config import get_settings
 from app.core.errors import AppError, AuthRequiredError, ErrorCode
 from app.db.session import DbSession
-from app.domains.auth import providers, service
+from app.domains.auth import providers, service, throttle
 from app.domains.auth.cookies import REFRESH_COOKIE, clear_auth_cookies, set_auth_cookies
 from app.domains.companies import service as company_service
 
@@ -82,12 +82,29 @@ class PasswordLoginRequest(BaseModel):
     responses={
         401: {"description": "아이디 또는 비밀번호 불일치"},
         403: {"description": "탈퇴 처리 중"},
+        429: {"description": "실패가 많아 잠시 막힘 (Retry-After 초 뒤 다시 시도)"},
     },
 )
-async def password_login(data: PasswordLoginRequest, response: Response, db: DbSession) -> None:
+async def password_login(
+    data: PasswordLoginRequest, request: Request, response: Response, db: DbSession
+) -> None:
+    login_id = service.normalize_login_id(data.login_id)
+    ip = throttle.client_ip(request)
+    wait = throttle.retry_after(login_id, ip)
+    if wait is not None:
+        logger.warning("password login throttled login_id=%s ip=%s", login_id, ip)
+        raise AppError(
+            status.HTTP_429_TOO_MANY_REQUESTS,
+            ErrorCode.TOO_MANY_ATTEMPTS,
+            "로그인 실패가 많아 잠시 막혔습니다. 잠시 후 다시 시도해 주세요",
+            headers={"Retry-After": str(wait)},
+        )
     user = await service.authenticate_password(db, data.login_id, data.password)
     if user is None:
+        throttle.record_failure(login_id, ip)
+        logger.warning("password login failed login_id=%s ip=%s", login_id, ip)
         raise AuthRequiredError("아이디 또는 비밀번호가 맞지 않음")
+    throttle.record_success(login_id)
     if user.is_withdrawn:
         raise AppError(
             status.HTTP_403_FORBIDDEN, ErrorCode.ACCOUNT_WITHDRAWN, "탈퇴 처리 중인 계정"

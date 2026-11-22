@@ -20,8 +20,10 @@ from app.domains.treatment.repository import replace_snapshots
     ],
 )
 async def test_profile_starts_team_classifier_with_known_facts_only(
-    client, monkeypatch, profile, seed
+    auth_client, monkeypatch, profile, seed
 ):
+    client = auth_client
+
     async def upstream(method, path, *, json):
         assert (method, path) == ("POST", "/sessions")
         assert json == {"answers": {"physical_state": "solid", **seed}, "waste_id": "sample"}
@@ -52,8 +54,9 @@ async def test_profile_starts_team_classifier_with_known_facts_only(
     ],
 )
 async def test_out_of_scope_initial_combinations_do_not_return_candidates(
-    client, db, code, material, form
+    auth_client, db, code, material, form
 ):
+    client = auth_client
     await replace_snapshots(db)
     response = await client.post(
         "/api/treatment/next-step",
@@ -64,7 +67,8 @@ async def test_out_of_scope_initial_combinations_do_not_return_candidates(
     assert response.json()["options"] == []
 
 
-async def test_session_uses_recorded_r_codes_and_holds_unclear_lots(client, db, monkeypatch):
+async def test_session_uses_recorded_r_codes_and_holds_unclear_lots(auth_client, db, monkeypatch):
+    client = auth_client
     await replace_snapshots(db)
     session = uuid4()
     record = {
