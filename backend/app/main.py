@@ -81,7 +81,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     if settings.app_env in ("local", "test"):
         app.include_router(dev_auth_router, prefix="/api/v1")
 
+    # /health는 App Service 내부용. 운영 주소(Front Door → web nginx)는 /api/만 server로
+    # 넘기므로 밖에서 확인할 때는 /api/v1/health를 씀 (QA Issue 4)
     @app.get("/health", tags=["health"])
+    @app.get("/api/v1/health", tags=["health"])
     async def health() -> dict[str, str]:
         return {"status": "ok"}
 

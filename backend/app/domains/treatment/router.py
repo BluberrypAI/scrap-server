@@ -1,12 +1,12 @@
 from uuid import UUID
 
 import httpx
-from fastapi import APIRouter, Request, Response
+from fastapi import APIRouter, Depends, Request, Response
 
 from app.core.config import get_settings
 from app.core.errors import AppError, ErrorCode
 from app.db.session import DbSession
-from app.domains.auth.dependencies import CurrentUser
+from app.domains.auth.dependencies import CurrentUser, get_current_user
 from app.domains.transport.shared import recipient_for
 from app.domains.treatment.classification import (
     PROFILES,
@@ -39,8 +39,15 @@ from app.domains.treatment.schemas import (
     NextStepResponse,
 )
 
-router = APIRouter(prefix="/api/treatment", tags=["treatment"])
-classification_router = APIRouter(prefix="/api/classification", tags=["classification"])
+# 처리 경로·분류 API는 모두 로그인한 사용자만 부를 수 있음 (QA Issue 2: 비로그인 호출이 열려 있었음)
+router = APIRouter(
+    prefix="/api/treatment", tags=["treatment"], dependencies=[Depends(get_current_user)]
+)
+classification_router = APIRouter(
+    prefix="/api/classification",
+    tags=["classification"],
+    dependencies=[Depends(get_current_user)],
+)
 
 
 def translate(error):

@@ -24,7 +24,7 @@ def registry_row(name, code, business, latitude):
     }
 
 
-async def test_registry_ingests_every_row_and_filters_by_exact_code(db, client, tmp_path):
+async def test_registry_ingests_every_row_and_filters_by_exact_code(db, auth_client, tmp_path):
     rows = [
         registry_row("near steel", "51-29-01", "폐기물중간재활용업", "37.17"),
         registry_row("far steel", "51-29-01", "폐기물종합재활용업", "37.70"),
@@ -46,7 +46,7 @@ async def test_registry_ingests_every_row_and_filters_by_exact_code(db, client, 
         "origin_longitude": 126.90,
         "page_size": 1,
     }
-    response = await client.post(endpoint, json=filters)
+    response = await auth_client.post(endpoint, json=filters)
     assert response.status_code == 200, response.text
     result = response.json()
     assert result["backend"] == "postgresql"
@@ -57,18 +57,18 @@ async def test_registry_ingests_every_row_and_filters_by_exact_code(db, client, 
     assert "raw_record" not in entry["research_packet"]
     assert "000-0000-0000" not in response.text
     assert not entry["dispatch_approved"]
-    page = await client.post(
+    page = await auth_client.post(
         endpoint, json={**filters, "cursor": result["pagination"]["next_cursor"]}
     )
     assert page.json()["registry_candidates"][0]["research_packet"]["name"] == "far steel"
-    oil = await client.post(endpoint, json={"waste_code": "06-01-03"})
+    oil = await auth_client.post(endpoint, json={"waste_code": "06-01-03"})
     assert oil.json()["registry_candidates"][0]["research_packet"]["name"] == "oil treatment"
 
 
-async def test_next_step_uses_seeded_reference_without_ai(db, client):
+async def test_next_step_uses_seeded_reference_without_ai(db, auth_client):
     await replace_snapshots(db)
     types = {"free": ["R-10", "R-3-3"], "analysis": ["R-10-1", "R-8-2"]}
-    response = await client.post(
+    response = await auth_client.post(
         "/api/treatment/next-step",
         json={
             "waste_code": "51-03-01",
@@ -102,7 +102,7 @@ async def test_next_step_uses_seeded_reference_without_ai(db, client):
         "dispatch_status": "held",
         "simulation_available": False,
     }
-    preview = await client.post(
+    preview = await auth_client.post(
         "/api/treatment/next-step",
         json={
             "waste_code": "51-03-01",
@@ -120,7 +120,7 @@ async def test_next_step_uses_seeded_reference_without_ai(db, client):
         for facility in option["facilities"]
     )
 
-    follow_up = await client.post(
+    follow_up = await auth_client.post(
         "/api/treatment/next-step",
         json={
             "waste_code": "51-03-01",
@@ -144,7 +144,7 @@ async def test_next_step_uses_seeded_reference_without_ai(db, client):
     )
     assert doksan["handoff_verification"]["intake_form"] == "public_example"
     assert doksan["handoff_verification"]["dispatch_status"] == "held"
-    empty = await client.post(
+    empty = await auth_client.post(
         "/api/treatment/next-step",
         json={
             "waste_code": "51-03-01",

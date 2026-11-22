@@ -20,7 +20,7 @@ from app.domains.treatment.repository import replace_snapshots
     ],
 )
 async def test_profile_starts_team_classifier_with_known_facts_only(
-    client, monkeypatch, profile, seed
+    auth_client, monkeypatch, profile, seed
 ):
     async def upstream(method, path, *, json):
         assert (method, path) == ("POST", "/sessions")
@@ -28,15 +28,15 @@ async def test_profile_starts_team_classifier_with_known_facts_only(
         return httpx.Response(200, json={"session_id": uuid4().hex, "phase": "question"})
 
     monkeypatch.setattr("app.domains.treatment.router.classifier_request", upstream)
-    profiles = await client.get("/api/classification/profiles")
+    profiles = await auth_client.get("/api/classification/profiles")
     assert profiles.status_code == 200
     assert profile in {row["profile"] for row in profiles.json()}
-    response = await client.post(
+    response = await auth_client.post(
         "/api/classification/sessions", json={"profile": profile, "waste_id": "sample"}
     )
     assert response.status_code == 200
     assert response.json()["phase"] == "question"
-    conflict = await client.post(
+    conflict = await auth_client.post(
         "/api/classification/sessions", json={"profile": profile, "answers": {"material": "paper"}}
     )
     assert conflict.status_code == 422
@@ -52,10 +52,10 @@ async def test_profile_starts_team_classifier_with_known_facts_only(
     ],
 )
 async def test_out_of_scope_initial_combinations_do_not_return_candidates(
-    client, db, code, material, form
+    auth_client, db, code, material, form
 ):
     await replace_snapshots(db)
-    response = await client.post(
+    response = await auth_client.post(
         "/api/treatment/next-step",
         json={"waste_code": code, "material": material, "input_form": form},
     )
@@ -64,7 +64,7 @@ async def test_out_of_scope_initial_combinations_do_not_return_candidates(
     assert response.json()["options"] == []
 
 
-async def test_session_uses_recorded_r_codes_and_holds_unclear_lots(client, db, monkeypatch):
+async def test_session_uses_recorded_r_codes_and_holds_unclear_lots(auth_client, db, monkeypatch):
     await replace_snapshots(db)
     session = uuid4()
     record = {
@@ -108,7 +108,7 @@ async def test_session_uses_recorded_r_codes_and_holds_unclear_lots(client, db, 
         "classification_session_id": str(session),
         "recycling_types": {"free": ["R-10"]},
     }
-    result = (await client.post("/api/treatment/next-step", json=params)).json()
+    result = (await auth_client.post("/api/treatment/next-step", json=params)).json()
     assert result["status"] == "candidates"
     assert result["options"][0]["recycling_types"] == {
         "free": [],
@@ -119,7 +119,7 @@ async def test_session_uses_recorded_r_codes_and_holds_unclear_lots(client, db, 
 
     record["hazards"]["oil_presence"] = {"state": "UNKNOWN"}
 
-    result = (await client.post("/api/treatment/next-step", json=params)).json()
+    result = (await auth_client.post("/api/treatment/next-step", json=params)).json()
     assert result["status"] == "review_required"
     assert result["options"] == []
 
